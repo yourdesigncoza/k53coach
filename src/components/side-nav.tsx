@@ -1,14 +1,17 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/logo";
 import { NAV_ITEMS } from "@/components/nav-items";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 /** Fixed left sidebar — primary navigation on desktop (md+). */
 export function SideNav() {
   const pathname = usePathname();
+  const t = useTranslations("nav");
 
   return (
     <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-border bg-card md:flex">
@@ -19,7 +22,7 @@ export function SideNav() {
       </div>
       <nav className="flex-1 px-3 py-4">
         <ul className="flex flex-col gap-1">
-          {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
+          {NAV_ITEMS.map(({ href, key, icon: Icon }) => {
             const active =
               pathname === href || pathname.startsWith(`${href}/`);
             return (
@@ -34,17 +37,15 @@ export function SideNav() {
                   )}
                 >
                   <Icon className="size-5" />
-                  {label}
+                  {t(key)}
                 </Link>
               </li>
             );
           })}
         </ul>
       </nav>
-      <div className="border-t border-border p-4">
-        <span className="inline-flex items-center rounded-full bg-secondary px-2.5 py-1 text-xs font-medium text-muted-foreground">
-          Demo
-        </span>
+      <div className="flex items-center justify-between border-t border-border p-4">
+        <LanguageSwitcher />
       </div>
     </aside>
   );

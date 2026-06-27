@@ -61,6 +61,57 @@ export interface RoadSign {
   reviewStatus: "draft" | "reviewed" | "approved";
 }
 
+export type RuleCategory =
+  | "right-of-way"
+  | "following"
+  | "overtaking"
+  | "intersections"
+  | "signals"
+  | "speed"
+  | "pedestrians"
+  | "parking";
+
+/** DB2 — a road rule as a structured learning object, mirroring RoadSign. */
+export interface RoadRule {
+  code: string;
+  title: string;
+  category: RuleCategory;
+  /** One-line, learner-friendly summary. */
+  summary: string;
+  /** The formal rule statement (written originally). */
+  rule: string;
+  /** What the driver must actually do. */
+  whatToDo: string;
+  commonMistake: string;
+  testHint: string;
+  relatedRules: string[];
+  reviewStatus: "draft" | "reviewed" | "approved";
+}
+
+export type ControlCategory =
+  | "primary"
+  | "transmission"
+  | "signals"
+  | "instruments"
+  | "pre-drive";
+
+/** DB3 — a vehicle control as a structured learning object. */
+export interface VehicleControl {
+  code: string;
+  name: string;
+  category: ControlCategory;
+  /** One-line, learner-friendly summary. */
+  summary: string;
+  /** What the control is for. */
+  whatItDoes: string;
+  /** How to operate it correctly. */
+  howToUse: string;
+  commonMistake: string;
+  testHint: string;
+  relatedControls: string[];
+  reviewStatus: "draft" | "reviewed" | "approved";
+}
+
 export type Topic = "signs" | "rules" | "controls";
 
 /** DB4 — a question with options + the AI-coaching fields (DB5). */

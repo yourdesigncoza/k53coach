@@ -24,6 +24,34 @@ const PLACEHOLDER_PROVENANCE: AssetProvenance = {
   assetStatus: "needs_review",
 };
 
+/**
+ * DEMO wiring: a few sample signs mapped to real Public-Domain SADC SVGs
+ * fetched by scripts/signs into /public/signs. The rest keep placeholder
+ * glyphs until the full library is ingested and reviewed. Map: our sample code
+ * -> SADC file basename.
+ */
+const DEMO_SVG_BY_CODE: Record<string, string> = {
+  "R1-STOP": "R1.1",
+  "R2-YIELD": "R2",
+  "R3-NOENTRY": "R3",
+  "R6-NOOVERTAKE": "R210",
+  // R5-SPEED60 / R4-NOSTOP keep placeholder glyphs for now: the ingested
+  // R201/R216 files don't match our content (value/variant). Resolve on iterate.
+};
+
+function wikimediaProvenance(file: string): AssetProvenance {
+  return {
+    svgFile: `signs/${file}.svg`,
+    source: "Wikimedia Commons (SADC)",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/Category:SVG_road_signs_in_South_Africa",
+    licence: "Public domain (PD-SADC-RTSM)",
+    attributionRequired: false,
+    verifiedAgainst: "RTSigns_charts.pdf",
+    assetStatus: "needs_review",
+  };
+}
+
 type SignSeed = Omit<RoadSign, "provenance"> & {
   provenance?: AssetProvenance;
 };
@@ -213,10 +241,13 @@ const SIGN_SEEDS: SignSeed[] = [
 ];
 
 /** Final library with provenance guaranteed on every record. */
-export const ROAD_SIGNS: RoadSign[] = SIGN_SEEDS.map((s) => ({
-  ...s,
-  provenance: s.provenance ?? PLACEHOLDER_PROVENANCE,
-}));
+export const ROAD_SIGNS: RoadSign[] = SIGN_SEEDS.map((s) => {
+  const demoFile = DEMO_SVG_BY_CODE[s.code];
+  const provenance =
+    s.provenance ??
+    (demoFile ? wikimediaProvenance(demoFile) : PLACEHOLDER_PROVENANCE);
+  return { ...s, provenance };
+});
 
 export function getSign(code: string): RoadSign | undefined {
   return ROAD_SIGNS.find((s) => s.code === code);

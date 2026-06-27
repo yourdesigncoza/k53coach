@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -18,6 +19,8 @@ import { READINESS_RESULT_KEY } from "@/lib/storage";
  * person. A signed-in learner's progress is persisted separately, after consent.
  */
 export function QuizRunner({ questions }: { questions: Question[] }) {
+  const t = useTranslations("readiness");
+  const tt = useTranslations("topics");
   const router = useRouter();
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
@@ -51,9 +54,9 @@ export function QuizRunner({ questions }: { questions: Question[] }) {
       <div className="mx-auto w-full max-w-2xl px-4 pt-6">
         <div className="mb-2 flex items-center justify-between text-sm text-muted-foreground">
           <span>
-            Question {index + 1} of {questions.length}
+            {t("questionOf", { current: index + 1, total: questions.length })}
           </span>
-          <span className="capitalize">{q.topic}</span>
+          <span>{tt(q.topic)}</span>
         </div>
         <Progress value={progress} className="h-2.5" />
       </div>
@@ -109,7 +112,7 @@ export function QuizRunner({ questions }: { questions: Question[] }) {
             disabled={selected === undefined}
             className="h-12 w-full rounded-xl text-base"
           >
-            {isLast ? "See my readiness score" : "Next question"}
+            {isLast ? t("finish") : t("next")}
           </Button>
         </div>
       </div>
