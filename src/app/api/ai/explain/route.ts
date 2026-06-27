@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { READINESS_QUESTIONS } from "@/content/readiness-questions";
-import { getSign } from "@/content/road-signs";
+import { getApprovedSignByCode } from "@/lib/supabase/queries";
+import { signContent, localize } from "@/lib/signs";
 
 /**
  * "Explain my mistake" — retrieval-grounded AI tutor (overview §13).
@@ -29,7 +30,14 @@ export async function POST(req: Request) {
   }
 
   const correct = chosenIndex === question.answer;
-  const sign = question.signCode ? getSign(question.signCode) : undefined;
+
+  // Ground sign context ONLY on verified (approved + SA-relevant) DB content —
+  // getApprovedSignByCode returns null for anything not cleared to ship, so the
+  // tutor can never cite an unverified sign.
+  const signRow = question.signCode
+    ? await getApprovedSignByCode(question.signCode)
+    : null;
+  const sc = signRow ? signContent(signRow) : null;
 
   // Verified context the tutor is allowed to ground on.
   const grounding = {
@@ -38,13 +46,14 @@ export async function POST(req: Request) {
     chosenAnswer:
       typeof chosenIndex === "number" ? question.options[chosenIndex] : null,
     verifiedExplanation: question.explanation,
-    signContext: sign
-      ? {
-          name: sign.name,
-          behaviour: sign.behaviour,
-          commonMistake: sign.commonMistake,
-        }
-      : null,
+    signContext:
+      signRow && sc
+        ? {
+            name: signRow.name,
+            behaviour: localize(sc.behaviour, "en"),
+            commonMistake: localize(sc.commonMistake, "en"),
+          }
+        : null,
   };
 
   // TODO(llm): pass `grounding` to the Claude API with a system prompt that

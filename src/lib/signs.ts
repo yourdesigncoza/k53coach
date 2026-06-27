@@ -54,3 +54,53 @@ export const SIGN_CATEGORY_ORDER = [
 export function isShippable(row: SignRow) {
   return row.asset_status === "approved" && row.review_status === "approved";
 }
+
+/** Deterministic cross-check outcome vs the official DoT chart (Phase 2). */
+export type SignAlignment =
+  | "unverified"
+  | "aligned"
+  | "not_in_chart"
+  | "name_mismatch"
+  | "ambiguous";
+
+/** road_signs.chart_match jsonb — the matched chart-authority record. */
+export type ChartMatch = {
+  code: string;
+  name: string | null;
+  page: number | null;
+  score: number;
+};
+
+/** road_signs.verification jsonb — session verification evidence (Phase 3). */
+export type SignVerification = {
+  confidence: number;
+  reason: string;
+  visionPass: boolean;
+  semanticPass: boolean;
+};
+
+export function chartMatch(row: Pick<SignRow, "chart_match">): ChartMatch | null {
+  return (row.chart_match ?? null) as ChartMatch | null;
+}
+
+export function signVerification(
+  row: Pick<SignRow, "verification">,
+): (SignVerification & {
+  match?: boolean;
+  contentPass?: boolean;
+  suggestedName?: string | null;
+  contentIssue?: string | null;
+}) | null {
+  return (row.verification ?? null) as never;
+}
+
+/**
+ * A sign needs human attention when it is SA-relevant (belongs in the official
+ * chart) but is not yet fully shippable. not-in-chart signs are already decided
+ * (excluded), so they are not in the queue.
+ */
+export function isInExceptionsQueue(
+  row: Pick<SignRow, "sa_relevant" | "asset_status" | "review_status">,
+) {
+  return Boolean(row.sa_relevant) && !isShippable(row as SignRow);
+}

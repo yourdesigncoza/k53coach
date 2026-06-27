@@ -3,8 +3,19 @@ import { ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SignImage } from "@/components/sign-image";
+import {
+  ExceptionsQueue,
+  type QueueRow,
+} from "@/components/admin/exceptions-queue";
 import { getSigns } from "@/lib/supabase/queries";
-import { SIGN_CATEGORY_LABEL, SIGN_CATEGORY_ORDER } from "@/lib/signs";
+import {
+  SIGN_CATEGORY_LABEL,
+  SIGN_CATEGORY_ORDER,
+  isShippable,
+  isInExceptionsQueue,
+  signVerification,
+  chartMatch,
+} from "@/lib/signs";
 
 export const metadata = { title: "Admin · Signs" };
 
@@ -26,12 +37,26 @@ function statusBadge(value: string, kind: "asset" | "review") {
 
 export default async function AdminSignsPage() {
   const signs = await getSigns();
-  const approved = signs.filter(
-    (s) => s.asset_status === "approved" && s.review_status === "approved",
-  ).length;
-  const withContent = signs.filter(
-    (s) => Object.keys((s.content as object) ?? {}).length > 0,
-  ).length;
+  const shippable = signs.filter(isShippable).length;
+  const excluded = signs.filter((s) => s.sa_relevant === false).length;
+
+  // Exceptions queue: in-chart signs that aren't shippable yet.
+  const queue: QueueRow[] = signs.filter(isInExceptionsQueue).map((s) => {
+    const v = signVerification(s);
+    const cm = chartMatch(s);
+    return {
+      code: s.code,
+      name: s.name,
+      svgFile: s.svg_file,
+      alignment: s.alignment,
+      chartName: cm?.name ?? null,
+      chartPage: cm?.page ?? null,
+      confidence: v?.confidence ?? null,
+      reason: v?.reason ?? null,
+      suggestedName: v?.suggestedName ?? null,
+      contentIssue: v?.contentIssue ?? null,
+    };
+  });
 
   const byCategory = SIGN_CATEGORY_ORDER.map((cat) => ({
     cat,
@@ -42,9 +67,17 @@ export default async function AdminSignsPage() {
     <div className="mx-auto w-full max-w-6xl px-5 py-6 md:px-8 md:py-8">
       <h1 className="text-xl font-semibold md:text-2xl">Road sign review</h1>
       <p className="text-sm text-muted-foreground">
-        {signs.length} signs · {withContent} with content drafted · {approved}{" "}
-        fully approved (shippable).
+        {signs.length} signs · {shippable} shippable · {queue.length} in review
+        queue · {excluded} excluded (not in chart).
       </p>
+
+      <section className="mt-6">
+        <h2 className="mb-2 text-sm font-medium text-muted-foreground">
+          Exceptions queue ({queue.length}) — verified against the official DoT
+          chart; these need a human
+        </h2>
+        <ExceptionsQueue rows={queue} />
+      </section>
 
       {byCategory.map(({ cat, signs }) => (
         <section key={cat} className="mt-6">
@@ -70,6 +103,11 @@ export default async function AdminSignsPage() {
                     <span className="flex-1 truncate text-sm font-medium">
                       {s.name}
                     </span>
+                    {s.sa_relevant === false && (
+                      <Badge variant="outline" className="hidden sm:inline-flex">
+                        excluded
+                      </Badge>
+                    )}
                     <span className="hidden gap-1.5 sm:flex">
                       {statusBadge(s.asset_status, "asset")}
                       {statusBadge(s.review_status, "review")}

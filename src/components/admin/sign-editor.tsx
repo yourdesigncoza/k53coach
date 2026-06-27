@@ -13,6 +13,8 @@ import {
   SIGN_CONTENT_FIELDS,
   type SignContent,
   type SignContentField,
+  type ChartMatch,
+  type SignVerification,
 } from "@/lib/signs";
 
 const FIELD_LABEL: Record<SignContentField, string> = {
@@ -25,6 +27,19 @@ const FIELD_LABEL: Record<SignContentField, string> = {
 const LOCALES = ["en", "af"] as const;
 const ASSET_STATUSES = ["needs_review", "audited", "approved"];
 const REVIEW_STATUSES = ["draft", "reviewed", "approved"];
+const SA_RELEVANT = [
+  { value: "true", label: "Yes — in official chart" },
+  { value: "false", label: "No — exclude from learners" },
+  { value: "null", label: "Unknown" },
+];
+const CHART_PAGES_AVAILABLE = new Set([1, 2]);
+
+type VerificationEvidence = SignVerification & {
+  match?: boolean;
+  contentPass?: boolean;
+  suggestedName?: string | null;
+  contentIssue?: string | null;
+};
 
 const field =
   "w-full rounded-lg border border-input bg-background p-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring";
@@ -37,6 +52,10 @@ export function SignEditor({
   initialContent,
   initialAssetStatus,
   initialReviewStatus,
+  initialSaRelevant,
+  alignment,
+  chartMatch,
+  verification,
 }: {
   code: string;
   name: string;
@@ -45,10 +64,19 @@ export function SignEditor({
   initialContent: SignContent;
   initialAssetStatus: string;
   initialReviewStatus: string;
+  initialSaRelevant?: boolean | null;
+  alignment?: string;
+  chartMatch?: ChartMatch | null;
+  verification?: VerificationEvidence | null;
 }) {
   const [content, setContent] = useState<SignContent>(initialContent);
   const [assetStatus, setAssetStatus] = useState(initialAssetStatus);
   const [reviewStatus, setReviewStatus] = useState(initialReviewStatus);
+  const [saRelevant, setSaRelevant] = useState(
+    initialSaRelevant === null || initialSaRelevant === undefined
+      ? "null"
+      : String(initialSaRelevant),
+  );
   const [busy, setBusy] = useState(false);
   const [drafting, setDrafting] = useState(false);
 
@@ -89,11 +117,19 @@ export function SignEditor({
 
   async function onSave() {
     setBusy(true);
-    const res = await saveSign({ code, content, assetStatus, reviewStatus });
+    const res = await saveSign({
+      code,
+      content,
+      assetStatus,
+      reviewStatus,
+      saRelevant: saRelevant === "null" ? null : saRelevant === "true",
+    });
     setBusy(false);
     if (res.ok) toast.success("Saved");
     else toast.error(res.error ?? "Save failed");
   }
+
+  const chartPage = chartMatch?.page ?? null;
 
   return (
     <div className="grid gap-5 md:grid-cols-[200px_1fr]">
@@ -117,9 +153,81 @@ export function SignEditor({
           )}
           AI draft (English)
         </Button>
+        {chartPage != null && CHART_PAGES_AVAILABLE.has(chartPage) && (
+          <a
+            href={`/chart-pages/page-${chartPage}.png`}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 block text-center text-xs text-muted-foreground hover:underline"
+          >
+            View official chart (p.{chartPage}) ↗
+          </a>
+        )}
       </div>
 
       <div className="flex flex-col gap-4">
+        {(verification || chartMatch) && (
+          <Card>
+            <CardContent className="py-4">
+              <div className="mb-2 flex flex-wrap items-center gap-2">
+                <p className="text-sm font-medium">Chart verification</p>
+                {alignment && <Badge variant="outline">{alignment}</Badge>}
+                {verification?.confidence != null && (
+                  <Badge variant="secondary">
+                    conf {verification.confidence.toFixed(2)}
+                  </Badge>
+                )}
+              </div>
+              <dl className="grid gap-1 text-xs text-muted-foreground">
+                <div className="flex gap-2">
+                  <dt className="w-24 shrink-0 font-medium text-foreground">
+                    Chart name
+                  </dt>
+                  <dd>
+                    {chartMatch?.name ?? "—"}
+                    {chartPage != null && ` (p.${chartPage})`}
+                  </dd>
+                </div>
+                {verification?.suggestedName && (
+                  <div className="flex gap-2">
+                    <dt className="w-24 shrink-0 font-medium text-foreground">
+                      Suggested
+                    </dt>
+                    <dd>{verification.suggestedName}</dd>
+                  </div>
+                )}
+                {verification?.reason && (
+                  <div className="flex gap-2">
+                    <dt className="w-24 shrink-0 font-medium text-foreground">
+                      Reason
+                    </dt>
+                    <dd>{verification.reason}</dd>
+                  </div>
+                )}
+                {verification?.contentIssue && (
+                  <div className="flex gap-2">
+                    <dt className="w-24 shrink-0 font-medium text-foreground">
+                      Content flag
+                    </dt>
+                    <dd className="text-amber-700 dark:text-amber-300">
+                      {verification.contentIssue}
+                    </dd>
+                  </div>
+                )}
+                <div className="flex gap-2">
+                  <dt className="w-24 shrink-0 font-medium text-foreground">
+                    Checks
+                  </dt>
+                  <dd>
+                    vision {verification?.visionPass ? "✓" : "✗"} · semantic{" "}
+                    {verification?.semanticPass ? "✓" : "✗"} · content{" "}
+                    {verification?.contentPass ? "✓" : "✗"}
+                  </dd>
+                </div>
+              </dl>
+            </CardContent>
+          </Card>
+        )}
         {SIGN_CONTENT_FIELDS.map((f) => (
           <Card key={f}>
             <CardContent className="py-4">
@@ -170,6 +278,22 @@ export function SignEditor({
                 {REVIEW_STATUSES.map((s) => (
                   <option key={s} value={s}>
                     {s}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="block sm:col-span-2">
+              <span className="mb-1 block text-xs font-medium">
+                SA-relevant (serve to learners)
+              </span>
+              <select
+                className={field}
+                value={saRelevant}
+                onChange={(e) => setSaRelevant(e.target.value)}
+              >
+                {SA_RELEVANT.map((s) => (
+                  <option key={s.value} value={s.value}>
+                    {s.label}
                   </option>
                 ))}
               </select>

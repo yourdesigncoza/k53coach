@@ -3,16 +3,15 @@ import { Link } from "@/i18n/navigation";
 import { ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { SignImage } from "@/components/sign-image";
-import { getSigns } from "@/lib/supabase/queries";
+import { getApprovedSigns } from "@/lib/supabase/queries";
 import { SIGN_CATEGORY_LABEL, SIGN_CATEGORY_ORDER } from "@/lib/signs";
 
 export const metadata = { title: "Road Signs" };
 
 export default async function RoadSignsPage() {
   const t = await getTranslations("module");
-  const signs = await getSigns();
+  const signs = await getApprovedSigns();
 
   const byCategory = SIGN_CATEGORY_ORDER.map((cat) => ({
     cat,
@@ -64,11 +63,6 @@ export default async function RoadSignsPage() {
                         {s.subcategory ? ` · ${s.subcategory}` : ""}
                       </span>
                     </span>
-                    {s.review_status !== "approved" && (
-                      <Badge variant="outline" className="text-[10px]">
-                        {t("draft")}
-                      </Badge>
-                    )}
                     <ChevronRight className="size-4 shrink-0 text-muted-foreground" />
                   </Link>
                 </CardContent>

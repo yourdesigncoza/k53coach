@@ -1,0 +1,2576 @@
+[
+  {
+    "code": "GM1",
+    "name": null,
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "GM2",
+    "name": null,
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "GM3",
+    "name": null,
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "GM4",
+    "name": null,
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "GM5",
+    "name": null,
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "GM6",
+    "name": null,
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "GM7",
+    "name": null,
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "GM8",
+    "name": null,
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "IN1",
+    "name": "Countdown",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN2",
+    "name": "Countdown",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN3",
+    "name": "Countdown",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN4",
+    "name": "Cul-de-sac",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN5",
+    "name": "Cul-de-sac",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN6",
+    "name": "Cul-de-sac",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN7",
+    "name": null,
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN10",
+    "name": "Park & ride",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN11.1",
+    "name": "to IN11.5*",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN11.2",
+    "name": null,
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN11.3",
+    "name": null,
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN11.4",
+    "name": null,
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN11.568",
+    "name": null,
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN11.577",
+    "name": null,
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN12",
+    "name": "Information centre",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN14",
+    "name": "Co-ordinated traffic signals",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN15",
+    "name": "Multi-phase traffic signals",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "IN19",
+    "name": "Modal transfer",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "R1",
+    "name": ". 2 Stop/Yield",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R1.1",
+    "name": "Stop",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R1.2",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R1.3",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R1.4",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R1.5",
+    "name": "Stop/Go",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R2",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R2.1",
+    "name": "Yield to pedestrians",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R2.2",
+    "name": "Yield at mini-circle",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R3",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R4.1",
+    "name": "One-way roadway signs",
+    "category": null,
+    "page": 5
+  },
+  {
+    "code": "R4.2",
+    "name": "One-way roadway signs",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R4.3",
+    "name": "One-way roadway signs",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R5",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R6",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R101",
+    "name": "MinimumSpeed",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R102",
+    "name": "Vehiclesexceedingmassonly",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R103",
+    "name": "Keep left",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R104",
+    "name": "Keep right",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R105",
+    "name": "Proceed left only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R106",
+    "name": "Proceed right only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R107",
+    "name": "Proceed straight only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R108",
+    "name": "Turn left",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R109",
+    "name": "Turn right",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R110",
+    "name": "Pedestrians only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R111",
+    "name": "Pedal cycles only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R112",
+    "name": "Pedal cycles & pedestrians only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R113",
+    "name": "Pedal cycles & pedestrians only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R114",
+    "name": "Pedal cycles & pedestrians only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R115",
+    "name": "Pedal cycles & pedestrians only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R116",
+    "name": "Motor cycles only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R117",
+    "name": "Motor cars only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R118",
+    "name": "Taxis only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R119",
+    "name": "Minibuses only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R120",
+    "name": "Midibus only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R121",
+    "name": "Buses only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R122",
+    "name": "Delivery vehicles only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R123",
+    "name": "Goods vehicles only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R124",
+    "name": "Goods vehicles over indicated GVM only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R125",
+    "name": "Construction vehicles only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R126",
+    "name": "Vehicles conveying dangerous goods only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R127",
+    "name": "Abnormal vehicles only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R128",
+    "name": "Rickshaws only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R129",
+    "name": "Tour buses only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R130",
+    "name": "Agricultural vehicles only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R131",
+    "name": "Animal-drawn vehicles only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R132",
+    "name": "Pay toll",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R133",
+    "name": "Switch head lamps on",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R134",
+    "name": "Buses & minibuses only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R135",
+    "name": "Buses & midibuses only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R136",
+    "name": "Buses, midibuses & minibuses only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R137",
+    "name": "Roundabout",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R138",
+    "name": "Trams only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R139",
+    "name": "Buses & trams only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R140",
+    "name": "Buses, trams & minibuses only",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R201",
+    "name": "- RC + W354 -WC + IN11 . 2",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R202",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R203",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R204",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R205",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R206",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R207",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R208",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R209",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R210",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R211",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R212",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R213",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R214",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R215",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R216",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R217",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R218",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R219",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R220",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R222",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R223",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R224",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R225",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R226",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R227",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R228",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R229",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R230",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R231",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R232",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R233",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R234",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R235",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R236",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R237",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R238",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R239",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R240",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R241",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R301",
+    "name": "Bus reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R302",
+    "name": "Bus lane reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R303",
+    "name": "Bus lane reservation begins",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R304",
+    "name": "Pedal cycle lane reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R307",
+    "name": "Motor cycle reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R308",
+    "name": "Motor car reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R309",
+    "name": "Taxi reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R310",
+    "name": "Minibus reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R311",
+    "name": "Midibus reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R312",
+    "name": "Delivery vehicle reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R313",
+    "name": "Goods vehicle reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R314",
+    "name": "Goods vehicle over indicated GVM reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R315",
+    "name": "Construction vehicle reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R316",
+    "name": "Vehicle conveying dangerous goods reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R317",
+    "name": "Abnormal vehicle reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R318",
+    "name": "Rickshaw reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R319",
+    "name": "Tour bus reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R320",
+    "name": "High occupancy vehicle reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R321",
+    "name": "Emergency vehicle reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R322",
+    "name": "Police vehicle reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R323",
+    "name": "Disabled persons vehicle reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R324",
+    "name": "Authorized vehicle reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R325",
+    "name": "Bus stop reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R326",
+    "name": "Minibus stop reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R327",
+    "name": "Bus & minibus reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R328",
+    "name": "Bus & minibus lane reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R329",
+    "name": "Bus & minibus lane reservation begins",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R330",
+    "name": "Bus & midibus reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R331",
+    "name": "Bus & midibus lane reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R332",
+    "name": "Bus & midibus lane reservation begins",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R333",
+    "name": "Bus, midibus & minibus reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R334",
+    "name": "Bus, midibus & minibus lane reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R335",
+    "name": "Bus, midibus & minibus lane reservation begins",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R336",
+    "name": "High occupancy vehicle lane reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R337",
+    "name": "High occupancy vehicle lane reservation begins",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R338",
+    "name": "Tram reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R339",
+    "name": "Tram lane reservation",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R340",
+    "name": "Tram lane reservation begins",
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R341",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R342",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R343",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R344",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R345",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R346",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R347",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R348",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R349",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R350",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R351",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R352",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R353",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R354",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R401",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R402",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "R403",
+    "name": null,
+    "category": "regulatory",
+    "page": 1
+  },
+  {
+    "code": "RM1",
+    "name": "No overtaking marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM2",
+    "name": "No crossing marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM3",
+    "name": "Channelizing line marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM4.1",
+    "name": "Left edge line marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM4.2",
+    "name": "Right edge line marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM5",
+    "name": "Painted island marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM6",
+    "name": "Parking bay marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM7",
+    "name": "Exclusive parking bay marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM8",
+    "name": "Mandatory direction arrow marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM9",
+    "name": "Exclusive lane line marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM10",
+    "name": "Box junction marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM11",
+    "name": "Zig-zag zone marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM12",
+    "name": "No stopping line marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM13",
+    "name": "No parking line marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM14",
+    "name": "No motor cycles marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM15",
+    "name": "Mini-circle marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM16",
+    "name": "Disabled persons parking marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "RM17",
+    "name": "Exclusive use lane symbol marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "TR101",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR104",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR106",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR109",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR110",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR111",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR112",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR118",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR119",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR121",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR123",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR125",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR127",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR129",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR130",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR131",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR133",
+    "name": "- RC + TW354 -WC",
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR134",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR136",
+    "name": "and TR137",
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR137",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR201",
+    "name": "- RC + TW331 -WC + TIN11 . 2 - SS3",
+    "category": null,
+    "page": 5
+  },
+  {
+    "code": "TR202",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR203",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR204",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR205",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR208",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR210",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR211",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR212",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR214",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR215",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR216",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR217",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR218",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR219",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR222",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR223",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR226",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR228",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR230",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR232",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR234",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR239",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR240",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR304",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TR307",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR309",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR315",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR317",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR319",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR321",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR323",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR333",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TR402",
+    "name": null,
+    "category": "regulatory",
+    "page": 4
+  },
+  {
+    "code": "TW106",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW108",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW110",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW114",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW115",
+    "name": "and TW119",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW201",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW203",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW205",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW207",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW209",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW211",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW212",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW213",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW215",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW218",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW301",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW302",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW303",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW304",
+    "name": "Traffic control ahead",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW305",
+    "name": "Scholar patrol ahead",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW306",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW307",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW309",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW310",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW311",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW318",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW320",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW321",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW322",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW323",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW325",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW326",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW327",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW328",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW331",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW332",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW333",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW335",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW336",
+    "name": "Roadworks",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW337",
+    "name": "Grader working",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW338",
+    "name": "Loose stones",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW339",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW340",
+    "name": "Surface step",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW341",
+    "name": "Surface step",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW342",
+    "name": "Soft shoulder",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW343",
+    "name": "“Stop/Go” control ahead",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW344",
+    "name": "Construction vehicles crossing",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW345",
+    "name": "Construction vehicles crossing",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW346",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW347",
+    "name": "Temporary police flashing light",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW349",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW350",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW353",
+    "name": "Accident ahead",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW354",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW355",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW356",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW360",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW361",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW363",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW401",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW405",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW407",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW409",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW410",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW411",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW412",
+    "name": "Traffic signals out of order",
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW413",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "TW414",
+    "name": null,
+    "category": "warning",
+    "page": 4
+  },
+  {
+    "code": "W101",
+    "name": "Crossroad",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W102",
+    "name": "Priority crossroad",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W103",
+    "name": "Secondary crossroad",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W104",
+    "name": "T- & skew T-junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W105",
+    "name": "T- & skew T-junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W106",
+    "name": "T- & skew T-junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W107",
+    "name": "Side road junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W108",
+    "name": "Side road junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W109",
+    "name": "Staggered junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W110",
+    "name": "Staggered junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W111",
+    "name": "Sharp junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W112",
+    "name": "Sharp junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W113",
+    "name": "Sharp junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W114",
+    "name": "Sharp junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W115",
+    "name": "Y-junction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W116",
+    "name": "End of dual roadway",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W117",
+    "name": "End of dual roadway",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W118",
+    "name": "Beginning of dual roadway",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W119",
+    "name": "Beginning of dual roadway",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W201",
+    "name": "Traffic circle",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W202",
+    "name": "Gentle curve",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W203",
+    "name": "Gentle curve",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W204",
+    "name": "Sharp curve",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W205",
+    "name": "Sharp curve",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W206",
+    "name": "Hairpin bend",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W207",
+    "name": "Hairpin bend",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W208",
+    "name": "Winding road",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W209",
+    "name": "Winding road",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W210",
+    "name": "Combined curves",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W211",
+    "name": "Combined curves",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W212",
+    "name": "Two-way traffic",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W213",
+    "name": "Two-way traffic crossroad",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W214",
+    "name": "Lane ends",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W215",
+    "name": "Lane ends",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W216",
+    "name": "Concealed driveway",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W217",
+    "name": "Concealed driveway",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W218",
+    "name": "Concealed driveway",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W301",
+    "name": "Traffic signal ahead",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W302",
+    "name": "Traffic control “STOP” ahead",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W303",
+    "name": "Traffic control “YIELD” ahead",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W306",
+    "name": "Pedestrian crossing",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W307",
+    "name": "Pedestrians",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W308",
+    "name": "Children",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W309",
+    "name": "Cyclists",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W310",
+    "name": "Farm animals",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W311",
+    "name": "Farm animals",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W312",
+    "name": "Farm animals",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W313",
+    "name": "Wild animals ahead",
+    "category": null,
+    "page": 5
+  },
+  {
+    "code": "W314",
+    "name": "Gate",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W315",
+    "name": "Motor gate",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W316",
+    "name": "Motor gate",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W317",
+    "name": "Motor gate",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W318",
+    "name": "Railway crossing",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W319",
+    "name": "Tunnel",
+    "category": null,
+    "page": 5
+  },
+  {
+    "code": "W320",
+    "name": "Height restriction",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W321",
+    "name": "Length restricted",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W322",
+    "name": "Steep descent & ascent",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W323",
+    "name": "Steep descent & ascent",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W324",
+    "name": "Slow moving heavy vehicles",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W325",
+    "name": "Gravel road begins",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W326",
+    "name": "Narrow bridge",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W327",
+    "name": "One vehicle width structure",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W328",
+    "name": "Road narrrows from both sides",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W329",
+    "name": "Road narrows from one side only",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W330",
+    "name": "Road narrows from one side only",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W331",
+    "name": "Uneven roadway",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W332",
+    "name": "Speed humps",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W333",
+    "name": "Slippery road",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W334",
+    "name": "Falling rocks",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W335",
+    "name": "Falling rocks",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W339",
+    "name": "General warning",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W346",
+    "name": "Emergency flashing light",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W348",
+    "name": "Jetty edge or river-bank",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W349",
+    "name": "Crosswinds",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W350",
+    "name": "Drift",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W351",
+    "name": "Low flying aircraft",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W352",
+    "name": "Agricultural vehicle",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W354",
+    "name": "Reduced visibility",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W355",
+    "name": "Congestion",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W356",
+    "name": "Horses & riders",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W357",
+    "name": "Elephant",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W358",
+    "name": "Warthog",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W359",
+    "name": "Hippo",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W360",
+    "name": "Width restricted",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W361",
+    "name": "Electrical shock",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W362",
+    "name": "Tram",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W363",
+    "name": "Gravel road ends",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W401",
+    "name": "Danger plate",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W402",
+    "name": "Danger plate",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W403",
+    "name": "Railway crossing",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W404",
+    "name": "Railway crossing",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W405",
+    "name": "Sharp curve chevron",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W406",
+    "name": "Sharp curve chevron",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W407",
+    "name": "Sharp curve chevron",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W408",
+    "name": "Sharp curve chevron",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W409",
+    "name": "T-junction chevron",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W410",
+    "name": "Dead end or road closed chevron",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W411",
+    "name": "Boom barricade",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W413",
+    "name": "Gore plate",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W414",
+    "name": "Gore chevron",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "W415",
+    "name": "Overhead danger plate",
+    "category": "warning",
+    "page": 2
+  },
+  {
+    "code": "WM1",
+    "name": "Railway crossing marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "WM2",
+    "name": "Continuity line marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "WM3",
+    "name": "Dividing line marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "WM4",
+    "name": "Reversible lane line marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "WM5",
+    "name": "Yield sign ahead marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "WM6",
+    "name": "Lane reduction arrow marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "WM7",
+    "name": "Mandatory direction arrow ahead marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "WM8",
+    "name": "No overtaking or no crossing line ahead marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "WM9.1",
+    "name": "Arrestor bed ahead marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "WM9.2",
+    "name": "Escape road ahead marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "WM10",
+    "name": "Speed hump marking",
+    "category": "marking",
+    "page": 2
+  },
+  {
+    "code": "WM11",
+    "name": "End of exclusive use lane arrows marking",
+    "category": "marking",
+    "page": 2
+  }
+]

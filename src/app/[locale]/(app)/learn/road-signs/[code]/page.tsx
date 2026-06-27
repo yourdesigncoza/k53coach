@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SignImage } from "@/components/sign-image";
-import { getSignByCode } from "@/lib/supabase/queries";
+import { getApprovedSignByCode } from "@/lib/supabase/queries";
 import { SIGN_CATEGORY_LABEL, signContent, localize } from "@/lib/signs";
 
 export async function generateMetadata({
@@ -15,7 +15,7 @@ export async function generateMetadata({
   params: Promise<{ code: string }>;
 }) {
   const { code } = await params;
-  const sign = await getSignByCode(decodeURIComponent(code));
+  const sign = await getApprovedSignByCode(decodeURIComponent(code));
   return { title: sign ? sign.name : "Road sign" };
 }
 
@@ -31,7 +31,7 @@ export default async function SignDetailPage({
   params: Promise<{ locale: string; code: string }>;
 }) {
   const { locale, code } = await params;
-  const sign = await getSignByCode(decodeURIComponent(code));
+  const sign = await getApprovedSignByCode(decodeURIComponent(code));
   if (!sign) notFound();
 
   const t = await getTranslations("module");

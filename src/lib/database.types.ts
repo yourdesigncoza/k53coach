@@ -131,9 +131,12 @@ export type Database = {
       }
       road_signs: {
         Row: {
+          alignment: string
+          approved_by: string | null
           asset_status: string
           attribution_required: boolean
           category: string
+          chart_match: Json | null
           code: string
           content: Json
           created_at: string
@@ -141,17 +144,26 @@ export type Database = {
           licence: string | null
           name: string
           review_status: string
+          sa_relevant: boolean | null
+          sign_id: string
           source: string | null
+          source_rev: string | null
           source_url: string | null
           subcategory: string | null
           svg_file: string | null
+          svg_hash: string | null
           temporary: boolean
           updated_at: string
+          verification: Json | null
+          verified_at: string | null
         }
         Insert: {
+          alignment?: string
+          approved_by?: string | null
           asset_status?: string
           attribution_required?: boolean
           category: string
+          chart_match?: Json | null
           code: string
           content?: Json
           created_at?: string
@@ -159,17 +171,26 @@ export type Database = {
           licence?: string | null
           name: string
           review_status?: string
+          sa_relevant?: boolean | null
+          sign_id?: string
           source?: string | null
+          source_rev?: string | null
           source_url?: string | null
           subcategory?: string | null
           svg_file?: string | null
+          svg_hash?: string | null
           temporary?: boolean
           updated_at?: string
+          verification?: Json | null
+          verified_at?: string | null
         }
         Update: {
+          alignment?: string
+          approved_by?: string | null
           asset_status?: string
           attribution_required?: boolean
           category?: string
+          chart_match?: Json | null
           code?: string
           content?: Json
           created_at?: string
@@ -177,12 +198,18 @@ export type Database = {
           licence?: string | null
           name?: string
           review_status?: string
+          sa_relevant?: boolean | null
+          sign_id?: string
           source?: string | null
+          source_rev?: string | null
           source_url?: string | null
           subcategory?: string | null
           svg_file?: string | null
+          svg_hash?: string | null
           temporary?: boolean
           updated_at?: string
+          verification?: Json | null
+          verified_at?: string | null
         }
         Relationships: []
       }

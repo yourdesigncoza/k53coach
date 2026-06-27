@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SignEditor } from "@/components/admin/sign-editor";
 import { getSignByCode } from "@/lib/supabase/queries";
-import { signContent } from "@/lib/signs";
+import { signContent, signVerification, chartMatch } from "@/lib/signs";
 
 export async function generateMetadata({
   params,
@@ -45,6 +45,10 @@ export default async function AdminSignEditPage({
         initialContent={signContent(sign)}
         initialAssetStatus={sign.asset_status}
         initialReviewStatus={sign.review_status}
+        initialSaRelevant={sign.sa_relevant}
+        alignment={sign.alignment}
+        chartMatch={chartMatch(sign)}
+        verification={signVerification(sign)}
       />
     </div>
   );

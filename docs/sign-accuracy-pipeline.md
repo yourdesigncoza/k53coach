@@ -1,10 +1,17 @@
 # Sign accuracy pipeline — execution plan
 
+> **Status: EXECUTED.** All 6 phases ran. 254 in-chart signs verified in-session
+> against the chart; **245 auto-approved** (asset+content) with drafted learner
+> content, **9 in the admin exceptions queue** (8 low-confidence vision, 1 content
+> demotion: R324). Learners are served approved-only. Re-run any phase idempotently
+> via the `scripts/signs/*` scripts below; `check-drift.mjs` is the CI guard.
+
 **Run this in a fresh session.** Goal: every learner-visible road sign is
 **verified accurate against the official SA DoT chart** (`init/RTSigns_charts.pdf`
-= ground truth). Verification is automated with **Claude (semantic + vision
-cross-check)**; a **human only touches signs that don't align with the chart**.
-Learners see **approved-only**.
+= ground truth). Verification is done **inside the Claude Code session** (Claude
+reads the rendered sign + chart-page PNGs directly — semantic + vision
+cross-check — no `ANTHROPIC_API_KEY` / API script needed); a **human only touches
+signs that don't align with the chart**. Learners see **approved-only**.
 
 ## Why this exists
 Accuracy of signs is a **hard gate, not an MVP nicety** — the sign library is the
@@ -18,9 +25,9 @@ serves only verified signs.
   test-relevance, canonical code, name, variant, and correct artwork.
 - **Wikipedia/Commons = candidate artwork + index only** (already ingested).
 - Ship to learners only when `asset_status='approved' AND review_status='approved'`.
-- **Auto-approval is allowed ONLY when Claude passes both** a semantic check
-  (code↔name↔meaning vs chart) **and** a vision check (rendered SVG vs the chart's
-  depiction). Anything failing/uncertain → **human exceptions queue**.
+- **Auto-approval is allowed ONLY when Claude (this session) passes both** a
+  semantic check (code↔name↔meaning vs chart) **and** a vision check (rendered SVG
+  vs the chart's depiction). Anything failing/uncertain → **human exceptions queue**.
 - **Auditable**: every approval records `approved_by`, evidence (matched chart
   name/page, model, confidence), `svg_hash`, `verified_at`.
 
@@ -36,10 +43,13 @@ serves only verified signs.
 - App reads signs from the DB (currently **shows all** — change in Phase 5).
 
 ## Prerequisites for this session
-- `ANTHROPIC_API_KEY` in `.env.local` (and Vercel later).
-- Models: **`claude-sonnet-4-6`** (vision) for the batch; escalate ambiguous to
-  **`claude-opus-4-8`** and/or the adversarial panel (`grok-review`,
-  `codex-review`, `ask-gemini`). (Per `claude-api` skill for exact API usage.)
+- **No `ANTHROPIC_API_KEY`.** Verification runs *in this Claude Code session*:
+  a script renders the images, the session's Claude (and spawned subagents) Read
+  the rendered sign PNG + chart-page PNG and emit structured verdicts, and a
+  writer script persists them. Ambiguous cases escalate to a deeper agent pass
+  and/or the adversarial panel (`grok-review`, `codex-review`, `ask-gemini`)
+  before falling to the human queue.
+- `SUPABASE_SERVICE_ROLE_KEY` in `.env.local` (present) for DB writes.
 - SVG→PNG: add **`@resvg/resvg-js`** (npm, no system deps). PDF→PNG: **`pdftoppm`**
   (poppler — already present; `pdftotext` is used).
 
@@ -61,8 +71,8 @@ New migration `supabase migration new sign_verification`:
     add column alignment text not null default 'unverified'
       check (alignment in ('unverified','aligned','not_in_chart','name_mismatch','ambiguous')),
     add column chart_match jsonb,                   -- {code,name,page,score}
-    add column verification jsonb,                  -- {model,confidence,reason,visionPass,semanticPass}
-    add column approved_by text,                    -- 'ai:claude-sonnet-4-6' | 'panel' | '<human>'
+    add column verification jsonb,                  -- {confidence,reason,visionPass,semanticPass}
+    add column approved_by text,                    -- 'ai:claude-code' | 'panel' | '<human>'
     add column verified_at timestamptz,
     add column svg_hash text,                       -- sha256 of the approved SVG
     add column source_rev text;                     -- wikitext revid / commons sha (drift)
@@ -89,30 +99,56 @@ New migration `supabase migration new sign_verification`:
   - variant ambiguity (TW vs W, suffixes, parenthesised) → `ambiguous`
 - Write `alignment` + `chart_match`. **No approvals here.** Set `sa_relevant`
   provisional = `in_official_chart` (human can override later).
+- **`alignment` is a prior, not a Phase-3 gate.** The SA chart uses formal terms
+  ("Pedal cycles", "Proceed left only", "mini-circle") where Wikipedia uses casual
+  ones ("Cyclists", "Turn left", "roundabout"), so ~⅔ of valid in-chart signs are
+  deterministic `name_mismatch`/`ambiguous`. Phase 3 therefore verifies **every
+  in-chart sign** (`alignment != 'not_in_chart'`) by vision against the chart page
+  — the only reliable semantic authority. `aligned` just marks the high-confidence
+  subset.
 
-## Phase 3 — Claude verification + sign-off (core)
-`scripts/signs/verify-claude.mjs` — batch over `alignment='aligned'`:
-1. Render the sign's SVG → PNG via resvg.
-2. Claude `claude-sonnet-4-6` (vision) message:
-   - system: *"You verify a South African road sign against the official chart
-     ground truth. Be strict. If the artwork or meaning is uncertain or doesn't
-     clearly match, FAIL. Never invent fines/penalties."*
-   - user: `{code, wikipediaName, category, chartName (ground truth), chartPage}`
-     + the rendered SVG PNG (+ optional chart-page PNG).
-   - ask for JSON: `{match:bool, confidence:0-1, reason, visionPass:bool,
-     semanticPass:bool, suggestedName, contentDraft:{plainEnglish, formalMeaning,
-     behaviour, commonMistake, testHint}}`.
-3. Decision:
+## Phase 3 — Claude verification + sign-off (core, session-based)
+Verification is performed by **this Claude Code session**, not an API script.
+Input set = **every in-chart sign** (`alignment != 'not_in_chart'`), since the
+deterministic name match is too weak to gate on (see Phase 2). Three pieces:
+
+1. **`scripts/signs/build-verify-manifest.mjs`** — for every in-chart
+   row: render the SVG → PNG via resvg (`data/verify/png/<code>.png`), resolve its
+   `chart_match.page` → chart-page PNG (`data/chart-pages/page-N.png`), compute the
+   SVG sha256, and emit **`data/verify/manifest.json`**: `[{code, wikipediaName,
+   category, chartName, chartPage, svgPngPath, chartPngPath, svgHash}]`. Gitignore
+   `data/verify/`.
+
+2. **Session verification (subagents).** Claude Code fans out over the manifest in
+   batches (Agent/Workflow). Each subagent, per sign, **Reads the rendered sign PNG
+   + the chart-page PNG** and judges against ground truth. Prompt contract:
+   - *"You verify a South African road sign against the official DoT chart (ground
+     truth). Be strict. If the artwork or meaning is uncertain or doesn't clearly
+     match the chart, FAIL. Never invent fines/penalties."*
+   - inputs: `{code, wikipediaName, category, chartName, chartPage}` + the two
+     images.
+   - structured output per sign: `{code, match:bool, confidence:0-1, reason,
+     visionPass:bool, semanticPass:bool, suggestedName, contentDraft:{plainEnglish,
+     formalMeaning, behaviour, commonMistake, testHint}}`.
+   Write verdicts to **`data/verify/verdicts/<code>.json`**.
+   - `0.6 ≤ confidence < 0.85` OR vision/semantic disagree → re-judge with a
+     deeper agent pass (higher effort / opus), then the panel (`grok-review` /
+     `codex-review` / `ask-gemini`); set `approvedBy:'panel'` on pass.
+   - `< 0.6` or any conflict → mark `escalate:'human'` (no approval).
+
+3. **`scripts/signs/apply-verdicts.mjs`** (service-role write) — read the verdicts
+   and apply the decision:
    - `match && visionPass && semanticPass && confidence ≥ 0.85` → **auto-approve
      asset** (`asset_status='approved'`), write `contentDraft` to `content.*.en`,
-     and a **second Claude pass validates content factuality** → if it passes,
-     `review_status='approved'`. Record `approved_by='ai:claude-sonnet-4-6'`,
-     `verification`, `verified_at`, `svg_hash` (sha256 of the SVG file).
-   - `0.6 ≤ confidence < 0.85` OR vision/semantic disagree → **escalate** to
-     `claude-opus-4-8`, then if still unsure to the panel (`grok-review` /
-     `codex-review` / `ask-gemini`); record `approved_by='panel'` on pass.
-   - `< 0.6` or any conflict → **leave for human** (no status change).
-- Cost: ~399 sonnet calls, 1 image each (cheap); few escalations.
+     set `review_status='approved'` **only if** the verdict carries a passing
+     content-factuality check (a second session pass — see below). Record
+     `approved_by` (`'ai:claude-code'` or `'panel'`), `verification` jsonb,
+     `verified_at`, `svg_hash`, `alignment` unchanged.
+   - otherwise leave statuses untouched (human queue) and store `verification` +
+     `reason` for the admin view.
+   Content factuality is a **second session pass** over each drafted `content`
+   block (cheap, text-only) that must pass before `review_status='approved'`; on
+   fail, asset stays approved but content routes to the human queue.
 
 ## Phase 4 — Exceptions queue (admin)
 - `/admin`: filter `alignment != 'aligned' OR review_status != 'approved'`. Per

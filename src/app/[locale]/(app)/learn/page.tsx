@@ -5,14 +5,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ROAD_RULES } from "@/content/road-rules";
 import { VEHICLE_CONTROLS } from "@/content/vehicle-controls";
-import { getSignsCount } from "@/lib/supabase/queries";
+import { getApprovedSignsCount } from "@/lib/supabase/queries";
 
 export const metadata = { title: "Learn" };
 
 export default async function LearnPage() {
   const t = await getTranslations("learn");
   const tt = await getTranslations("topics");
-  const signCount = await getSignsCount();
+  const signCount = await getApprovedSignsCount();
 
   const modules = [
     {

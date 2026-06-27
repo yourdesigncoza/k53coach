@@ -18,46 +18,54 @@ Wikimedia SVG is PD. Audit each file's own description page.
 Starter category: `Category:SVG road signs in South Africa` (subcategories for
 mandatory / prohibitory / warning, plus SACU/SADC collections).
 
-## Pipeline
+## Pipeline (DB-backed, chart-verified)
+
+The library now lives in the **`road_signs` Postgres table** (DB1), not in a TS
+file, and verification against the official chart is **automated in a Claude Code
+session** (no API key). Full execution plan: `docs/sign-accuracy-pipeline.md`.
+The scripts (in `scripts/signs/`):
 
 ```
-Wikimedia SVG  →  per-file licence audit  →  Figma cleanup/normalise
-              →  verify against RTSigns_charts.pdf  →  /public/signs/*.svg
-              →  provenance record (AssetProvenance)  →  instructor review
+ingest-wikipedia.mjs   Wikipedia wikitext → data/signs-catalog.json + public/signs/*.svg
+seed-db.mjs            catalog → road_signs (DRIFT-SAFE: never clobbers an approved sign)
+extract-chart-authority.mjs  RTSigns_charts.pdf → data/chart-authority.json (ground truth)
+crosscheck.mjs         road_signs ↔ chart authority → alignment + chart_match
+build-verify-manifest.mjs    render each in-chart SVG → PNG + chart-page PNG + svg hash
+  (session subagents read the PNGs, judge vs the chart, write data/verify/verdicts/*)
+apply-verdicts.mjs     verdicts → asset/content approval + verification evidence + svg_hash
+  (independent content-factuality pass: prep-content-batches.mjs → apply-content-audit.mjs)
+check-drift.mjs        CI guard: approved SVG on disk still matches its pinned svg_hash
 ```
 
-1. **Download** candidate SVGs from the Wikimedia SA road-sign category.
-2. **Licence-audit each file** individually. Record source URL + exact licence.
-3. **Normalise in Figma** — consistent viewBox, padding, colours, stroke widths;
-   export optimised SVG to `public/signs/<code>.svg`.
-4. **Verify against `RTSigns_charts.pdf`** (the official DoT chart) — confirm the
-   code, name, category, and that we have the right variant (e.g. permanent
-   `W308` vs temporary `TW308`).
-5. **Record provenance** in the sign's `AssetProvenance` (see `src/lib/types.ts`)
-   — `assetStatus` goes `needs_review → audited → approved`.
-6. **Instructor review** of the learner content (`reviewStatus`).
+Auto-approval requires Claude to pass **both** a vision check (rendered SVG vs the
+chart glyph) **and** a semantic check (code↔name↔meaning vs the chart), at
+confidence ≥ 0.85, **and** an independent content-factuality pass. Anything
+uncertain lands in the admin **exceptions queue** for a human.
 
 ## Division of labour
 
 | Tool | Use for |
 |------|---------|
-| **Wikimedia** | the SVG sign artwork (starter source — not AI, not redraw) |
-| **AI** | file renaming, metadata, plain-English explanations, common-mistake notes, test hints, quiz questions, list-vs-PDF diffing, import spreadsheet |
-| **Figma** | cleanup, visual consistency, optimised asset export |
-| **Instructor** | accuracy sign-off on content |
+| **Wikimedia** | the SVG sign artwork (PD source — not AI, not redraw) |
+| **Chart (`RTSigns_charts.pdf`)** | the ground truth for code, name, category, variant, artwork |
+| **Claude (this session)** | vision+semantic verification vs the chart, plain-English content drafting, content factuality cross-check |
+| **Admin/human** | the exceptions queue only — signs Claude could not confidently clear |
 
-## Two review states per sign (don't conflate)
+## Two review gates per sign (don't conflate)
 
-- `provenance.assetStatus` — is the **SVG file** licence-clean & PDF-verified?
-- `reviewStatus` — is the **learning content** instructor-approved?
+- `asset_status` — is the **SVG** licence-clean & chart-verified? (`needs_review → audited → approved`)
+- `review_status` — is the **learning content** accurate? (`draft → reviewed → approved`)
 
-A sign ships only when both are `approved`.
+Plus `sa_relevant` (is the sign in the official chart at all). A sign is served to
+learners only when `asset_status='approved' AND review_status='approved' AND
+sa_relevant=true` — enforced in one place, `getApproved*` in
+`src/lib/supabase/queries.ts`.
 
-## Current state
+## Auditability & drift
 
-`src/content/road-signs.ts` ships **original-redraw placeholder glyphs**
-(`src/components/signs/index.tsx`) so the UI works today. Each record carries
-`PLACEHOLDER_PROVENANCE` (`assetStatus: needs_review`). Replacing a placeholder:
-drop the audited SVG into `public/signs/<code>.svg`, set `provenance.svgFile`,
-fill the real licence/source, flip `assetStatus`, and point the sign component at
-the file instead of the inline glyph.
+Every approval records `approved_by` (`ai:claude-code` | `panel` | `human:*`),
+`verification` (confidence, reason, vision/semantic/content checks, suggested
+name), `verified_at`, and `svg_hash` (sha256 of the approved SVG). `source_rev`
+holds the at-ingest SVG hash. Re-running `seed-db.mjs` after a fresh ingest never
+overwrites an approved sign; if an approved SVG changed upstream it is reported as
+**drift** for review. `check-drift.mjs` is the read-only CI guard.
