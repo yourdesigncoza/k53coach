@@ -129,12 +129,69 @@ export type Database = {
         }
         Relationships: []
       }
+      road_signs: {
+        Row: {
+          asset_status: string
+          attribution_required: boolean
+          category: string
+          code: string
+          content: Json
+          created_at: string
+          in_official_chart: boolean
+          licence: string | null
+          name: string
+          review_status: string
+          source: string | null
+          source_url: string | null
+          subcategory: string | null
+          svg_file: string | null
+          temporary: boolean
+          updated_at: string
+        }
+        Insert: {
+          asset_status?: string
+          attribution_required?: boolean
+          category: string
+          code: string
+          content?: Json
+          created_at?: string
+          in_official_chart?: boolean
+          licence?: string | null
+          name: string
+          review_status?: string
+          source?: string | null
+          source_url?: string | null
+          subcategory?: string | null
+          svg_file?: string | null
+          temporary?: boolean
+          updated_at?: string
+        }
+        Update: {
+          asset_status?: string
+          attribution_required?: boolean
+          category?: string
+          code?: string
+          content?: Json
+          created_at?: string
+          in_official_chart?: boolean
+          licence?: string | null
+          name?: string
+          review_status?: string
+          source?: string | null
+          source_url?: string | null
+          subcategory?: string | null
+          svg_file?: string | null
+          temporary?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
       user_role: "learner" | "parent" | "school" | "admin"

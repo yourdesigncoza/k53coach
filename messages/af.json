@@ -164,7 +164,8 @@
     "dontConfuse": "Moenie verwar met nie",
     "relatedRules": "Verwante reëls",
     "relatedControls": "Verwante beheerelemente",
-    "artwork": "Tekenkuns: {source} · {licence}"
+    "artwork": "Tekenkuns: {source} · {licence}",
+    "contentSoon": "Leerderinhoud vir hierdie teken word voorberei."
   },
   "practice": {
     "counter": "{current} van {total}",

@@ -1,24 +1,25 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Signpost, Route, Gauge, ArrowRight, Lock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ROAD_SIGNS } from "@/content/road-signs";
 import { ROAD_RULES } from "@/content/road-rules";
 import { VEHICLE_CONTROLS } from "@/content/vehicle-controls";
+import { getSignsCount } from "@/lib/supabase/queries";
 
 export const metadata = { title: "Learn" };
 
-export default function LearnPage() {
-  const t = useTranslations("learn");
-  const tt = useTranslations("topics");
+export default async function LearnPage() {
+  const t = await getTranslations("learn");
+  const tt = await getTranslations("topics");
+  const signCount = await getSignsCount();
 
   const modules = [
     {
       href: "/learn/road-signs",
       icon: Signpost,
       title: tt("signs"),
-      sub: t("signsSub", { count: ROAD_SIGNS.length }),
+      sub: t("signsSub", { count: signCount }),
       ready: true,
     },
     {

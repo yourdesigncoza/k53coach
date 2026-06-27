@@ -163,7 +163,8 @@
     "dontConfuse": "Don't confuse with",
     "relatedRules": "Related rules",
     "relatedControls": "Related controls",
-    "artwork": "Sign artwork: {source} · {licence}"
+    "artwork": "Sign artwork: {source} · {licence}",
+    "contentSoon": "Learner content for this sign is being prepared."
   },
   "practice": {
     "counter": "{current} of {total}",

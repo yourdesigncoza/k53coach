@@ -1,26 +1,13 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
-import {
-  AlertTriangle,
-  ArrowLeft,
-  CarFront,
-  Lightbulb,
-  ListChecks,
-} from "lucide-react";
+import { AlertTriangle, ArrowLeft, CarFront, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SignImage } from "@/components/sign-image";
-import {
-  ROAD_SIGNS,
-  SIGN_CATEGORY_LABEL,
-  getSign,
-} from "@/content/road-signs";
-
-export function generateStaticParams() {
-  return ROAD_SIGNS.map((s) => ({ code: s.code }));
-}
+import { getSignByCode } from "@/lib/supabase/queries";
+import { SIGN_CATEGORY_LABEL, signContent, localize } from "@/lib/signs";
 
 export async function generateMetadata({
   params,
@@ -28,7 +15,7 @@ export async function generateMetadata({
   params: Promise<{ code: string }>;
 }) {
   const { code } = await params;
-  const sign = getSign(code);
+  const sign = await getSignByCode(decodeURIComponent(code));
   return { title: sign ? sign.name : "Road sign" };
 }
 
@@ -41,16 +28,21 @@ const FIELDS = [
 export default async function SignDetailPage({
   params,
 }: {
-  params: Promise<{ code: string }>;
+  params: Promise<{ locale: string; code: string }>;
 }) {
-  const { code } = await params;
-  const sign = getSign(code);
+  const { locale, code } = await params;
+  const sign = await getSignByCode(decodeURIComponent(code));
   if (!sign) notFound();
 
   const t = await getTranslations("module");
-  const related = sign.relatedSigns
-    .map((c) => getSign(c))
-    .filter((s): s is NonNullable<typeof s> => Boolean(s));
+  const content = signContent(sign);
+  const plain = localize(content.plainEnglish, locale);
+  const formal = localize(content.formalMeaning, locale);
+  const fields = FIELDS.map((f) => ({
+    ...f,
+    value: localize(content[f.key], locale),
+  })).filter((f) => f.value);
+  const hasAnyContent = Boolean(plain || formal || fields.length);
 
   return (
     <main className="mx-auto w-full max-w-5xl px-5 py-4 md:px-8 md:py-8">
@@ -70,84 +62,76 @@ export default async function SignDetailPage({
         <div className="md:sticky md:top-8">
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
             <SignImage
-              glyph={sign.glyph}
-              svgFile={sign.provenance.svgFile}
+              svgFile={sign.svg_file}
               name={sign.name}
               className="size-32 md:size-44"
             />
             <h1 className="mt-3 text-2xl font-bold md:text-3xl">{sign.name}</h1>
-            <div className="mt-2 flex items-center gap-2">
+            <div className="mt-2 flex flex-wrap items-center gap-2">
               <Badge variant="secondary">
                 {SIGN_CATEGORY_LABEL[sign.category]}
               </Badge>
-              <Badge variant="outline">{sign.subcategory}</Badge>
+              {sign.subcategory && (
+                <Badge variant="outline">{sign.subcategory}</Badge>
+              )}
+              <Badge variant="outline">{sign.code}</Badge>
             </div>
           </div>
 
-          <Card className="mt-5">
-            <CardContent className="py-4">
-              <p className="text-sm font-medium text-muted-foreground">
-                {t("inPlainEnglish")}
-              </p>
-              <p className="mt-1">{sign.plainEnglish}</p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                <span className="font-medium">{t("formalMeaning")} </span>
-                {sign.formalMeaning}
-              </p>
-            </CardContent>
-          </Card>
+          {(plain || formal) && (
+            <Card className="mt-5">
+              <CardContent className="py-4">
+                {plain && (
+                  <>
+                    <p className="text-sm font-medium text-muted-foreground">
+                      {t("inPlainEnglish")}
+                    </p>
+                    <p className="mt-1">{plain}</p>
+                  </>
+                )}
+                {formal && (
+                  <p className="mt-3 text-sm text-muted-foreground">
+                    <span className="font-medium">{t("formalMeaning")} </span>
+                    {formal}
+                  </p>
+                )}
+              </CardContent>
+            </Card>
+          )}
         </div>
 
-        {/* Right: coaching detail */}
+        {/* Right: coaching detail (or "in preparation") */}
         <div className="mt-3 md:mt-0">
-          <div className="grid gap-3">
-            {FIELDS.map(({ key, icon: Icon, labelKey }) => (
-              <Card key={key}>
-                <CardContent className="flex items-start gap-3 py-4">
-                  <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-secondary text-foreground">
-                    <Icon className="size-4.5" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-medium">{t(labelKey)}</p>
-                    <p className="text-sm text-muted-foreground">{sign[key]}</p>
-                  </div>
+          {fields.length > 0 ? (
+            <div className="grid gap-3">
+              {fields.map(({ key, icon: Icon, labelKey, value }) => (
+                <Card key={key}>
+                  <CardContent className="flex items-start gap-3 py-4">
+                    <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-secondary text-foreground">
+                      <Icon className="size-4.5" />
+                    </span>
+                    <div>
+                      <p className="text-sm font-medium">{t(labelKey)}</p>
+                      <p className="text-sm text-muted-foreground">{value}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            !hasAnyContent && (
+              <Card>
+                <CardContent className="py-6 text-sm text-muted-foreground">
+                  {t("contentSoon")}
                 </CardContent>
               </Card>
-            ))}
-          </div>
-
-          {related.length > 0 && (
-            <section className="mt-6">
-              <p className="mb-2 flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
-                <ListChecks className="size-4" /> {t("dontConfuse")}
-              </p>
-              <div className="grid grid-cols-2 gap-2.5">
-                {related.map((r) => (
-                  <Card key={r.code}>
-                    <CardContent className="py-0">
-                      <Link
-                        href={`/learn/road-signs/${r.code}`}
-                        className="flex items-center gap-2 py-3"
-                      >
-                        <SignImage
-                          glyph={r.glyph}
-                          svgFile={r.provenance.svgFile}
-                          name={r.name}
-                          className="size-9 shrink-0"
-                        />
-                        <span className="text-sm font-medium">{r.name}</span>
-                      </Link>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </section>
+            )
           )}
 
           <p className="mt-6 text-[11px] text-muted-foreground">
             {t("artwork", {
-              source: sign.provenance.source,
-              licence: sign.provenance.licence,
+              source: sign.source ?? "Wikimedia Commons",
+              licence: sign.licence ?? "Public domain",
             })}
           </p>
         </div>

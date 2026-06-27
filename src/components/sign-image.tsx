@@ -13,8 +13,8 @@ export function SignImage({
   name,
   className,
 }: {
-  glyph: string;
-  svgFile?: string;
+  glyph?: string;
+  svgFile?: string | null;
   name: string;
   className?: string;
 }) {
@@ -28,5 +28,5 @@ export function SignImage({
       />
     );
   }
-  return <SignGlyph glyph={glyph} className={className} aria-label={name} />;
+  return <SignGlyph glyph={glyph ?? ""} className={className} aria-label={name} />;
 }

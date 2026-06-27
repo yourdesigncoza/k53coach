@@ -9,8 +9,10 @@
     "lint": "eslint",
     "signs:extract": "node scripts/signs/extract-pdf.mjs",
     "signs:fetch": "node scripts/signs/fetch-wikimedia.mjs",
-    "signs:ingest": "node scripts/signs/ingest.mjs",
-    "typecheck": "tsc --noEmit"
+    "signs:ingest": "node scripts/signs/ingest-wikipedia.mjs",
+    "typecheck": "tsc --noEmit",
+    "signs:ingest-legacy": "node scripts/signs/ingest.mjs",
+    "signs:seed": "node scripts/signs/seed-db.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
