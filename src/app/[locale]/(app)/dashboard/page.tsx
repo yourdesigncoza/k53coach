@@ -1,19 +1,24 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { BookOpen, ClipboardCheck, Signpost, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReadinessRing } from "@/components/readiness-ring";
+import { getUser, getLatestReadiness } from "@/lib/supabase/queries";
 
 export const metadata = { title: "Home" };
 
 /**
- * Learner home. Uses sample readiness data in the scaffold; once auth + history
- * are wired this reads the learner's real DB9 score.
+ * Learner home. Reads the signed-in learner's latest readiness snapshot (DB9);
+ * falls back to sample data for the anonymous "preview the app" flow.
  */
-export default function DashboardPage() {
-  const t = useTranslations("dashboard");
-  const sampleOverall = 62;
+export default async function DashboardPage() {
+  const t = await getTranslations("dashboard");
+  const tb = await getTranslations("bands");
+
+  const user = await getUser();
+  const readiness = user ? await getLatestReadiness(user.id) : null;
+  const overall = readiness?.overall ?? 62;
 
   const cards = [
     {
@@ -43,10 +48,12 @@ export default function DashboardPage() {
 
       <Card className="mt-5 md:max-w-2xl">
         <CardContent className="flex items-center gap-4 py-5">
-          <ReadinessRing percent={sampleOverall} size={120} stroke={12} />
+          <ReadinessRing percent={overall} size={120} stroke={12} />
           <div className="flex-1">
             <p className="text-sm font-medium">{t("readinessTitle")}</p>
-            <p className="text-sm text-muted-foreground">{t("readinessBody")}</p>
+            <p className="text-sm text-muted-foreground">
+              {readiness ? tb(readiness.band) : t("readinessBody")}
+            </p>
             <Button
               size="sm"
               variant="ghost"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CheckCircle2, XCircle, Sparkles, Loader2 } from "lucide-react";
@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
+import { createClient } from "@/lib/supabase/client";
 import type { Question } from "@/lib/types";
 
 type ExplainResponse = {
@@ -31,6 +32,16 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
   const [loading, setLoading] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [done, setDone] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
+
+  // Anonymous practice still works; signed-in attempts are persisted (DB7).
+  useEffect(() => {
+    const supabase = createClient();
+    if (!supabase) return;
+    supabase.auth
+      .getUser()
+      .then(({ data }) => setUserId(data.user?.id ?? null));
+  }, []);
 
   const q = questions[index];
   const answered = chosen !== null;
@@ -41,7 +52,20 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
   async function choose(optionIndex: number) {
     if (answered) return;
     setChosen(optionIndex);
-    if (optionIndex === q.answer) setCorrectCount((c) => c + 1);
+    const correct = optionIndex === q.answer;
+    if (correct) setCorrectCount((c) => c + 1);
+
+    // Record the attempt for signed-in learners (RLS scopes it to them).
+    if (userId) {
+      const supabase = createClient();
+      void supabase?.from("attempts").insert({
+        user_id: userId,
+        question_id: q.id,
+        topic: q.topic,
+        chosen_index: optionIndex,
+        correct,
+      });
+    }
 
     setLoading(true);
     try {

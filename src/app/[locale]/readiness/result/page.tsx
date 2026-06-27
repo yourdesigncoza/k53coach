@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { createClient } from "@/lib/supabase/client";
+import type { Json } from "@/lib/database.types";
 import { Link } from "@/i18n/navigation";
 import { Share2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
@@ -27,12 +29,30 @@ export default function ResultPage() {
   const tt = useTranslations("topics");
   const [result, setResult] = useState<ReadinessResult | null>(null);
   const [loaded, setLoaded] = useState(false);
+  const persisted = useRef(false);
 
   useEffect(() => {
     const raw = sessionStorage.getItem(READINESS_RESULT_KEY);
     if (raw) setResult(JSON.parse(raw) as ReadinessResult);
     setLoaded(true);
   }, []);
+
+  // Persist the snapshot once, only for signed-in learners (RLS scoped).
+  useEffect(() => {
+    if (!result || persisted.current) return;
+    const supabase = createClient();
+    if (!supabase) return;
+    persisted.current = true;
+    supabase.auth.getUser().then(({ data }) => {
+      if (!data.user) return;
+      void supabase.from("readiness_results").insert({
+        user_id: data.user.id,
+        overall: result.overall,
+        band: result.band,
+        by_topic: result.byTopic as unknown as Json,
+      });
+    });
+  }, [result]);
 
   if (loaded && !result) {
     return (

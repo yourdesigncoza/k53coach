@@ -1,4 +1,5 @@
 import { createBrowserClient } from "@supabase/ssr";
+import type { Database } from "@/lib/database.types";
 
 export const supabaseEnvReady =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -10,7 +11,7 @@ export const supabaseEnvReady =
  */
 export function createClient() {
   if (!supabaseEnvReady) return null;
-  return createBrowserClient(
+  return createBrowserClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
   );

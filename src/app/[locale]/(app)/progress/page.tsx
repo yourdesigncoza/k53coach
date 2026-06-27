@@ -1,30 +1,38 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ReadinessRing } from "@/components/readiness-ring";
 import { bandFor } from "@/lib/readiness";
+import { getUser, getTopicAccuracy } from "@/lib/supabase/queries";
 import type { Topic } from "@/lib/types";
 
 export const metadata = { title: "Progress" };
 
-/**
- * Progress / readiness breakdown. Sample data in the scaffold; reads the
- * learner's real DB7/DB9 history once auth + persistence are wired.
- */
-const SAMPLE: { topic: Topic; percent: number }[] = [
-  { topic: "signs", percent: 78 },
-  { topic: "rules", percent: 48 },
-  { topic: "controls", percent: 60 },
-];
+const TOPICS: Topic[] = ["signs", "rules", "controls"];
 
-export default function ProgressPage() {
-  const t = useTranslations("progressPage");
-  const tb = useTranslations("bands");
-  const tt = useTranslations("topics");
-  const tr = useTranslations("result");
+/** Sample data for the anonymous preview; real data comes from attempts (DB7). */
+const SAMPLE: Record<Topic, number> = { signs: 78, rules: 48, controls: 60 };
+
+export default async function ProgressPage() {
+  const t = await getTranslations("progressPage");
+  const tb = await getTranslations("bands");
+  const tt = await getTranslations("topics");
+  const tr = await getTranslations("result");
+
+  const user = await getUser();
+  const acc = user ? await getTopicAccuracy(user.id) : null;
+
+  const rows = TOPICS.map((topic) => ({
+    topic,
+    percent: acc
+      ? acc[topic].total
+        ? Math.round((acc[topic].correct / acc[topic].total) * 100)
+        : 0
+      : SAMPLE[topic],
+  }));
 
   const overall = Math.round(
-    SAMPLE.reduce((s, item) => s + item.percent, 0) / SAMPLE.length,
+    rows.reduce((s, r) => s + r.percent, 0) / rows.length,
   );
 
   return (
@@ -45,7 +53,7 @@ export default function ProgressPage() {
             {t("byTopic")}
           </h2>
           <div className="mt-3 grid gap-3 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
-            {SAMPLE.map((item) => (
+            {rows.map((item) => (
               <Card key={item.topic}>
                 <CardContent className="py-4">
                   <div className="mb-2 flex items-center justify-between text-sm">

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/logo";
 import { NAV_ITEMS } from "@/components/nav-items";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { AuthStatus } from "@/components/auth-status";
 
 /** Fixed left sidebar — primary navigation on desktop (md+). */
 export function SideNav() {
@@ -44,7 +45,8 @@ export function SideNav() {
           })}
         </ul>
       </nav>
-      <div className="flex items-center justify-between border-t border-border p-4">
+      <div className="flex flex-col gap-3 border-t border-border p-4">
+        <AuthStatus />
         <LanguageSwitcher />
       </div>
     </aside>
