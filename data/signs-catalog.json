@@ -1,0 +1,128 @@
+[
+  {
+    "code": "R1",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false,
+    "provenance": {
+      "source": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=47454950",
+      "fileTitle": "File:SADC road sign R1.svg",
+      "matchedQuery": "SADC road sign R1",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "artist": "Southern African Development Community",
+      "attributionRequired": false,
+      "verifiedAgainst": "RTSigns_charts.pdf",
+      "assetStatus": "needs_review",
+      "svgFile": "signs/R1.svg"
+    },
+    "status": "matched"
+  },
+  {
+    "code": "R1.1",
+    "name": "Stop",
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false,
+    "provenance": {
+      "source": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=47454949",
+      "fileTitle": "File:SADC road sign R1.1.svg",
+      "matchedQuery": "SADC road sign R1.1",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "artist": "Southern African Development Community",
+      "attributionRequired": false,
+      "verifiedAgainst": "RTSigns_charts.pdf",
+      "assetStatus": "needs_review",
+      "svgFile": "signs/R1.1.svg"
+    },
+    "status": "matched"
+  },
+  {
+    "code": "R1.2",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false,
+    "provenance": {
+      "source": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=58192129",
+      "fileTitle": "File:SADC road sign R1.2.svg",
+      "matchedQuery": "SADC road sign R1.2",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "artist": "Southern African Development Community",
+      "attributionRequired": false,
+      "verifiedAgainst": "RTSigns_charts.pdf",
+      "assetStatus": "needs_review",
+      "svgFile": "signs/R1.2.svg"
+    },
+    "status": "matched"
+  },
+  {
+    "code": "R1.3",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false,
+    "provenance": {
+      "source": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=47588703",
+      "fileTitle": "File:SADC road sign R1.3.svg",
+      "matchedQuery": "SADC road sign R1.3",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "artist": "Southern African Development Community",
+      "attributionRequired": false,
+      "verifiedAgainst": "RTSigns_charts.pdf",
+      "assetStatus": "needs_review",
+      "svgFile": "signs/R1.3.svg"
+    },
+    "status": "matched"
+  },
+  {
+    "code": "R1.4",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false,
+    "provenance": {
+      "source": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=47588704",
+      "fileTitle": "File:SADC road sign R1.4.svg",
+      "matchedQuery": "SADC road sign R1.4",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "artist": "Southern African Development Community",
+      "attributionRequired": false,
+      "verifiedAgainst": "RTSigns_charts.pdf",
+      "assetStatus": "needs_review",
+      "svgFile": "signs/R1.4.svg"
+    },
+    "status": "matched"
+  },
+  {
+    "code": "R1.5",
+    "name": "Stop/Go",
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false,
+    "provenance": {
+      "source": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=47455216",
+      "fileTitle": "File:SADC road sign R1.5.svg",
+      "matchedQuery": "SADC road sign R1.5",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "artist": "Southern African Development Community",
+      "attributionRequired": false,
+      "verifiedAgainst": "RTSigns_charts.pdf",
+      "assetStatus": "needs_review",
+      "svgFile": "signs/R1.5.svg"
+    },
+    "status": "matched"
+  }
+]

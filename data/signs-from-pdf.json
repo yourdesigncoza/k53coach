@@ -1,0 +1,2921 @@
+[
+  {
+    "code": "GM1",
+    "name": null,
+    "category": "marking",
+    "subcategory": "Guidance markings",
+    "temporary": false
+  },
+  {
+    "code": "GM2",
+    "name": null,
+    "category": "marking",
+    "subcategory": "Guidance markings",
+    "temporary": false
+  },
+  {
+    "code": "GM3",
+    "name": null,
+    "category": "marking",
+    "subcategory": "Guidance markings",
+    "temporary": false
+  },
+  {
+    "code": "GM4",
+    "name": null,
+    "category": "marking",
+    "subcategory": "Fax:",
+    "temporary": false
+  },
+  {
+    "code": "GM5",
+    "name": null,
+    "category": "marking",
+    "subcategory": "Guidance markings",
+    "temporary": false
+  },
+  {
+    "code": "GM6",
+    "name": null,
+    "category": "marking",
+    "subcategory": "Guidance markings",
+    "temporary": false
+  },
+  {
+    "code": "GM7",
+    "name": null,
+    "category": "marking",
+    "subcategory": "Fax:",
+    "temporary": false
+  },
+  {
+    "code": "GM8",
+    "name": null,
+    "category": "marking",
+    "subcategory": "Guidance markings",
+    "temporary": false
+  },
+  {
+    "code": "R1",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R1.1",
+    "name": "Stop",
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R1.2",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R1.3",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R1.4",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R1.5",
+    "name": "Stop/Go",
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R2",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R2.1",
+    "name": "Yield to pedestrians",
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R2.2",
+    "name": "Yield at mini-circle",
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R3",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R4.1",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R4.2",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R4.3",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R5",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R6",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Control signs",
+    "temporary": false
+  },
+  {
+    "code": "R101",
+    "name": "MinimumSpeed",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R102",
+    "name": "Vehiclesexceedingmassonly",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R103",
+    "name": "Keep left",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R104",
+    "name": "Keep right",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R105",
+    "name": "Proceed left only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R106",
+    "name": "Proceed right only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R107",
+    "name": "Proceed straight only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R108",
+    "name": "Turn left",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R109",
+    "name": "Turn right",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R110",
+    "name": "Pedestrians only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R111",
+    "name": "Pedal cycles only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R112",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R113",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R114",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R115",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R116",
+    "name": "Motor cycles only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R117",
+    "name": "Motor cars only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R118",
+    "name": "Taxis only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R119",
+    "name": "Minibuses only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R120",
+    "name": "Midibus only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R121",
+    "name": "Buses only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R122",
+    "name": "Delivery vehicles only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R123",
+    "name": "Goods vehicles only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R124",
+    "name": "Goods vehicles over indicated GVM only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R125",
+    "name": "Construction vehicles only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R126",
+    "name": "Vehicles conveying dangerous goods only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R127",
+    "name": "Abnormal vehicles only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R128",
+    "name": "Rickshaws only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R129",
+    "name": "Tour buses only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R130",
+    "name": "Agricultural vehicles only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R131",
+    "name": "Animal-drawn vehicles only",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R132",
+    "name": "Pay toll",
+    "category": "regulatory",
+    "subcategory": "Com mand signs",
+    "temporary": false
+  },
+  {
+    "code": "R133",
+    "name": "Switch head lamps on",
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R134",
+    "name": "Buses & minibuses only",
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R135",
+    "name": "Buses & midibuses only",
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R136",
+    "name": "Buses, midibuses & minibuses only",
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R137",
+    "name": "Roundabout",
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R138",
+    "name": "Trams only",
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R139",
+    "name": "Buses & trams only",
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R140",
+    "name": "Buses, trams & minibuses only",
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R201",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R202",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R203",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R204",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R205",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R206",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R207",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R208",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R209",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R210",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R211",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R212",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R213",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R214",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R215",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R216",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R217",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R218",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R219",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R220",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R222",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R223",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R224",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R225",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R226",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R227",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R228",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R229",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R230",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R231",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R232",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R233",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R234",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R235",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R236",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R237",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R238",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R239",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R240",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": false
+  },
+  {
+    "code": "R241",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R301",
+    "name": "Bus reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R302",
+    "name": "Bus lane reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R303",
+    "name": "Bus lane reservation begins",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R304",
+    "name": "Pedal cycle lane reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R307",
+    "name": "Motor cycle reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R308",
+    "name": "Motor car reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R309",
+    "name": "Taxi reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R310",
+    "name": "Minibus reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R311",
+    "name": "Midibus reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R312",
+    "name": "Delivery vehicle reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R313",
+    "name": "Goods vehicle reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R314",
+    "name": "Goods vehicle over indicated GVM reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R315",
+    "name": "Construction vehicle reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R316",
+    "name": "Vehicle conveying dangerous goods reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R317",
+    "name": "Abnormal vehicle reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R318",
+    "name": "Rickshaw reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R319",
+    "name": "Tour bus reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R320",
+    "name": "High occupancy vehicle reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R321",
+    "name": "Emergency vehicle reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R322",
+    "name": "Police vehicle reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R323",
+    "name": "Disabled persons vehicle reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R324",
+    "name": "Authorized vehicle reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R325",
+    "name": "Bus stop reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R326",
+    "name": "Minibus stop reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R327",
+    "name": "Bus & minibus reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R328",
+    "name": "Bus & minibus lane reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R329",
+    "name": "Bus & minibus lane reservation begins",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R330",
+    "name": "Bus & midibus reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R331",
+    "name": "Bus & midibus lane reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R332",
+    "name": "Bus & midibus lane reservation begins",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R333",
+    "name": "Bus, midibus & minibus reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R334",
+    "name": "Bus, midibus & minibus lane reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R335",
+    "name": "Bus, midibus & minibus lane reservation begins",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R336",
+    "name": "High occupancy vehicle lane reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R337",
+    "name": "High occupancy vehicle lane reservation begins",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R338",
+    "name": "Tram reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R339",
+    "name": "Tram lane reservation",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R340",
+    "name": "Tram lane reservation begins",
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R341",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R342",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R343",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R344",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R345",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R346",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R347",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R348",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R349",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R350",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R351",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R352",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R353",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R354",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": false
+  },
+  {
+    "code": "R401",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Comprehensive signs",
+    "temporary": false
+  },
+  {
+    "code": "R402",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Comprehensive signs",
+    "temporary": false
+  },
+  {
+    "code": "R403",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Comprehensive signs",
+    "temporary": false
+  },
+  {
+    "code": "RM1",
+    "name": "No overtaking marking",
+    "category": "marking",
+    "subcategory": null,
+    "temporary": false
+  },
+  {
+    "code": "RM2",
+    "name": "No crossing marking",
+    "category": "marking",
+    "subcategory": null,
+    "temporary": false
+  },
+  {
+    "code": "RM3",
+    "name": "Channelizing line marking",
+    "category": "marking",
+    "subcategory": null,
+    "temporary": false
+  },
+  {
+    "code": "RM4.1",
+    "name": "Left edge line marking",
+    "category": "marking",
+    "subcategory": null,
+    "temporary": false
+  },
+  {
+    "code": "RM4.2",
+    "name": "Right edge line marking",
+    "category": "marking",
+    "subcategory": null,
+    "temporary": false
+  },
+  {
+    "code": "RM5",
+    "name": "Painted island marking",
+    "category": "marking",
+    "subcategory": null,
+    "temporary": false
+  },
+  {
+    "code": "RM6",
+    "name": "Parking bay marking",
+    "category": "marking",
+    "subcategory": null,
+    "temporary": false
+  },
+  {
+    "code": "RM7",
+    "name": "Exclusive parking bay marking",
+    "category": "marking",
+    "subcategory": "Police",
+    "temporary": false
+  },
+  {
+    "code": "RM8",
+    "name": "Mandatory direction arrow marking",
+    "category": "marking",
+    "subcategory": "Police",
+    "temporary": false
+  },
+  {
+    "code": "RM9",
+    "name": "Exclusive lane line marking",
+    "category": "marking",
+    "subcategory": "Police",
+    "temporary": false
+  },
+  {
+    "code": "RM10",
+    "name": "Box junction marking",
+    "category": "marking",
+    "subcategory": "Police",
+    "temporary": false
+  },
+  {
+    "code": "RM11",
+    "name": "Zig-zag zone marking",
+    "category": "marking",
+    "subcategory": "Police",
+    "temporary": false
+  },
+  {
+    "code": "RM12",
+    "name": "No stopping line marking",
+    "category": "marking",
+    "subcategory": "Police",
+    "temporary": false
+  },
+  {
+    "code": "RM13",
+    "name": "No parking line marking",
+    "category": "marking",
+    "subcategory": "Police",
+    "temporary": false
+  },
+  {
+    "code": "RM14",
+    "name": "No motor cycles marking",
+    "category": "marking",
+    "subcategory": "Police",
+    "temporary": false
+  },
+  {
+    "code": "RM15",
+    "name": "Mini-circle marking",
+    "category": "marking",
+    "subcategory": "Police",
+    "temporary": false
+  },
+  {
+    "code": "RM16",
+    "name": "Disabled persons parking marking",
+    "category": "marking",
+    "subcategory": "Police",
+    "temporary": false
+  },
+  {
+    "code": "RM17",
+    "name": "Exclusive use lane symbol marking",
+    "category": "marking",
+    "subcategory": "Police",
+    "temporary": false
+  },
+  {
+    "code": "TR101",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR104",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR106",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR109",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR110",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR111",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR112",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR118",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR119",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR121",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR123",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR125",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR127",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR129",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR130",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR131",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR133",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": true
+  },
+  {
+    "code": "TR134",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": true
+  },
+  {
+    "code": "TR136",
+    "name": "and TR137",
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": true
+  },
+  {
+    "code": "TR137",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": true
+  },
+  {
+    "code": "TR201",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": true
+  },
+  {
+    "code": "TR202",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Prohibition signs",
+    "temporary": true
+  },
+  {
+    "code": "TR203",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR204",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR205",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR208",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR210",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR211",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR212",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR214",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR215",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Command signs",
+    "temporary": true
+  },
+  {
+    "code": "TR216",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR217",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR218",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR219",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR222",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR223",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR226",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR228",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR230",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR232",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR234",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR239",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR240",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR304",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": true
+  },
+  {
+    "code": "TR307",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR309",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR315",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR317",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR319",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR321",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Reservation signs",
+    "temporary": true
+  },
+  {
+    "code": "TR323",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Comprehensive signs",
+    "temporary": true
+  },
+  {
+    "code": "TR333",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Comprehensive signs",
+    "temporary": true
+  },
+  {
+    "code": "TR402",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Comprehensive signs",
+    "temporary": true
+  },
+  {
+    "code": "TW101",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": true
+  },
+  {
+    "code": "TW104",
+    "name": null,
+    "category": "regulatory",
+    "subcategory": "Comprehensive signs",
+    "temporary": true
+  },
+  {
+    "code": "TW106",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW108",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW110",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW114",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW115",
+    "name": "and TW119",
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW119",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW201",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW203",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW205",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW207",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW209",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW211",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW212",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": true
+  },
+  {
+    "code": "TW213",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW215",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW218",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW301",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW302",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW303",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW304",
+    "name": "Traffic control ahead",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW305",
+    "name": "Scholar patrol ahead",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW306",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW307",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW309",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW310",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW311",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW312",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW318",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW320",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW321",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW322",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW323",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW324",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW325",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW326",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW327",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW328",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW331",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW332",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW333",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW335",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW336",
+    "name": "Roadworks",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW337",
+    "name": "Grader working",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW338",
+    "name": "Loose stones",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW339",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW340",
+    "name": "& TW341",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW341",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW342",
+    "name": "Soft shoulder",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW343",
+    "name": "“Stop/Go” control ahead",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW344",
+    "name": "& TW345",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW345",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW346",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW347",
+    "name": "Temporary police flashing light",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW349",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW350",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW353",
+    "name": "Accident ahead",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW354",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW355",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW356",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW360",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW361",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": true
+  },
+  {
+    "code": "TW363",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": true
+  },
+  {
+    "code": "TW401",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": true
+  },
+  {
+    "code": "TW405",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": true
+  },
+  {
+    "code": "TW407",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": true
+  },
+  {
+    "code": "TW409",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": true
+  },
+  {
+    "code": "TW410",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": true
+  },
+  {
+    "code": "TW411",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": true
+  },
+  {
+    "code": "TW412",
+    "name": "Traffic signals out of order",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": true
+  },
+  {
+    "code": "TW413",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW414",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "TW415",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": true
+  },
+  {
+    "code": "W101",
+    "name": "Crossroad",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W102",
+    "name": "Priority crossroad",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W103",
+    "name": "Secondary crossroad",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W104",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W105",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W106",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W107",
+    "name": "& W108",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W108",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W109",
+    "name": "& W110",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W110",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W111",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W112",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W113",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W114",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W115",
+    "name": "Y-junction",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W116",
+    "name": "& W117",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W117",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": false
+  },
+  {
+    "code": "W118",
+    "name": "& W119",
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": false
+  },
+  {
+    "code": "W119",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": false
+  },
+  {
+    "code": "W201",
+    "name": "Traffic circle",
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": false
+  },
+  {
+    "code": "W202",
+    "name": "& W203",
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": false
+  },
+  {
+    "code": "W203",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Direction of movement signs",
+    "temporary": false
+  },
+  {
+    "code": "W204",
+    "name": "& W205",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W205",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W206",
+    "name": "& W207",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W207",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W208",
+    "name": "& W209",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W209",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W210",
+    "name": "& W211",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W211",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W212",
+    "name": "Two-way traffic",
+    "category": "warning",
+    "subcategory": "Road layout signs",
+    "temporary": false
+  },
+  {
+    "code": "W213",
+    "name": "Two-way traffic crossroad",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W214",
+    "name": "& W215",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W215",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W216",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W217",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W218",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W301",
+    "name": "Traffic signal ahead",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W302",
+    "name": "Traffic control “STOP” ahead",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W303",
+    "name": "Traffic control “YIELD” ahead",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W306",
+    "name": "Pedestrian crossing",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W307",
+    "name": "Pedestrians",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W308",
+    "name": "Children",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W309",
+    "name": "Cyclists",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W310",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W311",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W312",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W313",
+    "name": "Wild animals ahead",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W314",
+    "name": "Gate",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W315",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W316",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W317",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W318",
+    "name": "Railway crossing",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W319",
+    "name": "Tunnel",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W320",
+    "name": "Height restriction",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W321",
+    "name": "Length restricted",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W322",
+    "name": "& W323",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W323",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W324",
+    "name": "Slow moving heavy vehicles",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W325",
+    "name": "Gravel road begins",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W326",
+    "name": "Narrow bridge",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W327",
+    "name": "One vehicle width structure",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W328",
+    "name": "Road narrrows from both sides",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W329",
+    "name": "& W330",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W330",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W331",
+    "name": "Uneven roadway",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W332",
+    "name": "Speed humps",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W333",
+    "name": "Slippery road",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W334",
+    "name": "& W335",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W335",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W339",
+    "name": "General warning",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W346",
+    "name": "Emergency flashing light",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W348",
+    "name": "Jetty edge or river-bank",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W349",
+    "name": "Crosswinds",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W350",
+    "name": "Drift",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W351",
+    "name": "Low flying aircraft",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W352",
+    "name": "Agricultural vehicle",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W354",
+    "name": "Reduced visibility",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W355",
+    "name": "Congestion",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W356",
+    "name": "Horses & riders",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W357",
+    "name": "Elephant",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W358",
+    "name": "Warthog",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W359",
+    "name": "Hippo",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W360",
+    "name": "Width restricted",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W361",
+    "name": "Electrical shock",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W362",
+    "name": "Tram",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W363",
+    "name": "Gravel road ends",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W401",
+    "name": "& W402",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W402",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W403",
+    "name": "& W404",
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W404",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W405",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W406",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Symbolic signs",
+    "temporary": false
+  },
+  {
+    "code": "W407",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W408",
+    "name": null,
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W409",
+    "name": "T-junction chevron",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W410",
+    "name": "Dead end or road closed chevron",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W411",
+    "name": "Boom barricade",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W413",
+    "name": "Gore plate",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W414",
+    "name": "Gore chevron",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "W415",
+    "name": "Overhead danger plate",
+    "category": "warning",
+    "subcategory": "Hazard marker signs",
+    "temporary": false
+  },
+  {
+    "code": "WM1",
+    "name": "Railway crossing marking",
+    "category": "marking",
+    "subcategory": "Wa rning mar kings",
+    "temporary": false
+  },
+  {
+    "code": "WM2",
+    "name": "Continuity line marking",
+    "category": "marking",
+    "subcategory": "Wa rning mar kings",
+    "temporary": false
+  },
+  {
+    "code": "WM3",
+    "name": "Dividing line marking",
+    "category": "marking",
+    "subcategory": "Wa rning mar kings",
+    "temporary": false
+  },
+  {
+    "code": "WM4",
+    "name": "Reversible lane line marking",
+    "category": "marking",
+    "subcategory": "Wa rning mar kings",
+    "temporary": false
+  },
+  {
+    "code": "WM5",
+    "name": "Yield sign ahead marking",
+    "category": "marking",
+    "subcategory": "Wa rning mar kings",
+    "temporary": false
+  },
+  {
+    "code": "WM6",
+    "name": "Lane reduction arrow marking",
+    "category": "marking",
+    "subcategory": "Wa rning mar kings",
+    "temporary": false
+  },
+  {
+    "code": "WM7",
+    "name": "Mandatory direction arrow ahead marking",
+    "category": "marking",
+    "subcategory": "Wa rning mar kings",
+    "temporary": false
+  },
+  {
+    "code": "WM8",
+    "name": "No overtaking or no crossing line ahead marking",
+    "category": "marking",
+    "subcategory": "Wa rning mar kings",
+    "temporary": false
+  },
+  {
+    "code": "WM9.1",
+    "name": "Arrestor bed ahead marking",
+    "category": "marking",
+    "subcategory": "Wa rning mar kings",
+    "temporary": false
+  },
+  {
+    "code": "WM9.2",
+    "name": "Escape road ahead marking",
+    "category": "marking",
+    "subcategory": "Guidance markings",
+    "temporary": false
+  },
+  {
+    "code": "WM10",
+    "name": "Speed hump marking",
+    "category": "marking",
+    "subcategory": "Guidance markings",
+    "temporary": false
+  },
+  {
+    "code": "WM11",
+    "name": "End of exclusive use lane arrows marking",
+    "category": "marking",
+    "subcategory": "Guidance markings",
+    "temporary": false
+  }
+]
