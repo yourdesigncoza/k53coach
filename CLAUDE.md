@@ -2,46 +2,77 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project status
-
-Pre-code, planning stage. The repo currently contains **only specification documents** in `init/` — there is no source code, build system, package manager, tests, or git repository yet. When asked to "build", "scaffold", or "start" anything, the first task is to stand up the project from these specs rather than modify existing code.
-
-Read these in `init/` before acting (`notes.md` is currently empty):
-- `PRD.md` — the canonical v1.0 product requirements (features, content databases, pricing, KPIs, MVP deliverables).
-- `PRD-additions.md` — **strategic corrections that override the PRD** where they conflict. Read this second; it changes the business model and MVP scope.
-- `k53-ai-coach-executive-overview.md` — long-form rationale, AI architecture, content-rights strategy, POPIA detail, source references.
-- `k53-ai-coach-short-executive-concept.md` — one-page summary.
-
 ## What the product is
 
-K53 AI Coach: a Progressive Web App (PWA) helping South African learner drivers pass the K53 Learner's Licence test (Phase 1) and later the practical driving test (Phase 2). The differentiator is an AI tutor layer over verified K53 content — it explains *why* an answer is wrong, tracks weak areas, and produces a parent-readable readiness score. It is explicitly **not** "another quiz app".
+K53 AI Coach: a Progressive Web App helping South African learner drivers pass the K53 Learner's Licence test (Phase 1) and later the practical driving test (Phase 2). The differentiator is an AI tutor layer over verified K53 content — it explains *why* an answer is wrong, tracks weak areas, and produces a parent-readable readiness score. It is explicitly **not** "another quiz app".
 
-## Planned technical architecture (from PRD §Technical Architecture)
+The original specs live in `init/` and still govern product intent — read them before product/scope decisions (`PRD.md`, then `PRD-additions.md` which **overrides** it, plus the two executive overviews). `docs/backlog.md` tracks deferred work.
 
-- Frontend: Nextjs + Supabase + Tailwind, built as a PWA (QR-code entry, add-to-home-screen, no app-store dependency for MVP).
-- Backend / DB / Auth: Supabase + PostgreSQL + Supabase Auth.
-- AI: OpenAI API — but used as a **retrieval-grounded tutor over verified content, never as the source of truth** (verified DB → retrieval layer → LLM explanation → guardrails against unsupported answers → logging of uncertain answers for human review).
-- Hosting: Vercel.
-- Payments: PayFast + Yoco (South African gateways; direct checkout, not app-store IAP).
+## Project status
 
-When scaffolding, prefer the latest Claude models over OpenAI for any AI layer work unless a spec explicitly requires OpenAI — see the user's global instructions and the `claude-api` skill.
+Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. Deferred (see `docs/backlog.md`): mock exams, full pass-prediction, dashboards, practical-driving coach, the Afrikaans content pass, full sign-library ingest, next-pwa service worker.
+
+- **Production:** https://k53coach.vercel.app (Vercel project `yourdesigncozas-projects/k53coach`; GitHub `yourdesigncoza/k53coach` auto-deploys on push).
+- **Supabase (prototype):** project `k53coach`, ref `lxefjksaxmiawrnnewmj`, eu-west-1.
+
+## Commands
+
+```bash
+npm run dev          # dev server (localhost:3000)
+npm run build        # production build (Turbopack)
+npm run start        # serve the production build
+npm run lint         # eslint
+npm run typecheck    # tsc --noEmit
+
+# Road-sign ingest (needs pdftotext + network; see scripts/signs/README.md)
+npm run signs:ingest   # PDF extract -> Wikimedia fetch + provenance
+
+# Supabase (CLI is split: `supabase` + `supabase-go`, both in ~/.local/bin)
+supabase db push                 # apply migrations in supabase/migrations to remote
+supabase migration new <name>    # new timestamped migration
+supabase config push             # push supabase/config.toml (incl auth URLs) to remote
+supabase gen types typescript --linked > src/lib/database.types.ts
+
+vercel --prod        # deploy to production (prod env vars already set on Vercel)
+```
+
+No test framework is set up yet. The app runs **without Supabase env vars** ("demo mode" — auth/persistence simulated); real keys live in `.env.local` (gitignored). Network here is IPv4-only, so Supabase DB commands use the pooler (this is why `supabase link` was re-run).
+
+## Technical architecture (as built)
+
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind v4 · shadcn/ui (**Base UI** primitives) · Supabase (Postgres + Auth, SSR) · Vercel.
+
+These are the cross-cutting rules that aren't obvious from a single file:
+
+- **Locale routing owns the route tree.** Every page lives under `src/app/[locale]/` (`en`/`af`). `app/[locale]/layout.tsx` is the *root* layout (`<html lang>`, `NextIntlClientProvider`, theme, fonts) — there is no `app/layout.tsx`. Only `app/api/`, `app/manifest.ts`, `app/globals.css`, `app/favicon.ico` sit outside `[locale]`.
+- **Always import navigation from `@/i18n/navigation`** (`Link`, `useRouter`, `usePathname`, `redirect`) — never `next/link` or `next/navigation` for those, or the active locale is dropped. `notFound`, `generateStaticParams`, `generateMetadata` still come from `next`.
+- **i18n strings** live in `messages/{en,af}.json`, namespaced by screen (`nav`, `landing`, `readiness`, `module`, …). Use `useTranslations` in client + sync server components, `getTranslations` (awaited) in async server components. Add a language: extend `src/i18n/routing.ts` + add `messages/<locale>.json`. Config: `src/i18n/{routing,request,navigation}.ts`. `messages/af.json` is a first-pass draft pending native review.
+- **UI chrome is translated; content + category labels are NOT yet.** Learner content (signs/rules/controls prose, questions in `src/content/*.ts`) and the category taxonomy labels (in the content meta) are still English — that's the deferred bilingual content pass.
+- **Supabase clients degrade gracefully.** `src/lib/supabase/{client,server,middleware}.ts` return `null` when env vars are absent (demo mode). All are typed via `src/lib/database.types.ts` (regenerate after schema changes). Server-side reads live in `src/lib/supabase/queries.ts`. Persistence (attempts, readiness snapshots) happens client-side via the browser client, guarded by an auth check; **RLS** enforces own-row access on every table.
+- **`src/proxy.ts` is the middleware** (Next 16 renamed `middleware`→`proxy`). It composes the next-intl locale middleware with Supabase session refresh — order matters (intl builds the response, Supabase writes cookies onto it).
+- **AI tutor is retrieval-grounded.** `src/app/api/ai/explain/route.ts` returns *verified* question/sign content and marks where the LLM rephrase slots in (`TODO(llm)`); it must never let a model invent legal/safety claims. Prefer the latest Claude model when wiring the LLM (see the `claude-api` skill), despite the PRD naming OpenAI.
+- **Content as structured learning objects.** `src/content/{road-signs,road-rules,vehicle-controls,readiness-questions}.ts` are typed data (`src/lib/types.ts`). Signs render via `SignImage` — a real PD SADC SVG from `public/signs/` when `provenance.svgFile` is set (4 demo signs wired in `DEMO_SVG_BY_CODE`), else an original-redraw placeholder glyph from `src/components/signs/`.
+- **Theme is clean neutral (Catalyst-style), no brand colour.** Tokens in `src/app/globals.css` (ink primary, zinc neutrals, single blue accent); semantic green/amber/red only as soft readiness-badge tints. Mobile-first: `[locale]/(app)` uses a bottom tab bar on mobile and a left sidebar on `md+`. Base UI components use a `render` prop for polymorphism (not Radix `asChild`).
+- After schema changes: edit/add a migration in `supabase/migrations/`, `supabase db push`, then regenerate `database.types.ts`. Remote auth/config is code in `supabase/config.toml` (push with `supabase config push` — note it syncs the *whole* file, not just your edit).
 
 ## Non-obvious constraints that shape implementation
 
 These are easy to miss and have architectural consequences. Honor them in any design or code.
 
-1. **POPIA-first infrastructure (PRD-additions §7).** Supabase Cloud and Vercel are acceptable **only for prototype work with dummy/anonymised data**. They are NOT approved for production learner/parent/school data until a POPIA review is done. Production must consider SA data residency, cross-border transfer, operator agreements, retention rules. Do not wire real personal data into hosted services without flagging this.
+1. **POPIA-first infrastructure (PRD-additions §7).** Supabase Cloud and Vercel are acceptable **only for prototype work with dummy/anonymised data**. They are NOT approved for production learner/parent/school data until a POPIA review is done. Production must consider SA data residency, cross-border transfer, operator agreements, retention rules. Do not wire real personal data into hosted services without flagging this. The current Supabase project is a prototype on this basis.
 
 2. **No biometric storage, ever (PRD-additions §4, overview §10).** Anti-account-sharing uses device-native passkeys / WebAuthn / Face ID / Touch ID handled *by the device*. The app never collects or stores fingerprints, face scans, or biometric identifiers. Model: one primary device per account, re-auth only on suspicious/new-device usage. Never interrupt a live mock exam with an auth prompt.
 
-3. **Under-18 users are expected (overview §11).** Target market includes Grade 11/12 learners. Allow a free anonymous demo test; require parent/guardian consent before saving a minor's personal progress; keep the payment screen parent-facing; collect minimal PII.
+3. **Under-18 users are expected (overview §11).** Target market includes Grade 11/12 learners. The free readiness test is anonymous (sessionStorage only); require parent/guardian consent before saving a minor's personal progress; keep the payment screen parent-facing; collect minimal PII.
 
-4. **Content is the moat, not the code (overview §12, PRD-additions §3).** Do NOT scrape/copy competitor apps, screenshots, or paid manuals. **Sign-sourcing strategy (updated, overrides the "redraw everything" reading of PRD-additions §3):** the SADC/SA official road signs on Wikimedia Commons are Public Domain under SA Copyright Act §12(8)(a) and may be used commercially — so source sign SVGs from Wikimedia rather than redrawing or AI-inventing them. BUT Commons licences are **per file**: every SVG must be licence-audited individually and verified against the official DoT chart (`RTSigns_charts.pdf`), then stored with an `AssetProvenance` record (`src/lib/types.ts`). The real moat is the **original learning content** — plain-English explanations, behaviour, common mistakes, test hints, and questions (AI-drafted → human-reviewed) — NOT the glyph. See `docs/road-sign-assets.md` for the full pipeline. Each road sign is a structured learning object (overview §12.2). Note: `src/components/signs/` currently holds original-redraw **placeholder** glyphs until audited Wikimedia SVGs land in `public/signs/`. Each sign has two independent gates: `provenance.assetStatus` (SVG licence/verification) and `reviewStatus` (content accuracy) — both must be `approved` to ship.
+4. **Content is the moat, not the code (overview §12, PRD-additions §3).** Do NOT scrape/copy competitor apps, screenshots, or paid manuals. **Sign-sourcing strategy (overrides the "redraw everything" reading of PRD-additions §3):** the SADC/SA official road signs on Wikimedia Commons are Public Domain under SA Copyright Act §12(8)(a) and may be used commercially — source sign SVGs from Wikimedia rather than redrawing or AI-inventing them. BUT Commons licences are **per file**: every SVG must be licence-audited individually and verified against the official DoT chart (`init/RTSigns_charts.pdf`), then stored with an `AssetProvenance` record (`src/lib/types.ts`). The real moat is the **original learning content** — plain-English explanations, behaviour, common mistakes, test hints, and questions (AI-drafted → human-reviewed) — NOT the glyph. See `docs/road-sign-assets.md` for the pipeline (`scripts/signs/`). Each sign has two independent gates: `provenance.assetStatus` (SVG licence/verification) and `reviewStatus` (content accuracy) — both must be `approved` to ship.
 
-5. **Pricing model is once-off, not subscription (PRD-additions §1 & §6, overview §7).** The model is R149–R199 once-off for 90 days full access, then optional R20/month for continued AI Coach access only. Schools: R99/learner/90 days. The R20/month covers AI inference cost — it is not a subscription trap. KPIs are framed around free-test→paid-unlock conversion and parent share rate, **not** "subscription conversion" (the PRD's original wording is superseded).
+5. **Pricing model is once-off, not subscription (PRD-additions §1 & §6, overview §7).** R149–R199 once-off for 90 days full access, then optional R20/month for continued AI Coach access only. Schools: R99/learner/90 days. The R20/month covers AI inference cost — it is not a subscription trap. KPIs are framed around free-test→paid-unlock conversion and parent share rate, **not** "subscription conversion" (the PRD's original wording is superseded).
 
-6. **MVP scope is narrower than the PRD's full Phase 1 (PRD-additions §5, overview §14).** The MVP must prove the business (learners use it, parents pay, schools work as a channel, AI explanations add value) before building full dashboards, full pass-prediction, practical driving coach, voice tutor, or photo/video recognition. When tempted to implement the PRD's full feature list, defer anything in the "MVP Should Not Include Yet" list (overview §14).
+6. **MVP scope is narrower than the PRD's full Phase 1 (PRD-additions §5, overview §14).** The MVP must prove the business (learners use it, parents pay, schools work as a channel, AI explanations add value) before building full dashboards, full pass-prediction, practical driving coach, voice tutor, or photo/video recognition. Defer anything in the "MVP Should Not Include Yet" list (overview §14).
 
 ## Roles & data model anchors
 
-User roles: Learner, Parent, School, Admin. The PRD references numbered "Databases" (content libraries + engines) — these are logical data/content domains, not literal table names: road signs (DB1), road rules (DB2), vehicle controls (DB3), questions+explanations (DB4, ~750 Q), AI coaching cards (DB5), exam generator (DB6), analytics/prediction (DB7), readiness scoring (DB9 — 40% mock avg / 25% topic accuracy / 20% weak-area improvement / 15% consistency), dashboards (DB10), legal docs (DB12).
+User roles: Learner, Parent, School, Admin. The PRD's numbered "Databases" are logical content/engine domains, not literal tables: road signs (DB1), road rules (DB2), vehicle controls (DB3), questions+explanations (DB4, ~750 Q), AI coaching cards (DB5), exam generator (DB6), analytics/prediction (DB7), readiness scoring (DB9 — 40% mock avg / 25% topic accuracy / 20% weak-area improvement / 15% consistency), dashboards (DB10), legal docs (DB12).
+
+Implemented Postgres tables (RLS, own-row policies): `profiles` (auto-created on signup; role/locale/consent flags, minimal PII), `attempts` (per-question, feeds DB7), `readiness_results` (DB9 snapshots). The readiness scoring helper is `src/lib/readiness.ts`.
