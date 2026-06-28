@@ -41,7 +41,7 @@ export default async function SignReviewPage() {
         (not in chart). Click any sign to edit.
       </p>
 
-      <aside className="mt-5 flex flex-col gap-3 rounded-xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-900 dark:bg-blue-950/30 sm:flex-row sm:items-start sm:justify-between">
+      <aside className="mt-5 flex flex-col gap-3 rounded-xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-900 dark:bg-blue-950/30">
         <div className="flex items-start gap-3">
           <FileText className="mt-0.5 size-5 shrink-0 text-blue-600 dark:text-blue-400" />
           <div className="text-sm">
