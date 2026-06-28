@@ -51,23 +51,45 @@ export async function bulkSignAction(
   if (!supabase) return { ok: false, error: "Supabase not configured" };
   if (!codes.length) return { ok: false, error: "No signs selected" };
 
-  const patch =
-    action === "approve"
-      ? {
+  if (action === "exclude") {
+    const { error } = await supabase
+      .from("road_signs")
+      .update({ sa_relevant: false })
+      .in("code", codes);
+    if (error) return { ok: false, error: error.message };
+    revalidatePath("/admin");
+    return { ok: true, count: codes.length };
+  }
+
+  // Approve: pin svg_hash so the drift guard protects the artwork from now on.
+  // Signs that reached the queue as `needs_review` were never auto-approved by
+  // the pipeline, so they have no pinned hash yet — copy the at-ingest hash
+  // (`source_rev`) the seed script recorded. Done per-row since the hash varies.
+  const { data: rows, error: readErr } = await supabase
+    .from("road_signs")
+    .select("code, source_rev, svg_hash")
+    .in("code", codes);
+  if (readErr) return { ok: false, error: readErr.message };
+
+  const verifiedAt = new Date().toISOString();
+  const results = await Promise.all(
+    (rows ?? []).map((r) =>
+      supabase
+        .from("road_signs")
+        .update({
           asset_status: "approved",
           review_status: "approved",
           sa_relevant: true,
           approved_by: approver,
-          verified_at: new Date().toISOString(),
-        }
-      : { sa_relevant: false };
-
-  const { error } = await supabase
-    .from("road_signs")
-    .update(patch)
-    .in("code", codes);
-
-  if (error) return { ok: false, error: error.message };
+          verified_at: verifiedAt,
+          // keep an existing pin; otherwise fall back to the at-ingest hash.
+          svg_hash: r.svg_hash ?? r.source_rev,
+        })
+        .eq("code", r.code),
+    ),
+  );
+  const failed = results.find((r) => r.error);
+  if (failed) return { ok: false, error: failed.error!.message };
   revalidatePath("/admin");
   return { ok: true, count: codes.length };
 }
