@@ -67,7 +67,7 @@ node scripts/signs/crosscheck.mjs`. **Review them in /admin** (all chart p.2):
   primary sign, **not standalone quiz signs → Exclude** from the learner set.
 
 **`init/V4C9.pdf` = SARTSM Vol 4 Ch 9 (Information signs)** is the authority for
-the IN-series. It corrected an earlier mistake: `IN11.568` / `IN11.577` are NOT
+the IN-series (local-only, gitignored — 15MB; ask John for the file). It corrected an earlier mistake: `IN11.568` / `IN11.577` are NOT
 OCR artifacts — they are real **IN11.500-series symbolic plates** (INS-568 =
 goods vehicle, INS-577 = police vehicle; cf. IN11.572 = abnormal vehicle). The
 whole IN11.x family (.1–.6 + the .500 symbol series) is supplementary plates —

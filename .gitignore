@@ -49,3 +49,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large local-only reference (SARTSM Vol 4 Ch 9, Information signs)
+init/V4C9.pdf
