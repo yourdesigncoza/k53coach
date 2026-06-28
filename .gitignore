@@ -50,5 +50,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Large local-only reference (SARTSM Vol 4 Ch 9, Information signs)
-init/V4C9.pdf
+# Keep new drops into init/ local-only (e.g. large SARTSM PDFs like V4C9).
+# Already-tracked init/ files (PRD.md, RTSigns_charts.pdf, …) stay tracked.
+init/*
