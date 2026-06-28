@@ -44,6 +44,239 @@
         { "code": "R201-100", "params": { "v": "100" } },
         { "code": "R201-120", "params": { "v": "120" } }
       ]
+    },
+    {
+      "id": "end-restriction",
+      "match": "^R\\d+-600$",
+      "category": "regulatory",
+      "primarySource": "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+      "provenance": {
+        "braveQuery": ["South Africa road sign R101-600 end of minimum speed limit -600 de-restriction SARTSM"],
+        "urls": [
+          "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+          "https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs"
+        ],
+        "snippetExcerpts": ["A -600 suffix marks the END of the regulatory restriction shown, indicated by a diagonal stripe through the base sign."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "This sign marks the END of the {restriction}. From here, {ends}.",
+        "formalMeaning": "Regulatory sign {code}: it cancels the {restriction} that applied on the road behind you.",
+        "behaviour": "{behaviour}",
+        "commonMistake": "Thinking the {restriction} still applies past this sign — it does not; the rule has ended here.",
+        "testHint": "A regulatory sign with a diagonal stripe through it means the rule it shows has ENDED."
+      },
+      "variants": [
+        { "code": "R101-600", "params": { "restriction": "minimum speed limit", "ends": "there is no longer a minimum speed you must keep", "behaviour": "You may now travel slower than the previous minimum if needed, while still obeying any maximum speed limit and driving safely with the traffic flow." } },
+        { "code": "R132-600", "params": { "restriction": "toll route", "ends": "you are leaving the toll-road section", "behaviour": "No toll-route requirement applies beyond this point." } },
+        { "code": "R133-600", "params": { "restriction": "requirement to drive with headlamps on", "ends": "you no longer have to keep your headlamps switched on for this section", "behaviour": "You may switch your headlamps off — unless conditions such as dusk, rain, fog or a tunnel still require them by law." } },
+        { "code": "R202-600", "params": { "restriction": "vehicle mass (weight) limit", "ends": "the weight limit no longer applies", "behaviour": "Vehicles that were excluded by the weight limit may proceed beyond this point." } },
+        { "code": "R401-600", "params": { "restriction": "dual-carriageway freeway", "ends": "freeway conditions no longer apply", "behaviour": "Freeway rules (no pedestrians, no stopping, the freeway minimum speed) end here; normal road rules resume." } },
+        { "code": "R402-600", "params": { "restriction": "single-carriageway freeway", "ends": "freeway conditions no longer apply", "behaviour": "Freeway rules end here; normal road rules resume." } },
+        { "code": "R403-600", "params": { "restriction": "living street (woonerf)", "ends": "living-street rules no longer apply", "behaviour": "The special pedestrian-priority and walking-pace rules of a living street end here; normal road rules resume." } }
+      ]
+    },
+    {
+      "id": "parking-reservation",
+      "match": "^R3\\d+-P$",
+      "category": "regulatory",
+      "primarySource": "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+      "provenance": {
+        "braveQuery": ["South Africa parking reservation sign R305 R301 P regulatory SARTSM reserved parking"],
+        "urls": [
+          "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+          "https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs"
+        ],
+        "snippetExcerpts": ["Parking reservation signs (the 'P' series) indicate that parking is reserved for the class of vehicle shown on the sign."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "This is a parking area reserved for {who}. Vehicles that are not {who} may not park here.",
+        "formalMeaning": "Regulatory parking-reservation sign {code}: the parking here is reserved for {who}.",
+        "behaviour": "Only park here if your vehicle is {who}. If it is not, park elsewhere.",
+        "commonMistake": "Parking here when your vehicle does not qualify as {who}.",
+        "testHint": "A 'P' on a blue sign with a vehicle symbol shows WHO may park — here, {who}."
+      },
+      "variants": [
+        { "code": "R301-P", "params": { "who": "buses" } },
+        { "code": "R304-P", "params": { "who": "pedal cycles (bicycles)" } },
+        { "code": "R305-P", "overrides": { "plainEnglish": "Parking is permitted in this area for all vehicles, unless another sign or road marking restricts it.", "formalMeaning": "Regulatory sign R305-P: parking is permitted here.", "behaviour": "You may park here. Obey any time limit, road markings or other parking signs that also apply.", "commonMistake": "Assuming you can park here without limit — a nearby plate may still set a time limit or conditions.", "testHint": "A plain blue 'P' sign means parking is permitted." }, "params": { "who": "all vehicles" } },
+        { "code": "R306-P", "overrides": { "plainEnglish": "Parking is permitted here, but only for up to 60 minutes.", "formalMeaning": "Regulatory sign R306-P: parking is permitted for a maximum of 60 minutes.", "behaviour": "You may park here for no longer than 60 minutes. Move your vehicle before the time is up.", "commonMistake": "Leaving your vehicle longer than 60 minutes.", "testHint": "A 'P' with '60 min' means parking is limited to 60 minutes." }, "params": { "who": "all vehicles (60-minute limit)" } },
+        { "code": "R307-P", "params": { "who": "motorcycles" } },
+        { "code": "R308-P", "params": { "who": "motorcars" } },
+        { "code": "R309-P", "params": { "who": "taxis" } },
+        { "code": "R310-P", "params": { "who": "mini-buses" } },
+        { "code": "R311-P", "params": { "who": "midi-buses" } },
+        { "code": "R312-P", "params": { "who": "delivery vehicles" } },
+        { "code": "R313-P", "params": { "who": "goods vehicles" } },
+        { "code": "R314-P", "params": { "who": "goods vehicles exceeding 10 tonnes GVM" } },
+        { "code": "R315-P", "params": { "who": "construction vehicles" } },
+        { "code": "R316-P", "params": { "who": "vehicles transporting dangerous substances" } },
+        { "code": "R317-P", "params": { "who": "abnormal vehicles" } },
+        { "code": "R318-P", "params": { "who": "rickshaws" } },
+        { "code": "R319-P", "params": { "who": "tour buses" } },
+        { "code": "R320-P", "params": { "who": "high-occupancy vehicles" } },
+        { "code": "R321-P", "params": { "who": "ambulances and emergency vehicles" } },
+        { "code": "R322-P", "params": { "who": "police vehicles" } },
+        { "code": "R323-P", "params": { "who": "vehicles carrying disabled passengers" } },
+        { "code": "R324-P", "params": { "who": "diplomatic vehicles" } },
+        { "code": "R327-P", "params": { "who": "buses and mini-buses" } },
+        { "code": "R330-P", "params": { "who": "buses and midi-buses" } },
+        { "code": "R333-P", "params": { "who": "buses, midi-buses and mini-buses" } }
+      ]
+    },
+    {
+      "id": "prohibition-misc",
+      "match": "^R24[25]$",
+      "category": "regulatory",
+      "primarySource": "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+      "provenance": {
+        "braveQuery": ["South Africa road sign R242 motorcycles motorcars prohibited R245 axle massload prohibited SARTSM"],
+        "urls": [
+          "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+          "https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs"
+        ],
+        "snippetExcerpts": ["Prohibition signs use a red ring with a diagonal line; the symbol inside shows what is prohibited."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "{plain}",
+        "formalMeaning": "Regulatory prohibition sign {code}: {formal}",
+        "behaviour": "{behaviour}",
+        "commonMistake": "{mistake}",
+        "testHint": "A red ring with a diagonal line means PROHIBITED — the symbol shows what."
+      },
+      "variants": [
+        { "code": "R242", "params": { "plain": "Motorcycles and motorcars may not enter or proceed past this sign.", "formal": "both motorcycles and motorcars are prohibited beyond this point.", "behaviour": "If you are riding a motorcycle or driving a motorcar, do not proceed; use a permitted route.", "mistake": "Assuming the ban is only for cars — it applies to motorcycles too." } },
+        { "code": "R245", "params": { "plain": "Vehicles with more than 12 tonnes on a tandem (bogie) axle may not proceed past this sign.", "formal": "vehicles whose tandem/bogie-axle mass-load exceeds 12 tonnes are prohibited.", "behaviour": "If your vehicle's tandem-axle load is over 12 t, do not proceed; use a permitted route.", "mistake": "Reading this as a total-vehicle weight limit — it is specifically the load on the tandem/bogie axle." } }
+      ]
+    },
+    {
+      "id": "pedestrian-crossing",
+      "match": "^R360(-LES)?$",
+      "category": "guidance",
+      "nameTemplate": null,
+      "primarySource": "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+      "provenance": {
+        "braveQuery": ["South Africa road sign R360 pedestrian crossing sign drivers yield to pedestrians K53"],
+        "urls": [
+          "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+          "https://k-53.co.za/road-signs"
+        ],
+        "snippetExcerpts": ["Give priority to pedestrians crossing the road at a pedestrian crossing."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "There is a pedestrian crossing here. Pedestrians crossing have priority and you must give way to them.",
+        "formalMeaning": "Sign {code}: marks a pedestrian crossing where pedestrians have right of way.",
+        "behaviour": "Slow down on approach, be ready to stop, and yield to any pedestrian on or stepping onto the crossing. Do not overtake a vehicle stopped at the crossing.",
+        "commonMistake": "Driving through because no one is on the crossing yet — you must yield to pedestrians already stepping on, and never overtake at a crossing.",
+        "testHint": "Pedestrian-crossing sign = pedestrians first; be ready to stop and never overtake at the crossing."
+      },
+      "variants": [
+        { "code": "R360", "params": {} },
+        { "code": "R360-LES", "params": {} }
+      ]
+    },
+    {
+      "id": "warning-moveable-bridge",
+      "match": "^W365$",
+      "category": "warning",
+      "primarySource": "https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs",
+      "provenance": {
+        "braveQuery": ["South Africa road sign W365 moveable bridge ahead warning sign meaning"],
+        "urls": ["https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs"],
+        "snippetExcerpts": ["Warning signs are triangular with a red border and warn of a hazard ahead."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "There is a moveable (opening) bridge ahead that may be raised or swung open for boats.",
+        "formalMeaning": "Warning sign W365: a moveable bridge is ahead.",
+        "behaviour": "Slow down and be prepared to stop — the bridge may be opening or closed to road traffic. Obey any signals or barriers at the bridge.",
+        "commonMistake": "Treating it as an ordinary bridge and not expecting to stop while the bridge is open.",
+        "testHint": "Red triangle with a bridge symbol = a moveable bridge ahead; be ready to stop."
+      },
+      "variants": [{ "code": "W365", "params": {} }]
+    },
+    {
+      "id": "info-guidance-misc",
+      "match": "^IN(16|17|20)$",
+      "category": "guidance",
+      "primarySource": "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C4.pdf",
+      "provenance": {
+        "braveQuery": ["South Africa road sign IN16 bus stop ahead IN17 modal transfer IN20 right of way over oncoming SARTSM guidance"],
+        "urls": ["https://www.transport.gov.za/wp-content/uploads/2023/02/V1C4.pdf"],
+        "snippetExcerpts": ["Information (IN) signs give the driver guidance information on a blue or green background."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "{plain}",
+        "formalMeaning": "Information sign {code}: {formal}",
+        "behaviour": "{behaviour}",
+        "commonMistake": "{mistake}",
+        "testHint": "{hint}"
+      },
+      "variants": [
+        { "code": "IN16", "params": { "plain": "There is a bus stop ahead.", "formal": "indicates a bus stop ahead.", "behaviour": "Be aware that buses may be stopping or pulling away ahead; watch for passengers near the road.", "mistake": "Not expecting a bus to stop or pedestrians crossing near the bus stop.", "hint": "A bus symbol on an information sign means a bus stop ahead." } },
+        { "code": "IN17", "params": { "plain": "There is a modal transfer point ahead — a place to change between transport modes (for example bus, taxi or train).", "formal": "indicates a modal transfer point ahead.", "behaviour": "Expect pedestrians and vehicles entering and leaving the transfer area; be ready for stopping traffic.", "mistake": "Not expecting extra pedestrian and stopping-vehicle activity around a transfer point.", "hint": "Modal transfer = a place to change transport modes; expect pedestrians and stopping traffic." } },
+        { "code": "IN20", "params": { "plain": "You have right of way over oncoming vehicles at the narrow section ahead.", "formal": "indicates that you have priority over oncoming traffic at the narrow section ahead.", "behaviour": "You may proceed first, but still check that oncoming drivers have yielded before entering the narrow section.", "mistake": "Assuming priority means you need not look — always confirm oncoming traffic has actually yielded.", "hint": "Big arrow your way, small arrow against = YOU have priority over oncoming traffic." } }
+      ]
+    },
+    {
+      "id": "bus-stop",
+      "match": "^R325-[1-4]$",
+      "category": "guidance",
+      "primarySource": "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+      "provenance": {
+        "braveQuery": ["South Africa road sign R325 bus stop sign reservation public transport SARTSM"],
+        "urls": [
+          "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+          "https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs"
+        ],
+        "snippetExcerpts": ["Bus-stop signs mark where buses stop to pick up and set down passengers."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "This marks a bus stop{detail}. Buses stop here to pick up and drop off passengers.",
+        "formalMeaning": "Sign {code}: a bus stop{detail}.",
+        "behaviour": "Do not park or stop in the bus-stop zone. Watch for buses pulling in or out and for passengers near the road.",
+        "commonMistake": "Parking or waiting in the bus-stop area, blocking buses.",
+        "testHint": "Bus symbol = bus stop; keep the bus-stop zone clear."
+      },
+      "variants": [
+        { "code": "R325-1", "params": { "detail": "" } },
+        { "code": "R325-2", "params": { "detail": " for all buses" } },
+        { "code": "R325-3", "params": { "detail": " for authorised buses showing the route (line) number" } },
+        { "code": "R325-4", "params": { "detail": " for authorised buses showing the route (line) numbers" } }
+      ]
+    },
+    {
+      "id": "minibus-stop",
+      "match": "^R326-[1-4]$",
+      "category": "guidance",
+      "primarySource": "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+      "provenance": {
+        "braveQuery": ["South Africa road sign R326 mini-bus stop sign taxi public transport SARTSM"],
+        "urls": [
+          "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+          "https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs"
+        ],
+        "snippetExcerpts": ["Mini-bus stop signs mark where mini-buses stop to pick up and set down passengers."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "This marks a mini-bus stop{detail}. Mini-buses stop here to pick up and drop off passengers.",
+        "formalMeaning": "Sign {code}: a mini-bus stop{detail}.",
+        "behaviour": "Do not park or stop in the mini-bus-stop zone. Watch for mini-buses pulling in or out and for passengers near the road.",
+        "commonMistake": "Parking or waiting in the mini-bus-stop area, blocking mini-buses.",
+        "testHint": "Mini-bus symbol = mini-bus stop; keep the zone clear."
+      },
+      "variants": [
+        { "code": "R326-1", "params": { "detail": "" } },
+        { "code": "R326-2", "params": { "detail": "" } },
+        { "code": "R326-3", "params": { "detail": " for authorised mini-buses showing the route (line) number" } },
+        { "code": "R326-4", "params": { "detail": " for authorised mini-buses showing the route (line) numbers" } }
+      ]
     }
   ]
 }
