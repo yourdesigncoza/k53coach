@@ -1,18 +1,17 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/supabase/queries";
 import { getSignByCode } from "@/lib/supabase/queries";
+import { llmChat, hasLlmKey } from "@/lib/llm";
 
 /**
- * Admin-only: draft learner content for one sign with Claude. Output is a
- * STARTING POINT for human review — the admin edits and approves before it
- * ships (review_status gate). Grounded in the sign's known identity; the prompt
- * forbids inventing legal/penalty specifics.
+ * Admin-only: draft learner content for one sign with the app LLM (OpenAI
+ * gpt-4o-mini, via @/lib/llm). Output is a STARTING POINT for human review —
+ * the admin edits and approves before it ships (review_status gate). Grounded in
+ * the sign's known identity; the prompt forbids inventing legal/penalty specifics.
  *
- * Uses the Claude Messages API directly (no SDK dep). Set ANTHROPIC_API_KEY to
- * enable; without it, returns an empty scaffold so the admin flow still works.
+ * Set OPENAI_API_KEY to enable; without it, returns an empty scaffold so the
+ * admin flow still works.
  */
-const MODEL = "claude-sonnet-4-6";
-
 export async function POST(req: Request) {
   if (!(await isAdmin())) {
     return NextResponse.json({ error: "Not authorised" }, { status: 403 });
@@ -27,8 +26,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Unknown sign" }, { status: 404 });
   }
 
-  const key = process.env.ANTHROPIC_API_KEY;
-  if (!key) {
+  if (!hasLlmKey()) {
     return NextResponse.json({
       needsKey: true,
       draft: {
@@ -52,29 +50,8 @@ export async function POST(req: Request) {
   }\n\nDraft the five fields as JSON.`;
 
   try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "x-api-key": key,
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        max_tokens: 700,
-        system,
-        messages: [{ role: "user", content: user }],
-      }),
-    });
-    if (!res.ok) {
-      return NextResponse.json(
-        { error: `Claude API ${res.status}` },
-        { status: 502 },
-      );
-    }
-    const data = await res.json();
-    const text: string = data?.content?.[0]?.text ?? "{}";
-    const json = JSON.parse(text.replace(/^```json\n?|```$/g, "").trim());
+    const text = await llmChat({ system, user, maxTokens: 700, json: true });
+    const json = JSON.parse(text || "{}");
     const wrap = (v: unknown) => ({ en: typeof v === "string" ? v : "" });
     return NextResponse.json({
       draft: {

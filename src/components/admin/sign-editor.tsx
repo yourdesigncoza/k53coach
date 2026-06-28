@@ -105,7 +105,7 @@ export function SignEditor({
       });
       toast[data.needsKey ? "info" : "success"](
         data.needsKey
-          ? "No ANTHROPIC_API_KEY set — added empty fields to fill in."
+          ? "No OPENAI_API_KEY set — added empty fields to fill in."
           : "AI draft inserted into the English fields. Review before saving.",
       );
     } catch (e) {
