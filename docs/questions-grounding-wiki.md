@@ -75,8 +75,28 @@ explanations and provenance. A "questions pipeline" would:
 
 This is a sizable new subsystem — plan it in plan-mode before building.
 
+## Recommended next steps (when we pick this up)
+1. **Plan the questions pipeline in plan-mode first** — it's a sizable new subsystem
+   (ingest → schema-map → verify-against-source → gate → serve). Decide upfront: 3
+   vs 4 options, sign-name→R-code mapping, and whether `evidence_strength: confirmed`
+   items auto-promote while `alleged`/conflict-touching ones go to a human queue.
+2. **Wire the LLM through `src/lib/llm.ts`** (gpt-5.4-mini) for any drafting/verify
+   step — same single entry point as the signs work.
+3. **Spot-audit the wiki's source citations** before trusting them as pointers (the
+   RR-001-style mismatch); verify against the cited primary source, not the wiki.
+4. **Do NOT hardcode disputed exam facts as official** — question count (64/68),
+   pass marks, time limit are an unresolved/confirmed-negative result. Treat the
+   alcohol limit as 0.05/0.02 until the 0.00 amendment is in force.
+5. **Keep it a one-way grounding feed** — the wiki lives outside this repo
+   (`wiki-builds/k53/wiki`); ingest from it, don't couple the app to it. Re-export
+   its provenance (`source_basis`, `sources`, `evidence_strength`) into DB4 rows so
+   the moat/audit trail survives, exactly as we did for signs.
+6. **Reuse the gate philosophy:** factuality-audit gate (no vision) + human only on
+   ambiguity, mirroring `apply-external-verdicts` / the content-audit step.
+
 ## Cross-refs
-- `docs/llm-model-selection.md` — the following-distance example.
+- `docs/llm-model-selection.md` — the following-distance example; the LLM entry point.
 - `docs/sign-accuracy-pipeline.md` — the pipeline shape to mirror.
+- `docs/sign-pipeline-handoff.md` — the external-content pipeline (closest analogue).
 - `init/RTSigns_charts.pdf` / `data/chart-authority.json` — the signs ground truth
   this would parallel for questions.
