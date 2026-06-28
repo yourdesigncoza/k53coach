@@ -90,6 +90,9 @@ export function signVerification(
   contentPass?: boolean;
   suggestedName?: string | null;
   contentIssue?: string | null;
+  exclusionReason?: string | null;
+  primarySource?: string | null;
+  family?: string | null;
 }) | null {
   return (row.verification ?? null) as never;
 }

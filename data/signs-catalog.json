@@ -76,25 +76,6 @@
     }
   },
   {
-    "code": "IN9",
-    "name": "alt=|Park and Ride",
-    "category": "guidance",
-    "subcategory": "Information signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/IN9.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign IN9.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_IN9.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "IN10",
     "name": "Park and Ride",
     "category": "guidance",
@@ -285,25 +266,6 @@
     }
   },
   {
-    "code": "IN18",
-    "name": "alt=|Modal transfer point",
-    "category": "guidance",
-    "subcategory": "Information signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/IN18.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign IN18.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_IN18.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "IN19",
     "name": "Modal transfer",
     "category": "guidance",
@@ -315,25 +277,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign IN19.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_IN19.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "IN19-RHT",
-    "name": "Modal transfer point",
-    "category": "guidance",
-    "subcategory": "Information signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/IN19-RHT.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign IN19-RHT.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_IN19-RHT.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -1691,25 +1634,6 @@
     }
   },
   {
-    "code": "R201-100-R512",
-    "name": "Speed limit of 100 km/h during the night",
-    "category": "guidance",
-    "subcategory": "Combo signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R201-100-R512.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R201-100-R512.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R201-100-R512.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R201-120",
     "name": "Speed limit of 120 km/h",
     "category": "regulatory",
@@ -1721,25 +1645,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R201-120.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R201-120.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R201-120-R511",
-    "name": "Speed limit of 120 km/h during the day",
-    "category": "guidance",
-    "subcategory": "Combo signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R201-120-R511.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R201-120-R511.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R201-120-R511.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -4275,25 +4180,6 @@
     }
   },
   {
-    "code": "R501-B",
-    "name": "R501-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R501-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R501-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R501-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R502",
     "name": "Applies during the specified hours",
     "category": "regulatory",
@@ -4305,25 +4191,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R502.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R502.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R502-B",
-    "name": "R502-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R502-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R502-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R502-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -4351,25 +4218,6 @@
     }
   },
   {
-    "code": "R503-B",
-    "name": "R503-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R503-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R503-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R503-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R504",
     "name": "Applies during the specified days and hours",
     "category": "regulatory",
@@ -4381,25 +4229,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R504.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R504.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R504-B",
-    "name": "R504-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R504-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R504-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R504-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -4465,25 +4294,6 @@
     }
   },
   {
-    "code": "R511-B",
-    "name": "R511-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R511-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R511-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R511-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R512",
     "name": "Applies during the night-time hours",
     "category": "regulatory",
@@ -4495,25 +4305,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R512.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R512.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R512-B",
-    "name": "R512-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R512-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R512-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R512-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -4541,25 +4332,6 @@
     }
   },
   {
-    "code": "R520-B",
-    "name": "R520-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R520-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R520-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R520-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R521",
     "name": "Applies to the right",
     "category": "regulatory",
@@ -4579,25 +4351,6 @@
     }
   },
   {
-    "code": "R521-B",
-    "name": "R521-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R521-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R521-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R521-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R522",
     "name": "Applies to the left and right",
     "category": "regulatory",
@@ -4609,25 +4362,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R522.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R522.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R522-B",
-    "name": "R522-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R522-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R522-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R522-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -4674,25 +4408,6 @@
     }
   },
   {
-    "code": "R532-B",
-    "name": "R532-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R532-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R532-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R532-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R533",
     "name": "Applies to motorcycles with an engine size up to 125 cc",
     "category": "regulatory",
@@ -4704,25 +4419,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R533.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R533.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R533-B",
-    "name": "R533-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R533-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R533-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R533-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -4769,25 +4465,6 @@
     }
   },
   {
-    "code": "R535-B",
-    "name": "R535-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R535-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R535-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R535-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R540",
     "name": "Maximum number of spaces in a parking reservation",
     "category": "regulatory",
@@ -4826,25 +4503,6 @@
     }
   },
   {
-    "code": "R560-B",
-    "name": "R560-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R560-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R560-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R560-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R561",
     "name": "Applies to cyclists",
     "category": "regulatory",
@@ -4856,25 +4514,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R561.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R561.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R561-B",
-    "name": "R561-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R561-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R561-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R561-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -4902,25 +4541,6 @@
     }
   },
   {
-    "code": "R562-B",
-    "name": "R562-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R562-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R562-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R562-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R563",
     "name": "Applies to motorcars",
     "category": "regulatory",
@@ -4932,25 +4552,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R563.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R563.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R563-B",
-    "name": "R563-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R563-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R563-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R563-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -4978,25 +4579,6 @@
     }
   },
   {
-    "code": "R564-B",
-    "name": "R564-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R564-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R564-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R564-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R565",
     "name": "Applies to mini-buses",
     "category": "regulatory",
@@ -5008,25 +4590,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R565.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R565.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R565-B",
-    "name": "R565-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R565-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R565-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R565-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -5054,25 +4617,6 @@
     }
   },
   {
-    "code": "R566-B",
-    "name": "R566-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R566-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R566-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R566-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R567",
     "name": "Applies to delivery vehicles",
     "category": "regulatory",
@@ -5084,25 +4628,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R567.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R567.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R567-B",
-    "name": "R567-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R567-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R567-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R567-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -5130,25 +4655,6 @@
     }
   },
   {
-    "code": "R568-B",
-    "name": "R568-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R568-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R568-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R568-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R569",
     "name": "Applies to goods vehicles exceeding 10 tonnes GVM",
     "category": "regulatory",
@@ -5160,25 +4666,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R569.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R569.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R569-B",
-    "name": "R569-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R569-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R569-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R569-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -5206,25 +4693,6 @@
     }
   },
   {
-    "code": "R570-B",
-    "name": "R570-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R570-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R570-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R570-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R571",
     "name": "Applies to vehicles transporting dangerous substances",
     "category": "regulatory",
@@ -5236,25 +4704,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R571.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R571.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R571-B",
-    "name": "R571-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R571-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R571-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R571-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -5282,25 +4731,6 @@
     }
   },
   {
-    "code": "R572-B",
-    "name": "R572-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R572-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R572-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R572-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R573",
     "name": "Applies to rickshaws",
     "category": "regulatory",
@@ -5312,25 +4742,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R573.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R573.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R573-B",
-    "name": "R573-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R573-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R573-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R573-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -5358,25 +4769,6 @@
     }
   },
   {
-    "code": "R574-B",
-    "name": "R574-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R574-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R574-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R574-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R575",
     "name": "Applies to high-occupancy vehicles",
     "category": "regulatory",
@@ -5388,25 +4780,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R575.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R575.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R575-B",
-    "name": "R575-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R575-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R575-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R575-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -5434,25 +4807,6 @@
     }
   },
   {
-    "code": "R576-B",
-    "name": "R576-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R576-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R576-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R576-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R577",
     "name": "Applies to police vehicles",
     "category": "regulatory",
@@ -5464,25 +4818,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R577.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R577.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R577-B",
-    "name": "R577-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R577-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R577-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R577-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -5510,25 +4845,6 @@
     }
   },
   {
-    "code": "R578-B",
-    "name": "R578-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R578-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R578-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R578-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R579",
     "name": "Applies to diplomatic vehicles",
     "category": "regulatory",
@@ -5540,25 +4856,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R579.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R579.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R579-B",
-    "name": "R579-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R579-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R579-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R579-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -5586,25 +4883,6 @@
     }
   },
   {
-    "code": "R580-B",
-    "name": "R580-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R580-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R580-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R580-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R581",
     "name": "Applies to animal-drawn vehicles",
     "category": "regulatory",
@@ -5616,25 +4894,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R581.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R581.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R581-B",
-    "name": "R581-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R581-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R581-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R581-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
@@ -5662,25 +4921,6 @@
     }
   },
   {
-    "code": "R582-B",
-    "name": "R582-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R582-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R582-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R582-B.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
     "code": "R583",
     "name": "Applies to trams",
     "category": "regulatory",
@@ -5692,25 +4932,6 @@
       "source": "Wikimedia Commons (SADC)",
       "commonsFile": "SADC road sign R583.svg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R583.svg",
-      "licence": "Public domain",
-      "artist": "Southern African Development Community",
-      "attributionRequired": false,
-      "verifiedAgainst": "RTSigns_charts.pdf",
-      "assetStatus": "needs_review"
-    }
-  },
-  {
-    "code": "R583-B",
-    "name": "R583-B",
-    "category": "regulatory",
-    "subcategory": "Selective restriction signs",
-    "temporary": false,
-    "inOfficialChart": false,
-    "provenance": {
-      "svgFile": "signs/R583-B.svg",
-      "source": "Wikimedia Commons (SADC)",
-      "commonsFile": "SADC road sign R583-B.svg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SADC_road_sign_R583-B.svg",
       "licence": "Public domain",
       "artist": "Southern African Development Community",
       "attributionRequired": false,
