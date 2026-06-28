@@ -17,17 +17,10 @@
  */
 import { readFileSync, readdirSync } from "node:fs";
 import { resolve, join } from "node:path";
-import { serviceClient } from "./lib.mjs";
+import { serviceClient, mergeContentEn } from "./lib.mjs";
 
 const DRY = process.argv.includes("--dry-run");
 const APPROVE_AT = 0.85;
-const CONTENT_FIELDS = [
-  "plainEnglish",
-  "formalMeaning",
-  "behaviour",
-  "commonMistake",
-  "testHint",
-];
 
 const supabase = serviceClient();
 const dir = resolve("data/verify/verdicts");
@@ -77,12 +70,7 @@ for (const v of verdicts) {
   if (assetOk) {
     stats.assetApproved++;
     // Merge English drafts into the bilingual content jsonb (keep any af text).
-    const content = { ...(row.content ?? {}) };
-    for (const f of CONTENT_FIELDS) {
-      const en = v.contentDraft?.[f];
-      if (en) content[f] = { ...(content[f] ?? {}), en };
-    }
-    patch.content = content;
+    patch.content = mergeContentEn(row.content, v.contentDraft);
     patch.asset_status = "approved";
     patch.svg_hash = v.svgHash ?? null;
     patch.approved_by = "ai:claude-code";

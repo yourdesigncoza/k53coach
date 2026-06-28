@@ -1,0 +1,49 @@
+{
+  "_note": "DRY content families for SA signs that are NOT bare codes in the official chart (sa_relevant was false). One Brave-grounded template per family, expanded per variant by scripts/signs/apply-external-drafts.mjs. Tokens: {v} {who} {vehicle} {condition} {restriction} {code}. Each family must cite a primary official source (SARTSM on transport.gov.za / NATIS).",
+  "families": [
+    {
+      "id": "speed-limit",
+      "match": "^R201-\\d+$",
+      "category": "regulatory",
+      "primarySource": "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+      "provenance": {
+        "braveQuery": [
+          "South Africa road sign R201 minimum speed limit end of minimum speed K53 meaning",
+          "SARTSM regulatory signs R201 speed limit sign maximum speed South Africa learner licence meaning rule"
+        ],
+        "urls": [
+          "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf",
+          "https://safetysigns4sa.co.za/r200-series-prohibition/speed-limit-road-sign",
+          "https://www.safetysignonline.co.za/products/15km-speed-limit-road-sign-r201-15"
+        ],
+        "snippetExcerpts": [
+          "The R201 speed limit sign is a regulatory traffic sign that indicates the maximum speed allowed on a particular road.",
+          "an R Series regulatory sign used to indicate the maximum legal speed that may not be exceeded from the point of installation"
+        ],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "You may not drive faster than {v} km/h from this sign onwards. {v} km/h is the maximum allowed — not a speed you have to reach.",
+        "formalMeaning": "Regulatory sign R201: the maximum speed limit on this section of road is {v} km/h. It applies from the sign until another speed-limit sign cancels or changes it.",
+        "behaviour": "Be at or below {v} km/h by the time you reach the sign, and stay at or below {v} km/h until another speed sign changes the limit. Slow down further when conditions (rain, traffic, pedestrians) make {v} km/h unsafe.",
+        "commonMistake": "Treating {v} km/h as the speed you must drive. It is the highest legal speed only — you may not exceed {v} km/h to keep up with other traffic, and you should go slower when it is not safe.",
+        "testHint": "A red ring around a black number means MAXIMUM speed. Here the number is {v}, so {v} km/h is your ceiling."
+      },
+      "variants": [
+        { "code": "R201-5", "params": { "v": "5" } },
+        { "code": "R201-10", "params": { "v": "10" } },
+        { "code": "R201-20", "params": { "v": "20" } },
+        { "code": "R201-30", "params": { "v": "30" } },
+        { "code": "R201-40", "params": { "v": "40" } },
+        { "code": "R201-50", "params": { "v": "50" } },
+        { "code": "R201-60", "params": { "v": "60" } },
+        { "code": "R201-70", "params": { "v": "70" } },
+        { "code": "R201-75", "params": { "v": "75" } },
+        { "code": "R201-80", "params": { "v": "80" } },
+        { "code": "R201-90", "params": { "v": "90" } },
+        { "code": "R201-100", "params": { "v": "100" } },
+        { "code": "R201-120", "params": { "v": "120" } }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,10 @@
  * sha256 vs the pinned svg_hash). Writes nothing — safe to run in CI. Exits 1 if
  * drift is found so a pipeline can fail on it.
  *
+ * Also asserts every externally-sourced sign (approved_by 'ai:claude-code+brave')
+ * carries non-empty verification.provenance — the audit trail for content drafted
+ * from off-chart sources must never be lost.
+ *
  * Usage: node scripts/signs/check-drift.mjs
  */
 import { serviceClient, publicSvgHash } from "./lib.mjs";
@@ -20,6 +24,20 @@ if (error) {
   process.exit(1);
 }
 
+// Provenance integrity for the external (Brave-grounded) cohort.
+const { data: ext, error: extErr } = await supabase
+  .from("road_signs")
+  .select("code, verification")
+  .like("approved_by", "ai:claude-code+brave%");
+if (extErr) {
+  console.error(extErr.message);
+  process.exit(1);
+}
+const noProvenance = (ext ?? []).filter((r) => {
+  const p = r.verification?.provenance;
+  return !p || !p.urls?.length || !r.verification?.primarySource;
+});
+
 const drift = [];
 const missing = [];
 for (const r of rows) {
@@ -30,9 +48,18 @@ for (const r of rows) {
 
 console.log(`Checked ${rows.length} approved signs.`);
 if (missing.length) console.log(`Missing SVG files: ${missing.join(", ")}`);
+console.log(`Checked ${ext?.length ?? 0} external (Brave-grounded) signs for provenance.`);
+
+let failed = false;
 if (drift.length) {
   console.log(`\n⚠ DRIFT — ${drift.length} approved SVG(s) changed on disk:`);
   console.log("  " + drift.join(", "));
-  process.exit(1);
+  failed = true;
 }
-console.log("No drift: every approved SVG matches its pinned hash. ✓");
+if (noProvenance.length) {
+  console.log(`\n⚠ PROVENANCE — ${noProvenance.length} external sign(s) missing provenance/primarySource:`);
+  console.log("  " + noProvenance.map((r) => r.code).join(", "));
+  failed = true;
+}
+if (failed) process.exit(1);
+console.log("No drift; every approved SVG matches its pinned hash; external provenance intact. ✓");

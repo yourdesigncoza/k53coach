@@ -16,6 +16,74 @@ export function publicSvgHash(svgFile) {
   return createHash("sha256").update(readFileSync(p)).digest("hex");
 }
 
+/**
+ * sha256 of a file under public/, FAIL-CLOSED: throws if the file is absent.
+ * Use when pinning svg_hash at approval — an unverifiable artwork must not be
+ * silently approved with a null hash (which the drift guard would skip).
+ */
+export function pinHashLocal(svgFile) {
+  const h = publicSvgHash(svgFile);
+  if (!h) throw new Error(`pinHashLocal: cannot hash public/${svgFile} (missing)`);
+  return h;
+}
+
+/** The five bilingual content fields stored in road_signs.content. */
+export const CONTENT_FIELDS = [
+  "plainEnglish",
+  "formalMeaning",
+  "behaviour",
+  "commonMistake",
+  "testHint",
+];
+
+/**
+ * Merge English drafts into the existing bilingual content jsonb, preserving any
+ * `af` text. `draft` is a {field: enString} map (only non-empty fields applied).
+ */
+export function mergeContentEn(existing, draft) {
+  const content = { ...(existing ?? {}) };
+  for (const f of CONTENT_FIELDS) {
+    const en = draft?.[f];
+    if (en) content[f] = { ...(content[f] ?? {}), en };
+  }
+  return content;
+}
+
+/**
+ * Substitute {token} placeholders in a string from `params`. Auto-binds {code}
+ * if present in params. Throws on ANY unresolved {token} so a malformed family
+ * template can never reach the DB (one bad template would hit every variant).
+ */
+export function expandTemplate(str, params) {
+  const out = String(str).replace(/\{(\w+)\}/g, (_, k) =>
+    params[k] != null ? String(params[k]) : `{${k}}`,
+  );
+  const leftover = out.match(/\{(\w+)\}/g);
+  if (leftover) {
+    throw new Error(`unresolved token(s) ${leftover.join(", ")} in: ${str}`);
+  }
+  return out;
+}
+
+/**
+ * Decide whether an external (not-in-chart) verdict clears the auto-approve bar.
+ * Stricter than the chart pipeline: high confidence AND a primary official source
+ * are both required because there is no chart glyph to cross-check against.
+ * Content factuality (the independent audit) is gated separately by the caller.
+ */
+export function decideApproval(
+  verdict,
+  { minConf = 0.95, requirePrimarySource = true } = {},
+) {
+  return Boolean(
+    verdict.visionPass &&
+      verdict.semanticPass &&
+      typeof verdict.confidence === "number" &&
+      verdict.confidence >= minConf &&
+      (!requirePrimarySource || verdict.hasPrimarySource),
+  );
+}
+
 /** Parse .env.local into a plain object (no external dep). */
 export function loadEnv() {
   const env = {};
