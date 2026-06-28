@@ -20,6 +20,6 @@ export async function proxy(request: NextRequest) {
 export const config = {
   // Match all paths except Next internals, API, and static files.
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|manifest.webmanifest|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|manifest.webmanifest|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|pdf)$).*)",
   ],
 };

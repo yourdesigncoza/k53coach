@@ -32,7 +32,7 @@ export default async function AdminSignEditPage({
         size="sm"
         className="-ml-2 mb-4 rounded-lg"
         render={
-          <Link href="/admin">
+          <Link href="/admin/sign-review">
             <ArrowLeft className="size-4" /> All signs
           </Link>
         }
