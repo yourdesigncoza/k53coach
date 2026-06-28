@@ -75,7 +75,7 @@ export async function POST(req: Request) {
       const out = await llmChat({
         system,
         user: JSON.stringify(grounding),
-        maxTokens: 220,
+        maxTokens: 600,
         temperature: 0.4,
       });
       if (out.trim()) {

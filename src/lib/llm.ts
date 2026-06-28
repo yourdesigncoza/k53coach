@@ -4,7 +4,7 @@
  * Set OPENAI_API_KEY to enable; callers check `hasLlmKey()` for graceful
  * degradation when it is absent (no SDK dependency — direct fetch).
  */
-export const LLM_MODEL = "gpt-4o-mini";
+export const LLM_MODEL = "gpt-5.4-mini-2026-03-17";
 
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
@@ -16,9 +16,9 @@ export function hasLlmKey() {
 type ChatOpts = {
   system: string;
   user: string;
-  /** Max completion tokens (default 700). */
+  /** Max completion tokens — includes any reasoning tokens (default 1500). */
   maxTokens?: number;
-  /** Force a JSON-object response (gpt-4o-mini json mode). */
+  /** Force a JSON-object response (json mode). */
   json?: boolean;
   /** Sampling temperature (default 0.3). */
   temperature?: number;
@@ -32,7 +32,7 @@ type ChatOpts = {
 export async function llmChat({
   system,
   user,
-  maxTokens = 700,
+  maxTokens = 1500,
   json = false,
   temperature = 0.3,
 }: ChatOpts): Promise<string> {
@@ -47,7 +47,9 @@ export async function llmChat({
     },
     body: JSON.stringify({
       model: LLM_MODEL,
-      max_tokens: maxTokens,
+      // GPT-5-era models require max_completion_tokens (and count reasoning
+      // tokens against it); gpt-4o-mini accepts it too.
+      max_completion_tokens: maxTokens,
       temperature,
       ...(json ? { response_format: { type: "json_object" } } : {}),
       messages: [

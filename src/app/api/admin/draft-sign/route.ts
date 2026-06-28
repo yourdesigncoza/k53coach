@@ -50,7 +50,7 @@ export async function POST(req: Request) {
   }\n\nDraft the five fields as JSON.`;
 
   try {
-    const text = await llmChat({ system, user, maxTokens: 700, json: true });
+    const text = await llmChat({ system, user, maxTokens: 1500, json: true });
     const json = JSON.parse(text || "{}");
     const wrap = (v: unknown) => ({ en: typeof v === "string" ? v : "" });
     return NextResponse.json({
