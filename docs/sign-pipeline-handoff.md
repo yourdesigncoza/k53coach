@@ -54,25 +54,31 @@ borderlines that all approved fine), consider nudging 0.85 down slightly to
 clear more automatically — weigh against the hard-accuracy gate.
 
 ### 3. Coverage gap — partially closed (sourced 6, 7 still open)
-Source of truth `data/chart-authority.json` now lists **427** codes (incl. road
+Source of truth `data/chart-authority.json` lists **429** codes (incl. road
 markings GM/RM/WM=38 and temporary TR/TW=122, both out of MVP scope). Of the
 **269 core learner codes (R/W/IN)** we now have **260 in the DB** — 254 served +
 **6 newly sourced into the admin queue** (`needs_review`, not yet served):
 W346, IN19, IN11.1, IN11.2, IN11.3, IN11.4. Source them with
 `node scripts/signs/source-missing.mjs && node scripts/signs/seed-db.mjs &&
-node scripts/signs/crosscheck.mjs`. **Review them in /admin** (all chart p.2).
-NOTE: IN11.1–11.4 are supplementary direction/distance *plates* used in
-combination with other signs, not standalone quiz signs — consider Exclude.
+node scripts/signs/crosscheck.mjs`. **Review them in /admin** (all chart p.2):
+- **W346** Emergency flashing light, **IN19** Modal transfer → Approve.
+- **IN11.1–11.4** are SUPPLEMENTARY PLATES (per SARTSM V4C9: .1 advisory speed,
+  .2 distance "for", .3 distance "to", .4 text message) — modifiers shown under a
+  primary sign, **not standalone quiz signs → Exclude** from the learner set.
 
-Dropped 2 PDF-extraction artifacts (`IN11.568`, `IN11.577`) — bogus
-IN11+variant-number concatenations — via a denylist in
-`extract-chart-authority.mjs` (429 → 427).
+**`init/V4C9.pdf` = SARTSM Vol 4 Ch 9 (Information signs)** is the authority for
+the IN-series. It corrected an earlier mistake: `IN11.568` / `IN11.577` are NOT
+OCR artifacts — they are real **IN11.500-series symbolic plates** (INS-568 =
+goods vehicle, INS-577 = police vehicle; cf. IN11.572 = abnormal vehicle). The
+whole IN11.x family (.1–.6 + the .500 symbol series) is supplementary plates —
+keep in the authority as real codes, but **exclude from serving**.
 
 **Still missing (7), need decisions before sourcing:**
 - **R201** — exists on Commons only as speed/GVM variants (`R201-60/-90/-100…`);
   parametric sign, pick representative variant(s).
 - **R325** (Bus stop reservation), **R341** — only numbered variants on Commons.
-- **IN1 / IN3** (Countdown) — only class/tourism variants (`IN1 (Class A1)`…).
+- **IN1 / IN3** (Countdown, per V4C9) — only class/tourism variants on Commons
+  (`IN1 (Class A1)`…); pick the plain countdown variant.
 - **R326** (Minibus stop reservation), **IN2** — not on Commons at all; need
   another PD source or redraw (mind PRD-additions §3 — prefer sourced PD).
 

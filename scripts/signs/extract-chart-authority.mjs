@@ -152,15 +152,13 @@ function main() {
     }
   });
 
-  // OCR artifacts: a bare IN11 plate concatenated with a neighbouring layout
-  // variant number (…-568 / …-577) bled into one token. No such signs exist.
-  const DENYLIST = new Set(["IN11.568", "IN11.577"]);
-
-  const codes = new Set(
-    [...category.keys(), ...artworkPage.keys(), ...name.keys()].filter(
-      (c) => !DENYLIST.has(c),
-    ),
-  );
+  // IN11.568 / IN11.577 are real IN11.500-series symbolic supplementary plates
+  // (INS-568 = goods vehicle, INS-577 = police vehicle) per SARTSM V4C9 — kept.
+  const codes = new Set([
+    ...category.keys(),
+    ...artworkPage.keys(),
+    ...name.keys(),
+  ]);
 
   const authority = [...codes]
     .map((code) => ({

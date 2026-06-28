@@ -115,7 +115,7 @@
   },
   {
     "code": "IN11.1",
-    "name": "Supplementary direction/distance plate (IN11.1)",
+    "name": "Supplementary plate — advisory speed",
     "category": "guidance",
     "subcategory": "Information signs",
     "temporary": false,
@@ -134,7 +134,7 @@
   },
   {
     "code": "IN11.2",
-    "name": "Supplementary direction/distance plate (IN11.2)",
+    "name": "Supplementary plate — distance (“for”)",
     "category": "guidance",
     "subcategory": "Information signs",
     "temporary": false,
@@ -153,7 +153,7 @@
   },
   {
     "code": "IN11.3",
-    "name": "Supplementary direction/distance plate (IN11.3)",
+    "name": "Supplementary plate — distance (“to”)",
     "category": "guidance",
     "subcategory": "Information signs",
     "temporary": false,
@@ -172,7 +172,7 @@
   },
   {
     "code": "IN11.4",
-    "name": "Supplementary direction/distance plate (IN11.4)",
+    "name": "Supplementary plate — text message",
     "category": "guidance",
     "subcategory": "Information signs",
     "temporary": false,
