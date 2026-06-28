@@ -277,6 +277,131 @@
         { "code": "R326-3", "params": { "detail": " for authorised mini-buses showing the route (line) number" } },
         { "code": "R326-4", "params": { "detail": " for authorised mini-buses showing the route (line) numbers" } }
       ]
+    },
+    {
+      "id": "plate-applies-vehicle",
+      "match": "^R5[678]\\d$",
+      "category": "regulatory",
+      "primarySource": "https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs",
+      "provenance": {
+        "braveQuery": ["South Africa selective restriction sign R560 applies to buses supplementary plate SARTSM natis"],
+        "urls": ["https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs", "https://www.transport.gov.za/wp-content/uploads/2023/02/V1C2.pdf"],
+        "snippetExcerpts": ["Selective Restriction signs (the R500 series) are supplementary plates that limit the sign they are mounted under."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "This is a supplementary plate fixed under another road sign. It means the sign above it applies only to {vehicle}.",
+        "formalMeaning": "Selective-restriction plate {code}: it limits the sign mounted above it to {vehicle}.",
+        "behaviour": "Read it together with the sign above. That sign's instruction applies to {vehicle}. If your vehicle is not in that class, the sign above does not apply to you, unless another plate also applies.",
+        "commonMistake": "Reading the plate on its own — it only changes who the sign above applies to, here {vehicle}.",
+        "testHint": "A small plate under a sign that names a vehicle = the sign above applies only to {vehicle}."
+      },
+      "variants": [
+        { "code": "R560", "params": { "vehicle": "buses" } },
+        { "code": "R561", "params": { "vehicle": "pedal cyclists" } },
+        { "code": "R562", "params": { "vehicle": "motorcycles" } },
+        { "code": "R563", "params": { "vehicle": "motorcars" } },
+        { "code": "R564", "params": { "vehicle": "taxis" } },
+        { "code": "R565", "params": { "vehicle": "mini-buses" } },
+        { "code": "R566", "params": { "vehicle": "midi-buses" } },
+        { "code": "R567", "params": { "vehicle": "delivery vehicles" } },
+        { "code": "R568", "params": { "vehicle": "goods vehicles" } },
+        { "code": "R569", "params": { "vehicle": "goods vehicles exceeding 10 tonnes GVM" } },
+        { "code": "R570", "params": { "vehicle": "construction vehicles" } },
+        { "code": "R571", "params": { "vehicle": "vehicles transporting dangerous substances" } },
+        { "code": "R572", "params": { "vehicle": "abnormal vehicles" } },
+        { "code": "R573", "params": { "vehicle": "rickshaws" } },
+        { "code": "R574", "params": { "vehicle": "tour buses" } },
+        { "code": "R575", "params": { "vehicle": "high-occupancy vehicles" } },
+        { "code": "R576", "params": { "vehicle": "ambulances and emergency vehicles" } },
+        { "code": "R577", "params": { "vehicle": "police vehicles" } },
+        { "code": "R578", "params": { "vehicle": "vehicles carrying disabled passengers" } },
+        { "code": "R579", "params": { "vehicle": "diplomatic vehicles" } },
+        { "code": "R580", "params": { "vehicle": "agricultural vehicles" } },
+        { "code": "R581", "params": { "vehicle": "animal-drawn vehicles" } },
+        { "code": "R582", "params": { "vehicle": "towed vehicles" } },
+        { "code": "R583", "params": { "vehicle": "trams" } }
+      ]
+    },
+    {
+      "id": "plate-applies-direction",
+      "match": "^R52[012]$",
+      "category": "regulatory",
+      "primarySource": "https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs",
+      "provenance": {
+        "braveQuery": ["South Africa selective restriction sign R520 applies to the left supplementary arrow plate"],
+        "urls": ["https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs"],
+        "snippetExcerpts": ["Direction supplementary plates point the way the sign above them applies."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "This is a supplementary plate fixed under another road sign. It means the sign above applies {dir}.",
+        "formalMeaning": "Selective-restriction plate {code}: the sign above it applies {dir}.",
+        "behaviour": "Read it with the sign above: apply that sign's instruction {dir}.",
+        "commonMistake": "Ignoring the arrow and applying the sign in the wrong direction.",
+        "testHint": "An arrow plate under a sign tells you which way the sign applies — here, {dir}."
+      },
+      "variants": [
+        { "code": "R520", "params": { "dir": "to the left" } },
+        { "code": "R521", "params": { "dir": "to the right" } },
+        { "code": "R522", "params": { "dir": "to the left and to the right" } }
+      ]
+    },
+    {
+      "id": "plate-applies-time",
+      "match": "^R5(0[1-6]|1[12])$",
+      "category": "regulatory",
+      "primarySource": "https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs",
+      "provenance": {
+        "braveQuery": ["South Africa selective restriction sign R501 applies during specified hours supplementary plate parking time"],
+        "urls": ["https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs"],
+        "snippetExcerpts": ["Time supplementary plates limit the sign above them to the days/hours shown."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "This is a supplementary plate fixed under another road sign. It means the sign above applies only {when}.",
+        "formalMeaning": "Selective-restriction plate {code}: the sign above it applies only {when}.",
+        "behaviour": "Read it with the sign above: that sign's instruction applies only {when}. Outside those times the sign above does not apply, unless another plate also applies.",
+        "commonMistake": "Obeying (or ignoring) the sign above at all times — it only applies {when}.",
+        "testHint": "A plate showing times/days under a sign limits that sign to {when}."
+      },
+      "variants": [
+        { "code": "R501", "params": { "when": "during the hours shown on the plate" } },
+        { "code": "R502", "params": { "when": "during the hours shown on the plate" } },
+        { "code": "R503", "params": { "when": "during the days and hours shown on the plate" } },
+        { "code": "R504", "params": { "when": "during the days and hours shown on the plate" } },
+        { "code": "R505", "overrides": { "plainEnglish": "This plate means parking is permitted only within the days and hours shown, for up to 30 minutes.", "formalMeaning": "Selective-restriction plate R505: parking is permitted within the days and hours shown, with a 30-minute limit.", "behaviour": "Park here only within the days/hours shown and for no longer than 30 minutes.", "commonMistake": "Parking outside the shown days/hours, or longer than 30 minutes.", "testHint": "Days/hours plate with '30 min' = parking only then, max 30 minutes." }, "params": { "when": "within the days and hours shown (30-minute limit)" } },
+        { "code": "R506", "overrides": { "plainEnglish": "This plate means parking is permitted only within the hours shown, for up to 60 minutes.", "formalMeaning": "Selective-restriction plate R506: parking is permitted within the hours shown, with a 60-minute limit.", "behaviour": "Park here only within the hours shown and for no longer than 60 minutes.", "commonMistake": "Parking outside the shown hours, or longer than 60 minutes.", "testHint": "Hours plate with '60 min' = parking only then, max 60 minutes." }, "params": { "when": "within the hours shown (60-minute limit)" } },
+        { "code": "R511", "params": { "when": "during the day-time hours" } },
+        { "code": "R512", "params": { "when": "during the night-time hours" } }
+      ]
+    },
+    {
+      "id": "plate-misc",
+      "match": "^R5(23|3[2345]|40)$",
+      "category": "regulatory",
+      "primarySource": "https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs",
+      "provenance": {
+        "braveQuery": ["South Africa selective restriction supplementary plate R523 pay and display R535 applies for 5 km R540 maximum spaces"],
+        "urls": ["https://www.natis.gov.za/index.php/downloads/general-documents?download=53:road-traffic-signs"],
+        "snippetExcerpts": ["Supplementary plates qualify the sign they are mounted under (extent, condition or class)."],
+        "retrievedAt": "2026-06-28"
+      },
+      "template": {
+        "plainEnglish": "{plain}",
+        "formalMeaning": "Selective-restriction plate {code}: {formal}",
+        "behaviour": "{behaviour}",
+        "commonMistake": "{mistake}",
+        "testHint": "{hint}"
+      },
+      "variants": [
+        { "code": "R523", "params": { "plain": "This plate means the parking here is pay-and-display: buy a ticket and display it in your vehicle.", "formal": "the parking is pay-and-display.", "behaviour": "Buy a parking ticket and display it visibly before leaving your vehicle.", "mistake": "Parking without buying and displaying a valid ticket.", "hint": "Pay-and-display = buy a ticket and show it on the dashboard." } },
+        { "code": "R532", "params": { "plain": "This is a supplementary plate. It means the sign above applies to vehicles with a mass over 16 tonnes GVM.", "formal": "the sign above applies to vehicles exceeding 16 tonnes GVM.", "behaviour": "Apply the sign above if your vehicle exceeds 16 t GVM.", "mistake": "Applying the sign above to lighter vehicles it does not cover.", "hint": "Plate naming a tonnage = the sign above applies to vehicles over that mass." } },
+        { "code": "R533", "params": { "plain": "This is a supplementary plate. It means the sign above applies to motorcycles with an engine up to 125 cc.", "formal": "the sign above applies to motorcycles with an engine size up to 125 cc.", "behaviour": "Apply the sign above if you ride a motorcycle of 125 cc or less.", "mistake": "Applying it to larger motorcycles it does not cover.", "hint": "'125 cc' plate = the sign above applies to small motorcycles only." } },
+        { "code": "R534", "params": { "plain": "This plate means traffic needing local access is also permitted, despite the sign above.", "formal": "traffic requiring local access is also permitted.", "behaviour": "If you need local access (e.g. to a property in the area), you may proceed despite the sign above.", "mistake": "Thinking the restriction above is absolute — local-access traffic is exempt.", "hint": "'Local access' plate = residents/access traffic are exempt from the sign above." } },
+        { "code": "R535", "params": { "plain": "This is a supplementary plate. It means the sign above applies for the next 5 kilometres.", "formal": "the sign above applies for a distance of 5 kilometres.", "behaviour": "Obey the sign above for the next 5 km.", "mistake": "Assuming the sign above ends sooner than 5 km.", "hint": "A distance plate (e.g. '5 km') tells you how far the sign above applies." } },
+        { "code": "R540", "params": { "plain": "This plate shows the maximum number of parking spaces in the parking reservation above.", "formal": "the maximum number of spaces in the parking reservation.", "behaviour": "Do not exceed the number of reserved spaces shown.", "mistake": "Reading the number as anything other than the count of reserved spaces.", "hint": "A number plate under a parking-reservation sign = how many spaces are reserved." } }
+      ]
     }
   ]
 }

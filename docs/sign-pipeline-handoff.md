@@ -82,9 +82,32 @@ keep in the authority as real codes, but **exclude from serving**.
 - **R326** (Minibus stop reservation), **IN2** — not on Commons at all; need
   another PD source or redraw (mind PRD-additions §3 — prefer sourced PD).
 
-### 4. 143 not-in-chart signs
-Currently `sa_relevant=false` (excluded). Quick triage: any actually valid SA
-signs we want to serve?
+### 4. 143 not-in-chart signs — CLOSED (external-content pipeline)
+The not-in-chart cohort had PD artwork but empty content + `sa_relevant=false`.
+Closed via the **external-content pipeline** (no chart ground truth → grounded in
+primary official sources, two automated PRE-serve gates, human only on
+ambiguity). DRY family templates in `data/external-families.json`. Outcome of the
+143:
+- **101 served** — speed limits R201-5..120, end-restriction `-600`, parking
+  R3xx-P, prohibitions R242/R245, pedestrian R360, moveable bridge W365, info
+  IN16/17/20, bus/mini-bus stops, and the R500-series supplementary plates
+  (applies-to-vehicle / time / direction / misc). Drafted → artwork visually
+  verified → independently content-audited → auto-approved at conf ≥ 0.95 +
+  primary source. Served set 260 → **361**.
+- **1 in the human queue: R360-LES** — its artwork is a warning triangle but the
+  drafted content frames a regulatory crossing; the artwork gate caught the
+  mismatch the text-only audit missed. **Review in /admin** (fix the framing to
+  "pedestrian crossing ahead — warning", or exclude).
+- **41 documented exclusions** (`verification.exclusionReason`, gates unchanged,
+  via `scripts/signs/stamp-exclusions.mjs`): 36 `R5xx-B` layout duplicates, 2
+  `alt=` scrape artifacts (IN9/IN18), 2 speed+plate composites (R201-100-R512,
+  R201-120-R511 — deferred), 1 non-SA right-hand-traffic variant (IN19-RHT).
+
+Pipeline scripts: `apply-external-drafts` → `render-external-manifest` →
+`external-verify-prompt.md` → `prep-external-audit` + `external-audit-prompt.md`
+→ `apply-external-verdicts`; shared helpers in `lib.mjs`; `check-drift` asserts
+provenance. Re-run a family: `node scripts/signs/apply-external-drafts.mjs
+--family <id>` then render/verify/audit/apply-verdicts.
 
 ### 5. Still deferred (not this pipeline)
 - [ ] **Afrikaans content** — sign `content.*.af` is empty; English-only so far.
