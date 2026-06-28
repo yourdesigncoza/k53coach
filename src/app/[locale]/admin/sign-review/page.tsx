@@ -1,7 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { ArrowLeft, FileText, Download } from "lucide-react";
 import { SignRowLink } from "@/components/admin/sign-row";
-import { Card, CardContent } from "@/components/ui/card";
 import { getSigns } from "@/lib/supabase/queries";
 import {
   SIGN_CATEGORY_LABEL,
@@ -42,6 +41,45 @@ export default async function SignReviewPage() {
         (not in chart). Click any sign to edit.
       </p>
 
+      <aside className="mt-5 flex flex-col gap-3 rounded-xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-900 dark:bg-blue-950/30 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex items-start gap-3">
+          <FileText className="mt-0.5 size-5 shrink-0 text-blue-600 dark:text-blue-400" />
+          <div className="text-sm">
+            <p className="font-medium text-blue-900 dark:text-blue-100">
+              NOTE · Source of truth — official DoT sign chart
+            </p>
+            <p className="mt-1 text-blue-900/80 dark:text-blue-100/80">
+              Coverage is measured against{" "}
+              <code className="rounded bg-blue-100 px-1 py-0.5 text-xs dark:bg-blue-900/50">
+                init/RTSigns_charts.pdf
+              </code>{" "}
+              ({cov.total} catalogued codes). Of the {cov.core} core learner signs
+              (R/W/IN), we cover{" "}
+              <span className="font-semibold">{cov.covered}</span>
+              {cov.missing.length > 0 && (
+                <>
+                  {" "}— missing {cov.missing.length}:{" "}
+                  <span className="font-medium">
+                    {cov.missing.map((m) => m.code).join(", ")}
+                  </span>
+                </>
+              )}
+              . A chart code counts as covered when we hold it or any parametric
+              variant (e.g. chart <code className="text-xs">R201</code> ↔ served{" "}
+              <code className="text-xs">R201-60</code>). Temporary signs (TR/TW)
+              and road markings (GM/RM/WM) are out of MVP scope.
+            </p>
+          </div>
+        </div>
+        <a
+          href="/RTSigns_charts.pdf"
+          download
+          className="inline-flex shrink-0 items-center gap-1.5 self-start rounded-lg border border-blue-300 bg-white px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-200 dark:hover:bg-blue-900/50"
+        >
+          <Download className="size-4" /> Download chart (PDF)
+        </a>
+      </aside>
+
       {excluded.length > 0 && (
         <section className="mt-6">
           <h2 className="mb-2 text-sm font-medium text-muted-foreground">
@@ -67,47 +105,6 @@ export default async function SignReviewPage() {
           </div>
         </section>
       ))}
-
-      <section className="mt-10 border-t border-border pt-6">
-        <Card>
-          <CardContent className="flex flex-col gap-3 py-4 sm:flex-row sm:items-start sm:justify-between">
-            <div className="flex items-start gap-3">
-              <FileText className="mt-0.5 size-5 shrink-0 text-muted-foreground" />
-              <div className="text-sm">
-                <p className="font-medium">Source of truth — official DoT sign chart</p>
-                <p className="mt-1 text-muted-foreground">
-                  Coverage is measured against{" "}
-                  <code className="rounded bg-muted px-1 py-0.5 text-xs">
-                    init/RTSigns_charts.pdf
-                  </code>{" "}
-                  ({cov.total} catalogued codes). Of the {cov.core} core learner
-                  signs (R/W/IN), we cover{" "}
-                  <span className="font-medium text-foreground">{cov.covered}</span>
-                  {cov.missing.length > 0 && (
-                    <>
-                      {" "}— missing {cov.missing.length}:{" "}
-                      <span className="text-foreground">
-                        {cov.missing.map((m) => m.code).join(", ")}
-                      </span>
-                    </>
-                  )}
-                  . A chart code counts as covered when we hold it or any
-                  parametric variant (e.g. chart <code className="text-xs">R201</code>{" "}
-                  ↔ served <code className="text-xs">R201-60</code>). Temporary
-                  signs (TR/TW) and road markings (GM/RM/WM) are out of MVP scope.
-                </p>
-              </div>
-            </div>
-            <a
-              href="/RTSigns_charts.pdf"
-              download
-              className="inline-flex shrink-0 items-center gap-1.5 self-start rounded-lg border border-border px-3 py-2 text-sm font-medium hover:bg-muted"
-            >
-              <Download className="size-4" /> Download chart (PDF)
-            </a>
-          </CardContent>
-        </Card>
-      </section>
     </div>
   );
 }
