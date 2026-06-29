@@ -23,7 +23,7 @@ export const READINESS_QUESTIONS: Question[] = [
     answer: 1,
     explanation:
       "An eight-sided (octagonal) red sign is always STOP. You must stop completely every time, then proceed only when the way is clear.",
-    signCode: "R1-STOP",
+    signCode: "R1",
   },
   {
     id: "q-signs-2",
@@ -34,7 +34,7 @@ export const READINESS_QUESTIONS: Question[] = [
     answer: 2,
     explanation:
       "A downward triangle with a red border is a yield sign. Slow down and give right of way; only stop if something is coming.",
-    signCode: "R2-YIELD",
+    signCode: "R2",
   },
   {
     id: "q-signs-3",
@@ -51,7 +51,7 @@ export const READINESS_QUESTIONS: Question[] = [
     answer: 1,
     explanation:
       "A no-entry sign (red circle, white bar) forbids you from entering that road. A one-way sign (an arrow) simply shows the single direction traffic may travel.",
-    signCode: "R3-NOENTRY",
+    signCode: "R3",
   },
   {
     id: "q-signs-4",
@@ -67,7 +67,7 @@ export const READINESS_QUESTIONS: Question[] = [
     answer: 2,
     explanation:
       "A number in a red circle is a maximum speed limit. You may drive slower, but never faster than 60 km/h until another sign changes it.",
-    signCode: "R5-SPEED60",
+    signCode: "R201-60",
   },
   {
     id: "q-signs-5",
@@ -79,7 +79,7 @@ export const READINESS_QUESTIONS: Question[] = [
     answer: 1,
     explanation:
       "Two crossing lines mean no stopping — stricter than no-parking (one line). You may not even pause to drop someone off.",
-    signCode: "R4-NOSTOP",
+    signCode: "R217",
   },
 
   // ---- Rules of the road ----

@@ -62,6 +62,7 @@
     "start": "Start the test",
     "agree": "By starting you agree to our",
     "privacyNotice": "privacy notice",
+    "backHome": "Back to home",
     "questionOf": "Question {current} of {total}",
     "next": "Next question",
     "finish": "See my readiness score"
