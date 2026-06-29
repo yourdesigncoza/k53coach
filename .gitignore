@@ -53,3 +53,5 @@ next-env.d.ts
 # Keep new drops into init/ local-only (e.g. large SARTSM PDFs like V4C9).
 # Already-tracked init/ files (PRD.md, RTSigns_charts.pdf, …) stay tracked.
 init/*
+
+ui-design/*

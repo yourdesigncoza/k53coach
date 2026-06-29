@@ -102,6 +102,57 @@ export type Database = {
         }
         Relationships: []
       }
+      questions: {
+        Row: {
+          answer: number
+          created_at: string
+          difficulty: number
+          explanation: string
+          id: string
+          in_readiness: boolean
+          options: Json
+          prompt: string
+          review_status: string
+          sign_code: string | null
+          sort_order: number
+          topic: string
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          answer?: number
+          created_at?: string
+          difficulty?: number
+          explanation?: string
+          id: string
+          in_readiness?: boolean
+          options?: Json
+          prompt?: string
+          review_status?: string
+          sign_code?: string | null
+          sort_order?: number
+          topic: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          answer?: number
+          created_at?: string
+          difficulty?: number
+          explanation?: string
+          id?: string
+          in_readiness?: boolean
+          options?: Json
+          prompt?: string
+          review_status?: string
+          sign_code?: string | null
+          sort_order?: number
+          topic?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       readiness_results: {
         Row: {
           band: string

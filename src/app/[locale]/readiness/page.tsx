@@ -1,15 +1,16 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { CheckCircle2, Clock, Lock } from "lucide-react";
 import { GlobalHeader } from "@/components/global-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { READINESS_QUESTIONS } from "@/content/readiness-questions";
+import { getReadinessQuestions } from "@/lib/questions";
 
 export const metadata = { title: "Free readiness test" };
 
-export default function ReadinessIntroPage() {
-  const t = useTranslations("readiness");
+export default async function ReadinessIntroPage() {
+  const t = await getTranslations("readiness");
+  const count = (await getReadinessQuestions()).length;
 
   const benefits = [
     { icon: Clock, text: t("benefitTime") },
@@ -24,7 +25,7 @@ export default function ReadinessIntroPage() {
         <section className="flex-1">
           <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
           <p className="mt-2 text-muted-foreground">
-            {t("intro", { count: READINESS_QUESTIONS.length })}
+            {t("intro", { count })}
           </p>
 
           <Card className="mt-6">

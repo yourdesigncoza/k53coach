@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/navigation";
-import { ChevronRight, ListChecks, Languages } from "lucide-react";
+import { ChevronRight, ListChecks, Languages, FileQuestion } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ExceptionsQueue,
@@ -68,6 +68,27 @@ export default async function AdminSignsPage() {
                   Browse all {signs.length} signs by category
                   {excluded > 0 ? ` — excluded (${excluded}) listed first` : ""}.
                   Click any sign to edit.
+                </span>
+              </span>
+              <ChevronRight className="size-4 shrink-0 text-muted-foreground" />
+            </Link>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section className="mt-4">
+        <Card>
+          <CardContent className="py-0">
+            <Link
+              href="/admin/questions"
+              className="flex items-center gap-3 py-3.5"
+            >
+              <FileQuestion className="size-5 shrink-0 text-muted-foreground" />
+              <span className="flex-1">
+                <span className="block text-sm font-medium">Question bank</span>
+                <span className="block text-xs text-muted-foreground">
+                  Add, edit, approve, and delete quiz questions. Approved-only is
+                  served; the free readiness test uses the flagged set.
                 </span>
               </span>
               <ChevronRight className="size-4 shrink-0 text-muted-foreground" />
