@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/navigation";
-import { ChevronRight, ListChecks } from "lucide-react";
+import { ChevronRight, ListChecks, Languages } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ExceptionsQueue,
@@ -68,6 +68,27 @@ export default async function AdminSignsPage() {
                   Browse all {signs.length} signs by category
                   {excluded > 0 ? ` — excluded (${excluded}) listed first` : ""}.
                   Click any sign to edit.
+                </span>
+              </span>
+              <ChevronRight className="size-4 shrink-0 text-muted-foreground" />
+            </Link>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section className="mt-4">
+        <Card>
+          <CardContent className="py-0">
+            <Link
+              href="/admin/translations"
+              className="flex items-center gap-3 py-3.5"
+            >
+              <Languages className="size-5 shrink-0 text-muted-foreground" />
+              <span className="flex-1">
+                <span className="block text-sm font-medium">UI translations</span>
+                <span className="block text-xs text-muted-foreground">
+                  Edit the English wording and Afrikaans translation of every
+                  interface string. Changes go live immediately.
                 </span>
               </span>
               <ChevronRight className="size-4 shrink-0 text-muted-foreground" />

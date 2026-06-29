@@ -213,9 +213,56 @@ export type Database = {
         }
         Relationships: []
       }
+      ui_translations: {
+        Row: {
+          key: string
+          locale: string
+          namespace: string
+          updated_at: string
+          updated_by: string | null
+          value: string
+        }
+        Insert: {
+          key: string
+          locale: string
+          namespace: string
+          updated_at?: string
+          updated_by?: string | null
+          value: string
+        }
+        Update: {
+          key?: string
+          locale?: string
+          namespace?: string
+          updated_at?: string
+          updated_by?: string | null
+          value?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
-      [_ in never]: never
+      ui_translations_public: {
+        Row: {
+          key: string | null
+          locale: string | null
+          namespace: string | null
+          value: string | null
+        }
+        Insert: {
+          key?: string | null
+          locale?: string | null
+          namespace?: string | null
+          value?: string | null
+        }
+        Update: {
+          key?: string | null
+          locale?: string | null
+          namespace?: string | null
+          value?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       is_admin: { Args: never; Returns: boolean }
