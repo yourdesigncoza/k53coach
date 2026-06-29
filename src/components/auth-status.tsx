@@ -4,22 +4,22 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { LogOut } from "lucide-react";
 import { Link, useRouter } from "@/i18n/navigation";
-import { createClient } from "@/lib/supabase/client";
+import { createClient, supabaseEnvReady } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
-/** Shows the signed-in email + sign-out, or a Log in link. Reflects live auth. */
+/** Shows a Logout button when signed in, or a Log in link otherwise. Live auth. */
 export function AuthStatus({ className }: { className?: string }) {
   const t = useTranslations("common");
   const router = useRouter();
-  const [email, setEmail] = useState<string | null | undefined>(undefined);
+  // `undefined` = resolving; `null` = signed out (or demo mode, where there's
+  // no auth, so start resolved at null and skip the effect's network calls).
+  const [email, setEmail] = useState<string | null | undefined>(
+    supabaseEnvReady ? undefined : null,
+  );
 
   useEffect(() => {
     const supabase = createClient();
-    if (!supabase) {
-      setEmail(null);
-      return;
-    }
+    if (!supabase) return; // demo mode — already resolved to null
     supabase.auth
       .getUser()
       .then(({ data }) => setEmail(data.user?.email ?? null));
@@ -50,16 +50,13 @@ export function AuthStatus({ className }: { className?: string }) {
   }
 
   return (
-    <div className={cn("flex min-w-0 items-center gap-1", className)}>
-      <span className="truncate text-xs text-muted-foreground">{email}</span>
-      <Button
-        variant="ghost"
-        size="icon-sm"
-        onClick={signOut}
-        aria-label="Sign out"
-      >
-        <LogOut className="size-4" />
-      </Button>
-    </div>
+    <Button
+      variant="ghost"
+      size="sm"
+      className={className}
+      onClick={signOut}
+    >
+      <LogOut className="size-4" /> {t("logout")}
+    </Button>
   );
 }

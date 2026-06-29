@@ -34,7 +34,7 @@ export function Logo({
         />
       </svg>
       {showWord && (
-        <span className="text-lg font-semibold tracking-tight">
+        <span className="text-lg font-semibold tracking-tight whitespace-nowrap">
           K53 <span className="text-primary">AI Coach</span>
         </span>
       )}

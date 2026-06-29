@@ -3,33 +3,25 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { CheckCircle2, XCircle, Sparkles, Loader2 } from "lucide-react";
+import { CheckCircle2, XCircle, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { SignImage } from "@/components/sign-image";
 import { cn } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
 import type { Question } from "@/lib/types";
 
-type ExplainResponse = {
-  correct: boolean;
-  explanation: string;
-};
-
 /**
- * Practice mode — the "Explain my mistake" loop (overview §6.3).
- *
- * Unlike the diagnostic, this gives instant feedback: pick an answer, see if
- * it's right, and get a grounded explanation from /api/ai/explain (which only
- * rephrases verified content — never invents). This is the core differentiator
- * versus a plain quiz app.
+ * Practice mode — instant-feedback loop. Pick an answer, see if it's right, and
+ * get the verified explanation for the question (hard-coded content, editable in
+ * admin Content Management). Runtime AI is intentionally NOT used here; AI is
+ * reserved for offline content drafting and (later) post-test coaching.
  */
 export function PracticeRunner({ questions }: { questions: Question[] }) {
   const t = useTranslations("practice");
   const [index, setIndex] = useState(0);
   const [chosen, setChosen] = useState<number | null>(null);
-  const [explanation, setExplanation] = useState<ExplainResponse | null>(null);
-  const [loading, setLoading] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [done, setDone] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
@@ -49,7 +41,7 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
     ((index + (answered ? 1 : 0)) / questions.length) * 100,
   );
 
-  async function choose(optionIndex: number) {
+  function choose(optionIndex: number) {
     if (answered) return;
     setChosen(optionIndex);
     const correct = optionIndex === q.answer;
@@ -66,23 +58,6 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
         correct,
       });
     }
-
-    setLoading(true);
-    try {
-      const res = await fetch("/api/ai/explain", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ questionId: q.id, chosenIndex: optionIndex }),
-      });
-      setExplanation(await res.json());
-    } catch {
-      setExplanation({
-        correct: optionIndex === q.answer,
-        explanation: q.explanation,
-      });
-    } finally {
-      setLoading(false);
-    }
   }
 
   function next() {
@@ -92,7 +67,6 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
     }
     setIndex((i) => i + 1);
     setChosen(null);
-    setExplanation(null);
   }
 
   if (done) {
@@ -117,7 +91,6 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
                 onClick={() => {
                   setIndex(0);
                   setChosen(null);
-                  setExplanation(null);
                   setCorrectCount(0);
                   setDone(false);
                 }}
@@ -151,9 +124,18 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
       </div>
 
       <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-4 py-6">
+        {q.signCode && (
+          <div className="mb-4 flex justify-center">
+            <SignImage
+              svgFile={`signs/${q.signCode}.svg`}
+              name={q.prompt}
+              className="h-28 w-28 rounded-lg bg-white p-2 ring-1 ring-border"
+            />
+          </div>
+        )}
         <h1 className="text-xl leading-snug font-semibold">{q.prompt}</h1>
 
-        <div className="mt-6 flex flex-col gap-3">
+        <div className="mt-5 flex flex-col gap-2.5">
           {q.options.map((opt, i) => {
             const isAnswer = i === q.answer;
             const isChosen = i === chosen;
@@ -162,6 +144,7 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
             return (
               <Card
                 key={i}
+                size="sm"
                 role="button"
                 tabIndex={answered ? -1 : 0}
                 aria-disabled={answered}
@@ -185,7 +168,7 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
                     "opacity-60 ring-border",
                 )}
               >
-                <CardContent className="flex items-center gap-3 py-4">
+                <CardContent className="flex items-center gap-3">
                   <span
                     className={cn(
                       "grid size-7 shrink-0 place-items-center rounded-full border text-sm font-semibold",
@@ -217,17 +200,11 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
           <Card className="mt-4 bg-secondary/40">
             <CardContent className="py-4">
               <p className="flex items-center gap-1.5 text-sm font-medium">
-                <Sparkles className="size-4" /> {t("aiCoach")}
+                <Info className="size-4" /> {t("explanation")}
               </p>
-              {loading ? (
-                <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
-                  <Loader2 className="size-4 animate-spin" /> {t("explaining")}
-                </p>
-              ) : (
-                <p className="mt-1.5 text-sm text-muted-foreground">
-                  {explanation?.explanation ?? q.explanation}
-                </p>
-              )}
+              <p className="mt-1.5 text-sm text-muted-foreground">
+                {q.explanation}
+              </p>
             </CardContent>
           </Card>
         )}
@@ -237,7 +214,7 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
         <div className="mx-auto w-full max-w-2xl px-4 py-3">
           <Button
             onClick={next}
-            disabled={!answered || loading}
+            disabled={!answered}
             className="h-12 w-full rounded-xl text-base"
           >
             {index === questions.length - 1 ? t("finish") : t("next")}

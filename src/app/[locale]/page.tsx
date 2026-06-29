@@ -8,15 +8,13 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
-import { Logo } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { LanguageSwitcher } from "@/components/language-switcher";
+import { GlobalHeader } from "@/components/global-header";
 
 export default function LandingPage() {
   const t = useTranslations("landing");
-  const c = useTranslations("common");
 
   const steps = [
     { icon: ScanLine, title: t("step1Title"), body: t("step1Body") },
@@ -26,17 +24,7 @@ export default function LandingPage() {
 
   return (
     <main className="flex-1">
-      <header className="pt-safe mx-auto flex max-w-6xl items-center justify-between px-5 py-5 md:px-8">
-        <Logo />
-        <div className="flex items-center gap-2">
-          <LanguageSwitcher />
-          <Button
-            variant="ghost"
-            size="sm"
-            render={<Link href="/auth">{c("login")}</Link>}
-          />
-        </div>
-      </header>
+      <GlobalHeader />
 
       <section className="mx-auto max-w-2xl px-5 pt-6 text-center md:pt-16">
         <Badge variant="secondary" className="mx-auto">

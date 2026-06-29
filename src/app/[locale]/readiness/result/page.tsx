@@ -7,7 +7,7 @@ import type { Json } from "@/lib/database.types";
 import { Link } from "@/i18n/navigation";
 import { Share2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-import { Logo } from "@/components/brand/logo";
+import { GlobalHeader } from "@/components/global-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -56,15 +56,18 @@ export default function ResultPage() {
 
   if (loaded && !result) {
     return (
-      <main className="mx-auto grid min-h-dvh w-full max-w-md place-items-center px-5 text-center">
-        <div>
-          <p className="text-muted-foreground">{t("noResult")}</p>
-          <Button
-            className="mt-4 rounded-xl"
-            render={<Link href="/readiness">{t("takeTest")}</Link>}
-          />
-        </div>
-      </main>
+      <>
+        <GlobalHeader />
+        <main className="mx-auto grid w-full max-w-md flex-1 place-items-center px-5 text-center">
+          <div>
+            <p className="text-muted-foreground">{t("noResult")}</p>
+            <Button
+              className="mt-4 rounded-xl"
+              render={<Link href="/readiness">{t("takeTest")}</Link>}
+            />
+          </div>
+        </main>
+      </>
     );
   }
 
@@ -89,12 +92,10 @@ export default function ResultPage() {
   }
 
   return (
-    <main className="mx-auto w-full max-w-2xl flex-1 px-5 pb-28 md:pb-12">
-      <header className="pt-safe py-5">
-        <Logo />
-      </header>
-
-      <section className="flex flex-col items-center text-center">
+    <>
+      <GlobalHeader />
+      <main className="mx-auto w-full max-w-2xl flex-1 px-5 pb-28 pt-5 md:pb-12">
+        <section className="flex flex-col items-center text-center">
         <ReadinessRing percent={result.overall} sublabel={t("overall")} />
         <Badge
           variant="secondary"
@@ -169,6 +170,7 @@ export default function ResultPage() {
           </Button>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

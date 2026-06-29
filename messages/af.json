@@ -3,7 +3,8 @@
   "common": {
     "appName": "K53 AI Coach",
     "demo": "Demo",
-    "login": "Meld aan"
+    "login": "Meld aan",
+    "logout": "Teken uit"
   },
   "language": {
     "label": "Taal",
@@ -14,7 +15,8 @@
     "home": "Tuis",
     "learn": "Leer",
     "mock": "Toetseksamen",
-    "progress": "Vordering"
+    "progress": "Vordering",
+    "admin": "Admin"
   },
   "bands": {
     "not-ready": "Nog nie gereed nie",
@@ -171,8 +173,7 @@
   "practice": {
     "counter": "{current} van {total}",
     "correctCount": "{count} reg",
-    "aiCoach": "AI-afrigter",
-    "explaining": "Verduidelik tans…",
+    "explanation": "Verduideliking",
     "next": "Volgende vraag",
     "finish": "Klaar",
     "completeTitle": "Oefening voltooi",

@@ -2,7 +2,8 @@
   "common": {
     "appName": "K53 AI Coach",
     "demo": "Demo",
-    "login": "Log in"
+    "login": "Log in",
+    "logout": "Logout"
   },
   "language": {
     "label": "Language",
@@ -13,7 +14,8 @@
     "home": "Home",
     "learn": "Learn",
     "mock": "Mock Test",
-    "progress": "Progress"
+    "progress": "Progress",
+    "admin": "Admin"
   },
   "bands": {
     "not-ready": "Not ready yet",
@@ -170,8 +172,7 @@
   "practice": {
     "counter": "{current} of {total}",
     "correctCount": "{count} correct",
-    "aiCoach": "AI Coach",
-    "explaining": "Explaining…",
+    "explanation": "Explanation",
     "next": "Next question",
     "finish": "Finish",
     "completeTitle": "Practice complete",

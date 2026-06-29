@@ -4,14 +4,13 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useRouter } from "@/i18n/navigation";
-import { Fingerprint, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { toast } from "sonner";
-import { Logo } from "@/components/brand/logo";
+import { GlobalHeader } from "@/components/global-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import { createClient, supabaseEnvReady } from "@/lib/supabase/client";
 
 export default function AuthPage() {
@@ -41,32 +40,15 @@ export default function AuthPage() {
   }
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col justify-center px-5 py-10">
-      <div className="mb-8 flex justify-center">
-        <Logo />
-      </div>
-
-      <Card>
+    <>
+      <GlobalHeader />
+      <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-5 py-10">
+        <Card>
         <CardContent className="py-6">
           <h1 className="text-xl font-semibold">{t("title")}</h1>
           <p className="mt-1 text-sm text-muted-foreground">{t("subtitle")}</p>
 
-          {/* Passkey-ready: device-native auth, no biometric data stored. */}
-          <Button
-            variant="outline"
-            className="mt-5 h-12 w-full rounded-xl text-base"
-            onClick={() => toast.info(t("passkeyToast"))}
-          >
-            <Fingerprint className="size-4" /> {t("passkey")}
-          </Button>
-
-          <div className="my-5 flex items-center gap-3">
-            <Separator className="flex-1" />
-            <span className="text-xs text-muted-foreground">{t("or")}</span>
-            <Separator className="flex-1" />
-          </div>
-
-          <form onSubmit={sendMagicLink} className="flex flex-col gap-3">
+          <form onSubmit={sendMagicLink} className="mt-5 flex flex-col gap-3">
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="email">{t("email")}</Label>
               <Input
@@ -104,6 +86,7 @@ export default function AuthPage() {
           {t("learnMore")}
         </Link>
       </p>
-    </main>
+      </main>
+    </>
   );
 }

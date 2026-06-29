@@ -1,10 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { Check } from "lucide-react";
 import { toast } from "sonner";
-import { Logo } from "@/components/brand/logo";
+import { GlobalHeader } from "@/components/global-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -26,14 +25,10 @@ export default function PaywallPage() {
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-md flex-1 flex-col px-5 pb-10">
-      <header className="pt-safe py-5">
-        <Link href="/" aria-label="Home">
-          <Logo />
-        </Link>
-      </header>
-
-      <section className="flex-1">
+    <>
+      <GlobalHeader />
+      <main className="mx-auto flex w-full max-w-md flex-1 flex-col px-5 pb-10 pt-5">
+        <section className="flex-1">
         <Badge variant="secondary">{t("badge")}</Badge>
         <h1 className="mt-3 text-2xl font-bold tracking-tight">{t("title")}</h1>
         <p className="mt-2 text-muted-foreground">{t("subtitle")}</p>
@@ -77,6 +72,7 @@ export default function PaywallPage() {
         </Button>
         <p className="text-center text-xs text-muted-foreground">{t("note")}</p>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

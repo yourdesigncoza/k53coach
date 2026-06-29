@@ -8,6 +8,7 @@ import { Logo } from "@/components/brand/logo";
 import { NAV_ITEMS } from "@/components/nav-items";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { AuthStatus } from "@/components/auth-status";
+import { AdminNavLink } from "@/components/admin-nav-link";
 
 /** Fixed left sidebar — primary navigation on desktop (md+). */
 export function SideNav() {
@@ -46,6 +47,7 @@ export function SideNav() {
         </ul>
       </nav>
       <div className="flex flex-col gap-3 border-t border-border p-4">
+        <AdminNavLink className="w-full justify-center" />
         <AuthStatus />
         <LanguageSwitcher />
       </div>

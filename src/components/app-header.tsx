@@ -2,6 +2,7 @@ import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/brand/logo";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { AuthStatus } from "@/components/auth-status";
+import { AdminNavLink } from "@/components/admin-nav-link";
 
 /** Compact sticky header — shown on mobile only (desktop uses the sidebar). */
 export function AppHeader() {
@@ -13,6 +14,7 @@ export function AppHeader() {
         </Link>
         <div className="flex items-center gap-1">
           <LanguageSwitcher />
+          <AdminNavLink />
           <AuthStatus />
         </div>
       </div>
