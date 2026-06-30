@@ -145,8 +145,9 @@
     .qprog b.now { box-shadow: 0 0 0 2px var(--gold-400) inset; color: var(--surface-ink); }
     .emoji-row { display: flex; gap: .5rem; }
     .emoji-row button { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--surface-border-2);
-      background: var(--surface); font-size: 1.1rem; }
-    .emoji-row button[aria-pressed="true"] { border-color: var(--gold-400); background: var(--warn-soft); }
+      background: var(--surface); display: grid; place-items: center; color: var(--surface-ink-2); transition: border-color .15s, background .15s; }
+    .emoji-row button:hover { border-color: var(--gold-400); }
+    .emoji-row button[aria-pressed="true"] { border-color: var(--gold-400); background: var(--warn-soft); color: var(--warn); }
     .tip { display: flex; gap: .6rem; }
     .tip .ic { font-size: 1.1rem; }
 
@@ -202,7 +203,7 @@
     <!-- HERO -->
     <section class="hero"><div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">✦ AI-POWERED · HUMAN-FRIENDLY</span>
+        <span class="eyebrow"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-spark"/></svg> AI-POWERED · HUMAN-FRIENDLY</span>
         <h1 class="h1">Pass your K53 learner's<br>test <span class="gold-text">the first time.</span></h1>
         <p class="lead">Smart practice. Instant feedback. Your AI coach explains every mistake in plain language — until you're test-ready.</p>
         <div class="ctas">
@@ -232,10 +233,10 @@
               <div class="small muted" style="margin-top:.3rem">Free anonymous test · no account</div></div>
           </div>
           <div class="topic-strip">
-            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-signs)">◆</span><span class="t">Road Signs</span><span class="p">72%</span></div>
-            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-rules)">§</span><span class="t">Rules of the Road</span><span class="p">61%</span></div>
-            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-controls)">⚙</span><span class="t">Vehicle Controls</span><span class="p">58%</span></div>
-            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-safety)">⚠</span><span class="t">Road Safety</span><span class="p">65%</span></div>
+            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-signs)"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-sign"/></svg></span><span class="t">Road Signs</span><span class="p">72%</span></div>
+            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-rules)"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-rules"/></svg></span><span class="t">Rules of the Road</span><span class="p">61%</span></div>
+            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-controls)"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-controls"/></svg></span><span class="t">Vehicle Controls</span><span class="p">58%</span></div>
+            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-safety)"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-safety"/></svg></span><span class="t">Road Safety</span><span class="p">65%</span></div>
           </div>
         </div>
       </div>
@@ -248,10 +249,10 @@
         <h2 class="h2">More than a quiz — a coach that tells you <span class="gold-text">why</span>.</h2>
       </div>
       <div class="features">
-        <div class="card feature"><div class="ic">🧠</div><h3 class="h4">AI explains every mistake</h3><p class="small muted">Clear, plain-language reasons — not just "wrong".</p></div>
-        <div class="card feature"><div class="ic">📋</div><h3 class="h4">Exam-style practice</h3><p class="small muted">Real K53 questions matched to the latest manual.</p></div>
-        <div class="card feature"><div class="ic">📈</div><h3 class="h4">Track your progress</h3><p class="small muted">See your weak spots and readiness score over time.</p></div>
-        <div class="card feature"><div class="ic">📱</div><h3 class="h4">Learn anywhere</h3><p class="small muted">Any device, installable as an app, works offline.</p></div>
+        <div class="card feature"><div class="ic"><svg class="gi"><use href="/styleguide/icons.svg#i-explain"/></svg></div><h3 class="h4">AI explains every mistake</h3><p class="small muted">Clear, plain-language reasons — not just "wrong".</p></div>
+        <div class="card feature"><div class="ic"><svg class="gi"><use href="/styleguide/icons.svg#i-exam"/></svg></div><h3 class="h4">Exam-style practice</h3><p class="small muted">Real K53 questions matched to the latest manual.</p></div>
+        <div class="card feature"><div class="ic"><svg class="gi"><use href="/styleguide/icons.svg#i-progress"/></svg></div><h3 class="h4">Track your progress</h3><p class="small muted">See your weak spots and readiness score over time.</p></div>
+        <div class="card feature"><div class="ic"><svg class="gi"><use href="/styleguide/icons.svg#i-device"/></svg></div><h3 class="h4">Learn anywhere</h3><p class="small muted">Any device, installable as an app, works offline.</p></div>
       </div>
     </div></section>
 
@@ -291,14 +292,14 @@
         <!-- sidebar -->
         <aside class="side">
           <a class="brand" href="#" style="margin-bottom:var(--s-4); font-size:1rem"><span class="mark">K</span> K53 AI Coach</a>
-          <div class="nav-item">▦ Dashboard</div>
-          <div class="nav-item active">▷ Practice</div>
-          <div class="nav-item">▤ Topics</div>
-          <div class="nav-item">◷ Mock Test</div>
-          <div class="nav-item">⤴ Progress</div>
-          <div class="nav-item">★ Achievements</div>
+          <div class="nav-item"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-dashboard"/></svg> Dashboard</div>
+          <div class="nav-item active"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-practice"/></svg> Practice</div>
+          <div class="nav-item"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-topics"/></svg> Topics</div>
+          <div class="nav-item"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-mock"/></svg> Mock Test</div>
+          <div class="nav-item"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-progress"/></svg> Progress</div>
+          <div class="nav-item"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-trophy"/></svg> Achievements</div>
           <div class="unlock-card">
-            <div class="small" style="color:var(--gold-300); font-weight:600">🔓 Unlock full access</div>
+            <div class="small" style="color:var(--gold-300); font-weight:600; display:flex; align-items:center; gap:.4rem"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-lock"/></svg> Unlock full access</div>
             <div class="caption" style="text-transform:none; color:var(--mist); margin-top:.2rem">R179 / 90 days · unlimited practice</div>
           </div>
         </aside>
@@ -318,7 +319,7 @@
               <div id="options"></div>
 
               <div class="coach" id="coach" aria-live="polite">
-                <div class="who">✦ AI Coach</div>
+                <div class="who"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-spark"/></svg> AI Coach</div>
                 <p id="coach-explain"></p>
                 <p class="why"><b>Why?</b> <span id="coach-why"></span></p>
               </div>
@@ -342,14 +343,14 @@
               <div class="card">
                 <h4>Confidence — feeling good?</h4>
                 <div class="emoji-row" role="group" aria-label="How confident do you feel?">
-                  <button type="button" aria-pressed="false" aria-label="Not confident">😟</button>
-                  <button type="button" aria-pressed="false" aria-label="Unsure">😐</button>
-                  <button type="button" aria-pressed="true"  aria-label="Confident">😄</button>
+                  <button type="button" aria-pressed="false" aria-label="Not confident"><svg class="gi"><use href="/styleguide/icons.svg#i-face-sad"/></svg></button>
+                  <button type="button" aria-pressed="false" aria-label="Unsure"><svg class="gi"><use href="/styleguide/icons.svg#i-face-neutral"/></svg></button>
+                  <button type="button" aria-pressed="true"  aria-label="Confident"><svg class="gi"><use href="/styleguide/icons.svg#i-face-happy"/></svg></button>
                 </div>
               </div>
               <div class="card">
                 <h4>Tip</h4>
-                <div class="tip"><span class="ic">💡</span><p class="small" style="margin:0;color:var(--surface-ink-2)">Read the sign's shape, colour and meaning together — it's the key to safe driving.</p></div>
+                <div class="tip"><span class="ic" style="color:var(--warn)"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-bulb"/></svg></span><p class="small" style="margin:0;color:var(--surface-ink-2)">Read the sign's shape, colour and meaning together — it's the key to safe driving.</p></div>
               </div>
             </div>
           </div>
@@ -364,7 +365,7 @@
           <h2 class="h3">A readiness score you can actually read.</h2>
           <p class="muted small" style="margin-top:.5rem">Share your learner's progress over WhatsApp and see exactly where they stand — no jargon, no guesswork.</p>
         </div>
-        <a class="btn btn-primary" href="#">Share readiness score</a>
+        <a class="btn btn-primary" href="#"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-share"/></svg> Share readiness score</a>
       </div>
     </div></section>
   </main>

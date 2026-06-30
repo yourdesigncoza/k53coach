@@ -160,7 +160,7 @@
       <div class="sg-title"><span class="n">05</span><h2 class="h2">Cards</h2></div>
       <div class="sg-grid cols-3">
         <div class="card">
-          <div class="row between"><span class="topic-badge" style="background:var(--topic-signs)">◆</span><span class="chip">72%</span></div>
+          <div class="row between"><span class="topic-badge" style="background:var(--topic-signs)"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#i-sign"/></svg></span><span class="chip">72%</span></div>
           <h3 class="h4" style="margin-top:var(--s-3)">Road Signs</h3>
           <p class="small muted">45 / 62 questions</p>
           <div class="bar" style="margin-top:var(--s-3)"><i style="--val:72%"></i></div>
@@ -227,7 +227,7 @@
     <!-- ICONS -->
     <section class="sg" id="icons">
       <div class="sg-title"><span class="n">10</span><h2 class="h2">Icons</h2></div>
-      <p class="principle">Line icons, ~1.5px stroke, rounded joins. Glyphs shown as placeholders — final set from a single line-icon family (e.g. Lucide).</p>
+      <p class="principle">Crafted line icons on a 24px grid, 1.75px stroke, rounded joins, single <code class="tok">currentColor</code> fill — defined once in <code class="tok">/styleguide/icons.svg</code> and referenced via <code class="tok">&lt;use&gt;</code>. Hover a tile for its name.</p>
       <div class="sg-grid cols-6" id="icongrid" style="margin-top:var(--s-4)"></div>
     </section>
 
@@ -279,9 +279,9 @@
       ["Ink 2","--surface-ink-2","#57534E","Secondary on light"],["Border","--surface-border","#E7E1D8","Light border"],
     ];
     const topics = [
-      ["Road Signs","--topic-signs","#F0625F"],["Rules of the Road","--topic-rules","#8A5CF6"],
-      ["Vehicle Controls","--topic-controls","#2BB6AE"],["Road Safety","--topic-safety","#FFB24D"],
-      ["Right of Way","--topic-rightofway","#4C9AFF"],["Parking & Stopping","--topic-parking","#E08B4A"],
+      ["Road Signs","--topic-signs","#F0625F","i-sign"],["Rules of the Road","--topic-rules","#8A5CF6","i-rules"],
+      ["Vehicle Controls","--topic-controls","#2BB6AE","i-controls"],["Road Safety","--topic-safety","#FFB24D","i-safety"],
+      ["Right of Way","--topic-rightofway","#4C9AFF","i-sign"],["Parking & Stopping","--topic-parking","#E08B4A","i-mock"],
     ];
 
     function swatch([name, varname, hex, use]) {
@@ -306,10 +306,10 @@
     put("inks", inks); put("golds", golds); put("texts", texts); put("surfaces", surfaces);
 
     // topic swatches with badge
-    topics.forEach(([name, varname, hex]) => {
+    topics.forEach(([name, varname, hex, icon]) => {
       const el = document.createElement("div");
       el.className = "card"; el.style.display = "grid"; el.style.gap = ".5rem"; el.style.placeItems = "center"; el.style.textAlign = "center";
-      el.innerHTML = '<span class="topic-badge" style="background:'+hex+'">●</span>';
+      el.innerHTML = '<span class="topic-badge" style="background:'+hex+'"><svg class="gi gi-sm"><use href="/styleguide/icons.svg#'+icon+'"/></svg></span>';
       const n = document.createElement("div"); n.className = "small"; n.textContent = name;
       const h = document.createElement("div"); h.className = "caption"; h.textContent = hex;
       el.append(n, h); document.getElementById("topicgrid").appendChild(el);
@@ -344,9 +344,17 @@
       row.append(bar, lbl); document.getElementById("spaces").appendChild(row);
     });
 
-    // icons (placeholder glyphs)
-    ["🏠","▦","▷","▤","◷","⤴","★","◆","§","⚙","⚠","💡","🔓","✓","✗","🔔","👤","🌐"].forEach((g) => {
-      const t = document.createElement("div"); t.className = "icon-tile"; t.textContent = g;
+    // icons — the crafted sprite set
+    [
+      ["i-explain","Explain"],["i-exam","Practice"],["i-progress","Progress"],["i-device","Device"],
+      ["i-spark","Spark"],["i-dashboard","Dashboard"],["i-practice","Play"],["i-topics","Topics"],
+      ["i-mock","Timer"],["i-trophy","Trophy"],["i-lock","Lock"],["i-bulb","Tip"],
+      ["i-sign","Signs"],["i-rules","Rules"],["i-controls","Controls"],["i-safety","Safety"],
+      ["i-face-happy","Face"],["i-share","Share"],["i-bell","Bell"],["i-user","User"],
+      ["i-globe","Globe"],["i-check","Check"],["i-x","Close"],
+    ].forEach(([id, label]) => {
+      const t = document.createElement("div"); t.className = "icon-tile"; t.title = label;
+      t.innerHTML = '<svg class="gi gi-lg"><use href="/styleguide/icons.svg#' + id + '"/></svg>';
       document.getElementById("icongrid").appendChild(t);
     });
   </script>

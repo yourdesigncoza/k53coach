@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <!-- ============================================================
+       K53 AI Coach icon set — crafted line icons, 24px grid,
+       1.75 stroke, currentColor. Referenced via:
+         <svg class="ic"><use href="/styleguide/icons.svg#i-NAME"/></svg>
+       currentColor lets each context recolour the same glyph.
+       ============================================================ -->
+
+  <!-- AI explains: speech bubble + spark -->
+  <symbol id="i-explain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 14a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/>
+    <path d="M11.2 7.6l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z" fill="currentColor" stroke="none"/>
+  </symbol>
+
+  <!-- Exam-style practice: clipboard with check -->
+  <symbol id="i-exam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 4H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"/>
+    <rect x="9" y="2" width="6" height="4" rx="1"/>
+    <path d="M9 14.5l2 2 4-4"/>
+  </symbol>
+
+  <!-- Track progress: trending up -->
+  <symbol id="i-progress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 17l6-6 4 4 8-8"/>
+    <path d="M17 7h4v4"/>
+  </symbol>
+
+  <!-- Learn anywhere: phone -->
+  <symbol id="i-device" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="7" y="2" width="10" height="20" rx="2.5"/>
+    <path d="M11 18h2"/>
+  </symbol>
+
+  <!-- Spark / AI accent -->
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+    <path d="M12 2l1.7 6.1c.12.42.41.71.83.83L20.6 11l-6.07 1.07c-.42.12-.71.41-.83.83L12 19.6l-1.7-6.1a1.2 1.2 0 0 0-.83-.83L3.4 11l6.07-1.07c.42-.12.71-.41.83-.83z"/>
+  </symbol>
+
+  <!-- Nav: dashboard grid -->
+  <symbol id="i-dashboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
+    <rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>
+  </symbol>
+
+  <!-- Nav: practice (play) -->
+  <symbol id="i-practice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <path d="M10 8.5l5.5 3.5L10 15.5z" fill="currentColor" stroke="none"/>
+  </symbol>
+
+  <!-- Nav: topics (layers) -->
+  <symbol id="i-topics" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>
+  </symbol>
+
+  <!-- Nav: mock test (timer) -->
+  <symbol id="i-mock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 2h4"/><circle cx="12" cy="13" r="8"/><path d="M12 13V9"/>
+  </symbol>
+
+  <!-- Nav: achievements (trophy) -->
+  <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 4H5a2 2 0 0 0 0 4h2"/><path d="M17 4h2a2 2 0 0 1 0 4h-2"/>
+    <path d="M12 13v4"/><path d="M8 21h8"/><path d="M9 21a3 3 0 0 1 6 0"/>
+  </symbol>
+
+  <!-- Lock (unlock card) -->
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+  </symbol>
+
+  <!-- Tip (bulb) -->
+  <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18h6"/><path d="M10 22h4"/>
+    <path d="M12 2a7 7 0 0 0-4 12.6c.6.5 1 1.2 1 2.4h6c0-1.2.4-1.9 1-2.4A7 7 0 0 0 12 2z"/>
+  </symbol>
+
+  <!-- Topic: Road Signs (octagon) -->
+  <symbol id="i-sign" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 2.5h8L21.5 8v8L16 21.5H8L2.5 16V8z"/><path d="M12 8v4"/><path d="M12 15.5h.01"/>
+  </symbol>
+
+  <!-- Topic: Rules of the Road (open book) -->
+  <symbol id="i-rules" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 7a4 4 0 0 0-4-4H3v14h6a3 3 0 0 1 3 2"/>
+    <path d="M12 7a4 4 0 0 1 4-4h5v14h-6a3 3 0 0 0-3 2"/><path d="M12 7v12"/>
+  </symbol>
+
+  <!-- Topic: Vehicle Controls (steering wheel) -->
+  <symbol id="i-controls" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="2.1"/>
+    <path d="M12 9.9V3.1"/><path d="M10.2 13.1 4.6 16.4"/><path d="M13.8 13.1 19.4 16.4"/>
+  </symbol>
+
+  <!-- Topic: Road Safety (shield check) -->
+  <symbol id="i-safety" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+  </symbol>
+
+  <!-- Confidence faces -->
+  <symbol id="i-face-sad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M8.5 15.5a4 4 0 0 1 7 0"/><path d="M9 9.5h.01"/><path d="M15 9.5h.01"/>
+  </symbol>
+  <symbol id="i-face-neutral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M8.5 15h7"/><path d="M9 9.5h.01"/><path d="M15 9.5h.01"/>
+  </symbol>
+  <symbol id="i-face-happy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M8.5 14a3.6 3.6 0 0 0 7 0"/><path d="M9 9.5h.01"/><path d="M15 9.5h.01"/>
+  </symbol>
+
+  <!-- Misc UI -->
+  <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+    <path d="M8.6 13.5l6.8 4"/><path d="M15.4 6.5l-6.8 4"/>
+  </symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/>
+  </symbol>
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>
+  </symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12.5l4.5 4.5L19 7"/>
+  </symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 6l12 12M18 6 6 18"/>
+  </symbol>
+</svg>

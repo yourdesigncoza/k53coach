@@ -223,6 +223,14 @@ button { font: inherit; cursor: pointer; }
 .muted { color: var(--mist); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
 
+/* ===========================================================================
+   Icons — crafted SVG sprite (see icons.svg). Inherit currentColor.
+   =========================================================================== */
+.gi { width: 22px; height: 22px; flex: none; color: currentColor; display: inline-block; vertical-align: middle; }
+.gi-sm { width: 18px; height: 18px; }
+.gi-lg { width: 26px; height: 26px; }
+.gi use { pointer-events: none; }
+
 /* Brand mark */
 .brand { display: inline-flex; align-items: center; gap: .6rem; font: 700 1.125rem/1 var(--font-display); color: var(--ivory); }
 .brand .mark {
