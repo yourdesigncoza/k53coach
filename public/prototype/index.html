@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>K53 AI Coach — Prototype (winning combination)</title>
+  <meta name="description" content="Interactive prototype: Poppins + light quiz panel + dark-gold landing + once-off pricing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styleguide/tokens.css" />
+  <style>
+    /* ---- Page-specific layout (prototype only) ---- */
+    .protobar { background: var(--ink-900); border-bottom: 1px solid var(--ink-700); color: var(--mist); }
+    .protobar .wrap { display: flex; align-items: center; justify-content: space-between; padding: .5rem 0; font: var(--t-caption); text-transform: none; }
+    .protobar a { color: var(--gold-400); }
+
+    .nav { position: sticky; top: 0; z-index: 30; background: rgba(18,16,22,.78); backdrop-filter: blur(10px); border-bottom: 1px solid var(--ink-700); }
+    .nav .wrap { display: flex; align-items: center; gap: var(--s-6); padding: .9rem 0; }
+    .nav-links { display: flex; gap: var(--s-6); margin-left: auto; }
+    .nav-links a { color: var(--mist); font-weight: 500; font-size: .9rem; }
+    .nav-links a:hover { color: var(--ivory); }
+    .nav .actions { display: flex; align-items: center; gap: var(--s-3); }
+    @media (max-width: 860px) { .nav-links { display: none; } .nav .actions .btn-secondary { display: none; } }
+
+    /* Hero */
+    .hero { position: relative; overflow: hidden; padding: var(--s-16) 0 var(--s-12); }
+    .hero::before { /* ambient dusk skyline glow */
+      content: ""; position: absolute; inset: -20% -10% auto auto; width: 60vw; height: 60vw;
+      background: radial-gradient(closest-side, rgba(255,178,77,.18), transparent 70%); pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: var(--s-12); align-items: center; }
+    @media (max-width: 920px) { .hero-grid { grid-template-columns: 1fr; gap: var(--s-8); } }
+    .eyebrow { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem .8rem; border-radius: var(--r-pill);
+      border: 1px solid var(--ink-600); color: var(--gold-300); font: var(--t-caption); letter-spacing: .08em; }
+    .hero h1 { margin: var(--s-5) 0 var(--s-4); }
+    .hero .ctas { display: flex; gap: var(--s-3); flex-wrap: wrap; margin-top: var(--s-6); }
+    .trust { display: flex; gap: var(--s-5); flex-wrap: wrap; margin-top: var(--s-5); color: var(--muted-dk); font-size: .85rem; }
+    .trust span { display: inline-flex; align-items: center; gap: .4rem; }
+    .trust span::before { content: "✓"; color: var(--success); font-weight: 700; }
+
+    /* Readiness scene card */
+    .scene { position: relative; border-radius: var(--r-xl); padding: var(--s-6); overflow: hidden;
+      background:
+        radial-gradient(120% 80% at 80% 10%, rgba(255,200,120,.20), transparent 55%),
+        linear-gradient(180deg, #2a2433, #1c1822 60%, #14202a);
+      border: 1px solid var(--ink-700); box-shadow: var(--shadow-lg); }
+    .scene .skyline { position:absolute; inset:auto 0 0 0; height: 46%; background:
+      linear-gradient(180deg, transparent, rgba(10,14,20,.65)),
+      repeating-linear-gradient(90deg, #1a2530 0 14px, #16202a 14px 30px); opacity:.6; }
+    .scene .sun { position:absolute; top: 18%; right: 16%; width: 38px; height: 38px; border-radius: 50%;
+      background: radial-gradient(circle, #ffe6b0, #ffb24d); box-shadow: 0 0 40px 10px rgba(255,178,77,.35); }
+    .score-card { position: relative; background: rgba(20,17,24,.72); backdrop-filter: blur(6px);
+      border: 1px solid var(--ink-600); border-radius: var(--r-lg); padding: var(--s-5); }
+    .score-card .label { color: var(--mist); font-size: .85rem; }
+    .score-card .hint { color: var(--gold-300); font-weight: 600; font-size: .9rem; margin-top: .25rem; }
+    .topic-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-3); margin-top: var(--s-4); }
+    .topic-pill { display: flex; align-items: center; gap: .55rem; background: rgba(20,17,24,.72); border: 1px solid var(--ink-600);
+      border-radius: var(--r-md); padding: .55rem .65rem; }
+    .topic-pill .topic-badge { width: 30px; height: 30px; border-radius: 9px; font-size: .8rem; }
+    .topic-pill .t { font-size: .8rem; color: var(--sand); line-height: 1.2; }
+    .topic-pill .p { margin-left: auto; font-weight: 700; font-family: var(--font-display); }
+
+    /* Sections */
+    section { padding: var(--s-16) 0; }
+    .section-head { max-width: 640px; margin-bottom: var(--s-8); }
+
+    /* Features */
+    .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-4); }
+    @media (max-width: 920px) { .features { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 540px) { .features { grid-template-columns: 1fr; } }
+    .feature .ic { width: 42px; height: 42px; border-radius: var(--r-md); display: grid; place-items: center;
+      background: rgba(255,196,107,.12); color: var(--gold-400); margin-bottom: var(--s-3); font-size: 1.2rem; }
+
+    /* Pricing */
+    .pricing { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); max-width: 820px; }
+    @media (max-width: 720px) { .pricing { grid-template-columns: 1fr; } }
+    .price-card { position: relative; }
+    .price-card.best { border-color: var(--gold-400); box-shadow: var(--glow-gold); }
+    .price-card .amt { font: 700 2.25rem/1 var(--font-display); }
+    .price-card .amt small { font-size: .9rem; color: var(--mist); font-weight: 500; }
+    .price-card ul { list-style: none; padding: 0; margin: var(--s-4) 0 var(--s-5); display: grid; gap: .6rem; }
+    .price-card li { display: flex; gap: .55rem; color: var(--sand); font-size: .92rem; }
+    .price-card li::before { content: "✓"; color: var(--gold-400); font-weight: 700; }
+    .best-flag { position: absolute; top: -12px; right: var(--s-5); background: var(--gold-400); color: #2A1C0B;
+      font: var(--t-caption); padding: .3rem .7rem; border-radius: var(--r-pill); }
+    .pricing-note { margin-top: var(--s-5); color: var(--mist); font-size: .9rem; max-width: 820px; }
+    .pricing-note b { color: var(--ivory); }
+
+    /* ---- App frame (light quiz demo) ---- */
+    .appframe { display: grid; grid-template-columns: 232px 1fr; background: var(--ink-900);
+      border: 1px solid var(--ink-700); border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-lg); }
+    @media (max-width: 900px) { .appframe { grid-template-columns: 1fr; } .appframe .side { display: none; } }
+    .side { padding: var(--s-5); border-right: 1px solid var(--ink-700); display: flex; flex-direction: column; gap: var(--s-2); }
+    .side .nav-item { display: flex; align-items: center; gap: .6rem; padding: .6rem .7rem; border-radius: var(--r-md);
+      color: var(--mist); font-size: .9rem; font-weight: 500; }
+    .side .nav-item.active { background: rgba(255,196,107,.12); color: var(--gold-300); }
+    .side .nav-item:hover:not(.active) { background: rgba(255,255,255,.04); color: var(--ivory); }
+    .unlock-card { margin-top: auto; background: linear-gradient(160deg, rgba(255,178,77,.14), rgba(255,196,107,.06));
+      border: 1px solid var(--ink-600); border-radius: var(--r-md); padding: var(--s-4); }
+
+    .work { background: var(--surface-2); color: var(--surface-ink); padding: var(--s-6); }
+    .quiz-grid { display: grid; grid-template-columns: 1fr 250px; gap: var(--s-5); }
+    @media (max-width: 1040px) { .quiz-grid { grid-template-columns: 1fr; } }
+    .quiz-main { background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--r-lg); padding: var(--s-6); }
+    .quiz-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); }
+    .signwrap { display: grid; place-items: center; margin: var(--s-5) 0; }
+    .question { text-align: center; font: 600 1.15rem/1.4 var(--font-display); color: var(--surface-ink); margin-bottom: var(--s-5); }
+
+    .opt { display: flex; align-items: center; gap: .8rem; width: 100%; text-align: left;
+      background: var(--surface); border: 1.5px solid var(--surface-border-2); border-radius: var(--r-md);
+      padding: .85rem 1rem; margin-bottom: .65rem; color: var(--surface-ink); font: 500 .95rem/1.4 var(--font-body);
+      transition: border-color .15s, background .15s; }
+    .opt:hover:not(:disabled) { border-color: var(--gold-400); background: var(--surface-2); }
+    .opt .key { width: 26px; height: 26px; flex: none; border-radius: 50%; display: grid; place-items: center;
+      font-weight: 700; font-size: .8rem; background: var(--surface-3); color: var(--surface-ink-2); }
+    .opt .res { margin-left: auto; font-weight: 700; opacity: 0; }
+    .opt.correct { border-color: var(--success); background: var(--success-soft); }
+    .opt.correct .key { background: var(--success); color: #fff; }
+    .opt.correct .res { opacity: 1; color: var(--success); }
+    .opt.wrong { border-color: var(--danger); background: var(--danger-soft); }
+    .opt.wrong .key { background: var(--danger); color: #fff; }
+    .opt.wrong .res { opacity: 1; color: var(--danger); }
+    .opt:disabled { cursor: default; }
+
+    .coach { display: none; margin-top: var(--s-4); background: var(--surface-2); border: 1px solid var(--surface-border);
+      border-radius: var(--r-md); padding: var(--s-4); }
+    .coach.show { display: block; animation: rise .35s var(--easing); }
+    @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    .coach .who { display: flex; align-items: center; gap: .5rem; color: var(--copper-500); font: 600 .85rem/1 var(--font-display); margin-bottom: .5rem; }
+    .coach p { margin: 0; color: var(--surface-ink-2); font-size: .92rem; }
+    .coach .why { margin-top: .5rem; }
+    .coach .why b { color: var(--surface-ink); }
+
+    .quiz-actions { display: flex; gap: var(--s-3); margin-top: var(--s-5); }
+    .quiz-actions .btn-primary { flex: 1; }
+
+    /* right rail (light) */
+    .rail .card { background: var(--surface); border-color: var(--surface-border); color: var(--surface-ink); padding: var(--s-4); margin-bottom: var(--s-4); }
+    .rail .card h4 { font: var(--t-caption); text-transform: none; color: var(--surface-ink-2); margin-bottom: .6rem; }
+    .qprog { display: flex; gap: .4rem; }
+    .qprog b { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 600 .85rem/1 var(--font-display);
+      background: var(--surface-3); color: var(--surface-ink-2); }
+    .qprog b.done { background: var(--gold-400); color: #2A1C0B; }
+    .qprog b.now { box-shadow: 0 0 0 2px var(--gold-400) inset; color: var(--surface-ink); }
+    .emoji-row { display: flex; gap: .5rem; }
+    .emoji-row button { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--surface-border-2);
+      background: var(--surface); font-size: 1.1rem; }
+    .emoji-row button[aria-pressed="true"] { border-color: var(--gold-400); background: var(--warn-soft); }
+    .tip { display: flex; gap: .6rem; }
+    .tip .ic { font-size: 1.1rem; }
+
+    footer { padding: var(--s-10) 0; border-top: 1px solid var(--ink-700); color: var(--muted-dk); font-size: .85rem; }
+  </style>
+</head>
+<body>
+  <!-- Prototype banner -->
+  <div class="protobar"><div class="wrap">
+    <span>● PROTOTYPE — winning combination: Poppins · light quiz panel · dark-gold landing · once-off pricing</span>
+    <a href="/admin/styles.html">View style guide →</a>
+  </div></div>
+
+  <!-- Nav -->
+  <header class="nav"><div class="wrap">
+    <a class="brand" href="#top"><span class="mark">K</span> K53 AI Coach</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#how">How it works</a><a href="#topics">Topics</a><a href="#pricing">Pricing</a><a href="#parents">For Parents</a>
+    </nav>
+    <div class="actions">
+      <a class="btn btn-secondary" href="#">Log in</a>
+      <a class="btn btn-primary" href="#quiz">Start free</a>
+    </div>
+  </div></header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero"><div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">✦ AI-POWERED · HUMAN-FRIENDLY</span>
+        <h1 class="h1">Pass your K53 learner's<br>test <span class="gold-text">the first time.</span></h1>
+        <p class="lead">Smart practice. Instant feedback. Your AI coach explains every mistake in plain language — until you're test-ready.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#quiz">Take the free readiness test</a>
+          <a class="btn btn-secondary" href="#how">See how it works →</a>
+        </div>
+        <div class="trust"><span>No download</span><span>No sign-up needed</span><span>Takes about 5 minutes</span></div>
+      </div>
+
+      <!-- Readiness scene -->
+      <div class="scene">
+        <div class="sun"></div><div class="skyline"></div>
+        <div class="score-card">
+          <div class="label">Your readiness score</div>
+          <div class="row" style="gap:var(--s-5); margin-top:var(--s-2)">
+            <div class="gauge" style="--val:67; width:150px" aria-label="Readiness 67 percent">
+              <svg viewBox="0 0 200 120" role="img">
+                <defs><linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#FFB24D"/><stop offset="1" stop-color="#FFC46B"/>
+                </linearGradient></defs>
+                <path class="track" d="M20,100 A80,80 0 0 1 180,100" pathLength="100"/>
+                <path class="fill"  d="M20,100 A80,80 0 0 1 180,100" pathLength="100"/>
+              </svg>
+              <div class="readout"><b>67<sup>%</sup></b></div>
+            </div>
+            <div><div class="hint">Getting close — keep going!</div>
+              <div class="small muted" style="margin-top:.3rem">Free anonymous test · no account</div></div>
+          </div>
+          <div class="topic-strip">
+            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-signs)">◆</span><span class="t">Road Signs</span><span class="p">72%</span></div>
+            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-rules)">§</span><span class="t">Rules of the Road</span><span class="p">61%</span></div>
+            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-controls)">⚙</span><span class="t">Vehicle Controls</span><span class="p">58%</span></div>
+            <div class="topic-pill"><span class="topic-badge" style="background:var(--topic-safety)">⚠</span><span class="t">Road Safety</span><span class="p">65%</span></div>
+          </div>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- FEATURES -->
+    <section id="how"><div class="wrap">
+      <div class="section-head">
+        <p class="caption gold-text">Why it works</p>
+        <h2 class="h2">More than a quiz — a coach that tells you <span class="gold-text">why</span>.</h2>
+      </div>
+      <div class="features">
+        <div class="card feature"><div class="ic">🧠</div><h3 class="h4">AI explains every mistake</h3><p class="small muted">Clear, plain-language reasons — not just "wrong".</p></div>
+        <div class="card feature"><div class="ic">📋</div><h3 class="h4">Exam-style practice</h3><p class="small muted">Real K53 questions matched to the latest manual.</p></div>
+        <div class="card feature"><div class="ic">📈</div><h3 class="h4">Track your progress</h3><p class="small muted">See your weak spots and readiness score over time.</p></div>
+        <div class="card feature"><div class="ic">📱</div><h3 class="h4">Learn anywhere</h3><p class="small muted">Any device, installable as an app, works offline.</p></div>
+      </div>
+    </div></section>
+
+    <!-- PRICING (corrected: once-off, no subscription trap) -->
+    <section id="pricing"><div class="wrap">
+      <div class="section-head">
+        <p class="caption gold-text">Pricing</p>
+        <h2 class="h2">Simple, once-off pricing. <span class="gold-text">No subscription trap.</span></h2>
+      </div>
+      <div class="pricing">
+        <div class="card price-card">
+          <h3 class="h3">Free</h3>
+          <div class="amt" style="margin-top:.4rem">R0 <small>· forever</small></div>
+          <ul><li>Free readiness test</li><li>Sample practice questions</li><li>Parent-shareable score</li></ul>
+          <a class="btn btn-secondary btn-block" href="#quiz">Start free</a>
+        </div>
+        <div class="card price-card best">
+          <span class="best-flag">BEST VALUE</span>
+          <h3 class="h3">90-day full access</h3>
+          <div class="amt" style="margin-top:.4rem">R179 <small>· once-off</small></div>
+          <ul><li>Unlimited practice + mock exams</li><li>AI explanations on every question</li><li>All topics &amp; progress tracking</li><li>Works on any device, offline</li></ul>
+          <a class="btn btn-primary btn-block" href="#">Unlock full access</a>
+        </div>
+      </div>
+      <p class="pricing-note">After 90 days, keep just the <b>AI Coach for R20/month</b> — optional, cancel anytime. It covers AI cost; it is not a subscription trap. &nbsp;·&nbsp; <b>Schools:</b> R99 / learner / 90 days.</p>
+    </div></section>
+
+    <!-- PRACTICE QUIZ DEMO (interactive, light working surface) -->
+    <section id="quiz"><div class="wrap">
+      <div class="section-head">
+        <p class="caption gold-text">Live demo · try it</p>
+        <h2 class="h2">Practice mode — pick an answer.</h2>
+        <p class="muted small">Click any option to see the AI Coach explanation appear, exactly as a learner would.</p>
+      </div>
+
+      <div class="appframe on-light">
+        <!-- sidebar -->
+        <aside class="side">
+          <a class="brand" href="#" style="margin-bottom:var(--s-4); font-size:1rem"><span class="mark">K</span> K53 AI Coach</a>
+          <div class="nav-item">▦ Dashboard</div>
+          <div class="nav-item active">▷ Practice</div>
+          <div class="nav-item">▤ Topics</div>
+          <div class="nav-item">◷ Mock Test</div>
+          <div class="nav-item">⤴ Progress</div>
+          <div class="nav-item">★ Achievements</div>
+          <div class="unlock-card">
+            <div class="small" style="color:var(--gold-300); font-weight:600">🔓 Unlock full access</div>
+            <div class="caption" style="text-transform:none; color:var(--mist); margin-top:.2rem">R179 / 90 days · unlimited practice</div>
+          </div>
+        </aside>
+
+        <!-- working area -->
+        <div class="work">
+          <div class="quiz-grid">
+            <div class="quiz-main">
+              <div class="quiz-head">
+                <strong style="font-family:var(--font-display)">Practice Quiz</strong>
+                <span class="small" style="color:var(--surface-ink-2)"><span id="qnum">1</span> of 5 · <span style="color:var(--success);font-weight:600">✓ <span id="qcorrect">0</span> correct</span></span>
+              </div>
+              <div class="bar on-light" style="margin-top:.6rem"><i style="--val:20%"></i></div>
+
+              <div class="signwrap" id="signwrap"><!-- sign injected --></div>
+              <p class="question" id="question">…</p>
+              <div id="options"></div>
+
+              <div class="coach" id="coach" aria-live="polite">
+                <div class="who">✦ AI Coach</div>
+                <p id="coach-explain"></p>
+                <p class="why"><b>Why?</b> <span id="coach-why"></span></p>
+              </div>
+
+              <div class="quiz-actions">
+                <button class="btn btn-secondary" id="backBtn">Back</button>
+                <button class="btn btn-primary" id="nextBtn">Next question →</button>
+              </div>
+            </div>
+
+            <!-- right rail -->
+            <div class="rail">
+              <div class="card">
+                <h4>Question progress</h4>
+                <div class="qprog" id="qprog"></div>
+                <div class="row between" style="margin-top:var(--s-4)">
+                  <span class="small" style="color:var(--surface-ink-2)">Topic · Road Signs</span>
+                  <span class="tag" style="background:var(--surface-3);color:var(--surface-ink-2)">72%</span>
+                </div>
+              </div>
+              <div class="card">
+                <h4>Confidence — feeling good?</h4>
+                <div class="emoji-row" role="group" aria-label="How confident do you feel?">
+                  <button type="button" aria-pressed="false" aria-label="Not confident">😟</button>
+                  <button type="button" aria-pressed="false" aria-label="Unsure">😐</button>
+                  <button type="button" aria-pressed="true"  aria-label="Confident">😄</button>
+                </div>
+              </div>
+              <div class="card">
+                <h4>Tip</h4>
+                <div class="tip"><span class="ic">💡</span><p class="small" style="margin:0;color:var(--surface-ink-2)">Read the sign's shape, colour and meaning together — it's the key to safe driving.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></section>
+
+    <section id="parents" style="padding-top:0"><div class="wrap">
+      <div class="card card-raised" style="display:flex; gap:var(--s-6); align-items:center; flex-wrap:wrap">
+        <div style="flex:1; min-width:260px">
+          <p class="caption gold-text">For parents</p>
+          <h2 class="h3">A readiness score you can actually read.</h2>
+          <p class="muted small" style="margin-top:.5rem">Share your learner's progress over WhatsApp and see exactly where they stand — no jargon, no guesswork.</p>
+        </div>
+        <a class="btn btn-primary" href="#">Share readiness score</a>
+      </div>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap row between" style="flex-wrap:wrap; gap:var(--s-4)">
+    <span>K53 AI Coach · prototype for design review · not production</span>
+    <a class="gold-text" href="/admin/styles.html">Style guide →</a>
+  </div></footer>
+
+  <script>
+    const QUESTIONS = [
+      { topic: "Road Signs",
+        sign: "stop",
+        q: "You approach an eight-sided red sign. What must you do?",
+        options: [
+          "Slow down only if other cars are near",
+          "Come to a complete stop, then go when it is safe",
+          "Sound your hooter and continue",
+          "Stop only at night",
+        ],
+        answer: 1,
+        explain: "An eight-sided red sign is a STOP sign. You must come to a complete stop every time, then go only when it is safe.",
+        why: "A full stop gives right of way to cross traffic and pedestrians, and prevents collisions at the intersection.",
+      },
+      { topic: "Road Signs",
+        sign: "yield",
+        q: "What does a downward-pointing red-and-white triangle mean?",
+        options: [
+          "Stop completely and wait for a signal",
+          "Yield — give way to traffic and pedestrians",
+          "No entry for any vehicle",
+          "Parking is allowed here",
+        ],
+        answer: 1,
+        explain: "A downward red-and-white triangle is a YIELD sign. Slow down and give way; only stop if needed to let others pass.",
+        why: "Yield keeps traffic flowing while still protecting whoever has right of way — you stop only when traffic requires it.",
+      },
+      { topic: "Rules of the Road",
+        sign: "speed",
+        q: "Inside a red circle showing '60', what is being told to you?",
+        options: [
+          "Minimum speed is 60 km/h",
+          "Suggested speed is 60 km/h",
+          "Maximum speed is 60 km/h — do not exceed it",
+          "Distance to the next town is 60 km",
+        ],
+        answer: 2,
+        explain: "A number inside a red circle is a maximum speed limit. Here you may not drive faster than 60 km/h.",
+        why: "Red-circle signs are prohibitions. The limit is a legal maximum for that stretch of road, not a target.",
+      },
+    ];
+
+    const SIGNS = {
+      stop:  '<svg width="92" height="92" viewBox="0 0 100 100" aria-label="Stop sign"><polygon points="30,5 70,5 95,30 95,70 70,95 30,95 5,70 5,30" fill="#D1382E" stroke="#fff" stroke-width="4"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-family="Poppins,sans-serif" font-weight="700" font-size="22">STOP</text></svg>',
+      yield: '<svg width="92" height="92" viewBox="0 0 100 100" aria-label="Yield sign"><polygon points="50,92 6,12 94,12" fill="#fff" stroke="#D1382E" stroke-width="9"/></svg>',
+      speed: '<svg width="92" height="92" viewBox="0 0 100 100" aria-label="Speed limit 60"><circle cx="50" cy="50" r="44" fill="#fff" stroke="#D1382E" stroke-width="9"/><text x="50" y="64" text-anchor="middle" fill="#1A1A1C" font-family="Poppins,sans-serif" font-weight="700" font-size="34">60</text></svg>',
+    };
+
+    let idx = 0, correctCount = 0, answered = false;
+    const $ = (s) => document.querySelector(s);
+
+    function render() {
+      const item = QUESTIONS[idx];
+      answered = false;
+      $("#signwrap").innerHTML = SIGNS[item.sign] || "";
+      $("#question").textContent = item.q;
+      $("#qnum").textContent = idx + 1;
+
+      const wrap = $("#options"); wrap.innerHTML = "";
+      item.options.forEach((text, i) => {
+        const b = document.createElement("button");
+        b.className = "opt"; b.type = "button";
+        b.innerHTML = `<span class="key">${"ABCD"[i]}</span><span>${text}</span><span class="res"></span>`;
+        b.addEventListener("click", () => choose(i, b));
+        wrap.appendChild(b);
+      });
+
+      $("#coach").classList.remove("show");
+      $("#nextBtn").textContent = idx === QUESTIONS.length - 1 ? "Restart demo ↻" : "Next question →";
+      renderProgress();
+    }
+
+    function choose(i, btn) {
+      if (answered) return;
+      answered = true;
+      const item = QUESTIONS[idx];
+      const buttons = [...document.querySelectorAll(".opt")];
+      buttons.forEach((b, bi) => {
+        b.disabled = true;
+        if (bi === item.answer) { b.classList.add("correct"); b.querySelector(".res").textContent = "✓"; }
+      });
+      if (i === item.answer) { correctCount++; $("#qcorrect").textContent = correctCount; }
+      else { btn.classList.add("wrong"); btn.querySelector(".res").textContent = "✗"; }
+
+      $("#coach-explain").textContent = item.explain;
+      $("#coach-why").textContent = item.why;
+      $("#coach").classList.add("show");
+      renderProgress();
+    }
+
+    function renderProgress() {
+      const wrap = $("#qprog"); wrap.innerHTML = "";
+      QUESTIONS.concat([0,0]).slice(0,5).forEach((_, i) => {
+        const b = document.createElement("b");
+        b.textContent = i + 1;
+        if (i < idx) b.classList.add("done");
+        if (i === idx) b.classList.add(answered ? "done" : "now");
+        wrap.appendChild(b);
+      });
+    }
+
+    $("#nextBtn").addEventListener("click", () => {
+      if (idx === QUESTIONS.length - 1) { idx = 0; correctCount = 0; $("#qcorrect").textContent = 0; }
+      else idx++;
+      render();
+      $("#quiz").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    $("#backBtn").addEventListener("click", () => { if (idx > 0) { idx--; render(); } });
+
+    document.querySelectorAll(".emoji-row button").forEach((b) => {
+      b.addEventListener("click", () => {
+        document.querySelectorAll(".emoji-row button").forEach((x) => x.setAttribute("aria-pressed", "false"));
+        b.setAttribute("aria-pressed", "true");
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>
