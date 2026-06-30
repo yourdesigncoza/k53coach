@@ -151,6 +151,32 @@
     .tip .ic { font-size: 1.1rem; }
 
     footer { padding: var(--s-10) 0; border-top: 1px solid var(--ink-700); color: var(--muted-dk); font-size: .85rem; }
+
+    /* ---- Small-screen polish (phones) ---- */
+    @media (max-width: 560px) {
+      section { padding: var(--s-10) 0; }
+      .section-head { margin-bottom: var(--s-5); }
+      .appframe { border-radius: var(--r-lg); }
+      /* Collapse the double card frame: thin outer panel, lighter inner card */
+      .work { padding: var(--s-3); }
+      .quiz-main { padding: var(--s-4); border-radius: var(--r-md); }
+      .quiz-head { flex-wrap: wrap; gap: var(--s-1) var(--s-3); }
+      .signwrap { margin: var(--s-4) 0; }
+      .signwrap svg { width: 72px; height: 72px; }
+      .question { font-size: 1.02rem; line-height: 1.35; margin-bottom: var(--s-4); }
+      .opt { padding: .7rem .8rem; font-size: .9rem; gap: .6rem; }
+      .opt .key { width: 24px; height: 24px; font-size: .75rem; }
+      .quiz-actions { flex-direction: column-reverse; }
+      .quiz-actions .btn { width: 100%; }
+      .rail .card { padding: var(--s-3); }
+      .coach { padding: var(--s-3); }
+
+      /* Hero readiness scene: stop the topic % clipping, tighten nesting */
+      .scene { padding: var(--s-4); }
+      .score-card { padding: var(--s-4); }
+      .topic-strip { grid-template-columns: 1fr; }
+      .topic-pill .t { font-size: .85rem; }
+    }
   </style>
 </head>
 <body>
