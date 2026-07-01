@@ -21,7 +21,7 @@ const poppins = Poppins({
   weight: ["500", "600", "700", "800"],
 });
 
-const APP_NAME = "K53 AI Coach";
+const APP_NAME = "K53 Coach";
 const APP_DESCRIPTION =
   "Learn. Practice. Pass. AI-coached preparation for your South African K53 learner's licence — explains your mistakes and shows when you're test-ready.";
 

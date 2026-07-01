@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 /**
- * K53 AI Coach wordmark + mark. The approved prototype mark is a rounded gold
+ * K53 Coach wordmark + mark. The approved prototype mark is a rounded gold
  * gradient tile with a dark "K"; the wordmark uses `currentColor` so it reads
  * ivory on the dark marketing chrome and ink on the white app chrome.
  */
@@ -30,7 +30,7 @@ export function Logo({
         K
       </span>
       {showWord && (
-        <span className="text-lg tracking-tight">K53 AI Coach</span>
+        <span className="text-lg tracking-tight">K53 Coach</span>
       )}
     </span>
   );

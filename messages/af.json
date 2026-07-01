@@ -1,7 +1,7 @@
 {
   "_note": "First-pass Afrikaans draft — needs human/instructor review before launch.",
   "common": {
-    "appName": "K53 AI Coach",
+    "appName": "K53 Coach",
     "demo": "Demo",
     "login": "Meld aan",
     "logout": "Teken uit"
@@ -53,7 +53,7 @@
     "trustParentBody": "'n Gereedheidstelling wat ouers werklik verstaan.",
     "trustPrivacyTitle": "Privaatheid eerste",
     "trustPrivacyBody": "Probeer anoniem. Geen biometrie, ooit nie.",
-    "footerRights": "© 2026 K53 AI Coach",
+    "footerRights": "© 2026 K53 Coach",
     "privacy": "Privaatheid & POPIA",
     "navHow": "Hoe dit werk",
     "navTopics": "Onderwerpe",

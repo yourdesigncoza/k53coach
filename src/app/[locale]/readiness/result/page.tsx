@@ -81,7 +81,7 @@ export default function ResultPage() {
     const url = typeof window !== "undefined" ? window.location.origin : "";
     try {
       if (navigator.share) {
-        await navigator.share({ title: "K53 AI Coach", text, url });
+        await navigator.share({ title: "K53 Coach", text, url });
       } else {
         await navigator.clipboard.writeText(`${text} ${url}`);
         toast.success(t("shareCopied"));

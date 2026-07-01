@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "K53 AI Coach",
+    "appName": "K53 Coach",
     "demo": "Demo",
     "login": "Log in",
     "logout": "Logout"
@@ -52,7 +52,7 @@
     "trustParentBody": "A readiness score parents actually understand.",
     "trustPrivacyTitle": "Privacy-first",
     "trustPrivacyBody": "Try anonymously. No biometrics, ever.",
-    "footerRights": "© 2026 K53 AI Coach",
+    "footerRights": "© 2026 K53 Coach",
     "privacy": "Privacy & POPIA",
     "navHow": "How it works",
     "navTopics": "Topics",

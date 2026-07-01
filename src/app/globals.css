@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ===========================================================================
-   K53 AI Coach — "winning combination" theme (client-approved prototype).
+   K53 Coach — "winning combination" theme (client-approved prototype).
    Two zones, one token set:
      • Default (:root)  → the WHITE app / product surfaces (quiz, dashboard,
        progress, learn) — warm-ivory canvas, white cards, gold primary action.

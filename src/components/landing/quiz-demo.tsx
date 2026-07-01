@@ -133,7 +133,7 @@ export function LandingQuizDemo() {
           >
             K
           </span>
-          K53 AI Coach
+          K53 Coach
         </span>
         {SIDE_NAV.map((n) => (
           <span

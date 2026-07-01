@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "K53 AI Coach",
+    name: "K53 Coach",
     short_name: "K53 Coach",
     description:
       "AI-coached preparation for your South African K53 learner's licence.",

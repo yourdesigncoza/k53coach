@@ -1,5 +1,5 @@
 /**
- * Domain types for K53 AI Coach.
+ * Domain types for K53 Coach.
  * These mirror the logical "Databases" in the PRD (DB1 signs, DB4 questions,
  * DB9 readiness scoring) but are plain TS — the Supabase schema can adopt the
  * same shapes once a POPIA review clears production data storage.
