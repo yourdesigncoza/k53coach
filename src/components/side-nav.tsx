@@ -16,8 +16,11 @@ export function SideNav() {
   const t = useTranslations("nav");
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-border bg-card md:flex">
-      <div className="flex h-16 items-center border-b border-border px-6">
+    <aside
+      className="theme-dark fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-ink-700 md:flex"
+      style={{ background: "var(--ink-900)" }}
+    >
+      <div className="flex h-16 items-center border-b border-ink-700 px-6">
         <Link href="/dashboard" aria-label="Home">
           <Logo />
         </Link>
@@ -32,10 +35,10 @@ export function SideNav() {
                 <Link
                   href={href}
                   className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                    "flex items-center gap-3 rounded-[14px] px-3 py-2.5 text-sm font-medium transition-colors",
                     active
-                      ? "bg-accent font-semibold text-accent-foreground"
-                      : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+                      ? "bg-gold-400/12 font-semibold text-gold-300 ring-1 ring-gold-400/15"
+                      : "text-mist hover:bg-white/5 hover:text-ivory",
                   )}
                 >
                   <Icon className="size-5" />
@@ -46,7 +49,7 @@ export function SideNav() {
           })}
         </ul>
       </nav>
-      <div className="flex flex-col gap-3 border-t border-border p-4">
+      <div className="flex flex-col gap-3 border-t border-ink-700 p-4">
         <AdminNavLink className="w-full justify-center" />
         <AuthStatus />
         <LanguageSwitcher />
