@@ -8,7 +8,7 @@ export default function AppLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-dvh">
+    <div className="min-h-dvh overflow-x-clip">
       {/* Desktop: fixed left sidebar. Mobile: hidden. */}
       <SideNav />
 

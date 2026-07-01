@@ -55,7 +55,8 @@ export default async function ProgressPage() {
           <div className="mt-3 grid gap-3 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
             {rows.map((item) => (
               <Card key={item.topic}>
-                <CardContent className="py-4">
+                {/* Tighter vertical padding on mobile; original spacing on md+. */}
+                <CardContent className="py-0 md:py-4">
                   <div className="mb-2 flex items-center justify-between text-sm">
                     <span className="font-medium">{tt(item.topic)}</span>
                     <span className="tabular-nums text-muted-foreground">
