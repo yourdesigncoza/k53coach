@@ -12,7 +12,10 @@ export function BottomNav() {
   const t = useTranslations("nav");
 
   return (
-    <nav className="pb-safe fixed inset-x-0 bottom-0 z-40 border-t border-border bg-card/95 backdrop-blur md:hidden">
+    <nav
+      className="theme-dark pb-safe fixed inset-x-0 bottom-0 z-40 border-t border-ink-700 md:hidden"
+      style={{ background: "var(--ink-900)" }}
+    >
       <ul className="mx-auto flex max-w-md items-stretch justify-around">
         {NAV_ITEMS.map(({ href, key, icon: Icon }) => {
           const active = pathname === href || pathname.startsWith(`${href}/`);
@@ -23,8 +26,8 @@ export function BottomNav() {
                 className={cn(
                   "flex h-16 flex-col items-center justify-center gap-1 text-xs font-medium transition-colors",
                   active
-                    ? "font-semibold text-accent-foreground"
-                    : "text-muted-foreground hover:text-foreground",
+                    ? "font-semibold text-gold-300"
+                    : "text-mist hover:text-ivory",
                 )}
               >
                 <Icon className={cn("size-6", active && "stroke-[2.5]")} />
