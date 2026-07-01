@@ -42,6 +42,12 @@ export function ReadinessRing({
       style={{ width: size, height: size }}
     >
       <svg width={size} height={size} className="-rotate-90">
+        <defs>
+          <linearGradient id="readinessGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="var(--amber-500)" />
+            <stop offset="1" stopColor="var(--gold-400)" />
+          </linearGradient>
+        </defs>
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -55,7 +61,7 @@ export function ReadinessRing({
           cy={size / 2}
           r={r}
           fill="none"
-          stroke="var(--foreground)"
+          stroke="url(#readinessGrad)"
           strokeWidth={stroke}
           strokeLinecap="round"
           strokeDasharray={c}

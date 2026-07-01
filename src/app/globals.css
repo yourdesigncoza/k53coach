@@ -3,99 +3,147 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
-  K53 AI Coach — clean neutral theme (Tailwind Plus / Catalyst direction).
-  Ink-on-white, zinc neutrals, a single restrained blue accent for focus/
-  selection. No brand colour; semantic green/amber/red appear only as soft
-  badge tints. Mobile-first.
-*/
+/* ===========================================================================
+   K53 AI Coach — "winning combination" theme (client-approved prototype).
+   Two zones, one token set:
+     • Default (:root)  → the WHITE app / product surfaces (quiz, dashboard,
+       progress, learn) — warm-ivory canvas, white cards, gold primary action.
+     • .theme-dark      → the DARK marketing storefront (landing, nav, pricing).
+   Every shadcn semantic token is re-tinted here, so existing components inherit
+   the look in both zones. Raw design tokens (gold/topic/surface/ink) are also
+   exposed for bespoke surfaces. Source of truth: /public/styleguide/tokens.css.
+   =========================================================================== */
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.875rem;
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.21 0.006 285.885);
+  /* ---- Raw design tokens (available in every zone) --------------------- */
+  --ink-900: #121016;
+  --ink-850: #1a1a1c;
+  --ink-800: #221813;
+  --ink-750: #2c231c;
+  --ink-700: #3b2a22;
+  --ink-600: #4c3b30;
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.21 0.006 285.885);
+  --gold-300: #ffd89a;
+  --gold-400: #ffc46b; /* PRIMARY accent */
+  --gold-500: #f3c16d;
+  --gold-ink: #a9691a; /* readable gold on white — active states/links */
+  --amber-500: #ffb24d;
+  --copper-500: #d98a4c;
+  --peach-400: #ffb08a;
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.21 0.006 285.885);
+  --ivory: #faf7f2;
+  --sand: #ede6da;
+  --mist: #bdb5a8;
+  --muted-dk: #8e867a;
 
-  /* Primary = ink (near-black). Buttons, selected outlines, the mark. */
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
+  --surface: #ffffff;
+  --surface-2: #faf7f2;
+  --surface-3: #f1ece3;
+  --surface-ink: #1a1a1c;
+  --surface-ink-2: #57534e;
+  --surface-border: #e7e1d8;
+  --surface-border-2: #d8d0c4;
 
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --topic-signs: #f0625f;
+  --topic-rules: #8a5cf6;
+  --topic-controls: #2bb6ae;
+  --topic-safety: #ffb24d;
+  --topic-rightofway: #4c9aff;
+  --topic-parking: #e08b4a;
 
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
+  --success-soft: #e4f4ec;
+  --danger-soft: #fce9e9;
+  --warn: #e89a2b;
+  --warn-soft: #fbf0dd;
+  --info: #3b82c4;
 
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.18);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.4);
+  --glow-gold: 0 0 0 1px rgba(255, 196, 107, 0.25),
+    0 12px 40px rgba(255, 178, 77, 0.12);
+  --easing: cubic-bezier(0.2, 0.7, 0.2, 1);
 
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
+  /* ---- Semantic tokens — WHITE app surfaces (default) ------------------- */
+  --background: var(--surface-2); /* warm-ivory canvas */
+  --foreground: var(--surface-ink);
 
-  /* Soft semantic states — used only on readiness badges/labels. */
-  --success: oklch(0.627 0.17 149.2);
-  --success-foreground: oklch(0.985 0 0);
-  --warning: oklch(0.705 0.16 70);
-  --warning-foreground: oklch(0.21 0.006 285.885);
+  --card: var(--surface); /* white cards float on the ivory canvas */
+  --card-foreground: var(--surface-ink);
 
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  /* The one accent: blue-600 for focus rings + selection. */
-  --ring: oklch(0.546 0.215 262.881);
+  --popover: var(--surface);
+  --popover-foreground: var(--surface-ink);
 
-  --chart-1: oklch(0.546 0.215 262.881);
-  --chart-2: oklch(0.21 0.006 285.885);
-  --chart-3: oklch(0.627 0.17 149.2);
-  --chart-4: oklch(0.705 0.16 70);
-  --chart-5: oklch(0.577 0.245 27.325);
+  /* Primary action = gold (the one brand action colour). */
+  --primary: var(--gold-400);
+  --primary-foreground: #2a1c0b;
+
+  --secondary: var(--surface-3);
+  --secondary-foreground: var(--surface-ink);
+
+  --muted: var(--surface-3);
+  --muted-foreground: var(--surface-ink-2);
+
+  --accent: var(--warn-soft);
+  --accent-foreground: #7a4d10;
+
+  --destructive: #e5484d;
+  --destructive-foreground: #ffffff;
+
+  --success: #2fa968;
+  --success-foreground: #ffffff;
+  --warning: var(--warn);
+  --warning-foreground: #ffffff;
+
+  --border: var(--surface-border);
+  --input: var(--surface-border-2);
+  --ring: var(--gold-400);
+
+  --chart-1: var(--topic-signs);
+  --chart-2: var(--topic-rules);
+  --chart-3: var(--topic-controls);
+  --chart-4: var(--topic-safety);
+  --chart-5: var(--topic-rightofway);
 }
 
-.dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
+/* ---------------------------------------------------------------------------
+   DARK marketing storefront. Wrap any marketing surface (landing, nav, pricing)
+   in `.theme-dark` — the same semantic tokens flip to the ink/gold palette, so
+   shadcn components keep working with no per-component changes.
+   --------------------------------------------------------------------------- */
+.theme-dark {
+  --background: var(--ink-850);
+  --foreground: var(--ivory);
 
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.985 0 0);
+  --card: var(--ink-800);
+  --card-foreground: var(--ivory);
 
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.985 0 0);
+  --popover: var(--ink-800);
+  --popover-foreground: var(--ivory);
 
-  /* In dark mode primary inverts to light (Catalyst behaviour). */
-  --primary: oklch(0.92 0.004 286.32);
-  --primary-foreground: oklch(0.21 0.006 285.885);
+  --primary: var(--gold-400);
+  --primary-foreground: #2a1c0b;
 
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary: var(--ink-750);
+  --secondary-foreground: var(--ivory);
 
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
+  --muted: var(--ink-750);
+  --muted-foreground: var(--mist);
 
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.985 0 0);
+  --accent: var(--ink-700);
+  --accent-foreground: var(--gold-300);
 
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
+  --destructive: #e5484d;
+  --destructive-foreground: #ffffff;
 
-  --success: oklch(0.696 0.17 149.2);
-  --success-foreground: oklch(0.141 0.005 285.823);
-  --warning: oklch(0.769 0.16 70);
-  --warning-foreground: oklch(0.141 0.005 285.823);
+  --border: var(--ink-700);
+  --input: var(--ink-600);
+  --ring: var(--gold-400);
 
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.623 0.214 259.8);
-
-  --chart-1: oklch(0.623 0.214 259.8);
-  --chart-2: oklch(0.92 0.004 286.32);
-  --chart-3: oklch(0.696 0.17 149.2);
-  --chart-4: oklch(0.769 0.16 70);
-  --chart-5: oklch(0.704 0.191 22.216);
+  background: var(--background);
+  color: var(--foreground);
 }
 
 @theme inline {
@@ -128,8 +176,36 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Raw palette exposed as Tailwind utilities (bg-gold-400, text-topic-signs…) */
+  --color-ink-900: var(--ink-900);
+  --color-ink-850: var(--ink-850);
+  --color-ink-800: var(--ink-800);
+  --color-ink-750: var(--ink-750);
+  --color-ink-700: var(--ink-700);
+  --color-ink-600: var(--ink-600);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-ink: var(--gold-ink);
+  --color-amber-500: var(--amber-500);
+  --color-copper-500: var(--copper-500);
+  --color-peach-400: var(--peach-400);
+  --color-ivory: var(--ivory);
+  --color-sand: var(--sand);
+  --color-mist: var(--mist);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-topic-signs: var(--topic-signs);
+  --color-topic-rules: var(--topic-rules);
+  --color-topic-controls: var(--topic-controls);
+  --color-topic-safety: var(--topic-safety);
+  --color-topic-rightofway: var(--topic-rightofway);
+  --color-topic-parking: var(--topic-parking);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), var(--font-inter), sans-serif;
+  --font-mono: ui-monospace, monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -145,12 +221,14 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-sans), system-ui, sans-serif;
+    font-family: var(--font-sans);
     -webkit-tap-highlight-color: transparent;
   }
+  /* Poppins for headings — the display face of the winning combination. */
   h1,
   h2,
   h3 {
+    font-family: var(--font-display);
     letter-spacing: -0.018em;
   }
   .pb-safe {
@@ -160,3 +238,31 @@
     padding-top: env(safe-area-inset-top);
   }
 }
+
+@layer components {
+  /* Crafted icon sprite (see /public/styleguide/icons.svg). Inherits color. */
+  .gi {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    color: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .gi-sm {
+    width: 18px;
+    height: 18px;
+  }
+  .gi-lg {
+    width: 26px;
+    height: 26px;
+  }
+  .gi use {
+    pointer-events: none;
+  }
+  /* Poppins display utility for one-off headings that aren't h1–h3. */
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+

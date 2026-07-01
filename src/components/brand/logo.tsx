@@ -1,6 +1,10 @@
 import { cn } from "@/lib/utils";
 
-/** K53 AI Coach wordmark + mark. Original mark: a rounded "road + check". */
+/**
+ * K53 AI Coach wordmark + mark. The approved prototype mark is a rounded gold
+ * gradient tile with a dark "K"; the wordmark uses `currentColor` so it reads
+ * ivory on the dark marketing chrome and ink on the white app chrome.
+ */
 export function Logo({
   className,
   showWord = true,
@@ -9,34 +13,24 @@ export function Logo({
   showWord?: boolean;
 }) {
   return (
-    <span className={cn("inline-flex items-center gap-2", className)}>
-      <svg
-        viewBox="0 0 40 40"
-        className="size-8 shrink-0"
-        role="img"
-        aria-label="K53 AI Coach"
+    <span
+      className={cn(
+        "inline-flex items-center gap-2 font-display font-bold whitespace-nowrap",
+        className,
+      )}
+    >
+      <span
+        aria-hidden="true"
+        className="grid size-8 shrink-0 place-items-center rounded-[9px] text-[0.95rem] font-extrabold text-[#2a1c0b] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]"
+        style={{
+          background:
+            "linear-gradient(145deg, var(--gold-400), var(--copper-500))",
+        }}
       >
-        <rect width="40" height="40" rx="12" fill="var(--primary)" />
-        <path
-          d="M11 28 L20 12 L29 28"
-          fill="none"
-          stroke="var(--primary-foreground)"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M15 24 h10"
-          stroke="var(--primary-foreground)"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeDasharray="2 3"
-        />
-      </svg>
+        K
+      </span>
       {showWord && (
-        <span className="text-lg font-semibold tracking-tight whitespace-nowrap">
-          K53 <span className="text-primary">AI Coach</span>
-        </span>
+        <span className="text-lg tracking-tight">K53 AI Coach</span>
       )}
     </span>
   );

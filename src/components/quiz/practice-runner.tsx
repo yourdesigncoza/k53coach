@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { CheckCircle2, XCircle, Info } from "lucide-react";
+import { CheckCircle2, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Icon } from "@/components/icon";
 import { SignImage } from "@/components/sign-image";
 import { cn } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
@@ -197,10 +198,10 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
         </div>
 
         {answered && (
-          <Card className="mt-4 bg-secondary/40">
+          <Card className="mt-4 bg-surface-2 ring-border">
             <CardContent className="py-4">
-              <p className="flex items-center gap-1.5 text-sm font-medium">
-                <Info className="size-4" /> {t("explanation")}
+              <p className="flex items-center gap-1.5 font-display text-sm font-semibold text-copper-500">
+                <Icon name="i-spark" size="sm" /> {t("coach")}
               </p>
               <p className="mt-1.5 text-sm text-muted-foreground">
                 {q.explanation}
