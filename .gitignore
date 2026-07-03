@@ -55,3 +55,6 @@ next-env.d.ts
 init/*
 
 ui-design/*
+
+# codegraph index
+.codegraph/

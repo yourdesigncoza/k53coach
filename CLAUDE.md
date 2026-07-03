@@ -38,6 +38,22 @@ vercel --prod        # deploy to production (prod env vars already set on Vercel
 
 No test framework is set up yet. The app runs **without Supabase env vars** ("demo mode" — auth/persistence simulated); real keys live in `.env.local` (gitignored). Network here is IPv4-only, so Supabase DB commands use the pooler (this is why `supabase link` was re-run).
 
+## CodeGraph (code intelligence — use before grepping)
+
+**CodeGraph** (`@colbymchenry/codegraph`) is the code-graph tool for this repo — AST-precise symbols/edges with `file:line`. Prefer it over raw grep for "who calls X / what depends on Y". Installed local: `~/tools/codegraph/node_modules/.bin/codegraph` (not on PATH — use the full path); index in `.codegraph/` (gitignored). It **auto-syncs on file changes** — no rebuild ritual; `codegraph status` shows state, `codegraph sync` forces an incremental refresh if it looks behind.
+
+```bash
+CG=~/tools/codegraph/node_modules/.bin/codegraph
+"$CG" query "<keyword>"        # find symbols (dup-check before writing new code)
+"$CG" node <Symbol>            # source + callers + callees trail
+"$CG" callers <Symbol>         # every direct call site
+"$CG" impact <Symbol>          # transitive blast radius (regression check)
+"$CG" explore <query...>       # relevant symbols' source + call paths in one shot
+git diff HEAD --name-only | "$CG" affected --stdin   # changed files -> dependents
+```
+
+MCP equivalents `mcp__codegraph__*` are registered (project-scoped, `claude mcp list`) and load at **session start** — restart Claude Code to get the tools; the CLI is canonical and works immediately.
+
 ## Technical architecture (as built)
 
 Next.js 16 (App Router) · React 19 · TypeScript · Tailwind v4 · shadcn/ui (**Base UI** primitives) · Supabase (Postgres + Auth, SSR) · Vercel.
