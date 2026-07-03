@@ -250,8 +250,6 @@
     "contentSoon": "Leerderinhoud vir hierdie teken word voorberei."
   },
   "practice": {
-    "counter": "{current} van {total}",
-    "correctCount": "{count} reg",
     "explanation": "Verduideliking",
     "next": "Volgende vraag",
     "finish": "Klaar",
@@ -260,7 +258,8 @@
     "completeKeep": "Goeie oefening. Hersien dié wat jy gemis het en probeer weer.",
     "again": "Oefen weer",
     "back": "Terug na leer",
-    "coach": "AI-afrigter"
+    "coach": "Coach sê",
+    "title": "Oefenvasvra"
   },
   "comingSoon": {
     "mockTitle": "Toetseksamens",
@@ -277,5 +276,10 @@
     "p4": "Ons versamel die minimum persoonlike inligting wat nodig is.",
     "p5": "Produksiedata word POPIA-eerste hanteer: SA-dataverblyf, duidelike behoudreëls, en geënkripteerde berging.",
     "docs": "Vereiste produksiedokumente: Bepalings, Privaatheidsbeleid, POPIA-beleid, Ouertoestemming, Terugbetalingsbeleid, Skoolooreenkoms, Koekiesbeleid, AI-gebruiksvrywaring."
+  },
+  "quiz": {
+    "coach": "Coach sê",
+    "counter": "{current} van {total}",
+    "correctCount": "{count} reg"
   }
 }

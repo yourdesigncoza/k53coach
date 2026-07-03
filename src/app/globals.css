@@ -12,6 +12,48 @@
    Every shadcn semantic token is re-tinted here, so existing components inherit
    the look in both zones. Raw design tokens (gold/topic/surface/ink) are also
    exposed for bespoke surfaces. Source of truth: /public/styleguide/tokens.css.
+
+   CONTAINED-PANEL RULE (prototype `.quiz-main`): every test/learning flow —
+   readiness test, practice mode, quiz-style learning — renders its content
+   inside a single white `bg-card`/`--surface` panel that floats on the ivory
+   canvas, NOT flat on the background. Use `<QuizPanel>`
+   (src/components/quiz/quiz-panel.tsx); do not hand-roll the frame.
+
+   QUIZ CHROME (must be pixel-identical everywhere — readiness test, practice
+   mode AND the landing quiz demo): ONE set of components renders every part of
+   the quiz frame — src/components/quiz/{quiz-panel,quiz-chrome,question-card,
+   answer-option}.tsx:
+     • `<QuizPanel>`     → the white rounded-[18px] surface panel (p-5 md:p-6).
+     • `<QuizHead>`      → bold display-font title left, ink-2 meta right.
+     • `<QuizProgress>`  → h-2 amber→gold gradient bar on `--surface-3`.
+     • `<QuestionCard>`  → sign (size-24, no frame), centred display question,
+       options, and the `<CoachCard>` explanation.
+     • `<QuizButton>`    → gold-gradient primary / bordered ghost action pills.
+   Never hand-roll any of these on a quiz/learning surface; change the shared
+   component so all surfaces move together.
+
+   ANSWER-OPTION ROWS: ONE component renders them —
+   `<AnswerOption>` (src/components/quiz/answer-option.tsx). Never hand-roll an
+   option row; render that. Its contract (prototype `.opt`):
+     • Row: rounded-[14px] pill on `--surface`, `--surface-border-2` border,
+       gold hover while unanswered; question heading centred in `font-display`.
+     • Correct option → letter badge SOLID `--success` (#2fa968) + white text;
+       row tint `--success-soft`; circled ✓ icon in `--success`.
+     • Wrong (chosen) option → letter badge SOLID `--destructive` (#e5484d) +
+       white text; row tint `--danger-soft`; circled ✗ icon in `--destructive`.
+     • Other options dim (opacity 60%) once answered.
+   The bright badge fill is REQUIRED (not a soft tint) so wrong reads as boldly
+   as correct. NOTE: there is NO `--danger` token — the app renamed it to
+   `--destructive` (only `--danger-soft` survives). Use `--destructive` /
+   `text-destructive`; `var(--danger)` silently resolves to nothing.
+
+   FORMS & FIELDS (consistency rule for everything we build going forward):
+   every form control comes from src/components/ui/* (shadcn primitives —
+   Input, Label, Button, Card, Badge, …), which are already re-tinted by the
+   tokens above. Never hand-roll an input/select/checkbox with ad-hoc classes;
+   if a control type is missing, add it to ui/ once (shadcn) and restyle it
+   there. Quiz/learning surfaces additionally use the shared quiz chrome above.
+   Reference form: the auth page (src/app/[locale]/auth/page.tsx).
    =========================================================================== */
 
 :root {

@@ -1,38 +1,37 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/icon";
+import { QuizPanel } from "@/components/quiz/quiz-panel";
+import { QuestionCard } from "@/components/quiz/question-card";
+import {
+  QuizHead,
+  QuizScore,
+  QuizProgress,
+  QuizButton,
+} from "@/components/quiz/quiz-chrome";
+import type { Question } from "@/lib/types";
 
 /**
  * Interactive "try it live" quiz demo for the landing page — a faithful React
  * port of the approved prototype's Practice-mode demo. It intentionally shows
  * the design story in one frame: a DARK app shell (sidebar) wrapping a WHITE
- * working surface (the quiz). Fully honest — this is the real practice UX, not
- * a mockup. Questions are verified K53 content (English; content isn't
- * translated yet) and the signs are the real PD SADC artwork the app serves.
+ * working surface (the quiz). Fully honest — this is the real practice UX
+ * rendered by the SAME shared quiz components as the app (QuizPanel,
+ * QuestionCard, quiz-chrome), so landing and app can never drift apart.
+ * Questions are verified K53 content (English; content isn't translated yet)
+ * and the signs are the real PD SADC artwork the app serves.
  */
 
-type Demo = {
-  topic: string;
-  sign: string;
-  q: string;
-  options: string[];
-  answer: number;
-  explain: string;
-};
-
-const SIGNS: Record<string, { code: string; label: string }> = {
-  stop: { code: "R1", label: "Stop sign" },
-  yield: { code: "R2", label: "Yield sign" },
-  speed: { code: "R201-60", label: "Speed limit 60 km/h sign" },
-};
-
-const QUESTIONS: Demo[] = [
+const QUESTIONS: Question[] = [
   {
-    topic: "Road Signs",
-    sign: "stop",
-    q: "You approach an eight-sided red sign. What must you do?",
+    id: "demo-stop",
+    topic: "signs",
+    difficulty: 1,
+    signCode: "R1",
+    prompt: "You approach an eight-sided red sign. What must you do?",
     options: [
       "Slow down only if other cars are near",
       "Come to a complete stop, then go when it is safe",
@@ -40,13 +39,15 @@ const QUESTIONS: Demo[] = [
       "Stop only at night",
     ],
     answer: 1,
-    explain:
+    explanation:
       "An eight-sided red sign is a STOP sign. You must come to a complete stop every time, then go only when it is safe.",
   },
   {
-    topic: "Road Signs",
-    sign: "yield",
-    q: "What does a downward-pointing red-and-white triangle mean?",
+    id: "demo-yield",
+    topic: "signs",
+    difficulty: 1,
+    signCode: "R2",
+    prompt: "What does a downward-pointing red-and-white triangle mean?",
     options: [
       "Stop completely and wait for a signal",
       "Yield — give way to traffic and pedestrians",
@@ -54,13 +55,15 @@ const QUESTIONS: Demo[] = [
       "Parking is allowed here",
     ],
     answer: 1,
-    explain:
+    explanation:
       "A downward red-and-white triangle is a YIELD sign. Slow down and give way; only stop if needed to let others pass.",
   },
   {
-    topic: "Rules of the Road",
-    sign: "speed",
-    q: "Inside a red circle showing '60', what is being told to you?",
+    id: "demo-speed",
+    topic: "rules",
+    difficulty: 1,
+    signCode: "R201-60",
+    prompt: "Inside a red circle showing '60', what is being told to you?",
     options: [
       "Minimum speed is 60 km/h",
       "Suggested speed is 60 km/h",
@@ -68,7 +71,7 @@ const QUESTIONS: Demo[] = [
       "Distance to the next town is 60 km",
     ],
     answer: 2,
-    explain:
+    explanation:
       "A number inside a red circle is a maximum speed limit. Here you may not drive faster than 60 km/h.",
   },
 ];
@@ -89,6 +92,7 @@ const CONFIDENCE: { icon: Parameters<typeof Icon>[0]["name"]; label: string }[] 
 ];
 
 export function LandingQuizDemo() {
+  const t = useTranslations("practice");
   const [idx, setIdx] = useState(0);
   const [chosen, setChosen] = useState<number | null>(null);
   const [correct, setCorrect] = useState(0);
@@ -96,8 +100,8 @@ export function LandingQuizDemo() {
 
   const q = QUESTIONS[idx];
   const answered = chosen !== null;
-  const sign = SIGNS[q.sign];
   const isLast = idx === QUESTIONS.length - 1;
+  const progress = ((idx + (answered ? 1 : 0)) / QUESTIONS.length) * 100;
 
   function choose(i: number) {
     if (answered) return;
@@ -162,131 +166,31 @@ export function LandingQuizDemo() {
       {/* Light working surface (the quiz) */}
       <div className="bg-surface-2 p-4 md:p-6">
         <div className="grid gap-5 lg:grid-cols-[1fr_240px]">
-          {/* Quiz main */}
-          <div
-            className="rounded-[18px] border bg-surface p-5 md:p-6"
-            style={{ borderColor: "var(--surface-border)", color: "var(--surface-ink)" }}
-          >
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <strong className="font-display">Practice Quiz</strong>
-              <span className="text-sm" style={{ color: "var(--surface-ink-2)" }}>
-                {idx + 1} of {QUESTIONS.length} ·{" "}
-                <span className="font-semibold text-success">✓ {correct} correct</span>
-              </span>
-            </div>
-
-            <div className="mt-2.5 h-2 overflow-hidden rounded-full bg-surface-3">
-              <div
-                className="h-full rounded-full transition-[width] duration-500"
-                style={{
-                  width: `${((idx + (answered ? 1 : 0)) / QUESTIONS.length) * 100}%`,
-                  background: "linear-gradient(90deg, var(--amber-500), var(--gold-400))",
-                }}
-              />
-            </div>
-
-            {sign && (
-              <div className="my-5 grid place-items-center">
-                {/* Real PD SADC artwork the app serves */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`/signs/${sign.code}.svg`}
-                  alt={sign.label}
-                  width={96}
-                  height={96}
-                  className="size-24 object-contain"
+          {/* Quiz main — the SAME shared components the app's quiz pages use */}
+          <QuizPanel>
+            <QuizHead
+              left={t("title")}
+              right={
+                <QuizScore
+                  current={idx + 1}
+                  total={QUESTIONS.length}
+                  correct={correct}
                 />
-              </div>
-            )}
+              }
+            />
+            <QuizProgress value={progress} />
 
-            <p className="mb-5 text-center font-display text-lg font-semibold">{q.q}</p>
-
-            <div className="flex flex-col gap-2.5">
-              {q.options.map((opt, i) => {
-                const isAnswer = i === q.answer;
-                const isChosen = i === chosen;
-                const showCorrect = answered && isAnswer;
-                const showWrong = answered && isChosen && !isAnswer;
-                return (
-                  <button
-                    key={i}
-                    type="button"
-                    disabled={answered}
-                    onClick={() => choose(i)}
-                    className={cn(
-                      "flex items-center gap-3 rounded-[14px] border px-4 py-3 text-left text-[0.95rem] font-medium transition-colors",
-                      !answered && "hover:border-gold-400 hover:bg-surface-2",
-                    )}
-                    style={{
-                      borderColor: showCorrect
-                        ? "var(--success)"
-                        : showWrong
-                          ? "var(--danger)"
-                          : "var(--surface-border-2)",
-                      background: showCorrect
-                        ? "var(--success-soft)"
-                        : showWrong
-                          ? "var(--danger-soft)"
-                          : "var(--surface)",
-                      color: "var(--surface-ink)",
-                      opacity: answered && !showCorrect && !showWrong ? 0.6 : 1,
-                    }}
-                  >
-                    <span
-                      className="grid size-[26px] shrink-0 place-items-center rounded-full text-xs font-bold"
-                      style={{
-                        background: showCorrect
-                          ? "var(--success)"
-                          : showWrong
-                            ? "var(--danger)"
-                            : "var(--surface-3)",
-                        color: showCorrect || showWrong ? "#fff" : "var(--surface-ink-2)",
-                      }}
-                    >
-                      {"ABCD"[i]}
-                    </span>
-                    <span className="flex-1">{opt}</span>
-                    {showCorrect && <span className="font-bold text-success">✓</span>}
-                    {showWrong && <span className="font-bold text-danger">✗</span>}
-                  </button>
-                );
-              })}
-            </div>
-
-            {answered && (
-              <div
-                className="mt-4 rounded-[14px] border bg-surface-2 p-4"
-                style={{ borderColor: "var(--surface-border)" }}
-              >
-                <p className="flex items-center gap-1.5 font-display text-sm font-semibold text-copper-500">
-                  <Icon name="i-spark" size="sm" /> AI Coach
-                </p>
-                <p className="mt-1.5 text-sm" style={{ color: "var(--surface-ink-2)" }}>
-                  {q.explain}
-                </p>
-              </div>
-            )}
+            <QuestionCard question={q} chosen={chosen} onChoose={choose} />
 
             <div className="mt-5 flex flex-col-reverse gap-3 sm:flex-row">
-              <button
-                type="button"
-                onClick={back}
-                disabled={idx === 0}
-                className="rounded-[14px] border px-5 py-2.5 font-display text-sm font-semibold disabled:opacity-40"
-                style={{ borderColor: "var(--surface-border-2)", color: "var(--surface-ink)" }}
-              >
+              <QuizButton variant="ghost" onClick={back} disabled={idx === 0}>
                 Back
-              </button>
-              <button
-                type="button"
-                onClick={next}
-                className="flex-1 rounded-[14px] px-5 py-2.5 font-display text-sm font-semibold text-[#2a1c0b]"
-                style={{ background: "linear-gradient(180deg, var(--gold-300), var(--gold-400))" }}
-              >
+              </QuizButton>
+              <QuizButton onClick={next} className="flex-1">
                 {isLast ? "Restart demo ↻" : "Next question →"}
-              </button>
+              </QuizButton>
             </div>
-          </div>
+          </QuizPanel>
 
           {/* Right rail */}
           <div className="flex flex-col gap-4">

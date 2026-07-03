@@ -249,8 +249,6 @@
     "contentSoon": "Learner content for this sign is being prepared."
   },
   "practice": {
-    "counter": "{current} of {total}",
-    "correctCount": "{count} correct",
     "explanation": "Explanation",
     "next": "Next question",
     "finish": "Finish",
@@ -259,7 +257,8 @@
     "completeKeep": "Good practice. Review the ones you missed and try again.",
     "again": "Practice again",
     "back": "Back to learning",
-    "coach": "AI Coach"
+    "coach": "Coach Says",
+    "title": "Practice Quiz"
   },
   "comingSoon": {
     "mockTitle": "Mock exams",
@@ -276,5 +275,10 @@
     "p4": "We collect the minimum personal information needed.",
     "p5": "Production data is handled POPIA-first: SA data residency, clear retention rules, and encrypted storage.",
     "docs": "Required production documents: Terms, Privacy Policy, POPIA Policy, Parent Consent, Refund Policy, School Agreement, Cookie Policy, AI Usage Disclaimer."
+  },
+  "quiz": {
+    "coach": "Coach Says",
+    "counter": "{current} of {total}",
+    "correctCount": "{count} correct"
   }
 }
