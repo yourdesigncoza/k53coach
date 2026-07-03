@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation";
-import { ArrowRight, ArrowLeft, Lightbulb } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowLeft, Lightbulb } from "lucide-react";
 import { Icon } from "@/components/icon";
+import { CtaBand } from "@/components/readiness/cta-band";
 import { SignImage } from "@/components/sign-image";
 import { cn } from "@/lib/utils";
 
@@ -243,37 +243,12 @@ export function LessonDemo() {
         </div>
 
         {/* ---- CTA band ---- */}
-        <div
-          className="relative mt-8 overflow-hidden rounded-[24px] border border-gold-400/40 px-6 py-12 text-center shadow-[var(--glow-gold)] md:py-14"
-          style={{
-            background:
-              "radial-gradient(120% 120% at 50% 0%, rgba(255,196,107,.14), transparent 60%), var(--ink-800)",
-          }}
-        >
-          <h2 className="mx-auto max-w-md font-display text-[1.5rem] font-semibold tracking-tight">
-            That&apos;s one lesson. There are dozens more.
-          </h2>
-          <p className="mx-auto mt-2 max-w-sm text-sm text-mist">
-            Every sign, rule and control — explained like this, then practised
-            until it sticks.
-          </p>
-          <Button
-            className="mx-auto mt-7 h-12 w-full max-w-xs rounded-[14px] px-6 text-base font-display font-semibold"
-            render={
-              <Link href="/readiness">
-                Take the free test <ArrowRight className="size-4" />
-              </Link>
-            }
-          />
-          <div className="mt-3">
-            <Link
-              href="/paywall"
-              className="text-sm font-medium text-mist underline-offset-4 hover:text-ivory hover:underline"
-            >
-              Unlock My Study Plan
-            </Link>
-          </div>
-        </div>
+        <CtaBand
+          className="mt-8"
+          title="That's one lesson. There are dozens more."
+          subtitle="Every sign, rule and control — explained like this, then practised until it sticks."
+          action={{ label: "Unlock My Study Plan", href: "/paywall" }}
+        />
 
         {/* ---- Back to sample report ---- */}
         <div className="mt-6 text-center">

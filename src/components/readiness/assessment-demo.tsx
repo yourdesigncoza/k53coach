@@ -18,6 +18,7 @@ import {
   BAND_FILL,
 } from "@/components/readiness-ring";
 import { CoachCard } from "@/components/quiz/quiz-chrome";
+import { CtaBand } from "@/components/readiness/cta-band";
 import { SignImage } from "@/components/sign-image";
 import { cn } from "@/lib/utils";
 import { TOPIC_LABEL, BAND_LABEL } from "@/lib/readiness";
@@ -517,30 +518,13 @@ export function AssessmentDemo() {
           </p>
         </div>
 
-        {/* ---- Final CTA band (gold glow, landing-style) ---- */}
-        <div
-          className="relative mt-8 overflow-hidden rounded-[24px] border border-gold-400/40 px-6 py-12 text-center shadow-[var(--glow-gold)] md:py-14"
-          style={{
-            background:
-              "radial-gradient(120% 120% at 50% 0%, rgba(255,196,107,.14), transparent 60%), var(--ink-800)",
-          }}
-        >
-          <h2 className="mx-auto max-w-md font-display text-[1.5rem] font-semibold tracking-tight">
-            Your real plan is built from your own answers.
-          </h2>
-          <p className="mx-auto mt-2 max-w-sm text-sm text-mist">
-            Every lesson, practice test and AI note until you&apos;re
-            test-ready.
-          </p>
-          <Button
-            className="mx-auto mt-7 h-12 w-full max-w-xs rounded-[14px] px-6 text-base font-display font-semibold"
-            render={
-              <Link href="/paywall">
-                Unlock My Study Plan <ArrowRight className="size-4" />
-              </Link>
-            }
-          />
-        </div>
+        {/* ---- Final CTA band ---- */}
+        <CtaBand
+          className="mt-8"
+          title="Your real plan is built from your own answers."
+          subtitle="Every lesson, practice test and AI note until you're test-ready."
+          action={{ label: "Unlock My Study Plan", href: "/paywall" }}
+        />
       </main>
     </div>
   );
