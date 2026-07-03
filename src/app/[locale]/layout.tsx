@@ -68,7 +68,10 @@ export default async function LocaleLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${poppins.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
+      {/* suppressHydrationWarning: browser extensions (ColorZilla, Grammarly, …)
+          inject attributes like cz-shortcut-listen onto <body> before React
+          hydrates; this scopes the ignore to <body>'s own attrs, not children. */}
+      <body suppressHydrationWarning className="flex min-h-full flex-col">
         <NextIntlClientProvider>
           <ThemeProvider
             attribute="class"
