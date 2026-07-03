@@ -1,6 +1,27 @@
 import { cn } from "@/lib/utils";
 import type { ReadinessBand } from "@/lib/types";
 
+/**
+ * Band → gauge gradient (start, end). Not-ready reads red, almost-ready keeps
+ * the signature amber→gold, test-ready reads green.
+ */
+const RING_GRADIENT: Record<ReadinessBand, [string, string]> = {
+  "not-ready": ["#f0625f", "var(--destructive)"],
+  "almost-ready": ["var(--amber-500)", "var(--gold-400)"],
+  "test-ready": ["#43c98a", "var(--success)"],
+};
+
+/**
+ * Band → solid fill for progress bars, as a CSS value. Set it as the
+ * `--progress-fill` custom property on a <Progress> (or its container) to tint
+ * the bar; the indicator falls back to `--primary` (gold) when unset.
+ */
+export const BAND_FILL: Record<ReadinessBand, string> = {
+  "not-ready": "var(--destructive)",
+  "almost-ready": "var(--primary)",
+  "test-ready": "var(--success)",
+};
+
 /** Soft tinted pill per readiness band — the Catalyst badge treatment. */
 export const BAND_BADGE_CLASS: Record<ReadinessBand, string> = {
   "not-ready":
@@ -18,6 +39,7 @@ export const BAND_BADGE_CLASS: Record<ReadinessBand, string> = {
  */
 export function ReadinessRing({
   percent,
+  band,
   size = 200,
   stroke = 14,
   label,
@@ -25,6 +47,8 @@ export function ReadinessRing({
   className,
 }: {
   percent: number;
+  /** Colours the gauge per band; defaults to amber→gold when omitted. */
+  band?: ReadinessBand;
   size?: number;
   stroke?: number;
   label?: string;
@@ -35,6 +59,8 @@ export function ReadinessRing({
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
   const offset = c - (clamped / 100) * c;
+  const [gradFrom, gradTo] = RING_GRADIENT[band ?? "almost-ready"];
+  const gradId = `readinessGrad-${band ?? "default"}`;
 
   return (
     <div
@@ -43,9 +69,9 @@ export function ReadinessRing({
     >
       <svg width={size} height={size} className="-rotate-90">
         <defs>
-          <linearGradient id="readinessGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="var(--amber-500)" />
-            <stop offset="1" stopColor="var(--gold-400)" />
+          <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor={gradFrom} />
+            <stop offset="1" stopColor={gradTo} />
           </linearGradient>
         </defs>
         <circle
@@ -53,7 +79,7 @@ export function ReadinessRing({
           cy={size / 2}
           r={r}
           fill="none"
-          stroke="var(--muted)"
+          stroke="var(--surface-3)"
           strokeWidth={stroke}
         />
         <circle
@@ -61,7 +87,7 @@ export function ReadinessRing({
           cy={size / 2}
           r={r}
           fill="none"
-          stroke="url(#readinessGrad)"
+          stroke={`url(#${gradId})`}
           strokeWidth={stroke}
           strokeLinecap="round"
           strokeDasharray={c}
@@ -71,16 +97,16 @@ export function ReadinessRing({
       </svg>
       <div className="absolute inset-0 grid place-items-center text-center">
         <div>
-          <div className="text-4xl font-semibold tabular-nums tracking-tight">
+          <div className="text-4xl font-semibold tabular-nums tracking-tight text-[var(--surface-ink)]">
             {clamped}%
           </div>
           {label && (
-            <div className="mt-1 text-sm font-medium text-foreground">
+            <div className="mt-1 text-sm font-medium text-[var(--surface-ink)]">
               {label}
             </div>
           )}
           {sublabel && (
-            <div className="text-xs text-muted-foreground">{sublabel}</div>
+            <div className="text-xs text-[var(--surface-ink-2)]">{sublabel}</div>
           )}
         </div>
       </div>

@@ -14,7 +14,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Icon } from "@/components/icon";
-import { ReadinessRing, BAND_BADGE_CLASS } from "@/components/readiness-ring";
+import {
+  ReadinessRing,
+  BAND_BADGE_CLASS,
+  BAND_FILL,
+} from "@/components/readiness-ring";
 import { cn } from "@/lib/utils";
 import { loadReadinessResult } from "@/lib/storage";
 import type { ReadinessBand, ReadinessResult } from "@/lib/types";
@@ -99,7 +103,11 @@ export default function ResultPage() {
       <SiteHeader />
       <main className="mx-auto w-full max-w-2xl flex-1 px-5 pb-28 pt-5 md:pb-12">
         <section className="flex flex-col items-center text-center">
-        <ReadinessRing percent={result.overall} sublabel={t("overall")} />
+        <ReadinessRing
+          percent={result.overall}
+          band={result.band}
+          sublabel={t("overall")}
+        />
         <Badge
           variant="secondary"
           className={cn(
@@ -130,14 +138,22 @@ export default function ResultPage() {
         <div className="mt-3 flex flex-col gap-3">
           {result.byTopic.map((topic) => (
             <Card key={topic.topic}>
-              <CardContent className="py-4">
+              <CardContent className="py-1 md:py-2">
                 <div className="mb-2 flex items-center justify-between text-sm">
                   <span className="font-medium">{tt(topic.topic)}</span>
                   <span className="tabular-nums text-muted-foreground">
                     {topic.correct}/{topic.total} · {topic.percent}%
                   </span>
                 </div>
-                <Progress value={topic.percent} className="h-2.5" />
+                <Progress
+                  value={topic.percent}
+                  className="h-2.5"
+                  style={
+                    {
+                      "--progress-fill": BAND_FILL[result.band],
+                    } as React.CSSProperties
+                  }
+                />
                 {result.weakest === topic.topic && (
                   <p className="mt-2 text-xs font-medium text-destructive">
                     {t("weakest")}

@@ -5,6 +5,9 @@ import { Icon, type IconName } from "@/components/icon";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { LandingQuizDemo } from "@/components/landing/quiz-demo";
+import { ReadinessRing, BAND_BADGE_CLASS } from "@/components/readiness-ring";
+import { SignImage } from "@/components/sign-image";
+import { cn } from "@/lib/utils";
 
 /* Topic taxonomy is content, not UI chrome — kept in English (see CLAUDE.md). */
 const TOPICS = [
@@ -180,6 +183,114 @@ export default function LandingPage() {
             <div className="mt-6">
               <Button className="h-12 rounded-[14px] px-5 text-base font-display font-semibold" render={<Link href="/readiness">{t("demoCta")} →</Link>} />
             </div>
+          </div>
+        </section>
+
+        {/* ---- AI COACH SHOWCASE — the differentiator (answer → get coached) ---- */}
+        <section id="coach" className="py-16">
+          <div className="mx-auto grid w-[min(1180px,92vw)] items-center gap-10 lg:grid-cols-[1.05fr_.95fr]">
+            {/* Copy + CTAs */}
+            <div className="max-w-xl">
+              <p className="text-xs font-medium uppercase tracking-[0.04em] text-gold-400">
+                The K53 Coach difference
+              </p>
+              <h2 className="mt-2 font-display text-[1.75rem] font-semibold leading-tight tracking-tight">
+                Every app gives you a score.{" "}
+                <span className="text-gold-400">Yours comes with a plan.</span>
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-mist">
+                After the free test, your AI Coach reads the result like a tutor
+                would: it shows which signs you confused, explains why, scores
+                your readiness, and hands you the exact next lesson. Parents get a
+                score they can actually read.
+              </p>
+              <ul className="mt-5 grid gap-2.5 text-sm text-sand">
+                {[
+                  "Sees why you got it wrong — not just that you did",
+                  "A parent-readable readiness score",
+                  "The exact next lesson, not “study everything”",
+                ].map((li) => (
+                  <li key={li} className="flex gap-2">
+                    <span className="font-bold text-gold-400">✓</span> {li}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button
+                  className="h-12 rounded-[14px] px-5 text-base font-display font-semibold"
+                  render={
+                    <Link href="/readiness/assessment-demo">
+                      See a sample coach report →
+                    </Link>
+                  }
+                />
+                <Button
+                  variant="secondary"
+                  className="h-12 rounded-[14px] border border-ink-600 bg-transparent px-5 text-base font-display font-semibold text-ivory hover:border-gold-400"
+                  render={
+                    <Link href="/readiness/lesson-demo">Preview a lesson →</Link>
+                  }
+                />
+              </div>
+            </div>
+
+            {/* Clickable white app-preview teaser → the full sample report */}
+            <Link
+              href="/readiness/assessment-demo"
+              aria-label="See a sample AI Coach report"
+              className="group block rounded-[24px] border border-ink-700 bg-surface p-5 shadow-[0_24px_60px_rgba(0,0,0,.4)] transition-transform hover:-translate-y-0.5"
+            >
+              <div className="flex items-center gap-4">
+                <ReadinessRing
+                  percent={60}
+                  band="almost-ready"
+                  size={124}
+                  stroke={11}
+                  sublabel="readiness"
+                />
+                <div>
+                  <span
+                    className={cn(
+                      "inline-flex h-6 items-center rounded-full px-2.5 text-xs font-medium",
+                      BAND_BADGE_CLASS["almost-ready"],
+                    )}
+                  >
+                    Almost ready
+                  </span>
+                  <p className="mt-2 text-sm font-semibold text-[var(--surface-ink)]">
+                    One topic is holding you back.
+                  </p>
+                  <p className="mt-0.5 text-xs text-[var(--surface-ink-2)]">
+                    Fix it and you&apos;re over the line.
+                  </p>
+                </div>
+              </div>
+
+              {/* Coach snippet */}
+              <div className="mt-4 rounded-[14px] border border-[var(--surface-border)] bg-surface-2 p-3">
+                <p className="flex items-center gap-1.5 font-display text-xs font-semibold text-copper-500">
+                  <Icon name="i-spark" size="sm" /> Coach Says
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-[var(--surface-ink-2)]">
+                  You read a Yield as a Stop. Yield means slow down and give way;
+                  Stop means a complete halt, every time.
+                </p>
+              </div>
+
+              {/* Sign mini + affordance */}
+              <div className="mt-3 flex items-center gap-3 rounded-[14px] border border-[var(--surface-border)] bg-surface-2 p-3">
+                <div className="grid size-12 shrink-0 place-items-center rounded-lg bg-white p-1.5 shadow-sm">
+                  <SignImage svgFile="signs/R1.svg" name="Stop" className="size-full" />
+                </div>
+                <span className="text-[var(--surface-ink-2)]">→</span>
+                <div className="grid size-12 shrink-0 place-items-center rounded-lg bg-white p-1.5 shadow-sm">
+                  <SignImage svgFile="signs/R2.svg" name="Yield" className="size-full" />
+                </div>
+                <span className="ml-auto text-xs font-semibold text-copper-500 group-hover:underline">
+                  See the full report →
+                </span>
+              </div>
+            </Link>
           </div>
         </section>
 
