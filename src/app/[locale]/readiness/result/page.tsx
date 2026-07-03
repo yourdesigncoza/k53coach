@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Icon } from "@/components/icon";
 import { ReadinessRing, BAND_BADGE_CLASS } from "@/components/readiness-ring";
 import { cn } from "@/lib/utils";
 import { loadReadinessResult } from "@/lib/storage";
@@ -111,6 +112,15 @@ export default function ResultPage() {
         <p className="mt-3 text-sm text-muted-foreground">
           {t(BAND_MSG_KEY[result.band])}
         </p>
+        <Button
+          variant="outline"
+          className="mt-4 rounded-xl"
+          render={
+            <Link href="/readiness/assessment-demo">
+              <Icon name="i-spark" size="sm" /> {t("seeAssessment")}
+            </Link>
+          }
+        />
       </section>
 
       <section className="mt-8">

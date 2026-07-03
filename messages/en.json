@@ -163,7 +163,8 @@
     "shareText": "My K53 readiness score is {percent}% ({band}). Check yours free:",
     "shareCopied": "Copied — paste it to your parent on WhatsApp.",
     "noResult": "No readiness result yet. Take the free test to see your score.",
-    "takeTest": "Take the free test"
+    "takeTest": "Take the free test",
+    "seeAssessment": "See a sample AI Assessment"
   },
   "auth": {
     "title": "Log in or sign up",

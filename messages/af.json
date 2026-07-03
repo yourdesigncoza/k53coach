@@ -164,7 +164,8 @@
     "shareText": "My K53-gereedheidstelling is {percent}% ({band}). Toets joune gratis:",
     "shareCopied": "Gekopieer — plak dit vir jou ouer op WhatsApp.",
     "noResult": "Nog geen gereedheidsuitslag nie. Doen die gratis toets om jou telling te sien.",
-    "takeTest": "Doen die gratis toets"
+    "takeTest": "Doen die gratis toets",
+    "seeAssessment": "Sien 'n voorbeeld KI-assessering"
   },
   "auth": {
     "title": "Meld aan of registreer",
