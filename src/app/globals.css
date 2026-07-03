@@ -54,6 +54,18 @@
    if a control type is missing, add it to ui/ once (shadcn) and restyle it
    there. Quiz/learning surfaces additionally use the shared quiz chrome above.
    Reference form: the auth page (src/app/[locale]/auth/page.tsx).
+
+   MOBILE PADDING — USE THE MINIMUM (mobile-first, always responsive; never a
+   single desktop-sized pad). On phones (the base, un-prefixed classes) use the
+   MINIMUM padding that still reads and stays tappable — do not carry desktop
+   roominess down to mobile. Roominess is added back only at `md+`. So the base
+   value is the floor, and `md:` is where it grows.
+   Defaults: panel/card interiors `p-4 md:p-6`; page gutters `px-4 md:px-8`;
+   tappable rows (e.g. AnswerOption) `px-3 py-2.5 md:px-4 md:py-3`. Never stack
+   padding (e.g. a `Card`'s own pad PLUS a `CardContent py-5`) — that reads
+   double-padded on mobile; keep one source of interior padding.
+   When a surface must match the prototype exactly on desktop, tighten ONLY the
+   base (mobile) value and pin the `md:` value to the prototype's.
    =========================================================================== */
 
 :root {

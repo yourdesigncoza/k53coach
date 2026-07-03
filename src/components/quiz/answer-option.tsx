@@ -33,7 +33,7 @@ export function AnswerOption({
       disabled={answered}
       onClick={onChoose}
       className={cn(
-        "flex w-full items-center gap-3 rounded-[14px] border bg-surface px-4 py-3 text-left text-[0.95rem] font-medium transition-colors",
+        "flex w-full items-center gap-3 rounded-[14px] border bg-surface px-3 py-2.5 text-left text-[0.95rem] font-medium transition-colors md:px-4 md:py-3",
         state === "idle" &&
           !answered &&
           "cursor-pointer border-[var(--surface-border-2)] hover:border-gold-400 hover:bg-surface-2",
