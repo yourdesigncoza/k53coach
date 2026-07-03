@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { GlobalHeader } from "@/components/global-header";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { QuizRunner } from "@/components/quiz/quiz-runner";
 import { getReadinessQuestions } from "@/lib/questions";
 
@@ -12,7 +13,7 @@ export default async function ReadinessTestPage() {
 
   return (
     <>
-      <GlobalHeader />
+      <SiteHeader />
       {questions.length === 0 ? (
         <main className="mx-auto flex w-full max-w-md flex-1 flex-col items-center justify-center gap-3 px-5 py-16 text-center">
           <p className="text-muted-foreground">{t("empty")}</p>
@@ -23,6 +24,7 @@ export default async function ReadinessTestPage() {
       ) : (
         <QuizRunner questions={questions} />
       )}
+      <SiteFooter />
     </>
   );
 }

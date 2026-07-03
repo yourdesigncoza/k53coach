@@ -7,14 +7,15 @@ import type { Json } from "@/lib/database.types";
 import { Link } from "@/i18n/navigation";
 import { Share2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-import { GlobalHeader } from "@/components/global-header";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { ReadinessRing, BAND_BADGE_CLASS } from "@/components/readiness-ring";
 import { cn } from "@/lib/utils";
-import { READINESS_RESULT_KEY } from "@/lib/storage";
+import { loadReadinessResult } from "@/lib/storage";
 import type { ReadinessBand, ReadinessResult } from "@/lib/types";
 
 const BAND_MSG_KEY: Record<ReadinessBand, string> = {
@@ -32,8 +33,8 @@ export default function ResultPage() {
   const persisted = useRef(false);
 
   useEffect(() => {
-    const raw = sessionStorage.getItem(READINESS_RESULT_KEY);
-    if (raw) setResult(JSON.parse(raw) as ReadinessResult);
+    const stored = loadReadinessResult();
+    if (stored) setResult(stored);
     setLoaded(true);
   }, []);
 
@@ -57,7 +58,7 @@ export default function ResultPage() {
   if (loaded && !result) {
     return (
       <>
-        <GlobalHeader />
+        <SiteHeader />
         <main className="mx-auto grid w-full max-w-md flex-1 place-items-center px-5 text-center">
           <div>
             <p className="text-muted-foreground">{t("noResult")}</p>
@@ -67,6 +68,7 @@ export default function ResultPage() {
             />
           </div>
         </main>
+        <SiteFooter />
       </>
     );
   }
@@ -93,7 +95,7 @@ export default function ResultPage() {
 
   return (
     <>
-      <GlobalHeader />
+      <SiteHeader />
       <main className="mx-auto w-full max-w-2xl flex-1 px-5 pb-28 pt-5 md:pb-12">
         <section className="flex flex-col items-center text-center">
         <ReadinessRing percent={result.overall} sublabel={t("overall")} />
@@ -171,6 +173,7 @@ export default function ResultPage() {
         </div>
       </div>
       </main>
+      <SiteFooter />
     </>
   );
 }

@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/brand/logo";
 import { Icon, type IconName } from "@/components/icon";
-import { LanguageSwitcher } from "@/components/language-switcher";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { LandingQuizDemo } from "@/components/landing/quiz-demo";
 
 /* Topic taxonomy is content, not UI chrome — kept in English (see CLAUDE.md). */
@@ -50,24 +50,7 @@ export default function LandingPage() {
 
   return (
     <div className="theme-dark min-h-dvh bg-background text-foreground">
-      {/* ---- Sticky translucent nav ---- */}
-      <header className="pt-safe sticky top-0 z-30 border-b border-white/5 bg-ink-900/50 backdrop-blur-md">
-        <div className="mx-auto flex w-[min(1180px,92vw)] items-center gap-6 py-3.5">
-          <Link href="/" aria-label="Home">
-            <Logo />
-          </Link>
-          <nav className="ml-auto hidden items-center gap-6 text-sm font-medium text-mist md:flex">
-            <a href="#how" className="hover:text-ivory">{t("navHow")}</a>
-            <a href="#pricing" className="hover:text-ivory">{t("navPricing")}</a>
-            <a href="#parents" className="hover:text-ivory">{t("navParents")}</a>
-          </nav>
-          <div className="flex items-center gap-2 md:ml-0">
-            <LanguageSwitcher />
-            <Button variant="ghost" size="sm" className="hidden text-ivory hover:text-gold-300 sm:inline-flex" render={<Link href="/auth">{t("login")}</Link>} />
-            <Button size="sm" className="h-9 rounded-[14px] px-4 font-display font-semibold" render={<Link href="/readiness">{t("startFree")}</Link>} />
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main>
         {/* ---- HERO ---- */}
@@ -298,12 +281,7 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="border-t border-ink-700 py-10 text-sm text-muted-dk">
-        <div className="mx-auto flex w-[min(1180px,92vw)] flex-wrap items-center justify-between gap-4">
-          <span>{t("footerRights")}</span>
-          <Link href="/legal/privacy" className="text-gold-400 hover:text-gold-300">{t("privacy")} →</Link>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

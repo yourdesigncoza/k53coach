@@ -1,7 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { CheckCircle2, Clock, Lock } from "lucide-react";
-import { GlobalHeader } from "@/components/global-header";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getReadinessQuestions } from "@/lib/questions";
@@ -20,7 +21,7 @@ export default async function ReadinessIntroPage() {
 
   return (
     <>
-      <GlobalHeader />
+      <SiteHeader />
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col px-5 pb-10 pt-5">
         <section className="flex-1">
           <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
@@ -54,6 +55,7 @@ export default async function ReadinessIntroPage() {
           </p>
         </div>
       </main>
+      <SiteFooter />
     </>
   );
 }

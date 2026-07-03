@@ -6,7 +6,8 @@ import { Link } from "@/i18n/navigation";
 import { useRouter } from "@/i18n/navigation";
 import { Mail } from "lucide-react";
 import { toast } from "sonner";
-import { GlobalHeader } from "@/components/global-header";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -41,7 +42,7 @@ export default function AuthPage() {
 
   return (
     <>
-      <GlobalHeader />
+      <SiteHeader />
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-5 py-10">
         <Card>
         <CardContent className="py-6">
@@ -87,6 +88,7 @@ export default function AuthPage() {
         </Link>
       </p>
       </main>
+      <SiteFooter />
     </>
   );
 }

@@ -3,7 +3,8 @@
 import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 import { toast } from "sonner";
-import { GlobalHeader } from "@/components/global-header";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -26,7 +27,7 @@ export default function PaywallPage() {
 
   return (
     <>
-      <GlobalHeader />
+      <SiteHeader />
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col px-5 pb-10 pt-5">
         <section className="flex-1">
         <Badge variant="secondary">{t("badge")}</Badge>
@@ -73,6 +74,7 @@ export default function PaywallPage() {
         <p className="text-center text-xs text-muted-foreground">{t("note")}</p>
       </div>
       </main>
+      <SiteFooter />
     </>
   );
 }

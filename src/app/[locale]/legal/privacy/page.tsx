@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
-import { GlobalHeader } from "@/components/global-header";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata = { title: "Privacy & POPIA" };
 
@@ -9,7 +10,7 @@ export default function PrivacyPage() {
 
   return (
     <>
-      <GlobalHeader />
+      <SiteHeader />
       <main className="mx-auto w-full max-w-md flex-1 px-5 pb-16 pt-5">
         <article className="prose-sm flex flex-col gap-4 text-sm leading-relaxed">
           <h1 className="text-2xl font-bold">{t("title")}</h1>
@@ -25,6 +26,7 @@ export default function PrivacyPage() {
           <p className="text-xs text-muted-foreground">{t("docs")}</p>
         </article>
       </main>
+      <SiteFooter />
     </>
   );
 }
