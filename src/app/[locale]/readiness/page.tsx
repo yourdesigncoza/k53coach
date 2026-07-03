@@ -3,15 +3,15 @@ import { Link } from "@/i18n/navigation";
 import { CheckCircle2, Clock, Lock } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { QuizRunner } from "@/components/quiz/quiz-runner";
 import { getReadinessQuestions } from "@/lib/questions";
 
 export const metadata = { title: "Free readiness test" };
 
-export default async function ReadinessIntroPage() {
+export default async function ReadinessPage() {
+  const questions = await getReadinessQuestions();
   const t = await getTranslations("readiness");
-  const count = (await getReadinessQuestions()).length;
 
   const benefits = [
     { icon: Clock, text: t("benefitTime") },
@@ -22,12 +22,11 @@ export default async function ReadinessIntroPage() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto flex w-full max-w-md flex-1 flex-col px-5 pb-10 pt-5">
-        <section className="flex-1">
+      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-4 py-5 md:py-8">
+        {/* Intro */}
+        <section>
           <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
-          <p className="mt-2 text-muted-foreground">
-            {t("intro", { count })}
-          </p>
+          <p className="mt-2 text-muted-foreground">{t("intro", { count: questions.length })}</p>
 
           <Card className="mt-6">
             <CardContent className="flex flex-col gap-4 py-5">
@@ -41,19 +40,20 @@ export default async function ReadinessIntroPage() {
           </Card>
         </section>
 
-        <div className="pb-safe sticky bottom-0 bg-background/95 pt-3 backdrop-blur">
-          <Button
-            className="h-13 w-full rounded-xl text-base"
-            render={<Link href="/readiness/test">{t("start")}</Link>}
-          />
-          <p className="mt-2 text-center text-xs text-muted-foreground">
-            {t("agree")}{" "}
-            <Link href="/legal/privacy" className="underline">
-              {t("privacyNotice")}
-            </Link>
-            .
-          </p>
-        </div>
+        {/* Test form — directly below the intro, no button */}
+        {questions.length === 0 ? (
+          <p className="py-10 text-center text-muted-foreground">{t("empty")}</p>
+        ) : (
+          <QuizRunner questions={questions} />
+        )}
+
+        <p className="text-center text-xs text-muted-foreground">
+          {t("agree")}{" "}
+          <Link href="/legal/privacy" className="underline">
+            {t("privacyNotice")}
+          </Link>
+          .
+        </p>
       </main>
       <SiteFooter />
     </>

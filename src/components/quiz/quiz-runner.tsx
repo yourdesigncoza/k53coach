@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { ChevronLeft } from "lucide-react";
-import { Link, useRouter } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { QuizPanel } from "@/components/quiz/quiz-panel";
 import { QuestionCard } from "@/components/quiz/question-card";
 import {
@@ -58,36 +57,26 @@ export function QuizRunner({ questions }: { questions: Question[] }) {
   }
 
   return (
-    <main className="mx-auto w-full max-w-2xl px-4 py-5 md:py-8">
-      <Link
-        href="/"
-        className="-ml-1 mb-3 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
-      >
-        <ChevronLeft className="size-4" />
-        {t("backHome")}
-      </Link>
+    <QuizPanel>
+      <QuizHead
+        left={tt(q.topic)}
+        right={
+          <QuizScore
+            current={index + 1}
+            total={questions.length}
+            correct={correctCount}
+          />
+        }
+      />
+      <QuizProgress value={progress} />
 
-      <QuizPanel>
-        <QuizHead
-          left={tt(q.topic)}
-          right={
-            <QuizScore
-              current={index + 1}
-              total={questions.length}
-              correct={correctCount}
-            />
-          }
-        />
-        <QuizProgress value={progress} />
+      <QuestionCard question={q} chosen={chosen} onChoose={choose} />
 
-        <QuestionCard question={q} chosen={chosen} onChoose={choose} />
-
-        <div className="mt-5 flex">
-          <QuizButton onClick={next} disabled={!answered} className="flex-1">
-            {isLast ? t("finish") : t("next")}
-          </QuizButton>
-        </div>
-      </QuizPanel>
-    </main>
+      <div className="mt-5 flex">
+        <QuizButton onClick={next} disabled={!answered} className="flex-1">
+          {isLast ? t("finish") : t("next")}
+        </QuizButton>
+      </div>
+    </QuizPanel>
   );
 }
