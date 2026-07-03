@@ -159,12 +159,14 @@ export default function LandingPage() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {features.map((f) => (
-                <div key={f.title} className="rounded-[18px] border border-ink-700 bg-card p-6">
-                  <span className="mb-3 grid size-[42px] place-items-center rounded-[14px] bg-gold-400/10 text-gold-400">
+                <div key={f.title} className="flex items-start gap-3.5 rounded-[18px] border border-ink-700 bg-card p-5">
+                  <span className="grid size-[42px] shrink-0 place-items-center rounded-[14px] bg-gold-400/10 text-gold-400">
                     <Icon name={f.icon} />
                   </span>
-                  <h3 className="font-display text-[1.0625rem] font-semibold">{f.title}</h3>
-                  <p className="mt-1 text-sm text-mist">{f.body}</p>
+                  <div>
+                    <h3 className="font-display text-[1.0625rem] font-semibold">{f.title}</h3>
+                    <p className="mt-1 text-sm text-mist">{f.body}</p>
+                  </div>
                 </div>
               ))}
             </div>
