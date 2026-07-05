@@ -58,3 +58,6 @@ ui-design/*
 
 # codegraph index
 .codegraph/
+
+# Local-only Claude Code project config (skills, settings) — never share to the repo
+.claude/
