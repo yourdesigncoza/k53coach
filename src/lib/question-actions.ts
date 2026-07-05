@@ -4,6 +4,12 @@ import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { isAdmin, getApprovedSignByCode } from "@/lib/supabase/queries";
 import type { Topic } from "@/lib/types";
+import {
+  VEHICLE_CODES,
+  EXAM_LIKELIHOODS,
+  type VehicleCode,
+  type ExamLikelihood,
+} from "@/lib/exam";
 
 const TOPICS: Topic[] = ["signs", "rules", "controls"];
 
@@ -18,6 +24,11 @@ export type SaveQuestionInput = {
   signCode: string | null;
   inReadiness: boolean;
   reviewStatus: "draft" | "approved";
+  // Exam curation
+  inExam: boolean;
+  examLikelihood: ExamLikelihood;
+  vehicleCodes: VehicleCode[];
+  topicTag: string | null;
 };
 
 /** Server-side validation — the DB CHECK constraints are the backstop; this gives
@@ -33,6 +44,15 @@ function validate(input: SaveQuestionInput): string | null {
     input.answer >= input.options.length
   )
     return "The correct answer must be one of the options";
+  if (!EXAM_LIKELIHOODS.includes(input.examLikelihood))
+    return "Invalid exam likelihood";
+  if (
+    !Array.isArray(input.vehicleCodes) ||
+    input.vehicleCodes.some((c) => !VEHICLE_CODES.includes(c))
+  )
+    return "Invalid vehicle code";
+  if (input.inExam && input.vehicleCodes.length === 0)
+    return "Select at least one vehicle code to include in the exam pool";
   if (input.reviewStatus === "approved") {
     if (!input.prompt.trim()) return "A prompt is required to approve";
     if (!input.explanation.trim())
@@ -101,6 +121,10 @@ export async function saveQuestion(input: SaveQuestionInput) {
       sign_code: input.signCode,
       in_readiness: input.inReadiness,
       review_status: input.reviewStatus,
+      in_exam: input.inExam,
+      exam_likelihood: input.examLikelihood,
+      vehicle_codes: input.vehicleCodes,
+      topic_tag: input.topicTag,
       updated_by: auth.user?.id ?? null,
       updated_at: new Date().toISOString(),
     })

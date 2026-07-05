@@ -21,7 +21,25 @@ export function toQuestion(row: QuestionRow): Question {
     answer: row.answer,
     explanation: row.explanation,
     ...(row.sign_code ? { signCode: row.sign_code } : {}),
+    ...(row.exam_likelihood
+      ? { examLikelihood: row.exam_likelihood as "high" | "medium" | "low" }
+      : {}),
+    ...(row.topic_tag ? { topicTag: row.topic_tag } : {}),
   };
+}
+
+/** The curated mock-exam pool for a vehicle code: approved + in_exam + applies to
+ *  the code. Feeds `assemblePaper` — admin curation is the single source. */
+export async function getExamPool(vehicleCode: string): Promise<Question[]> {
+  const supabase = await createClient();
+  if (!supabase) return [];
+  const { data } = await supabase
+    .from("questions")
+    .select("*")
+    .eq("review_status", "approved")
+    .eq("in_exam", true)
+    .contains("vehicle_codes", [vehicleCode]);
+  return (data ?? []).map(toQuestion);
 }
 
 /** Curated free-readiness diagnostic set (approved + in_readiness). */

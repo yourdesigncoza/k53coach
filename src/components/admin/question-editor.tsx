@@ -11,6 +11,12 @@ import { SignImage } from "@/components/sign-image";
 import { cn } from "@/lib/utils";
 import { saveQuestion, deleteQuestion } from "@/lib/question-actions";
 import type { Topic } from "@/lib/types";
+import {
+  VEHICLE_CODES,
+  EXAM_LIKELIHOODS,
+  type VehicleCode,
+  type ExamLikelihood,
+} from "@/lib/exam";
 
 const TOPICS: Topic[] = ["signs", "rules", "controls"];
 const field =
@@ -27,6 +33,10 @@ export type QuestionEditorProps = {
   signCode: string | null;
   inReadiness: boolean;
   reviewStatus: "draft" | "approved";
+  inExam: boolean;
+  examLikelihood: ExamLikelihood;
+  vehicleCodes: VehicleCode[];
+  topicTag: string | null;
 };
 
 export function QuestionEditor(initial: QuestionEditorProps) {
@@ -40,8 +50,20 @@ export function QuestionEditor(initial: QuestionEditorProps) {
   const [signCode, setSignCode] = useState(initial.signCode ?? "");
   const [inReadiness, setInReadiness] = useState(initial.inReadiness);
   const [reviewStatus, setReviewStatus] = useState(initial.reviewStatus);
+  const [inExam, setInExam] = useState(initial.inExam);
+  const [examLikelihood, setExamLikelihood] = useState(initial.examLikelihood);
+  const [vehicleCodes, setVehicleCodes] = useState<VehicleCode[]>(
+    initial.vehicleCodes,
+  );
+  const [topicTag, setTopicTag] = useState(initial.topicTag ?? "");
   const [busy, setBusy] = useState(false);
   const [drafting, setDrafting] = useState(false);
+
+  function toggleCode(code: VehicleCode) {
+    setVehicleCodes((cs) =>
+      cs.includes(code) ? cs.filter((c) => c !== code) : [...cs, code],
+    );
+  }
 
   function setOption(i: number, value: string) {
     setOptions((o) => o.map((v, idx) => (idx === i ? value : v)));
@@ -67,6 +89,10 @@ export function QuestionEditor(initial: QuestionEditorProps) {
       signCode: signCode.trim() || null,
       inReadiness,
       reviewStatus,
+      inExam,
+      examLikelihood,
+      vehicleCodes,
+      topicTag: topicTag.trim() || null,
     });
     setBusy(false);
     if (res.ok) toast.success("Saved");
@@ -217,6 +243,78 @@ export function QuestionEditor(initial: QuestionEditorProps) {
             <span className="mb-1 block text-sm font-medium">Explanation</span>
             <textarea className={cn(field, "min-h-16 resize-y")} value={explanation} onChange={(e) => setExplanation(e.target.value)} />
           </label>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent className="py-4">
+          <p className="mb-3 text-sm font-medium">Mock exam pool</p>
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={inExam}
+              onChange={(e) => setInExam(e.target.checked)}
+              className="size-4"
+            />
+            Include in the mock exam pool
+          </label>
+          <div className="mt-3 grid gap-3 sm:grid-cols-2">
+            <label className="block">
+              <span className="mb-1 block text-xs font-medium">
+                Exam likelihood (sampling weight)
+              </span>
+              <select
+                className={field}
+                value={examLikelihood}
+                onChange={(e) =>
+                  setExamLikelihood(e.target.value as ExamLikelihood)
+                }
+              >
+                {EXAM_LIKELIHOODS.map((l) => (
+                  <option key={l} value={l}>
+                    {l}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="block">
+              <span className="mb-1 block text-xs font-medium">
+                Sub-topic (optional) — e.g. “Right of Way”
+              </span>
+              <input
+                className={field}
+                value={topicTag}
+                onChange={(e) => setTopicTag(e.target.value)}
+                placeholder="Sub-topic label"
+              />
+            </label>
+          </div>
+          <div className="mt-3">
+            <span className="mb-1.5 block text-xs font-medium">
+              Vehicle codes this question applies to
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {VEHICLE_CODES.map((code) => (
+                <label
+                  key={code}
+                  className={cn(
+                    "flex cursor-pointer items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm",
+                    vehicleCodes.includes(code)
+                      ? "border-primary bg-primary/10 font-medium"
+                      : "border-input",
+                  )}
+                >
+                  <input
+                    type="checkbox"
+                    checked={vehicleCodes.includes(code)}
+                    onChange={() => toggleCode(code)}
+                    className="size-4"
+                  />
+                  {code}
+                </label>
+              ))}
+            </div>
+          </div>
         </CardContent>
       </Card>
 

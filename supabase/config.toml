@@ -247,6 +247,11 @@ otp_expiry = 172800
 # admin_email = "admin@email.com"
 # sender_name = "Admin"
 
+# Branded magic-link email (the sign-in link learners/parents receive).
+[auth.email.template.magic_link]
+subject = "Your K53 Coach sign-in link"
+content_path = "./supabase/templates/magic_link.html"
+
 # Uncomment to customize email template
 # [auth.email.template.invite]
 # subject = "You have been invited"

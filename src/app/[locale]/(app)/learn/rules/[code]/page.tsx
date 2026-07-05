@@ -74,8 +74,8 @@ export default async function RuleDetailPage({
             </Badge>
           </div>
 
-          <Card className="mt-5">
-            <CardContent className="py-4">
+          <Card className="mt-5 py-0">
+            <CardContent className="py-3.5 md:py-4">
               <p className="text-sm font-medium text-muted-foreground">
                 {t("inShort")}
               </p>
@@ -92,8 +92,8 @@ export default async function RuleDetailPage({
         <div className="mt-3 md:mt-0">
           <div className="grid gap-3">
             {FIELDS.map(({ key, icon: FieldIcon, labelKey }) => (
-              <Card key={key}>
-                <CardContent className="flex items-start gap-3 py-4">
+              <Card key={key} className="py-0">
+                <CardContent className="flex items-start gap-3 py-3.5 md:py-4">
                   <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-secondary text-foreground">
                     <FieldIcon className="size-4.5" />
                   </span>
@@ -115,11 +115,11 @@ export default async function RuleDetailPage({
                 {related.map((r) => {
                   const RIcon = RULE_CATEGORY_META[r.category].icon;
                   return (
-                    <Card key={r.code}>
+                    <Card key={r.code} className="py-0">
                       <CardContent className="py-0">
                         <Link
                           href={`/learn/rules/${r.code}`}
-                          className="flex items-center gap-2 py-3"
+                          className="flex items-center gap-2 py-2 md:py-3"
                         >
                           <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-secondary text-foreground">
                             <RIcon className="size-4" />

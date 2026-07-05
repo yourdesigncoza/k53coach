@@ -10,10 +10,24 @@ The original specs live in `init/` and still govern product intent — read them
 
 ## Project status
 
-Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. The road-sign library (DB1) is fully ingested and **chart-verified in a Claude Code session** (245/254 in-chart signs auto-approved with drafted content; the rest in the admin exceptions queue) — see `docs/sign-accuracy-pipeline.md`. Deferred (see `docs/backlog.md`): mock exams, full pass-prediction, dashboards, practical-driving coach, the Afrikaans content pass, next-pwa service worker.
+Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. The road-sign library (DB1) is fully ingested and **chart-verified in a Claude Code session** (245/254 in-chart signs auto-approved with drafted content; the rest in the admin exceptions queue) — see `docs/sign-accuracy-pipeline.md`. **Mock exam (Code B) shipped:** entitlement-gated `/mock` → timed 68-question paper (3 sections scored independently) → per-section summary → grounded AI assessment → DB9 readiness blend on the dashboard/progress. Question bank grew to 125 (110 ingested from the K53 wiki, `scripts/exam/`); admin question bank now curates the exam pool per section (`in_exam`, `exam_likelihood`, `vehicle_codes`, pool-health strip). Engine in `src/lib/exam.ts`, UI in `src/components/exam/*`, gate in `src/lib/exam-guard.ts` (new `entitlements` + `exam_attempts` tables). Deferred (see `docs/backlog.md`): payments→entitlements wiring, Code A/C papers (content), full pass-prediction, dashboards, practical-driving coach, the Afrikaans content pass, next-pwa service worker.
 
 - **Production:** https://k53coach.vercel.app (Vercel project `yourdesigncozas-projects/k53coach`; GitHub `yourdesigncoza/k53coach` auto-deploys on push).
 - **Supabase (prototype):** project `k53coach`, ref `lxefjksaxmiawrnnewmj`, eu-west-1.
+
+## Project management (Linear)
+
+From here on this project is tracked in **Linear**, in its **own dedicated free workspace
+`k53-coach`** (`linear.app/k53-coach`) — kept separate from the Wecoza workspace so the only
+other collaborator, **Louwrens** (`louwrensluyt@gmail.com`, now invited), sees *only* K53.
+
+- Team **K53 Coach** (key `K53`); work lives under the **Post-MVP Roadmap** project, grouped
+  into 5 milestones (Monetisation & Access, Exam engine v2, Bilingual content, Platform,
+  Compliance (POPIA)), seeded from `docs/backlog.md`.
+- **Todo** is reserved for currently-queued work; deferred items stay in **Backlog**.
+- Driven via the `pi-linear-tools` CLI using the **k53-coach-scoped** `LINEAR_API_KEY` in
+  `.env.local` (pass it inline — do **not** overwrite the CLI's stored Wecoza key). Details in
+  project memory: `linear-k53-coach-workspace`.
 
 ## Commands
 

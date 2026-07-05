@@ -200,6 +200,35 @@
   color: var(--foreground);
 }
 
+/* ---------------------------------------------------------------------------
+   LIGHT island inside a dark storefront. Wrap a beige/ivory band (e.g. the
+   landing "K53 Coach difference" spotlight) in `.theme-light` to re-assert the
+   white-app semantic tokens, so shadcn components and `text-foreground` read
+   correctly on the light band even though the page root is `.theme-dark`.
+   --------------------------------------------------------------------------- */
+.theme-light {
+  --background: var(--surface-2);
+  --foreground: var(--surface-ink);
+  --card: var(--surface);
+  --card-foreground: var(--surface-ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--surface-ink);
+  --primary: var(--gold-400);
+  --primary-foreground: #2a1c0b;
+  --secondary: var(--surface-3);
+  --secondary-foreground: var(--surface-ink);
+  --muted: var(--surface-3);
+  --muted-foreground: var(--surface-ink-2);
+  --accent: var(--warn-soft);
+  --accent-foreground: #7a4d10;
+  --border: var(--surface-border);
+  --input: var(--surface-border-2);
+  --ring: var(--gold-400);
+
+  background: var(--background);
+  color: var(--foreground);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

@@ -2,6 +2,7 @@ import { SignImage } from "@/components/sign-image";
 import {
   AnswerOption,
   answerOptionState,
+  examOptionState,
 } from "@/components/quiz/answer-option";
 import { CoachCard } from "@/components/quiz/quiz-chrome";
 import type { Question } from "@/lib/types";
@@ -14,25 +15,35 @@ import type { Question } from "@/lib/types";
  * contract (sign my-5, question mb-5, coach mt-4) since the QuizPanel has no
  * auto-gap.
  *
- * Feedback is revealed as soon as an option is chosen, and the choice then
- * locks (single answer per question). The explanation is hard-coded verified
- * content (`question.explanation`) — there is NO runtime AI here, which is why
- * the label is "Coach Says", not "AI Coach".
+ * Two modes:
+ *  - "feedback" (default): feedback is revealed as soon as an option is chosen
+ *    and the choice locks; the verified "Coach Says" explanation shows. Used by
+ *    the readiness test, practice mode, the landing demo AND post-exam review.
+ *  - "exam": NO reveal, NO explanation; the choice can be changed until the
+ *    learner advances (a real exam gives no per-question feedback). The selected
+ *    option is highlighted.
+ * The explanation is hard-coded verified content (`question.explanation`) — there
+ * is NO runtime AI here, which is why the label is "Coach Says", not "AI Coach".
  */
 export function QuestionCard({
   question,
   chosen,
   onChoose,
+  mode = "feedback",
 }: {
   question: Question;
   /** Chosen option index, or null while unanswered. */
   chosen: number | null;
   onChoose: (optionIndex: number) => void;
+  mode?: "feedback" | "exam";
 }) {
+  const isExam = mode === "exam";
+  // In feedback mode the row locks once chosen; in exam mode it stays editable.
   const answered = chosen !== null;
+  const locked = !isExam && answered;
 
   function choose(optionIndex: number) {
-    if (!answered) onChoose(optionIndex);
+    if (!locked) onChoose(optionIndex);
   }
 
   return (
@@ -56,14 +67,18 @@ export function QuestionCard({
             key={i}
             index={i}
             text={opt}
-            state={answerOptionState(i, question.answer, chosen)}
-            answered={answered}
+            state={
+              isExam
+                ? examOptionState(i, chosen)
+                : answerOptionState(i, question.answer, chosen)
+            }
+            answered={locked}
             onChoose={() => choose(i)}
           />
         ))}
       </div>
 
-      {answered && <CoachCard>{question.explanation}</CoachCard>}
+      {!isExam && answered && <CoachCard>{question.explanation}</CoachCard>}
     </>
   );
 }

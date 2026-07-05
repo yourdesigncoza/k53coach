@@ -127,6 +127,10 @@ export interface Question {
   explanation: string;
   /** Optional pointer to the sign this question is about. */
   signCode?: string;
+  /** Mock-exam sampling weight (unset defaults to "medium"). */
+  examLikelihood?: "high" | "medium" | "low";
+  /** Wiki sub-topic label, e.g. "Right of Way". */
+  topicTag?: string;
 }
 
 /** Per-topic readiness result. */

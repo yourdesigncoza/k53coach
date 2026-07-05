@@ -194,7 +194,10 @@
     "payfast": "Betaal met PayFast",
     "yoco": "Betaal met Yoco",
     "note": "Veilige Suid-Afrikaanse betaalpoorte. Dit is 'n ouer-gerigte skerm.",
-    "stub": "{gateway}-betaling is nog 'n plekhouer in die MVP-raamwerk."
+    "stub": "{gateway}-betaling is nog 'n plekhouer in die MVP-raamwerk.",
+    "testNote": "Toetsmodus — dit ontsluit volle toegang sonder n werklike betaling.",
+    "testUnlocked": "Toegang ontsluit — geniet die volledige app.",
+    "testNeedsAuth": "Meld eers aan, ontsluit dan toegang."
   },
   "dashboard": {
     "welcome": "Welkom terug 👋",
@@ -221,7 +224,13 @@
   "progressPage": {
     "title": "Jou vordering",
     "byTopic": "Per onderwerp",
-    "note": "Gereedheid kombineer toetseksamen-gemiddeld, onderwerp-akkuraatheid, swak-area-verbetering en konsekwentheid (DB9). Hier met voorbeelddata getoon."
+    "note": "Gereedheid kombineer toetseksamen-gemiddeld, onderwerp-akkuraatheid, swak-area-verbetering en konsekwentheid (DB9). Hier met voorbeelddata getoon.",
+    "mockHeading": "Proefeksamens",
+    "noMocks": "Nog geen proefeksamens nie.",
+    "blendNote": "Gemeng uit jou proefeksamens en oefening.",
+    "reset": "Herstel vordering",
+    "resetConfirm": "Herstel al jou vordering? Dit verwyder jou oefenpogings, gereedheidstellings en proefeksamengeskiedenis permanent. Dit kan nie ongedaan gemaak word nie.",
+    "resetDone": "Jou vordering is herstel."
   },
   "module": {
     "signsTitle": "Padtekens",
@@ -263,8 +272,6 @@
     "title": "Oefenvasvra"
   },
   "comingSoon": {
-    "mockTitle": "Toetseksamens",
-    "mockBlurb": "Volledige tydgemete toetseksamens uit die vraebank kom sodra die inhoudsbiblioteek gevul is. Die gratis gereedheidstoets gee jou reeds vandag 'n telling.",
     "back": "Terug na leer"
   },
   "legal": {
@@ -282,5 +289,82 @@
     "coach": "Coach sê",
     "counter": "{current} van {total}",
     "correctCount": "{count} reg"
+  },
+  "mock": {
+    "title": "Proefeksamen",
+    "subtitle": "n Volledige K53-styl vraestel. Drie afdelings, elk afsonderlik gepunt — jy moet al drie slaag.",
+    "rulesTitle": "Hoe die eksamen werk",
+    "rule1": "{count} vrae oor drie afdelings: Reëls van die Pad, Padtekens, en Voertuigbeheer.",
+    "rule2": "Elke afdeling word afsonderlik gepunt. As jy een afdeling druip, druip jy die hele eksamen.",
+    "rule3": "Geen terugvoer tydens die eksamen nie — jy sien aan die einde hoe jy gevaar het.",
+    "rule4": "Jy kan n antwoord verander totdat jy na die volgende vraag gaan.",
+    "timerLabel": "Getyd (60 minute)",
+    "timerHint": "Aanbeveel vir n realistiese lopie. Die eksamen word outomaties ingedien wanneer die tyd verstryk.",
+    "start": "Begin eksamen",
+    "sectionsHeading": "Afdelings",
+    "passLabel": "slaag {pass}/{count}",
+    "history": "Jou onlangse eksamens",
+    "noHistory": "Nog geen eksamens nie — neem jou eerste een hierbo.",
+    "passed": "Geslaag",
+    "failed": "Gedruip",
+    "viewResult": "Bekyk uitslag"
+  },
+  "exam": {
+    "sectionOf": "Afdeling {current} van {total}",
+    "sectionName": "{name}",
+    "sectionBrief": "{count} vrae · slaag {pass} om hierdie afdeling te klaar",
+    "beginSection": "Begin afdeling",
+    "questionCounter": "{current} van {total}",
+    "next": "Volgende",
+    "reviewSubmit": "Hersien & dien in",
+    "confirmTitle": "Dien jou eksamen in?",
+    "answeredSummary": "Jy het {answered} van {total} vrae beantwoord.",
+    "unansweredWarning": "{count} vraag(vrae) is onbeantwoord en sal as verkeerd gemerk word.",
+    "allAnswered": "Alle vrae beantwoord.",
+    "submit": "Dien eksamen in",
+    "back": "Terug",
+    "submitting": "Besig om in te dien…",
+    "submitError": "Kon nie jou eksamen stoor nie. Probeer asseblief weer.",
+    "shortened": "Hierdie vraestel is korter as n volledige eksamen omdat die vraagbank nog groei.",
+    "timeUp": "Tyd is op — jou eksamen word ingedien."
+  },
+  "examResult": {
+    "title": "Eksamenuitslag",
+    "passed": "Jy het geslaag",
+    "failed": "Nie geslaag nie",
+    "passedBlurb": "Jy het elke afdeling geklaar — dit is n slaagvraestel.",
+    "failedBlurb": "Jy moet al drie afdelings slaag. Hier is waarop om te fokus.",
+    "autoSubmitted": "Outomaties ingedien toe die tyd verstryk het.",
+    "durationLabel": "Tyd geneem: {minutes} min",
+    "sectionsHeading": "Per afdeling",
+    "sectionPassed": "Slaagvlak bereik",
+    "sectionFails": "gedruipte afdeling — dit druip die eksamen",
+    "sectionTarget": "Benodig {passRequired}/{total} · {gap} meer",
+    "viewAssessment": "Bekyk KI-assessering",
+    "reviewAnswers": "Hersien my antwoorde",
+    "retake": "Herneem eksamen",
+    "backDashboard": "Terug na paneelbord",
+    "reviewTitle": "Antwoordhersiening",
+    "showAll": "Wys almal",
+    "wrongOnly": "Slegs verkeerde antwoorde",
+    "notFound": "Daardie eksamen kon nie gevind word nie.",
+    "unanswered": "Nie beantwoord nie"
+  },
+  "assessment": {
+    "cta": "Bekyk KI-assessering",
+    "generating": "Besig om jou eksamen te lees…",
+    "error": "Kon nie die assessering genereer nie. Probeer asseblief weer.",
+    "strengthsHeading": "Wat jy het",
+    "focusHeading": "Waar die punte verlore gaan",
+    "planHeading": "Jou plan",
+    "oneThingHeading": "Die een ding",
+    "practiceCta": "Oefen {topic}",
+    "fallbackNote": "Gebaseer op jou afdelingtellings."
+  },
+  "notFound": {
+    "title": "Bladsy nie gevind nie",
+    "body": "Daardie bladsy bestaan nie of het dalk geskuif. Kom ons kry jou terug op die pad.",
+    "home": "Terug na tuis",
+    "dashboard": "Gaan na paneelbord"
   }
 }

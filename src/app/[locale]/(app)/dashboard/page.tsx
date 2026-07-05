@@ -4,13 +4,22 @@ import { BookOpen, ClipboardCheck, Signpost, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReadinessRing } from "@/components/readiness-ring";
-import { getUser, getLatestReadiness } from "@/lib/supabase/queries";
+import { scoreReadinessBlend, consistencyFromDays } from "@/lib/readiness";
+import {
+  getUser,
+  getLatestReadiness,
+  getTopicAccuracy,
+  getExamHistory,
+  getAttemptDays,
+} from "@/lib/supabase/queries";
 
 export const metadata = { title: "Home" };
 
 /**
- * Learner home. Reads the signed-in learner's latest readiness snapshot (DB9);
- * falls back to sample data for the anonymous "preview the app" flow.
+ * Learner home. Shows the DB9 readiness blend once the learner has mock history
+ * (40% mock avg / 25% topic accuracy / 15% consistency, renormalised over what
+ * exists); otherwise the latest readiness snapshot, or sample data for the
+ * anonymous "preview the app" flow.
  */
 export default async function DashboardPage() {
   const t = await getTranslations("dashboard");
@@ -18,7 +27,17 @@ export default async function DashboardPage() {
 
   const user = await getUser();
   const readiness = user ? await getLatestReadiness(user.id) : null;
-  const overall = readiness?.overall ?? 62;
+  const examHistory = user ? await getExamHistory(user.id, 5) : [];
+  const blend =
+    user && examHistory.length > 0
+      ? scoreReadinessBlend({
+          mockOveralls: examHistory.map((h) => h.overall ?? 0),
+          topicAccuracy: await getTopicAccuracy(user.id),
+          weakImprovement: null,
+          consistency: consistencyFromDays(await getAttemptDays(user.id)),
+        })
+      : null;
+  const overall = blend?.overall ?? readiness?.overall ?? 62;
 
   const cards = [
     {
@@ -46,8 +65,8 @@ export default async function DashboardPage() {
       <h1 className="text-xl font-semibold md:text-2xl">{t("welcome")}</h1>
       <p className="text-sm text-muted-foreground">{t("welcomeSub")}</p>
 
-      <Card className="mt-5 md:max-w-2xl">
-        <CardContent className="flex items-center gap-4 py-5">
+      <Card className="mt-5 py-0 md:max-w-2xl">
+        <CardContent className="flex items-center gap-4 py-3.5 md:py-5">
           <ReadinessRing percent={overall} size={120} stroke={12} />
           <div className="flex-1">
             <p className="text-sm font-medium">{t("readinessTitle")}</p>
@@ -75,7 +94,7 @@ export default async function DashboardPage() {
         {cards.map(({ href, icon: Icon, title, sub }) => (
           <Card key={href}>
             <CardContent className="py-0">
-              <Link href={href} className="flex items-center gap-3 py-4">
+              <Link href={href} className="flex items-center gap-3 py-2.5 md:py-4">
                 <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-foreground">
                   <Icon className="size-5" />
                 </span>

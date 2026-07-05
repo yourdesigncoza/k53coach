@@ -12,7 +12,8 @@
     "signs:ingest": "node scripts/signs/ingest-wikipedia.mjs",
     "typecheck": "tsc --noEmit",
     "signs:ingest-legacy": "node scripts/signs/ingest.mjs",
-    "signs:seed": "node scripts/signs/seed-db.mjs"
+    "signs:seed": "node scripts/signs/seed-db.mjs",
+    "exam:build-migration": "node scripts/exam/build-questions-migration.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

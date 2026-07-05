@@ -45,11 +45,11 @@ export default async function RoadSignsPage() {
           </h2>
           <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
             {signs.map((s) => (
-              <Card key={s.code}>
+              <Card key={s.code} className="py-0">
                 <CardContent className="py-0">
                   <Link
                     href={`/learn/road-signs/${encodeURIComponent(s.code)}`}
-                    className="flex items-center gap-3 py-3"
+                    className="flex items-center gap-3 py-2 md:py-3.5"
                   >
                     <SignImage
                       svgFile={s.svg_file}

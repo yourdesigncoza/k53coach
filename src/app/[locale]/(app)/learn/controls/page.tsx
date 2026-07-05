@@ -51,11 +51,11 @@ export default function ControlsPage() {
             </h2>
             <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
               {controls.map((c) => (
-                <Card key={c.code}>
+                <Card key={c.code} className="py-0">
                   <CardContent className="py-0">
                     <Link
                       href={`/learn/controls/${c.code}`}
-                      className="flex items-center gap-3 py-3"
+                      className="flex items-center gap-3 py-2.5 md:py-3.5"
                     >
                       <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-foreground">
                         <Icon className="size-5" />

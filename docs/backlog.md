@@ -64,5 +64,34 @@ several translatable fields each. This is the natural next step once phase 1 shi
   signs wired now). AI-draft the learner content, instructor-review.
 - **Auth** — add prod + Vercel preview URLs to Supabase Auth redirect allow-list;
   capture profile fields (locale, is_minor, parent_consent) in a consent flow.
-- **Mock exams**, full pass-prediction, parent/school dashboards (post-MVP).
+- ~~**Mock exams**~~ — SHIPPED (Code B): entitlement-gated `/mock` → timed
+  68-question paper (3 sections scored independently) → summary → grounded AI
+  assessment → readiness blend. See `src/lib/exam.ts`, `src/components/exam/*`,
+  `scripts/exam/`. Follow-ups below.
+- **Full pass-prediction**, parent/school dashboards (post-MVP).
 - **POPIA review** before any real learner data → revisit hosting/residency.
+
+## Mock exam — follow-ups (Code B shipped)
+- **Payments → entitlements wiring.** The PayFast ITN stub
+  (`src/app/api/pay/payfast/route.ts`) and a future Yoco route must insert an
+  `entitlements` row (source `payfast`/`yoco`, 90-day expiry, idempotent on the
+  payment id) via the service-role client — the same row the admin grant UI
+  writes (`src/lib/entitlement-actions.ts`). Needs `SUPABASE_SERVICE_ROLE_KEY`
+  set on Vercel.
+- **Code A / C papers.** Schema already stores `vehicle_codes` per question and
+  the engine filters by code — this is a *content* task: grow the motorcycle/heavy
+  pools (currently thin) via the admin question bank, then add `EXAM_FORMAT_A/C`
+  constants and a code picker on the start screen.
+- **`?next=` auth redirect.** The `/mock` gate sends signed-out users to `/auth`,
+  which lands on `/dashboard` after login — it should return them to `/mock`.
+- **Question navigator / flag-for-review (v2).** The runner is forward-only; a
+  grid navigator + flagging is deferred.
+- **DB9 weak-area-improvement component.** The blend currently renormalises over
+  mock-avg / topic-accuracy / consistency; the 20% improvement component needs a
+  before/after history window (`scoreReadinessBlend` accepts it as `weakImprovement`).
+- **Exam-attempt retention (POPIA).** `exam_attempts` stores a minor's answers +
+  AI assessment server-side (paid, consented) — define a retention/erase rule
+  before production.
+- **Afrikaans review.** New `mock`/`exam`/`examResult`/`assessment` namespaces in
+  `messages/af.json` are first-draft (like the rest); needs native review. The
+  AI-generated assessment prose stays English (deferred bilingual content pass).

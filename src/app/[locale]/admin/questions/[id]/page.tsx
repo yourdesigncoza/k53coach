@@ -37,6 +37,10 @@ export default async function AdminQuestionEditPage({
         signCode={row.sign_code}
         inReadiness={row.in_readiness}
         reviewStatus={row.review_status as "draft" | "approved"}
+        inExam={row.in_exam}
+        examLikelihood={(row.exam_likelihood ?? "medium") as "high" | "medium" | "low"}
+        vehicleCodes={(row.vehicle_codes ?? ["A", "B", "C", "EB"]) as ("A" | "B" | "C" | "EB")[]}
+        topicTag={row.topic_tag}
       />
     </div>
   );

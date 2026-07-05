@@ -193,7 +193,10 @@
     "payfast": "Pay with PayFast",
     "yoco": "Pay with Yoco",
     "note": "Secure South African payment gateways. This is a parent-facing screen.",
-    "stub": "{gateway} checkout is stubbed in the MVP scaffold."
+    "stub": "{gateway} checkout is stubbed in the MVP scaffold.",
+    "testNote": "Test mode — this unlocks full access without a real payment.",
+    "testUnlocked": "Access unlocked — enjoy the full app.",
+    "testNeedsAuth": "Sign in first, then unlock access."
   },
   "dashboard": {
     "welcome": "Welcome back 👋",
@@ -220,7 +223,13 @@
   "progressPage": {
     "title": "Your progress",
     "byTopic": "By topic",
-    "note": "Readiness blends mock average, topic accuracy, weak-area improvement and consistency (DB9). Shown here with sample data."
+    "note": "Readiness blends mock average, topic accuracy, weak-area improvement and consistency (DB9). Shown here with sample data.",
+    "mockHeading": "Mock exams",
+    "noMocks": "No mock exams yet.",
+    "blendNote": "Blended from your mock exams and practice.",
+    "reset": "Reset progress",
+    "resetConfirm": "Reset all your progress? This permanently deletes your practice attempts, readiness scores and mock exam history. This cannot be undone.",
+    "resetDone": "Your progress has been reset."
   },
   "module": {
     "signsTitle": "Road Signs",
@@ -262,8 +271,6 @@
     "title": "Practice Quiz"
   },
   "comingSoon": {
-    "mockTitle": "Mock exams",
-    "mockBlurb": "Full timed mock exams from the question bank land once the content library is populated. The free readiness test already gives you a score today.",
     "back": "Back to learning"
   },
   "legal": {
@@ -281,5 +288,82 @@
     "coach": "Coach Says",
     "counter": "{current} of {total}",
     "correctCount": "{count} correct"
+  },
+  "mock": {
+    "title": "Mock exam",
+    "subtitle": "A full K53-style paper. Three sections, each scored on its own — you must pass all three.",
+    "rulesTitle": "How the exam works",
+    "rule1": "{count} questions across three sections: Rules of the Road, Road Signs, and Vehicle Controls.",
+    "rule2": "Each section is scored separately. Failing one section fails the whole exam.",
+    "rule3": "No feedback during the exam — you find out how you did at the end.",
+    "rule4": "You can change an answer until you move to the next question.",
+    "timerLabel": "Timed (60 minutes)",
+    "timerHint": "Recommended for a realistic run. The exam submits automatically when time runs out.",
+    "start": "Start exam",
+    "sectionsHeading": "Sections",
+    "passLabel": "pass {pass}/{count}",
+    "history": "Your recent exams",
+    "noHistory": "No exams yet — take your first one above.",
+    "passed": "Passed",
+    "failed": "Failed",
+    "viewResult": "View result"
+  },
+  "exam": {
+    "sectionOf": "Section {current} of {total}",
+    "sectionName": "{name}",
+    "sectionBrief": "{count} questions · pass {pass} to clear this section",
+    "beginSection": "Begin section",
+    "questionCounter": "{current} of {total}",
+    "next": "Next",
+    "reviewSubmit": "Review & submit",
+    "confirmTitle": "Submit your exam?",
+    "answeredSummary": "You have answered {answered} of {total} questions.",
+    "unansweredWarning": "{count} question(s) are unanswered and will be marked wrong.",
+    "allAnswered": "All questions answered.",
+    "submit": "Submit exam",
+    "back": "Back",
+    "submitting": "Submitting…",
+    "submitError": "Could not save your exam. Please try again.",
+    "shortened": "This paper is shorter than a full exam because the question bank is still growing.",
+    "timeUp": "Time is up — submitting your exam."
+  },
+  "examResult": {
+    "title": "Exam result",
+    "passed": "You passed",
+    "failed": "Not passed",
+    "passedBlurb": "You cleared every section — this is a passing paper.",
+    "failedBlurb": "You need to pass all three sections. Here is where to focus.",
+    "autoSubmitted": "Submitted automatically when the timer ran out.",
+    "durationLabel": "Time taken: {minutes} min",
+    "sectionsHeading": "By section",
+    "sectionPassed": "Pass level reached",
+    "sectionFails": "failed section — this fails the exam",
+    "sectionTarget": "Need {passRequired}/{total} · {gap} more",
+    "viewAssessment": "View AI Assessment",
+    "reviewAnswers": "Review my answers",
+    "retake": "Retake exam",
+    "backDashboard": "Back to dashboard",
+    "reviewTitle": "Answer review",
+    "showAll": "Show all",
+    "wrongOnly": "Wrong answers only",
+    "notFound": "That exam could not be found.",
+    "unanswered": "Not answered"
+  },
+  "assessment": {
+    "cta": "View AI Assessment",
+    "generating": "Reading your exam…",
+    "error": "Could not generate the assessment. Please try again.",
+    "strengthsHeading": "What you have got",
+    "focusHeading": "Where the marks are going",
+    "planHeading": "Your plan",
+    "oneThingHeading": "The one thing",
+    "practiceCta": "Practice {topic}",
+    "fallbackNote": "Based on your section scores."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "That page does not exist or may have moved. Let us get you back on the road.",
+    "home": "Back to home",
+    "dashboard": "Go to dashboard"
   }
 }

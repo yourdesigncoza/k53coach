@@ -69,6 +69,93 @@ export type Database = {
         }
         Relationships: []
       }
+      entitlements: {
+        Row: {
+          expires_at: string
+          granted_at: string
+          granted_by: string | null
+          id: string
+          product: string
+          reference: string | null
+          source: string
+          user_id: string
+        }
+        Insert: {
+          expires_at: string
+          granted_at?: string
+          granted_by?: string | null
+          id?: string
+          product?: string
+          reference?: string | null
+          source: string
+          user_id: string
+        }
+        Update: {
+          expires_at?: string
+          granted_at?: string
+          granted_by?: string | null
+          id?: string
+          product?: string
+          reference?: string | null
+          source?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      exam_attempts: {
+        Row: {
+          answers: Json
+          assessment: Json | null
+          auto_submitted: boolean
+          created_at: string
+          duration_seconds: number | null
+          finished_at: string | null
+          format: Json
+          id: string
+          overall: number | null
+          passed: boolean | null
+          sections: Json
+          started_at: string
+          timer_enabled: boolean
+          user_id: string
+          vehicle_code: string
+        }
+        Insert: {
+          answers?: Json
+          assessment?: Json | null
+          auto_submitted?: boolean
+          created_at?: string
+          duration_seconds?: number | null
+          finished_at?: string | null
+          format: Json
+          id?: string
+          overall?: number | null
+          passed?: boolean | null
+          sections?: Json
+          started_at: string
+          timer_enabled?: boolean
+          user_id: string
+          vehicle_code?: string
+        }
+        Update: {
+          answers?: Json
+          assessment?: Json | null
+          auto_submitted?: boolean
+          created_at?: string
+          duration_seconds?: number | null
+          finished_at?: string | null
+          format?: Json
+          id?: string
+          overall?: number | null
+          passed?: boolean | null
+          sections?: Json
+          started_at?: string
+          timer_enabled?: boolean
+          user_id?: string
+          vehicle_code?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
@@ -107,49 +194,64 @@ export type Database = {
           answer: number
           created_at: string
           difficulty: number
+          exam_likelihood: string
           explanation: string
           id: string
+          in_exam: boolean
           in_readiness: boolean
           options: Json
           prompt: string
           review_status: string
           sign_code: string | null
           sort_order: number
+          source_basis: string | null
           topic: string
+          topic_tag: string | null
           updated_at: string
           updated_by: string | null
+          vehicle_codes: string[]
         }
         Insert: {
           answer?: number
           created_at?: string
           difficulty?: number
+          exam_likelihood?: string
           explanation?: string
           id: string
+          in_exam?: boolean
           in_readiness?: boolean
           options?: Json
           prompt?: string
           review_status?: string
           sign_code?: string | null
           sort_order?: number
+          source_basis?: string | null
           topic: string
+          topic_tag?: string | null
           updated_at?: string
           updated_by?: string | null
+          vehicle_codes?: string[]
         }
         Update: {
           answer?: number
           created_at?: string
           difficulty?: number
+          exam_likelihood?: string
           explanation?: string
           id?: string
+          in_exam?: boolean
           in_readiness?: boolean
           options?: Json
           prompt?: string
           review_status?: string
           sign_code?: string | null
           sort_order?: number
+          source_basis?: string | null
           topic?: string
+          topic_tag?: string | null
           updated_at?: string
           updated_by?: string | null
+          vehicle_codes?: string[]
         }
         Relationships: []
       }

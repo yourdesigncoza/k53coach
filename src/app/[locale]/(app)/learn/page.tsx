@@ -45,9 +45,9 @@ export default async function LearnPage() {
 
       <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {modules.map(({ href, icon: Icon, title, sub, ready }) => (
-          <Card key={href}>
+          <Card key={href} className="py-0">
             <CardContent className="py-0">
-              <Link href={href} className="flex items-center gap-3 py-4">
+              <Link href={href} className="flex items-center gap-3 py-2.5 md:py-4">
                 <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-foreground">
                   <Icon className="size-5" />
                 </span>

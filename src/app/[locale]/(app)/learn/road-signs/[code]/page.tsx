@@ -79,8 +79,8 @@ export default async function SignDetailPage({
           </div>
 
           {(plain || formal) && (
-            <Card className="mt-5">
-              <CardContent className="py-4">
+            <Card className="mt-5 py-0">
+              <CardContent className="py-3.5 md:py-4">
                 {plain && (
                   <>
                     <p className="text-sm font-medium text-muted-foreground">
@@ -105,8 +105,8 @@ export default async function SignDetailPage({
           {fields.length > 0 ? (
             <div className="grid gap-3">
               {fields.map(({ key, icon: Icon, labelKey, value }) => (
-                <Card key={key}>
-                  <CardContent className="flex items-start gap-3 py-4">
+                <Card key={key} className="py-0">
+                  <CardContent className="flex items-start gap-3 py-3.5 md:py-4">
                     <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-secondary text-foreground">
                       <Icon className="size-4.5" />
                     </span>
@@ -120,8 +120,8 @@ export default async function SignDetailPage({
             </div>
           ) : (
             !hasAnyContent && (
-              <Card>
-                <CardContent className="py-6 text-sm text-muted-foreground">
+              <Card className="py-0">
+                <CardContent className="py-4 md:py-6 text-sm text-muted-foreground">
                   {t("contentSoon")}
                 </CardContent>
               </Card>

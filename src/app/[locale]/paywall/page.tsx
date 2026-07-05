@@ -1,16 +1,25 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { useRouter } from "@/i18n/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { startTestCheckout } from "@/lib/entitlement-actions";
+
+// Prototype: until real PayFast/Yoco is wired, this env flag lets the Pay
+// buttons unlock access directly so the paid flow can be tested end to end.
+const TEST_CHECKOUT = process.env.NEXT_PUBLIC_ENABLE_TEST_CHECKOUT === "true";
 
 export default function PaywallPage() {
   const t = useTranslations("paywall");
+  const router = useRouter();
+  const [busy, setBusy] = useState(false);
   const included = [
     t("incl1"),
     t("incl2"),
@@ -19,10 +28,28 @@ export default function PaywallPage() {
     t("incl5"),
   ];
 
-  function checkout(gateway: "PayFast" | "Yoco") {
-    // Stub: real checkout posts to /api/pay/<gateway> and redirects to the
-    // gateway. SA gateways via direct checkout — never app-store IAP.
-    toast.info(t("stub", { gateway }));
+  async function checkout(gateway: "PayFast" | "Yoco") {
+    if (!TEST_CHECKOUT) {
+      // Stub: real checkout posts to /api/pay/<gateway> and redirects to the
+      // gateway. SA gateways via direct checkout — never app-store IAP.
+      toast.info(t("stub", { gateway }));
+      return;
+    }
+    // Test mode: grant access to the signed-in user and enter the app.
+    setBusy(true);
+    const res = await startTestCheckout();
+    setBusy(false);
+    if ("needsAuth" in res && res.needsAuth) {
+      toast.info(t("testNeedsAuth"));
+      router.push("/auth");
+      return;
+    }
+    if (res.ok) {
+      toast.success(t("testUnlocked"));
+      router.push("/mock");
+    } else {
+      toast.error(res.error ?? "Checkout failed");
+    }
   }
 
   return (
@@ -61,17 +88,21 @@ export default function PaywallPage() {
         <Button
           className="h-13 w-full rounded-xl text-base"
           onClick={() => checkout("PayFast")}
+          disabled={busy}
         >
-          {t("payfast")}
+          {busy ? <Loader2 className="size-4 animate-spin" /> : t("payfast")}
         </Button>
         <Button
           variant="outline"
           className="h-12 w-full rounded-xl text-base"
           onClick={() => checkout("Yoco")}
+          disabled={busy}
         >
           {t("yoco")}
         </Button>
-        <p className="text-center text-xs text-muted-foreground">{t("note")}</p>
+        <p className="text-center text-xs text-muted-foreground">
+          {TEST_CHECKOUT ? t("testNote") : t("note")}
+        </p>
       </div>
       </main>
       <SiteFooter />

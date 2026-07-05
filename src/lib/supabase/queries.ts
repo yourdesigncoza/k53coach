@@ -119,6 +119,51 @@ export async function getLatestReadiness(userId: string) {
   return data;
 }
 
+/** A single exam attempt by id (own-row via RLS), or null. */
+export async function getExamAttempt(id: string) {
+  const supabase = await createClient();
+  if (!supabase) return null;
+  const { data } = await supabase
+    .from("exam_attempts")
+    .select("*")
+    .eq("id", id)
+    .maybeSingle();
+  return data;
+}
+
+/** A user's mock-exam attempts (most recent first). */
+export async function getExamHistory(userId: string, limit = 10) {
+  const supabase = await createClient();
+  if (!supabase) return [];
+  const { data } = await supabase
+    .from("exam_attempts")
+    .select(
+      "id, vehicle_code, overall, passed, sections, started_at, duration_seconds, auto_submitted",
+    )
+    .eq("user_id", userId)
+    .order("started_at", { ascending: false })
+    .limit(limit);
+  return data ?? [];
+}
+
+/** Distinct days a user practised/tested in the last `sinceDays` (consistency signal). */
+export async function getAttemptDays(
+  userId: string,
+  sinceDays = 28,
+): Promise<string[]> {
+  const supabase = await createClient();
+  if (!supabase) return [];
+  const since = new Date();
+  since.setDate(since.getDate() - sinceDays);
+  const { data } = await supabase
+    .from("attempts")
+    .select("created_at")
+    .eq("user_id", userId)
+    .gte("created_at", since.toISOString());
+  if (!data) return [];
+  return [...new Set(data.map((r) => r.created_at.slice(0, 10)))];
+}
+
 export type TopicAccuracy = Record<Topic, { correct: number; total: number }>;
 
 /** Per-topic accuracy aggregated from a user's attempts, or null if none yet. */

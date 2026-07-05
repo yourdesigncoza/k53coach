@@ -1,9 +1,17 @@
 import { getTranslations } from "next-intl/server";
+import { CheckCircle2, XCircle } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ReadinessRing } from "@/components/readiness-ring";
-import { bandFor } from "@/lib/readiness";
-import { getUser, getTopicAccuracy } from "@/lib/supabase/queries";
+import { ResetProgressButton } from "@/components/progress/reset-progress-button";
+import { bandFor, scoreReadinessBlend, consistencyFromDays } from "@/lib/readiness";
+import {
+  getUser,
+  getTopicAccuracy,
+  getExamHistory,
+  getAttemptDays,
+} from "@/lib/supabase/queries";
 import type { Topic } from "@/lib/types";
 
 export const metadata = { title: "Progress" };
@@ -18,9 +26,12 @@ export default async function ProgressPage() {
   const tb = await getTranslations("bands");
   const tt = await getTranslations("topics");
   const tr = await getTranslations("result");
+  const tm = await getTranslations("mock");
 
   const user = await getUser();
   const acc = user ? await getTopicAccuracy(user.id) : null;
+  const examHistory = user ? await getExamHistory(user.id, 5) : [];
+  const attemptDays = user ? await getAttemptDays(user.id) : [];
 
   const rows = TOPICS.map((topic) => ({
     topic,
@@ -31,9 +42,19 @@ export default async function ProgressPage() {
       : SAMPLE[topic],
   }));
 
-  const overall = Math.round(
-    rows.reduce((s, r) => s + r.percent, 0) / rows.length,
-  );
+  // DB9 blend when the learner has mock history; else the topic-accuracy average.
+  const blend =
+    examHistory.length > 0
+      ? scoreReadinessBlend({
+          mockOveralls: examHistory.map((h) => h.overall ?? 0),
+          topicAccuracy: acc,
+          weakImprovement: null,
+          consistency: consistencyFromDays(attemptDays),
+        })
+      : null;
+  const overall =
+    blend?.overall ??
+    Math.round(rows.reduce((s, r) => s + r.percent, 0) / rows.length);
 
   return (
     <main className="mx-auto w-full max-w-5xl px-5 py-6 md:px-8 md:py-8">
@@ -46,6 +67,11 @@ export default async function ProgressPage() {
             label={tb(bandFor(overall))}
             sublabel={tr("overall")}
           />
+          {blend && (
+            <p className="mt-3 text-center text-xs text-muted-foreground md:text-left">
+              {t("blendNote")}
+            </p>
+          )}
         </div>
 
         <div className="md:col-span-2">
@@ -71,6 +97,48 @@ export default async function ProgressPage() {
           <p className="mt-6 text-xs text-muted-foreground">{t("note")}</p>
         </div>
       </div>
+
+      {user && (
+        <section className="mt-8">
+          <h2 className="text-sm font-medium text-muted-foreground">
+            {t("mockHeading")}
+          </h2>
+          {examHistory.length === 0 ? (
+            <p className="mt-2 text-sm text-muted-foreground">{t("noMocks")}</p>
+          ) : (
+            <div className="mt-3 flex flex-col gap-2">
+              {examHistory.map((h) => (
+                <Link
+                  key={h.id}
+                  href={`/mock/result/${h.id}`}
+                  className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm hover:bg-accent"
+                >
+                  {h.passed ? (
+                    <CheckCircle2 className="size-5 text-success" />
+                  ) : (
+                    <XCircle className="size-5 text-destructive" />
+                  )}
+                  <span className="flex-1 font-medium">
+                    {h.passed ? tm("passed") : tm("failed")} · {h.overall ?? 0}%
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    {new Date(h.started_at).toLocaleDateString("en-ZA", {
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
+
+      {user && (
+        <div className="mt-16 flex justify-center border-t border-border pt-8">
+          <ResetProgressButton />
+        </div>
+      )}
     </main>
   );
 }
