@@ -5,6 +5,7 @@ import {
   Languages,
   FileQuestion,
   KeyRound,
+  BookOpen,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -51,6 +52,22 @@ export default async function AdminSignsPage() {
         {signs.length} signs · {shippable} shippable · {queue.length} in review
         queue · {excluded} excluded (not in chart).
       </p>
+
+      <Card className="mt-5 py-0 ring-foreground/15">
+        <CardContent className="py-0">
+          <Link href="/admin/guide" className="flex items-center gap-3 py-3.5">
+            <BookOpen className="size-5 shrink-0 text-muted-foreground" />
+            <span className="flex-1">
+              <span className="block text-sm font-medium">Admin guide</span>
+              <span className="block text-xs text-muted-foreground">
+                How to add and update signs, questions, translations and access —
+                a quick at-a-glance reference.
+              </span>
+            </span>
+            <ChevronRight className="size-4 shrink-0 text-muted-foreground" />
+          </Link>
+        </CardContent>
+      </Card>
 
       <section className="mt-6">
         <h2 className="mb-2 text-sm font-medium text-muted-foreground">

@@ -24,9 +24,14 @@ export default async function AdminLayout({
             <Logo showWord={false} />
             <span className="text-sm font-semibold">Admin</span>
           </Link>
-          <Link href="/dashboard" className="text-sm text-muted-foreground underline">
-            Back to app
-          </Link>
+          <div className="flex items-center gap-5">
+            <Link href="/admin/guide" className="text-sm font-medium hover:text-foreground">
+              Guide
+            </Link>
+            <Link href="/dashboard" className="text-sm text-muted-foreground underline">
+              Back to app
+            </Link>
+          </div>
         </div>
       </header>
       <main>{children}</main>
