@@ -131,7 +131,8 @@
     "faqA5": "Yes. The app interface is bilingual — switch between English and Afrikaans at any time from the top bar.",
     "ctaBandTitle": "5 questions. 30 seconds. Know where you stand.",
     "ctaBandSub": "No download, no sign-up. See your readiness score instantly.",
-    "ctaBandBtn": "Start the free test"
+    "ctaBandBtn": "Start the free test",
+    "goToApp": "Go to app"
   },
   "readiness": {
     "title": "Your free K53 readiness check",
