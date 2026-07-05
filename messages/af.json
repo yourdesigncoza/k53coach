@@ -16,7 +16,8 @@
     "learn": "Leer",
     "mock": "Toetseksamen",
     "progress": "Vordering",
-    "admin": "Admin"
+    "admin": "Admin",
+    "appHome": "App-tuiste"
   },
   "bands": {
     "not-ready": "Nog nie gereed nie",

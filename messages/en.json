@@ -15,7 +15,8 @@
     "learn": "Learn",
     "mock": "Mock Test",
     "progress": "Progress",
-    "admin": "Admin"
+    "admin": "Admin",
+    "appHome": "App Home"
   },
   "bands": {
     "not-ready": "Not ready yet",

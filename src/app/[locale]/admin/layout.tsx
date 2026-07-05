@@ -20,16 +20,20 @@ export default async function AdminLayout({
     <div className="min-h-dvh">
       <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 md:px-8">
-          <Link href="/admin" className="flex items-center gap-3" aria-label="Admin home">
-            <Logo showWord={false} />
-            <span className="text-sm font-semibold">Admin</span>
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link href="/" aria-label="Home">
+              <Logo showWord={false} />
+            </Link>
+            <Link href="/admin" className="text-sm font-semibold hover:text-foreground">
+              Admin Home
+            </Link>
+          </div>
           <div className="flex items-center gap-5">
             <Link href="/admin/guide" className="text-sm font-medium hover:text-foreground">
               Guide
             </Link>
             <Link href="/dashboard" className="text-sm text-muted-foreground underline">
-              Back to app
+              App Home
             </Link>
           </div>
         </div>

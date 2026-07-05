@@ -12,7 +12,7 @@ export function AppHeader() {
       style={{ background: "var(--ink-900)" }}
     >
       <div className="mx-auto flex h-14 max-w-md items-center justify-between px-4">
-        <Link href="/dashboard" aria-label="Home">
+        <Link href="/" aria-label="Home">
           <Logo />
         </Link>
         <div className="flex items-center gap-1">

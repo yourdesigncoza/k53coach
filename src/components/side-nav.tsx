@@ -21,7 +21,7 @@ export function SideNav() {
       style={{ background: "var(--ink-900)" }}
     >
       <div className="flex h-16 items-center border-b border-ink-700 px-6">
-        <Link href="/dashboard" aria-label="Home">
+        <Link href="/" aria-label="Home">
           <Logo />
         </Link>
       </div>
