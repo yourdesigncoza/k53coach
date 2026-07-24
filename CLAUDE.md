@@ -10,9 +10,25 @@ The original specs live in `init/` and still govern product intent — read them
 
 ## Project status
 
-Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. The road-sign library (DB1) is fully ingested and **chart-verified in a Claude Code session** (245/254 in-chart signs auto-approved with drafted content; the rest in the admin exceptions queue) — see `docs/sign-accuracy-pipeline.md`. **Mock exam (Code B) shipped:** entitlement-gated `/mock` → timed 68-question paper (3 sections scored independently) → per-section summary → grounded AI assessment → DB9 readiness blend on the dashboard/progress. Question bank grew to 125 (110 ingested from the K53 wiki, `scripts/exam/`); admin question bank now curates the exam pool per section (`in_exam`, `exam_likelihood`, `vehicle_codes`, pool-health strip). Engine in `src/lib/exam.ts`, UI in `src/components/exam/*`, gate in `src/lib/exam-guard.ts` (new `entitlements` + `exam_attempts` tables). Deferred (see `docs/backlog.md`): payments→entitlements wiring, Code A/C papers (content), full pass-prediction, dashboards, practical-driving coach, the Afrikaans content pass, next-pwa service worker.
+Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. The road-sign library (DB1) is fully ingested and **chart-verified in a Claude Code session** — see `docs/sign-accuracy-pipeline.md`. **Mock exam (Code B) shipped:** entitlement-gated `/mock` → timed 68-question paper (3 sections scored independently) → per-section summary → grounded AI assessment → DB9 readiness blend on the dashboard/progress. Engine in `src/lib/exam.ts`, UI in `src/components/exam/*`, gate in `src/lib/exam-guard.ts`.
 
-- **Production:** https://k53coach.vercel.app (Vercel project `yourdesigncozas-projects/k53coach`; GitHub `yourdesigncoza/k53coach` auto-deploys on push).
+**Live data as of 2026-07-24** (measure it yourself before quoting — these drift):
+
+| | |
+|---|---|
+| `road_signs` | 362 rows — 361 approved + `sa_relevant`, 1 draft. 234 regulatory / 102 warning / 26 guidance. **Zero road markings.** |
+| `questions` | 125, all `review_status='approved'` + `in_exam`. Signs 47 / rules 41 / controls 37 |
+| Rule learning objects | 10 (`RR1`–`RR10`) |
+| `exam_attempts` | 0 — no learner has sat a mock in production |
+| `entitlements` | 6, all granted by hand via admin |
+
+**Launch plan: `docs/build-plan-2026-07.md` (v2) — read it before scoping work.** Launch is a **two-stage gate**, not one bar: Stage 1 paid beta at **300 verified questions** (a floor derived from the exam format — see the doc) + payments live + no orphaned topics + road-markings written library + a claims audit; Stage 2 full launch at 800. Payments get built early but the **checkout stays closed** until the Stage 1 content floor is real. Tracked as **K53-32**.
+
+⚠️ **Payments do not work.** `src/app/api/pay/payfast/route.ts` is a stub that returns 200 and grants nothing; `.env.local` has a prototype flag that unlocks paid access without payment (`remove when PayFast/Yoco is live`). Verify that flag is off in production before opening checkout.
+
+Deferred (`docs/backlog.md`): Code A/C papers, full pass-prediction, dashboards, practical-driving coach, the Afrikaans content pass, next-pwa service worker.
+
+- **Production:** https://k53coach.co.za (also k53coach.vercel.app; Vercel project `yourdesigncozas-projects/k53coach`; GitHub `yourdesigncoza/k53coach` auto-deploys on push).
 - **Supabase (prototype):** project `k53coach`, ref `lxefjksaxmiawrnnewmj`, eu-west-1.
 
 ## Project management (Linear)
@@ -23,8 +39,14 @@ other collaborator, **Louwrens** (`louwrensluyt@gmail.com`, now invited), sees *
 
 - Team **K53 Coach** (key `K53`); work lives under the **Post-MVP Roadmap** project, grouped
   into 5 milestones (Monetisation & Access, Exam engine v2, Bilingual content, Platform,
-  Compliance (POPIA)), seeded from `docs/backlog.md`.
+  Compliance (POPIA) — now moot, see constraint 1), seeded from `docs/backlog.md`.
 - **Todo** is reserved for currently-queued work; deferred items stay in **Backlog**.
+- **Issues Louwrens will read are written for him** — plain, non-technical client block on top,
+  `### Technical notes (dev team)` below a divider. Never put infrastructure detail (Vercel, env
+  vars, service-role keys, file paths) in the client block. **K53-32** is the current direction.
+- The CLI can't create teams or invite users, and `issue create` has no `--milestone` (attach after
+  creation). For anything the CLI can't reach, the Linear GraphQL API works directly with the same
+  key — that's how issue relations, duplicate-state moves and comment *edits* get done.
 - Driven via the `pi-linear-tools` CLI using the **k53-coach-scoped** `LINEAR_API_KEY` in
   `.env.local` (pass it inline — do **not** overwrite the CLI's stored Wecoza key). Details in
   project memory: `linear-k53-coach-workspace`.
@@ -38,8 +60,14 @@ npm run start        # serve the production build
 npm run lint         # eslint
 npm run typecheck    # tsc --noEmit
 
-# Road-sign ingest (needs pdftotext + network; see scripts/signs/README.md)
-npm run signs:ingest   # PDF extract -> Wikimedia fetch + provenance
+# Road-sign pipeline (needs pdftotext + network; see scripts/signs/README.md)
+npm run signs:extract  # pull sign codes/names out of the official chart PDF
+npm run signs:fetch    # fetch SVGs from Wikimedia + record provenance
+npm run signs:ingest   # wiki ingest (the current entry point)
+npm run signs:seed     # push the ingested set into road_signs
+
+# Question bank (see scripts/exam/README.md)
+npm run exam:build-migration   # regenerate the questions migration from the wiki bank
 
 # Supabase (CLI is split: `supabase` + `supabase-go`, both in ~/.local/bin)
 supabase db push                 # apply migrations in supabase/migrations to remote
@@ -82,8 +110,8 @@ These are the cross-cutting rules that aren't obvious from a single file:
 - **`src/proxy.ts` is the middleware** (Next 16 renamed `middleware`→`proxy`). It composes the next-intl locale middleware with Supabase session refresh — order matters (intl builds the response, Supabase writes cookies onto it).
 - **All app LLM calls go through `src/lib/llm.ts` (OpenAI `gpt-5.4-mini`, `OPENAI_API_KEY`).** One entry point (`llmChat` + `hasLlmKey`), direct fetch, graceful when the key is absent. Use it for any new AI feature — do not call a provider API directly or hardcode a model. Currently only **offline/admin** drafting uses it (no runtime learner-facing AI — see below).
 - **No runtime AI in the learner flow (deliberate).** Practice/test explanations are **hard-coded verified content** shown directly (`q.explanation`) — there is no per-question LLM call. AI is used only **offline** to draft initial content for human review (`src/app/api/admin/draft-sign/route.ts`, the translation manager's AI-draft) and is reserved for a **future post-test coaching** feature (score-improvement suggestions / recommended learning), not per-question rephrasing. The old `/api/ai/explain` rephrase route was removed. Editable answers/explanations are managed in admin Content Management (DB-backed question bank — see `docs/backlog.md`). When adding AI, it must stay grounded in verified content and never invent legal/safety claims.
-- **Content as structured learning objects.** `src/content/{road-rules,vehicle-controls,readiness-questions}.ts` are typed data (`src/lib/types.ts`). **Road signs are DB-backed, not a TS file** — the `road_signs` table (397 rows) holds artwork + provenance + bilingual `content` + verification evidence; learner pages read it via `getApprovedSigns*` (served set = both gates approved + `sa_relevant`), admin via `getSigns`. Signs render via `SignImage` from the real PD SADC SVG in `public/signs/<code>.svg` (`svg_file`). Verification against the official chart is automated in a Claude Code session — see `docs/sign-accuracy-pipeline.md` + `scripts/signs/`.
-- **Theme is clean neutral (Catalyst-style), no brand colour.** Tokens in `src/app/globals.css` (ink primary, zinc neutrals, single blue accent); semantic green/amber/red only as soft readiness-badge tints. Mobile-first: `[locale]/(app)` uses a bottom tab bar on mobile and a left sidebar on `md+`. Base UI components use a `render` prop for polymorphism (not Radix `asChild`).
+- **Content as structured learning objects.** `src/content/{road-rules,vehicle-controls,readiness-questions}.ts` are typed data (`src/lib/types.ts`). **Road signs are DB-backed, not a TS file** — the `road_signs` table (362 rows) holds artwork + provenance + bilingual `content` + verification evidence; learner pages read it via `getApprovedSigns*` (served set = both gates approved + `sa_relevant`), admin via `getSigns`. Signs render via `SignImage` from the real PD SADC SVG in `public/signs/<code>.svg` (`svg_file`). Verification against the official chart is automated in a Claude Code session — see `docs/sign-accuracy-pipeline.md` + `scripts/signs/`.
+- **Theme is warm brown + gold (the brand palette).** Tokens in `src/app/globals.css`: brown `--ink-*` (`#221813`/`#3b2a22`), `--gold-400` (`#ffc46b`) as `--primary` in every zone, ivory/sand neutrals (`--surface-2` `#faf7f2`), `--gold-ink` for readable gold on white; semantic green/amber/red only as soft readiness-badge tints. The Coach K artwork is built on this same brown/gold scheme. Mobile-first: `[locale]/(app)` uses a bottom tab bar on mobile and a left sidebar on `md+`. Base UI components use a `render` prop for polymorphism (not Radix `asChild`).
 - **Contained-panel rule for test/learning content.** Every test/learning flow (readiness test, practice mode, quiz-style learning) renders its content inside a **single white `bg-card`/`--surface` panel that floats on the ivory canvas** — never flat on the background. This mirrors the client-approved prototype's `.quiz-main`. Use the shared `<QuizPanel>` (`src/components/quiz/quiz-panel.tsx`); don't hand-roll the frame. The dark marketing/landing zone is the separate `.theme-dark` storefront.
 - **One quiz chrome, everywhere (pixel-identical).** The readiness test, practice mode AND the landing quiz demo all render through the same components in `src/components/quiz/` — `QuizPanel`, `QuizHead`/`QuizScore`, `QuizProgress`, `QuestionCard`, `AnswerOption`, `CoachCard`, `QuizButton`. Never restyle a quiz surface locally; change the shared component. Full spec in the `globals.css` header.
 - **Forms consistency.** All form controls come from `src/components/ui/*` (shadcn primitives, token-tinted). Never hand-roll inputs/selects/checkboxes with ad-hoc classes; missing control types get added to `ui/` once. Reference form: `src/app/[locale]/auth/page.tsx`.
@@ -95,7 +123,7 @@ These are the cross-cutting rules that aren't obvious from a single file:
 
 These are easy to miss and have architectural consequences. Honor them in any design or code.
 
-1. **POPIA-first infrastructure (PRD-additions §7).** Supabase Cloud and Vercel are acceptable **only for prototype work with dummy/anonymised data**. They are NOT approved for production learner/parent/school data until a POPIA review is done. Production must consider SA data residency, cross-border transfer, operator agreements, retention rules. Do not wire real personal data into hosted services without flagging this. The current Supabase project is a prototype on this basis.
+1. **POPIA — settled; do not re-raise as a launch gate.** John closed this concern on **2026-07-24** and canceled K53-17. The original PRD-additions §7 position (Supabase/Vercel prototype-only pending a POPIA review; SA data residency, cross-border transfer, operator agreements, retention) is **superseded** — treat it as historical context, not a live blocker. It reads as outstanding in `init/PRD-additions.md`, which is why reviewers keep flagging it; the settled position is here. The *design* principles still hold and are cheap to honour: collect minimal PII, keep the payment screen parent-facing, and don't invent new personal-data collection without asking.
 
 2. **No biometric storage, ever (PRD-additions §4, overview §10).** Anti-account-sharing uses device-native passkeys / WebAuthn / Face ID / Touch ID handled *by the device*. The app never collects or stores fingerprints, face scans, or biometric identifiers. Model: one primary device per account, re-auth only on suspicious/new-device usage. Never interrupt a live mock exam with an auth prompt.
 
@@ -107,8 +135,21 @@ These are easy to miss and have architectural consequences. Honor them in any de
 
 6. **MVP scope is narrower than the PRD's full Phase 1 (PRD-additions §5, overview §14).** The MVP must prove the business (learners use it, parents pay, schools work as a channel, AI explanations add value) before building full dashboards, full pass-prediction, practical driving coach, voice tutor, or photo/video recognition. Defer anything in the "MVP Should Not Include Yet" list (overview §14).
 
+7. **Third-party study guides are a coverage checklist, never a source.** The client supplied a commercial K53 study guide he does **not** own. Its prose, illustrations, formatting and arrangement are copyright; only the *topic labels* (facts/scope) are free. Method — extract bare topic labels → draft every explanation from the National Road Traffic Act 93 of 1996 + regulations and the official chart → diff the labels against what we wrote to find gaps. **The PDF must never be passed as context to `llmChat` or any drafting prompt** — that is where regurgitation of protected expression happens. Full method + the current gap analysis: `docs/rules-coverage-checklist.md`.
+
+8. **Languages are English + Afrikaans, full stop.** Both ship as real deliverables. Do **not** propose isiXhosa or any other official language — speakers of the African languages generally prefer English, so English serves them (John, 2026-07-24). English is drafted first; Afrikaans follows as a content pass. Stage 1 ships English-only *questions* — marketing must not imply otherwise.
+
+9. **Accuracy gate = recorded evidence, not intent.** Any generated question or rule must carry a citation to the specific regulation/chart entry it rests on, plus who approved it and when. **AI drafts; it never self-certifies** — verification by another pass of the same model against the same prompt is circular and worthless. Item-level checks, not sampling; a client spot-check is *style* calibration and does not count as QA.
+
 ## Roles & data model anchors
 
 User roles: Learner, Parent, School, Admin. The PRD's numbered "Databases" are logical content/engine domains, not literal tables: road signs (DB1), road rules (DB2), vehicle controls (DB3), questions+explanations (DB4, ~750 Q), AI coaching cards (DB5), exam generator (DB6), analytics/prediction (DB7), readiness scoring (DB9 — 40% mock avg / 25% topic accuracy / 20% weak-area improvement / 15% consistency), dashboards (DB10), legal docs (DB12).
 
-Implemented Postgres tables (RLS, own-row policies): `profiles` (auto-created on signup; role/locale/consent flags, minimal PII), `attempts` (per-question, feeds DB7), `readiness_results` (DB9 snapshots). The readiness scoring helper is `src/lib/readiness.ts`.
+Implemented Postgres tables (RLS, own-row policies): `profiles` (auto-created on signup; role/locale/consent flags, minimal PII), `attempts` (per-question, feeds DB7), `readiness_results` (DB9 snapshots), `road_signs` (DB1), `questions` (DB4), `entitlements` + `exam_attempts` (paid access + mock results). The readiness scoring helper is `src/lib/readiness.ts`.
+
+**Two schema gaps to close before scaling — both are load-bearing, neither is obvious from the code:**
+
+- **`questions` has no audit trail.** Unlike `road_signs` (which carries `approved_by`, `verified_at`, `svg_hash`, `verification`), `review_status` on `questions` is a bare boolean a seed migration set — there is no record of *who* verified an item or *against what*. Add `approved_by`, `verified_at`, `generated_by`, `source_citation`, `objective_code` **before** any bulk import, or the accuracy gate (constraint 9) is decorative.
+- **`entitlements` has no unique constraint on `reference`** — only a non-unique index on `(user_id, expires_at)`. Concurrent PayFast ITN deliveries would double-grant. An idempotent payment webhook needs a unique index on `(source, reference)` plus upsert-on-conflict; careful code alone won't do it.
+
+**Learning-objective codes** tie questions to lessons: `sign_code` → `road_signs.code`, and rules use `RR#`. Vehicle controls have no code series yet — one is needed so every question points at exactly one objective (the client's request on K53-28).
