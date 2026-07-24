@@ -34,7 +34,7 @@ below the fold of the copy dump. Grep for the claim, do not eyeball the copy.
 | "Free readiness test, no sign-up" | anonymous, device-local via `localStorage` |
 | "Unlimited practice + mock exams" | practice mode and the Code B mock both ship |
 
-## ⚠️ Open — needs a decision, not a copy edit
+## ✅ Resolved 2026-07-24 — the "AI explains every mistake" family
 
 **The "AI explains every mistake" family** — `landing.subtitle`, `feat1Title`/`feat1Body`,
 `planF2`, `step3Body`, `demoSub`, `badge`.
@@ -47,14 +47,27 @@ So "your AI coach explains every mistake" implies something the product doesn't 
 is not a lie — every mistake genuinely does come with a plain-language explanation of why, and AI
 wrote the first draft — but a reasonable reader would expect live generation.
 
-This is the central positioning claim, so it is a business decision rather than a copy fix. **Not
-changed.** Two options:
+**Decision: reworded** (John delegated the call, 2026-07-24). For a product whose moat is verified
+accuracy, sold into a market where roughly 8 in 10 candidates fail, *"checked against the official
+rules"* is both defensible and a stronger claim than *"AI wrote it"*. It also turns the
+no-runtime-AI architecture from something to hedge about into the selling point, and it sidesteps
+"the AI made something up" entirely.
 
-1. **Reword to what is true and arguably stronger** — e.g. *"Every mistake explained — in plain
-   language, checked by a human."* Verified content is a better story than generated content for a
-   product selling accuracy, and it sidesteps "the AI made something up" entirely.
-2. **Keep the wording** on the basis that the AI Coach is a real feature (post-exam assessment,
-   weak-area recommendations) and the explanations are AI-authored.
+| Where | Was | Now |
+|---|---|---|
+| `subtitle` | "let your AI coach explain every mistake" | "get a clear explanation of every mistake" |
+| `feat1Title` | "AI explains every mistake" | "Every mistake explained" |
+| `feat1Body` | "Clear, plain-language reasons" | "Plain-language reasons, **checked against the official rules**" |
+| `planF2` | "AI explanations on every question" | "An explanation on every question" |
+| `step3Body` | "AI explanations that target your weak areas" | "your coach pointing you at the exact lessons you're weakest in" |
 
-Recommendation: option 1. It is defensible under scrutiny, and it turns the no-runtime-AI
-architecture from something to hedge about into the selling point.
+**Deliberately kept**, because each is true:
+
+- `badge` "AI-coached, not just quizzes" — the AI Coach is real: post-exam assessment and
+  weak-area lesson targeting (shipped 2026-07-24).
+- `demoSub` "Tap any option to see the AI Coach explanation appear, exactly as a learner would" —
+  the landing demo shows precisely what a learner sees, so the claim is accurate.
+- `step3Body`'s weak-area half — that feature now exists rather than being aspirational.
+
+The rule this leaves behind: **claim the verification, not the authorship.** AI drafting is an
+implementation detail; a human approving it against the regulations is the product.
