@@ -134,10 +134,10 @@ wrong. After the first backfill pass:
 
 | Topic | Mapped | Total | Blocking gap |
 |---|---|---|---|
-| Signs | 25 | 47 | 22 unmapped — road markings (no rows at all), traffic signals, colour-code concepts |
+| Signs | 26 | 47 | 21 unmapped — needs the **warning (WM)** and **guidance (GM)** marking series, traffic signals, colour-code concepts |
 | Rules | **41** | 41 | ✅ none — `RR11`–`RR26` written 2026-07-24 |
 | Controls | **37** | 37 | ✅ none — `VC12`–`VC22` written 2026-07-24 |
-| **Total** | **103** | **125** | **22 orphaned, all signs** |
+| **Total** | **104** | **125** | **21 orphaned, all signs** |
 
 Mapping was **deliberately conservative**: a question is linked only where a learning object
 genuinely covers its topic. Pointing a learner at an approximate lesson is worse than pointing them
@@ -180,10 +180,58 @@ Two claims were correctly *withheld* as unsupported and should stay withheld: th
 headlights for a vehicle you are **following** (reg 157(3) covers oncoming traffic only) — `RR18`
 presents that as courtesy, not law.
 
+---
+
+## ✅ Road markings — regulatory series written 2026-07-24 (K53-30)
+
+**16 markings** now exist in `road_signs` under `category='marking'` (was zero). Written from the
+official **SADC/SA Road Traffic Signs Manual Vol 1 Chapter 7 (May 2012)** — an official government
+text, so a permitted *source*, not merely a checklist.
+
+| Transverse (RTM) | Longitudinal | Parking / lanes | Restrictions |
+|---|---|---|---|
+| `RTM1` Stop line | `RM1` No overtaking line | `RM6` Parking bays | `RM10` Box junction |
+| `RTM2` Yield line | `RM2` No crossing lines | `RM7` Exclusive parking bay | `RM12` No stopping line |
+| `RTM3` Pedestrian crossing lines | `RM4.1` Left edge line | `RM9` Exclusive use lane line | `RM13` No parking line |
+| `RTM4` Block pedestrian crossing | `RM5` Painted island · `RM8` Mandatory direction arrows · `RM15` Traffic circle arrows | | |
+
+**Sign ↔ marking linking is live in both directions** (the client's core ask): R1↔RTM1,
+R2↔RTM2/RTM4, R216↔RM13, R217↔RM12, and RTM3 to both R1 and R2.
+
+**Both gates are deliberately closed** — `asset_status='needs_review'` (no artwork exists;
+markings are road-surface diagrams with no public-domain SVG set, so each must be drawn and
+chart-verified) and `review_status='draft'` (AI-drafted, pending human verification). They are
+therefore invisible to learners until approved. Seed script:
+`scripts/signs/markings/seed-markings.mjs`.
+
+### Errors found in the client's supplied list
+
+His descriptions came from an unreliable source; the manual contradicts six of them:
+
+| Client said | Manual says |
+|---|---|
+| `RM8` arrows are **white** | **Yellow** (§7.2.12.2) — a likely exam question |
+| `RM14` is a bus/tram/bicycle lane | `RM14` is the **No Motor Cycles** marking (§7.2.18). Reserved lanes are `RM9` + `RM17` symbols; there is no RM9/RM14 pairing |
+| `RM10` box junction = "may not stop on it" | "May not **enter** if stationary vehicles ahead mean you cannot leave — **except** vehicles turning left or right may enter" (§7.2.14) |
+| `RM7` letters: A B L T F P D CD MB SOS | Omitted **R (Rickshaw)** — full set is A B L T F R CD MB SOS D P |
+| `RM5` painted island has three exceptions | **Two** only: traffic officer's direction, emergency (§7.2.9.1). "Avoid a collision" is not separate |
+| `RM12` "except in an emergency" | No such exception in §7.2.16; the real ones sit in NRTR reg 304. Left out of learner prose |
+| `RTM3` = "white stripes" | **Two continuous white lines** forming a corridor (§7.2.3.2); the striped look is `RTM4` |
+| `RTM4` = "raised" block pattern | **Flat** painted rectangles (§7.2.4.2) |
+
+### Still outstanding for markings
+
+- **Warning markings (`WM1`–`WM11`)** and **guidance markings (`GM1`–`GM8`)** — §7.3 and §7.4.
+  Two of the three road-marking questions still can't be mapped without them (`RS-038` needs `WM3`
+  dividing line, `RS-039` needs a yield-control marking).
+- **Artwork** for all 16, plus railway crossings, traffic signals, overhead lane signals and
+  traffic officer hand signals (the client confirmed all four are in scope).
+- Human verification pass to open `review_status`.
+
 ## Next
 
-1. Write the ❌ and ◐ rule objects from the Act, extending `RR11`+.
-2. Write the missing control objects above, extending `VC12`+.
-3. Re-run the objective-code backfill; the 51 orphans should fall to ~0 for rules and controls.
-4. Map the 22 unmapped signs questions (blocked on road-marking rows — see K53-30).
-5. Re-run this checklist and confirm no ❌ remain in Volumes 1–4.
+1. ~~Write the ❌ and ◐ rule objects from the Act, extending `RR11`+.~~ ✅ done
+2. ~~Write the missing control objects, extending `VC12`+.~~ ✅ done
+3. ~~Re-run the objective-code backfill.~~ ✅ rules and controls at 100%
+4. Write the `WM` and `GM` marking series, then map the last signs questions.
+5. Draw and chart-verify the marking artwork; run the human review pass.

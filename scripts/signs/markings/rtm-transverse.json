@@ -1,0 +1,66 @@
+[
+  {
+    "code": "RTM1",
+    "name": "Stop line",
+    "subcategory": "transverse",
+    "related_codes": ["R1"],
+    "content": {
+      "plainEnglish": {"en": "A solid white line painted across your lane telling you exactly where to stop — your car must come to a complete standstill just behind it, not on it."},
+      "formalMeaning": {"en": "A regulatory transverse marking that, with a Stop sign R1, a red traffic signal or a traffic officer's signal, requires the driver to stop completely immediately behind the line and not move off until it is safe. Where the R1 sign has fallen down or the signal is out of order, the line carries the full force of the Stop sign on its own."},
+      "behaviour": {"en": "Stop completely with your front wheels behind the line, then creep forward only far enough to see, and pull away only when the way is clear."},
+      "commonMistake": {"en": "Rolling slowly over the line to get a better view instead of stopping behind it first, or stopping level with the Stop sign when a line is painted further back."},
+      "testHint": {"en": "The examiner watches for a full stop behind the line — the vehicle must rock back. If a stop line is painted but worn away so you cannot see it, treat the junction as if there is no line and stop at the sign."},
+      "memoryTrick": {"en": "\"Behind the line, front wheels fine.\" The line is a wall, not a target."}
+    },
+    "source": "SARTSM Vol 1 §7.2.1 (Stop Line RTM1), §2.2.1 (Stop sign R1); NRTR 2000 reg 286(2)(c)(i), reg 307",
+    "confidence": "VERIFIED: code, official name and form (white continuous solid line) confirmed SARTSM Vol 1 §7.2.1; standalone significance §7.2.1.1-7.2.1.2; 'immediately behind such stop line' §2.2.1.1; width NRTR reg 286(2)(c)(i). CLIENT COPY NARROWED: 'where there is no stop sign it has the same meaning as one' is too broad — §7.2.1.3 requires RTM1 be used WITH an R1 sign or signals; standalone force applies where the sign is down or the signal is out."
+  },
+  {
+    "code": "RTM2",
+    "name": "Yield line",
+    "subcategory": "transverse",
+    "related_codes": ["R2"],
+    "content": {
+      "plainEnglish": {"en": "A broken white line across your lane that means give way here — you do not have to stop if the way is genuinely clear, but everyone else goes first."},
+      "formalMeaning": {"en": "A regulatory transverse marking requiring the driver to yield right of way at the line to traffic on the road being joined, to rail traffic on a railway crossing, and to pedestrians or cyclists crossing or waiting to cross at a marked crossing. It carries the significance of Yield sign R2, including where that sign has fallen down."},
+      "behaviour": {"en": "Slow right down as you approach, look both ways and be ready to stop; only cross the line when you can go without making anyone else slow down, swerve or stop."},
+      "commonMistake": {"en": "Treating a yield line as 'slow down a bit and squeeze in' — yielding means the other road user keeps their speed and line, not that you force them to adjust."},
+      "testHint": {"en": "Questions contrast the two: solid across the lane is a stop line, broken across the lane is a yield line. Watch for the trick that a yield line also covers pedestrians and cyclists, not just cars."},
+      "memoryTrick": {"en": "Broken line, broken journey — the gaps in the line are the gaps in traffic you are waiting for."}
+    },
+    "source": "SARTSM Vol 1 §7.2.2 (Yield Line RTM2), §2.2.2 (Yield sign R2); NRTR 2000 reg 286(2)(c)(ii)",
+    "confidence": "VERIFIED: code, name, broken white form (600mm line / 300mm gap) SARTSM §7.2.2.4; three-part yield duty §7.2.2.1; standalone significance §7.2.2.2; width NRTR reg 286(2)(c)(ii). CORRECTION: a secondary web source claimed yield lines are yellow — wrong, SARTSM §7.2.2 states white."
+  },
+  {
+    "code": "RTM3",
+    "name": "Pedestrian crossing lines",
+    "subcategory": "transverse",
+    "related_codes": ["R1", "R2"],
+    "content": {
+      "plainEnglish": {"en": "Two solid white lines running across the road with a gap between them — that gap is a walkway for people, and people using it come first."},
+      "formalMeaning": {"en": "A regulatory marking requiring drivers to yield right of way, slowing or stopping if need be, to a pedestrian crossing the roadway or waiting to cross within the lines. Pedestrians must cross only inside the corridor formed by the two lines. Where a sign or signal also controls the crossing, that sign or signal takes precedence."},
+      "behaviour": {"en": "Scan both pavements as you approach and be ready to stop for anyone stepping in or waiting to. If another vehicle has already stopped at the crossing, do not overtake it."},
+      "commonMistake": {"en": "Only looking for people already in the road — the duty covers pedestrians waiting to cross too. Learners also confuse this with the thick painted blocks, which is a different marking (RTM4)."},
+      "testHint": {"en": "Expect a question on whether you may pass a vehicle stopped at a crossing. The answer is no."},
+      "memoryTrick": {"en": "Two lines = a corridor with two walls. Walls are for walkers, so wait for the walkers."}
+    },
+    "source": "SARTSM Vol 1 §7.2.3 (Pedestrian Crossing Lines RTM3); NRTR 2000 reg 315(2), reg 315(4), reg 1 definition",
+    "confidence": "VERIFIED: code and name SARTSM §7.2.3. CLIENT DESCRIPTION WAS WRONG AND CORRECTED: RTM3 is NOT 'white stripes' — §7.2.3.2 states two continuous white lines, min 100mm wide, at least 2,4m apart. The striped/block look is RTM4. No-overtaking-a-stopped-vehicle rule NRTR reg 315(4)."
+  },
+  {
+    "code": "RTM4",
+    "name": "Block pedestrian crossing",
+    "subcategory": "transverse",
+    "related_codes": ["R2"],
+    "content": {
+      "plainEnglish": {"en": "A row of fat white painted blocks across the road — the high-visibility pedestrian crossing you see outside schools, malls and stadiums."},
+      "formalMeaning": {"en": "A regulatory marking with the same force as pedestrian crossing lines: drivers must yield right of way, slowing or stopping if need be, to a pedestrian crossing or waiting to cross, and pedestrians must cross only within the marked area. A sign or signal at the same crossing overrides the marking."},
+      "behaviour": {"en": "Ease off well before the blocks, cover the brake, and give way to anyone on the crossing or standing at its edge. Never stop with your vehicle sitting on the blocks."},
+      "commonMistake": {"en": "Assuming the blocks are speed bumps, or that they only matter once someone is halfway across. They are flat paint, and someone waiting at the kerb already has priority."},
+      "testHint": {"en": "It is a yield-to-pedestrians control, so the duty is to give way, not merely to slow down."},
+      "memoryTrick": {"en": "Big blocks, big brakes — the fatter the paint, the more people are expected to cross."}
+    },
+    "source": "SARTSM Vol 1 §7.2.4 (Block Pedestrian Crossing Markings RTM4), §2.2.3 (R2.1); NRTR 2000 reg 286(2)(c)(iii), reg 315",
+    "confidence": "VERIFIED: code and name SARTSM §7.2.4; duties identical to RTM3 §7.2.4.1. CLIENT DESCRIPTION CORRECTED: NOT 'raised' — §7.2.4.2 describes flat rectangular white markings min 2,4m long, 600mm wide, 600mm apart. OPEN: SARTSM pairs RTM4 with sign R2.1 (Yield to Pedestrians) which was not in the supplied sign list; fell back to parent R2."
+  }
+]
