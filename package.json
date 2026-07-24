@@ -11,6 +11,7 @@
     "signs:fetch": "node scripts/signs/fetch-wikimedia.mjs",
     "signs:ingest": "node scripts/signs/ingest-wikipedia.mjs",
     "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test \"src/**/*.test.ts\"",
     "signs:ingest-legacy": "node scripts/signs/ingest.mjs",
     "signs:seed": "node scripts/signs/seed-db.mjs",
     "exam:build-migration": "node scripts/exam/build-questions-migration.mjs"
