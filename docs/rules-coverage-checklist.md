@@ -260,6 +260,21 @@ the *matched substring*, not just on whether the pattern fired.
 catch content accuracy, and it did not catch a missing name — worth a cheap
 "name is non-empty and artefact-free" assertion in the ingest before a row can reach approved.
 
+### 🎨 Artwork — waiting on the client (John, 2026-07-24)
+
+**Decision: do not draw or generate the marking artwork in-house.** Louwrens supplies it.
+
+This was considered and declined. Road markings are geometric (lines, gaps, hatching, blocks,
+arrows) and the SARTSM chapter gives exact dimensions — 100 mm line widths, 600 mm line / 300 mm
+gap on the yield line, 2,4 m block spacing — so they *could* be rendered deterministically from the
+spec. John's call is to wait for the client instead. **Do not re-propose the generator.**
+
+Consequence, so nobody reads it as a bug: all 16 markings stay `asset_status='needs_review'`, keep
+their grey placeholder in the admin exceptions queue, and stay invisible to learners. The written
+content is complete; only the artwork gate is open.
+
+AI-generated artwork remains rejected — see the errors found in the client's infographics above.
+
 ### Still outstanding for markings
 
 - **Warning markings (`WM1`–`WM11`)** and **guidance markings (`GM1`–`GM8`)** — §7.3 and §7.4.
