@@ -81,7 +81,10 @@ if (DRY) {
   process.exit(0);
 }
 
-const res = await fetch(`${SUPABASE_URL}/rest/v1/road_signs`, {
+// on_conflict=code: the PK is sign_id (a generated uuid we never supply), so
+// without this a rerun collides on the road_signs_code_key unique constraint
+// instead of merging. Found by adversarial review, confirmed by a failing rerun.
+const res = await fetch(`${SUPABASE_URL}/rest/v1/road_signs?on_conflict=code`, {
   method: "POST",
   headers: {
     apikey: SERVICE_KEY,

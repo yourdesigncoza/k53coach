@@ -207,6 +207,10 @@ export async function getWeakAreas(
     (questions ?? []).map((q) => [q.id, q.objective_code]),
   );
 
+  // Rank with headroom beyond `limit`: the card resolver drops objectives whose
+  // lesson doesn't resolve (e.g. a draft marking), and it can only backfill from
+  // candidates it was given. Truncating to `limit` here would make that backfill
+  // a no-op — found by adversarial review.
   return rankWeakAreas(
     attempts.map((a) => ({
       objectiveCode: objectiveById.get(a.question_id) ?? null,
@@ -214,7 +218,7 @@ export async function getWeakAreas(
       correct: a.correct,
       createdAt: a.created_at,
     })),
-    limit,
+    limit * 2 + 2,
   );
 }
 
