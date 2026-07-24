@@ -125,8 +125,65 @@ The partials matter more than they look: a learner who gets a lights or towing q
 nowhere to be sent, which breaks the "here's your exact next lesson" promise the landing page
 makes.
 
+---
+
+## Objective-code coverage (measured 2026-07-24)
+
+`questions.objective_code` links each question to the lesson a learner is sent to when they get it
+wrong. After the first backfill pass:
+
+| Topic | Mapped | Total | Blocking gap |
+|---|---|---|---|
+| Signs | 25 | 47 | 22 unmapped — road markings (no rows at all), traffic signals, colour-code concepts |
+| Rules | **41** | 41 | ✅ none — `RR11`–`RR26` written 2026-07-24 |
+| Controls | **37** | 37 | ✅ none — `VC12`–`VC22` written 2026-07-24 |
+| **Total** | **103** | **125** | **22 orphaned, all signs** |
+
+Mapping was **deliberately conservative**: a question is linked only where a learning object
+genuinely covers its topic. Pointing a learner at an approximate lesson is worse than pointing them
+at none — it burns the "here's your exact next lesson" promise on a wrong answer.
+
+### ✅ Closed 2026-07-24 — rules `RR11`–`RR26`, controls `VC12`–`VC22`
+
+27 learning objects written from the National Road Traffic Act 93 of 1996 and the National Road
+Traffic Regulations, 2000, by a 6-agent research team. Every object carries the provision it rests
+on as a source comment. All ship as `reviewStatus: "draft"`.
+
+| New rules | | New controls | |
+|---|---|---|---|
+| `RR11` Alcohol and drug limits | `RR19` Keep left, pass right | `VC12` Wipers and washers | `VC18` Moto: throttle |
+| `RR12` Seatbelts and child restraints | `RR20` When someone overtakes you | `VC13` Demister and defroster | `VC19` Moto: front brake |
+| `RR13` Licence and documents | `RR21` Divided roads | `VC14` Hazard warning lights | `VC20` Moto: rear brake |
+| `RR14` Use of the hooter | `RR22` Freeway rules | `VC15` Brake lights | `VC21` Moto: clutch and gears |
+| `RR15` Tyres and tread depth | `RR23` Hand signals | `VC16` Mirrors | `VC22` Moto: controlled stop |
+| `RR16` Plates, disc, roadworthiness | `RR24` Emergency vehicles | `VC17` ABS | |
+| `RR17` Towing a trailer | `RR25` After an accident | | |
+| `RR18` When your lights must be on | `RR26` Turning at intersections | | |
+
+New taxonomy: `RuleCategory` gained `driver-fitness`, `vehicle-fitness`, `lights`, `freeways`,
+`emergencies`, `safety`; `ControlCategory` gained `visibility`, `motorcycle`. The motorcycle set
+also unblocks Code A papers (K53-7).
+
+### ⚠️ Flagged for human verification before `reviewStatus` leaves draft
+
+The research pass was explicitly instructed to flag rather than guess. Three items came back
+short of primary-source confirmation:
+
+| Item | Issue |
+|---|---|
+| **`RR22` — learners on freeways** | The pass found **no national provision** barring a learner-licence holder from a freeway; reg 323(1) bans vehicle *types*, not licence classes. This contradicts common belief, so the object deliberately teaches it **neither way**. Resolve before any exam question is written on it. |
+| `RR12` — infant restraint rule | Reg 213(6A) (under-3s, approved restraint) is not in the consolidated regulations text; confirmed only from two secondary sources quoting GN R846, GG 38142. Check the gazette. |
+| `VC20` — feet on foot-rests | Reg 309 confirmed from two consistent secondary SA sources, not the primary gazette text. |
+
+Two claims were correctly *withheld* as unsupported and should stay withheld: there is no statutory
+**minimum speed** on a freeway (only where a sign imposes one), and no regulation requires dipping
+headlights for a vehicle you are **following** (reg 157(3) covers oncoming traffic only) — `RR18`
+presents that as courtesy, not law.
+
 ## Next
 
 1. Write the ❌ and ◐ rule objects from the Act, extending `RR11`+.
-2. Give every rule a stable code so questions can point at it (K53-28's learning-objective ask).
-3. Re-run this checklist and confirm no ❌ remain in Volumes 1–4.
+2. Write the missing control objects above, extending `VC12`+.
+3. Re-run the objective-code backfill; the 51 orphans should fall to ~0 for rules and controls.
+4. Map the 22 unmapped signs questions (blocked on road-marking rows — see K53-30).
+5. Re-run this checklist and confirm no ❌ remain in Volumes 1–4.

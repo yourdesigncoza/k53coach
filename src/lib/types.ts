@@ -69,7 +69,13 @@ export type RuleCategory =
   | "signals"
   | "speed"
   | "pedestrians"
-  | "parking";
+  | "parking"
+  | "driver-fitness"
+  | "vehicle-fitness"
+  | "lights"
+  | "freeways"
+  | "emergencies"
+  | "safety";
 
 /** DB2 — a road rule as a structured learning object, mirroring RoadSign. */
 export interface RoadRule {
@@ -93,7 +99,9 @@ export type ControlCategory =
   | "transmission"
   | "signals"
   | "instruments"
-  | "pre-drive";
+  | "pre-drive"
+  | "visibility"
+  | "motorcycle";
 
 /** DB3 — a vehicle control as a structured learning object. */
 export interface VehicleControl {
