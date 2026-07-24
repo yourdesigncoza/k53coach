@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Topic } from "@/lib/types";
 import type { SignRow } from "@/lib/signs";
+import { rankWeakAreas, type WeakAreas } from "@/lib/weak-areas";
 
 /** Current signed-in user, or null (also null when Supabase isn't configured). */
 export async function getUser() {
@@ -162,6 +163,59 @@ export async function getAttemptDays(
     .gte("created_at", since.toISOString());
   if (!data) return [];
   return [...new Set(data.map((r) => r.created_at.slice(0, 10)))];
+}
+
+/**
+ * A learner's weak areas: which lessons their wrong answers point at (DB7 →
+ * "the exact next lesson"). See docs/design-weak-area-next-lesson.md.
+ *
+ * Two bounded queries joined in JS — `attempts.question_id` has no FK to
+ * `questions`, so PostgREST cannot embed it. The window is deliberate: it caps
+ * the read AND is what makes a fixed weakness age off the list.
+ *
+ * Returns empty (never throws) when Supabase is absent or the read fails — the
+ * dashboard renders its static cards and nothing breaks.
+ */
+export async function getWeakAreas(
+  userId: string,
+  { limit = 3, windowDays = 90, maxRows = 500 } = {},
+): Promise<WeakAreas> {
+  const empty: WeakAreas = { objectives: [], topics: [] };
+  const supabase = await createClient();
+  if (!supabase) return empty;
+
+  const since = new Date();
+  since.setDate(since.getDate() - windowDays);
+  const { data: attempts, error } = await supabase
+    .from("attempts")
+    .select("question_id, topic, correct, created_at")
+    .eq("user_id", userId)
+    .gte("created_at", since.toISOString())
+    .order("created_at", { ascending: false })
+    .limit(maxRows);
+  if (error || !attempts || attempts.length === 0) return empty;
+
+  // Dedupe before the IN list — a learner who has sat several mocks will have
+  // answered the same question many times.
+  const ids = [...new Set(attempts.map((a) => a.question_id))];
+  const { data: questions } = await supabase
+    .from("questions")
+    .select("id, objective_code")
+    .in("id", ids);
+
+  const objectiveById = new Map(
+    (questions ?? []).map((q) => [q.id, q.objective_code]),
+  );
+
+  return rankWeakAreas(
+    attempts.map((a) => ({
+      objectiveCode: objectiveById.get(a.question_id) ?? null,
+      topic: a.topic as Topic,
+      correct: a.correct,
+      createdAt: a.created_at,
+    })),
+    limit,
+  );
 }
 
 export type TopicAccuracy = Record<Topic, { correct: number; total: number }>;

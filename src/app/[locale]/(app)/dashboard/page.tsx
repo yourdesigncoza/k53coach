@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { BookOpen, ClipboardCheck, Signpost, ArrowRight } from "lucide-react";
+import { BookOpen, ClipboardCheck, Signpost, ArrowRight, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReadinessRing } from "@/components/readiness-ring";
@@ -11,7 +11,9 @@ import {
   getTopicAccuracy,
   getExamHistory,
   getAttemptDays,
+  getWeakAreas,
 } from "@/lib/supabase/queries";
+import { resolveWeakAreaCards } from "@/lib/weak-area-cards";
 
 export const metadata = { title: "Home" };
 
@@ -38,6 +40,13 @@ export default async function DashboardPage() {
         })
       : null;
   const overall = blend?.overall ?? readiness?.overall ?? 62;
+
+  // "The exact next lesson, not study everything" — the landing page's promise.
+  // Empty for anonymous/demo learners and for anyone with no wrong answers yet,
+  // in which case the section doesn't render at all.
+  const weakCards = user
+    ? await resolveWeakAreaCards(await getWeakAreas(user.id))
+    : [];
 
   const cards = [
     {
@@ -86,6 +95,37 @@ export default async function DashboardPage() {
           </div>
         </CardContent>
       </Card>
+
+      {weakCards.length > 0 && (
+        <>
+          <h2 className="mt-7 text-sm font-medium text-muted-foreground">
+            {t("recommendedNext")}
+          </h2>
+          <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {weakCards.map((card) => (
+              <Card key={card.href}>
+                <CardContent className="py-0">
+                  <Link
+                    href={card.href}
+                    className="flex items-center gap-3 py-2.5 md:py-4"
+                  >
+                    <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-foreground">
+                      <Target className="size-5" />
+                    </span>
+                    <span className="flex-1">
+                      <span className="block font-medium">{card.title}</span>
+                      <span className="block text-sm text-muted-foreground">
+                        {card.reason}
+                      </span>
+                    </span>
+                    <ArrowRight className="size-4 text-muted-foreground" />
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </>
+      )}
 
       <h2 className="mt-7 text-sm font-medium text-muted-foreground">
         {t("continueLearning")}
