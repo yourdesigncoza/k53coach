@@ -70,7 +70,11 @@ const rows = markings.map((m) => ({
   // No artwork yet, and not human-verified yet — both gates stay closed.
   asset_status: "needs_review",
   review_status: "draft",
-  verification: { source: m.source, confidence: m.confidence },
+  // `confidence` in this column is a NUMERIC score consumed by the admin
+  // exceptions queue (it calls .toFixed()). The drafting pass's prose
+  // confidence note goes in its own key — writing it as `confidence` crashed
+  // the admin page server-side.
+  verification: { source: m.source, note: m.confidence },
 }));
 
 console.log(`${rows.length} markings from ${files.length} files:`);

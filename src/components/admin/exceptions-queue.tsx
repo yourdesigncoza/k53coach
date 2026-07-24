@@ -128,7 +128,11 @@ export function ExceptionsQueue({ rows }: { rows: QueueRow[] }) {
                 <span className="text-xs text-muted-foreground">{r.code}</span>
                 <span className="text-sm font-medium">{r.name}</span>
                 <Badge variant="outline">{r.alignment}</Badge>
-                {r.confidence != null && (
+                {/* `verification` is jsonb, so its shape is cast and never
+                    validated — a row whose confidence is prose rather than a
+                    score used to crash this page server-side via .toFixed().
+                    Narrow on the runtime type, not on null. */}
+                {typeof r.confidence === "number" && (
                   <Badge variant="secondary">conf {r.confidence.toFixed(2)}</Badge>
                 )}
               </div>

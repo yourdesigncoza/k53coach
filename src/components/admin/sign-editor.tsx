@@ -173,7 +173,10 @@ export function SignEditor({
               <div className="mb-2 flex flex-wrap items-center gap-2">
                 <p className="text-sm font-medium">Chart verification</p>
                 {alignment && <Badge variant="outline">{alignment}</Badge>}
-                {verification?.confidence != null && (
+                {/* Narrow on the runtime type: `verification` is jsonb, so its
+                    shape is cast and never validated. A non-numeric confidence
+                    would otherwise crash this page server-side. */}
+                {typeof verification?.confidence === "number" && (
                   <Badge variant="secondary">
                     conf {verification.confidence.toFixed(2)}
                   </Badge>
