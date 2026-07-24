@@ -23,6 +23,7 @@ const FIELD_LABEL: Record<SignContentField, string> = {
   behaviour: "What the driver must do",
   commonMistake: "Common mistake",
   testHint: "Test hint",
+  memoryTrick: "Memory trick",
 };
 const LOCALES = ["en", "af"] as const;
 const ASSET_STATUSES = ["needs_review", "audited", "approved"];

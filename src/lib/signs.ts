@@ -14,6 +14,8 @@ export type SignContent = {
   behaviour?: LocalizedField;
   commonMistake?: LocalizedField;
   testHint?: LocalizedField;
+  /** Short mnemonic that makes the meaning stick (client request, K53-30). */
+  memoryTrick?: LocalizedField;
 };
 
 /** The editable content fields, in display order (used by the admin form). */
@@ -23,6 +25,7 @@ export const SIGN_CONTENT_FIELDS = [
   "behaviour",
   "commonMistake",
   "testHint",
+  "memoryTrick",
 ] as const;
 export type SignContentField = (typeof SIGN_CONTENT_FIELDS)[number];
 

@@ -192,66 +192,81 @@ export type Database = {
       questions: {
         Row: {
           answer: number
+          approved_by: string | null
           created_at: string
           difficulty: number
           exam_likelihood: string
           explanation: string
+          generated_by: string | null
           id: string
           in_exam: boolean
           in_readiness: boolean
+          objective_code: string | null
           options: Json
           prompt: string
           review_status: string
           sign_code: string | null
           sort_order: number
           source_basis: string | null
+          source_citation: string | null
           topic: string
           topic_tag: string | null
           updated_at: string
           updated_by: string | null
           vehicle_codes: string[]
+          verified_at: string | null
         }
         Insert: {
           answer?: number
+          approved_by?: string | null
           created_at?: string
           difficulty?: number
           exam_likelihood?: string
           explanation?: string
+          generated_by?: string | null
           id: string
           in_exam?: boolean
           in_readiness?: boolean
+          objective_code?: string | null
           options?: Json
           prompt?: string
           review_status?: string
           sign_code?: string | null
           sort_order?: number
           source_basis?: string | null
+          source_citation?: string | null
           topic: string
           topic_tag?: string | null
           updated_at?: string
           updated_by?: string | null
           vehicle_codes?: string[]
+          verified_at?: string | null
         }
         Update: {
           answer?: number
+          approved_by?: string | null
           created_at?: string
           difficulty?: number
           exam_likelihood?: string
           explanation?: string
+          generated_by?: string | null
           id?: string
           in_exam?: boolean
           in_readiness?: boolean
+          objective_code?: string | null
           options?: Json
           prompt?: string
           review_status?: string
           sign_code?: string | null
           sort_order?: number
           source_basis?: string | null
+          source_citation?: string | null
           topic?: string
           topic_tag?: string | null
           updated_at?: string
           updated_by?: string | null
           vehicle_codes?: string[]
+          verified_at?: string | null
         }
         Relationships: []
       }
@@ -296,6 +311,7 @@ export type Database = {
           in_official_chart: boolean
           licence: string | null
           name: string
+          related_codes: string[]
           review_status: string
           sa_relevant: boolean | null
           sign_id: string
@@ -323,6 +339,7 @@ export type Database = {
           in_official_chart?: boolean
           licence?: string | null
           name: string
+          related_codes?: string[]
           review_status?: string
           sa_relevant?: boolean | null
           sign_id?: string
@@ -350,6 +367,7 @@ export type Database = {
           in_official_chart?: boolean
           licence?: string | null
           name?: string
+          related_codes?: string[]
           review_status?: string
           sa_relevant?: boolean | null
           sign_id?: string
