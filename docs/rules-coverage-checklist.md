@@ -134,10 +134,25 @@ wrong. After the first backfill pass:
 
 | Topic | Mapped | Total | Blocking gap |
 |---|---|---|---|
-| Signs | 26 | 47 | 21 unmapped — needs the **warning (WM)** and **guidance (GM)** marking series, traffic signals, colour-code concepts |
+| Signs | **35** | 47 | 12 unmapped — all need **new content**, not lookups (see below) |
 | Rules | **41** | 41 | ✅ none — `RR11`–`RR26` written 2026-07-24 |
 | Controls | **37** | 37 | ✅ none — `VC12`–`VC22` written 2026-07-24 |
-| **Total** | **104** | **125** | **21 orphaned, all signs** |
+| **Total** | **113** | **125** | **90%, from 21% this morning** |
+
+Nine of the "unmapped signs" turned out not to be a content gap at all — they were questions about
+signs already in the library that had simply never been given a code (minimum speed → `R101`,
+one-way → `R4.1`, no left turn → `R211`, width limit → `R239`, goods vehicles → `R229`, turn left
+ahead → `R108`, keep left → `R103`, railway crossings → `W318`). Check for an existing lesson
+before writing a new one.
+
+**The last 12 genuinely need new content:**
+
+| Group | Count | Needs |
+|---|---|---|
+| Guidance / information signs | 5 | Green direction signs, `P` parking, `H` hospital, freeway countdown markers — the library has 26 guidance rows and none of these |
+| Traffic signals | 2 | A signals learning object (flashing red, steady amber) — client confirmed signals are in scope |
+| Sign colour code / shapes | 3 | Conceptual lessons ("what does a yellow diamond mean", "what shape is an information sign") with no single sign to point at |
+| Road markings | 2 | `WM3` dividing line and a yield-control marking — the **warning (WM)** series, §7.3 |
 
 Mapping was **deliberately conservative**: a question is linked only where a learning object
 genuinely covers its topic. Pointing a learner at an approximate lesson is worse than pointing them
@@ -218,6 +233,32 @@ His descriptions came from an unreliable source; the manual contradicts six of t
 | `RM12` "except in an emergency" | No such exception in §7.2.16; the real ones sit in NRTR reg 304. Left out of learner prose |
 | `RTM3` = "white stripes" | **Two continuous white lines** forming a corridor (§7.2.3.2); the striped look is `RTM4` |
 | `RTM4` = "raised" block pattern | **Flat** painted rectangles (§7.2.4.2) |
+
+### 🐛 Fixed in passing — 13 live signs had corrupted names
+
+Found while searching for codes to map. Thirteen `W4xx` hazard-marker signs carried leaked wiki
+markup in `name` — `'alt=|Railway crossing'`, `'alt=|Sharp curve marker'`, and four that were
+**just `'alt='` with no name at all**. Every one was `asset_status='approved'` **and**
+`review_status='approved'`, so all thirteen were being served to learners.
+
+Repaired from `data/chart-authority.json` (the official DoT chart, our ground truth) rather than
+invented: W401/W402 Danger plate, W403 Railway crossing, W404 Railway crossing with two or more
+tracks, W405–W408 Sharp curve chevron, W409 T-junction chevron, W410 Dead end or road closed
+chevron, W411 Boom barricade, W413 Gore plate, W415 Overhead danger plate.
+
+**A full sweep was then run** across all 361 served rows for wiki artefacts (`[[links]]`,
+`{{templates}}`, `alt=`, `thumb|`, `NNpx|`) in both `name` and every `content.*` field. It found
+exactly **one** more: `R403` was named `'[[Woonerf|Living Street / Woonerf]] begins'`, now
+"Living street (Woonerf) begins". Zero artefacts remain across all 362 rows.
+
+A first pass with a looser pattern reported 347 hits — that was a false alarm from over-broad
+matching, caught by inspecting actual rows before reporting it. If you re-run this check, assert on
+the *matched substring*, not just on whether the pattern fired.
+
+**The real lesson:** thirteen rows carried visibly broken names while sitting at
+`asset_status='approved'` AND `review_status='approved'`. The two-gate approval was designed to
+catch content accuracy, and it did not catch a missing name — worth a cheap
+"name is non-empty and artefact-free" assertion in the ingest before a row can reach approved.
 
 ### Still outstanding for markings
 
