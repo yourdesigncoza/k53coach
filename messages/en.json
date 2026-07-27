@@ -198,7 +198,9 @@
     "stub": "{gateway} checkout is stubbed in the MVP scaffold.",
     "testNote": "Test mode — this unlocks full access without a real payment.",
     "testUnlocked": "Access unlocked — enjoy the full app.",
-    "testNeedsAuth": "Sign in first, then unlock access."
+    "testNeedsAuth": "Sign in first, then unlock access.",
+    "alreadyActive": "You already have full access — no need to pay again.",
+    "checkoutFailed": "We couldn't start the payment. Please try again."
   },
   "dashboard": {
     "welcome": "Welcome back 👋",

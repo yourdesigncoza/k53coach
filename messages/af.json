@@ -199,7 +199,9 @@
     "stub": "{gateway}-betaling is nog 'n plekhouer in die MVP-raamwerk.",
     "testNote": "Toetsmodus — dit ontsluit volle toegang sonder n werklike betaling.",
     "testUnlocked": "Toegang ontsluit — geniet die volledige app.",
-    "testNeedsAuth": "Meld eers aan, ontsluit dan toegang."
+    "testNeedsAuth": "Meld eers aan, ontsluit dan toegang.",
+    "alreadyActive": "Jy het reeds volle toegang — jy hoef nie weer te betaal nie.",
+    "checkoutFailed": "Ons kon nie die betaling begin nie. Probeer asseblief weer."
   },
   "dashboard": {
     "welcome": "Welkom terug 👋",

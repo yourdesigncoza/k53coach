@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 
-/** Once-off paid access window, in days (PRD pricing: R149–R199 for 90 days). */
-export const ENTITLEMENT_DAYS = 90;
+// Pricing constants (ENTITLEMENT_DAYS, ENTITLEMENT_PRICE_ZAR) live in
+// @/lib/pricing — dependency-free so client components can import them too.
 
 export interface ActiveEntitlement {
   id: string;

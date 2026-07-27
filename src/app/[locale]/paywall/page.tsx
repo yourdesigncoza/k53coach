@@ -11,10 +11,35 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { startTestCheckout } from "@/lib/entitlement-actions";
+import { ENTITLEMENT_DAYS, ENTITLEMENT_PRICE_LABEL } from "@/lib/pricing";
 
-// Prototype: until real PayFast/Yoco is wired, this env flag lets the Pay
-// buttons unlock access directly so the paid flow can be tested end to end.
+// Real PayFast checkout. Closed by default and enforced server-side too — the
+// Stage 1 content gate (K53-32) keeps it shut in production for now.
+const PAYFAST_LIVE = process.env.NEXT_PUBLIC_PAYFAST_CHECKOUT_ENABLED === "true";
+
+// Prototype fallback: grants access directly, no payment. Only when real checkout
+// is closed. Removed from Vercel production.
 const TEST_CHECKOUT = process.env.NEXT_PUBLIC_ENABLE_TEST_CHECKOUT === "true";
+
+/**
+ * Hand the buyer to PayFast. The gateway needs a real form POST from the browser,
+ * so the signed fields the server built are replayed as hidden inputs. Field order
+ * is preserved — the signature was computed over it.
+ */
+function submitToGateway(url: string, fields: [string, string][]) {
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = url;
+  for (const [name, value] of fields) {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = value;
+    form.append(input);
+  }
+  document.body.append(form);
+  form.submit();
+}
 
 export default function PaywallPage() {
   const t = useTranslations("paywall");
@@ -29,9 +54,30 @@ export default function PaywallPage() {
   ];
 
   async function checkout(gateway: "PayFast" | "Yoco") {
+    // Real PayFast: the server signs the request, the browser POSTs it.
+    if (gateway === "PayFast" && PAYFAST_LIVE) {
+      setBusy(true);
+      const res = await fetch("/api/pay/payfast/checkout", { method: "POST" });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        // Stays busy: the browser is about to leave for the gateway.
+        submitToGateway(data.url, data.fields);
+        return;
+      }
+      setBusy(false);
+      if (res.status === 401) {
+        toast.info(t("testNeedsAuth"));
+        router.push("/auth");
+        return;
+      }
+      toast.error(
+        data.error === "already_active" ? t("alreadyActive") : t("checkoutFailed"),
+      );
+      return;
+    }
+
     if (!TEST_CHECKOUT) {
-      // Stub: real checkout posts to /api/pay/<gateway> and redirects to the
-      // gateway. SA gateways via direct checkout — never app-store IAP.
+      // Yoco is still a stub, as is PayFast while checkout is closed.
       toast.info(t("stub", { gateway }));
       return;
     }
@@ -65,10 +111,10 @@ export default function PaywallPage() {
           <CardContent className="py-6">
             <div className="text-center">
               <p className="text-4xl font-bold">
-                R179
+                {ENTITLEMENT_PRICE_LABEL}
                 <span className="text-base font-normal text-muted-foreground">
                   {" "}
-                  / 90 days
+                  / {ENTITLEMENT_DAYS} days
                 </span>
               </p>
             </div>

@@ -13,6 +13,7 @@ import {
   QuizButton,
 } from "@/components/quiz/quiz-chrome";
 import type { Question } from "@/lib/types";
+import { ENTITLEMENT_DAYS, ENTITLEMENT_PRICE_LABEL } from "@/lib/pricing";
 
 /**
  * Interactive "try it live" quiz demo for the landing page — a faithful React
@@ -159,7 +160,7 @@ export function LandingQuizDemo() {
           <div className="flex items-center gap-1.5 text-sm font-semibold text-gold-300">
             <Icon name="i-lock" size="sm" /> Unlock full access
           </div>
-          <div className="mt-0.5 text-xs text-mist">R179 / 90 days · unlimited practice</div>
+          <div className="mt-0.5 text-xs text-mist">{ENTITLEMENT_PRICE_LABEL} / {ENTITLEMENT_DAYS} days · unlimited practice</div>
         </div>
       </aside>
 

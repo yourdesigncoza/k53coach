@@ -2,9 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
+import { createAdminClient, findUserIdByEmail } from "@/lib/supabase/admin";
 import { isAdmin } from "@/lib/supabase/queries";
-import { ENTITLEMENT_DAYS } from "@/lib/entitlements";
+import { ENTITLEMENT_DAYS } from "@/lib/pricing";
 
 /**
  * Grant a paid entitlement to a user by email. Admin-only. Uses the service-role
@@ -24,18 +24,7 @@ export async function grantEntitlement(email: string, days = ENTITLEMENT_DAYS) {
       error: "SUPABASE_SERVICE_ROLE_KEY is not configured on the server",
     };
 
-  // Resolve the email to a user id via the Auth admin API (paged).
-  let userId: string | null = null;
-  for (let page = 1; page <= 20 && !userId; page++) {
-    const { data, error } = await admin.auth.admin.listUsers({
-      page,
-      perPage: 200,
-    });
-    if (error) return { ok: false as const, error: error.message };
-    const match = data.users.find((u) => u.email?.toLowerCase() === trimmed);
-    if (match) userId = match.id;
-    if (data.users.length < 200) break; // last page
-  }
+  const userId = await findUserIdByEmail(admin, trimmed);
   if (!userId)
     return { ok: false as const, error: `No user found for ${trimmed}` };
 

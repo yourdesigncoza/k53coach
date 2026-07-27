@@ -8,6 +8,7 @@ import { LandingQuizDemo } from "@/components/landing/quiz-demo";
 import { ReadinessRing, BAND_BADGE_CLASS } from "@/components/readiness-ring";
 import { SignImage } from "@/components/sign-image";
 import { cn } from "@/lib/utils";
+import { ENTITLEMENT_PRICE_LABEL } from "@/lib/pricing";
 
 /* Topic taxonomy is content, not UI chrome — kept in English (see CLAUDE.md). */
 const TOPICS = [
@@ -327,7 +328,7 @@ export default function LandingPage() {
                 <span className="absolute -top-3 right-5 rounded-full bg-gold-400 px-3 py-1 text-xs font-medium text-[#2A1C0B]">{t("bestFlag")}</span>
                 <h3 className="font-display text-xl font-semibold">{t("planName")}</h3>
                 <div className="mt-1.5 font-display text-4xl font-bold">
-                  R179 <span className="text-sm font-medium text-mist">{t("planPer")}</span>
+                  {ENTITLEMENT_PRICE_LABEL} <span className="text-sm font-medium text-mist">{t("planPer")}</span>
                 </div>
                 <ul className="my-5 grid gap-2.5 text-[0.92rem] text-sand">
                   {[t("planF1"), t("planF2"), t("planF3"), t("planF4")].map((li) => (
