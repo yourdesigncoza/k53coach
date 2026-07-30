@@ -1,0 +1,69 @@
+{
+  "description": "The remaining defects the citation pass flagged in its notes rather than its citation fields — items where a reviewer could cite the provision but recorded that the question or explanation reached past it. Each was checked against the primary source before being changed.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.RS-039",
+      "set": {
+        "prompt": "A broken white line is painted across your lane at a junction. What does it mean?",
+        "options": [
+          "Stop completely behind the line",
+          "Yield — give way, stopping only if necessary",
+          "A pedestrian crossing is ahead"
+        ],
+        "answer": 1,
+        "explanation": "A broken white line across your lane is a yield line (RTM2): give way at that point, stopping only if you must. A solid line across the lane is a stop line (RTM1) and requires a complete stop. Two solid lines with a gap between them mark a pedestrian crossing (RTM3).",
+        "objective_code": "RTM2"
+      },
+      "why": "The stem described 'a row of painted white triangles', which is the UK give-way marking. South Africa's yield line is a BROKEN WHITE LINE: SARTSM §7.2.2 heads RTM2 'Yield Line' and our own road_signs content for RTM2 reads 'A broken white line across your lane that means give way here'. The keyed meaning (yield) was right; the marking it described does not exist here. Rewritten to contrast ACROSS-the-lane markings — broken = yield, solid = stop — which is the confusion the item was reaching for. Also gave it the objective_code RTM2 it never had."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-008",
+      "set": {
+        "options": [
+          "You must drive in a circle",
+          "A traffic circle is ahead — slow down and be ready to yield",
+          "No U-turns are allowed"
+        ],
+        "answer": 1,
+        "explanation": "W201 warns that a mini-circle or roundabout is ahead. It is a warning, not the yield rule itself — what you must do is set by the sign at the circle. At a roundabout (R137) you yield to traffic already in the circle approaching from your right; at a mini-circle (R2.2) you yield to whoever reaches the yield line first. The sign is not an instruction to drive in circles, nor a U-turn prohibition."
+      },
+      "why": "The keyed option read 'A roundabout is ahead — yield to traffic already in it'. Sch 1 W201 warns that 'a mini-circle or roundabout is ahead' — two different junctions with two different priority rules — and W201 carries no yield duty at all; that comes from R137 or R2.2 at the circle itself. So the option stated the roundabout rule on a sign that also means mini-circle. Reworded to what W201 actually conveys, with the distinction moved into the explanation. This is the same mini-circle/roundabout conflation the 79-draft review flagged as systemic."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-024",
+      "set": {
+        "prompt": "What is the maximum speed limit for a bus, or a minibus carrying passengers for reward, even on a freeway?",
+        "explanation": "Regulation 293(1)(b) caps a bus, and a minibus used for the conveyance of persons for reward, at 100 km/h — below the 120 km/h general freeway limit. A privately used minibus is not covered by this cap and is on the general limits. 140 km/h is not a legal South African limit."
+      },
+      "why": "The stem asked about 'a minibus or bus' flat. Reg 293(1)(b) applies the 100 km/h cap to '(i) a bus; and (ii) a minibus used for the conveyance of persons for reward' — a private kombi on a freeway is on 120, so 120 was also a true answer as the question was framed. Scoping the stem to what the provision covers makes 100 the only correct option."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-032",
+      "set": {
+        "explanation": "Use dipped beam when following closely so you do not dazzle the driver ahead through their mirrors. Regulation 157(3) expressly requires you to dip for oncoming traffic; dipping when following is the same courtesy and is what the test expects. Driving at night without lights is unlawful under regulation 157(1)(b)."
+      },
+      "why": "The explanation asserted the dip-when-following rule flatly. Reg 157(3) only requires extinguishing main beam where it 'could cause a dangerous glare to oncoming traffic' — a reviewer grepped for a following-behind provision and found none. The answer is correct practice and correct for the test; the explanation now says which part is statute and which is courtesy, rather than implying both are law."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-019",
+      "set": {
+        "explanation": "Information signs are rectangular. Shape is the quickest way to tell the classes apart: a circle is regulatory and a triangle is a warning."
+      },
+      "why": "The explanation said information signs are rectangular 'never circular or triangular'. There is no shape rule for information signs in the Regulations — reg 285(1)(c) defines guidance and information signs by purpose, and reg 286(1)(b)'s dimensions cover regulatory signs only. The answer is right as a matter of fact; the absolute 'never' claimed a rule that does not exist. source_citation stays NULL for the same reason."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-020",
+      "set": {
+        "objective_code": "R305-P",
+        "sign_code": "R305-P"
+      },
+      "why": "The item had no objective_code and no sign_code, so a learner who got it wrong was sent nowhere. R305-P exists in road_signs (name 'Parking'), is approved on both gates and sa_relevant, and has artwork — it is the exact sign the question describes. Confirmed against Sch 1: 'Parking reservation sign … Indicates to the driver of a vehicle that an area is reserved for parking.'"
+    }
+  ]
+}

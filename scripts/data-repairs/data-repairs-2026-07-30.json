@@ -4,31 +4,46 @@
     {
       "table": "questions",
       "match": "id=eq.RS-041",
-      "set": { "review_status": "draft", "in_exam": false },
+      "set": {
+        "review_status": "draft",
+        "in_exam": false
+      },
       "why": "Premise is foreign signage: there is no blue rectangular pedestrian-crossing sign in South Africa. Schedule 1 R5 is a RED sign for a pedestrian PRECINCT, which the project's own chart verification records (data/verify/verdicts/R5.json: 'red diamond … white walking-pedestrian symbol') and the road_signs row confirms ('Pedestrian priority zone'). The blue square is the Vienna Convention sign. Cannot be fixed by citation, so the row is withdrawn rather than deleted — draft removes it from the exam pool, the readiness set AND practice (getPracticeQuestions filters on review_status alone, so in_exam=false is not enough on its own)."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-004",
-      "set": { "sign_code": "R201-80", "objective_code": "R201-80" },
+      "set": {
+        "sign_code": "R201-80",
+        "objective_code": "R201-80"
+      },
       "why": "Question asks about a black '80' in a red-bordered circle but rendered R201-60 ('Speed limit of 60 km/h') above the prompt. R201-80 exists, is approved on both gates, and has public/signs/R201-80.svg."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-023",
-      "set": { "sign_code": "W104", "objective_code": "W104" },
+      "set": {
+        "sign_code": "W104",
+        "objective_code": "W104"
+      },
       "why": "Question describes 'a red-bordered triangle showing an inverted T' but rendered W409, which is the T-junction CHEVRON board, not a triangle. W104 is the square-on T: chart verification records 'a horizontal top bar with a vertical stem descending from its centre'. NOT W105/W106 — those are the skew variants (bar angled high-left and high-right respectively), so an 'inverted T' stem does not describe them."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-025",
-      "set": { "sign_code": "W328", "objective_code": "W328" },
+      "set": {
+        "sign_code": "W328",
+        "objective_code": "W328"
+      },
       "why": "Question describes 'a triangle with edges angling inward' warning the road narrows, but rendered W214 ('Right lane ends ahead' — an up-arrow with a second arrow merging from the right). W328 is 'Roadway narrows from both sides ahead', whose chart glyph is exactly both edges tapering inward symmetrically."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-027",
-      "set": { "sign_code": "W333", "objective_code": "W333" },
+      "set": {
+        "sign_code": "W333",
+        "objective_code": "W333"
+      },
       "why": "Worst of the four: the question asks which sign shows a car with curved skid marks, and rendered W325 (gravel road begins) — which is option 0, one of its own distractors. W333 is 'Slippery road ahead' ('a car above S-shaped skid marks'). Root cause is upstream: the wiki note's related_signs lists the DISTRACTOR ('Gravel Road Sign'), not the sign under test."
     },
     {
@@ -36,7 +51,11 @@
       "match": "id=eq.RR-019",
       "set": {
         "explanation": "A learner's licence does not permit driving alone. Regulation 99(2)(a) requires you to be under the direct personal supervision of someone seated next to you who holds a full licence for that class of vehicle. There is no L-plate requirement in South African law.",
-        "vehicle_codes": ["B", "C", "EB"]
+        "vehicle_codes": [
+          "B",
+          "C",
+          "EB"
+        ]
       },
       "why": "Two defects. (1) The explanation asserted the learner 'must display L plates'. There is no L-plate requirement anywhere in the Act or the Regulations — reg 99(2) lists exactly three conditions on a learner's licence (supervision, no motorcycle passenger, no carrying persons for reward). It is UK law. (2) The keyed answer says you must ALWAYS be supervised, but reg 99(2)(a) exempts 'a motor vehicle having no seating accommodation for a passenger or … a motor cycle' — so the keyed answer was false for a Code A learner. Dropping A from vehicle_codes scopes the item to the vehicles the rule actually governs."
     },
@@ -92,9 +111,9 @@
       "table": "questions",
       "match": "id=eq.RS-020",
       "set": {
-        "explanation": "A rectangular 'P' is an information sign telling you parking is available. A regulatory parking sign (which controls or reserves parking) is a different sign class — shape disambiguates. It does not compel you to park, nor does it forbid parking."
+        "explanation": "The blue rectangular 'P' (R305-P) marks an area reserved for parking — it tells you parking is available, not that you must park there. The round 'P' in a red ring (R216) is the opposite: it prohibits parking."
       },
-      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body. NOTE: this item still needs a rewrite — its keyed OPTION text claims 'a round/regulatory P would control it', but the only round P in Schedule 1 is R216, which PROHIBITS parking, while the regulatory reservation sign R305P is rectangular and blue. Restoring the full explanation is strictly better than a mid-word cut; it does not settle that defect."
+      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body. NOTE: this item still needs a rewrite — its keyed OPTION text claims 'a round/regulatory P would control it', but the only round P in Schedule 1 is R216, which PROHIBITS parking, while the regulatory reservation sign R305P is rectangular and blue. Restoring the full explanation is strictly better than a mid-word cut; it does not settle that defect. SUPERSEDED SAME DAY: the value here has been updated to the final text so that replaying these files in ANY order converges. The original value of this op is described above and in question-fixes-citation-pass-2026-07-30.json, which corrected the 'information sign' misclassification after Schedule 1 showed R305-P is a REGULATORY parking-reservation sign."
     },
     {
       "table": "questions",
@@ -136,7 +155,6 @@
       },
       "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body"
     },
-
     {
       "table": "questions",
       "match": "id=eq.VC-001",
@@ -177,7 +195,13 @@
     {
       "table": "questions",
       "match": "id=eq.VC-019",
-      "set": { "vehicle_codes": ["B", "C", "EB"] },
+      "set": {
+        "vehicle_codes": [
+          "B",
+          "C",
+          "EB"
+        ]
+      },
       "why": "The item asks which control changes the vehicle's direction and answers 'the steering wheel', while scoped {A,B,C,EB} — a motorcycle has handlebars, so for a Code A learner the keyed answer named a control not on the vehicle. Same defect as RR-019. Dropped A rather than rewording to 'steering wheel or handlebars' because objective VC1 is car-only prose ('Steers the car', 'quarter to three', 'both hands on the wheel') and there is no handlebar learning object — the motorcycle series VC18-VC22 covers throttle, both brakes, clutch and stopping, but not steering. Rewording would have kept the mismatch and merely moved it to the lesson the learner is sent to. A motorcycle steering question can be added later once an objective exists for it."
     }
   ]

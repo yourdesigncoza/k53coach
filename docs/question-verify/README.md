@@ -39,6 +39,7 @@ a re-run reports "already applied" rather than writing again.
 | `citations-controls-2026-07-30.json` | 13 — controls citations |
 | `citations-rules-signs-2026-07-30.json` | 84 — rules + signs citations |
 | `question-fixes-citation-pass-2026-07-30.json` | 4 — defects the citation pass surfaced |
+| `question-fixes-round2-2026-07-30.json` | 6 — defects the citation pass recorded in its notes |
 
 On a fresh database: `supabase db push`, then replay these in the order above.
 
@@ -62,11 +63,32 @@ same exposure until the amending notices are in `init/`.
 
 ## Open
 
-1. Human sign-off — the actual accuracy gate.
+1. **Human sign-off** — the actual accuracy gate, and the only item that cannot be delegated.
 2. `RS-041` sits at `review_status='draft'`. It is not deleted, so the record of why survives.
-3. Content gaps found along the way: no learning object for **controlled level crossings**
-   (`RS-042` now has a null objective rather than a wrong one), none for **motorcycle steering**
-   (`VC-019` was scoped to B/C/EB instead), and `RS-017`–`RS-022` test guidance/information classes
-   the sign library does not hold.
-4. `RR-024` over-generalises: reg 293(1)(b) caps a minibus at 100 km/h only when it is "used for the
-   conveyance of persons for reward". A private kombi is on the general limits.
+3. **Content gaps** — every one is "a lesson does not exist yet", not "a question is wrong":
+   - No learning object for **controlled level crossings**, so `RS-042` carries a null objective
+     rather than a wrong one.
+   - No **motorcycle steering** object (the `VC18`–`VC22` series covers throttle, both brakes,
+     clutch and stopping), so `VC-019` was scoped to B/C/EB instead of reworded.
+   - No **GD / GF / GFS** codes and no `IN1`–`IN3`, which `RS-017`, `RS-018`, `RS-021` and `RS-022`
+     test. Note the sign library *does* hold 26 guidance rows with artwork — the gap is these
+     specific codes, not the class.
+   - The markings library has no dividing line (WM3), which `RS-038` describes.
+
+## Fixed in this pass
+
+Recorded because several were long-standing and are easy to reintroduce:
+
+- **Foreign signage taught as South African** — the two-diagonal no-stopping sign (`q-signs-5`), the
+  blue pedestrian-crossing sign (`RS-041`, withdrawn), the yellow diamond warning (`RS-005`), the
+  row of triangles as a yield line (`RS-039` — SARTSM §7.2.2 makes RTM2 a *broken white line*), and
+  a blue one-way sign (`RS-016` — Sch 1 R4 is red).
+- **Yield-to-the-right at a four-way stop taught as law** in three items. Sch 1 R1.4 gives
+  first-to-stop priority; reg 301 is confined to junctions "where vehicular traffic is required to
+  move around a traffic island".
+- **Rules stated wider than the provision** — L-plates (`RR-019`, no such requirement exists),
+  Code C at 3 500 kg (`RR-035`, it is 16 000), seatbelts "at all times" (`VC-025`, reg 213(4) has a
+  proviso), a flat minibus cap (`RR-024`, reg 293(1)(b) says "for reward"), and "light vehicles are
+  unaffected" by the goods-vehicle prohibition (`RS-033` — reg 1 takes in a bakkie).
+- **Warning signs carrying a duty they do not create** — `RS-008` stated the roundabout yield rule
+  on W201, which warns of a mini-circle *or* a roundabout, two junctions with different rules.

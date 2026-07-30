@@ -5,7 +5,11 @@
       "table": "questions",
       "match": "id=eq.q-controls-1",
       "set": {
-        "options": ["Accelerator", "Clutch", "Brake"],
+        "options": [
+          "Accelerator",
+          "Clutch",
+          "Brake"
+        ],
         "answer": 2,
         "explanation": "The brake pedal slows and stops the vehicle. The accelerator increases engine speed and the clutch disconnects the engine from the wheels — neither slows you down."
       },
@@ -64,7 +68,6 @@
       },
       "why": "Dropped 'It is just a decoration'. Explanation now carries the parking-brake exception a reviewer flagged: a red telltale that stays lit is not always a fault."
     },
-
     {
       "table": "questions",
       "match": "id=eq.q-rules-1",
@@ -137,7 +140,6 @@
       },
       "why": "Dropped 'Only check the mirror'."
     },
-
     {
       "table": "questions",
       "match": "id=eq.q-signs-1",
@@ -155,7 +157,11 @@
       "table": "questions",
       "match": "id=eq.q-signs-2",
       "set": {
-        "options": ["Stop", "No entry", "Yield / give way"],
+        "options": [
+          "Stop",
+          "No entry",
+          "Yield / give way"
+        ],
         "answer": 2
       },
       "why": "Dropped 'Speed limit'."
@@ -201,7 +207,6 @@
       },
       "why": "This item was WRONG as drafted. It asked what 'a red circle crossed by two diagonal lines (rather than one)' means, and keyed 'No stopping'. Schedule 1 gives 'Border and diagonal' — singular — for BOTH R216 and R217, and the repo's own public/signs/R216.svg and R217.svg each show one diagonal. The two-crossed-diagonals sign is a European convention that does not exist in South Africa, so the keyed answer was no better supported than the distractor. Rewritten to test the discriminator that actually exists."
     },
-
     {
       "table": "questions",
       "match": "id=eq.RS-020",
@@ -212,9 +217,9 @@
           "No parking is allowed"
         ],
         "answer": 1,
-        "explanation": "A rectangular blue 'P' is an information sign: parking is available. It does not compel you to park. The round 'P' in a red ring (R216) is the opposite — it prohibits parking."
+        "explanation": "The blue rectangular 'P' (R305-P) marks an area reserved for parking — it tells you parking is available, not that you must park there. The round 'P' in a red ring (R216) is the opposite: it prohibits parking."
       },
-      "why": "The keyed OPTION carried the error while the explanation was sound: it read 'Parking is available (information) — a round/regulatory P would control it'. In South Africa the only ROUND P is R216, which PROHIBITS parking; the regulatory parking-reservation sign R305P is rectangular and blue. So the option taught the exact opposite of the rule. Trimmed to the plain claim and moved the shape contrast into the explanation, correctly."
+      "why": "The keyed OPTION carried the error while the explanation was sound: it read 'Parking is available (information) — a round/regulatory P would control it'. In South Africa the only ROUND P is R216, which PROHIBITS parking; the regulatory parking-reservation sign R305P is rectangular and blue. So the option taught the exact opposite of the rule. Trimmed to the plain claim and moved the shape contrast into the explanation, correctly. SUPERSEDED SAME DAY: the value here has been updated to the final text so that replaying these files in ANY order converges. The original value of this op is described above and in question-fixes-citation-pass-2026-07-30.json, which corrected the 'information sign' misclassification after Schedule 1 showed R305-P is a REGULATORY parking-reservation sign."
     },
     {
       "table": "questions",

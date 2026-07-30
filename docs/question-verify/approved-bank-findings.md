@@ -128,12 +128,24 @@ assume the rest of it is defective until checked.
 
 ## 7. Coverage gap this exposed
 
-`RS-017`–`RS-022` test **guidance and information signs** (GD, GF, IN series). Of the 362 assets in
-`public/signs/`, **zero are guidance-class**, and IN1/IN2/IN3 — which `RS-022` actually tests — are
-absent. `RS-038`/`RS-039` are road-marking items and there is still no markings learning object.
+`RS-017`–`RS-022` test **guidance and information signs**.
 
-So these questions test parts of the chart the learner library does not cover: no lesson to link to,
-no artwork to show. Same shape as the known markings gap, and it belongs in the same Stage 1 tracking.
+> **Correction (2026-07-30).** This section first said *"zero are guidance-class"*. That is wrong —
+> `road_signs` holds **26 guidance rows**, every one with artwork on disk and approved on both gates.
+> The real gap is narrower and specific: the codes these particular questions test are missing.
+
+| Item | Tests | In the library? |
+|---|---|---|
+| `RS-017` | Green direction sign (GD series) | **No GD codes at all** |
+| `RS-018` | Tourism sign background (GF series) | **No GF codes at all** |
+| `RS-019` | Information-sign shape | Generic — no code, correctly |
+| `RS-020` | Blue rectangular P | **Yes — `R305-P`**, now mapped |
+| `RS-021` | Hospital 'H' (GFS service symbol) | No GFS codes |
+| `RS-022` | Freeway exit countdown | **`IN1`/`IN2`/`IN3` absent** (IN4–IN20 exist) |
+
+`RS-039` is now mapped to `RTM2`; `RS-038` describes a dividing line (WM3), which the markings
+library does not hold. So four items still test chart areas with no lesson to link to — worth Stage 1
+tracking, but a much smaller hole than first recorded.
 
 ---
 
