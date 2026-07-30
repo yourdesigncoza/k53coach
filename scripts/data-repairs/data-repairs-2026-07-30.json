@@ -135,6 +135,36 @@
         "explanation": "You should set your speed and complete braking before entering a turn; braking hard (especially the front brake) while leaned over can cause a loss of control. Brakes are best applied upright before the turn."
       },
       "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body"
+    },
+
+    {
+      "table": "questions",
+      "match": "id=eq.VC-001",
+      "set": {
+        "explanation": "The foot (service) brake is the control for stopping quickly. The handbrake holds a stationary vehicle, and although regulation 149 allows it to double as the emergency brake if the service brake fails, it is not how you make an emergency stop. The clutch disengages the engine from the wheels and does not brake at all."
+      },
+      "why": "The explanation said the handbrake 'only keeps a stationary vehicle still'. Reg 149's proviso (a) reads 'the emergency brake and parking brake may be one and the same brake', and reg 1 defines an emergency brake as 'a brake, other than a service brake, which can stop a vehicle' — so in law the handbrake may well BE the emergency brake. Settled by John 2026-07-30: 'Yes they are one and the same'. The keyed answer (foot brake) was always right; the reasoning given for it was not."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-025",
+      "set": {
+        "explanation": "Fasten before the vehicle moves off. Regulation 213(4) requires an adult occupying a seat that is fitted with a seatbelt to wear it, and the only exception is while reversing or moving in or out of a parking bay. Belts are not optional on short trips and not limited to the open road."
+      },
+      "why": "The explanation claimed belts must be worn 'at all times', which is wider than the regulation. Reg 213(4) carries an express proviso: 'the provisions of this regulation do not apply while reversing or moving in or out of a parking bay or area'. Confirmed by John 2026-07-30: the requirement drops during low-speed parking-area movements and reversing. The keyed answer ('before the vehicle moves off') is unchanged."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-032",
+      "set": {
+        "options": [
+          "An automatic still needs a clutch pedal for each gear change",
+          "An automatic has no clutch pedal and selects gears itself",
+          "An automatic has no gears at all"
+        ],
+        "explanation": "An automatic has no clutch pedal and selects its own gears; the driver only moves the selector (P/R/N/D). There is no clutch for the driver to operate, and the vehicle does have gears."
+      },
+      "why": "The defect was in the keyed OPTION text, not the explanation: it read 'An automatic has no clutch', which is mechanically false — a torque-converter automatic contains clutch packs and a DCT has two. The explanation already said 'no clutch CONTROL', so option and explanation contradicted each other. Settled by John 2026-07-30: 'Yes Automatic has no clutch (clutch control)'. Both options now say 'clutch pedal' so the contrast stays clean; answer index 1 is unchanged."
     }
   ]
 }

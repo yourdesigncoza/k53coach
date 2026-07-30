@@ -106,13 +106,48 @@ defects. Retiring or converting the cohort is one decision, not fifteen.
 
 ---
 
-## Recommended order
+## Adjudicated by John, 2026-07-30
 
-1. **`VC-019`** — drop `A` from `vehicle_codes` (or reword). Same fix as `RR-019`, already precedented.
-2. Fix the four explanations: `VC-001`, `VC-025`, `VC-027`, `VC-032` (option text).
+Three of the four settled and applied (`scripts/data-repairs/data-repairs-2026-07-30.json`):
+
+- **`VC-001`** — *"Yes they are one and the same"*. Explanation rewritten: the handbrake holds a
+  stationary vehicle and may double as the emergency brake under reg 149, but is not the control for
+  an emergency stop.
+- **`VC-025`** — proviso confirmed. Explanation now names reg 213(4) and its single exception
+  (reversing, or moving in or out of a parking bay) instead of claiming "at all times".
+- **`VC-032`** — *"Yes Automatic has no clutch (clutch control)"*. Both the keyed option and its
+  opposite now say **clutch pedal**; answer index unchanged.
+
+**`VC-027` is held pending a decision** — see below. **`VC-019` was not ruled on** and is unchanged.
+
+### `VC-027` — the open question
+
+> *On a motorcycle, which hand or foot operates the front brake?*
+> (0) The left hand (a lever) · (1) The left foot (a pedal) · **(2) The right hand (a lever)** ✓
+>
+> *"The motorcycle front brake is operated by the right-hand lever; the rear brake is the right-foot
+> pedal and the clutch is the left-hand lever. Stopping uses front and rear brakes together."*
+
+**The keyed answer is right for every motorcycle**, manual or scooter — right lever is always the
+front brake. The problem is the middle clause of the explanation.
+
+On a **twist-and-go scooter** there is no clutch lever and no foot brake pedal: the **left lever is
+the rear brake**. The item is scoped `vehicle_codes: {A}`, and Code A covers scooters, so a scooter
+learner is taught a layout their own machine does not have — and specifically that the left lever is
+the clutch, when on their bike it is a brake.
+
+Options: (a) scope the clause — *"on a conventional manual motorcycle … ; on a twist-and-go scooter
+there is no clutch lever and the left lever is the rear brake"*; (b) delete the clause and keep only
+the front-brake fact; (c) leave it, on the view that the K53 syllabus assumes a manual motorcycle.
+
+## Still outstanding
+
+1. **`VC-027`** — decision above.
+2. **`VC-019`** — asks a Code A learner which control steers, answers "the steering wheel". Drop `A`
+   from `vehicle_codes` or reword to "steering wheel or handlebars". Same fix as `RR-019`.
 3. Backfill `source_citation` for the 14 items that have a real provision — all quoted, so this is
    transcription, not research.
 4. Fold into the outstanding `q-*` cohort decision.
 
-Nothing here is approved. Per constraint 9 these verdicts are triage for a human, not a sign-off —
-but every one carries a quote that can be checked in seconds.
+The 32 SOUND verdicts are triage, not a sign-off — per constraint 9 no AI pass can approve an item.
+Every one carries a quote that can be checked in seconds.
