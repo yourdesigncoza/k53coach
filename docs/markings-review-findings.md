@@ -172,3 +172,109 @@ defects rather than a general licence. Wording that is faithful to all three par
 a driver arises from the NRTA 93 of 1996 and its regulations. Per constraint 9 the citation on any
 stop-line question should be the regulation, with §7.2.1 as supporting design context — and the
 regulation's wording must not be assumed to track the manual's residual clause.
+
+
+---
+
+## 6. NRTR 2000 obtained — what the regulations settled (2026-07-30)
+
+`init/national-road-traffic-regulations-2000.pdf` — Government Gazette **No. 20963**, 17 March 2000
+(GNR.225), 350 pp. Gitignored with the other sources.
+
+The review above marked a large share of claims `NOT_VERIFIABLE_HERE` because the reviewers only had
+the design manual. With the regulations in hand, **three of those reversals go in the drafts' favour**
+— including one the review called unsafe.
+
+### Vindicated — the draft was right and the reviewer could not have known
+
+**`RM4.1` — reg 298A(2), verbatim:**
+> "the driver of a motor vehicle may, during the period between sunrise and sunset, drive such motor
+> vehicle on the shoulder of a public road which is designated for one lane of traffic in each
+> direction— (a) while such motor vehicle is being overtaken by another vehicle; and (b) if he or she
+> can do so without endangering himself or herself, other traffic, pedestrians or property on such
+> public road; (c) if persons and vehicles upon a public road are clearly discernible at a distance of
+> at least 150 metres."
+
+Every element of our draft — sunrise-to-sunset, one lane each direction, only while being overtaken,
+no endangerment, 150 m — is there and exact. The reviewer's separate catch still stands: the
+*manual's* only "150" is 150 mm of lateral offset, a different quantity that shares the digits.
+
+**`RM9` — reg 289, verbatim. The "fabricated permission" finding is WITHDRAWN:**
+> "Where a regulatory sign applies which reserves a public road or portion of a public road for a
+> specific category of vehicle, the driver of a vehicle, other than the driver of a vehicle of the
+> class referred to by such sign, may only cross such public road, or the portion of such public road,
+> if— (a) he or she cannot otherwise enter or leave any premises adjacent to such road or portion of
+> public road; and (b) it is safe to do so."
+
+The review called this "invented", "transplanted from the barrier-line exception" and "unsafe —
+invites a learner to drive into a bus lane". It is none of those. The draft stated the rule correctly
+**and cited reg 289 correctly**.
+
+**`RTM3` — reg 315(4), verbatim:**
+> "Whenever any vehicle is stopped at a pedestrian crossing to permit pedestrians to cross the
+> roadway, the driver of any other vehicle approaching from the rear shall not pass such stopped
+> vehicle."
+
+The don't-overtake-a-stopped-vehicle rule and its citation are both correct.
+
+### Reversal against the reviewer — the law is narrower than the manual
+
+**`RTM3` / `RTM4` — reg 315(2):**
+> "the driver of a vehicle shall yield the right of way, slowing down or stopping if need be to so
+> yield **to a pedestrian crossing the roadway within a pedestrian crossing** when the pedestrian is
+> upon that half of the roadway upon which the vehicle is travelling, or when the pedestrian is
+> approaching so closely from the opposite half of the roadway as to be in danger."
+
+The reviewer marked our "within the lines" wording as a wrong narrowing, because the *manual* places
+no such limit and extends the duty to a pedestrian "waiting to cross". **The regulation does limit
+it** — to a pedestrian *crossing within the crossing*, and further to the driver's own half of the
+roadway or someone approaching closely enough to be in danger. There is no waiting-pedestrian duty
+in reg 315.
+
+Manual and regulation genuinely differ here. The regulation binds.
+
+### A conflict between the manual and the law — resolve before writing any question
+
+**`RTM2` yield-line width.**
+
+| Source | Urban | Other |
+|---|---|---|
+| Manual §7.2.2 ¶4 | 300 mm | 500 mm |
+| **Reg 286(2)(c)(ii)** | **200 mm** | **300 mm** |
+
+The manual appears to have carried RTM1's figures into the RTM2 section — reg 286(2)(c)(i) gives
+RTM1 as 300/500, matching §7.2.1 ¶4 exactly. **The regulation is the law.** Any question on yield-line
+width must answer from reg 286(2)(c)(ii), not the manual.
+
+Neither the original drafting nor a manual-only review would ever have caught this.
+
+### Other citations now confirmed
+
+- **reg 286(2)(c)(i)** — RTM1 300 mm urban / 500 mm other. Citation correct.
+- **reg 286(2)(c)(iii)** — RTM4 2 400 mm, matching the manual's 2,4 m.
+- **reg 286(2)(a)** — longitudinal markings minimum 100 mm. The manual's 150 mm for RM12 is a
+  stricter design standard, not a contradiction.
+- **reg 304** — confirms the RM12 drafting note: the stopping exceptions really do live here, not in
+  the manual. *"Except in order to avoid an accident, or in compliance with a road traffic sign or
+  with a direction given by a traffic officer, or for any cause beyond the control of the driver…"*
+- **reg 305** — parking prohibitions; 305(1)(b) incorporates every place listed in reg 304.
+- **reg 315(1)** — pedestrians must obey the signal where one is provided, matching the manual proviso
+  the drafts omitted. That omission still stands.
+
+### Still outstanding
+
+**"Park" and "stop" are not defined in the regulations.** They are defined in the **National Road
+Traffic Act 93 of 1996 s1**, which we do not have. So `RM13`'s entire "load and go" framing — the
+claim that a genuine brief load or drop-off is not "parking" — remains unverified. That is the last
+document needed to close the markings content.
+
+### Net effect on section 2
+
+Of the three "fabricated permissions", **one (`RM9`) is withdrawn entirely**. The other two stand:
+`RM10`'s permission-to-*wait* in a box junction is still unsupported by anything found in either
+document, and so is "the only legitimate reason to be sitting inside the box".
+
+The lesson for the rewrite is not that the reviewers were unreliable — they flagged these correctly
+as unverifiable rather than asserting them false, and said which document was needed. It is that
+**a manual-only review cannot close a claim that rests on a regulation**, and roughly a third of this
+content does.

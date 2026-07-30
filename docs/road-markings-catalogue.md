@@ -100,6 +100,34 @@ These are items we currently **cannot answer**, because the marking has no learn
 `RM11` (zig-zag zone lines, the no-overtaking zone at a pedestrian crossing) and `RM16`
 (disabled persons bay) are also common learner-test material.
 
+## OPEN — the manual's own figures may be better artwork than the chart vignettes
+
+**Parked 2026-07-30, to return to after the NRTR 2000 work.**
+
+Each §7.x section in `init/V1C7.pdf` carries an embedded **plan-view figure** of its marking in road
+context — for RTM1 (p. 22) a T-junction showing the stop line across the approach, the word STOP
+painted in advance of it, and direction arrows. Captioned in the manual's own style,
+e.g. `RTM1 - STOP LINE / Ref. Vol 1-7.2.1`.
+
+These are arguably **better teaching artwork than the DoT chart's oval vignettes** we shipped: they
+show the marking *in situ* rather than as an isolated swatch, which is closer to what the CLLT
+terminal actually displays (`docs/exam-format-analysis/` describes the marking items as
+"plan view of roadway…").
+
+Two caveats found on first inspection:
+
+- They are **raster, not vector** — 150 dpi halftone-screened JPEGs, ~592×350 px for RTM1. The chart
+  extracts in `public/markings/` are true vector. So this is a trade of *fidelity* for *context*.
+- A halftone screen upscales badly. Using them at learner size would need de-screening, or
+  re-drawing as vector with the figure as the authoritative layout reference.
+
+Worth a side-by-side before deciding. Note that `/home/laudes/zoot/Alt_Downloads/V1C7.pdf` is
+**byte-identical** to `init/V1C7.pdf` (same md5) — there is only one document, and these figures were
+always in it; the page renders in `docs/markings-verify/` simply show them at page scale.
+
+Extract them with: `pdfimages -png -f <page> -l <page> init/V1C7.pdf <out>` — page numbers per
+marking are derived in `scripts/signs/markings/build-verify-page.mjs`.
+
 ## Sequencing
 
 Artwork is done and costs nothing further. The work left is **content**, and it is the same
