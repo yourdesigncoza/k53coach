@@ -1,37 +1,83 @@
 /**
- * Probe the PayFast sandbox to find which passphrase configuration it accepts.
+ * Probe the PayFast sandbox to find which credential configuration it accepts.
  *
- * Background: a signed request to sandbox.payfast.co.za/eng/process was being
- * rejected with "Generated signature does not match submitted signature". That was
- * probed across encoding variants (spaces as + vs %20, raw encodeURIComponent, no
- * encoding, lowercase hex) and every one failed identically, while the
- * implementation matches thephpleague/omnipay-payfast field-for-field. So the
- * remaining variable is not the encoding — it is the passphrase.
+ * Background: a signed request to sandbox.payfast.co.za/eng/process is rejected with
+ * "Generated signature does not match submitted signature". That was probed across
+ * encoding variants (spaces as + vs %20, raw encodeURIComponent, no encoding,
+ * lowercase hex) and every one failed identically, while the implementation matches
+ * thephpleague/omnipay-payfast field-for-field. Both "no passphrase" and PayFast's
+ * published passphrase also fail identically against the shared sandbox account —
+ * which weakens rather than confirms the passphrase hypothesis, since an account
+ * either has one or it does not.
  *
- * PayFast's shared sandbox account only requires a passphrase if one is configured
- * on it, and its configured value is not necessarily the published jt7NOE43FZPn.
- * This script holds the request identical and varies ONLY the passphrase, so a
- * pass/fail difference isolates that one variable.
+ * So this exists to answer one question: does the signature start working against a
+ * sandbox account WE control? If yes, the shared public account carries a passphrase
+ * someone else set. If no, the defect is in our signing, and the 41 unit tests do not
+ * catch it (they are behavioural, not golden-vector — see payfast.test.ts).
  *
- * It imports the real signing code from src/lib/payfast.ts rather than
- * reimplementing it — a probe that re-derives the signature proves nothing about
- * the code that ships.
+ * It imports the real signing code and the real config loader from src/lib/payfast.ts.
+ * A probe that re-derives the signature, or re-types the credentials, proves nothing
+ * about the code that ships.
+ *
+ * CREDENTIALS COME FROM .env.local, NEVER FROM ARGV.
+ * Passing a passphrase as a command-line argument would leave it in shell history and
+ * in `ps` output for every user on the box. This project already settled that rule for
+ * PayFast values — they were piped into `vercel env add` via stdin so they never
+ * entered a transcript or argv — and a probe is not an excuse to break it.
+ *
+ * To test your own sandbox account, register at sandbox.payfast.co.za and put this in
+ * .env.local, then just run the script:
+ *
+ *   PAYFAST_SANDBOX_MERCHANT_ID=...
+ *   PAYFAST_SANDBOX_MERCHANT_KEY=...
+ *   PAYFAST_SANDBOX_PASSPHRASE=...
  *
  *   node scripts/payfast/probe-sandbox.mjs
- *   node scripts/payfast/probe-sandbox.mjs --passphrase "your-own-sandbox-passphrase"
  *
- * Requires Node 22+ (type stripping). Makes real POSTs to the sandbox; no money
- * moves and no account is charged.
+ * Requires Node 22+ (type stripping). Makes real POSTs to the sandbox; no money moves.
  */
-import { buildPaymentRequest, payfastProcessUrl } from '../../src/lib/payfast.ts'
+import { readFileSync } from 'node:fs'
+import { join, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import {
+  buildPaymentRequest,
+  getPayfastConfig,
+  payfastProcessUrl,
+  SANDBOX_DEFAULTS,
+} from '../../src/lib/payfast.ts'
 
-const argPass = (() => {
-  const i = process.argv.indexOf('--passphrase')
-  return i > -1 ? process.argv[i + 1] : null
-})()
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 
-/** PayFast's published sandbox pair. Public, not secrets. */
-const SANDBOX = { merchantId: '10000100', merchantKey: '46f0cd694581a' }
+if (process.argv.some((a) => a.startsWith('--passphrase'))) {
+  console.error('Refusing to take a passphrase on the command line.\n')
+  console.error('It would be recorded in shell history and visible in `ps` to every user')
+  console.error('on this machine. Put PAYFAST_SANDBOX_PASSPHRASE in .env.local instead and')
+  console.error('re-run with no arguments.')
+  process.exit(1)
+}
+
+/** This is a plain node script, so .env.local is not loaded for us. */
+function loadEnvLocal() {
+  let text
+  try {
+    text = readFileSync(join(ROOT, '.env.local'), 'utf8')
+  } catch {
+    return 0
+  }
+  let n = 0
+  for (const line of text.split('\n')) {
+    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)$/)
+    if (!m) continue
+    const value = m[2].trim().replace(/^["']|["']$/g, '')
+    if (value && process.env[m[1]] === undefined) {
+      process.env[m[1]] = value
+      n++
+    }
+  }
+  return n
+}
+loadEnvLocal()
+process.env.PAYFAST_MODE = 'sandbox' // never let this probe touch the live gateway
 
 const REQUEST = {
   paymentId: 'probe-0001',
@@ -46,34 +92,38 @@ const REQUEST = {
   notifyUrl: 'https://k53coach.co.za/api/pay/payfast',
 }
 
-const variants = argPass !== null
-  ? [{ label: 'supplied --passphrase', passphrase: argPass }]
-  : [
-      { label: 'no passphrase (empty)', passphrase: '' },
-      { label: 'published jt7NOE43FZPn', passphrase: 'jt7NOE43FZPn' },
-    ]
+const configured = getPayfastConfig()
+const usingOwnAccount = configured.merchantId !== SANDBOX_DEFAULTS.merchantId
 
-/** PayFast reports the offending field in the returned HTML; pull it out. */
+/**
+ * The configured account first — that is the one that matters. The published pair is
+ * kept as a control so a failure can be read as "ours too" rather than "ours only".
+ */
+const variants = [
+  { label: usingOwnAccount ? 'our sandbox account' : 'published pair (as configured)', config: configured },
+  ...(usingOwnAccount
+    ? [{ label: 'published pair (control)', config: { mode: 'sandbox', ...SANDBOX_DEFAULTS } }]
+    : [{ label: 'published pair, no passphrase', config: { mode: 'sandbox', ...SANDBOX_DEFAULTS, passphrase: '' } }]),
+]
+
+/** PayFast names the offending field in the returned HTML; pull it out. */
 function diagnose(html) {
-  const errors = [...html.matchAll(/<li[^>]*>\s*([^<]*?)\s*<\/li>/g)]
-    .map((m) => m[1].trim())
-    .filter((t) => /signature|merchant|amount|required|invalid|not match/i.test(t))
-  if (errors.length) return { ok: false, detail: [...new Set(errors)].join(' | ') }
-  if (/Generated signature does not match/i.test(html)) return { ok: false, detail: 'signature mismatch' }
-  // The sandbox renders a payment/confirmation page when the request validates.
-  if (/(pay\s*now|confirm|order summary|amount due|payfast)/i.test(html) && !/error/i.test(html)) {
-    return { ok: true, detail: 'request accepted — gateway rendered a payment page' }
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+  const m = text.match(/The following information provided by the seller is invalid:\s*(.+?)\s*(?:Go Back|$)/i)
+  if (m) return { ok: false, detail: m[1] }
+  if (/pay\s*now|order summary|amount due|confirm/i.test(text) && !/error/i.test(text)) {
+    return { ok: true, detail: 'accepted — gateway rendered a payment page' }
   }
-  return { ok: null, detail: 'unrecognised response' }
+  return { ok: null, detail: text.slice(0, 160) || 'empty response' }
 }
 
-console.log(`POSTing to ${payfastProcessUrl('sandbox')}\n`)
+console.log(`POSTing to ${payfastProcessUrl('sandbox')}`)
+console.log(`merchant_id in use: ${configured.merchantId}${usingOwnAccount ? '' : '  (PayFast published test account)'}`)
+console.log(`passphrase configured: ${configured.passphrase ? 'yes' : 'no'}\n`)
 
+let anyPass = false
 for (const v of variants) {
-  const config = { mode: 'sandbox', ...SANDBOX, passphrase: v.passphrase }
-  const { url, fields } = buildPaymentRequest(config, REQUEST)
-  const body = new URLSearchParams(fields).toString()
-
+  const { url, fields } = buildPaymentRequest(v.config, REQUEST)
   let res, html
   try {
     res = await fetch(url, {
@@ -82,24 +132,29 @@ for (const v of variants) {
         'Content-Type': 'application/x-www-form-urlencoded',
         'User-Agent': 'Mozilla/5.0 (k53coach payfast probe)',
       },
-      body,
+      body: new URLSearchParams(fields).toString(),
       redirect: 'follow',
     })
     html = await res.text()
   } catch (e) {
-    console.log(`  ${v.label.padEnd(26)} NETWORK ERROR: ${e.message}`)
+    console.log(`  ${v.label.padEnd(32)} NETWORK ERROR: ${e.message}`)
     continue
   }
-
-  const sig = fields.find(([k]) => k === 'signature')?.[1]
   const { ok, detail } = diagnose(html)
-  const mark = ok === true ? 'PASS' : ok === false ? 'FAIL' : '????'
-  console.log(`  ${v.label.padEnd(26)} ${mark}  http=${res.status} sig=${sig?.slice(0, 12)}…`)
-  console.log(`  ${''.padEnd(26)}       ${detail}`)
-  console.log(`  ${''.padEnd(26)}       ${html.length} bytes returned`)
-  console.log()
+  if (ok) anyPass = true
+  console.log(`  ${v.label.padEnd(32)} ${ok === true ? 'PASS' : ok === false ? 'FAIL' : '????'}  http=${res.status}`)
+  console.log(`  ${''.padEnd(32)}       ${detail}\n`)
 }
 
-console.log('If both FAIL, the shared sandbox has a passphrase we do not know.')
-console.log('Register at sandbox.payfast.co.za, then re-run with --passphrase "<yours>",')
-console.log('and set PAYFAST_SANDBOX_MERCHANT_ID / _MERCHANT_KEY / _PASSPHRASE in .env.local.')
+if (anyPass) {
+  console.log('Signature path works. The next step is a completed sandbox payment so the')
+  console.log('ITN handler is exercised end to end, not just the outbound request.')
+} else if (usingOwnAccount) {
+  console.log('Our own account fails too, so the shared-passphrase theory is dead and the')
+  console.log("defect is in our signing. Next: build a golden vector from PayFast's worked")
+  console.log('example and assert it in payfast.test.ts — the current tests are behavioural.')
+} else {
+  console.log('Only the shared public sandbox was tested, and it is unreliable — anyone can')
+  console.log('change its passphrase. Register at sandbox.payfast.co.za, add the three')
+  console.log('PAYFAST_SANDBOX_* values to .env.local, and re-run before drawing conclusions.')
+}

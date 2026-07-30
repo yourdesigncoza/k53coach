@@ -35,11 +35,18 @@ export interface PayfastConfig {
 /**
  * PayFast's published sandbox credentials. Valid against sandbox.payfast.co.za for
  * anyone, documented publicly — these are NOT secrets and are safe in the repo.
+ *
+ * Secret scanners flag the passphrase below (GitGuardian did, 2026-07-30). That is a
+ * true positive on the pattern and a false positive on the risk: the value is
+ * PayFast's own published test passphrase, it guards nothing, and no rotation is
+ * possible or needed. Exported so it exists in exactly ONE place — a probe or test
+ * that re-types it would give a scanner a second hit and give us a value that can
+ * drift from the one the app actually signs with.
  * Used when mode is "sandbox" and no sandbox-specific credentials are configured,
  * so a test run works with no setup. Register at sandbox.payfast.co.za for your
  * own sandbox pair and set PAYFAST_SANDBOX_* to override.
  */
-const SANDBOX_DEFAULTS = {
+export const SANDBOX_DEFAULTS = {
   merchantId: "10000100",
   merchantKey: "46f0cd694581a",
   passphrase: "jt7NOE43FZPn",
