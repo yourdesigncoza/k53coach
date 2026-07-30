@@ -30,36 +30,14 @@
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { patch } from "./supabase-rest.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const DRY = process.argv.includes("--dry-run");
-const ENV = readFileSync(join(HERE, "../../.env.local"), "utf8");
-
-function env(pred) {
-  const line = ENV.split("\n").find(pred);
-  if (!line) throw new Error("required key missing from .env.local");
-  return line.slice(line.indexOf("=") + 1).replace(/^"|"$/g, "").trim();
-}
-const SUPABASE_URL = env((l) => l.startsWith("NEXT_PUBLIC_SUPABASE_URL="));
-const SERVICE_KEY = env((l) => l.includes("SERVICE_ROLE"));
 
 const data = JSON.parse(
   readFileSync(join(HERE, "data-repairs-2026-07-24.json"), "utf8"),
 );
-
-async function patch(path, body) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
-    method: "PATCH",
-    headers: {
-      apikey: SERVICE_KEY,
-      Authorization: `Bearer ${SERVICE_KEY}`,
-      "Content-Type": "application/json",
-      Prefer: "return=minimal",
-    },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) throw new Error(`${path} -> ${res.status} ${await res.text()}`);
-}
 
 const objectives = Object.entries(data.question_objective_codes);
 const names = Object.entries(data.sign_name_repairs);

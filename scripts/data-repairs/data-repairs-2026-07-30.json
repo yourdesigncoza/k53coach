@@ -1,0 +1,140 @@
+{
+  "description": "Corrections from the citation sweep of the 125 approved questions (docs/question-verify/approved-bank-findings.md). Every op is a targeted PATCH to a known value, so reruns are no-ops.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.RS-041",
+      "set": { "review_status": "draft", "in_exam": false },
+      "why": "Premise is foreign signage: there is no blue rectangular pedestrian-crossing sign in South Africa. Schedule 1 R5 is a RED sign for a pedestrian PRECINCT, which the project's own chart verification records (data/verify/verdicts/R5.json: 'red diamond … white walking-pedestrian symbol') and the road_signs row confirms ('Pedestrian priority zone'). The blue square is the Vienna Convention sign. Cannot be fixed by citation, so the row is withdrawn rather than deleted — draft removes it from the exam pool, the readiness set AND practice (getPracticeQuestions filters on review_status alone, so in_exam=false is not enough on its own)."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-004",
+      "set": { "sign_code": "R201-80", "objective_code": "R201-80" },
+      "why": "Question asks about a black '80' in a red-bordered circle but rendered R201-60 ('Speed limit of 60 km/h') above the prompt. R201-80 exists, is approved on both gates, and has public/signs/R201-80.svg."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-023",
+      "set": { "sign_code": "W104", "objective_code": "W104" },
+      "why": "Question describes 'a red-bordered triangle showing an inverted T' but rendered W409, which is the T-junction CHEVRON board, not a triangle. W104 is the square-on T: chart verification records 'a horizontal top bar with a vertical stem descending from its centre'. NOT W105/W106 — those are the skew variants (bar angled high-left and high-right respectively), so an 'inverted T' stem does not describe them."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-025",
+      "set": { "sign_code": "W328", "objective_code": "W328" },
+      "why": "Question describes 'a triangle with edges angling inward' warning the road narrows, but rendered W214 ('Right lane ends ahead' — an up-arrow with a second arrow merging from the right). W328 is 'Roadway narrows from both sides ahead', whose chart glyph is exactly both edges tapering inward symmetrically."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-027",
+      "set": { "sign_code": "W333", "objective_code": "W333" },
+      "why": "Worst of the four: the question asks which sign shows a car with curved skid marks, and rendered W325 (gravel road begins) — which is option 0, one of its own distractors. W333 is 'Slippery road ahead' ('a car above S-shaped skid marks'). Root cause is upstream: the wiki note's related_signs lists the DISTRACTOR ('Gravel Road Sign'), not the sign under test."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-019",
+      "set": {
+        "explanation": "A learner's licence does not permit driving alone. Regulation 99(2)(a) requires you to be under the direct personal supervision of someone seated next to you who holds a full licence for that class of vehicle. There is no L-plate requirement in South African law.",
+        "vehicle_codes": ["B", "C", "EB"]
+      },
+      "why": "Two defects. (1) The explanation asserted the learner 'must display L plates'. There is no L-plate requirement anywhere in the Act or the Regulations — reg 99(2) lists exactly three conditions on a learner's licence (supervision, no motorcycle passenger, no carrying persons for reward). It is UK law. (2) The keyed answer says you must ALWAYS be supervised, but reg 99(2)(a) exempts 'a motor vehicle having no seating accommodation for a passenger or … a motor cycle' — so the keyed answer was false for a Code A learner. Dropping A from vehicle_codes scopes the item to the vehicles the rule actually governs."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-035",
+      "set": {
+        "explanation": "Towing a trailer over 750 kg behind a light motor vehicle requires Code EB. Code A is for motorcycles; Code C is a bus or goods vehicle whose gross vehicle mass exceeds 16 000 kg — the 3 500 kg to 16 000 kg band is Code C1."
+      },
+      "why": "The explanation said 'Code C is for heavy vehicles over 3 500 kg'. The reg 100 code table defines C as 'a bus or a goods vehicle, the gross vehicle mass of which exceeds 16 000 kilograms'; 'exceeds 3 500 kilograms but does not exceed 16 000 kilograms' is C1. A learner who memorised this fails a C1 question. The keyed answer (EB) is correct and unchanged."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-004",
+      "set": {
+        "explanation": "A time-based gap (the two-second rule) is correct because the safe distance grows automatically with speed. A fixed metre distance or 'one car length' does not scale with speed and is unsafe at higher speeds."
+      },
+      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-012",
+      "set": {
+        "explanation": "You must report an accident — including damage-only accidents — to the police within 24 hours if you did not give your details to an officer at the scene. Damage-only accidents are not exempt from reporting."
+      },
+      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-013",
+      "set": {
+        "explanation": "Headlights must also be on whenever visibility drops so that persons or vehicles are not clearly visible at 150 metres — for example in fog or heavy rain. Waiting to be flashed or limiting it to tunnels is incorrect."
+      },
+      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-030",
+      "set": {
+        "explanation": "You may pass on the left when the vehicle ahead is signalling and turning right (also in a one-way street or in multi-lane traffic in your direction). 'Never' is wrong, and casually undertaking on the open road is not permitted."
+      },
+      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-034",
+      "set": {
+        "explanation": "You must give your details to anyone with reasonable grounds for requiring them, such as the other driver or an injured party, and report to police within 24 hours if you did not give details to an officer at the scene."
+      },
+      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-020",
+      "set": {
+        "explanation": "A rectangular 'P' is an information sign telling you parking is available. A regulatory parking sign (which controls or reserves parking) is a different sign class — shape disambiguates. It does not compel you to park, nor does it forbid parking."
+      },
+      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body. NOTE: this item still needs a rewrite — its keyed OPTION text claims 'a round/regulatory P would control it', but the only round P in Schedule 1 is R216, which PROHIBITS parking, while the regulatory reservation sign R305P is rectangular and blue. Restoring the full explanation is strictly better than a mid-word cut; it does not settle that defect."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-027",
+      "set": {
+        "explanation": "The skidding-car symbol is the slippery-road sign. The gravel-begins sign shows tar ending and gravel starting; loose-stones shows a wheel throwing up stones. The test exploits this three-way confusion."
+      },
+      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-041",
+      "set": {
+        "explanation": "The blue command sign marks the actual pedestrian crossing and requires you to give way to pedestrians on it. The triangular warning sign means a crossing is ahead; this blue sign is the crossing itself."
+      },
+      "why": "truncated at 200 chars mid-word; restored so the withdrawn row is coherent in admin. The claim itself is the reason the item is being pulled — see the RS-041 op above."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-012",
+      "set": {
+        "explanation": "The head restraint should have its top roughly level with the top of your head to limit rearward head movement and reduce whiplash in a rear-end crash. Set too low or removed, it offers little protection."
+      },
+      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-014",
+      "set": {
+        "explanation": "You must dip to low beam when meeting oncoming traffic so you do not dazzle the other driver, then return to main beam once it has passed. Keeping bright beam on dazzles; switching lights off is dangerous."
+      },
+      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-016",
+      "set": {
+        "explanation": "You should set your speed and complete braking before entering a turn; braking hard (especially the front brake) while leaned over can cause a loss of control. Brakes are best applied upright before the turn."
+      },
+      "why": "truncated at 200 chars mid-word; restored from the wiki note's ## Explanation body"
+    }
+  ]
+}

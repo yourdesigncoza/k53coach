@@ -52,28 +52,39 @@ so a wrong `sign_code` puts a contradicting image in front of the learner.
 
 | Item | Coded | Should be | Effect |
 |---|---|---|---|
-| `RS-023` | `W409` (chevron board) | `W105` | Stem says triangle, image is a chevron board |
+| `RS-023` | `W409` (chevron board) | `W104` | Stem says triangle, image is a chevron board |
 | `RS-025` | `W214` (lane ends) | `W328` | Stem says road narrows, image says lane ends |
 | `RS-027` | `W325` (gravel begins) | `W333` | **Shows the gravel sign — which is option (0), a distractor** |
 
-All three target codes already exist in `public/signs/`. One-line fixes.
+Also mis-tagged: **`RS-004`** carries `R201-60` on an **80 km/h** question (`R201-80.svg` exists).
 
-Also mis-tagged: **`RS-004`** carries `R201-60` on an **80 km/h** question (`R201-80.svg` exists), and
-**`RS-042`** is mapped to `W318` (an advance warning triangle) on a question about booms and flashing
-red lights — the learner who gets it wrong is sent to a lesson that never mentions either.
+> **Correction (applied 2026-07-30).** This section first gave `RS-023` as `W105`. That is wrong —
+> `W105` is the **skew** T-junction (chart verification: "the crossing bar angled so its high end is
+> on the LEFT"), and the stem says *"an inverted T"*. The square-on T is **`W104`**: "a horizontal top
+> bar with a vertical stem descending from its centre". `W104` is what was applied.
+>
+> A second claim here was wrong: **`RS-042` is not mis-mapped.** Its `sign_code` is `null`, so it
+> renders no artwork. `W318` is its `objective_code` — the lesson a learner is sent to, not an image.
+> Pointing a boom-and-flashing-lights question at the advance-warning triangle is arguably still the
+> wrong lesson, but it is not the learner-visible defect this section is about, and it was left alone.
 
-## 3. Twelve live explanations are cut off mid-word
+## 3. Eleven live explanations were cut off mid-word — recovered in full
 
 Exactly 200 characters, ending mid-word: `RR-004` `RR-012` `RR-013` `RR-030` `RR-034` `RS-020`
-`RS-027` `RS-041` `VC-001` `VC-012` `VC-014` `VC-016`.
+`RS-027` `RS-041` `VC-012` `VC-014` `VC-016`.
 
 > *"…damage-only accidents are not exempt from rep"*
 > *"…24 hours if you did not give details to an of"*
 
-The column is `text` with no limit (`20260629150621_questions.sql:12`), and the recent generated
-batches are clean (1 of 79 at exactly 200, probably coincidence). So this came from **an earlier
-seed**, and the full text may be recoverable from whatever produced it. This is a data-integrity bug,
-not a content one, and it is independent of every legal question above.
+**Cause and fix, both found.** The column is `text` with no limit
+(`20260629150621_questions.sql:12`) — the truncation is upstream, in the wiki notes: whatever wrote
+them cut the frontmatter `explanation:` scalar at 200 characters, and the generator read that copy.
+The note's `## Explanation` **body** holds the same prose untruncated, so all eleven were recovered
+verbatim rather than rewritten. `build-questions-migration.mjs` now reads the body.
+
+> **Correction.** This section first said *twelve*, listing `VC-001`. `VC-001` is exactly 200
+> characters by coincidence and ends in a full stop — it is complete, and so is the draft `RR-079`.
+> Eleven were truncated.
 
 ## 4. Statements of law that are not law
 
@@ -124,13 +135,32 @@ no artwork to show. Same shape as the known markings gap, and it belongs in the 
 
 ---
 
-## Recommended order
+## Applied 2026-07-30
 
-1. **Pull `RS-041`.** It is wrong at the premise and cannot be fixed by citation.
-2. Fix the three `sign_code` values — one line each, biggest learner-visible defect per unit effort.
-3. Rewrite `q-signs-5` and `RS-020`; delete the L-plate clause in `RR-019`; fix the Code C threshold
-   in `RR-035`.
-4. Restore the 12 truncated explanations.
-5. Convert the whole `q-*` cohort to 3 options or retire it.
-6. Backfill `source_citation` from the reviewer output, then a human pass to record `approved_by`.
-7. **Run the remaining 37 controls items** — not yet swept.
+`scripts/data-repairs/data-repairs-2026-07-30.json`, replayed by
+`apply-repairs.mjs` — 18 targeted writes, idempotent, each carrying its own `why`:
+
+- **`RS-041` withdrawn** → `review_status='draft'`, `in_exam=false`. Draft, not just un-exammed:
+  `getPracticeQuestions` (`src/lib/questions.ts:59`) filters on `review_status` **alone**, so
+  `in_exam=false` would have left it live in practice mode.
+- **Four `sign_code`/`objective_code` fixes** — `RS-004`→`R201-80`, `RS-023`→`W104`,
+  `RS-025`→`W328`, `RS-027`→`W333`.
+- **`RR-019`** — L-plate clause deleted and replaced with the reg 99(2)(a) supervision rule. Also
+  dropped `A` from `vehicle_codes`: reg 99(2)(a) exempts *"a motor vehicle having no seating
+  accommodation for a passenger or … a motor cycle"*, so the keyed answer ("you must **always** be
+  supervised") was false for a Code A learner. Scoping the item fixes that without touching the key.
+- **`RR-035`** — Code C corrected to *exceeds 16 000 kg*, naming C1 as the 3 500–16 000 kg band.
+- **Eleven explanations restored** in full from the wiki bodies.
+
+The generator was fixed in the same pass so a regeneration cannot reintroduce any of it: the three
+bad `SIGN_NAME_TO_CODE` entries, the two names that must stay unmapped, `SIGN_CODE_OVERRIDES` for
+distractor-named `related_signs`, `WITHDRAWN`, and reading the explanation from the note body.
+
+## Still outstanding
+
+1. Rewrite `q-signs-5` (two diagonals) and `RS-020` — its keyed **option** text still claims
+   *"a round/regulatory P would control it"*, though its explanation is now restored in full.
+2. Convert the whole `q-*` cohort to 3 options or retire it.
+3. Correct the three items teaching yield-to-the-right as law at a four-way stop, and `RS-033`.
+4. Backfill `source_citation` from the reviewer output, then a human pass to record `approved_by`.
+5. **Run the remaining 37 controls items** — not yet swept.

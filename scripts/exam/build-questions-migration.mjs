@@ -54,28 +54,62 @@ const CODE_EXPAND = {
 // Conservative, hand-verified wiki-sign-name -> DB sign code map. Only entries we
 // checked against the approved+sa_relevant road_signs set are included; every
 // other related_sign resolves to null (no image) rather than risk a wrong glyph.
+//
+// "Conservative" was not enough on its own — the 2026-07-30 citation sweep found
+// three entries here that named a real code for the WRONG glyph, and the image
+// renders directly above the prompt (question-card.tsx), so it contradicted the
+// stem. Each entry below is now pinned to the road_signs name it resolves to.
+// Before adding one, check data/verify/verdicts/<code>.json describes the glyph
+// the wiki name means, not merely a sign whose name sounds similar.
 const SIGN_NAME_TO_CODE = {
-  "Stop Sign": "R1",
-  "Yield Sign": "R2",
-  "No Entry Sign": "R3",
-  "Speed Limit Sign": "R201-60",
-  "Children Sign": "W308",
-  "Slippery Road Sign": "W333",
-  "Traffic Circle Ahead Sign": "W201",
-  "No Stopping Sign": "R217",
-  "Pedestrian Crossing Warning Sign": "W306",
-  "T-Junction Sign": "W409",
-  "Two-Way Traffic Sign": "W212",
-  "Road Narrows Sign": "W214",
-  "Steep Descent Sign": "W322",
-  "Gravel Road Sign": "W325",
-  "Speed Humps Sign": "W332",
-  "Wild Animals Sign": "W313",
-  "Height Limit Sign": "R204",
-  "Roundabout Sign": "R137",
-  "Stop Go Sign": "R1.5",
-  "No U-Turn Sign": "R213",
-  "Pedestrian Crossing Regulatory Sign": "R5",
+  "Stop Sign": "R1", // Stop
+  "Yield Sign": "R2", // Yield
+  "No Entry Sign": "R3", // No entry
+  "Children Sign": "W308", // Children ahead
+  "Slippery Road Sign": "W333", // Slippery road ahead
+  "Traffic Circle Ahead Sign": "W201", // Traffic circle ahead
+  "No Stopping Sign": "R217", // Stopping prohibited
+  "Pedestrian Crossing Warning Sign": "W306", // Pedestrian crossing ahead
+  "T-Junction Sign": "W104", // T-junction ahead (square-on inverted T).
+  // was W409, which is the T-junction CHEVRON board — not a triangle at all.
+  // W105/W106 are the SKEW variants and are not what "T-junction" means bare.
+  "Two-Way Traffic Sign": "W212", // Two-way traffic ahead
+  "Road Narrows Sign": "W328", // Roadway narrows from both sides ahead.
+  // was W214 = "Right lane ends ahead", a merge arrow, not a narrowing road.
+  "Steep Descent Sign": "W322", // Steep descent ahead
+  "Gravel Road Sign": "W325", // Unpaved road surface ahead
+  "Speed Humps Sign": "W332", // Speed humps ahead
+  "Wild Animals Sign": "W313", // Wild animals ahead
+  "Height Limit Sign": "R204", // Height limit
+  "Roundabout Sign": "R137", // Roundabout
+  "Stop Go Sign": "R1.5", // Stop/go
+  "No U-Turn Sign": "R213", // U-turn prohibited
+  // DELIBERATELY UNMAPPED — there is no such sign, so any code would be a lie:
+  //   "Speed Limit Sign"  — R201-<n> is one sign per speed. The name alone
+  //     cannot say which, and it was pinned to R201-60 on an 80 km/h question.
+  //   "Pedestrian Crossing Regulatory Sign" — was R5, which is the pedestrian
+  //     PRIORITY ZONE sign (red, per data/verify/verdicts/R5.json). South Africa
+  //     has no blue rectangular pedestrian-crossing command sign; that is the
+  //     Vienna Convention. RS-041 rested on it and has been withdrawn.
+};
+
+// `related_signs` records what a question RELATES to, which for a "which sign is
+// it — A, B or C?" item is often a distractor rather than the sign under test.
+// RS-027 shipped rendering the gravel sign above a question whose distractor (0)
+// is the gravel sign. Per-question overrides win over the name map.
+const SIGN_CODE_OVERRIDES = {
+  "RS-027": "W333", // asks which sign shows the skidding car; related_signs names the gravel distractor
+  "RS-004": "R201-80", // "Speed Limit Sign" is deliberately unmapped; this item names 80 km/h
+};
+
+// Questions the citation sweep found unsound. They are still emitted — deleting
+// a row from a generated seed loses the record of why it went — but as
+// review_status='draft', so no learner surface serves them (getPracticeQuestions
+// filters on review_status alone, so in_exam=false would not be enough).
+const WITHDRAWN = {
+  "RS-041":
+    "No blue rectangular pedestrian-crossing sign exists in South Africa; " +
+    "Schedule 1 R5 is a red pedestrian-PRECINCT sign. Vienna Convention, not SA.",
 };
 
 /** Parse the leading `--- … ---` YAML frontmatter into a flat object. */
@@ -109,6 +143,23 @@ function parseFrontmatter(text, file) {
 function unquote(v) {
   if (v == null) return "";
   return v.replace(/^"(.*)"$/, "$1").trim();
+}
+
+/**
+ * The note body's `## Explanation` section, preferred over the frontmatter copy.
+ *
+ * Whatever wrote the wiki notes cut the frontmatter `explanation:` scalar at
+ * exactly 200 characters — 11 of the 110 notes ended mid-word ("…not exempt from
+ * rep"), and they shipped that way to learners until 2026-07-30. The body section
+ * is the same prose untruncated, so it is the source of truth; the frontmatter is
+ * the fallback for a note that has no body section.
+ */
+function explanationOf(text, fm, file) {
+  const body = text.match(/^## Explanation\s*\n([\s\S]*?)(?=\n##\s|\s*$)/m);
+  const fromBody = body ? body[1].trim() : "";
+  const fromFm = unquote(fm.explanation);
+  if (!fromBody && !fromFm) throw new Error(`${file}: no explanation`);
+  return fromBody || fromFm;
 }
 
 /** Parse a `[a, b, c]` list, unwrapping [[wikilinks]] and quotes. */
@@ -174,33 +225,39 @@ function main() {
     const codes = [...codeSet];
     if (!codes.length) throw new Error(`${file}: no vehicle_codes`);
 
-    // sign_code from the conservative map (first mappable related sign)
-    let signCode = null;
-    for (const name of parseList(fm.related_signs)) {
-      if (SIGN_NAME_TO_CODE[name]) {
-        signCode = SIGN_NAME_TO_CODE[name];
-        signStats.mapped++;
-        break;
+    const id = unquote(fm.question_id);
+
+    // sign_code: a per-question override first, else the conservative map
+    // (first mappable related sign).
+    let signCode = SIGN_CODE_OVERRIDES[id] ?? null;
+    if (!signCode) {
+      for (const name of parseList(fm.related_signs)) {
+        if (SIGN_NAME_TO_CODE[name]) {
+          signCode = SIGN_NAME_TO_CODE[name];
+          signStats.mapped++;
+          break;
+        }
+        signStats.unmapped[name] = (signStats.unmapped[name] || 0) + 1;
       }
-      signStats.unmapped[name] = (signStats.unmapped[name] || 0) + 1;
     }
 
     const topicTag = unquote(fm.topic).replace(/\[\[|\]\]/g, "") || null;
 
     rows.push({
-      id: unquote(fm.question_id),
+      id,
       topic,
       difficulty,
       prompt: unquote(fm.question_text),
       options: opts,
       answer,
-      explanation: unquote(fm.explanation),
+      explanation: explanationOf(text, fm, file),
       signCode,
       topicTag,
       likelihood,
       codes,
       sourceBasis: unquote(fm.source_basis) || null,
-      sortOrder: Number(unquote(fm.question_id).replace(/\D/g, "")) || 0,
+      sortOrder: Number(id.replace(/\D/g, "")) || 0,
+      withdrawn: WITHDRAWN[id] ?? null,
     });
     pools[topic]++;
   }
@@ -226,8 +283,9 @@ values
         `${q(optionsJson)}::jsonb, ${r.answer}, ${q(r.explanation)}, ` +
         `${r.signCode ? q(r.signCode) : "null"}, ` +
         `${r.topicTag ? q(r.topicTag) : "null"}, ${q(r.likelihood)}, ` +
-        `${pgArray(r.codes)}, true, false, ` +
-        `${r.sourceBasis ? q(r.sourceBasis) : "null"}, 'approved', ${r.sortOrder})`
+        `${pgArray(r.codes)}, ${r.withdrawn ? "false" : "true"}, false, ` +
+        `${r.sourceBasis ? q(r.sourceBasis) : "null"}, ` +
+        `${r.withdrawn ? "'draft'" : "'approved'"}, ${r.sortOrder})`
       );
     })
     .join(",\n");
