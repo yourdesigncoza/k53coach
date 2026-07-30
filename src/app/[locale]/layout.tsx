@@ -1,25 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { Poppins, Inter } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { routing } from "@/i18n/routing";
-
-// "Winning combination": Poppins for display/headings, Inter for body copy.
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-});
+import { fontVariables } from "@/lib/fonts";
 
 const APP_NAME = "K53 Coach";
 const APP_DESCRIPTION =
@@ -66,7 +53,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${inter.variable} ${poppins.variable} h-full antialiased`}
+      className={`${fontVariables} h-full antialiased`}
     >
       {/* suppressHydrationWarning: browser extensions (ColorZilla, Grammarly, …)
           inject attributes like cz-shortcut-listen onto <body> before React
