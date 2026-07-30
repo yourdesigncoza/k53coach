@@ -287,7 +287,13 @@ export const ROAD_RULES: RoadRule[] = [
     reviewStatus: "draft",
   },
 
-  // Source: NRTA 93 of 1996 — s 4(3), 42(1); NRTR 2000 — reg 35(6)-(7), 36(1)
+  // Source: NRTA 93 of 1996 — s 4(2) (registered and licensed), s 42(1) (roadworthy
+  // condition), s 1(lxiii) ("roadworthy"); NRTR 2000 — reg 35(6) (obscured licence
+  // number), reg 35(7)(f) (one plate front and back), reg 36(1)(a) (disc on the lower
+  // left of the windscreen), reg 36(2)(b) (disc obscured or illegible).
+  // NOTE: this previously cited "s 4(3)", which does not exist — s 4 ends at (2). The
+  // wrong block propagated from here into all five RR16 questions and the verification
+  // worklist. See docs/question-verify/findings.md §1.
   {
     code: "RR16",
     title: "Number plates, licence disc and roadworthiness",
@@ -372,19 +378,26 @@ export const ROAD_RULES: RoadRule[] = [
     reviewStatus: "draft",
   },
 
-  // Source: NRTR 2000 — reg 297(1)-(2) (divided roads), reg 299(2) (entering a road safely)
+  // Source: NRTR 2000 — reg 297(1) (drive on the left-hand roadway), reg 297(2) (no
+  // driving on/over/across/within the dividing section, "except through an opening in
+  // such space, barrier or section or at a cross-over or intersection"), reg 299(2)
+  // (entering a road safely).
+  // NOTE: this previously said the only lawful crossing is an intersection, dropping two
+  // of the three routes reg 297(2) allows. That produced two questions teaching opposite
+  // rules — RR-096 and RR-097. See docs/question-verify/findings.md §2.
   {
     code: "RR21",
     title: "Divided roads and dual carriageways",
     category: "freeways",
-    summary: "Two roadways split by a median — stay left and never cross the middle.",
-    rule: "Where a road is divided into two or more roadways by a gap, a barrier or a dividing section, you may only drive on the left-hand roadway unless a sign or a traffic officer sends you onto another one. You may not drive on, over, across or inside that dividing section — the only legal way across is a properly built intersection, and not even that if a sign or an officer forbids it.",
+    summary:
+      "Two roadways split by a median — stay left, and cross only where a crossing is provided.",
+    rule: "Where a road is divided into two or more roadways by a gap, a barrier or a dividing section, you may only drive on the left-hand roadway unless a sign or a traffic officer sends you onto another one. You may not drive on, over, across or inside that dividing section, except at a place built for it: an opening in the median, a cross-over, or an intersection — and not even there if a sign or a traffic officer forbids it.",
     whatToDo:
-      "Missed your turn? Carry on to the next legal crossing or interchange and come back. Never cut through the median, and never stop or park in it. Only enter the roadway when you can do it without endangering other traffic.",
+      "Missed your turn? Carry on to the next opening, cross-over or intersection and come back — never cut through the median anywhere else. Only enter the roadway when you can do it without endangering other traffic.",
     commonMistake:
       "Using a worn track through the median to make a U-turn because everyone else does it.",
     testHint:
-      "An option that says 'cross the median when the road is clear' is never the right answer.",
+      "'Cross the median wherever it looks clear' is never right — but neither is 'you may never cross at all'. The answer is that you cross only at an opening, a cross-over or an intersection.",
     relatedRules: ["RR9", "RR19"],
     reviewStatus: "draft",
   },
