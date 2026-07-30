@@ -278,3 +278,126 @@ The lesson for the rewrite is not that the reviewers were unreliable — they fl
 as unverifiable rather than asserting them false, and said which document was needed. It is that
 **a manual-only review cannot close a claim that rests on a regulation**, and roughly a third of this
 content does.
+
+
+---
+
+## 7. NRTA 93 of 1996 obtained — the last outstanding claims resolved (2026-07-30)
+
+`init/national-road-traffic-act-93-of-1996.pdf` — Government Gazette **No. 17603**, 22 November 1996,
+44 pp, from Parliament's own repository. Gitignored with the other sources.
+
+(The RTMC copy is a 10-page notice, not the Act. SAFLII's consolidated PDF and HTML both return 403
+to automated fetches.)
+
+### The two definitions everything was waiting on
+
+**s1(xlvi) "park"**, verbatim:
+> "‘park’ means to keep a vehicle, **whether occupied or not**, stationary for a period of time longer
+> than is reasonably necessary for the actual loading or unloading of persons or goods, **but does not
+> include any such keeping of a vehicle by reason of a cause beyond the control of the person in charge
+> of such vehicle**;"
+
+**s1(lxix) "stop"**, verbatim:
+> "‘stop’ means the bringing to a standstill of a vehicle by the driver thereof;"
+
+**s1(lxvi) "shoulder"**, verbatim — relevant to RM4.1:
+> "‘shoulder’ means that portion of a road, street or thoroughfare between the edge of the roadway and
+> the kerb line;"
+
+### What this resolves
+
+**`RM13` — the "load and go" framing is CONFIRMED.** The draft's *"'Park' in law means keeping a
+vehicle stationary for longer than is reasonably necessary to load or unload people or goods, so a
+genuine brief load or drop-off is not parking"* tracks s1(xlvi) closely. The reviewer could only mark
+it `NOT_VERIFIABLE_HERE`.
+
+**`RM13` — the common mistake is CONFIRMED, and by the exact words the draft omitted.** *"Sitting in
+the car with the engine running while you wait for a passenger is parking, not loading"* is supported
+by **"whether occupied or not"**. Worth adding those four words to the content: they are the reason the
+example works, and a learner who does not know them will not see why.
+
+**`RM12` — "stopping is much wider than parking" is CONFIRMED.** "Stop" is *any* bringing to a
+standstill; "park" additionally requires duration beyond what loading needs. The draft's *"bringing the
+car to a standstill at all is already a contravention"* is right, and the red-vs-yellow strictness
+comparison the reviewer called inference-only now rests on the two statutory definitions.
+
+### One omission the Act adds, and it matters
+
+Neither `RM12` nor `RM13` mentions the closing words of s1(xlvi): parking **does not include** keeping
+a vehicle stationary *"by reason of a cause beyond the control of the person in charge"*. Stuck in
+traffic, broken down, or held by a signal is not parking. Combined with reg 304's opening exception
+(*"Except in order to avoid an accident, or in compliance with a road traffic sign or with a direction
+given by a traffic officer, or for any cause beyond the control of the driver"*), the drafts state both
+prohibitions more absolutely than the law does. Add it.
+
+### Amendment caveat — read this before quoting the definitions
+
+Section 1 has been amended three times: **Act 8 of 1998, Act 21 of 1999 and Act 64 of 2008**. Our copy
+is the 1996 text as enacted, so it is not automatically the current wording.
+
+What was checked: the **National Road Traffic Amendment Bill (2020)**, Gazette 43201 of 3 April 2020,
+which proposes changes to section 1 *as already amended by all three Acts*. It touches "park" and
+"stop" only by **insertion after** them — inserting *Passenger Rail Agency of South Africa* after
+"park", and the *supplier of…* definitions after "stop". It does **not** substitute either definition.
+That is consistent with both surviving unamended, and it means the Bill's own view of the consolidated
+Act still contains them.
+
+What was **not** checked: the three amendment Acts individually. Before a question ships on the
+definition of "park" or "stop", confirm the wording against a consolidated text. Treat the quotes above
+as the 1996 originals, corroborated but not proven current.
+
+---
+
+## 8. Where this leaves the markings content
+
+Every claim the adversarial review could not close is now resolved except the amendment check above.
+The tally has moved a long way from "sixteen for sixteen":
+
+- **Confirmed correct by the regulations or the Act**, having looked wrong or unverifiable: `RM4.1`'s
+  shoulder proviso (reg 298A), `RM9`'s premises access (reg 289), `RTM3`'s stopped-vehicle rule
+  (reg 315(4)), `RM13`'s load-and-go and its engine-running example (NRTA s1(xlvi)), `RM12`'s
+  stop-is-wider-than-park (s1(lxix) + s1(xlvi)), and RTM1/RTM4 marking widths (reg 286(2)(c)).
+- **Still wrong and needing a fix**: `RM10`'s permission to *wait* in a box junction; the
+  unconditional framings (`RM4.1` multi-lane, `RTM3`/`RTM4` signal proviso, `RM12`/`RM13` signed
+  hours and the beyond-control exception); `RM7`'s loading-zone vehicle classes; `RM15`'s "flat
+  paint" and the RM5 conflation; `RM1`'s "parked" for "stationary"; `RM8`'s single-direction claim;
+  `RM5`'s boundary colour and missing third form; `RTM1`'s five unsourced conduct claims.
+- **Genuine manual-vs-law conflict**: `RTM2` yield-line width — manual 300/500 mm, reg 286(2)(c)(ii)
+  200/300 mm. The regulation binds.
+- **Wrong across the whole library**: every citation says "SARTSM"; the manual is the **SADC** RTSM.
+
+The rewrite is still the right call, but it is a narrower job than it looked: correct the conditions
+and the citation strings, fix the dozen substantive errors, and add the statutory exceptions. The
+underlying legal research was better than the review could show.
+
+---
+
+## 9. Direction: put the sources in a queryable store
+
+Three primary sources now sit in `init/`, all gitignored, all only reachable by a human opening a PDF:
+
+| Document | File |
+|---|---|
+| SADC RTSM Vol 1 Ch 7 — Road Markings (May 2012) | `init/V1C7.pdf` |
+| National Road Traffic Regulations 2000 (GG 20963) | `init/national-road-traffic-regulations-2000.pdf` |
+| National Road Traffic Act 93 of 1996 (GG 17603) | `init/national-road-traffic-act-93-of-1996.pdf` |
+| SADC RTSM Vol 4 Ch 9 — Information Signs | `init/V4C9.pdf` |
+| DoT Road Traffic Signs chart (5 sheets) | `init/RTSigns_charts.pdf` |
+
+**Agreed direction (John, 2026-07-30): publish these into a database so verification can cite them
+directly rather than re-extracting a PDF each time.** Not built yet — recorded here so it is not
+re-litigated.
+
+Why it matters, concretely: this session's two worst errors were both *retrieval* failures, not
+reasoning failures. The RM12/RM13 "fabrication" call was made without checking our own database, and a
+third of the adversarial review returned `NOT_VERIFIABLE_HERE` purely because the regulations were not
+on disk. A queryable store of regulation and section text, addressable by citation, removes both
+failure modes — and it is the same infrastructure the question bank needs to satisfy constraint 9 at
+800 items.
+
+Shape worth considering when it is built: one row per addressable provision (`NRTA s1(xlvi)`,
+`NRTR reg 298A(2)`, `SADC-RTSM §7.2.16(2)(b)`) carrying verbatim text, source document, page, and the
+retrieval date — so a citation on a question resolves to text a human can read without opening a
+350-page gazette. The project already has pgvector wired for the wiki search, so semantic lookup over
+the same rows is cheap to add.
