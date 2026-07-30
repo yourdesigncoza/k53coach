@@ -118,36 +118,36 @@ Three of the four settled and applied (`scripts/data-repairs/data-repairs-2026-0
 - **`VC-032`** — *"Yes Automatic has no clutch (clutch control)"*. Both the keyed option and its
   opposite now say **clutch pedal**; answer index unchanged.
 
-**`VC-027` is held pending a decision** — see below. **`VC-019` was not ruled on** and is unchanged.
+- **`VC-027`** — clause deleted (option **b**). The explanation went on to say *"the rear brake is
+  the right-foot pedal and the clutch is the left-hand lever"*, which is false for a twist-and-go
+  scooter: no clutch lever, no foot pedal, and the **left lever is the rear brake**. The item is
+  scoped `{A}`, which covers scooters, so a scooter learner was being taught that the left lever is
+  the clutch when on their machine it is a brake. The clause was not needed to explain the answer,
+  which holds for every motorcycle — the right lever is always the front brake.
+- **`VC-019`** — dropped `A` from `vehicle_codes`, the same fix as `RR-019`.
 
-### `VC-027` — the open question
+### Why `VC-019` was scoped rather than reworded
 
-> *On a motorcycle, which hand or foot operates the front brake?*
-> (0) The left hand (a lever) · (1) The left foot (a pedal) · **(2) The right hand (a lever)** ✓
->
-> *"The motorcycle front brake is operated by the right-hand lever; the rear brake is the right-foot
-> pedal and the clutch is the left-hand lever. Stopping uses front and rear brakes together."*
+"Steering wheel **or handlebars**" was the obvious alternative and would have kept the item available
+to Code A learners. It was rejected because objective **`VC1` is car-only prose** — *"Steers the
+car"*, *"quarter to three"*, *"both hands on the wheel"* — and **there is no handlebar learning
+object**: the motorcycle series `VC18`–`VC22` covers throttle, both brakes, clutch and stopping, but
+not steering. Rewording would have kept the mismatch and merely moved it from the question to the
+lesson the learner is sent to when they get it wrong.
 
-**The keyed answer is right for every motorcycle**, manual or scooter — right lever is always the
-front brake. The problem is the middle clause of the explanation.
-
-On a **twist-and-go scooter** there is no clutch lever and no foot brake pedal: the **left lever is
-the rear brake**. The item is scoped `vehicle_codes: {A}`, and Code A covers scooters, so a scooter
-learner is taught a layout their own machine does not have — and specifically that the left lever is
-the clutch, when on their bike it is a brake.
-
-Options: (a) scope the clause — *"on a conventional manual motorcycle … ; on a twist-and-go scooter
-there is no clutch lever and the left lever is the rear brake"*; (b) delete the clause and keep only
-the front-brake fact; (c) leave it, on the view that the K53 syllabus assumes a manual motorcycle.
+A motorcycle steering question can be added once an objective exists to point it at. That gap is
+worth noting on its own: **the motorcycle track has no steering lesson.**
 
 ## Still outstanding
 
-1. **`VC-027`** — decision above.
-2. **`VC-019`** — asks a Code A learner which control steers, answers "the steering wheel". Drop `A`
-   from `vehicle_codes` or reword to "steering wheel or handlebars". Same fix as `RR-019`.
-3. Backfill `source_citation` for the 14 items that have a real provision — all quoted, so this is
+1. Backfill `source_citation` for the 14 items that have a real provision — all quoted, so this is
    transcription, not research.
-4. Fold into the outstanding `q-*` cohort decision.
+2. Fold into the outstanding `q-*` cohort decision. A scoping audit after these fixes found the
+   remaining code-A mismatches are almost all in that cohort — `q-controls-1` (*"the middle pedal in
+   a manual car"*), `q-controls-2`, `q-controls-3`, `q-controls-4`, `q-controls-5` — plus `VC-003`
+   (*"regulates the fuel supply"*, where a motorcycle uses a twist grip). None breaks its keyed
+   answer; all are car-framed prose served to Code A.
+3. Write a motorcycle steering/handlebar learning object, then re-add a Code A steering question.
 
 The 32 SOUND verdicts are triage, not a sign-off — per constraint 9 no AI pass can approve an item.
 Every one carries a quote that can be checked in seconds.

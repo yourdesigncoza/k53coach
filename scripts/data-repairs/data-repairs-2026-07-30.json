@@ -165,6 +165,20 @@
         "explanation": "An automatic has no clutch pedal and selects its own gears; the driver only moves the selector (P/R/N/D). There is no clutch for the driver to operate, and the vehicle does have gears."
       },
       "why": "The defect was in the keyed OPTION text, not the explanation: it read 'An automatic has no clutch', which is mechanically false — a torque-converter automatic contains clutch packs and a DCT has two. The explanation already said 'no clutch CONTROL', so option and explanation contradicted each other. Settled by John 2026-07-30: 'Yes Automatic has no clutch (clutch control)'. Both options now say 'clutch pedal' so the contrast stays clean; answer index 1 is unchanged."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-027",
+      "set": {
+        "explanation": "The motorcycle front brake is operated by the right-hand lever. Stopping uses front and rear brakes together."
+      },
+      "why": "The keyed answer holds for every motorcycle — the right lever is always the front brake — but the explanation went on to say 'the rear brake is the right-foot pedal and the clutch is the left-hand lever'. That is false for a twist-and-go scooter, which has no clutch lever and no foot brake pedal: its LEFT lever is the rear brake. The item is scoped vehicle_codes {A}, which covers scooters, so a scooter learner was being taught that the left lever is the clutch when on their machine it is a brake. John chose option (b) on 2026-07-30: delete the clause rather than scope it, since it is not needed to explain the answer."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-019",
+      "set": { "vehicle_codes": ["B", "C", "EB"] },
+      "why": "The item asks which control changes the vehicle's direction and answers 'the steering wheel', while scoped {A,B,C,EB} — a motorcycle has handlebars, so for a Code A learner the keyed answer named a control not on the vehicle. Same defect as RR-019. Dropped A rather than rewording to 'steering wheel or handlebars' because objective VC1 is car-only prose ('Steers the car', 'quarter to three', 'both hands on the wheel') and there is no handlebar learning object — the motorcycle series VC18-VC22 covers throttle, both brakes, clutch and stopping, but not steering. Rewording would have kept the mismatch and merely moved it to the lesson the learner is sent to. A motorcycle steering question can be added later once an objective exists for it."
     }
   ]
 }
