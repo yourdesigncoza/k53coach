@@ -19,10 +19,9 @@
   },
   {
     "file": "RM12.svg",
-    "bytes": 1508,
+    "bytes": 2135,
     "notes": [
       "normalised ns0: prefix",
-      "removed fabricated <g id=\"rm12-broken-panel\">",
       "removed caption group <g id=\"notes\">",
       "removed opaque background rect",
       "stripped root width/height (viewBox now drives sizing)"
@@ -30,10 +29,9 @@
   },
   {
     "file": "RM13.svg",
-    "bytes": 1598,
+    "bytes": 2230,
     "notes": [
       "normalised ns0: prefix",
-      "removed fabricated <g id=\"rm13-broken-panel\">",
       "removed caption group <g id=\"notes\">",
       "removed opaque background rect",
       "stripped root width/height (viewBox now drives sizing)"

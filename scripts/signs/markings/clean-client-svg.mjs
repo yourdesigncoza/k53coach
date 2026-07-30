@@ -3,18 +3,20 @@
  * Clean the client-supplied marking SVGs (Linear K53-37) into glyph-shaped assets.
  *
  * The client batch is genuine vector but ships as illustrated scenes: an opaque
- * page background, baked-in caption text, nine different aspect ratios, and — on
- * RM12/RM13 — a fabricated second panel showing a "broken" line variant that does
- * not exist in SARTSM.
+ * page background, baked-in caption text and nine different aspect ratios.
  *
  * This pass is mechanical and reversible; it does NOT fix the drawings that are
  * wrong (see client-svg/README.md). It:
  *
  *   1. drops the full-bleed background rect
  *   2. drops caption text, keeping road-surface lettering (STOP / YIELD / BUS / bay letters)
- *   3. drops the fabricated rm12-broken-panel / rm13-broken-panel groups
- *   4. normalises the ns0: prefix back to the default SVG namespace
- *   5. strips width/height from the root so viewBox alone drives sizing
+ *   3. normalises the ns0: prefix back to the default SVG namespace
+ *   4. strips width/height from the root so viewBox alone drives sizing
+ *
+ * It deliberately does NOT touch the second panel on RM12/RM13. An earlier version of
+ * this script deleted those as fabrications; they are not. SARTSM §7.2.16(2)(b) and
+ * §7.2.17(2)(b) both define a broken variant for applicability during limited periods,
+ * with the times given on an accompanying sign. The client drew them correctly.
  *
  * Cropping is a separate pass (crop-client-svg.mjs) because it needs a real
  * layout engine to measure.
@@ -31,9 +33,6 @@ const OUT = join(HERE, 'client-svg-cleaned')
 
 /** Text that is paint on the road, not a caption. Kept verbatim. */
 const ROAD_LETTERING = /^(STOP|YIELD|BUS|TAXI|[A-Z]{1,3})$/
-
-/** Groups that draw a marking variant with no basis in SARTSM. */
-const FABRICATED_GROUPS = new Set(['rm12-broken-panel', 'rm13-broken-panel'])
 
 /** Wrapper groups that exist only to hold captions. */
 const CAPTION_GROUPS = new Set(['notes'])
@@ -52,16 +51,7 @@ function cleanOne(svg) {
     notes.push('normalised ns0: prefix')
   }
 
-  // 2. fabricated variant panels (whole <g id="...">...</g> subtree)
-  for (const id of FABRICATED_GROUPS) {
-    const re = new RegExp(`<g id="${id}"[\\s\\S]*?</g>\\s*(?=<g|</svg>)`, 'g')
-    if (re.test(svg)) {
-      svg = svg.replace(re, '')
-      notes.push(`removed fabricated <g id="${id}">`)
-    }
-  }
-
-  // 3. caption-only groups
+  // 2. caption-only groups
   for (const id of CAPTION_GROUPS) {
     const re = new RegExp(`<g id="${id}"[\\s\\S]*?</g>\\s*(?=<g|</svg>)`, 'g')
     if (re.test(svg)) {
@@ -70,7 +60,7 @@ function cleanOne(svg) {
     }
   }
 
-  // 4. remaining <text>: keep road lettering, drop captions
+  // 3. remaining <text>: keep road lettering, drop captions
   svg = svg.replace(/<text\b[^>]*>[\s\S]*?<\/text>/g, (m) => {
     const t = strip(m)
     if (ROAD_LETTERING.test(t)) return m
@@ -78,7 +68,7 @@ function cleanOne(svg) {
     return ''
   })
 
-  // 5. full-bleed background rect. Some carry id="background", some are anonymous,
+  // 4. full-bleed background rect. Some carry id="background", some are anonymous,
   //    so match on geometry: a rect at the origin exactly filling the viewBox.
   //    Pattern tiles are never viewBox-sized, so they are safe from this.
   const vb = svg.match(/viewBox="([\d.\-\s]+)"/)
@@ -95,7 +85,7 @@ function cleanOne(svg) {
     })
   }
 
-  // 6. root width/height -> viewBox only
+  // 5. root width/height -> viewBox only
   svg = svg.replace(/<svg\b[^>]*>/, (m) => {
     if (!/\swidth=|\sheight=/.test(m)) return m
     notes.push('stripped root width/height (viewBox now drives sizing)')

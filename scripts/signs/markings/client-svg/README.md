@@ -6,10 +6,12 @@
 > a cross-check and as the source of the road-scene treatment, which the chart's oval vignettes do
 > not provide. Compare the two side by side: `node ../build-review-page.mjs` → `docs/markings-review.html`.
 >
-> The chart also settled two open questions in this file:
-> - **`R = Rickshaw` is official** — it is printed in the RM7 designatory legend. The client was right.
-> - **There is no broken RM12 or RM13.** The chart shows two solid-line vignettes for each; no
->   time-plated variant exists anywhere on the sheet.
+> The chart also settled two open questions in this file, **both in the client's favour**:
+> - **`R = Rickshaw` is official** — it is printed in the RM7 designatory legend.
+> - **The broken RM12 and RM13 variants are real.** SARTSM §7.2.16(2) and §7.2.17(2) each define
+>   a continuous solid line for 24-hour applicability *or* a broken line for limited periods, with
+>   the times on an accompanying sign. The chart's two vignettes per code are labelled
+>   *24 hours* and *Selective periods*. **We rejected this batch partly on a claim that was wrong.**
 
 Best version of each of the 16 markings, pulled from Louwrens' 29 July batch on
 [K53-37](https://linear.app/k53-coach/issue/K53-37). **These are reference geometry, not
@@ -61,7 +63,7 @@ description's `RM15_detailed_editable.svg` is the true vector and is what sits h
 | `RM1` | Single continuous white centre line ✓. Labelled version only — strip the title/caption text. |
 | `RM2` | Two continuous parallel white lines ✓ §7.2.6. |
 | `RM6` | White T-shaped bay markings ✓ §7.2.10. |
-| `RM7` | Yellow three-sided bay + oval RM7.1 with designatory letter ✓ §7.2.11. Carries `B`. Verify the letter list against §7.2.11 before reusing the legend — "R = rickshaw" from the earlier batch is still unverified. |
+| `RM7` | Yellow three-sided bay + oval RM7.1 with designatory letter ✓ §7.2.11. Carries `B`. Legend verified against the chart: A Ambulance, B Bus, L Loading, T Taxi, F Fire, R Rickshaw, CD Diplomat, MB Minibus, SOS, D Defence, P Police. |
 | `RM8` | Six variants RM8.1–RM8.6, **arrows correctly yellow** ✓ §7.2.12 — this was white in the earlier batch and has been fixed. |
 | `RTM1` | Stop line + STOP word. Text is a road marking here, not a caption — keep, but convert to a path so it does not depend on a font. |
 | `RTM2` | Yield line + YIELD word. Same treatment as RTM1. |
@@ -77,16 +79,18 @@ description's `RM15_detailed_editable.svg` is the true vector and is what sits h
 | `RM9` | Drawn as solid yellow left + broken yellow right + the word `BUS`. RM9 is the **broken yellow line** (≥150 mm, §7.2.13); the word/symbol is **RM17** (§7.2.21). The solid yellow line on the left is not RM9. Either relabel the parts or drop the word. |
 | `RM10` | Yellow cross-hatch ✓ §7.2.14, but has `STOP` painted on two approaches, which is not part of a box junction. Also missing the exception that a vehicle turning left or right may enter. |
 
-### Must be fixed structurally (2)
+### Correct after all — we were wrong (2)
 
-| Code | Correction |
+| Code | Finding |
 |---|---|
-| `RM12` | **Still draws the fabricated second panel** — a *broken* red line captioned "selective periods / applies during the hours on the sign". There is no broken RM12. §7.2.16: continuous solid red, ≥150 mm, **24 hours**. Delete the right-hand panel. |
-| `RM13` | Same defect. §7.2.17: continuous solid yellow, ≥100 mm, **24 hours**. Delete the right-hand panel. |
+| `RM12` | The two-panel drawing is **right**. §7.2.16(2): *"(a) for 24-hour applicability, a continuous solid red line with a minimum width of 150 mm; **OR** (b) for applicability during limited periods of the day, a broken red line with a minimum width of 100 mm."* §7.2.16(1)(b) ties the broken line to *"the time period indicated by an accompanying road sign"* — exactly what the client's caption said. |
+| `RM13` | Same. §7.2.17(2): continuous solid yellow ≥100 mm for 24 hours, **or** broken yellow ≥100 mm for limited periods. |
 
-Stripping the captions did not remove these drawings — the wrong geometry is still there, and a
-learner reading the picture alone still learns the wrong rule. This is the third batch carrying
-this error (flagged 24 July, again 28 July).
+This was flagged as a fabrication on 24 July and again on 28 July, and both times the flag was
+wrong. Our own database content described both variants correctly the whole time; the rejection
+note contradicted our own record and nobody noticed. Found 30 July while decomposing the content
+into checkable claims — before the client was told anything further, but after he had already been
+told twice that he had invented them.
 
 ### Redraw from scratch (1)
 
