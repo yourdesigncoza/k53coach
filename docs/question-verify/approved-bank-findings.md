@@ -1,7 +1,9 @@
 # The 125 approved questions — citation sweep (2026-07-30)
 
 Ten reviewers over the **41 rules** and **47 signs** items, each reading the Act, the Regulations and
-Schedule 1. **The 37 controls items have not been run yet.**
+Schedule 1. **The 37 controls items are in `controls-findings.md`** — 32 SOUND, 4 explanation
+defects, 1 ambiguous, **0 wrong answers, 0 fabricated citations**, and 23 of 37 correctly returned
+no citation at all because the topic is technique rather than law.
 
 The brief was to supply the missing citations. It did that — nearly every item turned out to be
 citable, mostly to Schedule 1 — but it also surfaced defects in content that is **live and being
@@ -163,4 +165,4 @@ distractor-named `related_signs`, `WITHDRAWN`, and reading the explanation from 
 2. Convert the whole `q-*` cohort to 3 options or retire it.
 3. Correct the three items teaching yield-to-the-right as law at a four-way stop, and `RS-033`.
 4. Backfill `source_citation` from the reviewer output, then a human pass to record `approved_by`.
-5. **Run the remaining 37 controls items** — not yet swept.
+5. The four controls fixes in `controls-findings.md` (`VC-019` scoping + three explanations).

@@ -12,15 +12,15 @@ The original specs live in `init/` and still govern product intent — read them
 
 Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. The road-sign library (DB1) is fully ingested and **chart-verified in a Claude Code session** — see `docs/sign-accuracy-pipeline.md`. **Mock exam (Code B) shipped:** entitlement-gated `/mock` → timed 68-question paper (3 sections scored independently) → per-section summary → grounded AI assessment → DB9 readiness blend on the dashboard/progress. Engine in `src/lib/exam.ts`, UI in `src/components/exam/*`, gate in `src/lib/exam-guard.ts`.
 
-**Live data as of 2026-07-24** (measure it yourself before quoting — these drift):
+**Live data as of 2026-07-30** (measure it yourself before quoting — these drift):
 
 | | |
 |---|---|
-| `road_signs` | 362 rows — 361 approved + `sa_relevant`, 1 draft. 234 regulatory / 102 warning / 26 guidance. **Zero road markings.** |
-| `questions` | 125, all `review_status='approved'` + `in_exam`. Signs 47 / rules 41 / controls 37 |
-| Rule learning objects | 10 (`RR1`–`RR10`) |
+| `road_signs` | 378 rows — 361 served (both gates approved + `sa_relevant`). 234 regulatory / 102 warning / 26 guidance / **16 markings**, the markings artwork-approved but content still `draft` |
+| `questions` | 204 rows — **124 approved**, 80 draft. Approved: signs 46 / rules 41 / controls 37 |
+| Rule learning objects | 26 (`RR1`–`RR26`); controls 22 (`VC1`–`VC22`) |
 | `exam_attempts` | 0 — no learner has sat a mock in production |
-| `entitlements` | 6, all granted by hand via admin |
+| `entitlements` | 3, all granted by hand via admin |
 
 **Launch plan: `docs/build-plan-2026-07.md` (v2) — read it before scoping work.** Launch is a **two-stage gate**, not one bar: Stage 1 paid beta at **300 verified questions** (a floor derived from the exam format — see the doc) + payments live + no orphaned topics + road-markings written library + a claims audit; Stage 2 full launch at 800. Payments get built early but the **checkout stays closed** until the Stage 1 content floor is real. Tracked as **K53-32**.
 
@@ -158,4 +158,4 @@ Implemented Postgres tables (RLS, own-row policies): `profiles` (auto-created on
 - **`questions` has no audit trail.** Unlike `road_signs` (which carries `approved_by`, `verified_at`, `svg_hash`, `verification`), `review_status` on `questions` is a bare boolean a seed migration set — there is no record of *who* verified an item or *against what*. Add `approved_by`, `verified_at`, `generated_by`, `source_citation`, `objective_code` **before** any bulk import, or the accuracy gate (constraint 9) is decorative.
 - **`entitlements` has no unique constraint on `reference`** — only a non-unique index on `(user_id, expires_at)`. Concurrent PayFast ITN deliveries would double-grant. An idempotent payment webhook needs a unique index on `(source, reference)` plus upsert-on-conflict; careful code alone won't do it.
 
-**Learning-objective codes** tie questions to lessons via `questions.objective_code`: signs → `road_signs.code` (e.g. `R1`), rules → `RR1`–`RR10` (`src/content/road-rules.ts`), controls → `VC1`–`VC11` (`src/content/vehicle-controls.ts`). All three series exist. The gap is **coverage, not scheme**: only 26 of 125 questions carry a code, and many rules questions have no rule object to point at (see the orphaned-topic list in `docs/rules-coverage-checklist.md`) — mapping those is blocked until the missing learning objects are written.
+**Learning-objective codes** tie questions to lessons via `questions.objective_code`: signs → `road_signs.code` (e.g. `R1`), rules → `RR1`–`RR26` (`src/content/road-rules.ts`), controls → `VC1`–`VC22` (`src/content/vehicle-controls.ts`). All three series exist. **Codes are shared by design** — several questions per objective is what an objective is for (11 of the `VC*` codes carry more than one), so a repeated code is not a mis-mapping. Coverage after the 2026-07-24 backfill: **112 of 124** approved questions carry one — rules 41/41, controls 37/37, **signs 34/46**. The remaining gap is signs items testing guidance/information classes the library does not hold (see `docs/question-verify/approved-bank-findings.md` §7) plus the orphaned rules topics in `docs/rules-coverage-checklist.md`.
