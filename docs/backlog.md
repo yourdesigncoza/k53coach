@@ -92,6 +92,14 @@ several translatable fields each. This is the natural next step once phase 1 shi
 - **Exam-attempt retention (POPIA).** `exam_attempts` stores a minor's answers +
   AI assessment server-side (paid, consented) — define a retention/erase rule
   before production.
+- **White-labelling for driving schools.** Offer the platform to schools under
+  their own name and domain. Assessed 2026-07-28: **retrofit, do not fork** —
+  content stays global, only branding + learner data are tenant-scoped. Phase 0
+  (extract `src/lib/brand.ts`, add nullable `tenant_id` to the five learner
+  tables) is ~2 days and worth doing early because backfilling that column after
+  launch is far more expensive. Phases 1–3 wait for a signed school and must not
+  start before the Stage 1 gate. Full plan, schema and gotchas:
+  `docs/white-label-plan.md`. Awaiting John's decision.
 - **Afrikaans review.** New `mock`/`exam`/`examResult`/`assessment` namespaces in
   `messages/af.json` are first-draft (like the rest); needs native review. The
   AI-generated assessment prose stays English (deferred bilingual content pass).
