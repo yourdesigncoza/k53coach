@@ -61,3 +61,8 @@ ui-design/*
 
 # Local-only Claude Code project config (skills, settings) — never share to the repo
 .claude/
+
+# Circulated "memo" scans of live licence-test terminals. Not a permitted content source
+# and must never reach the remote. Only the derived format/coverage metadata in
+# docs/exam-format-analysis/ is tracked.
+docs/k53-study-notes-by-shool/

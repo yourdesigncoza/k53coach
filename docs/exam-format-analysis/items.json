@@ -1,0 +1,1969 @@
+{
+ "terminal": [
+  {
+   "subtopic": "accelerator-purpose",
+   "topic": "controls",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2C71"
+   ],
+   "positions": [
+    49
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "braking-distance",
+   "topic": "controls",
+   "archetype": "control-number+combination-select",
+   "visual": "controls-diagram",
+   "visual_desc": "line drawing of steering wheel/column/pedals with numbered callouts",
+   "itemcodes": [
+    "2C88"
+   ],
+   "positions": [
+    44
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": [
+    "control-number and combination-select COMPOSE - hardest observed archetype"
+   ]
+  },
+  {
+   "subtopic": "clutch-function",
+   "topic": "controls",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2C68"
+   ],
+   "positions": [
+    49
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item. A1 Q49=clutch, A2 Q49=accelerator - different items same position"
+   ]
+  },
+  {
+   "subtopic": "control-identification",
+   "topic": "controls",
+   "archetype": "control-number",
+   "visual": "controls-diagram",
+   "visual_desc": "windscreen/dashboard/steering wheel/indicator stalk/ignition/pedals w/ numbered callouts",
+   "itemcodes": [
+    "2C50"
+   ],
+   "positions": [
+    48
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "INVERSE control-number form: number -> control NAME. One asset supports 4 question directions."
+   ]
+  },
+  {
+   "subtopic": "gear-selection",
+   "topic": "controls",
+   "archetype": "control-number",
+   "visual": "controls-diagram",
+   "visual_desc": "dashboard/steering column line drawing w/ numbered callouts",
+   "itemcodes": [
+    "2C44"
+   ],
+   "positions": [
+    32,
+    55
+   ],
+   "shots": 2,
+   "n_items": 2,
+   "notes": [
+    "2nd control-number item; options are number PAIRS - same diagram asset reused across items",
+    "NEW A1 item; 3rd control-number item, single-number options"
+   ]
+  },
+  {
+   "subtopic": "heavy-vehicle-brakes",
+   "topic": "controls",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R12"
+   ],
+   "positions": [
+    45
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "parking-brake",
+   "topic": "controls",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R14"
+   ],
+   "positions": [
+    7
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "steering-control",
+   "topic": "controls",
+   "archetype": "control-number",
+   "visual": "controls-diagram",
+   "visual_desc": null,
+   "itemcodes": [
+    "2C89"
+   ],
+   "positions": [
+    56
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "bus-lane",
+   "topic": "markings",
+   "archetype": "marking-meaning",
+   "visual": "road-marking-diagram",
+   "visual_desc": "plan view roadway, yellow lane line + 'BUS' legend painted in lane",
+   "itemcodes": [
+    "2544"
+   ],
+   "positions": [
+    24
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": [
+    "2nd road-marking item"
+   ]
+  },
+  {
+   "subtopic": "lane-reduction-from-right",
+   "topic": "markings",
+   "archetype": "marking-meaning",
+   "visual": "road-marking-diagram",
+   "visual_desc": "plan view, tapering lane arrows merging from right",
+   "itemcodes": [],
+   "positions": [
+    52
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item; new marking topic (lane reduction)"
+   ]
+  },
+  {
+   "subtopic": "no-parking",
+   "topic": "markings",
+   "archetype": "marking-meaning",
+   "visual": "road-marking-diagram",
+   "visual_desc": "plan view, edge-line marking w/ black arrow indicating side of road",
+   "itemcodes": [
+    "1558",
+    "2558"
+   ],
+   "positions": [
+    53
+   ],
+   "shots": 3,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "pedestrian-crossing",
+   "topic": "markings",
+   "archetype": "marking-to-sign-link",
+   "visual": "road-marking-diagram",
+   "visual_desc": "plan view, zebra/pedestrian crossing bars across roadway",
+   "itemcodes": [
+    "539"
+   ],
+   "positions": [
+    41
+   ],
+   "shots": 3,
+   "n_items": 1,
+   "notes": [
+    "3rd marking item; cross-topic archetype (marking -> associated sign)"
+   ]
+  },
+  {
+   "subtopic": "railway-level-crossing",
+   "topic": "markings",
+   "archetype": "marking-meaning",
+   "visual": "road-marking-diagram",
+   "visual_desc": "plan view, white 'X' marking painted on carriageway",
+   "itemcodes": [
+    "579"
+   ],
+   "positions": [
+    39
+   ],
+   "shots": 3,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "railway-yield-marking",
+   "topic": "markings",
+   "archetype": "marking-meaning",
+   "visual": "road-marking-diagram",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    25
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "reversible-lane",
+   "topic": "markings",
+   "archetype": "marking-meaning",
+   "visual": "road-marking-diagram",
+   "visual_desc": "plan view, centre lane bounded by broken lines both sides (reversible lane)",
+   "itemcodes": [],
+   "positions": [
+    26
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": [
+    "6th distinct marking topic"
+   ]
+  },
+  {
+   "subtopic": "yield-marking",
+   "topic": "markings",
+   "archetype": "marking-meaning",
+   "visual": "road-marking-diagram",
+   "visual_desc": "plan view of roadway, broken white line + yield markings across lane",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "ROAD MARKING question - we hold zero markings in road_signs"
+   ]
+  },
+  {
+   "subtopic": "body-protruding",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    47
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "cellphone-while-driving",
+   "topic": "rules",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R20"
+   ],
+   "positions": [
+    58
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "crossing-public-road",
+   "topic": "rules",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    7
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item"
+   ]
+  },
+  {
+   "subtopic": "documents",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    58
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "emergency-warning-signs-goods-vehicle",
+   "topic": "rules",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R129"
+   ],
+   "positions": [
+    28
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item"
+   ]
+  },
+  {
+   "subtopic": "excessive-noise",
+   "topic": "rules",
+   "archetype": "which-statement-correct",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R145"
+   ],
+   "positions": [
+    46
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": [
+    "P8 scope-error distractors: correct=unqualified rule, wrong=same rule scoped to 'urban area'/'outside built up area'"
+   ]
+  },
+  {
+   "subtopic": "exhaust-silencer",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    23
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "exhaust-silencer-heavy-vehicle",
+   "topic": "rules",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "2nd A4 page; same regulation as D-059 but a distinct item"
+   ]
+  },
+  {
+   "subtopic": "following-distance",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "1157",
+    "2R157"
+   ],
+   "positions": [
+    6,
+    23,
+    38
+   ],
+   "shots": 8,
+   "n_items": 2,
+   "notes": []
+  },
+  {
+   "subtopic": "freeway-prohibited-vehicles",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R172"
+   ],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "freeway-restrictions",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "headlights-when-required",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R245"
+   ],
+   "positions": [
+    30,
+    35
+   ],
+   "shots": 2,
+   "n_items": 2,
+   "notes": []
+  },
+  {
+   "subtopic": "heavy-vehicle-noise",
+   "topic": "rules",
+   "archetype": "which-statement-correct",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "3143"
+   ],
+   "positions": [
+    54
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": [
+    "P8 scope-error distractors, same regulation as D-024 -> one reg yields multiple items"
+   ]
+  },
+  {
+   "subtopic": "heavy-vehicle-speed-80",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R200"
+   ],
+   "positions": [
+    40,
+    60
+   ],
+   "shots": 4,
+   "n_items": 1,
+   "notes": [
+    "NEW SITTING - timer 49:55 outside A1/A2/A3 ranges"
+   ]
+  },
+  {
+   "subtopic": "lamps-when-switched-on",
+   "topic": "rules",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    8
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "learner-licence-conditions",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R159",
+    "2R198"
+   ],
+   "positions": [
+    21
+   ],
+   "shots": 4,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "legal-stopping-places",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R412"
+   ],
+   "positions": [
+    5,
+    59
+   ],
+   "shots": 3,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item"
+   ]
+  },
+  {
+   "subtopic": "lights",
+   "topic": "rules",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    8
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "lights-parked",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "29246"
+   ],
+   "positions": [
+    17
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "lights-parked-vehicle",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R245"
+   ],
+   "positions": [
+    17,
+    33
+   ],
+   "shots": 5,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "lights-when-switched-on",
+   "topic": "rules",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    19
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "moving-off",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    22
+   ],
+   "shots": 5,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "no-stopping-area-parking",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    64
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item - final question of the paper"
+   ]
+  },
+  {
+   "subtopic": "overtaking-prohibited",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "9269"
+   ],
+   "positions": [
+    27
+   ],
+   "shots": 4,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "parking-distance",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    12
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "parking-distance-from-edge",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    37
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item"
+   ]
+  },
+  {
+   "subtopic": "pedal-cycles-freeway",
+   "topic": "rules",
+   "archetype": "which-statement-correct",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "175"
+   ],
+   "positions": [
+    30
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": [
+    "NEW item - A1 Q30, not present in paper A"
+   ]
+  },
+  {
+   "subtopic": "prohibited-acts",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    57
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "prohibited-acts-vehicle",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R134"
+   ],
+   "positions": [
+    57
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "refuelling-engine-off",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R176"
+   ],
+   "positions": [
+    43
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "robot-red-flashing-arrow",
+   "topic": "rules",
+   "archetype": "scenario",
+   "visual": "robot",
+   "visual_desc": "traffic light, red aspect + flashing red left-arrow",
+   "itemcodes": [
+    "2508"
+   ],
+   "positions": [
+    59
+   ],
+   "shots": 3,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "scenario-urban-right-turn",
+   "topic": "rules",
+   "archetype": "scenario",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    64
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "silencer-required",
+   "topic": "rules",
+   "archetype": "which-statement-correct",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R154"
+   ],
+   "positions": [
+    46
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "trailers-reflective-material",
+   "topic": "rules",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R242"
+   ],
+   "positions": [
+    1,
+    61
+   ],
+   "shots": 3,
+   "n_items": 1,
+   "notes": [
+    "no Previous button => Q1; timer 39:16 outside A1/A2 ranges",
+    "CONFIRMED KEY CONTRADICTION vs D-080/A-33 at 220dpi: identical stem+options, opposite key. Here correct='sides and rear'.",
+    "re-confirms key contradiction vs D-080 (A3 sitting)"
+   ]
+  },
+  {
+   "subtopic": "vehicle-equipment",
+   "topic": "rules",
+   "archetype": "which-statement-correct",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    46
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "vehicle-equipment-noise",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    54
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "vehicle-equipment-spotlamp",
+   "topic": "rules",
+   "archetype": "which-statement-correct",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "2R205"
+   ],
+   "positions": [
+    10,
+    52
+   ],
+   "shots": 5,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "which-side-of-roadway",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    14
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item. POSSIBLE KEY ERROR: marked answer is the 'may encroach right if car ahead slow' option rather than 'shall drive on the left'. Stem partially cut - verify."
+   ]
+  },
+  {
+   "subtopic": "arrestor-bed",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "red/white checkerboard panel with black left arrow (emergency escape ramp)",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "chevron-barrier-board",
+   "topic": "signs",
+   "archetype": "sign-reaction",
+   "visual": "sign",
+   "visual_desc": "red/white chevron barrier board",
+   "itemcodes": [
+    "342"
+   ],
+   "positions": [
+    60
+   ],
+   "shots": 3,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "delivery-vehicle-left-turn",
+   "topic": "signs",
+   "archetype": "sign-reaction",
+   "visual": "sign+plate",
+   "visual_desc": "blue circle white left arrow + delivery-vehicle plate",
+   "itemcodes": [],
+   "positions": [
+    20
+   ],
+   "shots": 3,
+   "n_items": 1,
+   "notes": [
+    "Facebook overlay '[sharer name redacted] YESTERDAY AT 18:23' - screenshot of a screenshot"
+   ]
+  },
+  {
+   "subtopic": "freeway-direction",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "blue rect '(N12)' over freeway pictogram + up arrow",
+   "itemcodes": [
+    "2522"
+   ],
+   "positions": [
+    47
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item"
+   ]
+  },
+  {
+   "subtopic": "high-speed-exit",
+   "topic": "signs",
+   "archetype": "sign-meaning-numeric",
+   "visual": "sign",
+   "visual_desc": "blue rect, white diagonal bar (high-speed exit ahead)",
+   "itemcodes": [
+    "2527",
+    "527"
+   ],
+   "positions": [
+    61,
+    63
+   ],
+   "shots": 4,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "information-sign-classification",
+   "topic": "signs",
+   "archetype": "sign-classification",
+   "visual": "sign",
+   "visual_desc": "green rect, white T-shape, red bar across top (information sign)",
+   "itemcodes": [
+    "1539"
+   ],
+   "positions": [
+    48
+   ],
+   "shots": 3,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "keep-left-lane",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "blue circle, white arrow pointing down-left (keep left / pass left of obstacle)",
+   "itemcodes": [
+    "25106"
+   ],
+   "positions": [
+    62
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": [
+    "Facebook overlay '[sharer name redacted] YESTERDAY AT 18:24'"
+   ]
+  },
+  {
+   "subtopic": "lane-control-signal",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "signal",
+   "visual_desc": "overhead lane-control signal, green downward arrow on black",
+   "itemcodes": [
+    "25348"
+   ],
+   "positions": [
+    18
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "minimum-speed-right-lane",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "two lanes w/ up arrows, blue circle '60' (minimum speed lane sign)",
+   "itemcodes": [
+    "2513"
+   ],
+   "positions": [
+    50
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "motorcycle-reserved-lane",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "blue panel, white motorcycle over large white 'R' (reserved lane)",
+   "itemcodes": [
+    "5301"
+   ],
+   "positions": [
+    38
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "no-overtaking-goods-vehicle",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "red prohibition circle, two goods-vehicle silhouettes, diagonal bar",
+   "itemcodes": [
+    "5241"
+   ],
+   "positions": [
+    34
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item"
+   ]
+  },
+  {
+   "subtopic": "no-stopping-checkerboard",
+   "topic": "signs",
+   "archetype": "sign-reaction",
+   "visual": "sign",
+   "visual_desc": "red/white checkerboard panel with black arrow (no stopping)",
+   "itemcodes": [],
+   "positions": [
+    58
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "pedestrian-signal",
+   "topic": "signs",
+   "archetype": "which-statement-correct",
+   "visual": "signal",
+   "visual_desc": "pedestrian signal head, red standing man over green walking man",
+   "itemcodes": [
+    "25342"
+   ],
+   "positions": [],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "regulatory",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign+plate",
+   "visual_desc": "blue circle w/ white left-turn arrow, below it red-bordered delivery-vehicle plate",
+   "itemcodes": [],
+   "positions": [
+    20
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "road-ends-T-junction",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "green rect, white T, red bar",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "SAME artwork as A-02/A-61 but different item (meaning vs classification) - bank reuses artwork across item angles"
+   ]
+  },
+  {
+   "subtopic": "roadworks-lane-closure",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "yellow temporary sign, lane-merge arrows w/ orange closed lane, '1km' plate",
+   "itemcodes": [
+    "2514"
+   ],
+   "positions": [
+    51
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "route-marker-alternative",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "green panel, yellow circle with black 'A', white right-turn arrow (alternative route)",
+   "itemcodes": [],
+   "positions": [
+    13
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": [
+    "social overlay '[sharer name redacted] YESTERDAY AT 18:24' - chain-shared"
+   ]
+  },
+  {
+   "subtopic": "side-road-junction-warning",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "red triangle, black rotated-T (side road junction from right)",
+   "itemcodes": [],
+   "positions": [
+    29
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item"
+   ]
+  },
+  {
+   "subtopic": "stop-ahead-warning",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "triangular warning w/ STOP octagon inside, flashing amber lamp, '200 m' plate",
+   "itemcodes": [
+    "25334"
+   ],
+   "positions": [
+    54
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "temporary-sign-colour",
+   "topic": "signs",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    15
+   ],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "temporary-sign-implication",
+   "topic": "signs",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    9
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW A1 item"
+   ]
+  },
+  {
+   "subtopic": "temporary-sign-legal-significance",
+   "topic": "signs",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    26
+   ],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "temporary-sign-purpose",
+   "topic": "signs",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [
+    "253"
+   ],
+   "positions": [
+    35
+   ],
+   "shots": 3,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "temporary-signs",
+   "topic": "signs",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [
+    15,
+    26
+   ],
+   "shots": 2,
+   "n_items": 2,
+   "notes": []
+  },
+  {
+   "subtopic": "toll-route-marker",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "blue guidance panel: 'N3 (T) Harrismith 105 / R103 (A) Harrismith 12' toll + alternative route",
+   "itemcodes": [],
+   "positions": [
+    44
+   ],
+   "shots": 3,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "traffic-light-camera",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign+robot",
+   "visual_desc": "traffic light + camera-on-tripod symbol in box",
+   "itemcodes": [
+    "2526",
+    "2528"
+   ],
+   "positions": [
+    33
+   ],
+   "shots": 4,
+   "n_items": 1,
+   "notes": []
+  }
+ ],
+ "app": [
+  {
+   "subtopic": "accelerator-identification",
+   "topic": "controls",
+   "archetype": "control-number+combination-select",
+   "visual": "controls-diagram",
+   "visual_desc": "11-callout dashboard: rear-view mirror, wipers, 2x side mirrors, steering wheel, ignition, gear lever, handbrake, clutch, brake, accelerator, indicator stalk",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "automatic-vs-manual-controls",
+   "topic": "controls",
+   "archetype": "control-number+combination-select",
+   "visual": "controls-diagram",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "asks which control is ABSENT in an automatic - tests the diagram in the negative"
+   ]
+  },
+  {
+   "subtopic": "braking-distance",
+   "topic": "controls",
+   "archetype": "control-number+combination-select",
+   "visual": "controls-diagram",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "hooter-identification",
+   "topic": "controls",
+   "archetype": "control-number",
+   "visual": "controls-diagram",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "callout 11 = hooter (steering wheel centre)"
+   ]
+  },
+  {
+   "subtopic": "sharp-curve-controls",
+   "topic": "controls",
+   "archetype": "control-number",
+   "visual": "controls-diagram",
+   "visual_desc": "SAME 11-callout dashboard diagram as the live terminal",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "identical controls diagram to live terminal - it is the standard official artwork"
+   ]
+  },
+  {
+   "subtopic": "RT2-pedestrian-lines",
+   "topic": "markings",
+   "archetype": "combination-select",
+   "visual": "road-marking-diagram",
+   "visual_desc": "SARTSM-style intersection sketch, yellow chevron island, RT2 callout",
+   "itemcodes": [
+    "RT2"
+   ],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "uses SARTSM marking codes - competitor covers markings, we cover none"
+   ]
+  },
+  {
+   "subtopic": "ambulance-parking-bay",
+   "topic": "markings",
+   "archetype": "marking-meaning",
+   "visual": "road-marking-diagram",
+   "visual_desc": "yellow open box marking at kerb with circled 'A'",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW marking topic - lettered reserved bay"
+   ]
+  },
+  {
+   "subtopic": "lane-direction-arrows",
+   "topic": "markings",
+   "archetype": "marking-meaning",
+   "visual": "road-marking-diagram",
+   "visual_desc": "five yellow lane arrows labelled A-E: straight, left-merge, right-merge variants",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW marking topic - lane direction arrows"
+   ]
+  },
+  {
+   "subtopic": "no-overtaking-barrier-lines",
+   "topic": "markings",
+   "archetype": "marking-meaning",
+   "visual": "road-marking-diagram",
+   "visual_desc": "three barrier-line configurations with directional arrows showing which side may cross",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW marking topic - barrier / no-crossing lines"
+   ]
+  },
+  {
+   "subtopic": "parking-permitted",
+   "topic": "markings",
+   "archetype": "marking-meaning",
+   "visual": "road-marking-diagram",
+   "visual_desc": "plan view, white T-bar parking bay markings at road edge",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "abandoned-vehicle-definition",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "(iii) is 'both of these' - nested combination inside the roman-numeral list"
+   ]
+  },
+  {
+   "subtopic": "alcohol-limit-professional-driver",
+   "topic": "rules",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "professional-driver limit differs from general limit - content nuance we should carry"
+   ]
+  },
+  {
+   "subtopic": "blocking-intersection",
+   "topic": "rules",
+   "archetype": "true-false-malformed",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "MALFORMED: 'Only if it is an emergency'/'True'/'False'/'None of the above' - non-parallel options"
+   ]
+  },
+  {
+   "subtopic": "carrying-learners-licence",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "combination expressed as 'B and C above' rather than roman-numeral form"
+   ]
+  },
+  {
+   "subtopic": "driving-on-left-shoulder",
+   "topic": "rules",
+   "archetype": "true-false-qualified",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "true/false where correct option adds a QUALIFIER (150m visibility) - tests the condition not the fact"
+   ]
+  },
+  {
+   "subtopic": "freeway-prohibited-vehicles",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "fuel-tank-cap-roadworthiness",
+   "topic": "rules",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "distractors vary only by cap COLOUR - irrelevant-attribute distractor technique"
+   ]
+  },
+  {
+   "subtopic": "lane-change-procedure",
+   "topic": "rules",
+   "archetype": "procedure-sequence",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "NEW ARCHETYPE P14: correct = full K53 observation sequence; distractors = same sequence with steps OMITTED"
+   ]
+  },
+  {
+   "subtopic": "officer-overrides-signs",
+   "topic": "rules",
+   "archetype": "stem-completion",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "reversing-distance",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "speed-limit-when-overtaking",
+   "topic": "rules",
+   "archetype": "true-false-malformed",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "MALFORMED: 'False'/'True'/'Neither' - 'Neither' is not a valid true-false option"
+   ]
+  },
+  {
+   "subtopic": "stopping-prohibited-places",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "negative stem, NOT in red caps"
+   ]
+  },
+  {
+   "subtopic": "traffic-circle-right-of-way",
+   "topic": "rules",
+   "archetype": "combination-select",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "windscreen-wiper-requirement",
+   "topic": "rules",
+   "archetype": "direct-question",
+   "visual": "none",
+   "visual_desc": null,
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "arrestor-bed-advance",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "red-bordered, left arrow + red/white checkerboard + '3 km'",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "lazy distractors ('Old gas station'/'Oil station') vs terminal's plausible near-misses"
+   ]
+  },
+  {
+   "subtopic": "concealed-driveways-left",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "red triangle, wavy vertical line with side arrow",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "distractor pair differs only by left/right - good mirror-image distractor technique"
+   ]
+  },
+  {
+   "subtopic": "cul-de-sac-right",
+   "topic": "signs",
+   "archetype": "combination-select",
+   "visual": "sign",
+   "visual_desc": "green rect, white H-rotated shape w/ red bar on right arm (cul-de-sac to right)",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "FOUR options - differs from live terminal's three"
+   ]
+  },
+  {
+   "subtopic": "diplomatic-corps-reserved-parking",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "blue panel, white oval 'CD' over large 'R'",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "niche reservation sign - almost certainly absent from our 362"
+   ]
+  },
+  {
+   "subtopic": "engage-lower-gear-descent",
+   "topic": "signs",
+   "archetype": "sign-reaction",
+   "visual": "sign",
+   "visual_desc": "red-bordered, truck on descent gradient + gear lever arrow to 'L'",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "exit-sequence-guidance",
+   "topic": "signs",
+   "archetype": "sign-classification",
+   "visual": "sign",
+   "visual_desc": "blue panel 'BLOEMFONTEIN' + numbered exits 202/198/190 with distances",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "guidance-sign TYPE naming (exit sequence vs cross-route vs far-side on-ramp)"
+   ]
+  },
+  {
+   "subtopic": "freeway-entry-toll-route",
+   "topic": "signs",
+   "archetype": "sign-reaction",
+   "visual": "sign",
+   "visual_desc": "blue (N17 T) + freeway pictogram + W + right arrow",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "freeway-exit-guidance",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "blue guidance: '100 SANDTON', N1 + M9 Rivonia Rd 1km, exit arrow",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "freeway-split-lane-destinations",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "blue overhead: exit 147, N4 Pretoria/Rustenburg/Witbank 500m + N1 Pietersburg, lane arrows",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "lane-increase-ahead",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "red-bordered white, two black arrows diverging upward",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "long-vehicle-prohibition-timeplate",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign+plate",
+   "visual_desc": "red circle long-vehicle '15 m' + red time plate 07:00-09:00 / 16:00-18:00",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "sign + supplementary TIME plate - archetype we lack"
+   ]
+  },
+  {
+   "subtopic": "mine-in-area",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "GREEN panel, white mine headgear pictogram",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "national-park-tourism",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "BROWN tourism panel, white kudu head",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "BROWN tourism sign family - not in our taxonomy"
+   ]
+  },
+  {
+   "subtopic": "no-entry",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "red disc with white horizontal bar",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "pedestrian-crossing-warning",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "red triangle, pedestrian on zebra bars",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "reservation-light-motor-vehicles",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "blue circle, white motor car (reserved for light motor vehicles)",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "stem uses official term 'command sign' - SA sub-taxonomy our SignCategory lacks"
+   ]
+  },
+  {
+   "subtopic": "reserved-lane-goods-over-10t",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "blue circle, white goods vehicle with '10t'",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 2,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "rest-and-service-sequence",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "BROWN panel N1, exits 92 Zambezi Petroport / 131 Kranskop 1 Stop, fuel+meal pictograms",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "BROWN service sign family - no such category in our road_signs"
+   ]
+  },
+  {
+   "subtopic": "road-narrows-both-sides",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "red triangle, two black inward-bending lines",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "option D is 'A and C' - combination option inside a 4-option set"
+   ]
+  },
+  {
+   "subtopic": "roadworks-warning-distance-plate",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign+plate",
+   "visual_desc": "yellow/red triangle roadworks digger + '300 m' yellow plate",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "robot-green-flashing-right-arrow",
+   "topic": "signs",
+   "archetype": "combination-select",
+   "visual": "robot",
+   "visual_desc": "traffic light red + amber right arrow + flashing green right arrow",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "signal artwork combined with combination-select"
+   ]
+  },
+  {
+   "subtopic": "side-road-junction-warning",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "red triangle, black T-junction from right",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "staggered-junction-warning",
+   "topic": "signs",
+   "archetype": "sign-context",
+   "visual": "sign",
+   "visual_desc": "red triangle, black staggered-junction symbol",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "archetype 'where can you find this sign' - not seen in terminal"
+   ]
+  },
+  {
+   "subtopic": "toll-route-marker",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "blue guidance N3(T)/R103(A) Harrismith",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "same sign as terminal A-47 - competitor covers same asset"
+   ]
+  },
+  {
+   "subtopic": "traffic-circle-ahead",
+   "topic": "signs",
+   "archetype": "sign-reaction",
+   "visual": "sign",
+   "visual_desc": "red triangle, three circular arrows (traffic circle ahead)",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "distractor pair differs only by left/right yield direction"
+   ]
+  },
+  {
+   "subtopic": "transport-modal-point",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "green rect, pedestrian centre w/ train/bus/car/minibus radiating (modal interchange)",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "transport-terminus-ship",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "green rect, white ship over waves, left-turn arrow",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": []
+  },
+  {
+   "subtopic": "variable-message-sign",
+   "topic": "signs",
+   "archetype": "sign-meaning",
+   "visual": "sign",
+   "visual_desc": "dot-matrix VMS: red triangle skidding car + '80km/h'",
+   "itemcodes": [],
+   "positions": [],
+   "shots": 1,
+   "n_items": 1,
+   "notes": [
+    "VMS - not seen in terminal set, we likely have no coverage"
+   ]
+  }
+ ]
+}
