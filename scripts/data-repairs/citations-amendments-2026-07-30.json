@@ -1,0 +1,23 @@
+{
+  "description": "Citations for the two items that turn on post-2000 amendments. Our working copy of the Regulations is the original GG 20963 of 17 March 2000, so both were uncitable until the amending instruments were obtained on 2026-07-30. Primary gazettes are now in init/ (gitignored) and every quote below was grepped out of them, not taken from a summary.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.RR-029",
+      "set": {
+        "source_citation": "NRTR reg 213(6A), inserted by GN R.846 reg 52(d), GG 38142 (31 Oct 2014), in force 6 months after publication",
+        "explanation": "A child under three is an \"infant\" and must travel in an appropriate child restraint — regulation 213(6A), added in 2014. An adult's lap is not a restraint, and an adult seatbelt does not fit an infant safely. The requirement does not apply on a minibus, midibus or bus operating for reward."
+      },
+      "why": "Was uncitable: the 2000 text has no such provision, and reg 213(1)(b) defines \"child\" as a person 'between the age of three years and 14 years', so under-threes fell outside it entirely. GN R.846 of 2014 reg 52 fixes that — 52(c) adds 213(1)(c) 'an infant is a person below the age of three years' and 52(d) inserts 213(6A): 'The driver of a motor vehicle operated on a public road shall ensure that an infant traveling in such a motor vehicle is seated on an appropriate child restraint: Provided that this provision shall not apply in a case of a minibus, midibus or bus operating for reward.' Note it is 213(6A), NOT 213(4A) as first assumed, and the 'child' definition was not replaced — a separate 'infant' definition was added alongside it. Commencement: R.846 reg 78(b) deferred one regulation by 6 months and named 'Regulation 53', which Correction Notice 975, GG 38185 (6 Nov 2014) changed to 'Regulation 52' — so it is this amendment that was deferred, landing 30 April / 1 May 2015. That date is the arithmetic of the deferral, not a date any gazette states, so the citation records the deferral rather than asserting the date."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-063",
+      "set": {
+        "source_citation": "NRTA s 15(1)(a)(ii); NRTR reg 101(1) as extended by GN 134, GG 32959 (17 Feb 2010)",
+        "explanation": "A light motor vehicle learner's licence may be obtained at 17, and is valid for 24 months. The 24-month period comes from a 2010 ministerial notice: regulation 101(1) itself still reads 18 months, and General Notice 134 of 17 February 2010 extended it. Each wrong option changes exactly one of the two figures."
+      },
+      "why": "This item was parked because the citation refuted its own answer — our copy of reg 101(1) says 18 months and the item says 24. The answer was right and the citation was incomplete. Reg 101(1) was NEVER textually amended: the change was made by ministerial notice UNDER it, which is why every consolidated copy still literally reads 18 months. GN 134, GG 32959 (17 Feb 2010): 'I, S'busiso Joel Ndebele, Minister of Transport, acting in terms of Section 75 read with regulation 101 of the National Road Traffic Regulations, 2000 … hereby extend the period of validity of a learner's licence from 18 months to 24 months.' Citing reg 101(1) alone would give 18 months and be wrong — the citation must carry the notice. Item stays review_status='draft'; this only makes it approvable."
+    }
+  ]
+}

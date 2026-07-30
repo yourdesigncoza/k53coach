@@ -40,6 +40,7 @@ a re-run reports "already applied" rather than writing again.
 | `citations-rules-signs-2026-07-30.json` | 84 — rules + signs citations |
 | `question-fixes-citation-pass-2026-07-30.json` | 4 — defects the citation pass surfaced |
 | `question-fixes-round2-2026-07-30.json` | 6 — defects the citation pass recorded in its notes |
+| `citations-amendments-2026-07-30.json` | 2 — the two items that needed post-2000 amending notices |
 
 On a fresh database: `supabase db push`, then replay these in the order above.
 
@@ -56,10 +57,25 @@ but is *not* the source of the rule tested — reg 150 requires a motorcycle to 
 does not tell you to use both. Do not strip that qualifier when this feeds a UI or an audit report,
 or the field will assert that technique is law.
 
-**Our copy of the Regulations is the 2000 original.** Two items (`RR-029` child restraints,
-`RR-063` learner's-licence validity) turn on post-2000 amendments we do not hold, so they cannot be
-cited no matter that their answers are right. Every duration, fee and age in the bank carries the
-same exposure until the amending notices are in `init/`.
+**Our working copy of the Regulations is the 2000 original — and the amendments matter.** Both items
+this blocked are now cited, and the two instruments are in `init/` (gitignored):
+
+- **Learner's-licence validity (`RR-063`).** Reg 101(1) was **never textually amended** — it still
+  reads *18 months* in every consolidated copy. The change was made by ministerial notice **under**
+  the regulation: **GN 134, GG 32959 (17 Feb 2010)**, *"hereby extend the period of validity of a
+  learner's licence from 18 months to 24 months"*. Citing reg 101(1) alone gives 18 months and is
+  wrong; the citation has to carry the notice.
+- **Child restraints (`RR-029`).** It is **reg 213(6A)**, not 213(4A), inserted by
+  **GN R.846 reg 52(d), GG 38142 (31 Oct 2014)**. The 2000 definition of *child* ("between the age of
+  three years and 14 years") was **not** replaced — a separate definition of *infant* was added at
+  213(1)(c). Commencement has a wrinkle: R.846 reg 78(b) deferred one regulation by six months and
+  named "Regulation 53", which **Correction Notice 975, GG 38185 (6 Nov 2014)** changed to
+  "Regulation 52" — so it is this amendment that was deferred, landing 30 April / 1 May 2015. No
+  gazette states that date; it is the arithmetic of the deferral, and the citation says so.
+
+The general exposure stands: every duration, fee and age in the bank rests on a 2000 text that may
+have been amended. These two were found because a reviewer followed the citation and it refuted the
+answer — that is the check that catches the rest.
 
 ## Open
 

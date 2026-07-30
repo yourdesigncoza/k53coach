@@ -53,12 +53,19 @@ regenerated from it inherits the defect.
 ## 3. An amendment gap that would embarrass us
 
 `RR-063` says a learner's licence is valid **24 months**. That is correct in current law — but
-**reg 101(1) as we hold it says 18 months**, and the item cites the 2000 regulations. Follow the
-citation and it refutes the answer.
+**reg 101(1) as we hold it says 18 months**, and the item cited the 2000 regulations. Follow the
+citation and it refuted the answer.
 
-Reg 101(1) was amended after 2000. Until the amending notice is in `init/`, this item cannot pass the
-accuracy gate no matter that its answer is right. **Every duration, fee and age in the bank carries the
-same exposure** — our NRTR copy is the 2000 original.
+> **Resolved 2026-07-30.** The instrument is now in `init/`, and the explanation is more interesting
+> than expected: **reg 101(1) was never textually amended.** It still reads 18 months in every
+> consolidated copy. The change was made by ministerial notice *under* the regulation —
+> **GN 134, GG 32959 (17 Feb 2010)**: *"hereby extend the period of validity of a learner's licence
+> from 18 months to 24 months"*. So the citation must name the notice; reg 101(1) alone is wrong.
+> A reviewer following the reg text would have "refuted" a correct answer forever.
+
+**Every duration, fee and age in the bank carries the same exposure** — our NRTR copy is the 2000
+original. `RR-029` (child restraints) was the same story: reg **213(6A)**, inserted by GN R.846 of
+2014, with no equivalent in the 2000 text at all.
 
 ## 4. Three items rest on a number that is not in the law
 
@@ -120,5 +127,5 @@ Recommended order:
 1. Sweep and fix the `s 4(3)` citation block (5 items, plus check the approved 125).
 2. Fix `src/content/road-rules.ts:381`, then `RR-096`/`RR-097`.
 3. Rewrite the 5 AMBIGUOUS stems and the 15 explanation defects.
-4. Park `RR-063` until the amending notice is obtained.
+4. ~~Park `RR-063` until the amending notice is obtained.~~ **Done** — GN 134 of 2010 obtained and cited.
 5. Human pass over the 54, then apply with `apply-question-verification.mjs --by "<name>"`.
