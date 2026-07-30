@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+
+  <ns0:title id="title">RM13 No Parking Line</ns0:title>
+  <ns0:desc id="desc">Editable SVG showing a solid yellow no-parking line for continuous restriction and a broken yellow no-parking line for selective periods.</ns0:desc>
+
+  <ns0:rect id="background" width="1200" height="820" fill="#F7F7F4" />
+
+  <ns0:g id="rm13-solid-panel">
+    <ns0:rect x="70" y="145" width="500" height="520" rx="10" fill="#FFFFFF" stroke="#D7D7D2" stroke-width="3" />
+
+    <ns0:rect x="105" y="215" width="430" height="400" fill="#575A5D" />
+
+    
+    <ns0:rect x="105" y="215" width="105" height="400" fill="#D6D1C8" />
+    <ns0:rect x="198" y="215" width="16" height="400" fill="#AAA59D" />
+
+    
+    <ns0:rect id="rm13-solid-yellow-line" x="230" y="235" width="18" height="360" fill="#F5C400" />
+
+    
+    <ns0:g id="solid-panel-lane-line" fill="#FFFFFF">
+      <ns0:rect x="410" y="235" width="12" height="65" />
+      <ns0:rect x="410" y="350" width="12" height="65" />
+      <ns0:rect x="410" y="465" width="12" height="65" />
+      <ns0:rect x="410" y="580" width="12" height="15" />
+    </ns0:g>
+
+    
+    <ns0:path id="solid-panel-arrow" d="M325 555 V455 H310 L335 415 L360 455 H345 V555 Z" fill="#FFFFFF" />
+
+    </ns0:g>
+
+  
+  <ns0:g id="rm13-broken-panel">
+    <ns0:rect x="630" y="145" width="500" height="520" rx="10" fill="#FFFFFF" stroke="#D7D7D2" stroke-width="3" />
+
+    <ns0:rect x="665" y="215" width="430" height="400" fill="#575A5D" />
+
+    
+    <ns0:rect x="665" y="215" width="105" height="400" fill="#D6D1C8" />
+    <ns0:rect x="758" y="215" width="16" height="400" fill="#AAA59D" />
+
+    
+    <ns0:g id="rm13-broken-yellow-line" fill="#F5C400">
+      <ns0:rect x="790" y="235" width="18" height="72" />
+      <ns0:rect x="790" y="343" width="18" height="72" />
+      <ns0:rect x="790" y="451" width="18" height="72" />
+      <ns0:rect x="790" y="559" width="18" height="36" />
+    </ns0:g>
+
+    
+    <ns0:g id="broken-panel-lane-line" fill="#FFFFFF">
+      <ns0:rect x="970" y="235" width="12" height="65" />
+      <ns0:rect x="970" y="350" width="12" height="65" />
+      <ns0:rect x="970" y="465" width="12" height="65" />
+      <ns0:rect x="970" y="580" width="12" height="15" />
+    </ns0:g>
+
+    
+    <ns0:path id="broken-panel-arrow" d="M885 555 V455 H870 L895 415 L920 455 H905 V555 Z" fill="#FFFFFF" />
+
+    </ns0:g>
+
+  
+  <ns0:g id="notes" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+
+    </ns0:g>
+</ns0:svg>

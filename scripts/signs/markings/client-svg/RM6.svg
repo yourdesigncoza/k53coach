@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <ns0:title id="title">RM6 Parking Bays</ns0:title>
+  <ns0:desc id="desc">A roadside row of parallel parking bays marked with white T-shaped bay markings.</ns0:desc>
+
+  
+  <ns0:rect width="1200" height="760" fill="#F7F7F4" />
+
+  
+  <ns0:rect x="90" y="125" width="1020" height="105" fill="#D8D2C4" />
+  <ns0:rect x="90" y="220" width="1020" height="16" fill="#B7B0A2" />
+
+  
+  <ns0:rect x="90" y="236" width="1020" height="390" fill="#5B5E61" />
+
+  
+  <ns0:g id="rm6-bay-markings" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter">
+
+    
+    <ns0:path d="M180 245 V335 M180 335 H230" />
+
+    
+    <ns0:path d="M390 245 V335 M340 335 H440" />
+    <ns0:path d="M600 245 V335 M550 335 H650" />
+    <ns0:path d="M810 245 V335 M760 335 H860" />
+
+    
+    <ns0:path d="M1020 245 V335 M970 335 H1020" />
+  </ns0:g>
+
+  
+  <ns0:g font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#D9D9D9" text-anchor="middle">
+    </ns0:g>
+
+  
+  <ns0:path id="direction-arrow" d="M320 480 H785 V440 L885 510 L785 580 V540 H320 Z" fill="#FFFFFF" />
+
+  
+  <ns0:line x1="90" y1="626" x2="1110" y2="626" stroke="#303234" stroke-width="6" />
+
+  
+  </ns0:svg>

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <ns0:title id="title">RM4.1 Edge Line</ns0:title>
+  <ns0:desc id="desc">A two-way road with yellow continuous edge lines along both outer edges of the travelled way.</ns0:desc>
+
+  
+  <ns0:rect id="background" width="1200" height="700" fill="#F7F7F4" />
+  <ns0:rect id="upper-shoulder" x="90" y="110" width="1020" height="65" fill="#B7B09D" />
+  <ns0:rect id="lower-shoulder" x="90" y="525" width="1020" height="65" fill="#B7B09D" />
+
+  
+  <ns0:rect id="road" x="90" y="175" width="1020" height="350" fill="#5A5D60" />
+
+  
+  <ns0:g id="rm4-1-edge-lines" fill="#F5C400">
+    <ns0:rect x="120" y="190" width="960" height="16" rx="2" />
+    <ns0:rect x="120" y="494" width="960" height="16" rx="2" />
+  </ns0:g>
+
+  
+  <ns0:g id="centre-line" fill="#FFFFFF">
+    <ns0:rect x="140" y="343" width="95" height="14" rx="2" />
+    <ns0:rect x="285" y="343" width="95" height="14" rx="2" />
+    <ns0:rect x="430" y="343" width="95" height="14" rx="2" />
+    <ns0:rect x="575" y="343" width="95" height="14" rx="2" />
+    <ns0:rect x="720" y="343" width="95" height="14" rx="2" />
+    <ns0:rect x="865" y="343" width="95" height="14" rx="2" />
+    <ns0:rect x="1010" y="343" width="55" height="14" rx="2" />
+  </ns0:g>
+
+  
+  <ns0:g id="direction-arrows" fill="#FFFFFF">
+    
+    <ns0:path d="M320 250 H470 V220 L535 270 L470 320 V290 H320 Z" />
+    
+    <ns0:path d="M880 450 H730 V480 L665 430 L730 380 V410 H880 Z" />
+  </ns0:g>
+
+  
+  </ns0:svg>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="29.2 139.2 1341.6 551.6" role="img" aria-labelledby="title desc">
+  <title id="title">RM8 Mandatory Direction Arrows – Uniform Thickness</title>
+  <desc id="desc">Six yellow mandatory direction arrows with consistent shaft thickness. RM8.6 has a smooth split with arrowheads only at the left and right ends.</desc>
+
+  <defs>
+
+    <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="3.2" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" fill="#F5C400" />
+    </marker>
+  </defs>
+
+  <g id="road-panels" fill="#595C60" stroke="#303234" stroke-width="4">
+    <rect x="55" y="165" width="190" height="500" rx="8" />
+    <rect x="275" y="165" width="190" height="500" rx="8" />
+    <rect x="495" y="165" width="190" height="500" rx="8" />
+    <rect x="715" y="165" width="190" height="500" rx="8" />
+    <rect x="935" y="165" width="190" height="500" rx="8" />
+    <rect x="1155" y="165" width="190" height="500" rx="8" />
+  </g>
+
+
+  <g fill="none" stroke="#F5C400" stroke-width="24" stroke-linecap="butt" stroke-linejoin="round">
+
+
+    <path id="rm8-1" d="M160 590              V430              C160 360 132 320 92 286" marker-end="url(#arrowhead)" />
+
+
+    <path id="rm8-2-straight" d="M370 590 V255" marker-end="url(#arrowhead)" />
+    <path id="rm8-2-left" d="M370 455              C350 415 326 382 300 350" marker-end="url(#arrowhead)" />
+
+
+    <path id="rm8-3" d="M590 590 V255" marker-end="url(#arrowhead)" />
+
+
+    <path id="rm8-4-straight" d="M820 590 V255" marker-end="url(#arrowhead)" />
+    <path id="rm8-4-right" d="M820 455              C840 415 864 382 890 350" marker-end="url(#arrowhead)" />
+
+
+    <path id="rm8-5" d="M1020 590              V430              C1020 360 1048 320 1088 286" marker-end="url(#arrowhead)" />
+
+
+    <path id="rm8-6-stem" d="M1250 590 V430" />
+    <path id="rm8-6-left" d="M1250 430              C1238 380 1210 335 1175 300" marker-end="url(#arrowhead)" />
+    <path id="rm8-6-right" d="M1250 430              C1262 380 1290 335 1325 300" marker-end="url(#arrowhead)" />
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <g font-size="28" font-weight="700" fill="#202224">
+      </g>
+
+    <g font-size="19" fill="#4B4E51">
+      </g>
+  </g>
+
+  </svg>

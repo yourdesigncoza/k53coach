@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <ns0:title id="title">RM5 Painted Island</ns0:title>
+  <ns0:desc id="desc">A two-way road with a central painted island bounded by continuous white lines and filled with yellow diagonal bars.</ns0:desc>
+
+  
+  <ns0:rect id="background" width="1200" height="760" fill="#F7F7F4" />
+
+  
+  <ns0:rect id="road" x="90" y="120" width="1020" height="500" rx="10" fill="#5A5D60" />
+
+  
+  <ns0:line x1="90" y1="120" x2="1110" y2="120" stroke="#303234" stroke-width="6" />
+  <ns0:line x1="90" y1="620" x2="1110" y2="620" stroke="#303234" stroke-width="6" />
+
+  
+  <ns0:g id="rm5-boundary" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linejoin="round">
+    <ns0:path d="M220 330 L980 330" />
+    <ns0:path d="M220 430 L980 430" />
+  </ns0:g>
+
+  
+  <ns0:g id="rm5-bars" stroke="#F5C400" stroke-width="30" stroke-linecap="butt">
+    <ns0:line x1="250" y1="420" x2="340" y2="340" />
+    <ns0:line x1="350" y1="420" x2="440" y2="340" />
+    <ns0:line x1="450" y1="420" x2="540" y2="340" />
+    <ns0:line x1="550" y1="420" x2="640" y2="340" />
+    <ns0:line x1="650" y1="420" x2="740" y2="340" />
+    <ns0:line x1="750" y1="420" x2="840" y2="340" />
+    <ns0:line x1="850" y1="420" x2="940" y2="340" />
+  </ns0:g>
+
+  
+  <ns0:g id="direction-arrows" fill="#FFFFFF">
+    
+    <ns0:path d="M300 220 H470 V185 L545 250 L470 315 V280 H300 Z" />
+    
+    <ns0:path d="M900 520 H730 V555 L655 490 L730 425 V460 H900 Z" />
+  </ns0:g>
+
+  
+  </ns0:svg>

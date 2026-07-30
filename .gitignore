@@ -66,3 +66,13 @@ ui-design/*
 # and must never reach the remote. Only the derived format/coverage metadata in
 # docs/exam-format-analysis/ is tracked.
 docs/k53-study-notes-by-shool/
+
+# Extractor output for the DoT marking artwork. Byte-identical to public/markings/,
+# which is the copy the app serves — no reason to carry both.
+# Rebuild with: node scripts/signs/markings/extract-official-svg.mjs
+scripts/signs/markings/official-svg/
+
+# Markings verification worksheet: regenerable from the scripts, and it embeds 3 MB
+# of manual page renders derived from init/V1C7.pdf (itself local-only).
+# Rebuild with: node scripts/signs/markings/build-verify-page.mjs
+docs/markings-verify/

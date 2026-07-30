@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="17.2 7.2 1165.6 1185.6">
+  <defs>
+    <pattern id="grassPattern" width="18" height="18" patternUnits="userSpaceOnUse">
+      <rect width="18" height="18" fill="#667528"/>
+      <path d="M2 15l4-8m2 9l5-10m1 8l3-6" stroke="#788634" stroke-width="1"/>
+    </pattern>
+    <pattern id="roadPattern" width="22" height="22" patternUnits="userSpaceOnUse">
+      <rect width="22" height="22" fill="#55575a"/>
+      <path d="M2 5l5 2m7-4l5 3M3 16l6-2m6 5l4-3" stroke="#626468" stroke-width="1" opacity=".45"/>
+    </pattern>
+    <pattern id="pavingPattern" width="26" height="26" patternUnits="userSpaceOnUse">
+      <rect width="26" height="26" fill="#c6c2bc"/>
+      <path d="M0 0H26V26H0ZM13 0V26M0 13H26" fill="none" stroke="#9d9993" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#000" flood-opacity=".38"/>
+    </filter>
+  </defs>
+
+  <!-- grass corner blocks -->
+  <g id="grass">
+    <rect x="80" y="115" width="330" height="285" fill="url(#grassPattern)" stroke="#1d2508" stroke-width="2"/>
+    <rect x="790" y="115" width="330" height="285" fill="url(#grassPattern)" stroke="#1d2508" stroke-width="2"/>
+    <rect x="80" y="800" width="330" height="285" fill="url(#grassPattern)" stroke="#1d2508" stroke-width="2"/>
+    <rect x="790" y="800" width="330" height="285" fill="url(#grassPattern)" stroke="#1d2508" stroke-width="2"/>
+  </g>
+
+  <!-- road -->
+  <path id="road" fill="url(#roadPattern)" stroke="#191919" stroke-width="2" d="
+    M410 55 H620 L650 30 V75 L680 55 H800 V115 H1120 V400
+    H1160 L1140 425 L1160 450 H1120 V800 H800 V1145 H680 L650 1170 V1125 L620 1145 H410 V1085 H80 V800
+    H40 L65 775 L40 750 H80 V400 H410 Z"/>
+
+  <!-- pavements -->
+  <g id="pavements" fill="url(#pavingPattern)" stroke="#77736e" stroke-width="2">
+    <path d="M350 115 H410 V220 C410 325 325 410 220 410 H80 V350 H210 C287 350 350 287 350 210 Z"/>
+    <path d="M850 115 H790 V220 C790 325 875 410 980 410 H1120 V350 H990 C913 350 850 287 850 210 Z"/>
+    <path d="M350 1085 H410 V980 C410 875 325 790 220 790 H80 V850 H210 C287 850 350 913 350 990 Z"/>
+    <path d="M850 1085 H790 V980 C790 875 875 790 980 790 H1120 V850 H990 C913 850 850 913 850 990 Z"/>
+  </g>
+
+  <!-- bushes -->
+  <g id="bushes" filter="url(#shadow)">
+    <g transform="translate(215 225)">
+      <circle r="63" fill="#25390d"/>
+      <circle cx="-32" cy="-10" r="35" fill="#2f4811"/>
+      <circle cx="27" cy="-20" r="40" fill="#365213"/>
+      <circle cx="8" cy="28" r="44" fill="#2d4510"/>
+      <circle cx="-8" cy="-35" r="28" fill="#49611c"/>
+    </g>
+    <g transform="translate(985 225)">
+      <circle r="63" fill="#25390d"/>
+      <circle cx="-32" cy="-10" r="35" fill="#2f4811"/>
+      <circle cx="27" cy="-20" r="40" fill="#365213"/>
+      <circle cx="8" cy="28" r="44" fill="#2d4510"/>
+      <circle cx="-8" cy="-35" r="28" fill="#49611c"/>
+    </g>
+    <g transform="translate(215 955)">
+      <circle r="63" fill="#25390d"/>
+      <circle cx="-32" cy="-10" r="35" fill="#2f4811"/>
+      <circle cx="27" cy="-20" r="40" fill="#365213"/>
+      <circle cx="8" cy="28" r="44" fill="#2d4510"/>
+      <circle cx="-8" cy="-35" r="28" fill="#49611c"/>
+    </g>
+    <g transform="translate(985 955)">
+      <circle r="63" fill="#25390d"/>
+      <circle cx="-32" cy="-10" r="35" fill="#2f4811"/>
+      <circle cx="27" cy="-20" r="40" fill="#365213"/>
+      <circle cx="8" cy="28" r="44" fill="#2d4510"/>
+      <circle cx="-8" cy="-35" r="28" fill="#49611c"/>
+    </g>
+  </g>
+
+  <!-- lane and yield markings -->
+  <g id="road-markings" fill="#fff">
+    <!-- top approach -->
+    <rect x="596" y="55" width="9" height="165"/>
+    <g transform="translate(600 240)">
+      <rect x="0" y="0" width="24" height="17"/>
+      <rect x="38" y="0" width="24" height="17"/>
+      <rect x="76" y="0" width="24" height="17"/>
+      <rect x="114" y="0" width="24" height="17"/>
+      <rect x="152" y="0" width="24" height="17"/>
+    </g>
+
+    <!-- right approach -->
+    <rect x="947" y="589" width="165" height="9"/>
+    <g transform="translate(905 595) rotate(90)">
+      <rect x="0" y="0" width="24" height="17"/>
+      <rect x="38" y="0" width="24" height="17"/>
+      <rect x="76" y="0" width="24" height="17"/>
+      <rect x="114" y="0" width="24" height="17"/>
+    </g>
+
+    <!-- bottom approach -->
+    <rect x="596" y="980" width="9" height="165"/>
+    <g transform="translate(438 956)">
+      <rect x="0" y="0" width="24" height="17"/>
+      <rect x="38" y="0" width="24" height="17"/>
+      <rect x="76" y="0" width="24" height="17"/>
+      <rect x="114" y="0" width="24" height="17"/>
+      <rect x="152" y="0" width="24" height="17"/>
+    </g>
+
+    <!-- left approach -->
+    <rect x="80" y="589" width="165" height="9"/>
+    <g transform="translate(270 435) rotate(90)">
+      <rect x="0" y="0" width="24" height="17"/>
+      <rect x="38" y="0" width="24" height="17"/>
+      <rect x="76" y="0" width="24" height="17"/>
+      <rect x="114" y="0" width="24" height="17"/>
+    </g>
+  </g>
+
+  <!-- centre island -->
+  <g id="centre-island" filter="url(#shadow)">
+    <circle cx="600" cy="600" r="67" fill="url(#pavingPattern)" stroke="#2d2d2d" stroke-width="3"/>
+    <circle cx="600" cy="600" r="49" fill="#344e13" stroke="#1d2c0b" stroke-width="2"/>
+    <g fill="#5e7d1d">
+      <circle cx="580" cy="585" r="18"/><circle cx="610" cy="575" r="17"/>
+      <circle cx="620" cy="610" r="18"/><circle cx="590" cy="620" r="16"/>
+    </g>
+  </g>
+
+  <!-- three clockwise arrows, single editable shapes -->
+  <g id="circulation-arrows" fill="#fff">
+    <path d="M455 555
+      C470 500 515 462 565 450
+      L555 430 L620 438 L575 480 L570 460
+      C528 470 493 505 482 560 Z"/>
+    <path d="M685 475
+      C730 505 755 555 752 610
+      L774 600 L752 665 L720 610 L741 617
+      C742 570 722 530 680 500 Z"/>
+    <path d="M655 735
+      C605 755 545 748 500 720
+      L500 744 L445 700 L510 688 L500 708
+      C540 731 593 738 640 718 Z"/>
+  </g>
+</svg>

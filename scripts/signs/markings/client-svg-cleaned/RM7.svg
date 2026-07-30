@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="69.6 99.6 1060.8 540.8" role="img" aria-labelledby="title desc">
+  <title id="title">RM7 Exclusive Parking Bay</title>
+  <desc id="desc">An exclusive parking bay marked by a continuous yellow boundary on three sides with a yellow oval designatory symbol in the bay.</desc>
+
+
+  <rect x="90" y="120" width="1020" height="90" fill="#D8D2C4"/>
+  <rect x="90" y="205" width="1020" height="18" fill="#B6AEA0"/>
+
+
+  <rect x="90" y="223" width="1020" height="397" fill="#5B5E61"/>
+
+
+  <path id="rm7-boundary" d="M210 250            V430            H990            V250" fill="none" stroke="#F5C400" stroke-width="20" stroke-linecap="square" stroke-linejoin="miter"/>
+
+
+  <g id="rm7-1-designator" fill="none" stroke="#F5C400">
+    <ellipse cx="600" cy="345" rx="82" ry="55" stroke-width="16"/>
+    <ellipse cx="600" cy="345" rx="65" ry="40" stroke-width="6"/>
+  </g>
+
+
+  <text id="rm7-designator-letter" x="600" y="366" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700" fill="#F5C400">B</text><path d="M240 515 H435 V480 L515 550 L435 620 V585 H240 Z" fill="#FFFFFF"/>
+
+
+  </svg>

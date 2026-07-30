@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <ns0:title id="title">RM2 No Crossing Lines</ns0:title>
+  <ns0:desc id="desc">A two-way road with two continuous parallel solid white centre lines separating opposing traffic.</ns0:desc>
+
+  
+  <ns0:rect id="background" width="1200" height="700" fill="#F7F7F4" />
+
+  
+  <ns0:rect id="road" x="90" y="110" width="1020" height="480" rx="10" fill="#5A5D60" />
+
+  
+  <ns0:line x1="90" y1="110" x2="1110" y2="110" stroke="#303234" stroke-width="6" />
+  <ns0:line x1="90" y1="590" x2="1110" y2="590" stroke="#303234" stroke-width="6" />
+
+  
+  <ns0:g id="rm2-lines" fill="#FFFFFF">
+    <ns0:rect x="155" y="329" width="890" height="14" rx="2" />
+    <ns0:rect x="155" y="357" width="890" height="14" rx="2" />
+  </ns0:g>
+
+  
+  <ns0:g id="direction-arrows" fill="#FFFFFF">
+    
+    <ns0:path d="M330 237 H470 V205 L535 250 L470 295 V263 H330 Z" />
+    
+    <ns0:path d="M870 463 H730 V495 L665 450 L730 405 V437 H870 Z" />
+  </ns0:g>
+
+  
+  </ns0:svg>

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="51.76 126.76 948.48 556.48" role="img" aria-labelledby="title desc">
+
+  <title id="title">RM13 No Parking Line</title>
+  <desc id="desc">Editable SVG showing a solid yellow no-parking line for continuous restriction and a broken yellow no-parking line for selective periods.</desc>
+
+  <g id="rm13-solid-panel">
+    <rect x="70" y="145" width="500" height="520" rx="10" fill="#FFFFFF" stroke="#D7D7D2" stroke-width="3" />
+
+    <rect x="105" y="215" width="430" height="400" fill="#575A5D" />
+
+
+    <rect x="105" y="215" width="105" height="400" fill="#D6D1C8" />
+    <rect x="198" y="215" width="16" height="400" fill="#AAA59D" />
+
+
+    <rect id="rm13-solid-yellow-line" x="230" y="235" width="18" height="360" fill="#F5C400" />
+
+
+    <g id="solid-panel-lane-line" fill="#FFFFFF">
+      <rect x="410" y="235" width="12" height="65" />
+      <rect x="410" y="350" width="12" height="65" />
+      <rect x="410" y="465" width="12" height="65" />
+      <rect x="410" y="580" width="12" height="15" />
+    </g>
+
+
+    <path id="solid-panel-arrow" d="M325 555 V455 H310 L335 415 L360 455 H345 V555 Z" fill="#FFFFFF" />
+
+    </g>
+
+
+  <g id="broken-panel-lane-line" fill="#FFFFFF">
+      <rect x="970" y="235" width="12" height="65" />
+      <rect x="970" y="350" width="12" height="65" />
+      <rect x="970" y="465" width="12" height="65" />
+      <rect x="970" y="580" width="12" height="15" />
+    </g>
+
+
+    <path id="broken-panel-arrow" d="M885 555 V455 H870 L895 415 L920 455 H905 V555 Z" fill="#FFFFFF" />
+
+    </g>
+
+
+  </svg>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">RM10 Box Junction</title>
+  <desc id="desc">Editable top-down vector illustration of a four-way road intersection with a yellow cross-hatched box junction and directional arrows and STOP road markings.</desc>
+
+  <rect id="background" width="1200" height="820" fill="#F7F7F4"/>
+
+  <!-- Surrounding verges -->
+  <g id="verges" fill="#5FAA58">
+    <rect x="70" y="65" width="365" height="220" rx="18"/>
+    <rect x="765" y="65" width="365" height="220" rx="18"/>
+    <rect x="70" y="535" width="365" height="220" rx="18"/>
+    <rect x="765" y="535" width="365" height="220" rx="18"/>
+  </g>
+
+  <!-- Kerbs around the intersection corners -->
+  <g id="kerbs" fill="none" stroke="#D6D1C8" stroke-width="20">
+    <path d="M435 65 V285 H70"/>
+    <path d="M765 65 V285 H1130"/>
+    <path d="M435 755 V535 H70"/>
+    <path d="M765 755 V535 H1130"/>
+  </g>
+
+  <!-- Roads -->
+  <g id="roads" fill="#55585A">
+    <rect x="435" y="45" width="330" height="730"/>
+    <rect x="50" y="285" width="1100" height="250"/>
+  </g>
+
+  <!-- Road edge lines -->
+  <g id="edge-lines" stroke="#FFFFFF" stroke-width="9">
+    <line x1="435" y1="45" x2="435" y2="285"/>
+    <line x1="765" y1="45" x2="765" y2="285"/>
+    <line x1="435" y1="535" x2="435" y2="775"/>
+    <line x1="765" y1="535" x2="765" y2="775"/>
+    <line x1="50" y1="285" x2="435" y2="285"/>
+    <line x1="765" y1="285" x2="1150" y2="285"/>
+    <line x1="50" y1="535" x2="435" y2="535"/>
+    <line x1="765" y1="535" x2="1150" y2="535"/>
+  </g>
+
+  <!-- Lane divider markings -->
+  <g id="lane-dividers" fill="#FFFFFF">
+    <!-- vertical approaches -->
+    <rect x="595" y="55" width="10" height="62"/>
+    <rect x="595" y="145" width="10" height="62"/>
+    <rect x="595" y="613" width="10" height="62"/>
+    <rect x="595" y="703" width="10" height="62"/>
+    <!-- horizontal approaches -->
+    <rect x="60" y="405" width="70" height="10"/>
+    <rect x="165" y="405" width="70" height="10"/>
+    <rect x="965" y="405" width="70" height="10"/>
+    <rect x="1070" y="405" width="70" height="10"/>
+  </g>
+
+  <!-- RM10 yellow box junction -->
+  <g id="rm10-box-junction" stroke="#F5C400" fill="none" stroke-linecap="square">
+    <rect x="455" y="305" width="290" height="210" stroke-width="14"/>
+    <g id="cross-hatching" stroke-width="10">
+      <!-- diagonals rising right -->
+      <line x1="455" y1="515" x2="665" y2="305"/>
+      <line x1="505" y1="515" x2="715" y2="305"/>
+      <line x1="555" y1="515" x2="745" y2="325"/>
+      <line x1="455" y1="465" x2="615" y2="305"/>
+      <line x1="455" y1="415" x2="565" y2="305"/>
+      <line x1="455" y1="365" x2="515" y2="305"/>
+      <!-- diagonals falling right -->
+      <line x1="455" y1="305" x2="665" y2="515"/>
+      <line x1="505" y1="305" x2="715" y2="515"/>
+      <line x1="555" y1="305" x2="745" y2="495"/>
+      <line x1="455" y1="355" x2="615" y2="515"/>
+      <line x1="455" y1="405" x2="565" y2="515"/>
+      <line x1="455" y1="455" x2="515" y2="515"/>
+    </g>
+  </g>
+
+  <!-- STOP road markings on the left-hand traffic lanes only -->
+  <g id="stop-road-markings" fill="#FFFFFF">
+    <!-- Top approach, southbound traffic: left-hand lane is the right side of the drawing -->
+    <text x="680" y="165" text-anchor="middle"
+          font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700"
+          letter-spacing="3" transform="rotate(180 680 155)">STOP</text>
+    <rect x="610" y="267" width="135" height="12"/>
+
+    <!-- Bottom approach, northbound traffic: left-hand lane is the left side of the drawing -->
+    <text x="520" y="700" text-anchor="middle"
+          font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700"
+          letter-spacing="3">STOP</text>
+    <rect x="455" y="541" width="135" height="12"/>
+  </g>
+
+  <!-- Direction arrows retained on the horizontal approaches -->
+  <g id="direction-arrows" fill="#FFFFFF">
+    <!-- eastbound, left approach -->
+    <path d="M155 345 H275 V325 L325 360 L275 395 V375 H155 Z"/>
+    <!-- westbound, right approach -->
+    <path d="M1045 445 H925 V425 L875 460 L925 495 V475 H1045 Z"/>
+  </g>
+</svg>

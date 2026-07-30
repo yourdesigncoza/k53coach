@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="59.2 99.2 1081.6 611.6" role="img" aria-labelledby="title desc">
+
+  <title id="title">RM9 Exclusive Use Bus Lane</title>
+  <desc id="desc">Editable SVG showing a bus lane with a solid yellow line on the left and one broken yellow RM9 line on the right.</desc>
+
+  <rect id="road" x="80" y="120" width="1040" height="570" fill="#55585A"/>
+
+
+  <rect id="pavement" x="80" y="120" width="105" height="570" fill="#D6D1C8"/>
+
+  <rect id="kerb" x="175" y="120" width="14" height="570" fill="#AAA59D"/>
+
+
+  <rect id="bus-lane-left-solid-yellow" x="220" y="135" width="14" height="540" fill="#F5C400"/>
+
+
+  <g id="bus-lane-right-broken-yellow" fill="#F5C400">
+    <rect x="520" y="145" width="16" height="65"/>
+    <rect x="520" y="275" width="16" height="65"/>
+    <rect x="520" y="405" width="16" height="65"/>
+    <rect x="520" y="535" width="16" height="65"/>
+    <rect x="520" y="665" width="16" height="20"/>
+  </g>
+
+
+  <g id="general-lane-line-1" fill="#FFFFFF">
+    <rect x="790" y="145" width="12" height="60"/>
+    <rect x="790" y="265" width="12" height="60"/>
+    <rect x="790" y="385" width="12" height="60"/>
+    <rect x="790" y="505" width="12" height="60"/>
+    <rect x="790" y="625" width="12" height="50"/>
+  </g>
+
+  <g id="general-lane-line-2" fill="#FFFFFF">
+    <rect x="1010" y="145" width="12" height="60"/>
+    <rect x="1010" y="265" width="12" height="60"/>
+    <rect x="1010" y="385" width="12" height="60"/>
+    <rect x="1010" y="505" width="12" height="60"/>
+    <rect x="1010" y="625" width="12" height="50"/>
+  </g>
+
+
+  <text id="bus-lane-text" x="378" y="445" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="4">BUS</text><g id="direction-arrows" fill="#FFFFFF">
+    <path id="bus-arrow" d="M360 600 V520 H347 L370 484 L393 520 H380 V600 Z"/>
+
+    <path id="lane-arrow-1" d="M660 600 V520 H647 L670 484 L693 520 H680 V600 Z"/>
+
+    <path id="lane-arrow-2" d="M900 600 V520 H887 L910 484 L933 520 H920 V600 Z"/>
+  </g>
+
+
+  </svg>

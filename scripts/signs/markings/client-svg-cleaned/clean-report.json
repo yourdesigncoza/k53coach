@@ -1,0 +1,143 @@
+[
+  {
+    "file": "RM1.svg",
+    "bytes": 1105,
+    "notes": [
+      "dropped caption text \"RM1 - NO OVERTAKING LINE\"",
+      "dropped caption text \"Single continuous solid white line separating op\"",
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RM10.svg",
+    "bytes": 4191,
+    "notes": [
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RM12.svg",
+    "bytes": 1508,
+    "notes": [
+      "normalised ns0: prefix",
+      "removed fabricated <g id=\"rm12-broken-panel\">",
+      "removed caption group <g id=\"notes\">",
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RM13.svg",
+    "bytes": 1598,
+    "notes": [
+      "normalised ns0: prefix",
+      "removed fabricated <g id=\"rm13-broken-panel\">",
+      "removed caption group <g id=\"notes\">",
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RM15.svg",
+    "bytes": 6072,
+    "notes": [
+      "removed opaque background rect"
+    ]
+  },
+  {
+    "file": "RM2.svg",
+    "bytes": 928,
+    "notes": [
+      "normalised ns0: prefix",
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RM4.1.svg",
+    "bytes": 1388,
+    "notes": [
+      "normalised ns0: prefix",
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RM5.svg",
+    "bytes": 1382,
+    "notes": [
+      "normalised ns0: prefix",
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RM6.svg",
+    "bytes": 1169,
+    "notes": [
+      "normalised ns0: prefix",
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RM7.svg",
+    "bytes": 1196,
+    "notes": [
+      "normalised ns0: prefix",
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RM8.svg",
+    "bytes": 2341,
+    "notes": [
+      "normalised ns0: prefix",
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RM9.svg",
+    "bytes": 2107,
+    "notes": [
+      "normalised ns0: prefix",
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RTM1.svg",
+    "bytes": 1473,
+    "notes": [
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RTM2.svg",
+    "bytes": 1532,
+    "notes": [
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RTM3.svg",
+    "bytes": 1712,
+    "notes": [
+      "removed opaque background rect",
+      "stripped root width/height (viewBox now drives sizing)"
+    ]
+  },
+  {
+    "file": "RTM4.svg",
+    "bytes": 5150,
+    "notes": [
+      "removed opaque background rect"
+    ]
+  }
+]
