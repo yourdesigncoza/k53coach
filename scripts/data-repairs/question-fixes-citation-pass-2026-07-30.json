@@ -1,0 +1,36 @@
+{
+  "description": "Content defects surfaced by the 2026-07-30 citation-extraction pass over rules and signs. Each was found by a reviewer holding the question against Schedule 1 rather than against a prior summary, which is why they survived the earlier adversarial sweep.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.RS-016",
+      "set": {
+        "prompt": "A red rectangular sign with a single white arrow indicates:",
+        "explanation": "The one-way roadway sign (R4) shows the single permitted direction of travel; no opposing traffic should be expected. It is not a heavy-vehicle restriction or a dead-end marker. Do not confuse its red background with the blue keep-left sign R103, which routes you around an obstacle."
+      },
+      "why": "The prompt said 'a blue rectangular sign'. Schedule 1 gives R4 a RED retro-reflective background with a white arrow, and the project's own chart verdict for R4.1 records 'a red rectangular sign with a white horizontal arrow pointing left'. Blue is the keep-left sign R103. The keyed answer and the objective_code were right; the colour in the stem was wrong, which is the one detail a learner is being asked to recognise."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-005",
+      "set": {
+        "explanation": "Permanent warning signs are red-bordered triangles standing on their base. A temporary roadworks warning is the same triangle on a yellow background (regulation 286A) — the background changes, the shape does not. A blue circle is a regulatory command sign."
+      },
+      "why": "The explanation said 'the yellow diamond is reserved for temporary/roadworks warnings'. There is no yellow diamond warning sign in South Africa — that is the United States convention. Reg 286A(1)(b)(iii) makes a temporary sign a yellow-BACKGROUND version of the same triangle, with the red border retained. The keyed answer was always right; the contrast drawn to justify it was foreign signage."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-020",
+      "set": {
+        "explanation": "The blue rectangular 'P' (R305-P) marks an area reserved for parking — it tells you parking is available, not that you must park there. The round 'P' in a red ring (R216) is the opposite: it prohibits parking."
+      },
+      "why": "SECOND correction to this item today. The earlier rewrite fixed the keyed option but kept the explanation's claim that the rectangular P is an 'information sign'. Schedule 1 lists it as R305-P, a Regulatory 'Parking reservation sign' — 'Indicates to the driver of a vehicle that an area is reserved for parking'. It is regulatory, not information. Naming the code removes the class claim entirely rather than swapping one label for another."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-042",
+      "set": { "objective_code": null },
+      "why": "Was W318, which the project's own chart verdict describes as 'Railway crossing ahead (UNCONTROLLED)' — the advance-warning triangle for a crossing with no gates or booms. This question is expressly about a boom coming down with flashing red lights, i.e. a controlled crossing, so W318 sent a learner who got it wrong to a lesson about the opposite case. Set to null rather than to a near-miss: W403/W404 are the St Andrew's cross markers, not the boom, and the operative signal (FRD-R1, used with stop sign R1) has no learning object. Null shows no recommendation, which is correct; a wrong code shows a confident wrong one. CONTENT GAP: there is no learning object for controlled level crossings."
+    }
+  ]
+}

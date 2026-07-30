@@ -1,0 +1,677 @@
+{
+  "description": "source_citation backfill for the rules and signs topics, from the 2026-07-30 citation-extraction pass (docs/question-verify/citations/). Only items whose provision a reviewer quoted verbatim are listed; RR-028, RR-029 and RS-019 returned no citation and stay NULL. A blank is the honest answer — this bank already shipped five items citing a non-existent NRTA s 4(3).",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.RR-001",
+      "set": {
+        "source_citation": "NRTR reg 292(a)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-002",
+      "set": {
+        "source_citation": "NRTR reg 292(c)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-003",
+      "set": {
+        "source_citation": "NRTR reg 293(1)(a)(i)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-004",
+      "set": {
+        "source_citation": "NRTR reg 308(1)(b) (corroborating)"
+      },
+      "why": "corroborating, confidence high — quoted verbatim in docs/question-verify/citations/. Marked corroborating: the provision supports the premise but is NOT the source of the rule tested, so the field must not be read as making the technique statutory."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-005",
+      "set": {
+        "source_citation": "NRTR Sch 1, R1.4"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-006",
+      "set": {
+        "source_citation": "NRTR Sch 1, R2"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-007",
+      "set": {
+        "source_citation": "NRTA s 65(2)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-008",
+      "set": {
+        "source_citation": "NRTR reg 304(h)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-009",
+      "set": {
+        "source_citation": "NRTR reg 305(4)(b)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-010",
+      "set": {
+        "source_citation": "NRTR reg 213(4)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-011",
+      "set": {
+        "source_citation": "NRTR reg 308(1)(h)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-012",
+      "set": {
+        "source_citation": "NRTA s 61(1)(f)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-013",
+      "set": {
+        "source_citation": "NRTR reg 157(1)(b)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-014",
+      "set": {
+        "source_citation": "NRTR Sch 1, RM1"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-015",
+      "set": {
+        "source_citation": "NRTR reg 315(2)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-016",
+      "set": {
+        "source_citation": "NRTR reg 315(4)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-017",
+      "set": {
+        "source_citation": "NRTR reg 325"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-018",
+      "set": {
+        "source_citation": "NRTR reg 327"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-019",
+      "set": {
+        "source_citation": "NRTR reg 99(2)(a)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-020",
+      "set": {
+        "source_citation": "NRTR reg 212(j)(i)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-021",
+      "set": {
+        "source_citation": "NRTR reg 308(1)(b) (corroborating)"
+      },
+      "why": "corroborating, confidence high — quoted verbatim in docs/question-verify/citations/. Marked corroborating: the provision supports the premise but is NOT the source of the rule tested, so the field must not be read as making the technique statutory."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-022",
+      "set": {
+        "source_citation": "NRTR reg 301"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-023",
+      "set": {
+        "source_citation": "NRTR reg 298(2)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-024",
+      "set": {
+        "source_citation": "NRTR reg 293(1)(b)"
+      },
+      "why": "legislation, confidence medium — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-025",
+      "set": {
+        "source_citation": "NRTA s 65(2)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-026",
+      "set": {
+        "source_citation": "NRTR reg 305(1)(c)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-027",
+      "set": {
+        "source_citation": "NRTR reg 292(b)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-030",
+      "set": {
+        "source_citation": "NRTR reg 298(1)(a)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-031",
+      "set": {
+        "source_citation": "NRTA s 65(5)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-032",
+      "set": {
+        "source_citation": "NRTR reg 157(3) (corroborating)"
+      },
+      "why": "corroborating, confidence medium — quoted verbatim in docs/question-verify/citations/. Marked corroborating: the provision supports the premise but is NOT the source of the rule tested, so the field must not be read as making the technique statutory."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-033",
+      "set": {
+        "source_citation": "NRTR Sch 1, R1.4"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-034",
+      "set": {
+        "source_citation": "NRTA s 61(1)(e)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-035",
+      "set": {
+        "source_citation": "NRTR reg 99(4), code EB"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-036",
+      "set": {
+        "source_citation": "NRTA s 65(1)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-001",
+      "set": {
+        "source_citation": "NRTR Sch 1, R1"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-002",
+      "set": {
+        "source_citation": "NRTR Sch 1, R3"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-003",
+      "set": {
+        "source_citation": "NRTR Sch 1, R101"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-004",
+      "set": {
+        "source_citation": "NRTR Sch 1, R201"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-005",
+      "set": {
+        "source_citation": "NRTR Sch 1, Pt (ii) Warning Signs"
+      },
+      "why": "legislation, confidence medium — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-006",
+      "set": {
+        "source_citation": "NRTR Sch 1, W308"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-007",
+      "set": {
+        "source_citation": "NRTR Sch 1, W333"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-008",
+      "set": {
+        "source_citation": "NRTR Sch 1, W201"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-009",
+      "set": {
+        "source_citation": "NRTR Sch 1, R216/R217; NRTA s 1 \"park\""
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-010",
+      "set": {
+        "source_citation": "NRTR Sch 1 Class III(i)A(1)(c)(i)(bb)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-011",
+      "set": {
+        "source_citation": "NRTR Sch 1 Class III(i)A(1)(c)(i)(gg)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-012",
+      "set": {
+        "source_citation": "NRTR Sch 1, RM1"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-013",
+      "set": {
+        "source_citation": "NRTR Sch 1, W306"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-014",
+      "set": {
+        "source_citation": "NRTR reg 304(g)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-015",
+      "set": {
+        "source_citation": "NRTR Sch 1, R103"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-016",
+      "set": {
+        "source_citation": "NRTR Sch 1, R4"
+      },
+      "why": "legislation, confidence medium — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-017",
+      "set": {
+        "source_citation": "NRTR Sch 1, GD1"
+      },
+      "why": "legislation, confidence medium — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-018",
+      "set": {
+        "source_citation": "NRTR Sch 1, GF1–GF3"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-020",
+      "set": {
+        "source_citation": "NRTR Sch 1, R305-P"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-021",
+      "set": {
+        "source_citation": "NRTR Sch 1, GFS B1-3 (corroborating)"
+      },
+      "why": "corroborating, confidence medium — quoted verbatim in docs/question-verify/citations/. Marked corroborating: the provision supports the premise but is NOT the source of the rule tested, so the field must not be read as making the technique statutory."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-022",
+      "set": {
+        "source_citation": "NRTR Sch 1, IN1–IN3"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-023",
+      "set": {
+        "source_citation": "NRTR Sch 1, W104"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-024",
+      "set": {
+        "source_citation": "NRTR Sch 1, W212"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-025",
+      "set": {
+        "source_citation": "NRTR Sch 1, W328"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-026",
+      "set": {
+        "source_citation": "NRTR Sch 1, W322 (corroborating)"
+      },
+      "why": "corroborating, confidence medium — quoted verbatim in docs/question-verify/citations/. Marked corroborating: the provision supports the premise but is NOT the source of the rule tested, so the field must not be read as making the technique statutory."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-027",
+      "set": {
+        "source_citation": "NRTR Sch 1, W333"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-028",
+      "set": {
+        "source_citation": "NRTR Sch 1, W332"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-029",
+      "set": {
+        "source_citation": "NRTR Sch 1, W313"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-030",
+      "set": {
+        "source_citation": "NRTR Sch 1, R211"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-031",
+      "set": {
+        "source_citation": "NRTR Sch 1, R204"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-032",
+      "set": {
+        "source_citation": "NRTR Sch 1, R239"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-033",
+      "set": {
+        "source_citation": "NRTR Sch 1, R229"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-034",
+      "set": {
+        "source_citation": "NRTR Sch 1, R137"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-035",
+      "set": {
+        "source_citation": "NRTR Sch 1, R108"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-036",
+      "set": {
+        "source_citation": "NRTR reg 287(5)(a)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-037",
+      "set": {
+        "source_citation": "NRTR Sch 1, R1.5"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-038",
+      "set": {
+        "source_citation": "NRTR Sch 1, WM3 (corroborating)"
+      },
+      "why": "corroborating, confidence medium — quoted verbatim in docs/question-verify/citations/. Marked corroborating: the provision supports the premise but is NOT the source of the rule tested, so the field must not be read as making the technique statutory."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-039",
+      "set": {
+        "source_citation": "NRTR Sch 1, RTM2"
+      },
+      "why": "legislation, confidence medium — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-040",
+      "set": {
+        "source_citation": "NRTR Sch 1, R213"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-042",
+      "set": {
+        "source_citation": "NRTR Sch 1, FRD-R1"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-1",
+      "set": {
+        "source_citation": "NRTR Sch 1, R1.4"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-2",
+      "set": {
+        "source_citation": "NRTR reg 308(1)(b) (corroborating)"
+      },
+      "why": "corroborating, confidence high — quoted verbatim in docs/question-verify/citations/. Marked corroborating: the provision supports the premise but is NOT the source of the rule tested, so the field must not be read as making the technique statutory."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-3",
+      "set": {
+        "source_citation": "NRTR Sch 1, RM1"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-4",
+      "set": {
+        "source_citation": "NRTR reg 315(2)"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-5",
+      "set": {
+        "source_citation": "NRTR reg 300; reg 299(3) (corroborating)"
+      },
+      "why": "corroborating, confidence medium — quoted verbatim in docs/question-verify/citations/. Marked corroborating: the provision supports the premise but is NOT the source of the rule tested, so the field must not be read as making the technique statutory."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-1",
+      "set": {
+        "source_citation": "NRTR Sch 1, R1"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-2",
+      "set": {
+        "source_citation": "NRTR Sch 1, R2"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-3",
+      "set": {
+        "source_citation": "NRTR Sch 1, R3 & R4"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-4",
+      "set": {
+        "source_citation": "NRTR Sch 1, R201"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-5",
+      "set": {
+        "source_citation": "NRTR Sch 1, R216 & R217"
+      },
+      "why": "legislation, confidence high — quoted verbatim in docs/question-verify/citations/. The provision is the rule the item tests."
+    }
+  ]
+}

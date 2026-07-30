@@ -1,0 +1,252 @@
+{
+  "description": "Converts the 15 legacy four-option q-* questions to the real exam's three options (docs/exam-format-analysis/), and rewrites the content defects the citation sweep found in that cohort and in three RR-*/RS-* items. Decision to convert rather than retire: John, 2026-07-30.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-1",
+      "set": {
+        "options": ["Accelerator", "Clutch", "Brake"],
+        "answer": 2,
+        "explanation": "The brake pedal slows and stops the vehicle. The accelerator increases engine speed and the clutch disconnects the engine from the wheels — neither slows you down."
+      },
+      "why": "Dropped the 4th option 'Handbrake button', which is not a pedal and so was never a live distractor. Also removed 'usually the middle pedal in a manual car' from the explanation: the item is scoped to code A, and a motorcycle has no middle pedal (its rear brake is still a foot pedal, so the keyed answer holds)."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-2",
+      "set": {
+        "options": [
+          "To make the vehicle go faster",
+          "To change gears smoothly by disconnecting the engine from the wheels",
+          "To sound the hooter"
+        ],
+        "answer": 1
+      },
+      "why": "Dropped 'To switch on the lights' — two joke distractors were redundant."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-3",
+      "set": {
+        "options": [
+          "Start the engine immediately",
+          "Adjust your seat and mirrors, and fasten your seatbelt",
+          "Select fifth gear"
+        ],
+        "answer": 1
+      },
+      "why": "Dropped 'Switch on the radio'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-4",
+      "set": {
+        "options": [
+          "Only when the vehicle breaks down",
+          "When parked, and to help hold the vehicle on a hill start",
+          "While driving at high speed"
+        ],
+        "answer": 1
+      },
+      "why": "Dropped 'Never — it is only for emergencies'. That distractor was the weakest of the four for a reason the sweep surfaced: reg 149(a) says 'the emergency brake and parking brake may be one and the same brake', so its premise is half true and only its 'never' clause makes it wrong. Removing it leaves three cleanly-wrong alternatives."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-5",
+      "set": {
+        "options": [
+          "The vehicle is working perfectly",
+          "Something needs attention — check before driving",
+          "You must drive faster to clear it"
+        ],
+        "answer": 1,
+        "explanation": "A red warning light that stays on usually signals a fault — oil pressure, brakes or charging. Check it before driving. (A lit parking-brake light is the exception: it simply means the handbrake is still on.)"
+      },
+      "why": "Dropped 'It is just a decoration'. Explanation now carries the parking-brake exception a reviewer flagged: a red telltale that stays lit is not always a fault."
+    },
+
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-1",
+      "set": {
+        "prompt": "You arrive at a four-way stop. Another vehicle has already stopped and is waiting. What must you do?",
+        "options": [
+          "Stop, then go before the waiting vehicle if you are on its right",
+          "Stop, and let the vehicle that stopped first go before you",
+          "Slow down and go through if the way looks clear"
+        ],
+        "answer": 1,
+        "explanation": "Every vehicle must come to a complete stop at a four-way stop, and the first to stop goes first. Being on the right does not give you priority — the yield-to-the-right rule in regulation 301 applies where traffic moves around a traffic island, not at a four-way stop."
+      },
+      "why": "Two defects at once. (1) The old stem forced a simultaneous arrival and the keyed answer then opened with 'the vehicle that arrived first', contradicting its own premise. (2) It taught yield-to-the-right at a four-way stop as law. Reg 301 is expressly confined to a junction 'where vehicular traffic is required to move around a traffic island'; nothing in the Act or Regulations decides a genuine tie at a four-way stop. Reframing to a clear first-to-stop scenario makes the item answerable from the rule that does exist, and the explanation now kills the myth rather than teaching it."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-2",
+      "set": {
+        "options": [
+          "Stay one vehicle length behind",
+          "Keep at least a two-second gap to the vehicle ahead",
+          "Always stay 100 m behind"
+        ],
+        "answer": 1,
+        "explanation": "Use the two-second rule: pick a fixed point and you should pass it at least two seconds after the vehicle ahead, and more in rain. Note that no following distance is prescribed by law — regulation 308(1)(b) requires only that you not follow 'more closely than is reasonable and prudent'. Two seconds is the K53 teaching standard that satisfies it."
+      },
+      "why": "Dropped 'Following distance does not matter below 60 km/h'. The explanation previously presented the two-second rule as if it were the legal standard; there is no prescribed following distance in South African law, and three items in the draft bank rest on the same number. Naming reg 308(1)(b) keeps the item teachable without asserting a rule that does not exist."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-3",
+      "set": {
+        "prompt": "A single solid white no-overtaking line runs down the centre of the road. When may you cross it?",
+        "options": [
+          "Whenever the road ahead is clear",
+          "Only to avoid an obstruction, and only when it is safe",
+          "To overtake a slow-moving vehicle"
+        ],
+        "answer": 1,
+        "explanation": "A no-overtaking line (RM1) forbids overtaking, but you may cross it when you have to pass an obstruction in your lane and it is safe to do so. Do not confuse it with the double solid no-crossing line (RM2), which you may not cross at all."
+      },
+      "why": "The old stem said only 'a solid white line'. South Africa has two: RM1 'No Overtaking Line', which has an obstruction exception, and RM2 'No Crossing Lines', which has none — so against RM2 the distractor 'Never, under any circumstances' was ALSO true and the item was unanswerable. Naming RM1 in the stem resolves it; the discarded 'Never' option is replaced by the overtaking distractor, and the explanation now teaches the RM1/RM2 distinction that made it ambiguous."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-4",
+      "set": {
+        "prompt": "You approach a pedestrian crossing where people are already crossing on your half of the road. You should:",
+        "options": [
+          "Speed up to pass before they reach you",
+          "Stop and allow them to finish crossing",
+          "Hoot to warn them to hurry"
+        ],
+        "answer": 1,
+        "explanation": "Regulation 315(2) requires a driver to yield to a pedestrian crossing the roadway within a pedestrian crossing. Hooting at or driving around someone already on the crossing is unlawful and dangerous."
+      },
+      "why": "The old stem described people *waiting* at the kerb and taught a duty to yield to them. Reg 315(2) attaches the duty to a pedestrian 'crossing the roadway within a pedestrian crossing' — a waiting pedestrian is not yet within it, and at a signalled crossing reg 315(1) can point the other way. Scoping the stem to people already crossing makes the keyed answer the legally correct one."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-5",
+      "set": {
+        "options": [
+          "Indicate, check your mirrors and your blind spot, then move when it is safe",
+          "Just indicate and move immediately",
+          "Move first, then indicate"
+        ],
+        "answer": 0
+      },
+      "why": "Dropped 'Only check the mirror'."
+    },
+
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-1",
+      "set": {
+        "options": [
+          "Slow down, and stop only if other vehicles are near",
+          "Come to a complete stop, then go when it is safe",
+          "Sound your hooter and continue"
+        ],
+        "answer": 1
+      },
+      "why": "Dropped 'Stop only at night'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-2",
+      "set": {
+        "options": ["Stop", "No entry", "Yield / give way"],
+        "answer": 2
+      },
+      "why": "Dropped 'Speed limit'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-3",
+      "set": {
+        "options": [
+          "They mean the same thing",
+          "No-entry forbids you from entering; one-way shows the permitted direction",
+          "One-way forbids you from entering; no-entry shows the direction"
+        ],
+        "answer": 1
+      },
+      "why": "Dropped 'Both only apply to trucks'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-4",
+      "set": {
+        "options": [
+          "The recommended speed is 60 km/h",
+          "You must drive at exactly 60 km/h",
+          "60 km/h is the maximum allowed"
+        ],
+        "answer": 2
+      },
+      "why": "Dropped 'There are 60 km to the next town'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-5",
+      "set": {
+        "prompt": "What tells the no-stopping sign apart from the no-parking sign?",
+        "options": [
+          "No-stopping has two diagonal lines; no-parking has one",
+          "The letter inside: S for no stopping, P for no parking — both have one diagonal",
+          "No-stopping is a triangle; no-parking is a circle"
+        ],
+        "answer": 1,
+        "explanation": "R216 (no parking) and R217 (no stopping) are both red-ringed circles with a single diagonal — Schedule 1 specifies 'Border and diagonal' for each. The letter inside is what tells them apart: P for no parking, S for no stopping. No stopping is the stricter of the two: you may not even pause to drop someone off."
+      },
+      "why": "This item was WRONG as drafted. It asked what 'a red circle crossed by two diagonal lines (rather than one)' means, and keyed 'No stopping'. Schedule 1 gives 'Border and diagonal' — singular — for BOTH R216 and R217, and the repo's own public/signs/R216.svg and R217.svg each show one diagonal. The two-crossed-diagonals sign is a European convention that does not exist in South Africa, so the keyed answer was no better supported than the distractor. Rewritten to test the discriminator that actually exists."
+    },
+
+    {
+      "table": "questions",
+      "match": "id=eq.RS-020",
+      "set": {
+        "options": [
+          "You must stop and park here",
+          "Parking is available here",
+          "No parking is allowed"
+        ],
+        "answer": 1,
+        "explanation": "A rectangular blue 'P' is an information sign: parking is available. It does not compel you to park. The round 'P' in a red ring (R216) is the opposite — it prohibits parking."
+      },
+      "why": "The keyed OPTION carried the error while the explanation was sound: it read 'Parking is available (information) — a round/regulatory P would control it'. In South Africa the only ROUND P is R216, which PROHIBITS parking; the regulatory parking-reservation sign R305P is rectangular and blue. So the option taught the exact opposite of the rule. Trimmed to the plain claim and moved the shape contrast into the explanation, correctly."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-033",
+      "set": {
+        "explanation": "The red-ringed truck sign prohibits goods vehicles. Note that regulation 1 defines a goods vehicle by what it is built to carry, not by its size — a bakkie is a goods vehicle, so this sign is not limited to large trucks. It does not ban all traffic, nor does it indicate a truck stop."
+      },
+      "why": "The explanation said 'light vehicles are unaffected'. Reg 1's definition of a goods vehicle takes in a bakkie, so a learner who memorised this would drive a light delivery vehicle past a sign that prohibits it. The keyed answer is unchanged."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-005",
+      "set": {
+        "prompt": "At a four-way stop, what decides the order in which vehicles may go?",
+        "options": [
+          "The larger or heavier vehicle goes first",
+          "The order in which they came to a stop",
+          "The vehicle going straight ahead goes first"
+        ],
+        "answer": 1,
+        "source_basis": "official_manual",
+        "explanation": "Vehicles proceed in the order they stopped — first to stop, first to go. Size and direction of travel do not create priority, and there is no main road at a four-way stop. The yield-to-the-right rule in regulation 301 is confined to junctions where traffic moves around a traffic island, so it does not decide this."
+      },
+      "why": "The old item forced a simultaneous stop and answered 'the vehicle on the right', tagged source_basis='legislation' — but no provision says that. Reg 301's yield-to-the-right applies 'where vehicular traffic is required to move around a traffic island'. Reframed to the first-to-stop rule, which is the part that is actually established, and the source_basis corrected off 'legislation' since the ordering convention is manual teaching."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-033",
+      "set": {
+        "explanation": "Every vehicle must come to a complete stop, then proceed in the order the vehicles stopped — first to stop, first to go. There is no main road at a four-way stop. Note that the yield-to-the-right rule in regulation 301 applies where traffic moves around a traffic island, not here."
+      },
+      "why": "The explanation ended '(first to stop, first to go; if two stop together, the one on the right goes)'. The parenthetical states as law something reg 301 confines to traffic circles. Removed, and the misconception named explicitly. The keyed answer is unchanged."
+    }
+  ]
+}

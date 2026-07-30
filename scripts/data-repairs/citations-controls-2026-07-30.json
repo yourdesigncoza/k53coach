@@ -1,0 +1,83 @@
+{
+  "description": "source_citation backfill for the controls topic, from the 2026-07-30 adversarial sweep (docs/question-verify/controls-batch-*.md). Only the 13 items with a provision a reviewer quoted verbatim are listed — the other 24 are technique with no statutory basis and must stay NULL. A blank citation is the honest answer; a stretched one destroys the audit trail.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.VC-002",
+      "set": { "source_citation": "NRTR reg 308(1)(f); reg 1 def. \"parking brake\"" },
+      "why": "reg 308(1)(f): a driver shall not 'allow such vehicle to remain unattended on such road without setting its brake'. Legislation — the provision is the rule tested."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-007",
+      "set": { "source_citation": "NRTR reg 326(1)(a); reg 1 def. \"direction indicator\"" },
+      "why": "reg 326(1)(a) requires the driver to 'signal his or her intention to turn or move to the left or right by operating the direction indicator'. Legislation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-008",
+      "set": { "source_citation": "NRTR reg 203" },
+      "why": "reg 203 requires a wiper that will 'wipe the outside of the windscreen directly in front of the driver'. Legislation — the 'outside' is exactly what the item turns on."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-009",
+      "set": { "source_citation": "NRTR reg 203 (corroborating)" },
+      "why": "The item is about demisting the INSIDE, for which no provision exists. reg 203 corroborates only the explanation's side-claim that wipers clear the outside. Marked corroborating so the field cannot be read as making demisting statutory."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-010",
+      "set": { "source_citation": "NRTR reg 150 (corroborating)" },
+      "why": "reg 150 requires a motorcycle to have 'two independent braking systems' and sets a combined-efficiency standard. It supports the premise that there are two brakes; it does NOT legislate using both to stop, which is K53 technique. Corroborating, not the source."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-013",
+      "set": { "source_citation": "NRTR reg 198(6)(a)(i), (b)" },
+      "why": "reg 198(6)(a) permits simultaneous indicators when the vehicle is 'stationary in a hazardous position' or 'in motion in an emergency situation', and (b) forbids them 'in a circumstance other than those referred to'. Legislation — the keyed answer nearly quotes it."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-014",
+      "set": { "source_citation": "NRTR reg 157(3); reg 157(1)(b)" },
+      "why": "reg 157(3): a driver 'shall extinguish the main-beam … if such main-beam could cause a dangerous glare to oncoming traffic'. 157(1)(b) carries the 150 m visibility rule that kills the lights-off distractor. Legislation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-015",
+      "set": { "source_citation": "NRTR reg 326(1)(a); regs 324-325" },
+      "why": "reg 326(1)(a) is unconditional, which is what makes the 'only if another vehicle is near' distractor legally wrong rather than merely poor practice. regs 324/325 supply the 'before reaching the point' timing. Legislation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-020",
+      "set": { "source_citation": "NRTR reg 310A; reg 201(1)(a)" },
+      "why": "reg 310A confines hooter use to compliance with the regulations 'or on the grounds of safety' — the stem's 'warn of danger' maps onto it directly. reg 201(1)(a) requires the device to be fitted and audible at 90 m. Legislation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-021",
+      "set": { "source_citation": "NRTR reg 168(1); reg 1 def. \"stop lamp\"" },
+      "why": "reg 1 defines a stop lamp as signalling 'the intention of the driver … to stop or reduce the speed'; reg 168(1) requires them at the rear. Legislation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-031",
+      "set": { "source_citation": "NRTR reg 203" },
+      "why": "Same provision as VC-008 and again on point: the wiper clears the outside of the windscreen, which is where the rain is. Legislation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-3",
+      "set": { "source_citation": "NRTR reg 213(4) (seatbelt element only)" },
+      "why": "The item bundles seat, mirrors and belt. Only the belt has a provision — reg 213(4). Seat and mirror adjustment are technique. Qualified in the field so the citation is not read as covering the whole answer."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-4",
+      "set": { "source_citation": "NRTR reg 1 def. \"parking brake\"; reg 155(1)(c) (corroborating)" },
+      "why": "reg 1 makes keeping the vehicle stationary the parking brake's ordinary-course purpose, which is what refutes the 'only for emergencies' distractor; reg 155(1)(c) sets its gradient-holding standard (1 in 8,33). The hill-start half of the answer is technique, so the citation is corroborating."
+    }
+  ]
+}
