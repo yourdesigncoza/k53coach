@@ -1,0 +1,136 @@
+# The 125 approved questions — citation sweep (2026-07-30)
+
+Ten reviewers over the **41 rules** and **47 signs** items, each reading the Act, the Regulations and
+Schedule 1. **The 37 controls items have not been run yet.**
+
+The brief was to supply the missing citations. It did that — nearly every item turned out to be
+citable, mostly to Schedule 1 — but it also surfaced defects in content that is **live and being
+served right now**.
+
+| | rules (41) | signs (47) | total |
+|---|---|---|---|
+| SOUND | 24 | 23 | **47** |
+| EXPLANATION_DEFECT | 8 | 14 | **22** |
+| WRONG_ANSWER | 0 | **3** | **3** |
+| AMBIGUOUS | 2 | 1 | 3 |
+| CITATION_NONE | 7 | 6 | 13 |
+
+Citations were supplied with a verbatim quote for **~85%** of items. `source_basis: official_manual`
+turned out to be doing no work — almost everything has a real provision behind it.
+
+---
+
+## 1. Three live items are wrong, and all three teach foreign signage as South African
+
+**`RS-041` — pull it, it cannot be patched.** Describes "a blue rectangular pedestrian-crossing
+sign". No such sign exists in South Africa. Sch 1 **R5** is a **red** sign for a pedestrian
+*precinct*; the project's own chart verification (`data/verify/verdicts/R5.json`) records "red
+diamond … white walking-pedestrian symbol". The blue square is the Vienna Convention sign. Premise,
+colour, sign class and objective mapping are all wrong.
+
+**`q-signs-5` — rewrite the stem.** Says the no-stopping sign has **two crossed diagonals**. Sch 1
+gives *"Border and diagonal: Red retro-reflective"* — singular — for **both** R216 and R217. The
+repo's own `public/signs/R216.svg` and `R217.svg` each show **one** diagonal; the discriminator is
+the glyph, **P** for no-parking and **S** for no-stopping. The two-diagonal cross is European. As
+drafted the keyed answer is no better supported than the distractor.
+
+**`RS-020` — the rule is backwards.** Claims a round P sign would be the regulatory one. Sch 1
+**R305P** (parking reservation) is **rectangular and blue**; the only **round** P is **R216**, which
+*prohibits* parking. There is also no parking sign in the information class at all.
+
+Two more foreign conventions asserted as fact, in explanations rather than answers: the
+**yellow diamond** warning sign (`RS-005`, `RS-036` — SA uses a yellow *triangle*, reg 286A(1)(b)(iii)
+changes the background, not the shape) and the **row of white triangles** as a yield line (`RS-039` —
+SA yield lines are a broken white line).
+
+These are the errors most likely to survive review, because they feel like general road knowledge.
+
+## 2. Three items render the wrong picture — one shows its own distractor
+
+`src/components/quiz/question-card.tsx:51` renders `public/signs/<sign_code>.svg` above the prompt,
+so a wrong `sign_code` puts a contradicting image in front of the learner.
+
+| Item | Coded | Should be | Effect |
+|---|---|---|---|
+| `RS-023` | `W409` (chevron board) | `W105` | Stem says triangle, image is a chevron board |
+| `RS-025` | `W214` (lane ends) | `W328` | Stem says road narrows, image says lane ends |
+| `RS-027` | `W325` (gravel begins) | `W333` | **Shows the gravel sign — which is option (0), a distractor** |
+
+All three target codes already exist in `public/signs/`. One-line fixes.
+
+Also mis-tagged: **`RS-004`** carries `R201-60` on an **80 km/h** question (`R201-80.svg` exists), and
+**`RS-042`** is mapped to `W318` (an advance warning triangle) on a question about booms and flashing
+red lights — the learner who gets it wrong is sent to a lesson that never mentions either.
+
+## 3. Twelve live explanations are cut off mid-word
+
+Exactly 200 characters, ending mid-word: `RR-004` `RR-012` `RR-013` `RR-030` `RR-034` `RS-020`
+`RS-027` `RS-041` `VC-001` `VC-012` `VC-014` `VC-016`.
+
+> *"…damage-only accidents are not exempt from rep"*
+> *"…24 hours if you did not give details to an of"*
+
+The column is `text` with no limit (`20260629150621_questions.sql:12`), and the recent generated
+batches are clean (1 of 79 at exactly 200, probably coincidence). So this came from **an earlier
+seed**, and the full text may be recoverable from whatever produced it. This is a data-integrity bug,
+not a content one, and it is independent of every legal question above.
+
+## 4. Statements of law that are not law
+
+- **`RR-019` — L-plates.** The explanation says a learner *"must … display L plates"*. There is **no
+  L-plate requirement anywhere** in the Act or the Regulations — a reviewer grepped both instruments
+  for every variant and found nothing. It is UK law. Delete the clause.
+- **`RR-035` — "Code C is for heavy vehicles over 3 500 kg".** Code C is *"exceeds 16 000 kilograms"*;
+  3 500–16 000 kg is **C1**. A learner who memorises this fails a C1 question.
+- **`RR-033`, `q-rules-1`, `RR-005` — "the one on the right goes" at a four-way stop.** Not in any
+  provision. Reg 301's yield-to-the-right is expressly confined to junctions *"where vehicular traffic
+  is required to move around a traffic island"* — traffic circles, not four-way stops. Sch 1 R1.4
+  legislates first-to-stop priority and is silent on ties. **`RR-005` is additionally mislabelled
+  `source_basis: legislation`** for a rule the legislation does not contain.
+- **`RS-033` — "light vehicles are unaffected" by R229.** Reg 1 defines a *goods vehicle* to include a
+  bakkie. This one has a real-world consequence, not just a recognition one.
+- **`RR-024` — minibuses capped at 100 km/h.** Reg 293(1)(b) applies only to *"a minibus used for the
+  conveyance of persons for reward"*. A private kombi is on the general limits, so **120 km/h is also
+  true** on the question as framed.
+
+## 5. Items that are unanswerable as written
+
+- **`q-rules-3`** — asks when you may cross a solid white centre line. SA has **two** such markings:
+  RM1 (which has exceptions) and RM2 (which has none). Against RM2 the distractor *"Never, under any
+  circumstances"* is **also true**.
+- **`q-rules-1`** — the stem forces a simultaneous arrival, then the keyed answer opens with *"the
+  vehicle that arrived first"*.
+- **`q-rules-4`** — teaches a duty to yield to a *waiting* pedestrian. Reg 315(2) attaches the duty to
+  a pedestrian *"crossing the roadway within a pedestrian crossing"*; reg 315(1) can point the other
+  way at a signalled crossing.
+
+## 6. The legacy `q-*` cohort is the problem cohort
+
+All **15 four-option items** are `q-signs-*`, `q-rules-*` and `q-controls-*` — and that same cohort
+carries a disproportionate share of the content defects above. The real test uses **three** options
+(`docs/exam-format-analysis/`, 165 terminal pages, no exceptions).
+
+Every `RR-*` and `RS-*` item is correctly 3-option. Treat the `q-*` items as one generation and
+assume the rest of it is defective until checked.
+
+## 7. Coverage gap this exposed
+
+`RS-017`–`RS-022` test **guidance and information signs** (GD, GF, IN series). Of the 362 assets in
+`public/signs/`, **zero are guidance-class**, and IN1/IN2/IN3 — which `RS-022` actually tests — are
+absent. `RS-038`/`RS-039` are road-marking items and there is still no markings learning object.
+
+So these questions test parts of the chart the learner library does not cover: no lesson to link to,
+no artwork to show. Same shape as the known markings gap, and it belongs in the same Stage 1 tracking.
+
+---
+
+## Recommended order
+
+1. **Pull `RS-041`.** It is wrong at the premise and cannot be fixed by citation.
+2. Fix the three `sign_code` values — one line each, biggest learner-visible defect per unit effort.
+3. Rewrite `q-signs-5` and `RS-020`; delete the L-plate clause in `RR-019`; fix the Code C threshold
+   in `RR-035`.
+4. Restore the 12 truncated explanations.
+5. Convert the whole `q-*` cohort to 3 options or retire it.
+6. Backfill `source_citation` from the reviewer output, then a human pass to record `approved_by`.
+7. **Run the remaining 37 controls items** — not yet swept.
