@@ -100,6 +100,16 @@ several translatable fields each. This is the natural next step once phase 1 shi
   launch is far more expensive. Phases 1–3 wait for a signed school and must not
   start before the Stage 1 gate. Full plan, schema and gotchas:
   `docs/white-label-plan.md`. Awaiting John's decision.
+- **RAG over the legal sources.** Put the Act, the Regulations and the SADC RTSM into a
+  queryable store, addressed by citation (`NRTA s1(xlvi)`, `NRTR reg 298A(2)`), so verification
+  resolves a citation to verbatim text instead of a 350-page PDF — and, later, so the AI Coach can
+  pull grounded supporting material when a learner asks for more. Agreed as direction 2026-07-30,
+  **not scheduled**. Two consumers with very different risk: offline verification is safe and useful
+  on its own; the learner-facing half cashes in the "future post-test coaching" reservation and
+  changes the no-runtime-AI rule, so it needs a deliberate decision first. Extraction is the hard
+  part — the RTSM is two-column, the Regulations are a bilingual OCR'd gazette, and neither the Act
+  nor the Regulations are consolidated for amendments. Notes, open questions and the reusable
+  `wiki-semantic-search` pattern: `docs/rag-source-retrieval.md`.
 - **Afrikaans review.** New `mock`/`exam`/`examResult`/`assessment` namespaces in
   `messages/af.json` are first-draft (like the rest); needs native review. The
   AI-generated assessment prose stays English (deferred bilingual content pass).

@@ -399,5 +399,10 @@ failure modes — and it is the same infrastructure the question bank needs to s
 Shape worth considering when it is built: one row per addressable provision (`NRTA s1(xlvi)`,
 `NRTR reg 298A(2)`, `SADC-RTSM §7.2.16(2)(b)`) carrying verbatim text, source document, page, and the
 retrieval date — so a citation on a question resolves to text a human can read without opening a
-350-page gazette. The project already has pgvector wired for the wiki search, so semantic lookup over
-the same rows is cheap to add.
+350-page gazette.
+
+**Correction (2026-07-30):** an earlier draft of this section said pgvector was "already wired for the
+wiki search" in this project. It is not — there is no vector extension, no embedding column and no
+`match_*` function anywhere in `supabase/migrations/` or `src/`. The reusable asset is the
+`wiki-semantic-search` **pattern** (indexer → Supabase pgvector → RAG answer), proven on another
+project and portable, not existing infrastructure here. Design notes: `docs/rag-source-retrieval.md`.
