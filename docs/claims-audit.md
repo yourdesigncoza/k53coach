@@ -71,3 +71,22 @@ no-runtime-AI architecture from something to hedge about into the selling point,
 
 The rule this leaves behind: **claim the verification, not the authorship.** AI drafting is an
 implementation detail; a human approving it against the regulations is the product.
+
+---
+
+## Decision: the app is online-only (John, 2026-07-30)
+
+The "works offline" claim is not merely unbuilt — **offline support is not wanted**. K53 Coach always
+needs a connection; questions, progress and the Coach all live server-side.
+
+That makes the corrected copy permanent rather than provisional, and it settles the claim in the
+strongest way: not "we removed it until we build it", but "it will never be true, by design".
+
+**K53-14 (PWA service worker) is cancelled**, not deferred. The reason is worth keeping: a service
+worker caching learner content actively undermines the accuracy gate. The markings review of the same
+day is the case in point — content shipped as verified turned out to need correction, and a cached
+copy on a learner's phone would keep serving the superseded text after the fix landed. One source of
+truth for content is worth more here than offline convenience.
+
+**"Installable" stays and remains true** — `src/app/manifest.ts` exists and the PWA manifest makes the
+app installable without an app store. Only the offline half was false.
