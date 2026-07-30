@@ -1,5 +1,7 @@
 # Question verification — where things stand
 
+> Picking this up cold? Read `docs/handover-2026-07-30.md` first.
+
 The 2026-07-30 sweep of the approved question bank, and what it produced.
 
 ## State of the bank
