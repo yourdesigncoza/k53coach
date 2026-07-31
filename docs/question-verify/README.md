@@ -43,6 +43,7 @@ a re-run reports "already applied" rather than writing again.
 | `question-fixes-citation-pass-2026-07-30.json` | 4 — defects the citation pass surfaced |
 | `question-fixes-round2-2026-07-30.json` | 6 — defects the citation pass recorded in its notes |
 | `citations-amendments-2026-07-30.json` | 2 — the two items that needed post-2000 amending notices |
+| `question-fixes-drafts-2026-07-31.json` | 20 — the 15 EXPLANATION_DEFECT + 5 AMBIGUOUS verdicts, closed |
 
 On a fresh database: `supabase db push`, then replay these in the order above.
 
@@ -59,8 +60,25 @@ but is *not* the source of the rule tested — reg 150 requires a motorcycle to 
 does not tell you to use both. Do not strip that qualifier when this feeds a UI or an audit report,
 or the field will assert that technique is law.
 
-**Our working copy of the Regulations is the 2000 original — and the amendments matter.** Both items
-this blocked are now cited, and the two instruments are in `init/` (gitignored):
+**Our working copy of the Regulations is the 2000 original — and the amendments matter.** Three items
+this blocked are now cited. Two of the instruments are in `init/` (gitignored); the third is not, and
+is flagged as such.
+
+- **Divided roads (`RR-096`, `RR-097`, `RR-095`, lesson `RR21`).** Found 2026-07-31. **Reg 297(2) was
+  substituted by GNR.2116 r. 52 w.e.f. 5 October 2001.** The 2000 original allowed three routes across
+  a dividing section — *"an opening in such space, barrier or section or at a cross-over or
+  intersection"* — and the substituted text allows **one**: *"except through a constructed
+  intersection"*. A reviewer working from an unamended copy will read three and "correct" a right
+  answer into a wrong one; that is exactly what happened on 2026-07-30, and the lesson was widened to
+  three routes before the substitution was found. **GG 22736 is not on disk** — the substitution comes
+  from the consolidated text in `init/nrtr-2000-consolidated-part1-kzntransport.pdf` (consolidated to
+  GNR.209 of 9 March 2012), which attributes it specifically and prints a different text from the
+  original. Obtaining GG 22736 would close it.
+
+  Practical consequence: **`nrtr-2000-consolidated-part1-kzntransport.pdf` is the better working copy**
+  for anything in Chapters IX–X. It carries amendment notes inline (`[Sub-reg. (2) substituted by …]`),
+  which is how this was caught at all. Prefer it over the 2000 original, and treat the original as the
+  thing you diff against, not the thing you cite.
 
 - **Learner's-licence validity (`RR-063`).** Reg 101(1) was **never textually amended** — it still
   reads *18 months* in every consolidated copy. The change was made by ministerial notice **under**

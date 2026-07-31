@@ -39,6 +39,37 @@ confined to the drafts. Grep the whole bank for `s 4(3)` and `42(1)` before anyt
 
 ## 2. Two items contradict each other
 
+> ### ⚠️ CORRECTED 2026-07-31 — this section was written against superseded text
+>
+> The reasoning below quotes **reg 297(2) as enacted in 2000**. That subregulation was
+> **substituted by GNR.2116 r. 52 w.e.f. 5 October 2001**, and the substituted text allows
+> **one** route, not three:
+>
+> > "No person shall drive a vehicle on, over, across or within any dividing space, barrier or
+> > section referred to in subregulation (1), **except through a constructed intersection**:
+> > Provided that no person shall so drive through such constructed intersection where such
+> > driving is prohibited by an appropriate road traffic sign or by a traffic officer…"
+>
+> Consequences, all applied 2026-07-31 (`scripts/data-repairs/question-fixes-drafts-2026-07-31.json`):
+>
+> - **`RR-097` is SOUND, not AMBIGUOUS.** Its stem ("the only lawful way") and its key
+>   ("through a properly built intersection — and not even there if a sign or a traffic officer
+>   forbids it") match the text in force exactly. Only its citation changed, and it now carries an
+>   explicit warning so the next reviewer with a 2000 copy does not "refute" it again.
+> - **`RR-096` was still defective**, but for a smaller reason: its key stated the prohibition as
+>   absolute, dropping the constructed-intersection exception, and its explanation added a
+>   stopping/parking rule that reg 297(2) does not contain.
+> - **`src/content/road-rules.ts` RR21 must NOT be "fixed" as recommended below.** It was widened
+>   to three routes on the strength of this section; that was a regression and has been reverted.
+>
+> Caveat recorded honestly: **GG 22736 itself is not on disk.** The substitution is taken from the
+> consolidated text in `init/nrtr-2000-consolidated-part1-kzntransport.pdf` (consolidated to
+> GNR.209 of 9 March 2012), which attributes it specifically and prints a text differing from the
+> original. Obtaining GG 22736 would close it. This is the **reg 101(1) trap in a second place** —
+> see §3 — and the general exposure it describes now has a worked second example.
+
+*Original text of this section, retained for the record:*
+
 `RR-096` teaches that the dividing section of a divided road is absolutely off limits.
 `RR-097` teaches that you may cross it at an intersection.
 
@@ -124,8 +155,30 @@ AI pass** — constraint 9. The 54 SOUND verdicts are a triage result, not a sig
 where to spend attention, and every one carries a quote that can be checked in seconds.
 
 Recommended order:
-1. Sweep and fix the `s 4(3)` citation block (5 items, plus check the approved 125).
-2. Fix `src/content/road-rules.ts:381`, then `RR-096`/`RR-097`.
-3. Rewrite the 5 AMBIGUOUS stems and the 15 explanation defects.
+1. ~~Sweep and fix the `s 4(3)` citation block (5 items, plus check the approved 125).~~ **Done** —
+   swept bank-wide 2026-07-31, **0 hits**. The three remaining reg 35/36 citations (`RR-073`,
+   `RR-074`, `RR-075`) are on plate- and disc-display items, where those provisions are apposite.
+2. ~~Fix `src/content/road-rules.ts:381`, then `RR-096`/`RR-097`.~~ **Superseded — do not do this.**
+   See the correction box at §2: the lesson's original wording was right, and widening it was a
+   regression. Reverted 2026-07-31.
+3. ~~Rewrite the 5 AMBIGUOUS stems and the 15 explanation defects.~~ **Done 2026-07-31** —
+   `scripts/data-repairs/question-fixes-drafts-2026-07-31.json`, 20 ops over 18 items. Two of the 15
+   (`RR-076`, `RR-077`) needed no write: their only defect was the `s 4(3)` citation, already gone.
+   `RR-097` was re-verified SOUND (§2) and took a citation warning instead of a rewrite.
 4. ~~Park `RR-063` until the amending notice is obtained.~~ **Done** — GN 134 of 2010 obtained and cited.
 5. Human pass over the 54, then apply with `apply-question-verification.mjs --by "<name>"`.
+
+### Still open from this review (2026-07-31)
+
+- **The 5 UNSUPPORTED verdicts are untouched** — `RR-054`, `RR-038`, `RR-057` (the two-second rule),
+  `RR-040` (legally unanswerable), `RR-063` (cited, but see §3). §4's schema gap is the real blocker:
+  there is still no way to mark an item *"sound practice, no statutory basis"*, so the pipeline
+  forces either a false citation or a blank one.
+- **`RR-022` is approved and live, and carries the §6 defect.** It asks "You are approaching a traffic
+  circle. Who has right of way?" and keys *"Traffic already in the circle / approaching from your
+  right"* on a citation to `reg 301` — fusing the roundabout rule, the mini-circle rule and reg 301
+  into one option. Found while fixing `RR-044`; **not changed**, because it is in the approved bank
+  and that is a separate decision. Three more approved items sit in the same family: `RR-004`,
+  `RR-021` and `q-rules-2` all teach the two-second rule that §4 shows has no statutory basis.
+- **`RR-037` is `approved`, not draft** — it was carried in this draft-review's verdict set anyway.
+  Its fix therefore changed a question that is live to learners now.

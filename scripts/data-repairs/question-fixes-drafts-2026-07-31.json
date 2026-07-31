@@ -1,0 +1,225 @@
+{
+  "description": "The 15 EXPLANATION_DEFECT and 5 AMBIGUOUS verdicts from the 2026-07-30 draft-rules verification (docs/question-verify/findings.md, verdicts.json), closed against the primary text. Two of the 15 (RR-076, RR-077) needed no write — their only defect was the fabricated `NRTA s 4(3)` citation, which is already gone bank-wide (swept 2026-07-31: 0 hits). One of the 5 (RR-097) was verified SOUND and got a citation note instead of a rewrite: the AMBIGUOUS verdict rested on the 2000 original text of reg 297(2), which was SUBSTITUTED by GNR.2116 r.52 w.e.f. 5 October 2001. The original allowed three routes across a dividing section ('an opening in such space, barrier or section or at a cross-over or intersection'); the substituted text allows one ('except through a constructed intersection'). Every quote below was read in init/nrtr-2000-consolidated-part1-kzntransport.pdf (consolidated to GNR.209 of 9 March 2012), the 2000 original, or the Act — not from a summary.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.RR-037",
+      "set": {
+        "explanation": "At a four-way stop the order is decided by who stopped first: sign R1.4 says you may not move into the junction until every vehicle that stopped at another stop line before you, and that would in the normal course of events cross your path, has cleared the junction. You stopped first, so you go. There is no yield-to-the-right tie-breaker at a four-way stop — reg 301 is written only for a junction where traffic has to move around a traffic island — and going straight rather than turning gives you nothing.",
+        "source_citation": "NRTR 2000 — Sch 1 sign R1.4 (4-way stop: yield to every vehicle that stopped at another stop line before you and would cross your path); reg 301 (yield to the right — confined to a junction 'where vehicular traffic is required to move around a traffic island', so it does not reach a four-way stop)"
+      },
+      "why": "EXPLANATION_DEFECT. The old explanation taught 'yield-to-the-right settles a tie', which appears in NO instrument. Sch 1 R1.4 gives only the order-of-stopping rule and is silent on a simultaneous arrival; reg 301 is expressly confined to traffic-island junctions. The marked answer was always right — this removes an invented rule and adds R1.4's cross-your-path qualifier, which the item never stated."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-044",
+      "set": {
+        "explanation": "A mini-circle is controlled by sign R2.2, and R2.2 decides priority by the yield line: you must give way to any vehicle that will cross a yield line at the junction before you and whose path will cross yours. A car already travelling around the circle crossed its yield line before you did, so you wait for a safe gap and then enter, moving clockwise. Pushing in ahead of it takes a gap that is not yours, and waiting for the circle to empty completely is not required and simply blocks everyone behind you.",
+        "source_citation": "NRTR 2000 — Sch 1 sign R2.2 (yield at mini-circle: yield to any vehicle that will cross a yield line before you and cross your path; move clockwise and attempt not to encroach on the mini-circle)"
+      },
+      "why": "EXPLANATION_DEFECT. The old explanation stated the ROUNDABOUT rule ('traffic already in the circle has right of way') on a mini-circle question. R137 and R2.2 are different junctions with different rules — R2.2 is first-to-cross-the-yield-line, not already-circulating. The outcome is unchanged (a circulating car did cross its yield line first) but the stated basis was the wrong sign."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-045",
+      "set": {
+        "prompt": "Two cars reach a mini-circle at about the same time. What decides which one has right of way?",
+        "options": [
+          "Whichever car crosses the yield line first",
+          "The car approaching from the right, always",
+          "Whichever car is going straight through rather than turning"
+        ],
+        "answer": 0,
+        "explanation": "A mini-circle is controlled by sign R2.2, and R2.2 decides it by the yield line: you give way to any vehicle that will cross a yield line at the junction before you and whose path will cross yours. It is not a yield-to-the-right rule. That rule lives in reg 301, which is written for a junction where traffic must move around a traffic island and which expressly gives way to a contrary road traffic sign — and R2.2 is exactly such a sign. What a driver intends to do after the circle makes no difference either. Once you are in, keep moving clockwise and try not to encroach on the circle itself.",
+        "source_citation": "NRTR 2000 — Sch 1 sign R2.2 (yield to any vehicle that will cross a yield line before you); reg 301 (yield to the right — confined to a junction where traffic moves around a traffic island, and subject to a contrary direction 'conveyed by a road traffic sign')"
+      },
+      "why": "AMBIGUOUS, rewritten rather than patched. The old stem posited a dead-simultaneous arrival and keyed 'the car on your right'. No instrument resolves a genuine tie at a mini-circle: R2.2 asks who crossed the yield line FIRST, which a tie has no answer to, and reg 301 is both confined to traffic-island junctions and expressly subordinate to a contrary sign (reg 1 also distinguishes a physical 'traffic island' from a 'painted island', and many mini-circles are painted). The item now tests the rule R2.2 actually states, and kills the yield-to-the-right misconception head-on instead of teaching it."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-046",
+      "set": {
+        "options": [
+          "Come to a complete stop, the same as you would at a four-way stop",
+          "Slow down enough to give way if needed, then drive through smoothly",
+          "Drive through at your normal speed, since there is nothing to give way to"
+        ],
+        "explanation": "Sign R2.2 asks you to yield, not to stop, so with nothing approaching you slow down, check the other entrances and keep moving. A full stop is what a stop sign demands, and R2.2 is not a stop sign — it is used with yield line RTM2, not stop line RTM1. Holding your normal speed is the real fault: yielding means being able to give way to a vehicle that crosses a yield line before you do, and at full speed you cannot.",
+        "source_citation": "NRTR 2000 — Sch 1 sign R2.2 (yield at mini-circle) with yield line RTM2; Sch 1 sign R1 (stop sign) with stop line RTM1"
+      },
+      "why": "AMBIGUOUS — unsafe distractor. Option (2) previously read 'since a circle has no stop line', and that premise is TRUE: a mini-circle carries yield line RTM2, not stop line RTM1 (confirmed in Sch 1 — the amber-signal provision refers to 'stop line RTM1', the scholar-patrol provision to 'yield line RTM2'). A distractor whose stated reason is correct teaches the learner that a true fact is false. The premise is replaced; the marked answer is unchanged, and the explanation now uses the RTM1/RTM2 contrast as the teaching point instead of hiding it."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-049",
+      "set": {
+        "options": [
+          "Brake as hard as you can and stop before the line",
+          "Accelerate to clear the intersection before the light turns red",
+          "Proceed through with caution, because you cannot stop safely"
+        ],
+        "explanation": "A steady amber (yellow) disc means stop behind the stop line RTM1 — but it carries an express proviso: if you are so close when it is displayed that you cannot stop safely, you may proceed with caution against it. 'With caution' is the legal standard, and it is not the same as carrying on at whatever speed you happened to be doing. Emergency braking invites the car behind into your boot, and accelerating to beat the light is exactly the fault the examiner is watching for.",
+        "source_citation": "NRTR 2000 — Sch 1, traffic signals, steady yellow disc light signal: stop behind stop line RTM1, 'Provided that if he or she is so close to a stop line RTM1 when a steady yellow disc light signal is displayed that he or she cannot stop safely, he or she may proceed with caution against such yellow light signal'"
+      },
+      "why": "EXPLANATION_DEFECT — and the defect was in the OPTION, not only the explanation. The key read 'Continue through at your current speed', which replaces the statutory standard ('proceed with caution') with a different and more permissive one. A learner who memorised the old key would carry an unlawful rule into the test and onto the road. Option text and explanation both now track the proviso."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-058",
+      "set": {
+        "explanation": "Reg 213(4) requires an adult occupying a seat fitted with a seatbelt to wear it, and carries an express proviso that it does not apply while reversing or moving in or out of a parking bay or area — that is the exception in the question, and it exists because the belt stops you turning to see behind you. A low speed or a short trip changes nothing. Two things the old wording got wrong are worth knowing: the duty in reg 213(4) is written for adults (over 14 years, or 1,5 m and taller), with children covered separately by reg 213(6) and (7); and the parking-bay proviso is not the only exception, because an MEC may exempt a person on medical grounds under reg 213(9).",
+        "source_citation": "NRTR 2000 — reg 213(4) (adult must wear a fitted belt; proviso for reversing or moving in or out of a parking bay or area), reg 213(1)(a)-(b) (adult / child), reg 213(6)-(7) (children), reg 213(9) (MEC medical exemption), reg 213(11) (driver's duty); infant rule reg 213(6A) (GN R846, GG 38142)"
+      },
+      "why": "EXPLANATION_DEFECT. Two false statements: 'the only exception' (reg 213(9) is a second one) and 'anyone in a seat fitted with a belt must be wearing it' (reg 213(4) binds ADULTS, defined at reg 213(1)(a); children fall under 213(6)-(7)). Marked answer unchanged."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-074",
+      "set": {
+        "explanation": "A number plate is required at both the front and the back of a car, and each must be affixed so that every letter and figure is clearly legible and the whole plate is clearly visible. A single plate leaves the vehicle unidentifiable from the other direction. Towing does not let you drop either plate — but it does relax one thing, which is why the third option is a trap worth understanding: reg 35(9) disapplies the legibility and visibility requirements for the REAR plate while a motor vehicle is towing another vehicle."
+      },
+      "why": "EXPLANATION_DEFECT. The old closing clause, 'towing does not change the requirement', is wrong: reg 35(9) expressly disapplies reg 35(7)'s legibility and visibility requirements for the rear plate while towing. The marked answer stands (both plates must still be fitted under reg 35(7)(f)); only the absolute claim goes. The citation already named reg 35(9) and needs no change."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-080",
+      "set": {
+        "prompt": "You are driving a car and towing a light trailer. Do the normal speed limits change?",
+        "explanation": "Towing gives a car no special speed allowance — the general limits in reg 292 apply exactly as they would without the trailer, and both wrong options invent an exemption that does not exist. Heavier combinations are a different story, which is why the question is about a car: reg 293(1)(a) puts a goods vehicle or combination over 9 000 kg on 80 km/h, and reg 295(1) puts a tractor and its trailer on 35 km/h.",
+        "source_citation": "NRTR 2000 — reg 292 (general speed limits: 60 urban / 100 rural / 120 freeway, unchanged by towing); reg 293(1)(a) (80 km/h for a goods vehicle or combination over 9 000 kg) and reg 295(1) (35 km/h for a tractor or a trailer referred to in reg 154(2)) — the combinations that DO carry their own limits, neither of which is a car with a light trailer"
+      },
+      "why": "AMBIGUOUS — unscoped stem. 'Do the normal speed limits change while you are towing a trailer?' is categorically answered 'No', but that is false for a goods-vehicle combination over 9 000 kg (reg 293(1)(a)(ii), 80 km/h) and for a tractor-drawn trailer (reg 295(1), 35 km/h). The stem is scoped to a car and a light trailer, which makes 'No' true, and the explanation now names the combinations that are the exception rather than leaving them to ambush the learner. The old citation cited reg 99(4) (licence codes) and reg 151 (trailer brakes) — both true statements, neither about speed."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-084",
+      "set": {
+        "explanation": "The rule is keep left, pass right: you move out to the right of the vehicle ahead, pass at a safe distance, and return to the left once you are safely clear. That is the default in reg 298(1), and on the ordinary two-way road in the question the right is the side. Passing on the left is not always unlawful — reg 298(1) carries provisos that permit it, for instance when the vehicle ahead has signalled that it is turning right — but 'whichever side has the most space' is not one of them, and no proviso ever lets you pass on the shoulder or the verge.",
+        "source_citation": "NRTR 2000 — reg 296 (keep left), reg 298(1) (pass to the right at a safe distance; provisos (a)-(e) permit passing on the left in defined cases; further proviso bars any such passing 'by driving on the shoulders of the roadway or on the verge'), reg 298A (no driving on the shoulder)"
+      },
+      "why": "EXPLANATION_DEFECT — overbroad. 'Passing on its left is illegal on a normal two-way road' is refuted by reg 298(1) proviso (a) (vehicle ahead turning or signalling right — any road) and proviso (c) (an urban two-way road wide enough for two or more lines of moving vehicles in each direction). Marked answer unchanged; the false absolute is replaced with the actual default plus a named exception."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-088",
+      "set": {
+        "explanation": "Of the three situations offered, only the one-way roadway divided into marked traffic lanes is permitted — that is proviso (d) to reg 298(1). A driver going below the speed limit creates no right to undertake, and a shoulder is never an overtaking lane: reg 298(1)'s further proviso bars any of the left-passing cases from being done on the shoulder or the verge. Note that reg 298(1) does allow passing on the left in other circumstances too — when the vehicle ahead has signalled a right turn, and on wide urban roads — so this is the only lawful case here, not the only one in law.",
+        "source_citation": "NRTR 2000 — reg 298(1) proviso (d) (roadway restricted to one direction and divided into traffic lanes by road traffic signs); provisos (a)-(c) and (e) (the other cases in which passing on the left is permitted); further proviso (never on the shoulder or verge); reg 298A (no driving on the shoulder)"
+      },
+      "why": "EXPLANATION_DEFECT — false exclusivity. 'Passing on the left is ONLY on the table where the roadway is one-way and split into marked lanes' is refuted by provisos (a), (b), (c) and (e), each of which independently permits it. The marked answer is still the only correct option among the three, so the fix is to say that precisely rather than to overclaim about the law."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-090",
+      "set": {
+        "prompt": "You are in the right-hand lane of a freeway when the car behind you flashes its headlights at you. What does this mean and what should you do?",
+        "options": [
+          "It is an insult and you should ignore it and keep your line",
+          "It warns you that your lights are faulty, so you should stop as soon as possible",
+          "It is the legal way for that driver to say they are coming past, so move into a lane on your left and keep your speed steady"
+        ],
+        "explanation": "On a freeway, reg 323(6) makes flashing the headlights the recognised way for a following driver to signal that they intend to overtake, and reg 323(5) then requires you — as the driver in the right-hand lane — to move into a lane on your left, when you can do so without endangering anyone, and not to accelerate until that vehicle has passed. Treating it as rudeness leaves the other driver stuck on your right, and stopping for a 'faulty light' invents a message the signal does not carry. Off the freeway, reg 298(3) imposes the same duty to move as near to the left edge as you safely can and not accelerate.",
+        "source_citation": "NRTR 2000 — reg 323(5) (driver in the right-hand lane must move to a lane on the left and not accelerate until passed), reg 323(6) (the headlight flash, expressly 'for the purposes of subregulation (5)'); reg 298(3) (the equivalent duty on other public roads)"
+      },
+      "why": "EXPLANATION_DEFECT. The headlight flash is a FREEWAY signal: reg 323(6) is expressly scoped 'for the purposes of subregulation (5)', which is the freeway right-hand-lane rule. The stem said 'open road' and the explanation called it 'a recognised signal' at large — no provision makes it one off the freeway. The stem is moved to a freeway so the item tests what the law actually prescribes, and reg 298(3) is named for the ordinary-road duty so nothing is lost."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-095",
+      "set": {
+        "explanation": "Missing a turn costs you a few minutes, not a shortcut: you carry on to the next constructed intersection or interchange and turn around there. Cutting through the median is prohibited by reg 297(2) no matter how clear the road looks. Reversing is worse than it sounds — reg 308(1)(a) permits a vehicle to travel backwards only when it can be done in safety and only for as long as is necessary, and on a dual carriageway you would be reversing into traffic coming up behind you at full speed.",
+        "source_citation": "NRTR 2000 — reg 297(2) as substituted by GNR.2116 r. 52 w.e.f. 5 October 2001 (no driving on, over, across or within the dividing section 'except through a constructed intersection'), reg 308(1)(a) (travel backwards only when it can be done in safety), reg 299(2) (entering a road safely)"
+      },
+      "why": "EXPLANATION_DEFECT. 'Reversing on a dual carriageway puts you head-on into traffic' is the wrong hazard — reversing exposes you to traffic from BEHIND, on your own roadway; head-on is what crossing the median risks. reg 308(1)(a) is the provision that actually governs reversing and was not cited. Marked answer unchanged."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-096",
+      "set": {
+        "options": [
+          "Drive along it when the roadway is congested",
+          "Park on it while you wait for a passenger",
+          "Nothing, except to cross it through a constructed intersection"
+        ],
+        "explanation": "Reg 297(2) prohibits driving on, over, across or within the dividing section, with one exception: you may cross it through a constructed intersection — and not even there if a road traffic sign or a traffic officer forbids it. Driving along it to skip congestion and stopping on it to wait are both outside that exception, and both put you in the one strip of road that other drivers never expect to find a vehicle in.",
+        "source_citation": "NRTR 2000 — reg 297(2) as substituted by GNR.2116 r. 52 w.e.f. 5 October 2001: 'No person shall drive a vehicle on, over, across or within any dividing space, barrier or section referred to in subregulation (1), except through a constructed intersection: Provided that no person shall so drive through such constructed intersection where such driving is prohibited by an appropriate road traffic sign or by a traffic officer'"
+      },
+      "why": "EXPLANATION_DEFECT, and it was in the key. The key read 'Nothing — you may not drive on, over, across or inside it', stating reg 297(2) as absolute and dropping the constructed-intersection exception, which is why it contradicted RR-097 outright — a learner could draw both in one sitting. The explanation also asserted 'no stopping or parking in it either', which reg 297(2) does not say (parking there is caught because you must drive on it to get there, not by a separate parking rule). Key and explanation now carry the exception, and the contradiction with RR-097 is gone."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-097",
+      "set": {
+        "source_citation": "NRTR 2000 — reg 297(2) as substituted by GNR.2116 r. 52 w.e.f. 5 October 2001: 'except through a constructed intersection: Provided that no person shall so drive through such constructed intersection where such driving is prohibited by an appropriate road traffic sign or by a traffic officer'. NOTE: the 2000 ORIGINAL read 'except through an opening in such space, barrier or section or at a cross-over or intersection' — three routes, not one. Anyone checking this item against an unamended 2000 copy will wrongly refute it."
+      },
+      "why": "AMBIGUOUS verdict SUPERSEDED — no rewrite. The verdict ('the reg names THREE routes, the key names one') was read off the 2000 original, which GNR.2116 r. 52 substituted on 5 October 2001. Under the text now in force the key is exactly right, including the sign/officer proviso, and the stem's 'only lawful way' is accurate. This is the reg 101(1) trap in a new place, so the citation is written to warn the next reviewer instead of leaving the item to be 'refuted' again. Caveat recorded honestly: GG 22736 itself is not on disk — the substitution is taken from the consolidated text in init/nrtr-2000-consolidated-part1-kzntransport.pdf, which attributes it specifically and prints a different text from the original. Obtaining GG 22736 would close it."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-102",
+      "set": {
+        "prompt": "You are driving on a freeway and want to signal that you are moving into the left lane. May you use a hand signal?",
+        "options": [
+          "No — hand signals are prohibited on a freeway",
+          "Yes, provided you make the signal clearly and early",
+          "Yes, but only when you are moving to the left"
+        ],
+        "explanation": "Reg 323(2)(d) prohibits giving a hand signal while driving a motor vehicle on a freeway, so neither a clear early signal nor a left-only one makes it lawful — you use your indicators. At freeway speeds an arm out of the window is both hard to see and a real risk to the driver making it. The prohibition has one narrow escape, 'except for a cause beyond his or her control', which is what covers a driver whose indicators fail mid-journey; it is not a general permission.",
+        "source_citation": "NRTR 2000 — reg 323(2)(d) (no hand signal when driving a motor vehicle on a freeway, 'except for a cause beyond his or her control'); reg 326(1)(a) (signal by direction indicator)"
+      },
+      "why": "AMBIGUOUS — the old stem handed the learner the exception and then marked it wrong. It described indicators failing mid-journey, which is squarely 'a cause beyond his or her control' under reg 323(2)(d), making the marked-wrong 'Yes' defensible. The stem now describes ordinary driving, where the prohibition bites cleanly, and the explanation names the exception rather than pretending the ban is absolute."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-103",
+      "set": {
+        "explanation": "A 400 cc motorcycle is well above the 50 cc cut-off in reg 323(1)(c) and is not electrically propelled, so it is not on the prohibited list. A motor tricycle is named outright in reg 323(1)(d). A tractor is named in reg 323(1)(f), but with one narrow carve-out you should know about: reg 323(4)(a) disapplies that prohibition for a person operating a tractor in connection with the construction or maintenance of a freeway. That is roadworks, not ordinary driving.",
+        "source_citation": "NRTR 2000 — reg 323(1)(c) (motorcycle not exceeding 50 cc or electrically propelled), reg 323(1)(d) (motor tricycle or quadrucycle), reg 323(1)(f) (tractor), reg 323(4)(a) (tractor exception for freeway construction or maintenance)"
+      },
+      "why": "EXPLANATION_DEFECT. 'Tractors and motor tricycles ... may not be operated on a freeway at all' is false for tractors: reg 323(4)(a) expressly exempts a tractor operated in connection with freeway construction or maintenance. Marked answer unchanged; the item now states the carve-out instead of an absolute that the regulation contradicts."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-104",
+      "set": {
+        "vehicle_codes": ["B", "C", "EB"],
+        "explanation": "In a car all three prescribed signals are given with the right arm, so the shape of the arm carries the meaning: right arm out with the forearm hanging down and circling anti-clockwise means left (reg 324). The right arm out with the forearm up and the palm facing forward is the signal for stopping or reducing speed suddenly (reg 327), not a turn. The left-arm signal is a real signal — but reg 324's proviso reserves it for the driver of a tractor, a two-wheel vehicle or an animal-drawn vehicle, so it is not available to you in a car.",
+        "source_citation": "NRTR 2000 — reg 324 (left-turn hand signal: right arm sideward, forearm vertical and downward, circling anti-clockwise; proviso permits the left-arm signal only for a tractor, a two-wheel vehicle or an animal-drawn vehicle), reg 327 (signal to stop or reduce speed suddenly), reg 326(1)(a) (indicators)"
+      },
+      "why": "EXPLANATION_DEFECT plus a scoping defect the verdict did not reach. 'A left arm out of the window is not a recognised signal at all' is flatly false — reg 324's proviso prescribes it for a tractor, a two-wheel vehicle or an animal-drawn vehicle. Worse, the item was scoped to include code A: a motorcycle IS a two-wheel vehicle, so for a code A rider the marked-wrong distractor is a lawful left-turn signal. Rescoped to B/C/EB, following the precedent set for VC-019, and the explanation now teaches the proviso instead of denying it."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-106",
+      "set": {
+        "explanation": "Reg 308(1)(h) makes it an offence to fail to give an immediate and absolute right of way to a vehicle sounding its device or bell or displaying its identification lamp under s 58(3) or s 60 of the Act — so the road must open for it and you move left as soon as you safely can. You never hold your right of way against it. Speeding up to stay ahead holds the emergency vehicle back and risks putting you over the speed limit. Worth knowing: the Act only lets that driver disregard road traffic signs and exceed the general speed limit while the device is being sounded AND the identification lamp is in operation.",
+        "source_citation": "NRTR 2000 — reg 308(1)(h) (fail to give an immediate and absolute right of way to a vehicle 'sounding a device or bell or displaying an identification lamp in terms of section 58 (3) or 60 or regulation 176'); NRTA 93 of 1996 — s 58(3) proviso (b) and s 60 proviso (b) (the device 'shall be so sounded and such lamp shall be in operation' while the vehicle is driven in disregard of a sign or above the limit)"
+      },
+      "why": "EXPLANATION_DEFECT — but NOT the fix the verdict proposed. The verdict said to change 'siren OR lamp' to 'and', on the basis that NRTA s 58(3)(b) requires both. That would misstate reg 308(1)(h), which genuinely reads 'or': your duty to give way is triggered by either signal. The conjunction belongs to a different question — what the emergency driver needs before he or she may disregard signs or exceed the limit — and s 58(3)(b) / s 60(b) do require both there. Both propositions are now stated in their own place, with the provision that carries each."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-046",
+      "set": {
+        "options": [
+          "Come to a complete stop, the same as you would at a four-way stop",
+          "Slow down enough to give way if needed, then drive through smoothly",
+          "Drive through at your normal speed, since a yield sign only binds you when other traffic is actually there"
+        ]
+      },
+      "why": "Self-correction on the first pass of this file. The replacement distractor ('since there is nothing to give way to') reproduced the very fault it was written to remove: with the stem stating that no other traffic is near, that premise is TRUE, so the option was again wrong-for-a-true-reason. The premise is now false — R2.2's duty is to approach prepared to yield, and it does not switch off when the junction looks empty — while the conclusion stays wrong. Checked against the rewritten explanation, which already makes exactly this point."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-102",
+      "set": {
+        "options": [
+          "No — hand signals are prohibited on a freeway",
+          "Yes, provided you make the signal clearly and early",
+          "Yes, as long as you use your indicators at the same time"
+        ]
+      },
+      "why": "Self-correction on the first pass of this file. Rescoping the stem to an ordinary left-lane change left distractor (2) reading 'Yes, but only when you are moving to the left' — a condition the new stem itself satisfies, so the option quietly contradicted the stem instead of testing anything. Replaced with a claim that is unambiguously wrong under reg 323(2)(d): using indicators as well does not license a hand signal on a freeway."
+    }
+  ]
+}
