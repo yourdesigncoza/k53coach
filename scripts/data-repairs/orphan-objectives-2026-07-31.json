@@ -4,67 +4,89 @@
     {
       "table": "questions",
       "match": "id=eq.RS-010",
-      "set": { "objective_code": "RR7" },
+      "set": {
+        "objective_code": "RR7"
+      },
       "why": "Flashing red signal. Not an orphan at all — a mis-mapping. RR7 'Reading the robot' already exists and is exactly the lesson a learner needs. A traffic signal is not a road sign, so it was never going to resolve against road_signs."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-011",
-      "set": { "objective_code": "RR7" },
+      "set": {
+        "objective_code": "RR7"
+      },
       "why": "Steady amber. Same as RS-010 — RR7 covers the amber rule directly ('On amber, stop if you can do so safely; do not speed up to beat the light')."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-005",
-      "set": { "objective_code": "RR27" },
+      "set": {
+        "objective_code": "RR27"
+      },
       "why": "Shape and border of a permanent warning sign. A class-level question: no individual sign row can host it, which is why it had no objective. RR27 teaches the shape-per-class discriminator."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-019",
-      "set": { "objective_code": "RR27" },
+      "set": {
+        "objective_code": "RR27"
+      },
       "why": "Shape of an information sign. Same class-level problem, same host."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-036",
-      "set": { "objective_code": "RR27" },
+      "set": {
+        "objective_code": "RR27"
+      },
       "why": "Yellow background at roadworks = temporary and overriding. Rests on reg 286A(1)(b)(iii), 'a white, blue or green background becomes yellow retro-reflective' — checked against the regulation, not the question's own explanation."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-042",
-      "set": { "objective_code": "RR28" },
-      "why": "Controlled level crossing — boom down, red lights flashing. Previously null ON PURPOSE: the library's W318 is the UNCONTROLLED crossing, and pointing here would have taught the wrong hazard. RR28 covers both forms and names the difference."
+      "set": {
+        "objective_code": "RR28"
+      },
+      "why": "Controlled level crossing — boom down, red lights flashing. Previously null ON PURPOSE, though for a reason that turned out to be wrong: docs/handover-2026-07-30.md recorded W318 as the UNCONTROLLED crossing, and that was repeated here. Sch 1 actually defines W318 as 'Warns a road user that a railway crossing is ahead' — an ADVANCE WARNING sign used at every protection class in SADC RTSM Vol 2 Ch 7 Table 7.2. The markers at the crossing are W403 and W404. Corrected 2026-07-31 once Vol 2 Ch 7 was obtained; RR28 was rewritten against it in the same pass. The mapping itself is unchanged and still right."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-017",
-      "set": { "objective_code": "RR29" },
+      "set": {
+        "objective_code": "RR29"
+      },
       "why": "Green direction sign. The GD family has zero rows in road_signs, so there was nothing to point at. RR29 teaches the guidance classes by colour without needing the artwork."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-018",
-      "set": { "objective_code": "RR29" },
+      "set": {
+        "objective_code": "RR29"
+      },
       "why": "Brown tourism background. Same missing family (GF), same host."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-021",
-      "set": { "objective_code": "RR29" },
+      "set": {
+        "objective_code": "RR29"
+      },
       "why": "The 'H' hospital service symbol. Same missing family, same host."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-022",
-      "set": { "objective_code": "RR29" },
+      "set": {
+        "objective_code": "RR29"
+      },
       "why": "Freeway exit countdown markers — IN1-IN3, which the library does not hold (it holds IN4-IN20). RR29 carries the 300/200/100 m meaning."
     },
     {
       "table": "questions",
       "match": "id=eq.RS-038",
-      "set": { "objective_code": "RR3" },
+      "set": {
+        "objective_code": "RR3"
+      },
       "why": "Broken white centre line — what it permits. The library has no RM3/WM3 dividing-line row, but the question is really about when you may overtake, and RR3 'No overtaking on a solid line' is its exact counterpart: the broken line is the case where crossing IS allowed. Adding the dividing-line marking is still worth doing; this stops the orphan without waiting for it."
     }
   ]

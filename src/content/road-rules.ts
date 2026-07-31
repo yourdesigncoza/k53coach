@@ -516,24 +516,39 @@ export const ROAD_RULES: RoadRule[] = [
     reviewStatus: "draft",
   },
 
-  // Source: NRTA 93 of 1996 — s 58(1) (duty to obey a road traffic sign);
-  // Sch 1 signs W318 (uncontrolled level crossing) and the R1 stop obligation.
-  // Added 2026-07-31 to host RS-042. W318 is the UNCONTROLLED crossing, so
-  // pointing that question at it would have taught the wrong hazard — which is
-  // why it deliberately carried a null objective rather than a wrong one.
+  // Source: SADC RTSM Vol 2 Ch 7 (Railway Crossings, May 2012) — §7.2.1 modes of
+  // control, §7.2.3 sign control, §7.2.4 flashing red disc, §7.2.5 boom operation,
+  // Table 7.2 protection classification; NRTR 2000 — Sch 1 W318, reg 286 (8)(b)
+  // (flashing red signals mounted below R1, above W403/W404, illuminated only when
+  // a train is approaching).
+  //
+  // REWRITTEN 2026-07-31 against Vol 2 Ch 7, which was obtained after the first
+  // draft. Three claims in that draft were wrong and are corrected here:
+  //   - it framed crossings as "controlled or uncontrolled". The manual's four
+  //     modes are flagman, YIELD R2, STOP R1, and flashing red disc + STOP R1.
+  //     R1/R2 control is PERMANENT — you stop or yield every time, train or not.
+  //   - it treated the boom as the control. §7.2.5 ¶1: a safety boom "should be
+  //     considered as a high visibility hazard marker warning device and not as a
+  //     form of railway crossing control". Booms appear only at the highest
+  //     protection class, alongside FRD + R1.
+  //   - it repeated the claim (from docs/handover-2026-07-30.md) that W318 is the
+  //     UNCONTROLLED crossing. Sch 1: W318 "Warns a road user that a railway
+  //     crossing is ahead" — an advance warning sign used at EVERY protection
+  //     class per Table 7.2. The markers at the crossing are W403 (single line)
+  //     and W404 (two or more lines).
   {
     code: "RR28",
     title: "Railway level crossings",
     category: "intersections",
     summary:
-      "Booms down or lights flashing means stop — and stay stopped until both clear.",
-    rule: "A level crossing may be controlled or uncontrolled. At a controlled crossing, flashing red lights, a descending or lowered boom, or an audible warning all mean a train is approaching: you must stop and remain stopped until the boom lifts and the lights stop. At an uncontrolled crossing there is no signal at all — the warning sign is the only notice you get, and the whole duty to look and listen is yours.",
+      "A stop sign at a crossing means stop every time — not only when a train is coming.",
+    rule: "Every railway crossing carries a hazard marker at the rails — W403 for a single line, W404 for two or more — and normally an advance warning sign W318 further back. How you are controlled at the crossing itself varies: by a YIELD sign R2, by a STOP sign R1, by flashing red disc signals used together with a STOP sign R1, or by a flagman. Control by R1 or R2 is permanent and applies whether or not a train is anywhere near. The flashing red signals sit below the stop sign and are lit only when a train is approaching.",
     whatToDo:
-      "Slow on the approach to any crossing and be ready to stop. Never move onto the rails unless you can clear them completely on the far side. If the lights are flashing or the boom is down, wait — however long it takes, and whether or not you can see a train.",
+      "Read which control you have. At a STOP sign you stop completely every time, then look both ways along the line before moving. At a YIELD sign you slow and give way. If the red signals are flashing, wait — a train is coming. Never move onto the rails unless you can clear them completely on the far side.",
     commonMistake:
-      "Driving around a lowered boom because no train is visible. A second train on the other line is exactly what that manoeuvre hides.",
+      "Driving around a lowered boom because no train is visible. A second train on the other line is exactly what that manoeuvre hides. The other error is treating a stop sign at a crossing as advisory when the line looks quiet — it is not.",
     testHint:
-      "The answer is never 'proceed if no train is visible' and never 'sound the hooter and cross'. It is stop, and wait for both the boom and the lights.",
+      "The answer is never 'proceed if no train is visible' and never 'sound the hooter and cross'. Note also that the boom is a warning device, not the control: the stop sign and the flashing signals are what oblige you to stop.",
     relatedRules: ["RR7", "RR27"],
     reviewStatus: "draft",
   },
