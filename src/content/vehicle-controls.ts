@@ -414,3 +414,35 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
 export function getControl(code: string): VehicleControl | undefined {
   return VEHICLE_CONTROLS.find((c) => c.code === code);
 }
+
+/**
+ * The numbered callouts on the cockpit diagram (`public/img/cockpit-controls.jpg`),
+ * mapped to the control each one points at.
+ *
+ * Every entry was CONFIRMED BY JOHN against the original artwork, not read off the
+ * image — an earlier pass read callout 7 as the pedals and it is the handbrake,
+ * which is why none of this is inferred. `label` is what the diagram is pointing
+ * at, which is not always the lesson title: 1 and 3 are both the mirrors object,
+ * and 8-10 are the three pedals as separate callouts.
+ *
+ * This is the asset behind the `control-number` question archetype
+ * (docs/exam-format-analysis/question-patterns.md P7) — one diagram supporting
+ * number->name, function->number and function->number-pair questions.
+ */
+export const COCKPIT_CALLOUTS: {
+  n: number;
+  code: string;
+  label: string;
+}[] = [
+  { n: 1, code: "VC16", label: "Rear-view mirror" },
+  { n: 2, code: "VC12", label: "Windscreen wiper" },
+  { n: 3, code: "VC16", label: "Side mirrors" },
+  { n: 4, code: "VC1", label: "Steering wheel" },
+  { n: 5, code: "VC7", label: "Indicator stalk" },
+  { n: 6, code: "VC5", label: "Gear lever" },
+  { n: 7, code: "VC6", label: "Handbrake" },
+  { n: 8, code: "VC4", label: "Clutch pedal" },
+  { n: 9, code: "VC3", label: "Brake pedal" },
+  { n: 10, code: "VC2", label: "Accelerator pedal" },
+  { n: 11, code: "VC9", label: "Hooter" },
+];
