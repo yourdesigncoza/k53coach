@@ -106,13 +106,31 @@ const variants = [
     : [{ label: 'published pair, no passphrase', config: { mode: 'sandbox', ...SANDBOX_DEFAULTS, passphrase: '' } }]),
 ]
 
-/** PayFast names the offending field in the returned HTML; pull it out. */
-function diagnose(html) {
-  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+/**
+ * PayFast names the offending field in the returned HTML; pull it out.
+ *
+ * Read the RESPONSE, not just the body. The engine page is rendered client-side, so a
+ * successful request contains none of the words a naive body match looks for ("pay now",
+ * "order summary", …) — an earlier version of this function returned `null` on success and
+ * the script then printed the OPPOSITE conclusion, that our own account had failed. The two
+ * reliable signals are the status code and the redirect target:
+ *
+ *   reject  → HTTP 400, body names the invalid field ("signature: Generated signature …")
+ *   accept  → HTTP 200, redirected to /eng/process/payment/<uuid> — a transaction exists
+ */
+function diagnose(html, res) {
+  const text = html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
   const m = text.match(/The following information provided by the seller is invalid:\s*(.+?)\s*(?:Go Back|$)/i)
   if (m) return { ok: false, detail: m[1] }
-  if (/pay\s*now|order summary|amount due|confirm/i.test(text) && !/error/i.test(text)) {
-    return { ok: true, detail: 'accepted — gateway rendered a payment page' }
+  if (res.status >= 400) return { ok: false, detail: `http ${res.status}: ${text.slice(0, 160)}` }
+
+  const txn = res.url.match(/\/eng\/process\/payment\/([0-9a-f-]{36})/i)
+  if (txn) {
+    const total = text.match(/Payment total:\s*(R\s?[\d\s,.]+)/i)
+    return {
+      ok: true,
+      detail: `accepted — transaction ${txn[1]} created${total ? `, ${total[1].trim()}` : ''}`,
+    }
   }
   return { ok: null, detail: text.slice(0, 160) || 'empty response' }
 }
@@ -140,7 +158,7 @@ for (const v of variants) {
     console.log(`  ${v.label.padEnd(32)} NETWORK ERROR: ${e.message}`)
     continue
   }
-  const { ok, detail } = diagnose(html)
+  const { ok, detail } = diagnose(html, res)
   if (ok) anyPass = true
   console.log(`  ${v.label.padEnd(32)} ${ok === true ? 'PASS' : ok === false ? 'FAIL' : '????'}  http=${res.status}`)
   console.log(`  ${''.padEnd(32)}       ${detail}\n`)
