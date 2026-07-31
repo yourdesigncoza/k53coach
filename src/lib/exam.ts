@@ -1,13 +1,17 @@
 /**
  * Mock exam engine — pure, framework-free logic shared by the server (paper
  * assembly, pool getters) and the client (runner, scoring). No official K53
- * figures are published, so the 68-question convention lives here as a single
- * config constant; a 64-format variant is a one-line change.
+ * figures are published, so the paper format lives here as a single config
+ * constant.
  *
  * Rules (from the K53 wiki ground truth):
  *  - three sections scored INDEPENDENTLY; failing one section fails the exam;
  *  - no negative marking (a wrong/blank answer simply scores 0);
  *  - option order is shuffled per sitting so position carries no signal.
+ *
+ * The last two are now corroborated by direct observation of the live terminal —
+ * see docs/exam-format-analysis/. That analysis also moved the paper from 68 to
+ * 64 (K53-34); what is and is not evidenced is spelled out on EXAM_FORMAT_B.
  */
 import type { Question, Topic } from "@/lib/types";
 
@@ -37,17 +41,42 @@ export interface ExamFormat {
 }
 
 /**
- * The default Code B (light motor vehicle) paper: 68 questions, sections scored
- * independently. Figures are the widely-circulated convention (unpublished
- * officially) — kept in one place so they're trivial to adjust.
+ * The default Code B (light motor vehicle) paper: 64 questions, sections scored
+ * independently.
+ *
+ * Changed from 68 (30/30/8) on 2026-07-31 — K53-34. Evidence and its limits:
+ *
+ *  EVIDENCED. The paper is 64. Every legible page of four circulated memo sets
+ *  reads "Question N of 64", as one continuous 1-64 counter with topics
+ *  interleaved and no per-section numbering. Our three-section presentation is
+ *  our own choice, not a mirror of the terminal.
+ *
+ *  EVIDENCED. Road markings are examined and count INSIDE the signs section —
+ *  signs + markings measured ~26 of 64 against the 28 the terminal reports for
+ *  signs. So markings questions carry topic "signs" (matching road_signs, which
+ *  already holds the 16 marking rows) and there is deliberately no fourth Topic.
+ *  Note the pool has ZERO markings items today; a paper cannot yet contain the
+ *  ~6 it should, and assemblePaper has no sub-quota to force them once it can.
+ *
+ *  DERIVED. The 30/28/6 split: 64 total, with 28 reported for signs, leaves 36
+ *  for rules + controls; the observed mix (rules 47%, controls 11%) puts that at
+ *  30/6. Consistent with the old convention's shape.
+ *
+ *  NOT EVIDENCED — the pass marks. The memos show no score reporting at all, so
+ *  nothing here is observed. These preserve the previous convention's per-section
+ *  rate, rounded UP so the mock is never more lenient than the real thing:
+ *  rules 22/30 (unchanged), signs 23/30 -> 22/28, controls 6/8 -> 5/6. If a real
+ *  figure surfaces (23/28 for signs is commonly quoted but we have no source for
+ *  it), it is a one-number change here. Do not present these to a learner as
+ *  official.
  */
 export const EXAM_FORMAT_B: ExamFormat = {
   vehicleCode: "B",
   timeLimitSeconds: 60 * 60,
   sections: [
     { topic: "rules", count: 30, pass: 22 },
-    { topic: "signs", count: 30, pass: 23 },
-    { topic: "controls", count: 8, pass: 6 },
+    { topic: "signs", count: 28, pass: 22 },
+    { topic: "controls", count: 6, pass: 5 },
   ],
 };
 

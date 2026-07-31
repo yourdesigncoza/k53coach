@@ -37,7 +37,7 @@ practice, and **nobody can actually pay us**.
 | `road_signs` | **362 rows** — 361 approved + SA-relevant, 1 draft. 234 regulatory / 102 warning / 26 guidance. **Zero road markings.** |
 | `questions` | **125 rows**, all `review_status='approved'` + `in_exam=true`. Signs 47 / rules 41 / controls 37. 110 three-option, 15 four-option. Provenance: 78 official_manual, 30 legislation, 15 hand-written, 2 generated. |
 | Rule learning objects | **10** (`RR1`–`RR10`) |
-| Exam format | 68 questions — rules 30 (pass 22) / signs 30 (pass 23) / controls 8 (pass 6), scored independently |
+| Exam format | ~~68 questions — rules 30 / signs 30 / controls 8~~ → **64 — rules 30 / signs 28 / controls 6**, scored independently (corrected 2026-07-31, K53-34; markings count inside signs) |
 | `exam_attempts` | **0** — no learner has sat a mock in production |
 | `entitlements` | **6 rows**, all granted by hand. **No unique constraint on `reference`.** |
 | PayFast ITN | **Stub.** Returns 200, grants nothing |
@@ -78,21 +78,45 @@ currently impossible.
 
 #### The floor is derived, not guessed
 
-A paper draws rules 30 / signs 30 / controls 8. Holding any section to **≤25% of its pool per
+A paper draws rules 30 / signs 28 / controls 6. Holding any section to **≤25% of its pool per
 paper** gives the minimum pool directly:
 
 | Section | Drawn | Pool for ≤25% | Stage 1 target | Stage 2 target |
 |---|---|---|---|---|
 | Rules | 30 | 120 | **120** (25%) | 240 (12.5%) |
-| Signs | 30 | 120 | **140** (21%) | 480 (6%) |
-| Controls | 8 | 32 | **40** (20%) | 80 (10%) |
-| **Total** | 68 | 272 | **300** | **800** |
+| Signs | 28 | 112 | **112** (25%) | 448 (6%) |
+| Controls | 6 | 24 | **24** (25%) | 48 (12.5%) |
+| **Total** | 64 | 256 | **256** | **736** |
 
-**300 is the paid-beta floor** — the smallest bank at which no section repeats more than a quarter
+**256 is the paid-beta floor** — the smallest bank at which no section repeats more than a quarter
 of itself per paper. It is not a round number chosen for comfort; it falls out of the exam format.
 
+> ### Re-derived 2026-07-31 (K53-34) — was 300, at 68 questions (30/30/8)
+>
+> `docs/exam-format-analysis/` reconstructed four circulated memo sets against the live terminal:
+> the paper is **64**, not 68, and **road markings are examined and count inside the signs
+> section**. `EXAM_FORMAT_B` now reads 30 / 28 / 6. The floor moves **300 → 256**, and the shape
+> matters more than the total:
+>
+> | Section | Have (approved) | + Louwrens' drafts | Target | Gap |
+> |---|---|---|---|---|
+> | Rules | 42 | +78 → **120** | 120 | **0 — met** |
+> | Signs | 46 | +1 → 47 | 112 | **65** |
+> | Controls | 37 | — | 24 | **0 — 13 over** |
+>
+> So after the weekend the entire remaining content gap is the **signs section: 65 questions**, of
+> which **~24 should be road markings** (9% of the paper, and we hold zero). Controls is already
+> past its floor; writing more controls items buys nothing against Stage 1.
+>
+> The old plan pointed at 93 more signs questions and no markings at all. That was ~30 items of
+> misdirected work and a whole examined topic missing.
+>
+> **Not evidenced: the pass marks.** The memos carry no score reporting. The values in
+> `EXAM_FORMAT_B` preserve the previous convention's per-section rate, rounded up so the mock is
+> never more lenient than the real test. Do not present them to a learner as official.
+
 **Repeat suppression makes the floor work harder.** Track served question ids per learner and
-deprioritise recently-seen ones when assembling a paper. At 300 questions this yields ~4
+deprioritise recently-seen ones when assembling a paper. At the 256 floor this yields ~4
 effectively non-overlapping papers per section instead of ~25% overlap on the second attempt.
 Small change to `assemblePaper` in `src/lib/exam.ts`; disproportionate effect. **Do this in
 Stage 1.**
@@ -129,9 +153,11 @@ that records them is W1 task #1, before any generation or import**:
    content.
 5. Verify item-by-item against the cited source; record citation + approver.
 6. Client style spot-check at ~20 items.
-7. Build to **300** (Stage 1), then **800** (Stage 2).
+7. Build to **256** (Stage 1), then **736** (Stage 2). *(Re-derived 2026-07-31 from the
+   64-question format — see the box in §4. Was 300/800 at 68 questions.)*
 
-**Stage 1 acceptance:** ≥300 approved questions at the per-section split above; every item has a
+**Stage 1 acceptance:** ≥256 approved questions **at the per-section split above** — the split is the
+bar, not the total, and controls is already past its floor while signs is 65 short; every item has a
 citation and an approver; repeat suppression live; no section exceeds 25% pool draw.
 
 ---
@@ -206,7 +232,7 @@ schedule, since it built payments early then sat on them through the entire cont
 
 | Gate | Workstream |
 |---|---|
-| ≥300 verified questions, per-section split, repeat suppression live | W1 |
+| ≥256 verified questions **at the per-section split** (120 rules / 112 signs / 24 controls), repeat suppression live | W1 |
 | Payments live, idempotent, sandbox-tested | W2 |
 | No orphaned weak-area topics | W3 |
 | Road markings written library | W5a |
@@ -219,7 +245,7 @@ Positioned honestly as **early access**, English-only questions, with the bank s
 800 questions, Afrikaans content pass, marking illustrations, Code A/C papers.
 
 ```
-W1 migration ─► generation ──────────────────────────────────►  (to 300, then 800)
+W1 migration ─► generation ──────────────────────────────────►  (to 256, then 736)
 W2 payments  ─────►                     (small; do early, gate the checkout until Stage 1)
 W3 rules     ─────────►                 (slightly leads the rules half of W1)
 W4 Coach K   ──►
@@ -281,7 +307,7 @@ backend migrated to Antigravity CLI and the `agy` binary isn't installed. Verdic
 | Finding | Sev | Fix in v2 |
 |---|---|---|
 | Launch bar incoherent — required full bank *and* payments while arguing payments should come first | HIGH | Two-stage gate (§5); checkout held closed until the content floor |
-| "≤25% pool draw" acceptance was **arithmetically impossible** — plan's own math gave 90 rules questions against a 30-question section (33%) | HIGH | Floor **derived** from the exam format: 120/140/40 = 300 (§4 W1) |
+| "≤25% pool draw" acceptance was **arithmetically impossible** — plan's own math gave 90 rules questions against a 30-question section (33%) | HIGH | Floor **derived** from the exam format: 120/112/24 = 256 (§4 W1; was 120/140/40 = 300 before the 64-question correction) |
 | Audit-trail risk rated Medium; it's the control that makes AI generation defensible | HIGH | Promoted to High; migration is now W1 task #1 |
 | Verification method never specified — reviewers both read the 20-question spot-check as the QA system | HIGH | Four enforced properties (§4 W1); spot-check explicitly demoted to style-only |
 | `entitlements` has no unique constraint on `reference` — "idempotent" wasn't enforceable | MEDIUM | Unique index on `(source, reference)` added to W2 |
@@ -296,4 +322,4 @@ backend migrated to Antigravity CLI and the `agy` binary isn't installed. Verdic
 | "POPIA exposure starts at the first paying user — make it launch-gating" (Grok, HIGH) | **Overruled.** The concern was already settled (John, 2026-07-24); K53-17 is closed and the workstream removed. The reviewer reasoned correctly from `CLAUDE.md` constraint 1, which still describes a review as outstanding — **that file is stale on this point and should be corrected**, or the next reviewer (human or otherwise) will raise it again |
 | "Afrikaans question content is a missing launch blocker" (Grok, MEDIUM) | **Demoted.** John's 2026-07-24 decision: EN+AF ship, Afrikaans content pass deliberately deferred, African-language speakers prefer English. Residual valid point — don't market as bilingual while questions are English-only — folded into W6 |
 | "The 20-question spot-check is the QA system" (both) | **Partially overruled.** v1 did say "verify every question". But both reviewers misreading it the same way was evidence the doc was ambiguous, so the mechanism is now spelled out rather than asserted |
-| "300–450 is enough for paid validation" (Codex; Grok said 250–300) | **Not taken on their authority** — but the independently derived floor landed at 300, which corroborates it. Judgment, not fact |
+| "300–450 is enough for paid validation" (Codex; Grok said 250–300) | **Not taken on their authority** — but the independently derived floor landed at 300, and at 256 after the 64-question correction. Still inside their range, which corroborates it. Judgment, not fact |
