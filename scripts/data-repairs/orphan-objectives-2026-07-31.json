@@ -1,0 +1,71 @@
+{
+  "description": "Closes the 11 approved signs questions that carried no objective_code — the 'no orphaned weak-area topics' Stage 1 gate (K53-32). A learner who gets one of these wrong currently lands nowhere. The fix is NOT new sign artwork: weak-area-cards.ts resolves an objective by PREFIX (RR* -> rules lesson, VC* -> controls, otherwise a sign row), so a signs-topic question can point at a rules lesson and it resolves correctly. Two of the eleven already had a home (RR7). The other nine are hosted by three new teaching objects added to src/content/road-rules.ts in the same change — RR27 shape-and-colour, RR28 railway level crossings, RR29 guidance and information signs — plus RR3 for the broken-line item. Ingesting artwork for the GD/GF/GFS families and IN1-IN3 remains open, but the gate does not depend on it.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.RS-010",
+      "set": { "objective_code": "RR7" },
+      "why": "Flashing red signal. Not an orphan at all — a mis-mapping. RR7 'Reading the robot' already exists and is exactly the lesson a learner needs. A traffic signal is not a road sign, so it was never going to resolve against road_signs."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-011",
+      "set": { "objective_code": "RR7" },
+      "why": "Steady amber. Same as RS-010 — RR7 covers the amber rule directly ('On amber, stop if you can do so safely; do not speed up to beat the light')."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-005",
+      "set": { "objective_code": "RR27" },
+      "why": "Shape and border of a permanent warning sign. A class-level question: no individual sign row can host it, which is why it had no objective. RR27 teaches the shape-per-class discriminator."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-019",
+      "set": { "objective_code": "RR27" },
+      "why": "Shape of an information sign. Same class-level problem, same host."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-036",
+      "set": { "objective_code": "RR27" },
+      "why": "Yellow background at roadworks = temporary and overriding. Rests on reg 286A(1)(b)(iii), 'a white, blue or green background becomes yellow retro-reflective' — checked against the regulation, not the question's own explanation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-042",
+      "set": { "objective_code": "RR28" },
+      "why": "Controlled level crossing — boom down, red lights flashing. Previously null ON PURPOSE: the library's W318 is the UNCONTROLLED crossing, and pointing here would have taught the wrong hazard. RR28 covers both forms and names the difference."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-017",
+      "set": { "objective_code": "RR29" },
+      "why": "Green direction sign. The GD family has zero rows in road_signs, so there was nothing to point at. RR29 teaches the guidance classes by colour without needing the artwork."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-018",
+      "set": { "objective_code": "RR29" },
+      "why": "Brown tourism background. Same missing family (GF), same host."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-021",
+      "set": { "objective_code": "RR29" },
+      "why": "The 'H' hospital service symbol. Same missing family, same host."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-022",
+      "set": { "objective_code": "RR29" },
+      "why": "Freeway exit countdown markers — IN1-IN3, which the library does not hold (it holds IN4-IN20). RR29 carries the 300/200/100 m meaning."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-038",
+      "set": { "objective_code": "RR3" },
+      "why": "Broken white centre line — what it permits. The library has no RM3/WM3 dividing-line row, but the question is really about when you may overtake, and RR3 'No overtaking on a solid line' is its exact counterpart: the broken line is the case where crossing IS allowed. Adding the dividing-line marking is still worth doing; this stops the orphan without waiting for it."
+    }
+  ]
+}

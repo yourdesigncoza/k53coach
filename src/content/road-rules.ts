@@ -492,6 +492,73 @@ export const ROAD_RULES: RoadRule[] = [
     relatedRules: ["RR1", "RR5", "RR6"],
     reviewStatus: "draft",
   },
+
+  // Source: NRTR 2000 — reg 286(1)(b) (sign shapes by class), reg 286A(1)(b)(iii)
+  // (a temporary version of a sign takes a yellow background: "a white, blue or
+  // green background becomes yellow retro-reflective"); Sch 1 sign classes.
+  // Added 2026-07-31 to host RS-005, RS-019 and RS-036, which test how the sign
+  // CLASSES are told apart. No single sign row can carry a class-level question,
+  // which is why they had no objective — see docs/question-verify/README.md.
+  {
+    code: "RR27",
+    title: "Reading road signs: shape and colour",
+    category: "signals",
+    summary:
+      "Shape tells you the class, colour tells you whether it is temporary.",
+    rule: "Road signs fall into classes you can tell apart on sight. A triangle with a red border, standing on its base, is a permanent warning. A circle is regulatory — it commands or prohibits. A rectangle is information or guidance. Where a temporary version of a sign is provided, its background becomes yellow, and the temporary sign overrides the permanent one it replaces.",
+    whatToDo:
+      "Read the shape first to know what kind of instruction you are being given, then the symbol for the detail. At roadworks, obey the yellow signs even where they contradict the permanent ones beside them.",
+    commonMistake:
+      "Treating a yellow roadworks sign as advisory. It is temporary, not optional, and it outranks the permanent signs.",
+    testHint:
+      "Shape is the fastest discriminator in the test: triangle = warning, circle = regulatory, rectangle = information. A yellow background never means 'advisory' — it means temporary.",
+    relatedRules: ["RR7", "RR29"],
+    reviewStatus: "draft",
+  },
+
+  // Source: NRTA 93 of 1996 — s 58(1) (duty to obey a road traffic sign);
+  // Sch 1 signs W318 (uncontrolled level crossing) and the R1 stop obligation.
+  // Added 2026-07-31 to host RS-042. W318 is the UNCONTROLLED crossing, so
+  // pointing that question at it would have taught the wrong hazard — which is
+  // why it deliberately carried a null objective rather than a wrong one.
+  {
+    code: "RR28",
+    title: "Railway level crossings",
+    category: "intersections",
+    summary:
+      "Booms down or lights flashing means stop — and stay stopped until both clear.",
+    rule: "A level crossing may be controlled or uncontrolled. At a controlled crossing, flashing red lights, a descending or lowered boom, or an audible warning all mean a train is approaching: you must stop and remain stopped until the boom lifts and the lights stop. At an uncontrolled crossing there is no signal at all — the warning sign is the only notice you get, and the whole duty to look and listen is yours.",
+    whatToDo:
+      "Slow on the approach to any crossing and be ready to stop. Never move onto the rails unless you can clear them completely on the far side. If the lights are flashing or the boom is down, wait — however long it takes, and whether or not you can see a train.",
+    commonMistake:
+      "Driving around a lowered boom because no train is visible. A second train on the other line is exactly what that manoeuvre hides.",
+    testHint:
+      "The answer is never 'proceed if no train is visible' and never 'sound the hooter and cross'. It is stop, and wait for both the boom and the lights.",
+    relatedRules: ["RR7", "RR27"],
+    reviewStatus: "draft",
+  },
+
+  // Source: NRTR 2000 — Sch 1 guidance and information sign classes; reg 286A
+  // (colour). Added 2026-07-31 to host RS-017, RS-018, RS-021 and RS-022, which
+  // test the GD / GF / GFS families and IN1-IN3. The sign library holds 26
+  // guidance rows but not those specific codes, so the questions had nowhere to
+  // point. Ingesting the artwork for those families is separate and still open.
+  {
+    code: "RR29",
+    title: "Guidance and information signs",
+    category: "signals",
+    summary:
+      "The rectangles that tell you where things are — colour says what kind.",
+    rule: "Guidance and information signs are rectangular and carry no command: they tell you where routes, places and services are. Colour sorts them. Green carries directions to routes and destinations, with route numbers shown in yellow. Brown marks tourism and places of interest. Service symbols such as a letter H point to a hospital or emergency medical services. On a freeway, countdown markers showing three, two and one diagonal bars stand at 300, 200 and 100 metres before an exit.",
+    whatToDo:
+      "Read direction signs early and change lanes in good time rather than at the exit itself. Use the countdown markers to judge the distance left, so you leave the freeway without braking hard.",
+    commonMistake:
+      "Reading a countdown marker as a lane count, or treating a green direction sign as an instruction to turn. Neither commands anything.",
+    testHint:
+      "Colour is the discriminator: green for routes and destinations, brown for tourism. Countdown bars are metres to the exit, not lanes.",
+    relatedRules: ["RR22", "RR27"],
+    reviewStatus: "draft",
+  },
 ];
 
 export function getRule(code: string): RoadRule | undefined {
