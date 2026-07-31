@@ -1,0 +1,386 @@
+[
+  {
+    "objective_code": "RTM1",
+    "topic_tag": "Road Markings",
+    "difficulty": 1,
+    "prompt": "A solid white line is painted across your lane at a stop street. Where must the vehicle come to a standstill?",
+    "options": [
+      "Immediately behind the line",
+      "With the front wheels resting on the line",
+      "Level with the Stop sign, wherever the line happens to be"
+    ],
+    "answer": 0,
+    "explanation": "A stop line tells you exactly where to stop: the vehicle must come to a complete standstill immediately behind it, not on it and not beyond it. The line is often set back from the sign so you can see across the junction, so stopping level with the sign puts you too far forward.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "Derived from the approved RTM1 learning object. Stopping position is §7.2.1 ('immediately behind such stop line'); the duty to stop is NRTR reg 307. Deliberately does NOT test the examiner folklore removed from the object (front wheels, rocking back) — none of it is in the source."
+  },
+  {
+    "objective_code": "RTM1",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "You arrive at a junction where a stop line is painted across your lane, but the Stop sign has been knocked down. What must you do?",
+    "options": [
+      "Stop as though the Stop sign were still standing",
+      "Treat it as a yield and drive on if the way is clear",
+      "Ignore the line, because a marking has no force without its sign"
+    ],
+    "answer": 0,
+    "explanation": "At a junction, where the Stop sign has fallen down or the signal is out of order, the stop line carries the full force of the Stop sign on its own. A missing sign does not downgrade the line to a yield, and it certainly does not cancel it.",
+    "exam_likelihood": "medium",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.1 ¶2 — the standalone significance, scoped to a road junction. The 'at a junction' qualifier was restored to the learning object in the 2026-07-31 review pass; this item inherits the corrected scope."
+  },
+  {
+    "objective_code": "RTM2",
+    "topic_tag": "Road Markings",
+    "difficulty": 2,
+    "prompt": "Which statement about a yield line painted across your lane is correct?",
+    "options": [
+      "It carries the significance of a Yield sign, even where that sign is missing",
+      "It only applies while a Yield sign is standing beside it",
+      "It requires you to stop completely, like a stop line"
+    ],
+    "answer": 0,
+    "explanation": "A yield line carries the significance of Yield sign R2, including where that sign has fallen down. Yielding is not stopping — you may keep moving if the way is genuinely clear — but the duty to give way does not depend on the sign still being there.",
+    "exam_likelihood": "medium",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.2. Kept distinct from RS-039, which tests identifying the broken transverse line. Width is deliberately not tested here — see the RM12/RTM2 note in docs/markings-review-findings.md on the manual/regulation conflict."
+  },
+  {
+    "objective_code": "RTM3",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "A vehicle ahead of you has stopped at a pedestrian crossing to let someone cross. What may you do?",
+    "options": [
+      "Nothing — you may not pass a vehicle stopped at a pedestrian crossing",
+      "Pass it on the right, slowly, if you can see the crossing is clear on your side",
+      "Pass it on the left, since the pedestrian is on the other side of the road"
+    ],
+    "answer": 0,
+    "explanation": "Where a vehicle has stopped at a pedestrian crossing to let people cross, a driver coming up behind may not pass it. The stopped vehicle is hiding the crossing from you and from the pedestrian, which is exactly when someone steps out.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "NRTR reg 315(4), verbatim: 'the driver of any other vehicle approaching from the rear shall not pass such stopped vehicle'. Confirmed against the regulation during the 2026-07-30 markings review."
+  },
+  {
+    "objective_code": "RTM3",
+    "topic_tag": "Road Markings",
+    "difficulty": 2,
+    "prompt": "A pedestrian crossing is marked by two solid white lines with a gap between them. Where does the driver actually stop?",
+    "options": [
+      "At the stop line or yield line painted before the crossing",
+      "On the crossing itself, level with the first white line",
+      "Anywhere within the gap between the two lines"
+    ],
+    "answer": 0,
+    "explanation": "The crossing is preceded by a stop line or a yield line, and that is where the driver stops — the corridor between the two white lines is the pedestrians' space, not a place to bring a vehicle to rest.",
+    "exam_likelihood": "medium",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.3(1)(a). Added to the learning object in the 2026-07-31 pass; the precedence limb had been dropped in the first rewrite."
+  },
+  {
+    "objective_code": "RTM4",
+    "topic_tag": "Road Markings",
+    "difficulty": 1,
+    "prompt": "A row of wide white blocks is painted across the road outside a school. What are they?",
+    "options": [
+      "A pedestrian crossing, where people crossing have right of way",
+      "Speed bumps, which you must slow down for",
+      "A no-stopping zone, which you may drive across but not stop on"
+    ],
+    "answer": 0,
+    "explanation": "The blocks are a high-visibility pedestrian crossing, laid out so it can be seen from a distance. They are flat paint, not speed bumps, and the duty they carry is to give way to a pedestrian crossing — not merely to slow down.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.4. The 'speed bump' distractor is the misconception recorded in the object's own commonMistake field."
+  },
+  {
+    "objective_code": "RTM4",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "A block pedestrian crossing also has a traffic signal at it. Which controls you?",
+    "options": [
+      "The signal — an accompanying sign or signal takes precedence over the marking",
+      "The marking — paint on the road always outranks a signal",
+      "Whichever you reach first"
+    ],
+    "answer": 0,
+    "explanation": "Where a crossing is used together with a road sign, a traffic signal, a stop line or a yield line, that control takes precedence over the marking itself. The blocks tell you a crossing is there; the signal tells you when to go.",
+    "exam_likelihood": "medium",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.4(1)(a). Restored to the object in the 2026-07-31 pass along with the RTM3 equivalent."
+  },
+  {
+    "objective_code": "RM1",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "A single solid white line runs down the middle of a two-way road. In which of these situations may you cross it?",
+    "options": [
+      "To pass a stationary obstruction in the road, when it is safe",
+      "To overtake a slow vehicle, if the road ahead is clear",
+      "Never — a solid line may not be crossed for any reason"
+    ],
+    "answer": 0,
+    "explanation": "You may cross it to get past a stationary obstruction in the road, and only when it is safe. Overtaking is the one thing the line exists to prevent, and 'never for any reason' is also wrong — access to property and a stationary obstruction are both allowed for.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.5 ¶1(iii) — 'a stationary obstruction', not a parked one. Complements RS-012, which tests identifying the line rather than its exceptions."
+  },
+  {
+    "objective_code": "RM2",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "What is the practical difference between a single solid white line and two solid white lines down the middle of the road?",
+    "options": [
+      "The single line still lets you turn across it into a property; the double lines do not",
+      "There is none — both simply mean no overtaking",
+      "The double lines may be crossed at any time if the road is clear"
+    ],
+    "answer": 0,
+    "explanation": "Both bar overtaking, but the single line still permits you to turn across it to enter or leave property. Two lines are stricter: the only reason to cross them is a stationary obstruction in the roadway, so the turn into a driveway is out.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.5 vs §7.2.6. The object's own test hint names this as the classic one-versus-two trap."
+  },
+  {
+    "objective_code": "RM2",
+    "topic_tag": "Road Markings",
+    "difficulty": 2,
+    "prompt": "You are behind double solid white lines and a broken-down truck is partly blocking your lane. What may you do?",
+    "options": [
+      "Cross the lines to pass it, when it is safe to do so",
+      "Wait behind it until it is moved, because the lines may never be crossed",
+      "Drive on the shoulder to get around it"
+    ],
+    "answer": 0,
+    "explanation": "A stationary obstruction in the roadway is the one reason you may cross double white lines, and only when it is safe. The obstruction does not have to be blocking the road completely. Using the shoulder is not an alternative — passing on the shoulder is prohibited.",
+    "exam_likelihood": "medium",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.6 ¶1 — 'any stationary obstruction in the roadway'. The 'blocking' qualifier was removed from the object in the first rewrite; this item follows the corrected wording."
+  },
+  {
+    "objective_code": "RM4.1",
+    "topic_tag": "Road Markings",
+    "difficulty": 2,
+    "prompt": "What does the solid yellow line along the left edge of the roadway mark?",
+    "options": [
+      "The edge of the roadway, with the shoulder beyond it",
+      "A lane reserved for slow-moving vehicles",
+      "A no-parking zone"
+    ],
+    "answer": 0,
+    "explanation": "The yellow edge line marks where the roadway ends. The strip beyond it, between the line and the kerb, is the shoulder — and the shoulder is not a normal traffic lane, not a slow lane for you to sit in.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.8; 'shoulder' defined at NRTA s1(lxvi) as the portion between the edge of the roadway and the kerb line."
+  },
+  {
+    "objective_code": "RM4.1",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "On a road with one lane in each direction, when may you move onto the shoulder to let a faster vehicle pass?",
+    "options": [
+      "Between sunrise and sunset, if you endanger nobody and people and vehicles are visible at least 150 m away",
+      "At any time, as long as you indicate first",
+      "Only at night, when you can see the other vehicle's headlights"
+    ],
+    "answer": 0,
+    "explanation": "The courtesy move is a narrow daytime exception: between sunrise and sunset, on a road with one lane each direction, only while you are actually being overtaken, only if you endanger nobody, and only where people and vehicles are clearly discernible at least 150 metres away. At night it is not available at all.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "NRTR reg 298A(2), verbatim on every element. Confirmed during the 2026-07-30 review, which reversed an earlier finding against this content."
+  },
+  {
+    "objective_code": "RM5",
+    "topic_tag": "Road Markings",
+    "difficulty": 2,
+    "prompt": "A painted island is marked off in the middle of the road. What may you do with it?",
+    "options": [
+      "Nothing — you may not drive on it, stop on it or park on it",
+      "Drive across it, as long as you do not stop on it",
+      "Use it to wait for a gap when you are turning right"
+    ],
+    "answer": 0,
+    "explanation": "A painted island is out of bounds for all three: driving on it, stopping on it and parking on it. Using it as a waiting space to turn is the common error, and because no part of the vehicle may enter it, a single wheel is enough.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.9. The 2026-07-31 pass corrected the object from 'may not cross the marking' to 'may not enter the painted island' — this item follows the corrected framing."
+  },
+  {
+    "objective_code": "RM5",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "How do you recognise a painted island?",
+    "options": [
+      "By the boundary lines enclosing it — the area inside usually carries yellow bars, but not always",
+      "By the yellow diagonal bars, which every painted island has",
+      "By its red border, which no other marking uses"
+    ],
+    "answer": 0,
+    "explanation": "The boundary is what defines it. The area inside is normally filled with yellow sloping bars in a diagonal or chevron pattern, but one form has no bars at all — two solid white lines enclosing a plain yellow area. A learner who looks only for stripes will not recognise that one.",
+    "exam_likelihood": "medium",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.9.2(c) — the third form, which the original draft omitted entirely and the first rewrite added."
+  },
+  {
+    "objective_code": "RM6",
+    "topic_tag": "Road Markings",
+    "difficulty": 1,
+    "prompt": "How must a vehicle be positioned in a marked parking bay?",
+    "options": [
+      "Wholly within the lines defining the bay",
+      "With at least three wheels inside the bay",
+      "Roughly central, with a little overhang allowed at either end"
+    ],
+    "answer": 0,
+    "explanation": "The requirement is that the vehicle is parked wholly within the lines defining the limits of the bay. A wheel over the line means it is no longer wholly within, and 'roughly central' is not the test.",
+    "exam_likelihood": "medium",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.10 — 'wholly within the lines defining the limits of a parking bay'. Deliberately avoids the mirror/bumper claim that the 2026-07-31 pass removed from the object as an invented rule."
+  },
+  {
+    "objective_code": "RM7",
+    "topic_tag": "Road Markings",
+    "difficulty": 2,
+    "prompt": "A parking bay is outlined in yellow with the letter T in a yellow oval. What does that mean?",
+    "options": [
+      "Only a taxi may park or stop there",
+      "Any vehicle may park there for a limited time",
+      "It is a temporary bay, in use only while roadworks are underway"
+    ],
+    "answer": 0,
+    "explanation": "A yellow bay with a lettered oval is reserved for the class the letter indicates — T for taxi — and the prohibition covers stopping as well as parking. The letter is not a time limit and not a temporary marking.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.11 (RM7, RM7.1). Colour is the discriminator against the white ordinary bay RM6."
+  },
+  {
+    "objective_code": "RM7",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "Which vehicle may stop in a bay marked with the letter L?",
+    "options": [
+      "A goods vehicle, or a motorcycle or tricycle designed to carry goods",
+      "Any vehicle, as long as the driver is loading something",
+      "Only a truck above 3 500 kg"
+    ],
+    "answer": 0,
+    "explanation": "An L bay is a loading zone, and it admits a goods vehicle as well as a motorcycle, motor tricycle or motor quadrucycle designed or adapted to convey goods — four categories, not one. Having something to carry does not make an ordinary car eligible.",
+    "exam_likelihood": "medium",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.11 ¶1(a). The original draft restricted this to goods vehicles alone; corrected in the first rewrite."
+  },
+  {
+    "objective_code": "RM8",
+    "topic_tag": "Road Markings",
+    "difficulty": 2,
+    "prompt": "Your lane is marked with a yellow arrow pointing left and a second pointing straight ahead. What may you do from that lane?",
+    "options": [
+      "Either turn left or go straight ahead, but nothing else",
+      "Only turn left, because the left arrow comes first",
+      "Anything, because the arrows are advisory"
+    ],
+    "answer": 0,
+    "explanation": "Where two directions are shown, either one is permitted and nothing else is. The arrows are mandatory, not advisory — three of the six variants show one direction and three show a choice of two.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.12. The 'only one direction' framing was corrected in the first rewrite after the review found it false for RM8.2, RM8.4 and RM8.6."
+  },
+  {
+    "objective_code": "RM9",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "A broken yellow line runs along the side of a lane with the word BUS painted in it. May you drive in that lane?",
+    "options": [
+      "No — it is reserved, and the broken line is not an invitation to use it",
+      "Yes, because a broken line always means you may cross into the lane",
+      "Yes, provided you leave the lane before the next junction"
+    ],
+    "answer": 0,
+    "explanation": "The lane is reserved for the class of vehicle shown, and the gaps in the yellow line are just how the boundary is drawn — not permission, the way a broken white lane line would be. The reservation is granted by the accompanying sign, not by the paint.",
+    "exam_likelihood": "medium",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.13; NRTR reg 289 for the premises-access exception, which is deliberately not the tested point here. The object's misread-the-broken-line error is the distractor."
+  },
+  {
+    "objective_code": "RM10",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "You are going straight ahead and the yellow box junction in front of you is clear, but the traffic beyond it is standing still. What must you do?",
+    "options": [
+      "Wait behind the box until you can expect to clear it",
+      "Move into the box and wait there for the traffic to move",
+      "Enter the box, because it is clear at the moment you arrive"
+    ],
+    "answer": 0,
+    "explanation": "The rule bites at the moment you enter: do not enter if stationary vehicles ahead mean you will not be able to leave. An empty box is not the test — where you will be able to get to is.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.14 ¶1. The 'move in and wait' distractor is the UK Highway Code rule that the original draft had imported; the 2026-07-30 review flagged it as the most serious defect in the library."
+  },
+  {
+    "objective_code": "RM10",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "Which vehicles may enter a yellow box junction even when the exit is not clear?",
+    "options": [
+      "Vehicles turning left or right",
+      "None — the box may never be entered unless the exit is clear",
+      "Emergency vehicles only"
+    ],
+    "answer": 0,
+    "explanation": "A vehicle turning left or turning right may enter the box. That is an exception written into the rule, and it is the part learners most often miss because the box looks like a blanket prohibition.",
+    "exam_likelihood": "medium",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.14 ¶1 — the turning exception. The object's plainEnglish and memoryTrick had both dropped it until the 2026-07-31 pass restored them."
+  },
+  {
+    "objective_code": "RM12",
+    "topic_tag": "Road Markings",
+    "difficulty": 2,
+    "prompt": "What does a solid red line along the edge of the road mean?",
+    "options": [
+      "No stopping at all, 24 hours a day",
+      "No parking, but a brief stop to drop someone off is allowed",
+      "No stopping, but only during the hours shown on a nearby sign"
+    ],
+    "answer": 0,
+    "explanation": "A solid red line bans stopping around the clock. Stopping is much wider than parking, so a quick drop-off is out. A broken red line is the one that applies only during the hours shown on the accompanying sign.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.16. Solid-versus-broken is the second axis the object's test hint names. Deliberately does not test the reg 304 exceptions, which are about involuntary stops."
+  },
+  {
+    "objective_code": "RM13",
+    "topic_tag": "Road Markings",
+    "difficulty": 3,
+    "prompt": "You pull up next to a solid yellow line and sit in the car with the engine running, waiting for a passenger to come out. Is that allowed?",
+    "options": [
+      "No — waiting for someone is parking, not loading",
+      "Yes, because you never left the vehicle",
+      "Yes, as long as you stay less than five minutes"
+    ],
+    "answer": 0,
+    "explanation": "Parking in law means keeping a vehicle, whether occupied or not, stationary for longer than is reasonably necessary to load or unload people or goods. Sitting in the driver's seat changes nothing, and there is no five-minute allowance — the test is whether you are actually loading.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "NRTA s1(xlvi), 'whether occupied or not' — the four words that make the example work, added to the object after the Act was obtained on 2026-07-30. Note the s1 amendment caveat in docs/markings-review-findings.md §7 before this ships."
+  },
+  {
+    "objective_code": "RM15",
+    "topic_tag": "Road Markings",
+    "difficulty": 2,
+    "prompt": "Yellow arrows are painted around the circle at a mini circle. Which way must you travel?",
+    "options": [
+      "Clockwise, keeping the circle on your right",
+      "Anti-clockwise, keeping the circle on your left",
+      "Whichever way is shorter to your exit"
+    ],
+    "answer": 0,
+    "explanation": "The arrows impose a mandatory direction: you travel clockwise, so the circle stays on your right. Cutting across in front of it to shorten a right turn breaks that direction, whatever the traffic is doing.",
+    "exam_likelihood": "high",
+    "vehicle_codes": ["A", "B", "C", "EB"],
+    "note": "§7.2.19 ¶3. The 'anti-clockwise' distractor is the left-hand-traffic inversion — the foreign-convention failure mode this bank has been burned by, offered here as the wrong answer rather than taught as the right one."
+  }
+]
