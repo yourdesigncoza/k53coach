@@ -1,0 +1,17 @@
+{
+  "description": "Withdraws the two blue Vienna-Convention pedestrian-crossing signs from the served set. Both were live to learners while the question bank had ALREADY withdrawn RS-041 for describing exactly this sign as South African — the question was pulled in July and the sign it described was left standing. Set to review_status='draft' rather than deleted, the same way RS-041 was, so the record of why survives. NOT a mass withdrawal: a sweep of all 377 served signs found 66 whose code is in neither the DoT chart nor the Regulations, but for 64 of those the evidence is absence-of-evidence from an OCR'd PDF (the R5xx selective-restriction sub-plates are a real SA class and OCR loses them in dense tables). Only these two carry positive evidence. The remaining 64 are a worklist, recorded in docs/road-sign-assets.md, not a defect.",
+  "ops": [
+    {
+      "table": "road_signs",
+      "match": "code=eq.R360",
+      "set": { "review_status": "draft" },
+      "why": "'Pedestrian crossing (new)' — a BLUE square carrying a white triangle with a pedestrian on a zebra. That is the Vienna Convention form used across Europe. South Africa's pedestrian-crossing sign is W306: a RED triangle, white background, black symbol, 'Warns a road user of a marked pedestrian crossing ahead' (Sch 1). The code R360 appears nowhere in the National Road Traffic Regulations — zero hits across both the 2000 original and the consolidated text — and the row's own in_official_chart is false with alignment 'not_in_chart', so it was never chart-verified. This is the same sign the bank withdrew RS-041 over on 2026-07-30 as a foreign convention; the question went and the sign stayed. approved_by was 'ai:claude-code+brave' with provenance from a Brave search and k-53.co.za, a third-party site — not the chart, and not a human. If a post-2000 instrument does introduce R360, restore it with that instrument cited; absence from our sources is why it is draft rather than deleted."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R360-LES",
+      "set": { "review_status": "draft" },
+      "why": "'Pedestrian crossing (old)'. Three independent reasons. (1) The '-LES' suffix is the LESOTHO variant of a SADC sign — the SADC set spans member states, and sa_relevant was nonetheless true. (2) Its own verification note reads 'Artwork is a RED WARNING TRIANGLE (crossing ahead), but drafted content frames it as a regulatory crossing-here/give-way sign — mismatch; route to human', at confidence 0.55. It reached a human and was approved anyway, which is the gate failing open rather than closed. (3) in_official_chart false, alignment 'not_in_chart', and the code is absent from the Regulations."
+    }
+  ]
+}

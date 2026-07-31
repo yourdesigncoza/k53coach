@@ -69,3 +69,51 @@ name), `verified_at`, and `svg_hash` (sha256 of the approved SVG). `source_rev`
 holds the at-ingest SVG hash. Re-running `seed-db.mjs` after a fresh ingest never
 overwrites an approved sign; if an approved SVG changed upstream it is reported as
 **drift** for review. `check-drift.mjs` is the read-only CI guard.
+
+---
+
+## Two Vienna-Convention signs withdrawn, and a worklist — 2026-07-31
+
+**`R360` and `R360-LES` are out of the served set** (`review_status='draft'`,
+`scripts/data-repairs/withdraw-foreign-signs-2026-07-31.json`). Both are the **blue** square
+carrying a white triangle with a pedestrian on a zebra — the European form. South Africa's
+pedestrian-crossing sign is **W306**: a red triangle, white background, black symbol, *"Warns a road
+user of a marked pedestrian crossing ahead"* (Sch 1). Neither code appears anywhere in the
+Regulations.
+
+**The bank had already caught this and only half-acted.** `RS-041` was withdrawn on 2026-07-30 for
+describing exactly this sign as South African. The question was pulled; the sign it described stayed
+live for another day. Withdrawing a question is not withdrawing the claim — check the library
+whenever an item is pulled for a content reason.
+
+**`R360-LES` shows the gate failing open.** Its own verification note reads *"Artwork is a RED
+WARNING TRIANGLE (crossing ahead), but drafted content frames it as a regulatory crossing-here /
+give-way sign — mismatch; route to human"*, confidence 0.55. It reached a human and was approved
+anyway. A routed exception that gets waved through is worse than one that was never routed, because
+the audit trail records a human decision.
+
+### The worklist this surfaced — 64 signs, NOT a defect
+
+A sweep of all 377 served signs asked which are grounded in either the DoT chart or the Regulations.
+Raw answer: 156 ungrounded. That number is wrong, and the way it collapsed is worth recording:
+
+| Test | Ungrounded | Why the number fell |
+|---|---|---|
+| Code literally in the Regulations | 156 | `RM*` markings are defined in the SADC manual, not the Regulations |
+| In the chart **or** the Regulations | 99 | — |
+| …**or** its base code is (`R201-60` → `R201`) | **66** | Variant suffixes (`-60`, `-P`, `-LES`) are our coding scheme, not the source's |
+
+Of the final 66, **only the two above carry positive evidence of being foreign.** The other 64 are
+mostly the `R5xx` **selective-restriction sub-plates** ("Applies to buses", "Applies during the
+specified hours") — a real SA class; `R513`, `R514`, `R519` and `R530` *are* in the extracted text,
+so their neighbours' absence is OCR loss in a dense table, not proof they do not exist.
+
+**So: absence from an OCR'd extraction is not evidence of absence.** Confirming those 64 needs SADC
+RTSM Vol 2/3, which is not in `init/`. Until then they stay served and this is a worklist.
+
+**The one structural finding worth acting on:** 345 of 377 served signs carry an `ai:` approver, and
+**101 of those are `ai:claude-code+brave`** — the fallback path that ran a web search when the chart
+did not contain the sign, and cited third-party sites such as `k-53.co.za`. That fallback is where
+`R360` entered. Constraint 4 permits automated chart verification; it does not contemplate approving
+a sign the chart does not contain on the strength of a search result. Any future ingest should refuse
+to approve where `in_official_chart` is false.
