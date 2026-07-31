@@ -47,6 +47,12 @@ const DEFAULT_H = 132, LABEL_GAP = 5
  * the crop. `cx` overrides the derived centre, `by` the baseline, `w`/`h` the size.
  */
 const OVERRIDES = {
+  // Information signs on the same sheet, reachable with --only (see the label
+  // filter). They are shorter than a marking vignette, so the default 132pt box
+  // pulls in the red/white barrier row printed above them.
+  IN1:  { h: 74 },
+  IN2:  { h: 74 },
+  IN3:  { h: 74 },
   RM2:  { cx: 694, w: 68 },          // sits close to RM3
   RM5:  { cx: 1278, w: 206, h: 148 }, // hatched island + chevron island
   RM7:  { w: 104 },                   // parking-bay symbol legend sits to its right
@@ -79,7 +85,12 @@ const bboxXml = execFileSync('pdftotext', ['-f', String(PAGE), '-l', String(PAGE
 const labels = [...bboxXml.matchAll(
   /<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)">([^<]*)<\/word>/g)]
   .map((m) => ({ x0: +m[1], y0: +m[2], x1: +m[3], code: m[5] }))
-  .filter((w) => /^(RTM|RM|WM|GM)\d+(\.\d+)?$/.test(w.code))
+  // Markings by default. With --only, widen to any sign-code-shaped label so the
+  // requested codes are found AND their printed neighbours still bound the crop
+  // width — sheet 2 carries the information signs alongside the markings.
+  .filter((w) =>
+    /^(RTM|RM|WM|GM)\d+(\.\d+)?$/.test(w.code) ||
+    (only && /^[A-Z]{1,3}\d+(\.\d+)?(-[A-Z0-9]+)?$/.test(w.code)))
   .map((w) => ({ ...w, cx: (w.x0 + w.x1) / 2 }))
 
 if (!labels.length) throw new Error('no marking labels found on the chart page')
