@@ -1,0 +1,429 @@
+{
+  "description": "Corrects in_official_chart on 53 rows that were flagged false while their code appears on the official DoT chart. Found while comparing the disputed signs against RTSigns_charts.pdf after R360 was withdrawn: the flag disagrees with the chart on 69 of 378 rows, in both directions. ONLY the 53 with positive evidence are corrected here. The other 16 disagreements are flagged true while their code did not extract as text — and all 16 are the road markings, which sheet 2 carries as VECTOR with labels the text layer does not expose. Those flags are right and my extraction was wrong, so they are deliberately untouched: absence of extracted text is not absence from the chart. Nearly every corrected row is a variant-suffixed regulatory sign (R201-60 speed limits, R3xx-P parking plates, R325-x bus stops), which is why they read as ungrounded to a naive code match.",
+  "ops": [
+    {
+      "table": "road_signs",
+      "match": "code=eq.R101-600",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R132-600",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R133-600",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-10",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-100",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-120",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-20",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-30",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-40",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-5",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-50",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-60",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-70",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-75",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-80",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R201-90",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R202-600",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R301-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R304-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R305-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R306-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R307-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R308-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R309-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R310-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R311-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R312-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R313-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R314-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R315-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R316-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R317-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R318-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R319-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R320-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R321-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R322-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R323-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R324-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R325-1",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R325-2",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R325-3",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R325-4",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R326-1",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R326-2",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R326-3",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R326-4",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R327-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R330-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R333-P",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R401-600",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R402-600",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R403-600",
+      "set": {
+        "in_official_chart": true
+      },
+      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+    }
+  ]
+}
