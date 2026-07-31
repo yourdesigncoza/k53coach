@@ -1,0 +1,437 @@
+{
+  "description": "Road-markings content rewrite — closes the defects in docs/markings-review-findings.md (adversarial review 2026-07-30, all 16 markings defective) against the primary sources: SADC RTSM Vol 1 Ch 7 (init/V1C7.pdf, page images in docs/markings-verify/manual/), the NRTR 2000 and the NRTA 93 of 1996. Content only — review_status stays 'draft', because per constraint 9 an AI pass cannot approve its own work. The asset gate is untouched and was already sound. One finding is REVERSED in the draft's favour (RM4.1) and one was already withdrawn (RM9); see the per-op `why`.",
+  "ops": [
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM1",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "Expect a question on the three exceptions, and on whether you may turn right across it (yes, to reach or leave property). It is white, continuous, and at least 100 mm wide. Two traps: the WM8 arrows painted further back are the 'no overtaking line ahead' warning, not the line itself; and an identical-looking solid white line may be a channelising line, which is a different marking doing a different job."
+          },
+          "behaviour": {
+            "en": "Keep left of the line and complete any overtaking before it begins. You may cross it only to enter or leave property on the other side, or to get past a stationary obstruction in the road, and only when it is safe."
+          },
+          "memoryTrick": {
+            "en": "Single Solid = Stay on your Side. Only property access or a stationary obstruction lets you cross it."
+          },
+          "plainEnglish": {
+            "en": "A single solid white line down the middle of a two-way road means stay on your side of it: do not cross it, and do not overtake."
+          },
+          "commonMistake": {
+            "en": "Learners assume a solid line can never be crossed for any reason. It bans overtaking, but you may still turn across it into or out of a property when it is safe."
+          },
+          "formalMeaning": {
+            "en": "Where a single continuous solid white line separates traffic travelling in opposite directions, a driver may not drive on the right side of it and no part of the vehicle may cross it. Three narrow exceptions apply, and only when it is safe to do so."
+          }
+        }
+      },
+      "why": "Manual §7.2.5 ¶1(iii) says 'a stationary obstruction', not a parked one — the memory trick taught the narrower word and would have a learner sit behind debris, a breakdown or roadworks believing they may not pass. Also adds two things §7.2.5 treats as important and the draft omitted: the WM8 'no overtaking line ahead' warning arrows, and ¶3's warning that a solid white line may instead be a channelising line — 'These markings can therefore appear identical'. \n\nSECOND PASS 2026-07-31, from John's worksheet review of RM1. Two of the four suggestions were taken. (1) 'touch it' -> 'cross it' in the memory trick: the prohibition is on the vehicle CROSSING the line, and 'touch' also understates the exceptions, which permit crossing it outright to reach property. (2) plainEnglish now says 'do not cross it, and do not overtake' — the marking prohibits driving to the right of the line; not overtaking is the consequence, not the rule. TWO SUGGESTIONS REJECTED, recorded so they are not re-raised: (a) rewording 'complete any overtaking before it begins' rested on a misreading — 'it' is THE LINE, not the overtaking, so the sentence was never incoherent; (b) the citation offered as 'Regulation 7.2.5(1)(a) and (b)' does not exist — §7.2.5 is a section of the SADC RTSM design manual, not a regulation, and there is no reg 7.2.5 in the NRTR. Same class of error as the '§7.2.21' that turned out to be a page number."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM10",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "The correct answer is phrased around being able to leave or clear the box at the point of entry, not around stopping in general."
+          },
+          "behaviour": {
+            "en": "Look past the box before you move off. If the traffic beyond it is standing still and there is no gap for you on the far side, wait behind the box. The rule bites at the moment you enter: do not enter unless you can expect to clear it."
+          },
+          "memoryTrick": {
+            "en": "Blocked exit? Don't enter — unless you are turning."
+          },
+          "plainEnglish": {
+            "en": "A yellow criss-crossed box at an intersection: do not drive in unless you can expect to clear it. Vehicles turning left or right may enter."
+          },
+          "commonMistake": {
+            "en": "Two errors. The first is reading it as 'you may never stop here', when the actual rule is about whether you could leave when you entered. The second is assuming that being inside the box is itself the offence — a driver who entered lawfully and was then held up has broken nothing."
+          },
+          "formalMeaning": {
+            "en": "Continuous yellow boundary lines enclosing yellow cross-hatched diagonals, all at least 100 mm wide. A driver may not enter the box-marked area if stationary vehicles ahead mean they will not be able to leave it. Vehicles turning left or turning right may enter the box."
+          }
+        }
+      },
+      "why": "The most dangerous defect in the library. §7.2.14 ¶1 grants a turning vehicle permission to ENTER the box; the draft silently converted that into permission to enter AND WAIT there for a gap, which is the UK Highway Code rule, not this one. The second claim, that turning is 'the only legitimate reason to be sitting inside the box', misreads a rule about entry as a rule about presence — a driver who entered lawfully and was then delayed has breached nothing.\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). The card argued with itself, and this is the marking where that matters most. `formalMeaning` carried the turning exception — 'Vehicles turning left or turning right may enter the box' — while the plain-English line said do not enter 'unless you can drive straight out the other side' and the memory trick said 'No exit, no entry'. Two of the three blocks a learner actually reads first denied the exception the third one granted. Mine: I fixed `behaviour` and `commonMistake` in the first pass and left these two absolute."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM12",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "Learn the pair together: red governs stopping, yellow governs parking. Then the second axis: solid means all day, broken means only during the hours on the sign. Look at the kerb as well as the road surface — the line may be marked on the kerb itself."
+          },
+          "behaviour": {
+            "en": "Keep moving. Do not stop to drop off or pick up a passenger, take a call, check a map or load anything. Being held up by traffic, a signal or a breakdown is not a contravention — the rule is aimed at stopping by choice. If you need to stop, find the nearest place where stopping is allowed."
+          },
+          "memoryTrick": {
+            "en": "Red means no voluntary stop; yellow means no parking."
+          },
+          "plainEnglish": {
+            "en": "A red line along the edge of the road means you may not stop there at all — not even for a few seconds to let someone out."
+          },
+          "commonMistake": {
+            "en": "Learners think a red line only bans parking. Stopping is much wider than parking — voluntarily bringing the car to a standstill is already a contravention, which is why the red line is stricter than the yellow one."
+          },
+          "formalMeaning": {
+            "en": "A red line marked along the kerb or road edge, and it may be marked on the kerb itself rather than on the road surface. A continuous solid red line at least 150 mm wide applies 24 hours a day; a broken red line, at least 100 mm wide, applies only during the times shown on the accompanying road sign. Where it applies, a driver may not stop a vehicle next to it — except to avoid an accident, in compliance with a road traffic sign or a traffic officer's direction, or for any cause beyond the driver's control."
+          }
+        }
+      },
+      "why": "Three corrections. (1) 'In either case a driver may not stop' overrides the sentence before it: a broken red line binds only during the hours the accompanying sign shows. (2) Neither reg 304 nor NRTA s1(xlvi) is reflected — the prohibition is not absolute; reg 304 opens 'Except in order to avoid an accident, or in compliance with a road traffic sign or with a direction given by a traffic officer, or for any cause beyond the control of the driver'. Stated as absolute, the draft is stricter than the law. (3) Adds §7.2.16 detail the manual treats as important: the line may be painted on the kerb face itself, so a learner scanning the road surface will miss it.\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). Same self-contradiction. The first pass added reg 304's exceptions to `formalMeaning` and `behaviour` but left `commonMistake` asserting that 'bringing the car to a standstill at all is already a contravention' and the memory trick saying 'don't even pause' — both of which the exceptions directly refute. The distinction that makes the rule true is VOLUNTARY stopping. Also: the kerb wording now tracks the source, and the broken form's minimum width is stated."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM13",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "Expect a straight red-versus-yellow comparison: red bans stopping outright, yellow bans parking but allows genuine loading. Two extras worth knowing: this marking is used on urban roadways at the general urban speed limit, not on freeways, and parking can be prohibited by a sign where there is no line painted at all."
+          },
+          "behaviour": {
+            "en": "Do not leave your vehicle standing next to the line. You may stop for as long as is reasonably necessary to load or unload people or goods, then pull away. Waiting for someone counts as parking."
+          },
+          "memoryTrick": {
+            "en": "Yellow means load and go."
+          },
+          "plainEnglish": {
+            "en": "A yellow line along the edge of the road means don't leave your car there — you may only stop long enough to load or unload people or goods."
+          },
+          "commonMistake": {
+            "en": "Learners treat the yellow line as a free waiting bay. The definition of parking covers a vehicle 'whether occupied or not', so sitting in the car with the engine running while you wait for a passenger is parking, not loading, and it breaks the rule."
+          },
+          "formalMeaning": {
+            "en": "A yellow line marked along the kerb or road edge. A continuous solid yellow line at least 100 mm wide applies 24 hours a day; a broken yellow line applies only during the times shown on the accompanying road sign. 'Park' in law means keeping a vehicle, whether occupied or not, stationary for longer than is reasonably necessary to load or unload people or goods — so a genuine brief load or drop-off is not parking, and neither is being kept stationary by a cause beyond your control."
+          }
+        }
+      },
+      "why": "Four corrections. (1) The broken form binds only during the signed hours; 'in either case' cancelled that. (2) NRTA s1(xlvi) excludes keeping a vehicle stationary 'by reason of a cause beyond the control of the person in charge' — the draft states the prohibition more absolutely than the Act does. (3) The definition's words 'whether occupied or not' are what MAKE the engine-running example work, and the draft omitted them, so a learner cannot see why sitting in the car counts. (4) Adds §7.2.17.3 (the marking is for urban roadways at the general urban speed limit — not freeways) and §7.2.17.5 (parking may be prohibited where there is no line at all).\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). Third instance of the same fault. `formalMeaning` was corrected to exclude being stationary by a cause beyond your control, then `behaviour` said you may stop 'only if you are genuinely busy loading or unloading' — a false exclusivity that contradicts the block above it. Dropping 'only if' fixes it without dragging traffic jams and breakdowns into a driver-facing instruction. Plain English now uses the statutory phrase 'load or unload people or goods'."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM15",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "Learn the colours and the direction: arrows yellow, outer circle white, inner circle yellow, and you travel clockwise with the circle on your right. Note the codes are split — the arrows are RM15, the circle is a painted island RM5."
+          },
+          "behaviour": {
+            "en": "Follow the arrows clockwise around the circle so it stays on your right. Do not drive straight over the painted circle or turn in front of it."
+          },
+          "memoryTrick": {
+            "en": "Clockwise, circle on your right. Never cut the clock in half."
+          },
+          "plainEnglish": {
+            "en": "At a mini circle, three yellow arrows and a painted circle tell you to go round clockwise, keeping the circle on your right."
+          },
+          "commonMistake": {
+            "en": "Driving over the circle as though it were ordinary paint, or cutting right in front of it when turning right. Both break the mandatory direction."
+          },
+          "formalMeaning": {
+            "en": "Three yellow arrows marked around the circle at a mini circle, imposing a mandatory requirement to proceed only in the direction the arrows indicate. RM15 is the arrows; the marked circle itself is a form of painted island, marking RM5. The road surface over the circle is recommended to be raised but mountable. Drivers must not encroach on the circle, fully cover it, or pass to the right of it."
+          }
+        }
+      },
+      "why": "Two wrong facts from §7.2.19. ¶3: 'The marked circle is a form of PAINTED ISLAND marking RM5' — RM15 is the ARROWS only, so the draft claimed a marking includes something that belongs to another code. ¶4: 'It is recommended that the road surface be raised but mountable by traffic over the area of the marked circle' — the draft taught the circle as flat paint and built its common mistake on that, which is the opposite of the design intent.\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). The first pass over-read §7.2.19 ¶4. The manual RECOMMENDS the surface be raised but mountable; the card turned that into an empirical claim that the circle is 'often deliberately raised', and then added that mounting it is 'neither intended nor comfortable' — which is the opposite of why mountability is recommended. Both claims removed; the prohibition on encroaching, fully covering or passing to the right carries the meaning on its own. The reviewer's separate point that RM15 is not confined to mini circles was REJECTED, by them and by me: the card says 'at a mini circle', not 'only at mini circles', and scoping to the case a learner meets is a teaching decision, not a factual error."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM2",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "The classic trap is one line versus two. One line still permits access to property; two lines permit only passing a stationary obstruction."
+          },
+          "behaviour": {
+            "en": "You may not cross the lines. That rules out overtaking, and it rules out turning right across them into or out of a side road or driveway. The only time you may cross is to pass a stationary obstruction in the roadway, and only when it is safe — the obstruction does not have to be blocking the road completely."
+          },
+          "memoryTrick": {
+            "en": "Two lines = Do Not Cross. Everything else follows from that: no overtaking, no turning across."
+          },
+          "plainEnglish": {
+            "en": "Two solid white lines side by side are a wall: you may not cross them — so no overtaking, and no turning across them either."
+          },
+          "commonMistake": {
+            "en": "Carrying the property-access exception over from the single no-overtaking line. Double lines are stricter: they ban the turn as well as the overtake."
+          },
+          "formalMeaning": {
+            "en": "Two continuous solid white lines, each at least 100 mm wide. A driver may not drive on the right side of them and no part of the vehicle may cross them, unless passing a stationary obstruction in the roadway and it is safe to do so."
+          }
+        }
+      },
+      "why": "Manual §7.2.6 ¶1 permits crossing for 'any stationary obstruction in the roadway' — there is no requirement that it block the road. The draft's added condition would keep a learner boxed in behind a partial obstruction they are entitled to pass.\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). The prohibition is CROSSING the lines; not overtaking and not turning are consequences of it, not separate rules. Stating them as the rule is how a learner ends up unable to say why a U-turn is also barred. Reworded so the single prohibition does the work."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM4.1",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "The numbers get asked: yellow, minimum 100 mm, sunrise to sunset, 150 m visibility, and only while you are being overtaken."
+          },
+          "behaviour": {
+            "en": "Keep to the right of the yellow line. On a road with one lane in each direction you may move onto the shoulder to let a faster vehicle pass, but only between sunrise and sunset, only if you endanger nobody, and only when people and vehicles are clearly discernible at least 150 m away."
+          },
+          "memoryTrick": {
+            "en": "Yellow = Yield space, not Your lane. Daylight + 150 m + being overtaken is the only time you may use it."
+          },
+          "plainEnglish": {
+            "en": "The solid yellow line along the left edge marks the shoulder, and the shoulder is not a normal traffic lane."
+          },
+          "commonMistake": {
+            "en": "Treating the yellow line as a permanent slow lane. Driving on the shoulder is prohibited by default, the courtesy move is a narrow daytime exception, and you may never overtake on the shoulder."
+          },
+          "formalMeaning": {
+            "en": "A continuous solid yellow line at least 100 mm wide marking the left edge of the roadway; the shoulder is the strip between that edge and the kerb line. The line identifies the shoulder — the prohibition comes from the road traffic regulations, which forbid driving a motor vehicle on the shoulder of a public road except in one narrow daytime case, and never in order to overtake. For an emergency stop you must make every reasonable effort to bring the vehicle fully to the left of the line."
+          }
+        }
+      },
+      "why": "REVERSES a review finding, against the manual and in favour of the law. The review said three blocks wrongly dropped the manual's condition that the shoulder prohibition applies only 'on a roadway with more than one lane in either or both directions' (§7.2.8 ¶1(a)). But reg 298A(1) is general: 'Subject to subregulation (2) and regulation 298 (1) (e), no person shall drive a motor vehicle on the shoulder of a public road.' Carrying the manual's condition into the learner-facing blocks would have taught that shoulder driving is fine on a single-lane road, which the regulation prohibits except in the narrow reg 298A(2) case the behaviour block already states correctly. So the unconditional framing STAYS; it is formalMeaning — the one block that did carry the manual's condition — that is narrower than the law and is corrected here.\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). 'Prohibited outright, subject to an exception' argues with itself in one sentence, and the marking does not create the prohibition — reg 298A does. The line identifies the shoulder; the regulation says who may drive on it. Making that split explicit is also the honest answer to why the sunrise/sunset numbers are in a road-marking card at all."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM5",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "There are exactly two exceptions: a traffic officer's direction and an emergency. Note that stopping and parking are banned too, not just driving over it. Do not rely on the diagonal bars to recognise one — a painted island may also be two solid white lines enclosing a plain solid yellow area, with no bars at all."
+          },
+          "behaviour": {
+            "en": "Pass it on the correct side and keep every wheel off the paint. Enter it only on a traffic officer's direction or in a genuine emergency."
+          },
+          "memoryTrick": {
+            "en": "Stripes mean no-go. Only an Officer or an Emergency gets you on."
+          },
+          "plainEnglish": {
+            "en": "The marked-off painted area is out of bounds: do not drive on it, stop on it or park on it. It usually carries yellow diagonal stripes, but not always."
+          },
+          "commonMistake": {
+            "en": "Using a painted island as a waiting space for a gap, or clipping its corner while turning. Both are offences even though the island is only paint — and because no part of the vehicle may enter it, a single wheel is enough."
+          },
+          "formalMeaning": {
+            "en": "An area enclosed by a boundary line or lines, white and/or yellow, normally filled with yellow sloping bars in a diagonal or chevron pattern. One boundary may be formed by a kerb line or by a yellow RM4.1 edge line rather than painted separately. No part of a vehicle may enter the painted island, and no vehicle may stop or park on it, except when directed by a traffic officer or in the case of an emergency."
+          }
+        }
+      },
+      "why": "Two corrections from §7.2.9. The plate gives the border as 'White and/or yellow', and one boundary may be a kerb line or a yellow RM4.1 edge line — the draft's 'a white boundary line or lines' would stop a learner recognising the commonest real-world form. And §7.2.9.2(c) defines a third form with NO diagonal bars at all — two RM1 lines enclosing a solid yellow area — which a learner shown that figure could not currently identify.\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). Two fixes. The prohibition is on ENTERING the island, not on crossing its boundary line — as written a learner could read it as a line-crossing rule and think a wheel inside the paint was fine. And the opening said the area is 'filled with yellow diagonal stripes' while the test hint, two blocks down, warns that a painted island may have no bars at all: the card contradicted itself, and the contradiction was mine."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM6",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "Watch for the word 'wholly' or 'completely' in the answer options — that is the correct one. An ordinary parking bay is white, which is what separates it from the yellow exclusive bay. Do not be caught by the shape: T-marks and corner marks define a bay just as a closed box does."
+          },
+          "behaviour": {
+            "en": "Position the vehicle wholly within the marked bay, and on angled bays finish within 150 mm of the kerb. Never straddle two bays or leave the tail sticking out into the traffic lane."
+          },
+          "memoryTrick": {
+            "en": "White marks, whole vehicle — whatever shape the paint, the whole vehicle sits inside."
+          },
+          "plainEnglish": {
+            "en": "White lines marking out one parking space — your whole car has to fit inside them. The space is often marked only by T-shapes or corner marks rather than a full box, but it is the same bay."
+          },
+          "commonMistake": {
+            "en": "Learners assume 'close enough' is good enough. The requirement is that the vehicle sits wholly inside the lines, so a wheel over the line means it is no longer wholly within the bay."
+          },
+          "formalMeaning": {
+            "en": "A white line marking, at least 100 mm wide, defining the limits of a single parking bay. A driver must park wholly within those lines, and where the bays are angled to the kerb, end up within 150 mm of the kerb line. Where the road has no kerb, the vehicle must be parked as far forward onto the verge as possible without encroaching on the sidewalk."
+          }
+        }
+      },
+      "why": "§7.2.10: bays are commonly marked as T-marks or corner marks rather than a closed box. The draft's 'white box' model is the shape a learner is least likely to meet, and both the plain English line and the memory trick were built on it.\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). 'No wheel, bumper or mirror crosses or overhangs a bay line' is a rule we made up. The requirement is that the vehicle be parked wholly within the lines; mirrors routinely project beyond a bay while the vehicle is properly inside it. Same class of defect as RTM1's invented conduct claims, and it survived the first rewrite because I was not looking for it."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM7",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "Colour is the discriminator: an ordinary parking bay is white, an exclusive parking bay is yellow with a lettered oval. Expect a question giving a letter and asking which vehicle may use the bay."
+          },
+          "behaviour": {
+            "en": "Read the oval before you switch off the engine. In a loading zone (L) the bay is open to a goods vehicle, and also to a motorcycle, motor tricycle or motor quadrucycle designed or adapted to convey goods — but to nothing else, and only for as long as loading reasonably takes. A B bay is for a bus and an MB bay is for a minibus; they are not interchangeable."
+          },
+          "memoryTrick": {
+            "en": "Yellow bay, letter of the day — if the letter isn't yours, drive away."
+          },
+          "plainEnglish": {
+            "en": "A bay outlined in yellow with letters inside a yellow oval. The letters tell you who may use it — unless your vehicle or your situation matches, you may not park there or even stop."
+          },
+          "commonMistake": {
+            "en": "Learners read it as 'no parking, but a quick stop is fine'. The prohibition covers stopping as well as parking. The other error is assuming an 'L' loading bay is open to anyone with something to carry — it is limited to goods vehicles and goods-carrying motorcycles and tricycles."
+          },
+          "formalMeaning": {
+            "en": "A bay demarcated by a continuous solid yellow line on three sides, carrying an oval marking RM7.1 with one or more designatory letters. No driver may park or stop inside it unless the vehicle is of the class the letters indicate. The letters are A ambulance, B bus, L loading zone, T taxi, F fire-fighting, R rickshaw, CD diplomatic, MB minibus, SOS emergency telephone, D defence force, P police. At an SOS bay no vehicle may park or stop except in an emergency."
+          }
+        }
+      },
+      "why": "Two wrong facts from §7.2.11 ¶1. (a) A loading zone admits four categories, not one: a goods vehicle 'or a motorcycle, motor tricycle or motor quadricycle designed or adapted to convey goods'. (b) The manual says 'a bus or minibus, as appropriate' — B and MB are not interchangeable, which is exactly what the draft's 'a B or MB bay... a bus or minibus' implies. Also drops 'on a fixed route', which the manual does not impose.\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). The opening sentence was true of most RM7 bays but not all: an SOS bay is not a vehicle class at all — no vehicle may stop there except in an emergency — and a loading zone admits four categories. Broadened so it holds for every variant, and the designator is now 'one or more letters', which is what MB and CD are."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM8",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "Colour is the trap: these arrows are yellow, not white. Six variants exist — left, left-or-straight, straight, right-or-straight, right, and right-or-left — so 'the arrow always shows exactly one direction' is a wrong answer. A white arrow at a point where the road splits is the GM3 bifurcation arrow, which tells you where the lanes go; it is not an instruction."
+          },
+          "behaviour": {
+            "en": "Read the arrow early and get into the correct lane well before the junction. Once you are in the lane, take only the direction shown, even if the queue next to you is shorter."
+          },
+          "memoryTrick": {
+            "en": "Yellow arrow, no choice beyond what it points at — and it may point two ways."
+          },
+          "plainEnglish": {
+            "en": "A yellow arrow painted in your lane tells you which way you must go from that lane. Some arrows show one direction, others show two — you must take one of the directions shown."
+          },
+          "commonMistake": {
+            "en": "Treating the arrow as a suggestion, or changing lanes at the last second. The direction is compulsory, and the warning arrows further back are your cue to move over."
+          },
+          "formalMeaning": {
+            "en": "Yellow arrows (variants RM8.1 to RM8.6) marked in a traffic lane, imposing a mandatory requirement to proceed only in a direction the arrow indicates. They are most often seen on the approach to a junction, but may be used wherever lane movements are controlled. Three of the six variants show a single direction and three show a choice of two; where two are shown, either is permitted and nothing else is."
+          }
+        }
+      },
+      "why": "The draft's headline claim is false for half the variants: RM8.2, RM8.4 and RM8.6 each permit TWO directions, which the draft's own test hint lists while the plain-English line and memory trick say 'the only direction'. Also adds §7.2.12.6, which a learner will otherwise misread on the road: a mandatory direction arrow must NOT be used for a lane split — that is the GM3 bifurcation arrow, which is information, not an instruction.\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). 'On the approach to a junction' narrowed the provision: the arrows may be used wherever lane movements are controlled, including exclusive turn lanes and alongside channelising islands. Junction approaches are where a learner meets them, so that stays as the example rather than the definition."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RM9",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "Colour plus symbol is the tell: a yellow broken line with a bicycle, the word BUS or TRAM, or an HOV symbol inside it. Two things catch learners out — the reserving authority is the sign, not the paint, and a contra-flow reserved lane carries its traffic in the OPPOSITE direction to the rest of the roadway."
+          },
+          "behaviour": {
+            "en": "Stay out of the lane unless your vehicle is the class shown by the symbol or word. If crossing the lane is the only way to enter or leave premises next to the road, you may cross it — but only when it is safe."
+          },
+          "memoryTrick": {
+            "en": "Yellow dashes, someone else's lane."
+          },
+          "plainEnglish": {
+            "en": "A broken yellow line down the side of a lane means that lane is reserved — only the vehicle painted in it (bicycle, BUS, TRAM or high-occupancy vehicle) may use it."
+          },
+          "commonMistake": {
+            "en": "Learners read the broken line as permission, the way a broken white lane line is. Here the gaps are just how the boundary is drawn, not an invitation to use the lane."
+          },
+          "formalMeaning": {
+            "en": "A broken yellow line at least 150 mm wide, used together with an exclusive use symbol or word marking RM17 and the matching reservation sign. It is the sign that reserves the lane — the line marks where the reservation runs. Drivers of any other class of vehicle may not drive, stop or park in that lane. Where a selective-restriction sign is used, the reservation applies only during the hours the sign shows."
+          }
+        }
+      },
+      "why": "The review called the premises-access permission fabricated and unsafe; that finding was WITHDRAWN once reg 289 was obtained, which states it almost word for word, so the behaviour block is left standing. What is added is §7.2.13's own emphasis that the draft omitted: the reservation is granted by the enabling ROAD SIGN, not by the paint, and a contra-flow lane runs in the opposite direction to the rest of the roadway — a learner meeting one without warning is the real hazard here."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RTM1",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "A stop line is white, solid, and runs across your lane: at least 300 mm wide in an urban area and at least 500 mm elsewhere. Expect the contrast with the yield line RTM2, which is broken."
+          },
+          "behaviour": {
+            "en": "Bring the vehicle to a complete standstill immediately behind the line — not on it and not beyond it — and move off only when it is safe to do so."
+          },
+          "memoryTrick": {
+            "en": "Stop behind the line, not on it. The line is a wall, not a target."
+          },
+          "plainEnglish": {
+            "en": "A solid white line painted across your lane telling you exactly where to stop — your car must come to a complete standstill just behind it, not on it."
+          },
+          "commonMistake": {
+            "en": "Rolling slowly over the line instead of stopping behind it first, or stopping level with the Stop sign when a line is painted further back. The line is where you stop."
+          },
+          "formalMeaning": {
+            "en": "A regulatory transverse marking that, with a Stop sign R1, a red traffic signal or a traffic officer's signal, requires the driver to stop completely immediately behind the line and not move off until it is safe. At a junction, where the R1 sign has fallen down or the signal is out of order, the line carries the full force of the Stop sign on its own."
+          }
+        }
+      },
+      "why": "Removes five driver-conduct claims the manual does not contain: front wheels behind the line, creeping forward to see, the vehicle rocking back, pulling away when clear, and 'if a stop line is worn away, treat the junction as if there is no line'. The last is unsourced legal advice and the rocking-back test is examiner folklore. Replaces them with what §7.2.1 and reg 286(2)(c)(i) actually give, including the widths. The formalMeaning block is left alone: its 'the line carries the full force of the Stop sign on its own' is right, per §7.2.1.1 — 'In any other circumstance STOP LINE markings shall have the significance assigned there to by STOP sign R1.'\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). Two real catches. (1) reg 286(2)(c) opens 'The MINIMUM width of a transverse road marking shall be' — the card stated 300/500 as exact figures. They are floors. (2) §7.2.1 ¶2 confers the stop-sign fallback where the R1 sign is missing or the signal is out of order AT A ROAD JUNCTION; the card stated it unqualified, quietly widening the provision."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RTM2",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "Questions contrast the two: solid across the lane is a stop line, broken across the lane is a yield line. Widths differ too — a yield line is at least 200 mm urban / 300 mm elsewhere, against the stop line's 300/500. Note that some published material gives 300/500 for a yield line as well; the legal figures are 200/300."
+          },
+          "behaviour": {
+            "en": "Slow right down as you approach, look both ways and be ready to stop; only cross the line when you can go without making anyone else slow down, swerve or stop."
+          },
+          "memoryTrick": {
+            "en": "Broken line, broken journey — the gaps in the line are the gaps in traffic you are waiting for."
+          },
+          "plainEnglish": {
+            "en": "A broken white line across your lane that means give way here — you do not have to stop if the way is genuinely clear, but everyone else goes first."
+          },
+          "commonMistake": {
+            "en": "Treating a yield line as 'slow down a bit and squeeze in' — yielding means the other road user keeps their speed and line, not that you force them to adjust."
+          },
+          "formalMeaning": {
+            "en": "A regulatory transverse marking requiring the driver to yield right of way at the line to traffic on the road being joined, to rail traffic on a railway crossing, and to pedestrians and cyclists crossing at a marked crossing. It carries the significance of Yield sign R2, including where that sign has fallen down. It is broken, and at least 200 mm wide in an urban area and at least 300 mm elsewhere."
+          }
+        }
+      },
+      "why": "Two corrections. (1) The pedestrian duty is stated too widely: reg 315(2) limits it to a pedestrian crossing the roadway WITHIN a crossing, on the driver's own half or approaching so closely as to be in danger. There is no duty to a pedestrian merely waiting to cross, and the draft asserted one. (2) Adds the width, which is the one place in this library where the manual and the law genuinely conflict: manual §7.2.2 ¶4 says 300 mm urban / 500 mm other, but reg 286(2)(c)(ii) says 200 mm / 300 mm. The manual appears to have carried RTM1's figures across. THE REGULATION BINDS — any question on yield-line width must answer from reg 286(2)(c)(ii).\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). Two fixes, and one criticism REJECTED after checking the regulation. REJECTED: the reviewer said the 200/300 figures were unsourced because reg 286(2)(c)(ii) is 'a significance provision, not a dimensional one'. It is dimensional and it names RTM2 by code — 'The minimum width of a transverse road marking shall be... (ii) for road marking RTM2 in an urban area, 200 millimetres and in any other area 300 millimetres'. The claim stands and the citation supports it. ACCEPTED, from the same provision: those are MINIMA, so 'at least'. ACCEPTED: the first pass over-corrected. Removing the manual's 'waiting to cross' pedestrian duty was right on reg 315, but it took the whole pedestrian-and-cyclist limb with it, which is a third of the obligation and the part most likely to be examined. Restored, narrowed to a pedestrian actually crossing."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RTM3",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "Expect a question on whether you may pass a vehicle stopped at a crossing. The answer is no. One divergence worth knowing: the marking manual says the duty extends to a pedestrian waiting to cross, while the regulation limits it to a pedestrian actually crossing. Learn the regulation, but expect test material drawn from the manual to say otherwise."
+          },
+          "behaviour": {
+            "en": "Scan both pavements as you approach and be ready to stop for anyone already stepping across, especially on your side of the road. Stop at the stop line or yield line painted before the crossing, not on the crossing itself. If another vehicle has already stopped at the crossing, do not overtake it."
+          },
+          "memoryTrick": {
+            "en": "Two lines = a corridor with two walls. Walls are for walkers, so wait for the walkers."
+          },
+          "plainEnglish": {
+            "en": "Two solid white lines running across the road with a gap between them — that gap is a walkway for people, and a person walking across it has right of way over you."
+          },
+          "commonMistake": {
+            "en": "Learners confuse this with the thick painted blocks, which is a different marking (RTM4). The other error runs the opposite way to what you might expect: the duty in law is to a pedestrian who is crossing, not to one standing at the kerb who has not started."
+          },
+          "formalMeaning": {
+            "en": "A regulatory marking requiring a driver to yield right of way, slowing down or stopping if need be, to a pedestrian crossing the roadway within the crossing — when that pedestrian is on the driver's half of the roadway, or is approaching so closely from the other half as to be in danger. Where the crossing is used with a road sign, a traffic signal, a stop line or a yield line, that control takes precedence. Where a pedestrian signal is provided, the pedestrian must obey it."
+          }
+        }
+      },
+      "why": "Corrects the duty to what reg 315(2) actually imposes and adds the proviso the drafts omitted. The regulation limits the driver's duty to a pedestrian 'crossing the roadway within a pedestrian crossing when the pedestrian is upon that half of the roadway upon which the vehicle is travelling, or when the pedestrian is approaching so closely from the opposite half of the roadway as to be in danger' — there is no waiting-pedestrian duty in reg 315, and the draft taught one in four separate blocks. Adds reg 315(1): where a pedestrian signal is provided the pedestrian must obey it. Adds §7.2.3's point that the crossing is preceded by a stop line or a yield line, which is where the driver actually stops. The don't-overtake-a-stopped-vehicle rule in testHint is confirmed by reg 315(4) and stays.\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). A regression of mine, plus a gap the review named well. REGRESSION: the original card said 'Where a sign or signal also controls the crossing, that sign or signal takes precedence' and my rewrite dropped it while replacing the duty with reg 315(2). §7.2.3(1)(a) gives that precedence to an accompanying sign, signal, stop line or yield line, and it is where the driver actually stops. Restored. GAP: the card follows reg 315(2), which is NARROWER than the manual — the manual extends the duty to a pedestrian waiting to cross, the regulation does not. On RTM2 that kind of divergence is flagged for the learner; here it was silent, so a learner sitting a paper written off the manual would be caught out with no warning. Flag added."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.RTM4",
+      "set": {
+        "content": {
+          "testHint": {
+            "en": "It is a yield-to-pedestrians control, so the duty is to give way, not merely to slow down. One divergence worth knowing: the marking manual says the duty extends to a pedestrian waiting to cross, while the regulation limits it to a pedestrian actually crossing. Learn the regulation, but expect test material drawn from the manual to say otherwise."
+          },
+          "behaviour": {
+            "en": "Ease off well before the blocks, cover the brake, and give way to anyone already crossing. Stop at the stop line or yield line before the crossing — never with your vehicle sitting on the blocks."
+          },
+          "memoryTrick": {
+            "en": "Big blocks, big brakes. Where more people cross, the blocks are made longer."
+          },
+          "plainEnglish": {
+            "en": "A row of fat white painted blocks across the road — the high-visibility pedestrian crossing you see outside schools, malls and stadiums."
+          },
+          "commonMistake": {
+            "en": "Assuming the blocks are speed bumps — they are flat paint, laid out in blocks so the crossing is visible from a distance. Learners also over-state the duty: in law it runs to a pedestrian who is crossing, not to one still standing at the kerb."
+          },
+          "formalMeaning": {
+            "en": "A regulatory marking with the same force as pedestrian crossing lines: a driver must yield right of way, slowing down or stopping if need be, to a pedestrian crossing the roadway within the crossing when that pedestrian is on the driver's half of the roadway or approaching so closely from the other half as to be in danger. Where the crossing is used with a road sign, a traffic signal, a stop line or a yield line, that control takes precedence. Where a pedestrian signal is provided, the pedestrian must obey it. Pedestrians must cross within the marked area."
+          }
+        }
+      },
+      "why": "Same reg 315(2) correction as RTM3 — 'someone waiting at the kerb already has priority' is not the law, and it was stated as the common mistake, so a learner was being taught the error as the correction. Adds the reg 315(1) signal proviso. Also fixes the memory trick's wrong fact: it is the LENGTH of the crossing that scales with pedestrian volume; block width has a fixed 600 mm minimum, so 'the fatter the paint, the more people' is backwards.\n\nREVIEW PASS 2 (John's worksheet, 2026-07-31). Same two fixes as RTM3, written once and applied to both because the cards carry the identical conflict. Plus one specific to this card: the memory trick said the crossing's LENGTH grows with pedestrian volume. §7.2.4(2) is about the length of each individual BLOCK, not the crossing, and the paragraph's '0,6 m for every 125 pedestrians/hour' sentence determines width by length in a way nobody has been able to read confidently — so no content is built on it at all."
+    }
+  ]
+}

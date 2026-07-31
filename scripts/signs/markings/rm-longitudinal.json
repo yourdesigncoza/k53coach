@@ -1,56 +1,170 @@
 [
-  {"code":"RM1","name":"No Overtaking Line","subcategory":"longitudinal","related_codes":[],
-   "content":{"plainEnglish":{"en":"A single solid white line down the middle of a two-way road means stay on your own side and do not overtake."},
-   "formalMeaning":{"en":"Where a single continuous solid white line separates traffic travelling in opposite directions, a driver may not drive on the right side of it and no part of the vehicle may cross it. Three narrow exceptions apply, and only when it is safe to do so."},
-   "behaviour":{"en":"Keep left of the line and complete any overtaking before it begins. You may cross it only to enter or leave property on the other side, or to get past a stationary obstruction in the road, and only when it is safe."},
-   "commonMistake":{"en":"Learners assume a solid line can never be crossed for any reason. It bans overtaking, but you may still turn across it into or out of a property when it is safe."},
-   "testHint":{"en":"Expect a question on the three exceptions, and on whether you may turn right across it (yes, to reach or leave property). It is white, continuous, and at least 100 mm wide."},
-   "memoryTrick":{"en":"Single Solid = Stay on your Side. Only property or a parked obstruction lets you touch it."}},
-   "source":"SARTSM Vol 1 §7.2.5","confidence":"VERIFIED: name, white colour, single continuous solid line min 100 mm, all three exceptions plus the 'safe to do so' proviso read directly from SARTSM Vol 1 pp. 7.2.5-7.2.6."},
-
-  {"code":"RM2","name":"No Crossing Lines","subcategory":"longitudinal","related_codes":[],
-   "content":{"plainEnglish":{"en":"Two solid white lines side by side are a wall: no overtaking and no turning across them."},
-   "formalMeaning":{"en":"Two continuous solid white lines, each at least 100 mm wide. A driver may not drive on the right side of them and no part of the vehicle may cross them, unless passing a stationary obstruction in the roadway and it is safe to do so."},
-   "behaviour":{"en":"Do not overtake, and do not turn right across the lines into or out of a side road or driveway. The only reason to cross is a stationary obstruction blocking the road, and only when safe."},
-   "commonMistake":{"en":"Carrying the property-access exception over from the single no-overtaking line. Double lines are stricter: they ban the turn as well as the overtake."},
-   "testHint":{"en":"The classic trap is one line versus two. One line still permits access to property; two lines permit only passing a stationary obstruction."},
-   "memoryTrick":{"en":"Two lines, two bans: no overtaking AND no crossing."}},
-   "source":"SARTSM Vol 1 §7.2.6","confidence":"VERIFIED: §7.2.6 'No Crossing Lines'. Sole exception is 'to pass any stationary obstruction in the roadway' — the manual does NOT say 'stationary vehicle'."},
-
-  {"code":"RM4.1","name":"Left Edge Line","subcategory":"longitudinal","related_codes":[],
-   "content":{"plainEnglish":{"en":"The solid yellow line along the left edge marks the shoulder, and the shoulder is not a lane for you to drive in."},
-   "formalMeaning":{"en":"A continuous solid yellow line at least 100 mm wide marking the left edge of the roadway. On a roadway with more than one lane in either or both directions a driver may not drive on the shoulder to its left, may not use that shoulder to overtake, and must make every reasonable effort to move fully left of the line for an emergency stop."},
-   "behaviour":{"en":"Keep to the right of the yellow line. On a road with one lane in each direction you may move onto the shoulder to let a faster vehicle pass, but only between sunrise and sunset, only if you endanger nobody, and only when people and vehicles are clearly discernible at least 150 m away."},
-   "commonMistake":{"en":"Treating the yellow line as a permanent slow lane. Driving on the shoulder is prohibited by default, the courtesy move is a narrow daytime exception, and you may never overtake on the shoulder."},
-   "testHint":{"en":"The numbers get asked: yellow, minimum 100 mm, sunrise to sunset, 150 m visibility, and only while you are being overtaken."},
-   "memoryTrick":{"en":"Yellow = Yield space, not Your lane. Daylight + 150 m + being overtaken is the only time you may borrow it."}},
-   "source":"SARTSM Vol 1 §7.2.8; NRTR 2000 reg 298A(1)-(2), reg 298(1) proviso",
-   "confidence":"VERIFIED: RM4.1 IS the LEFT EDGE LINE, solid yellow min 100 mm (§7.2.8.2); RM4.2 is the RIGHT EDGE LINE and is white. The 'being overtaken / daytime / 150 m' duty is NOT in §7.2.8 — it is reg 298A(2), which ALSO requires the road be designated for one lane each direction (client omitted this)."},
-
-  {"code":"RM5","name":"Painted Island","subcategory":"island","related_codes":[],
-   "content":{"plainEnglish":{"en":"The painted area filled with yellow diagonal stripes is out of bounds: do not drive on it, stop on it or park on it."},
-   "formalMeaning":{"en":"A white boundary line or lines enclosing yellow sloping bars in a diagonal or chevron pattern. No part of a vehicle may cross the marking, and no vehicle may stop or park on it, except when directed by a traffic officer or in the case of an emergency."},
-   "behaviour":{"en":"Pass it on the correct side and keep every wheel off the paint. Enter it only on a traffic officer's direction or in a genuine emergency."},
-   "commonMistake":{"en":"Using a painted island as a waiting space for a gap, or clipping its corner while turning. Both are offences even though the island is only paint."},
-   "testHint":{"en":"There are exactly two exceptions: a traffic officer's direction and an emergency. Note that stopping and parking are banned too, not just driving over it."},
-   "memoryTrick":{"en":"Stripes mean no-go. Only an Officer or an Emergency gets you on."}},
-   "source":"SARTSM Vol 1 §7.2.9","confidence":"VERIFIED: §7.2.9.1 lists only TWO exceptions — traffic officer's direction, and emergency. 'To avoid a collision' is NOT a separate exception (client listed three)."},
-
-  {"code":"RM8","name":"Mandatory Direction Arrows","subcategory":"arrows","related_codes":[],
-   "content":{"plainEnglish":{"en":"A yellow arrow painted in your lane is the only direction you are allowed to take from that lane."},
-   "formalMeaning":{"en":"Yellow arrows (variants RM8.1 to RM8.6) marked in a lane on the approach to a junction. Drivers may proceed only in the direction the arrow indicates."},
-   "behaviour":{"en":"Read the arrow early and get into the correct lane well before the junction. Once you are in the lane, take only the direction shown, even if the queue next to you is shorter."},
-   "commonMistake":{"en":"Treating the arrow as a suggestion, or changing lanes at the last second. The direction is compulsory, and the warning arrows further back are your cue to move over."},
-   "testHint":{"en":"Colour is the trap: these arrows are yellow, not white. Six directions exist — left, left-or-straight, straight, right-or-straight, right, and right-or-left."},
-   "memoryTrick":{"en":"Yellow arrow, no choice: follow the point."}},
-   "source":"SARTSM Vol 1 §7.2.12","confidence":"VERIFIED: §7.2.12.2 states the arrows 'shall be marked in yellow' — the client said WHITE, which is wrong and is a likely exam question."},
-
-  {"code":"RM15","name":"Traffic Circle Mandatory Direction Arrows","subcategory":"arrows","related_codes":[],
-   "content":{"plainEnglish":{"en":"At a mini circle, three yellow arrows and a painted circle tell you to go round clockwise, keeping the circle on your right."},
-   "formalMeaning":{"en":"Three yellow arrows marked around a painted circle at a mini circle, imposing a mandatory requirement to proceed only in the direction the arrows indicate. Where the circle is painted rather than raised, drivers must not encroach on it, fully cover it, or pass to the right of it."},
-   "behaviour":{"en":"Follow the arrows clockwise around the circle so it stays on your right. Do not drive straight over the painted circle or turn in front of it."},
-   "commonMistake":{"en":"Driving over a mini circle because it is flat paint, or cutting right in front of it when turning right. Both break the mandatory direction."},
-   "testHint":{"en":"Learn the colours and the direction: arrows yellow, outer circle white, inner circle yellow, and you travel clockwise with the circle on your right."},
-   "memoryTrick":{"en":"Clockwise, circle on your right. Never cut the clock in half."}},
-   "source":"SARTSM Vol 1 §7.2.19","confidence":"VERIFIED: §7.2.19.1 mandatory duty + 'not encroach / not fully cover / not pass to the right'; §7.2.19.3 clockwise. RM15 is the ARROWS, not a raised circle (client wrong). Paired sign R22 not yet in the library."}
+  {
+    "code": "RM1",
+    "name": "No Overtaking Line",
+    "subcategory": "longitudinal",
+    "related_codes": [],
+    "content": {
+      "testHint": {
+        "en": "Expect a question on the three exceptions, and on whether you may turn right across it (yes, to reach or leave property). It is white, continuous, and at least 100 mm wide. Two traps: the WM8 arrows painted further back are the 'no overtaking line ahead' warning, not the line itself; and an identical-looking solid white line may be a channelising line, which is a different marking doing a different job."
+      },
+      "behaviour": {
+        "en": "Keep left of the line and complete any overtaking before it begins. You may cross it only to enter or leave property on the other side, or to get past a stationary obstruction in the road, and only when it is safe."
+      },
+      "memoryTrick": {
+        "en": "Single Solid = Stay on your Side. Only property access or a stationary obstruction lets you cross it."
+      },
+      "plainEnglish": {
+        "en": "A single solid white line down the middle of a two-way road means stay on your side of it: do not cross it, and do not overtake."
+      },
+      "commonMistake": {
+        "en": "Learners assume a solid line can never be crossed for any reason. It bans overtaking, but you may still turn across it into or out of a property when it is safe."
+      },
+      "formalMeaning": {
+        "en": "Where a single continuous solid white line separates traffic travelling in opposite directions, a driver may not drive on the right side of it and no part of the vehicle may cross it. Three narrow exceptions apply, and only when it is safe to do so."
+      }
+    },
+    "source": "SADC RTSM Vol 1 Ch 7 §7.2.5",
+    "confidence": "REWRITTEN 2026-07-31. The prose above was replaced wholesale against the primary sources after an adversarial review (docs/markings-review-findings.md) found defects in all 16 markings. What was checked, and against which paragraph or provision, is recorded per marking in scripts/data-repairs/markings-content-2026-07-31.json. This field deliberately carries NO verification verdict: the previous free-text 'VERIFIED:' notes were found to be the least reliable part of the record, certifying claims the prose did not make and recording one true statement as an error. review_status remains 'draft' — the human pass is the gate."
+  },
+  {
+    "code": "RM2",
+    "name": "No Crossing Lines",
+    "subcategory": "longitudinal",
+    "related_codes": [],
+    "content": {
+      "testHint": {
+        "en": "The classic trap is one line versus two. One line still permits access to property; two lines permit only passing a stationary obstruction."
+      },
+      "behaviour": {
+        "en": "You may not cross the lines. That rules out overtaking, and it rules out turning right across them into or out of a side road or driveway. The only time you may cross is to pass a stationary obstruction in the roadway, and only when it is safe — the obstruction does not have to be blocking the road completely."
+      },
+      "memoryTrick": {
+        "en": "Two lines = Do Not Cross. Everything else follows from that: no overtaking, no turning across."
+      },
+      "plainEnglish": {
+        "en": "Two solid white lines side by side are a wall: you may not cross them — so no overtaking, and no turning across them either."
+      },
+      "commonMistake": {
+        "en": "Carrying the property-access exception over from the single no-overtaking line. Double lines are stricter: they ban the turn as well as the overtake."
+      },
+      "formalMeaning": {
+        "en": "Two continuous solid white lines, each at least 100 mm wide. A driver may not drive on the right side of them and no part of the vehicle may cross them, unless passing a stationary obstruction in the roadway and it is safe to do so."
+      }
+    },
+    "source": "SADC RTSM Vol 1 Ch 7 §7.2.6",
+    "confidence": "REWRITTEN 2026-07-31. The prose above was replaced wholesale against the primary sources after an adversarial review (docs/markings-review-findings.md) found defects in all 16 markings. What was checked, and against which paragraph or provision, is recorded per marking in scripts/data-repairs/markings-content-2026-07-31.json. This field deliberately carries NO verification verdict: the previous free-text 'VERIFIED:' notes were found to be the least reliable part of the record, certifying claims the prose did not make and recording one true statement as an error. review_status remains 'draft' — the human pass is the gate."
+  },
+  {
+    "code": "RM4.1",
+    "name": "Left Edge Line",
+    "subcategory": "longitudinal",
+    "related_codes": [],
+    "content": {
+      "testHint": {
+        "en": "The numbers get asked: yellow, minimum 100 mm, sunrise to sunset, 150 m visibility, and only while you are being overtaken."
+      },
+      "behaviour": {
+        "en": "Keep to the right of the yellow line. On a road with one lane in each direction you may move onto the shoulder to let a faster vehicle pass, but only between sunrise and sunset, only if you endanger nobody, and only when people and vehicles are clearly discernible at least 150 m away."
+      },
+      "memoryTrick": {
+        "en": "Yellow = Yield space, not Your lane. Daylight + 150 m + being overtaken is the only time you may use it."
+      },
+      "plainEnglish": {
+        "en": "The solid yellow line along the left edge marks the shoulder, and the shoulder is not a normal traffic lane."
+      },
+      "commonMistake": {
+        "en": "Treating the yellow line as a permanent slow lane. Driving on the shoulder is prohibited by default, the courtesy move is a narrow daytime exception, and you may never overtake on the shoulder."
+      },
+      "formalMeaning": {
+        "en": "A continuous solid yellow line at least 100 mm wide marking the left edge of the roadway; the shoulder is the strip between that edge and the kerb line. The line identifies the shoulder — the prohibition comes from the road traffic regulations, which forbid driving a motor vehicle on the shoulder of a public road except in one narrow daytime case, and never in order to overtake. For an emergency stop you must make every reasonable effort to bring the vehicle fully to the left of the line."
+      }
+    },
+    "source": "SADC RTSM Vol 1 Ch 7 §7.2.8; NRTR 2000 reg 298A(1)-(2), reg 298(1) proviso",
+    "confidence": "REWRITTEN 2026-07-31. The prose above was replaced wholesale against the primary sources after an adversarial review (docs/markings-review-findings.md) found defects in all 16 markings. What was checked, and against which paragraph or provision, is recorded per marking in scripts/data-repairs/markings-content-2026-07-31.json. This field deliberately carries NO verification verdict: the previous free-text 'VERIFIED:' notes were found to be the least reliable part of the record, certifying claims the prose did not make and recording one true statement as an error. review_status remains 'draft' — the human pass is the gate."
+  },
+  {
+    "code": "RM5",
+    "name": "Painted Island",
+    "subcategory": "island",
+    "related_codes": [],
+    "content": {
+      "testHint": {
+        "en": "There are exactly two exceptions: a traffic officer's direction and an emergency. Note that stopping and parking are banned too, not just driving over it. Do not rely on the diagonal bars to recognise one — a painted island may also be two solid white lines enclosing a plain solid yellow area, with no bars at all."
+      },
+      "behaviour": {
+        "en": "Pass it on the correct side and keep every wheel off the paint. Enter it only on a traffic officer's direction or in a genuine emergency."
+      },
+      "memoryTrick": {
+        "en": "Stripes mean no-go. Only an Officer or an Emergency gets you on."
+      },
+      "plainEnglish": {
+        "en": "The marked-off painted area is out of bounds: do not drive on it, stop on it or park on it. It usually carries yellow diagonal stripes, but not always."
+      },
+      "commonMistake": {
+        "en": "Using a painted island as a waiting space for a gap, or clipping its corner while turning. Both are offences even though the island is only paint — and because no part of the vehicle may enter it, a single wheel is enough."
+      },
+      "formalMeaning": {
+        "en": "An area enclosed by a boundary line or lines, white and/or yellow, normally filled with yellow sloping bars in a diagonal or chevron pattern. One boundary may be formed by a kerb line or by a yellow RM4.1 edge line rather than painted separately. No part of a vehicle may enter the painted island, and no vehicle may stop or park on it, except when directed by a traffic officer or in the case of an emergency."
+      }
+    },
+    "source": "SADC RTSM Vol 1 Ch 7 §7.2.9",
+    "confidence": "REWRITTEN 2026-07-31. The prose above was replaced wholesale against the primary sources after an adversarial review (docs/markings-review-findings.md) found defects in all 16 markings. What was checked, and against which paragraph or provision, is recorded per marking in scripts/data-repairs/markings-content-2026-07-31.json. This field deliberately carries NO verification verdict: the previous free-text 'VERIFIED:' notes were found to be the least reliable part of the record, certifying claims the prose did not make and recording one true statement as an error. review_status remains 'draft' — the human pass is the gate."
+  },
+  {
+    "code": "RM8",
+    "name": "Mandatory Direction Arrows",
+    "subcategory": "arrows",
+    "related_codes": [],
+    "content": {
+      "testHint": {
+        "en": "Colour is the trap: these arrows are yellow, not white. Six variants exist — left, left-or-straight, straight, right-or-straight, right, and right-or-left — so 'the arrow always shows exactly one direction' is a wrong answer. A white arrow at a point where the road splits is the GM3 bifurcation arrow, which tells you where the lanes go; it is not an instruction."
+      },
+      "behaviour": {
+        "en": "Read the arrow early and get into the correct lane well before the junction. Once you are in the lane, take only the direction shown, even if the queue next to you is shorter."
+      },
+      "memoryTrick": {
+        "en": "Yellow arrow, no choice beyond what it points at — and it may point two ways."
+      },
+      "plainEnglish": {
+        "en": "A yellow arrow painted in your lane tells you which way you must go from that lane. Some arrows show one direction, others show two — you must take one of the directions shown."
+      },
+      "commonMistake": {
+        "en": "Treating the arrow as a suggestion, or changing lanes at the last second. The direction is compulsory, and the warning arrows further back are your cue to move over."
+      },
+      "formalMeaning": {
+        "en": "Yellow arrows (variants RM8.1 to RM8.6) marked in a traffic lane, imposing a mandatory requirement to proceed only in a direction the arrow indicates. They are most often seen on the approach to a junction, but may be used wherever lane movements are controlled. Three of the six variants show a single direction and three show a choice of two; where two are shown, either is permitted and nothing else is."
+      }
+    },
+    "source": "SADC RTSM Vol 1 Ch 7 §7.2.12",
+    "confidence": "REWRITTEN 2026-07-31. The prose above was replaced wholesale against the primary sources after an adversarial review (docs/markings-review-findings.md) found defects in all 16 markings. What was checked, and against which paragraph or provision, is recorded per marking in scripts/data-repairs/markings-content-2026-07-31.json. This field deliberately carries NO verification verdict: the previous free-text 'VERIFIED:' notes were found to be the least reliable part of the record, certifying claims the prose did not make and recording one true statement as an error. review_status remains 'draft' — the human pass is the gate."
+  },
+  {
+    "code": "RM15",
+    "name": "Traffic Circle Mandatory Direction Arrows",
+    "subcategory": "arrows",
+    "related_codes": [],
+    "content": {
+      "testHint": {
+        "en": "Learn the colours and the direction: arrows yellow, outer circle white, inner circle yellow, and you travel clockwise with the circle on your right. Note the codes are split — the arrows are RM15, the circle is a painted island RM5."
+      },
+      "behaviour": {
+        "en": "Follow the arrows clockwise around the circle so it stays on your right. Do not drive straight over the painted circle or turn in front of it."
+      },
+      "memoryTrick": {
+        "en": "Clockwise, circle on your right. Never cut the clock in half."
+      },
+      "plainEnglish": {
+        "en": "At a mini circle, three yellow arrows and a painted circle tell you to go round clockwise, keeping the circle on your right."
+      },
+      "commonMistake": {
+        "en": "Driving over the circle as though it were ordinary paint, or cutting right in front of it when turning right. Both break the mandatory direction."
+      },
+      "formalMeaning": {
+        "en": "Three yellow arrows marked around the circle at a mini circle, imposing a mandatory requirement to proceed only in the direction the arrows indicate. RM15 is the arrows; the marked circle itself is a form of painted island, marking RM5. The road surface over the circle is recommended to be raised but mountable. Drivers must not encroach on the circle, fully cover it, or pass to the right of it."
+      }
+    },
+    "source": "SADC RTSM Vol 1 Ch 7 §7.2.19",
+    "confidence": "REWRITTEN 2026-07-31. The prose above was replaced wholesale against the primary sources after an adversarial review (docs/markings-review-findings.md) found defects in all 16 markings. What was checked, and against which paragraph or provision, is recorded per marking in scripts/data-repairs/markings-content-2026-07-31.json. This field deliberately carries NO verification verdict: the previous free-text 'VERIFIED:' notes were found to be the least reliable part of the record, certifying claims the prose did not make and recording one true statement as an error. review_status remains 'draft' — the human pass is the gate."
+  }
 ]

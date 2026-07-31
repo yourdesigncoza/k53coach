@@ -16,7 +16,7 @@ Live MVP slice, deployed. Built: free anonymous readiness test → parent-sharea
 
 | | |
 |---|---|
-| `road_signs` | 378 rows — 361 served (both gates approved + `sa_relevant`). 234 regulatory / 102 warning / 26 guidance / **16 markings**, the markings artwork-approved but content still `draft` |
+| `road_signs` | 378 rows — 361 served (both gates approved + `sa_relevant`). 234 regulatory / 102 warning / 26 guidance / **16 markings**, the markings artwork-approved and their content **rewritten 2026-07-31** against the manual + NRTR + NRTA (`scripts/data-repairs/markings-content-2026-07-31.json`), but `review_status` still `draft` pending human sign-off — so none is served yet |
 | `questions` | 204 rows — **124 approved**, 80 draft. Approved: signs 46 / rules 41 / controls 37 |
 | Rule learning objects | 26 (`RR1`–`RR26`); controls 22 (`VC1`–`VC22`) |
 | `exam_attempts` | 0 — no learner has sat a mock in production |

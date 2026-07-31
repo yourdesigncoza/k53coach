@@ -406,3 +406,109 @@ wiki search" in this project. It is not — there is no vector extension, no emb
 `match_*` function anywhere in `supabase/migrations/` or `src/`. The reusable asset is the
 `wiki-semantic-search` **pattern** (indexer → Supabase pgvector → RAG answer), proven on another
 project and portable, not existing infrastructure here. Design notes: `docs/rag-source-retrieval.md`.
+
+---
+
+## 10. Rewrite applied — 2026-07-31
+
+All 16 markings rewritten against the primary sources and applied as
+`scripts/data-repairs/markings-content-2026-07-31.json` (one op per marking, idempotent, each
+carrying the paragraph or provision it rests on in its `why`). **`review_status` stays `draft`** —
+per constraint 9 an AI pass cannot approve its own work, so the human sign-off is still the gate.
+The asset gate was untouched; it was already sound.
+
+### What changed, by class of defect
+
+| Class | Markings | Resolution |
+|---|---|---|
+| Fabricated permission | `RM10` | Permission to **enter** the box no longer reads as permission to enter *and wait*; "the only legitimate reason to be sitting inside the box" removed — ¶1 regulates entry, not presence |
+| Fabricated permission | `RM9` | **No change** — the finding was already withdrawn once reg 289 was obtained; the draft stated the rule correctly |
+| Conditions dropped | `RM12`, `RM13` | "In either case" removed: the broken form binds only during the signed hours. Both now carry reg 304's exceptions and s1(xlvi)'s "cause beyond the control" carve-out |
+| Conditions dropped | `RTM3`, `RTM4` | Duty rewritten to reg 315(2) exactly, and the reg 315(1) pedestrian-signal proviso added |
+| Wrong fact | `RM7` | Loading zone admits four vehicle categories, not one; B and MB no longer interchangeable; "on a fixed route" dropped |
+| Wrong fact | `RM8` | "the only direction you are allowed" corrected — three of six variants permit two directions |
+| Wrong fact | `RM15` | Circle is a painted island (`RM5`), not part of `RM15`; surface is recommended raised-but-mountable, not flat paint |
+| Wrong fact | `RM1`, `RM2` | "parked" → "stationary" obstruction; the obstruction need not block the road |
+| Wrong fact | `RM5` | Border is white **and/or yellow** and may be a kerb line or an RM4.1 edge line |
+| Wrong fact | `RTM4` | It is the crossing's **length** that scales with pedestrian volume; blocks have a fixed 600 mm minimum width |
+| Invented content | `RTM1` | All five unsourced conduct claims removed — front wheels, creeping forward, rocking back, pulling away when clear, and the worn-away-line advice |
+| Missing content | `RM1`, `RM5`, `RM6`, `RM8`, `RM9`, `RM12`, `RM13`, `RTM2`, `RTM3` | WM8 arrows and the channelising-line lookalike; the third painted-island form; T-marks and corner marks; the GM3 bifurcation arrow; sign-not-paint and contra-flow; the kerb-face line; the not-on-freeways limit and no-line prohibition; the yield-line widths; the preceding stop or yield line |
+
+### One finding reversed, against the manual and for the law
+
+**`RM4.1`.** The review said three blocks wrongly dropped the manual's condition that the shoulder
+prohibition applies only *"on a roadway with more than one lane in either or both directions"*
+(§7.2.8 ¶1(a)). But **reg 298A(1) is general**: *"Subject to subregulation (2) and regulation 298 (1)
+(e), no person shall drive a motor vehicle on the shoulder of a public road."* Carrying the manual's
+condition into the learner-facing blocks would have taught that shoulder driving is fine on a
+single-lane road. The unconditional framing therefore **stays**, and it is `formalMeaning` — the one
+block that *did* carry the manual's condition — that was narrower than the law and has been corrected.
+
+That is the second time on this library that the manual has been narrower or wider than the
+regulation (`RTM2`'s width being the first). The rule holds: **where they differ, the regulation binds.**
+
+### House style: citations do not belong in learner prose
+
+A first pass of this rewrite put `reg 298A(1)`, `reg 304` and `reg 286(2)(c)(i)` inline in the
+content. Checked against the library: **zero of fifty** approved sign rows carry a provision
+reference in prose. The strings were removed and the substantive facts kept — the widths, the
+exceptions, the definitions. The citation belongs in the repair file's `why`, which is the audit
+trail, and in `verification`. This is worth knowing before the next content pass reintroduces them.
+
+### What is still open
+
+1. **Human sign-off.** 16 rows at `review_status='draft'`. Until they flip, no markings lesson is
+   served — `isShippable()` requires both gates — and the Stage 1 markings gate in **K53-32** stays
+   open. The UI is ready: `SIGN_CATEGORY_LABEL` and `SIGN_CATEGORY_ORDER` already carry `marking`.
+2. **No markings questions exist.** The re-derived exam format (K53-34) puts markings at ~6 of 64,
+   inside the signs section, so roughly 24 of the 65 outstanding signs-section questions should be
+   markings. They cannot be written until the content above is approved.
+3. **The amendment caveat at §7 still stands** for the `park` / `stop` definitions.
+
+### Second pass — John's worksheet review, 2026-07-31
+
+All 16 decided in `docs/markings-verify/index.html`, all as **edit**, none approved. The notes were
+triaged against the primary sources; the accepted findings are folded into the same repair file, so
+there is still one op per marking and it still replays from scratch.
+
+**The pattern the review found was in the first rewrite, not the original drafts.** Pass 1 carried the
+manual's conditions and the statutory exceptions into `formalMeaning` and left the neighbouring blocks
+absolute — so four cards contradicted themselves, in exactly the class the July review named:
+
+| Marking | `formalMeaning` said | The other blocks still said |
+|---|---|---|
+| `RM10` | turning vehicles may enter the box | "unless you can drive straight out the other side"; "No exit, no entry" |
+| `RM12` | reg 304's exceptions apply | "bringing the car to a standstill **at all** is already a contravention"; "don't even pause" |
+| `RM13` | not parking if stationary by a cause beyond your control | stop "**only if** you are genuinely busy loading" |
+| `RM5` | — | "filled with yellow diagonal stripes" against a test hint warning that bars may be absent |
+
+**Two regressions pass 1 introduced, both restored:** `RTM3` and `RTM4` lost §7.2.3(1)(a)/§7.2.4(1)(a)
+— an accompanying sign, signal, stop line or yield line takes precedence — while the duty was being
+rewritten to reg 315(2). `RTM2` lost the whole pedestrian-and-cyclist limb when only the manual's
+"waiting to cross" extension should have gone.
+
+**Two defects that pre-dated both passes:** `RM6` required that no "wheel, bumper or mirror" overhang a
+bay line — an invented rule; the requirement is only that the vehicle be parked wholly within the
+lines. `RM15` turned §7.2.19 ¶4's *recommendation* that the surface be raised into "often deliberately
+raised", then added that mounting it is "neither intended nor comfortable", which inverts the reason
+mountability is recommended.
+
+**One finding rejected after checking the regulation, and it mattered.** The `RTM2` reviewer said the
+200/300 widths were unsourced because reg 286(2)(c)(ii) is "a significance provision, not a dimensional
+one". It is dimensional and it names the marking by code:
+
+> "The **minimum width** of a transverse road marking shall be— … (ii) for road marking **RTM2** in an
+> urban area, **200 millimetres** and in any other area **300 millimetres**"
+
+The claim and its citation both stand. But the same words settle a real error next door: those are
+**minima**, and both `RTM1` and `RTM2` stated their widths as exact. Fixed on both. This is the second
+time on this library that checking a criticism against the source has confirmed the content *and*
+found a different fault beside it.
+
+Also rejected: `RM1`'s "Regulation 7.2.5(1)(a) and (b)" (no such regulation — §7.2.5 is a manual
+section, the same confusion as the "§7.2.21" that turned out to be a page number) and its rewording of
+"complete any overtaking before it begins" (a misreading — "it" is the line). `RM15`'s mini-circle
+scoping point was rejected by its own reviewer and by us.
+
+**Where the pass leaves it:** 16 markings, 0 approved, `review_status='draft'` throughout. Final
+content is readable in `docs/road-markings-content.md`.
