@@ -14,7 +14,7 @@
 
 The Western Cape switched to computerised learner's licence testing in May 2025 and the pass rate
 fell to **17%** — a 46-point drop from the previous 63% average
-(`docs/western-cape-article.md`). The stated causes are the things this product exists to fix:
+(`resources/reference/western-cape-pass-rate-2025.md`). The stated causes are the things this product exists to fix:
 
 | What changed | What it means for us |
 |---|---|

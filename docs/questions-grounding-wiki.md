@@ -96,7 +96,7 @@ This is a sizable new subsystem — plan it in plan-mode before building.
 
 ## Cross-refs
 - `docs/llm-model-selection.md` — the following-distance example; the LLM entry point.
-- `docs/sign-accuracy-pipeline.md` — the pipeline shape to mirror.
-- `docs/sign-pipeline-handoff.md` — the external-content pipeline (closest analogue).
-- `init/RTSigns_charts.pdf` / `data/chart-authority.json` — the signs ground truth
+- `docs/sign-accuracy-pipeline.md` — the pipeline shape to mirror, and the closest
+  analogue for the external-content step.
+- `resources/charts/RTSigns_charts.pdf` / `data/chart-authority.json` — the signs ground truth
   this would parallel for questions.

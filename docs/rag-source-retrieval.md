@@ -38,7 +38,7 @@ Retrieval alone does not resolve that; a precedence rule does.
 
 ## What the corpus is
 
-Five documents, all in `init/`, all gitignored. Listed with their gotchas in
+Five documents, all in `resources/`, all gitignored. Listed with their gotchas in
 `docs/markings-review-findings.md` §9.
 
 The useful property of legal text is that **it is already addressable**. `NRTA s1(xlvi)`,

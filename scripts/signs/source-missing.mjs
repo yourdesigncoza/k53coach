@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Targeted sourcing for chart signs the gallery-based ingest missed (see the
- * 2026-06-28 coverage finding in docs/sign-pipeline-handoff.md). Unlike
+ * 2026-06-28 coverage finding in docs/sign-accuracy-pipeline.md). Unlike
  * ingest-wikipedia.mjs (which rebuilds the whole catalog from the Wikipedia
  * SADC galleries), this fetches a hand-picked set of Commons files by exact
  * title, audits each licence, downloads the SVG, and MERGES new entries into

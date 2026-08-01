@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * External-content drafting (close the not-in-chart gap — docs/sign-pipeline-handoff.md §3).
+ * External-content drafting (close the not-in-chart gap — docs/sign-accuracy-pipeline.md).
  *
  * For SA signs that are NOT bare codes in the official chart (so the chart-vision
  * gate can't verify them), this expands the DRY family templates in

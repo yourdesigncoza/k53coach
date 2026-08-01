@@ -163,7 +163,7 @@ const html = `<!doctype html>
 ${rows}
 
   <footer>
-    <strong>Sources.</strong> Official: <code>init/RTSigns_charts.pdf</code> sheet 2 of 5 — "ROAD TRAFFIC SIGNS",
+    <strong>Sources.</strong> Official: <code>resources/charts/RTSigns_charts.pdf</code> sheet 2 of 5 — "ROAD TRAFFIC SIGNS",
     National Department of Transport, 2000 — the same chart the 362 road signs were verified against.
     Extracted as vector by <code>scripts/signs/markings/extract-official-svg.mjs</code>.
     Client: Linear K53-37, 29 July batch, processed by <code>clean-client-svg.mjs</code> then <code>crop-client-svg.mjs</code>.

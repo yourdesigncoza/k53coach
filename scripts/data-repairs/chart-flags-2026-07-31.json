@@ -7,7 +7,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -15,7 +15,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -23,7 +23,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -31,7 +31,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -39,7 +39,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -47,7 +47,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -55,7 +55,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -63,7 +63,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -71,7 +71,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -79,7 +79,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -87,7 +87,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -95,7 +95,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -103,7 +103,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -111,7 +111,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -119,7 +119,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -127,7 +127,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -135,7 +135,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -143,7 +143,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -151,7 +151,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -159,7 +159,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -167,7 +167,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -175,7 +175,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -183,7 +183,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -191,7 +191,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -199,7 +199,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -207,7 +207,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -215,7 +215,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -223,7 +223,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -231,7 +231,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -239,7 +239,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -247,7 +247,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -255,7 +255,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -263,7 +263,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -271,7 +271,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -279,7 +279,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -287,7 +287,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -295,7 +295,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -303,7 +303,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -311,7 +311,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -319,7 +319,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -327,7 +327,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -335,7 +335,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -343,7 +343,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -351,7 +351,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -359,7 +359,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -367,7 +367,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -375,7 +375,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -383,7 +383,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -391,7 +391,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -399,7 +399,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -407,7 +407,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -415,7 +415,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     },
     {
       "table": "road_signs",
@@ -423,7 +423,7 @@
       "set": {
         "in_official_chart": true
       },
-      "why": "Code read directly off init/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
+      "why": "Code read directly off resources/charts/RTSigns_charts.pdf (pdftotext -layout, 5 A1 sheets). The row said false, which is wrong — it is on the official chart."
     }
   ]
 }

@@ -50,9 +50,19 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Keep new drops into init/ local-only (e.g. large SARTSM PDFs like V4C9).
-# Already-tracked init/ files (PRD.md, RTSigns_charts.pdf, …) stay tracked.
-init/*
+# resources/ — the official source documents (see resources/README.md).
+# The bulk PDFs are ~550 MB and stay local-only; only the chart, the READMEs and
+# the small reference notes are tracked. Anything new dropped into these three
+# folders is ignored by default — that is deliberate, don't relax it.
+resources/legislation/
+resources/sartsm/
+resources/assets/
+
+# Circulated "memo" scans of live licence-test terminals. Not a permitted content
+# source and must never reach the remote — see resources/restricted/README.md.
+# Only the derived format/coverage metadata in docs/exam-format-analysis/ is tracked.
+resources/restricted/*
+!resources/restricted/README.md
 
 ui-design/*
 
@@ -62,17 +72,17 @@ ui-design/*
 # Local-only Claude Code project config (skills, settings) — never share to the repo
 .claude/
 
-# Circulated "memo" scans of live licence-test terminals. Not a permitted content source
-# and must never reach the remote. Only the derived format/coverage metadata in
-# docs/exam-format-analysis/ is tracked.
-docs/k53-study-notes-by-shool/
-
 # Extractor output for the DoT marking artwork. Byte-identical to public/markings/,
 # which is the copy the app serves — no reason to carry both.
 # Rebuild with: node scripts/signs/markings/extract-official-svg.mjs
 scripts/signs/markings/official-svg/
 
 # Markings verification worksheet: regenerable from the scripts, and it embeds 3 MB
-# of manual page renders derived from init/V1C7.pdf (itself local-only).
+# of manual page renders derived from resources/sartsm/V1C7.pdf (itself local-only).
 # Rebuild with: node scripts/signs/markings/build-verify-page.mjs
 docs/markings-verify/
+
+# Markings side-by-side review page: regenerable, 194 KB of embedded artwork.
+# The findings it produced live in docs/markings-review-findings.md.
+# Rebuild with: node scripts/signs/markings/build-review-page.mjs
+docs/markings-review.html

@@ -7,7 +7,7 @@
 > via the `scripts/signs/*` scripts below; `check-drift.mjs` is the CI guard.
 
 **Run this in a fresh session.** Goal: every learner-visible road sign is
-**verified accurate against the official SA DoT chart** (`init/RTSigns_charts.pdf`
+**verified accurate against the official SA DoT chart** (`resources/charts/RTSigns_charts.pdf`
 = ground truth). Verification is done **inside the Claude Code session** (Claude
 reads the rendered sign + chart-page PNGs directly — semantic + vision
 cross-check — no `ANTHROPIC_API_KEY` / API script needed); a **human only touches
@@ -21,7 +21,7 @@ This plan makes the official chart the authority, auto-verifies against it, and
 serves only verified signs.
 
 ## Principles (non-negotiable)
-- **Ground truth = `init/RTSigns_charts.pdf`** (official SA DoT chart) for: SA
+- **Ground truth = `resources/charts/RTSigns_charts.pdf`** (official SA DoT chart) for: SA
   test-relevance, canonical code, name, variant, and correct artwork.
 - **Wikipedia/Commons = candidate artwork + index only** (already ingested).
 - Ship to learners only when `asset_status='approved' AND review_status='approved'`.
@@ -87,7 +87,7 @@ New migration `supabase migration new sign_verification`:
   capture **page number** per code (for vision crops). Output
   **`data/chart-authority.json`**: `[{code,name,category,page}]`.
 - Render chart pages for vision reference:
-  `pdftoppm -png -r 150 init/RTSigns_charts.pdf data/chart-pages/page`
+  `pdftoppm -png -r 150 resources/charts/RTSigns_charts.pdf data/chart-pages/page`
   → `data/chart-pages/page-1.png …` (gitignore `data/chart-pages/`).
 
 ## Phase 2 — Deterministic cross-check

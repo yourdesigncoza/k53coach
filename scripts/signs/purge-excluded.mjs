@@ -3,7 +3,7 @@
  * Permanently remove excluded (sa_relevant=false) signs that are NOT in the
  * official chart — the duplicates / non-SA / artifact rows. GUARDED: a candidate
  * whose code appears in data/chart-authority.json (the source of truth derived
- * from init/RTSigns_charts.pdf) is NEVER deleted; the run aborts if one is found.
+ * from resources/charts/RTSigns_charts.pdf) is NEVER deleted; the run aborts if one is found.
  *
  * Removes, for each confirmed candidate: the road_signs row, its orphan SVG under
  * public/signs/ (only if no surviving sign references it), and its entry in

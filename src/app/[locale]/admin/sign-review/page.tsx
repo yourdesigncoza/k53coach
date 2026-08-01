@@ -51,7 +51,7 @@ export default async function SignReviewPage() {
             <p className="mt-1 text-blue-900/80 dark:text-blue-100/80">
               Coverage is measured against{" "}
               <code className="rounded bg-blue-100 px-1 py-0.5 text-xs dark:bg-blue-900/50">
-                init/RTSigns_charts.pdf
+                resources/charts/RTSigns_charts.pdf
               </code>{" "}
               ({cov.total} catalogued codes). Of the {cov.core} core learner signs
               (R/W/IN), we cover{" "}

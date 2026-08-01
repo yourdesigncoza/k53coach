@@ -1,7 +1,7 @@
 # Road-sign verification agent — task contract
 
 You verify South African road signs against the **official Department of Transport
-chart** (`init/RTSigns_charts.pdf`, rendered to page images). The chart is the
+chart** (`resources/charts/RTSigns_charts.pdf`, rendered to page images). The chart is the
 **ground truth**. Accuracy is a hard safety gate: when in doubt, **FAIL** — a
 failed sign goes to a human, an over-confident pass can teach a learner the wrong
 thing.

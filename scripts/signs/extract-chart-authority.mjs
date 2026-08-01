@@ -3,7 +3,7 @@
  * Phase 1 of the sign-accuracy pipeline (docs/sign-accuracy-pipeline.md).
  *
  * Builds the GROUND-TRUTH authority from the official DoT chart
- * (init/RTSigns_charts.pdf): the canonical code -> {name, category, page} index
+ * (resources/charts/RTSigns_charts.pdf): the canonical code -> {name, category, page} index
  * used to verify every ingested Wikipedia sign.
  *
  * The chart is 6 file pages: sheets 1/2/4 are the visual sign charts (one bare
@@ -23,7 +23,7 @@ import { execFileSync } from "node:child_process";
 import { writeFileSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 
-const PDF = resolve("init/RTSigns_charts.pdf");
+const PDF = resolve("resources/charts/RTSigns_charts.pdf");
 const OUT = resolve("data/chart-authority.json");
 
 /** Collapse FreeHand letter-spacing ("M i n i m u m" -> "Minimum"). */

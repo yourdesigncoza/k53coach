@@ -8,7 +8,7 @@ and the drafting `confidence` notes were handed over as *claims to check*, not a
 **Result: all 16 markings have defects. None is clean.** This document is the triage. It does not
 replace the human pass — it tells that pass where to look.
 
-Source of truth throughout: `init/V1C7.pdf` — **SADC** RTSM Vol 1 Ch 7, Road Markings (May 2012).
+Source of truth throughout: `resources/sartsm/V1C7.pdf` — **SADC** RTSM Vol 1 Ch 7, Road Markings (May 2012).
 
 ---
 
@@ -178,7 +178,7 @@ regulation's wording must not be assumed to track the manual's residual clause.
 
 ## 6. NRTR 2000 obtained — what the regulations settled (2026-07-30)
 
-`init/national-road-traffic-regulations-2000.pdf` — Government Gazette **No. 20963**, 17 March 2000
+`resources/legislation/national-road-traffic-regulations-2000.pdf` — Government Gazette **No. 20963**, 17 March 2000
 (GNR.225), 350 pp. Gitignored with the other sources.
 
 The review above marked a large share of claims `NOT_VERIFIABLE_HERE` because the reviewers only had
@@ -284,7 +284,7 @@ content does.
 
 ## 7. NRTA 93 of 1996 obtained — the last outstanding claims resolved (2026-07-30)
 
-`init/national-road-traffic-act-93-of-1996.pdf` — Government Gazette **No. 17603**, 22 November 1996,
+`resources/legislation/national-road-traffic-act-93-of-1996.pdf` — Government Gazette **No. 17603**, 22 November 1996,
 44 pp, from Parliament's own repository. Gitignored with the other sources.
 
 (The RTMC copy is a 10-page notice, not the Act. SAFLII's consolidated PDF and HTML both return 403
@@ -375,15 +375,15 @@ underlying legal research was better than the review could show.
 
 ## 9. Direction: put the sources in a queryable store
 
-Three primary sources now sit in `init/`, all gitignored, all only reachable by a human opening a PDF:
+Three primary sources now sit in `resources/`, all gitignored, all only reachable by a human opening a PDF:
 
 | Document | File |
 |---|---|
-| SADC RTSM Vol 1 Ch 7 — Road Markings (May 2012) | `init/V1C7.pdf` |
-| National Road Traffic Regulations 2000 (GG 20963) | `init/national-road-traffic-regulations-2000.pdf` |
-| National Road Traffic Act 93 of 1996 (GG 17603) | `init/national-road-traffic-act-93-of-1996.pdf` |
-| SADC RTSM Vol 4 Ch 9 — Information Signs | `init/V4C9.pdf` |
-| DoT Road Traffic Signs chart (5 sheets) | `init/RTSigns_charts.pdf` |
+| SADC RTSM Vol 1 Ch 7 — Road Markings (May 2012) | `resources/sartsm/V1C7.pdf` |
+| National Road Traffic Regulations 2000 (GG 20963) | `resources/legislation/national-road-traffic-regulations-2000.pdf` |
+| National Road Traffic Act 93 of 1996 (GG 17603) | `resources/legislation/national-road-traffic-act-93-of-1996.pdf` |
+| SADC RTSM Vol 4 Ch 9 — Information Signs | `resources/sartsm/V4C9.pdf` |
+| DoT Road Traffic Signs chart (5 sheets) | `resources/charts/RTSigns_charts.pdf` |
 
 **Agreed direction (John, 2026-07-30): publish these into a database so verification can cite them
 directly rather than re-extracting a PDF each time.** Not built yet — recorded here so it is not

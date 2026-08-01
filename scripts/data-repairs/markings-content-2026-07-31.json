@@ -1,5 +1,5 @@
 {
-  "description": "Road-markings content rewrite — closes the defects in docs/markings-review-findings.md (adversarial review 2026-07-30, all 16 markings defective) against the primary sources: SADC RTSM Vol 1 Ch 7 (init/V1C7.pdf, page images in docs/markings-verify/manual/), the NRTR 2000 and the NRTA 93 of 1996. Content only — review_status stays 'draft', because per constraint 9 an AI pass cannot approve its own work. The asset gate is untouched and was already sound. One finding is REVERSED in the draft's favour (RM4.1) and one was already withdrawn (RM9); see the per-op `why`.",
+  "description": "Road-markings content rewrite — closes the defects in docs/markings-review-findings.md (adversarial review 2026-07-30, all 16 markings defective) against the primary sources: SADC RTSM Vol 1 Ch 7 (resources/sartsm/V1C7.pdf, page images in docs/markings-verify/manual/), the NRTR 2000 and the NRTA 93 of 1996. Content only — review_status stays 'draft', because per constraint 9 an AI pass cannot approve its own work. The asset gate is untouched and was already sound. One finding is REVERSED in the draft's favour (RM4.1) and one was already withdrawn (RM9); see the per-op `why`.",
   "ops": [
     {
       "table": "road_signs",

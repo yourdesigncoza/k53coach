@@ -10,8 +10,8 @@ Full coverage table: [`docs/road-markings-catalogue.md`](../../../docs/road-mark
 
 | | File | Notes |
 |---|---|---|
-| Artwork | `init/RTSigns_charts.pdf` sheet 2 of 5 | DoT "Road Traffic Signs" chart, 2000. Vector. The same chart the 362 signs were verified against. |
-| Text | `init/V1C7.pdf` | SADC RTSM Vol 1 Ch 7 "Road Markings", May 2012. Gitignored (12 MB) — re-fetch from `transport.gov.za/wp-content/uploads/2023/02/V1C7.pdf`. |
+| Artwork | `resources/charts/RTSigns_charts.pdf` sheet 2 of 5 | DoT "Road Traffic Signs" chart, 2000. Vector. The same chart the 362 signs were verified against. |
+| Text | `resources/sartsm/V1C7.pdf` | SADC RTSM Vol 1 Ch 7 "Road Markings", May 2012. Gitignored (12 MB) — re-fetch from `transport.gov.za/wp-content/uploads/2023/02/V1C7.pdf`. |
 
 Both are official government publications, free to use under SA Copyright Act §12(8)(a). Neither
 is a commercial study guide, so they are legitimate *sources*, not merely coverage checklists.

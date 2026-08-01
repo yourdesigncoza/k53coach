@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Road-sign ingest — Wikipedia SADC page as the structured index, the official
- * SA DoT chart (init/RTSigns_charts.pdf) as the authority/verifier.
+ * SA DoT chart (resources/charts/RTSigns_charts.pdf) as the authority/verifier.
  *
  * Why this replaces the old search-based fetch: the Wikipedia page gives the
  * EXACT Commons filename + name + category per sign, so downloads are
@@ -24,7 +24,7 @@ const PAGE = "Road_signs_in_the_Southern_African_Development_Community";
 const UA = "K53AICoach-SignImporter/0.2 (educational; dev@k53coach.local)";
 const SIGNS_DIR = resolve("public/signs");
 const OUT = resolve("data/signs-catalog.json");
-const PDF = resolve("init/RTSigns_charts.pdf");
+const PDF = resolve("resources/charts/RTSigns_charts.pdf");
 
 const args = process.argv.slice(2);
 const flag = (n) => args.includes(`--${n}`);

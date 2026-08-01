@@ -1,6 +1,6 @@
 # Question verification — where things stand
 
-> Picking this up cold? Read `docs/handover-2026-07-30.md` first.
+> Picking this up cold? Read `docs/archive/handover-2026-07-30.md` first.
 
 The 2026-07-30 sweep of the approved question bank, and what it produced.
 
@@ -61,7 +61,7 @@ does not tell you to use both. Do not strip that qualifier when this feeds a UI 
 or the field will assert that technique is law.
 
 **Our working copy of the Regulations is the 2000 original — and the amendments matter.** Three items
-this blocked are now cited. Two of the instruments are in `init/` (gitignored); the third is not, and
+this blocked are now cited. Two of the instruments are in `resources/` (gitignored); the third is not, and
 is flagged as such.
 
 - **Divided roads (`RR-096`, `RR-097`, `RR-095`, lesson `RR21`).** Found 2026-07-31. **Reg 297(2) was
@@ -71,7 +71,7 @@ is flagged as such.
   intersection"*. A reviewer working from an unamended copy will read three and "correct" a right
   answer into a wrong one; that is exactly what happened on 2026-07-30, and the lesson was widened to
   three routes before the substitution was found. **GG 22736 is not on disk** — the substitution comes
-  from the consolidated text in `init/nrtr-2000-consolidated-part1-kzntransport.pdf` (consolidated to
+  from the consolidated text in `resources/legislation/nrtr-2000-consolidated-part1-kzntransport.pdf` (consolidated to
   GNR.209 of 9 March 2012), which attributes it specifically and prints a different text from the
   original. Obtaining GG 22736 would close it.
 

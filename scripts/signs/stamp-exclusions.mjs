@@ -4,7 +4,7 @@
  * out of the served set (sa_relevant=false), so "excluded" is auditable rather
  * than silent. Changes NO gates — only writes verification.exclusionReason.
  *
- * Categories (docs/sign-pipeline-handoff.md §4):
+ * Categories (docs/sign-accuracy-pipeline.md):
  *   - R5xx-B            : layout duplicate of the canonical R5xx plate
  *   - IN9 / IN18        : scrape artifact (alt= name), duplicate of an IN sign
  *   - IN19-RHT          : right-hand-traffic variant — not used in SA (we drive on the left)

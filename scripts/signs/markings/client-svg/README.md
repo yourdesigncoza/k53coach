@@ -1,7 +1,7 @@
 # Client marking artwork — vector source (Linear K53-37)
 
 > **Superseded as the primary source (2026-07-30).** The official DoT artwork for all 16 markings
-> turned out to be sitting in `init/RTSigns_charts.pdf` sheet 2 of 5, drawn as vector, and is now
+> turned out to be sitting in `resources/charts/RTSigns_charts.pdf` sheet 2 of 5, drawn as vector, and is now
 > extracted to `../official-svg/` by `../extract-official-svg.mjs`. Prefer that. This batch stays as
 > a cross-check and as the source of the road-scene treatment, which the chart's oval vignettes do
 > not provide. Compare the two side by side: `node ../build-review-page.mjs` → `docs/markings-review.html`.
@@ -103,4 +103,4 @@ told twice that he had invented them.
 Client-supplied, origin ChatGPT-assisted (the earlier batches carried signed C2PA manifests from
 OpenAI's image generator; this batch is hand/tool-authored vector with no manifest). Treat as
 **reference under the accuracy gate** — every file that ships must still be verified against
-`init/RTSigns_charts.pdf` / SARTSM and recorded with `approved_by`, `verified_at`, `svg_hash`.
+`resources/charts/RTSigns_charts.pdf` / SARTSM and recorded with `approved_by`, `verified_at`, `svg_hash`.

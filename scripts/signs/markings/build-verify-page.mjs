@@ -166,8 +166,8 @@ ${cards}
   <footer class="page">
     <strong>Keys.</strong> <kbd>a</kbd> approve · <kbd>e</kbd> needs edit · <kbd>r</kbd> reject · <kbd>j</kbd>/<kbd>k</kbd> next/previous ·
     the card under the cursor is the one that acts.<br>
-    <strong>Sources.</strong> Manual pages: <code>init/V1C7.pdf</code> — SADC RTSM Vol 1 Ch 7, Road Markings (May 2012).
-    Artwork: <code>init/RTSigns_charts.pdf</code> sheet 2 of 5, National Department of Transport, 2000.
+    <strong>Sources.</strong> Manual pages: <code>resources/sartsm/V1C7.pdf</code> — SADC RTSM Vol 1 Ch 7, Road Markings (May 2012).
+    Artwork: <code>resources/charts/RTSigns_charts.pdf</code> sheet 2 of 5, National Department of Transport, 2000.
     Drafts: <code>scripts/signs/markings/*.json</code>.<br>
     <strong>Applying.</strong> Export, save as <code>docs/markings-verify/decisions.json</code>, then
     <code>node scripts/signs/markings/apply-marking-verification.mjs --by "your name"</code>.

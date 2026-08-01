@@ -8,7 +8,7 @@ Background, licensing rationale, and the manual review steps: see
 
 - `pdftotext` (poppler-utils) on PATH — `sudo apt install poppler-utils`
 - Network access to `commons.wikimedia.org` for the fetch step
-- `init/RTSigns_charts.pdf` present (the official DoT chart)
+- `resources/charts/RTSigns_charts.pdf` present (the official DoT chart)
 
 ## Run
 

@@ -1,7 +1,7 @@
 # Live learner's-test format analysis
 
 Derived from four circulated "memo" PDFs (300 pages) supplied 2026-07-28, held locally at
-`docs/k53-study-notes-by-shool/` (gitignored).
+`resources/restricted/` (gitignored).
 
 **This directory contains format and coverage metadata only** — no question text, no answer
 options, and no record of which option was marked correct. The sources are used the way a

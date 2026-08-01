@@ -63,7 +63,7 @@ confined to the drafts. Grep the whole bank for `s 4(3)` and `42(1)` before anyt
 >   to three routes on the strength of this section; that was a regression and has been reverted.
 >
 > Caveat recorded honestly: **GG 22736 itself is not on disk.** The substitution is taken from the
-> consolidated text in `init/nrtr-2000-consolidated-part1-kzntransport.pdf` (consolidated to
+> consolidated text in `resources/legislation/nrtr-2000-consolidated-part1-kzntransport.pdf` (consolidated to
 > GNR.209 of 9 March 2012), which attributes it specifically and prints a text differing from the
 > original. Obtaining GG 22736 would close it. This is the **reg 101(1) trap in a second place** —
 > see §3 — and the general exposure it describes now has a worked second example.
@@ -87,7 +87,7 @@ regenerated from it inherits the defect.
 **reg 101(1) as we hold it says 18 months**, and the item cited the 2000 regulations. Follow the
 citation and it refuted the answer.
 
-> **Resolved 2026-07-30.** The instrument is now in `init/`, and the explanation is more interesting
+> **Resolved 2026-07-30.** The instrument is now in `resources/`, and the explanation is more interesting
 > than expected: **reg 101(1) was never textually amended.** It still reads 18 months in every
 > consolidated copy. The change was made by ministerial notice *under* the regulation —
 > **GN 134, GG 32959 (17 Feb 2010)**: *"hereby extend the period of validity of a learner's licence

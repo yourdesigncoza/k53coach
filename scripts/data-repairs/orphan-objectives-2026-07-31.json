@@ -47,7 +47,7 @@
       "set": {
         "objective_code": "RR28"
       },
-      "why": "Controlled level crossing — boom down, red lights flashing. Previously null ON PURPOSE, though for a reason that turned out to be wrong: docs/handover-2026-07-30.md recorded W318 as the UNCONTROLLED crossing, and that was repeated here. Sch 1 actually defines W318 as 'Warns a road user that a railway crossing is ahead' — an ADVANCE WARNING sign used at every protection class in SADC RTSM Vol 2 Ch 7 Table 7.2. The markers at the crossing are W403 and W404. Corrected 2026-07-31 once Vol 2 Ch 7 was obtained; RR28 was rewritten against it in the same pass. The mapping itself is unchanged and still right."
+      "why": "Controlled level crossing — boom down, red lights flashing. Previously null ON PURPOSE, though for a reason that turned out to be wrong: docs/archive/handover-2026-07-30.md recorded W318 as the UNCONTROLLED crossing, and that was repeated here. Sch 1 actually defines W318 as 'Warns a road user that a railway crossing is ahead' — an ADVANCE WARNING sign used at every protection class in SADC RTSM Vol 2 Ch 7 Table 7.2. The markers at the crossing are W403 and W404. Corrected 2026-07-31 once Vol 2 Ch 7 was obtained; RR28 was rewritten against it in the same pass. The mapping itself is unchanged and still right."
     },
     {
       "table": "questions",

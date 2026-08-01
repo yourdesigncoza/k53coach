@@ -8,8 +8,8 @@ of each. This is the coverage checklist for the markings half of DB1, the same w
 
 | | Source | Status |
 |---|---|---|
-| **Artwork** | `init/RTSigns_charts.pdf` sheet 2 of 5 — "ROAD TRAFFIC SIGNS", National Department of Transport, 2000 | **All 42 extracted as vector.** `scripts/signs/markings/extract-official-svg.mjs` |
-| **Names + definitions** | `init/V1C7.pdf` — SADC RTSM Vol 1 Chapter 7, "Road Markings" (May 2012). Gitignored (12 MB); re-fetch from `transport.gov.za/wp-content/uploads/2023/02/V1C7.pdf` | Mapped below. Teaching content written for 16 of 42. |
+| **Artwork** | `resources/charts/RTSigns_charts.pdf` sheet 2 of 5 — "ROAD TRAFFIC SIGNS", National Department of Transport, 2000 | **All 42 extracted as vector.** `scripts/signs/markings/extract-official-svg.mjs` |
+| **Names + definitions** | `resources/sartsm/V1C7.pdf` — SADC RTSM Vol 1 Chapter 7, "Road Markings" (May 2012). Gitignored (12 MB); re-fetch from `transport.gov.za/wp-content/uploads/2023/02/V1C7.pdf` | Mapped below. Teaching content written for 16 of 42. |
 
 Both are official government publications, free to use under SA Copyright Act §12(8)(a) — the
 same basis as the 362 road signs. Neither is a commercial study guide, so
@@ -104,7 +104,7 @@ These are items we currently **cannot answer**, because the marking has no learn
 
 **Parked 2026-07-30, to return to after the NRTR 2000 work.**
 
-Each §7.x section in `init/V1C7.pdf` carries an embedded **plan-view figure** of its marking in road
+Each §7.x section in `resources/sartsm/V1C7.pdf` carries an embedded **plan-view figure** of its marking in road
 context — for RTM1 (p. 22) a T-junction showing the stop line across the approach, the word STOP
 painted in advance of it, and direction arrows. Captioned in the manual's own style,
 e.g. `RTM1 - STOP LINE / Ref. Vol 1-7.2.1`.
@@ -122,10 +122,10 @@ Two caveats found on first inspection:
   re-drawing as vector with the figure as the authoritative layout reference.
 
 Worth a side-by-side before deciding. Note that `/home/laudes/zoot/Alt_Downloads/V1C7.pdf` is
-**byte-identical** to `init/V1C7.pdf` (same md5) — there is only one document, and these figures were
+**byte-identical** to `resources/sartsm/V1C7.pdf` (same md5) — there is only one document, and these figures were
 always in it; the page renders in `docs/markings-verify/` simply show them at page scale.
 
-Extract them with: `pdfimages -png -f <page> -l <page> init/V1C7.pdf <out>` — page numbers per
+Extract them with: `pdfimages -png -f <page> -l <page> resources/sartsm/V1C7.pdf <out>` — page numbers per
 marking are derived in `scripts/signs/markings/build-verify-page.mjs`.
 
 ## Sequencing
@@ -133,7 +133,7 @@ marking are derived in `scripts/signs/markings/build-verify-page.mjs`.
 Artwork is done and costs nothing further. The work left is **content**, and it is the same
 pipeline the existing 16 went through:
 
-1. Draft each learning object from `init/V1C7.pdf` §7.x + the NRTR 2000 regulations it cites.
+1. Draft each learning object from `resources/sartsm/V1C7.pdf` §7.x + the NRTR 2000 regulations it cites.
 2. Record the citation, `approved_by` and `verified_at` per object (constraint 9).
 3. Human verification before `review_status` moves off `draft`.
 

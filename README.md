@@ -4,9 +4,11 @@ Learn. Practice. Pass. A mobile-first PWA that helps South African learner
 drivers pass the K53 learner's licence — an AI tutor over **verified** content
 that explains mistakes and shows a parent-readable readiness score.
 
-> Product specs live in [`init/`](init/). Architecture & non-obvious
-> constraints (POPIA, no biometrics, content moat, pricing) are in
-> [`CLAUDE.md`](CLAUDE.md). Read those before making product decisions.
+> Product specs live in [`docs/product/`](docs/product/); the official source
+> documents (Act, regulations, SARTSM, sign chart) are indexed in
+> [`resources/`](resources/README.md). Architecture & non-obvious constraints
+> (POPIA, no biometrics, content moat, pricing) are in [`CLAUDE.md`](CLAUDE.md).
+> Read those before making product decisions.
 
 ## Stack
 

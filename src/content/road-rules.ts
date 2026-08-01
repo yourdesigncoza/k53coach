@@ -531,7 +531,7 @@ export const ROAD_RULES: RoadRule[] = [
   //     considered as a high visibility hazard marker warning device and not as a
   //     form of railway crossing control". Booms appear only at the highest
   //     protection class, alongside FRD + R1.
-  //   - it repeated the claim (from docs/handover-2026-07-30.md) that W318 is the
+  //   - it repeated the claim (from docs/archive/handover-2026-07-30.md) that W318 is the
   //     UNCONTROLLED crossing. Sch 1: W318 "Warns a road user that a railway
   //     crossing is ahead" — an advance warning sign used at EVERY protection
   //     class per Table 7.2. The markers at the crossing are W403 (single line)

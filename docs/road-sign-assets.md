@@ -109,7 +109,7 @@ specified hours") — a real SA class; `R513`, `R514`, `R519` and `R530` *are* i
 so their neighbours' absence is OCR loss in a dense table, not proof they do not exist.
 
 **So: absence from an OCR'd extraction is not evidence of absence.** Confirming those 64 needs SADC
-RTSM Vol 2/3, which is not in `init/`. Until then they stay served and this is a worklist.
+RTSM Vol 2/3, which is not in `resources/`. Until then they stay served and this is a worklist.
 
 **The one structural finding worth acting on:** 345 of 377 served signs carry an `ai:` approver, and
 **101 of those are `ai:claude-code+brave`** — the fallback path that ran a web search when the chart

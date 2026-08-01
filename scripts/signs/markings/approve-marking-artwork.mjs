@@ -2,7 +2,7 @@
  * Attach the official DoT marking artwork to the `road_signs` marking rows and
  * close the ASSET gate only.
  *
- * The artwork is extracted from `init/RTSigns_charts.pdf` sheet 2 of 5 — the same
+ * The artwork is extracted from `resources/charts/RTSigns_charts.pdf` sheet 2 of 5 — the same
  * official chart every one of the 362 road signs was verified against. Because the
  * asset IS the ground truth rather than a redrawing of it, chart-verification is
  * satisfied by construction: there is no gap between what we ship and what the
@@ -64,7 +64,7 @@ const rows = files.map((f) => {
     verification: {
       match: true,
       method: 'vector extraction from the official chart (pdftocairo -svg, getBBox crop)',
-      chart_file: 'init/RTSigns_charts.pdf',
+      chart_file: 'resources/charts/RTSigns_charts.pdf',
       chart_page: 2,
       reason:
         'Artwork is the Department of Transport\'s own vector geometry lifted directly from the ' +

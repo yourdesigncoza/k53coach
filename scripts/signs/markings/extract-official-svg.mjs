@@ -3,7 +3,7 @@
  * Extract the official road-marking artwork from the Department of Transport chart
  * as individual vector SVGs.
  *
- * `init/RTSigns_charts.pdf` sheet 2 of 5 ("ROAD TRAFFIC SIGNS", National Department
+ * `resources/charts/RTSigns_charts.pdf` sheet 2 of 5 ("ROAD TRAFFIC SIGNS", National Department
  * of Transport, 2000) carries a full ROAD MARKINGS section — RTM1-4, RM1-RM17,
  * WM1-WM11, GM1-GM8 — drawn as vector, not scanned. That is the same chart the 362
  * road signs were verified against, so it is already this project's ground truth;
@@ -29,7 +29,7 @@ import { fileURLToPath } from 'node:url'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(HERE, '..', '..', '..')
-const PDF = join(ROOT, 'init', 'RTSigns_charts.pdf')
+const PDF = join(ROOT, 'resources', 'charts', 'RTSigns_charts.pdf')
 const OUT = join(HERE, 'official-svg')
 const PAGE = 2
 
@@ -205,7 +205,7 @@ function tidy(svg) {
 
 mkdirSync(OUT, { recursive: true })
 const header = '<?xml version="1.0" encoding="UTF-8"?>\n' +
-  '<!-- Source: init/RTSigns_charts.pdf sheet 2/5 — ROAD TRAFFIC SIGNS,\n' +
+  '<!-- Source: resources/charts/RTSigns_charts.pdf sheet 2/5 — ROAD TRAFFIC SIGNS,\n' +
   '     National Department of Transport, 2000. Official artwork, extracted as vector. -->\n'
 
 let total = 0

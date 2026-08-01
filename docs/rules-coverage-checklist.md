@@ -17,7 +17,7 @@ So we invert it. Three passes, strictly separated:
 | Pass | Input | Output | May it touch a generation prompt? |
 |---|---|---|---|
 | **1. Extract** | the guide | bare topic labels (short noun phrases) | — |
-| **2. Draft** | National Road Traffic Act 93 of 1996 + regulations; official DoT sign chart (`init/RTSigns_charts.pdf`) | our own rule explanations | ✅ these are the only sources |
+| **2. Draft** | National Road Traffic Act 93 of 1996 + regulations; official DoT sign chart (`resources/charts/RTSigns_charts.pdf`) | our own rule explanations | ✅ these are the only sources |
 | **3. Check** | this file | gap list → new work | ✅ labels only |
 
 > **Hard guardrail.** The guide PDF, and any prose extracted from it, **must never be passed as

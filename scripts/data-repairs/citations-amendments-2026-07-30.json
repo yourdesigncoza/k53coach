@@ -1,5 +1,5 @@
 {
-  "description": "Citations for the two items that turn on post-2000 amendments. Our working copy of the Regulations is the original GG 20963 of 17 March 2000, so both were uncitable until the amending instruments were obtained on 2026-07-30. Primary gazettes are now in init/ (gitignored) and every quote below was grepped out of them, not taken from a summary.",
+  "description": "Citations for the two items that turn on post-2000 amendments. Our working copy of the Regulations is the original GG 20963 of 17 March 2000, so both were uncitable until the amending instruments were obtained on 2026-07-30. Primary gazettes are now in resources/ (gitignored) and every quote below was grepped out of them, not taken from a summary.",
   "ops": [
     {
       "table": "questions",

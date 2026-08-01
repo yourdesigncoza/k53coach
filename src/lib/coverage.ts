@@ -5,7 +5,7 @@ import type { SignRow } from "./signs";
 type ChartCode = { code: string; name: string | null };
 
 /**
- * Coverage of the official chart (init/RTSigns_charts.pdf) by what we have in the
+ * Coverage of the official chart (resources/charts/RTSigns_charts.pdf) by what we have in the
  * DB. A chart code counts as covered if we hold it exactly OR any parametric
  * variant of it (e.g. chart `R201` is covered by `R201-60`). "Core" = the
  * learner-facing R/W/IN codes, excluding road markings and temporary signs.

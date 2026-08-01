@@ -3,7 +3,7 @@
  * Step 1 of the road-sign pipeline (see docs/road-sign-assets.md).
  *
  * Extracts the sign inventory from the official Department of Transport chart
- * (init/RTSigns_charts.pdf) into data/signs-from-pdf.json.
+ * (resources/charts/RTSigns_charts.pdf) into data/signs-from-pdf.json.
  *
  * The chart sheets list sign CODES grouped under category headers; later sheets
  * give "CODE Name" description pairs. We merge both: every code we find, tagged
@@ -16,7 +16,7 @@ import { execFileSync } from "node:child_process";
 import { writeFileSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 
-const PDF = resolve("init/RTSigns_charts.pdf");
+const PDF = resolve("resources/charts/RTSigns_charts.pdf");
 const OUT = resolve("data/signs-from-pdf.json");
 
 /** Collapse FreeHand letter-spacing ("T E M P O R A R Y" -> "TEMPORARY"). */
