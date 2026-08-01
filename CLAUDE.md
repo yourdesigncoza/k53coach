@@ -12,15 +12,23 @@ The original specs live in `docs/product/` and still govern product intent — r
 
 Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. The road-sign library (DB1) is fully ingested and **chart-verified in a Claude Code session** — see `docs/sign-accuracy-pipeline.md`. **Mock exam (Code B) shipped:** entitlement-gated `/mock` → timed **64**-question paper (rules 30 / signs 28 / controls 6, scored independently — corrected from 68 on 2026-07-31, K53-34; see the evidence note on `EXAM_FORMAT_B`) → per-section summary → grounded AI assessment → DB9 readiness blend on the dashboard/progress. Engine in `src/lib/exam.ts`, UI in `src/components/exam/*`, gate in `src/lib/exam-guard.ts`.
 
-**Live data as of 2026-07-30** (measure it yourself before quoting — these drift):
+**Live data measured 2026-08-01** against the prototype project (`lxefjksaxmiawrnnewmj`).
+**Measure it yourself before quoting — these drift fast.** The 2026-07-30 figures that stood
+here were wrong within two days on every row that matters:
 
 | | |
 |---|---|
-| `road_signs` | 378 rows — 361 served (both gates approved + `sa_relevant`). 234 regulatory / 102 warning / 26 guidance / **16 markings**, the markings artwork-approved and their content **rewritten 2026-07-31** against the manual + NRTR + NRTA (`scripts/data-repairs/markings-content-2026-07-31.json`), but `review_status` still `draft` pending human sign-off — so none is served yet |
-| `questions` | 204 rows — **124 approved**, 80 draft. Approved: signs 46 / rules 41 / controls 37 |
-| Rule learning objects | 26 (`RR1`–`RR26`); controls 22 (`VC1`–`VC22`) |
+| `road_signs` | 381 rows — **375 served** (both gates approved + `sa_relevant`). 234 regulatory / 102 warning / 29 guidance / **16 markings**. The markings are now approved on **both** gates and **are served** — their content was rewritten 2026-07-31 against the manual + NRTR + NRTA (`scripts/data-repairs/markings-content-2026-07-31.json`) |
+| `questions` | 228 rows — **227 approved**, 1 draft. Approved: rules 120 / signs 70 / controls 37. All 227 carry an `objective_code`; 185 carry a `source_citation` |
+| Rule learning objects | 29 (`RR1`–`RR29`); controls 22 (`VC1`–`VC22`) — all still `reviewStatus: "draft"` |
 | `exam_attempts` | 0 — no learner has sat a mock in production |
 | `entitlements` | 3, all granted by hand via admin |
+
+**Stage 1 content gate — two of three sections are already there.** The bar is the
+*per-section split* 120 rules / 112 signs / 24 controls (not the 256 total). Measured above:
+rules **120/120 ✅**, controls **37/24 ✅**, signs **70/112 — short 42**. Signs is the only
+section still blocking the Stage 1 gate. Note the counted bar is *approved*, and approval
+here is not yet the human sign-off constraint 9 requires (see below).
 
 **Launch plan: `docs/build-plan-2026-07.md` (v2) — read it before scoping work.** Launch is a **two-stage gate**, not one bar: Stage 1 paid beta at **256 verified questions** at the per-section split 120 rules / 112 signs / 24 controls (a floor derived from the exam format — see the doc; was 300 before the 64-question correction, and **the split is the bar, not the total**) + payments live + no orphaned topics + road-markings written library + a claims audit; Stage 2 full launch at 736. Payments get built early but the **checkout stays closed** until the Stage 1 content floor is real. Tracked as **K53-32**.
 
@@ -71,6 +79,11 @@ npm run build        # production build (Turbopack)
 npm run start        # serve the production build
 npm run lint         # eslint
 npm run typecheck    # tsc --noEmit
+npm test             # node's built-in runner (--experimental-strip-types), src/**/*.test.ts
+
+# Run one file / one test
+node --experimental-strip-types --test src/lib/payfast.test.ts
+node --experimental-strip-types --test --test-name-pattern "signature" src/lib/payfast.test.ts
 
 # Road-sign pipeline (needs pdftotext + network; see scripts/signs/README.md)
 npm run signs:extract  # pull sign codes/names out of the official chart PDF
@@ -90,7 +103,11 @@ supabase gen types typescript --linked > src/lib/database.types.ts
 vercel --prod        # deploy to production (prod env vars already set on Vercel)
 ```
 
-No test framework is set up yet. The app runs **without Supabase env vars** ("demo mode" — auth/persistence simulated); real keys live in `.env.local` (gitignored). Network here is IPv4-only, so Supabase DB commands use the pooler (this is why `supabase link` was re-run).
+**There IS a test setup** — no third-party framework, just Node's built-in runner over TypeScript via `--experimental-strip-types`, so nothing to install. **41 tests currently pass** across `src/lib/payfast.test.ts` and `src/lib/weak-areas.test.ts`. Coverage is deliberately narrow: the two places where a silent logic error costs money or misleads a learner. Add a `*.test.ts` next to the module and it is picked up — don't add Jest/Vitest for it.
+
+The app runs **without Supabase env vars** ("demo mode" — auth/persistence simulated); real keys live in `.env.local` (gitignored). Network here is IPv4-only, so Supabase DB commands use the pooler (this is why `supabase link` was re-run).
+
+**Next.js 16 is not the Next.js you know** (`AGENTS.md`): APIs, conventions and file structure differ from training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing Next-specific code, and heed deprecation notices.
 
 ## CodeGraph (code intelligence — use before grepping)
 
@@ -151,7 +168,7 @@ These are easy to miss and have architectural consequences. Honor them in any de
 
 8. **Languages are English + Afrikaans, full stop.** Both ship as real deliverables. Do **not** propose isiXhosa or any other official language — speakers of the African languages generally prefer English, so English serves them (John, 2026-07-24). English is drafted first; Afrikaans follows as a content pass. Stage 1 ships English-only *questions* — marketing must not imply otherwise.
 
-9. **Accuracy gate = recorded evidence, not intent.** Any generated question or rule must carry a citation to the specific regulation/chart entry it rests on, plus who approved it and when. **AI drafts; it never self-certifies** — verification by another pass of the same model against the same prompt is circular and worthless. Item-level checks, not sampling; a client spot-check is *style* calibration and does not count as QA.
+9. **Accuracy gate = recorded evidence, not intent.** Any generated question or rule must carry a citation to the specific regulation/chart entry it rests on, plus who approved it and when. **AI drafts; it never self-certifies** — verification by another pass of the same model against the same prompt is circular and worthless. Item-level checks, not sampling; a client spot-check is *style* calibration and does not count as QA. **Every citation is read out of `resources/`** — the Act, the regulations, the 24 SARTSM volumes and the DoT chart, indexed in `resources/README.md`. Quote the text; never cite from recall or from an earlier summary. Two traps that have already produced wrong verdicts are recorded there: the 2000 NRTR original is **not** the text in force for several regulations (reg 297(2), reg 101(1)), and the chart's marking labels are vector, so absence of extracted text is not absence from the chart. See also constraint 7 for the memo scans in `resources/restricted/`, which are format reference only.
 
 ## Roles & data model anchors
 
@@ -159,9 +176,16 @@ User roles: Learner, Parent, School, Admin. The PRD's numbered "Databases" are l
 
 Implemented Postgres tables (RLS, own-row policies): `profiles` (auto-created on signup; role/locale/consent flags, minimal PII), `attempts` (per-question, feeds DB7), `readiness_results` (DB9 snapshots), `road_signs` (DB1), `questions` (DB4), `entitlements` + `exam_attempts` (paid access + mock results). The readiness scoring helper is `src/lib/readiness.ts`.
 
-**Two schema gaps to close before scaling — both are load-bearing, neither is obvious from the code:**
+**Both schema gaps that used to be listed here are CLOSED** — don't re-raise them:
 
-- **`questions` has no audit trail.** Unlike `road_signs` (which carries `approved_by`, `verified_at`, `svg_hash`, `verification`), `review_status` on `questions` is a bare boolean a seed migration set — there is no record of *who* verified an item or *against what*. Add `approved_by`, `verified_at`, `generated_by`, `source_citation`, `objective_code` **before** any bulk import, or the accuracy gate (constraint 9) is decorative.
-- **`entitlements` has no unique constraint on `reference`** — only a non-unique index on `(user_id, expires_at)`. Concurrent PayFast ITN deliveries would double-grant. An idempotent payment webhook needs a unique index on `(source, reference)` plus upsert-on-conflict; careful code alone won't do it.
+- `questions` audit trail — added by `supabase/migrations/20260724090000_question_provenance.sql` (`approved_by`, `verified_at`, `generated_by`, `source_citation`, `objective_code`).
+- `entitlements` idempotency — the partial unique index `entitlements_payment_reference_key` on `(source, reference)` landed in `supabase/migrations/20260727120000_payfast_itn_idempotency.sql`.
 
-**Learning-objective codes** tie questions to lessons via `questions.objective_code`: signs → `road_signs.code` (e.g. `R1`), rules → `RR1`–`RR26` (`src/content/road-rules.ts`), controls → `VC1`–`VC22` (`src/content/vehicle-controls.ts`). All three series exist. **Codes are shared by design** — several questions per objective is what an objective is for (11 of the `VC*` codes carry more than one), so a repeated code is not a mis-mapping. Coverage after the 2026-07-24 backfill: **112 of 124** approved questions carry one — rules 41/41, controls 37/37, **signs 34/46**. The remaining gap is signs items testing guidance/information classes the library does not hold (see `docs/question-verify/approved-bank-findings.md` §7) plus the orphaned rules topics in `docs/rules-coverage-checklist.md`.
+⚠️ **But the audit columns are only half-populated, and that is now the real accuracy risk.** Measured 2026-08-01 across the 227 approved questions: `objective_code` **227/227**, `source_citation` **185/227**, `approved_by` and `verified_at` **0/227**. Every approved item therefore claims an approval that **no human is recorded as having given** — the same "decorative accuracy gate" the migration was written to prevent, now failing one step later. Two consequences to honour:
+
+- Treat `review_status = 'approved'` as *AI-swept*, not *human-verified*. It does not satisfy constraint 9 on its own, and the Stage 1 count rests on it.
+- The 42 approved questions with no `source_citation` are uncitable as they stand. Before quoting bank size as evidence of readiness, check what share carries evidence.
+
+`docs/verification-worklist.md` tracks the outstanding human pass; the sweep that produced the current state is written up in `docs/question-verify/`.
+
+**Learning-objective codes** tie questions to lessons via `questions.objective_code`: signs → `road_signs.code` (e.g. `R1`), rules → `RR1`–`RR29` (`src/content/road-rules.ts`), controls → `VC1`–`VC22` (`src/content/vehicle-controls.ts`). All three series exist. **Codes are shared by design** — several questions per objective is what an objective is for (11 of the `VC*` codes carry more than one), so a repeated code is not a mis-mapping. **Coverage is now complete: 227/227 approved questions carry a code** (the 2026-07-24 backfill left 12 orphans; they were closed by `scripts/data-repairs/orphan-objectives-2026-07-31.json`). What remains is the reverse direction — objectives with no lesson written, tracked in `docs/rules-coverage-checklist.md` and `docs/question-verify/approved-bank-findings.md` §7.
