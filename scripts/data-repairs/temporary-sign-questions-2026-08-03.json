@@ -43,7 +43,7 @@
    "80, unless you can actually see workers on the site"
   ],
   "answer": 1,
-  "explanation": "40. When a temporary sign conflicts with a permanent one, the temporary sign wins, and it counts whether or not anybody is visibly working. Hold 40 until a sign tells you the limit has changed again.",
+  "explanation": "40. Where a temporary sign conflicts with a permanent one, the temporary sign wins — the bolted-down sign does not outrank it just because it is permanent.",
   "source_citation": "NRTR 2000 reg 287(5)(a); reg 287(2)",
   "difficulty": 2,
   "exam_likelihood": "high",
@@ -60,7 +60,7 @@
    "A red octagon reading STOP, exactly the same shape and colour as any other Stop sign"
   ],
   "answer": 2,
-  "explanation": "\"All temporary signs are yellow\" is the trap. Stop and Yield signs keep their normal shape and colour whether they are temporary or permanent, so a temporary Stop is still a red octagon. Obey it the same way.",
+  "explanation": "\"All temporary signs are yellow\" is the trap. Control signs — Stop and Yield — keep their normal shape and colour whether they are temporary or permanent, so a temporary Stop is still a red octagon.",
   "source_citation": "SARTSM Vol 1 Ch 2 (permanent and temporary control signs retain the same shapes and colours)",
   "difficulty": 3,
   "exam_likelihood": "high",
@@ -77,7 +77,7 @@
    "Only on freeways and national roads, where traffic is fastest"
   ],
   "answer": 0,
-  "explanation": "Roadworks are the most common use, not the only one. Temporary signs also control traffic at crash scenes, where the robots are dead, and outside schools and sports grounds. They bind you exactly the same.",
+  "explanation": "Roadworks are the most common use, not the only one. The manual lists accident scenes, traffic signals out of order, and traffic control at schools and sporting events as non-roadworks uses of temporary signs.",
   "source_citation": "SARTSM Vol 2 Ch 3 §3.5.1 (temporary signing applications)",
   "difficulty": 2,
   "exam_likelihood": "medium",
@@ -94,8 +94,8 @@
    "Up to 14 days, after which it counts as a permanent sign"
   ],
   "answer": 1,
-  "explanation": "There is no fixed lifespan. A temporary sign may stand for a matter of minutes at a crash scene or for months at a big roadworks project. It stays as long as the abnormal condition it was put up for.",
-  "source_citation": "SARTSM Vol 1 Ch 2 (temporary regulatory signs, periods of use); NRTR 2000 reg 287(2)",
+  "explanation": "There is no fixed lifespan: a temporary sign may be used only for a temporary condition. The manual records temporary regulatory signs standing anywhere from a matter of minutes to periods running into months.",
+  "source_citation": "NRTR 2000 reg 287(2) (a temporary road sign shall only be used for a temporary condition); SARTSM Vol 1 Ch 2 (temporary REGULATORY signs may be used for short periods of time — a matter of minutes — or for relatively long periods running into months)",
   "difficulty": 2,
   "exam_likelihood": "medium",
   "topic_tag": "Temporary signs",
@@ -111,8 +111,8 @@
    "The background is yellow, while the symbol and the red triangular border stay the same"
   ],
   "answer": 2,
-  "explanation": "The picture and the red triangular border stay the same; the background turns yellow. That yellow is your cue that this hazard is temporary, so slow down and expect something that is not normally there.",
-  "source_citation": "SARTSM Vol 1 Ch 3 (temporary advance warning sign colours)",
+  "explanation": "The symbol and the red triangle stay the same; the white background turns yellow. Treat that yellow as a prompt to slow down and expect something that is not normally there.",
+  "source_citation": "SARTSM Vol 1 Ch 3 (all TEMPORARY advance warning signs shall consist of a black symbol on a yellow background with a red triangular border); NRTR 2000 Sch 1 — permanent warning signs, e.g. W306: Triangle red retro-reflective, Symbol black semi-matt, Background WHITE retro-reflective",
   "difficulty": 2,
   "exam_likelihood": "medium",
   "topic_tag": "Temporary signs",

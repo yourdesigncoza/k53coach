@@ -1,0 +1,48 @@
+{
+ "description": "Second-reviewer corrections to the temporary-signs batch. The Codex review returned after the batch had already been pushed and was materially harsher than Grok's — DO-NOT-SHIP, against Grok's SHIP-WITH-FIXES, with findings on five of the seven items. Nothing was live: all seven are review_status=draft, which is the reason drafts exist.\n\nThe common defect is the same one in five different places: the explanation asserted something broader than the passage cited beside it. Worker-visibility and 'until another sign' rules on RS-110, an obedience claim on RS-111, legal force on RS-112, and a minutes-to-months range on RS-113 that the manual states of temporary REGULATORY signs specifically rather than of all temporary signs.\n\nRS-114 is an ADJUDICATION rather than a fix: Codex called the 'red triangular border stays the same' comparison unsupported, but it is supported — Schedule 1 gives permanent warning signs as a red triangle with a black symbol on a WHITE background, so the border and symbol genuinely are unchanged and only the background differs. The reviewer could not see that because the packet carried only the temporary format. The claim stands; the citation now carries both halves.",
+ "ops": [
+  {
+   "table": "questions",
+   "match": "id=eq.RS-110",
+   "set": {
+    "explanation": "40. Where a temporary sign conflicts with a permanent one, the temporary sign wins — the bolted-down sign does not outrank it just because it is permanent."
+   },
+   "why": "Explanation carried two claims the citation does not support: that the limit 'counts whether or not anybody is visibly working', and that you 'hold 40 until a sign tells you the limit has changed again'. Both are plausible driving advice, neither is in reg 287. Trimmed to the precedence rule, which is what reg 287(5)(a) actually establishes. Flagged by the Codex reviewer."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-111",
+   "set": {
+    "explanation": "\"All temporary signs are yellow\" is the trap. Control signs — Stop and Yield — keep their normal shape and colour whether they are temporary or permanent, so a temporary Stop is still a red octagon."
+   },
+   "why": "Explanation ended 'Obey it the same way', a claim about legal obligation, while the citation supports only appearance. The question asks what the sign LOOKS like, so the obedience sentence was doing no work and was dropped rather than propped up with a second citation. Flagged by the Codex reviewer."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-112",
+   "set": {
+    "explanation": "Roadworks are the most common use, not the only one. The manual lists accident scenes, traffic signals out of order, and traffic control at schools and sporting events as non-roadworks uses of temporary signs."
+   },
+   "why": "Explanation ended 'They bind you exactly the same'. SARTSM Vol 2 Ch 3 §3.5.1 lists APPLICATIONS; it does not itself establish legal force, and reg 287(5)(a) speaks to precedence in a conflict rather than to general binding force. Reworded to state exactly what the cited paragraph says. Flagged by the Codex reviewer."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-113",
+   "set": {
+    "prompt": "How long may a temporary road sign stay up?",
+    "explanation": "There is no fixed lifespan: a temporary sign may be used only for a temporary condition. The manual records temporary regulatory signs standing anywhere from a matter of minutes to periods running into months.",
+    "source_citation": "NRTR 2000 reg 287(2) (a temporary road sign shall only be used for a temporary condition); SARTSM Vol 1 Ch 2 (temporary REGULATORY signs may be used for short periods of time — a matter of minutes — or for relatively long periods running into months)"
+   },
+   "why": "The minutes-to-months range is stated in the manual of temporary REGULATORY signs specifically, and the item generalised it to every temporary road sign. Restructured so the general claim rests on reg 287(2), which is general and primary, and the range is attributed to regulatory signs where the source puts it. Flagged by the Codex reviewer."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-114",
+   "set": {
+    "explanation": "The symbol and the red triangle stay the same; the white background turns yellow. Treat that yellow as a prompt to slow down and expect something that is not normally there.",
+    "source_citation": "SARTSM Vol 1 Ch 3 (all TEMPORARY advance warning signs shall consist of a black symbol on a yellow background with a red triangular border); NRTR 2000 Sch 1 — permanent warning signs, e.g. W306: Triangle red retro-reflective, Symbol black semi-matt, Background WHITE retro-reflective"
+   },
+   "why": "Codex objected that 'the red triangular border stays the same' is a comparison with the permanent sign that the packet did not establish — the packet showed only the temporary format. OVERRULED on evidence: Schedule 1 gives the permanent warning sign as a red retro-reflective triangle with a black symbol on a WHITE retro-reflective background (read verbatim for W306 earlier today). Permanent and temporary therefore share the red triangle and black symbol and differ in background, exactly as the item says. The citation now carries both halves so the comparison is evidenced rather than asserted. Separately, 'that yellow is your cue' was softened — the source says temporary warning signs are yellow, not that everything yellow is temporary, and the original phrasing leaned on the converse."
+  }
+ ]
+}
