@@ -44,7 +44,30 @@ The *outbound* half is built too: `POST /api/pay/payfast/checkout` signs a reque
 - **The probe's own verdict was wrong before it was fixed.** `diagnose()` matched body text ("pay now", "order summary") to detect success, but the engine page renders **client-side**, so a *successful* response contains none of those words. It returned `????`, `anyPass` stayed false, and the script printed the opposite conclusion — "our own account fails too, so the passphrase theory is dead". Now it reads the **status code and the redirect target** instead. Never take that script's closing paragraph over the per-variant rows.
 - **`.env.local` sandbox keys are easy to misname.** If `PAYFAST_SANDBOX_MERCHANT_KEY`/`_PASSPHRASE` are typed without the `SANDBOX_` infix they silently shadow the **live** values, and `payfast.ts:77-79` falls back to PayFast's published pair — reproducing the original failure while looking configured. Check the names, not just that values are present.
 
-**Still unverified: the inbound half.** A completed sandbox payment has not been put through, so the ITN handler is exercised only by unit tests, not end to end.
+✅ **The inbound half is verified end to end — 2026-08-03.** A real sandbox payment was
+completed and PayFast's ITN granted access unaided: entitlement `ce1b7f96`, the first row in
+the table with `source: payfast`, `reference` = PayFast's own `pf_payment_id` (`3304360`),
+expiring `granted_at` + 90 days. All four gates in `verifyItn` passed against live traffic
+(signature → source IP → PayFast's `/eng/query/validate` → amount), and the paid account then
+reached `/en/mock` while a second checkout correctly returned 409 `already_active`. Replaying
+the same `(source, reference)` is rejected by `entitlements_payment_reference_uniq` (23505),
+so the handler's duplicate-delivery branch rests on a constraint that demonstrably fires.
+
+**How to re-run it — PayFast must reach `notify_url` from the public internet, which is the
+whole reason this went untested for so long.** Neither localhost nor production works: prod is
+correctly closed by the Stage 1 gate (503 `checkout_closed`), and Vercel previews are behind
+SSO (`ssoProtection: all_except_custom_domains`) *and* carry neither `PAYFAST_SANDBOX_*` nor any
+Supabase keys, so a preview would sign with PayFast's published test pair against no database.
+Rather than weaken any of that, tunnel the local dev server — no install, no Vercel change:
+
+```bash
+ssh -o ExitOnForwardFailure=yes -R 80:localhost:3000 nokey@localhost.run   # prints https://<id>.lhr.life
+node scripts/e2e/flow.mjs checkout entitled --base https://<id>.lhr.life --pay
+```
+
+`siteOrigin()` reads the forwarded host, so `notify_url` follows the tunnel automatically. Kill
+the tunnel afterwards — while it is up, the dev server is on the public internet. The e2e buyer
+now holds a live entitlement, so a repeat run stops at 409; clear it first to test payment again.
 
 Deferred (`docs/backlog.md`): Code A/C papers, full pass-prediction, dashboards, practical-driving coach, the Afrikaans content pass, next-pwa service worker.
 

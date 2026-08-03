@@ -294,6 +294,26 @@ flows.mock = async (page) => {
   note("mock", gated ? "info" : "fail", gated ? "mock is gated as expected" : "MOCK NOT GATED for anonymous user");
 };
 
+/**
+ * The other half of the gate. `mock` proves it CLOSES for a stranger; this proves
+ * it OPENS for someone who paid — which is the half that actually costs money if
+ * it breaks, and the half nothing covered until the 2026-08-03 ITN run.
+ * Requires the e2e buyer to hold a live entitlement (run `checkout --pay` first).
+ */
+flows.entitled = async (page, ctx) => {
+  if (!ctx._userId) {
+    note("entitled", "fail", "no session — cannot test paid access");
+    return;
+  }
+  await page.goto(`${BASE}/en/mock`, { waitUntil: "networkidle" });
+  const t = await page.locator("body").innerText();
+  // The paywall copy, not the exam copy. Price + unlock wording is the tell.
+  const blocked = /unlock|R\s?\d{2,}/i.test(t);
+  note("entitled", blocked ? "fail" : "info",
+    blocked ? `PAID USER STILL BLOCKED at /en/mock: ${t.replace(/\s+/g, " ").slice(0, 160)}`
+            : "paid user reaches the mock exam");
+};
+
 flows.checkout = async (page, ctx) => {
   const res = await page.request.post(`${BASE}/api/pay/payfast/checkout`, {
     headers: { "content-type": "application/json" }, data: {},
@@ -357,7 +377,7 @@ flows.af = async (page) => {
   await brokenImages(page, "af");
 };
 
-const ORDER = ["landing", "readiness", "paywall", "learn", "mock", "checkout", "af"];
+const ORDER = ["landing", "readiness", "paywall", "learn", "mock", "checkout", "entitled", "af"];
 const run = wanted.length ? wanted : ORDER;
 
 // Reuse whatever chromium is already in the Playwright cache rather than making
@@ -386,7 +406,7 @@ for (const name of run) {
     note(name, "fail", "unknown flow");
     continue;
   }
-  const needsAuth = name === "checkout";
+  const needsAuth = name === "checkout" || name === "entitled";
   const ctx =
     (needsAuth ? await signedInContext(browser) : null) ??
     (await browser.newContext({ viewport: { width: 1280, height: 900 } }));
