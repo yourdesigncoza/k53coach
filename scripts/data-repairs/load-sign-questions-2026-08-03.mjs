@@ -55,7 +55,10 @@ for (const q of batch) {
   }
   // Guard rails. A bad sign_code renders a broken image to a learner; a missing
   // citation makes the item unapprovable under the new editor rule.
-  if (!served.has(q.sign_code)) throw new Error(`${q.id}: sign_code ${q.sign_code} is not served`);
+  // sign_code is optional — a concept question (e.g. the temporary-signage set) has
+  // no single sign to render. Only validate it when one is given.
+  if (q.sign_code != null && !served.has(q.sign_code))
+    throw new Error(`${q.id}: sign_code ${q.sign_code} is not served`);
   if (!q.source_citation?.trim()) throw new Error(`${q.id}: no source_citation`);
   if (q.options.length !== 3) throw new Error(`${q.id}: ${q.options.length} options, expected 3`);
   if (!(q.answer >= 0 && q.answer < 3)) throw new Error(`${q.id}: answer out of range`);
@@ -80,7 +83,7 @@ for (const q of batch) {
     review_status: "draft",
     sort_order: ++sort,
   };
-  console.log(`  → ${q.id}  ${q.sign_code.padEnd(8)} ${q.prompt.slice(0, 62)}…`);
+  console.log(`  → ${q.id}  ${(q.sign_code ?? "—").padEnd(8)} ${q.prompt.slice(0, 62)}…`);
   if (!DRY) await insert("questions", row);
   n++;
 }

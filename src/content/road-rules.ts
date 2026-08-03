@@ -574,6 +574,37 @@ export const ROAD_RULES: RoadRule[] = [
     relatedRules: ["RR22", "RR27"],
     reviewStatus: "draft",
   },
+
+  // Source: NRTR reg 287(2) — "A temporary road sign shall only be used for a
+  //   temporary condition"; reg 287(5)(a) — where two signs conflict, "a temporary
+  //   road traffic sign shall take precedence over any other road traffic sign".
+  //   SARTSM Vol 1 Ch 3: "All TEMPORARY advance warning signs shall consist of a
+  //   black symbol on a yellow background with a red triangular border", and a
+  //   temporary sign takes the permanent sign's number with a T prefix (W101 ->
+  //   TW101). SARTSM Vol 1 Ch 2: "PERMANENT and TEMPORARY CONTROL signs retain the
+  //   same SHAPES and COLOURS" — so a temporary STOP is still a red octagon, which
+  //   is why "all temporary signs are yellow" is wrong. SARTSM Vol 2 Ch 3 §3.5.1:
+  //   temporary signs are NOT roadworks-only — the manual names accident scenes,
+  //   traffic signals out of order, and traffic control at schools and sporting
+  //   events, and says the message is that "normal or anticipated conditions may
+  //   not apply". Written 2026-08-03 to close the gap in docs/sign-question-coverage.md:
+  //   temporary/roadworks is 17 of 82 observed real exam items and we had nothing.
+  {
+    code: "RR30",
+    title: "Temporary road signs",
+    category: "signals",
+    summary:
+      "Yellow means the rules changed today — and a temporary sign beats the permanent one.",
+    rule: "A temporary road sign may only be used for a temporary condition. Temporary warning signs carry a black symbol on a yellow background inside a red triangle, and take the permanent sign's number with a T in front — W101 becomes TW101. Control signs are the exception: a temporary stop or yield keeps its normal shape and colour. Where a temporary sign and any other sign conflict, the temporary sign takes precedence.",
+    whatToDo:
+      "Treat a yellow sign as the instruction that counts, even where a permanent sign beside it says something different. Slow to the temporary limit and expect the layout to have changed since the permanent signs went up.",
+    commonMistake:
+      "Believing temporary signs only ever mean roadworks, or that a permanent sign outranks them because it is bolted down. Both are wrong: temporary signs also cover accident scenes, signals out of order and traffic control at schools and events, and they take precedence.",
+    testHint:
+      "Two facts do most of the work: yellow background with a red triangle for a temporary warning, and temporary beats permanent when they disagree. Watch for the trap that a temporary stop sign is still a red octagon.",
+    relatedRules: ["RR29", "RR27"],
+    reviewStatus: "draft",
+  },
 ];
 
 export function getRule(code: string): RoadRule | undefined {

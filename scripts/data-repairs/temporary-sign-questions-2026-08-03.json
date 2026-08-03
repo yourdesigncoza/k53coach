@@ -1,0 +1,121 @@
+[
+ {
+  "sign_code": null,
+  "objective_code": "RR30",
+  "prompt": "You come round a bend and find temporary signs set up beside the road. What are they telling you?",
+  "options": [
+   "That the road has been permanently changed and these signs will stay there for good",
+   "That the road ahead is closed and you must turn around",
+   "That conditions on this stretch are not normal right now, so what you would usually expect may not apply"
+  ],
+  "answer": 2,
+  "explanation": "Temporary signs go up for a temporary condition. The message is simply that things here are not normal today. Drive to what the signs in front of you say, not to what you remember about this road.",
+  "source_citation": "NRTR 2000 reg 287(2); SARTSM Vol 2 Ch 3 §3.5.1 (message inferred from temporary signs)",
+  "difficulty": 1,
+  "exam_likelihood": "high",
+  "topic_tag": "Temporary signs",
+  "id": "RS-108"
+ },
+ {
+  "sign_code": null,
+  "objective_code": "RR30",
+  "prompt": "A temporary sign and a permanent sign at the same spot tell you two different things. Which one must you obey?",
+  "options": [
+   "The temporary sign, because it takes precedence over the other sign",
+   "The permanent sign, because it is the fixed, officially installed one",
+   "Whichever of the two you saw first"
+  ],
+  "answer": 0,
+  "explanation": "Most learners assume the bolted-down sign wins. It does not. Where two signs conflict, the temporary one takes precedence, because it is there for a condition that exists on the road today.",
+  "source_citation": "NRTR 2000 reg 287(5)(a)",
+  "difficulty": 2,
+  "exam_likelihood": "high",
+  "topic_tag": "Temporary signs",
+  "id": "RS-109"
+ },
+ {
+  "sign_code": null,
+  "objective_code": "RR30",
+  "prompt": "The permanent sign on this road sets the limit at 80, but a temporary sign at the roadworks says 40. What may you drive?",
+  "options": [
+   "80, because a temporary sign is only a suggestion",
+   "40, because the temporary sign overrides the permanent one",
+   "80, unless you can actually see workers on the site"
+  ],
+  "answer": 1,
+  "explanation": "40. When a temporary sign conflicts with a permanent one, the temporary sign wins, and it counts whether or not anybody is visibly working. Hold 40 until a sign tells you the limit has changed again.",
+  "source_citation": "NRTR 2000 reg 287(5)(a); reg 287(2)",
+  "difficulty": 2,
+  "exam_likelihood": "high",
+  "topic_tag": "Temporary signs",
+  "id": "RS-110"
+ },
+ {
+  "sign_code": null,
+  "objective_code": "RR30",
+  "prompt": "A temporary Stop sign has been put up while a junction is being rebuilt. What does that sign look like?",
+  "options": [
+   "A yellow octagon reading STOP, because temporary signs are yellow",
+   "A yellow triangle with a red border and the word STOP inside it",
+   "A red octagon reading STOP, exactly the same shape and colour as any other Stop sign"
+  ],
+  "answer": 2,
+  "explanation": "\"All temporary signs are yellow\" is the trap. Stop and Yield signs keep their normal shape and colour whether they are temporary or permanent, so a temporary Stop is still a red octagon. Obey it the same way.",
+  "source_citation": "SARTSM Vol 1 Ch 2 (permanent and temporary control signs retain the same shapes and colours)",
+  "difficulty": 3,
+  "exam_likelihood": "high",
+  "topic_tag": "Temporary signs",
+  "id": "RS-111"
+ },
+ {
+  "sign_code": null,
+  "objective_code": "RR30",
+  "prompt": "Apart from roadworks, where else will you meet temporary road signs?",
+  "options": [
+   "At accident scenes, where traffic signals are out of order, and controlling traffic at schools and sporting events",
+   "Nowhere else, because roadworks are the only lawful use for them",
+   "Only on freeways and national roads, where traffic is fastest"
+  ],
+  "answer": 0,
+  "explanation": "Roadworks are the most common use, not the only one. Temporary signs also control traffic at crash scenes, where the robots are dead, and outside schools and sports grounds. They bind you exactly the same.",
+  "source_citation": "SARTSM Vol 2 Ch 3 §3.5.1 (temporary signing applications)",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Temporary signs",
+  "id": "RS-112"
+ },
+ {
+  "sign_code": null,
+  "objective_code": "RR30",
+  "prompt": "How long may a temporary road sign stay up?",
+  "options": [
+   "No longer than 24 hours, after which it must be taken down",
+   "Anything from a few minutes to several months, for as long as the temporary condition lasts",
+   "Up to 14 days, after which it counts as a permanent sign"
+  ],
+  "answer": 1,
+  "explanation": "There is no fixed lifespan. A temporary sign may stand for a matter of minutes at a crash scene or for months at a big roadworks project. It stays as long as the abnormal condition it was put up for.",
+  "source_citation": "SARTSM Vol 1 Ch 2 (temporary regulatory signs, periods of use); NRTR 2000 reg 287(2)",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Temporary signs",
+  "id": "RS-113"
+ },
+ {
+  "sign_code": null,
+  "objective_code": "RR30",
+  "prompt": "A temporary warning sign carries the same symbol as the permanent warning sign for that hazard. What is different about it?",
+  "options": [
+   "The border changes from red to yellow and the triangle points downward",
+   "Nothing changes, because a temporary warning sign is identical to the permanent one",
+   "The background is yellow, while the symbol and the red triangular border stay the same"
+  ],
+  "answer": 2,
+  "explanation": "The picture and the red triangular border stay the same; the background turns yellow. That yellow is your cue that this hazard is temporary, so slow down and expect something that is not normally there.",
+  "source_citation": "SARTSM Vol 1 Ch 3 (temporary advance warning sign colours)",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Temporary signs",
+  "id": "RS-114"
+ }
+]
