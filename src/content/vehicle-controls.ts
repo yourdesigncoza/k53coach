@@ -246,28 +246,44 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     reviewStatus: "reviewed",
   },
 
-  // Source: technique/vehicle operation — no legal claim. NO regulation prescribes
-  //   dashboard tell-tale colours or what a red vs amber light means; that convention
-  //   is ECE/manufacturer practice, not SA law, so the lesson must not present it as a
-  //   legal rule. The only regulated in-cab warning devices are reg 156(2) (visible or
-  //   audible warning of incorrect air/vacuum pressure on air-braked vehicles — not a
-  //   car) and reg 215(1) (a speedometer "in a good working order" on any vehicle
-  //   capable of 60 km/h or more; amended by GNR.846 of 2014 s.53, in force 6 months
-  //   after publication). ⚠ testHint claims learners "may be asked what a warning light
-  //   means" — unverified against the exam format; see the worklist note.
+  // Source: technique/vehicle operation — no legal claim.
+  //
+  //   COLOUR CODING CUT 2026-08-03 (John's call). The lesson used to teach "a red light
+  //   usually means stop and check; amber means caution", and a testHint told learners to
+  //   "know red vs amber". Both were removed because neither is supportable:
+  //     · The ONLY occurrence of "warning light" in the consolidated NRTR is reg 181(1)(a),
+  //       "a brake anti-lock warning light to the front of a TRAILER" — an exterior lamp.
+  //       reg 181 governs the colours a vehicle shows outward (white/amber/yellow front,
+  //       yellow/amber sides, red rear) and says nothing about the instrument panel.
+  //     · Tell-tale colours are standardised only in ISO 2575 / UN ECE R121, reachable in
+  //       SA law at best through reg 216 (compulsory specs via GNs under s.22 of the
+  //       Standards Act, Annex A to SABS 047). That is a fitment-and-working-order duty on
+  //       the vehicle, not a meaning-of-colour rule for a driver — and we do not hold those
+  //       standards in resources/, so citing the chain would be citing what we never read.
+  //     · Not examined: the DoT manual's car section lists 11 controls and warning lights
+  //       are not among them, and every "amber" item in docs/exam-format-analysis/ (150+
+  //       real items) is a road sign or traffic signal, never a dashboard tell-tale.
+  //   Do not reinstate the colour coding without a primary source in resources/.
+  //
+  //   What survives is the behaviour, not the colour code: a warning light that stays on
+  //   after starting is worth checking. True, useful, and the grounding for q-controls-5.
+  //   The only regulated in-cab warning devices are reg 156(2) (visible or audible warning
+  //   of incorrect air/vacuum pressure on air-braked vehicles — not a car) and reg 215(1)
+  //   (a speedometer "in a good working order" on any vehicle capable of 60 km/h or more;
+  //   amended by GNR.846 of 2014 s.53, in force 6 months after publication).
   {
     code: "VC10",
     name: "Warning lights",
     category: "instruments",
     summary: "Dashboard lights that tell you the car's status.",
     whatItDoes:
-      "Signal faults or reminders — a red light usually means stop and check; amber means caution.",
+      "Signal a fault or a reminder — low oil pressure, a charging problem, brakes, or simply that the handbrake is still on.",
     howToUse:
-      "Glance at the dashboard regularly. If a red warning light stays on after starting, investigate before driving.",
+      "Glance at the dashboard regularly. If a warning light stays on after starting, check what it means in the vehicle's manual before driving.",
     commonMistake:
       "Ignoring a warning light and driving on, risking damage or danger.",
     testHint:
-      "You may be asked what a warning light means — know red vs amber.",
+      "Treat a light that stays on as something to check, not something to drive through — the safe answer is always to investigate before moving off.",
     relatedControls: ["VC11"],
     reviewStatus: "reviewed",
   },
