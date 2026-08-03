@@ -1,0 +1,14 @@
+{
+ "description": "Corrects RS-085, whose explanation mapped the R6 arrows the wrong way round. Found by comparing our SVG, the official chart's artwork and a real-world plate side by side. The answer was right and the reasoning was inverted, which is the failure mode a scoring check cannot catch.",
+ "ops": [
+  {
+   "table": "questions",
+   "match": "id=eq.RS-085",
+   "set": {
+    "explanation": "Red marks the direction that must give way, and that is yours — the red arrow runs away from you up the sign. The black arrow is the traffic coming towards you, and it has the road. Hold back and let it clear the narrow bit.",
+    "source_citation": "SARTSM Vol 1 Ch 2 §2.2.8 (R6 YIELD TO ONCOMING TRAFFIC — the driver approaching the sign shall yield right-of-way to all oncoming traffic where that traffic is so close to the obstruction that the driver cannot pass without causing danger or requiring them to stop); artwork verified against the official DoT chart 2026-08-03 — red ring, RED arrow up, BLACK arrow down"
+   },
+   "why": "THE EXPLANATION READ THE SIGN BACKWARDS. It said 'the red arrow is the traffic coming at you and it goes first; the black one is you, and you wait.' Both the official DoT chart and a real-world R6 plate show the RED arrow pointing UP (away from the viewer — the viewer's own direction of travel) and the BLACK arrow pointing DOWN (towards the viewer — oncoming). Red is the restriction colour and marks the direction that must give way, which is YOURS. So the mapping was inverted: red is you, black is oncoming.\n\nThe keyed ANSWER was right — oncoming does go first — so the item scored correctly, which is exactly why this survived. What was wrong was the rule the explanation taught for READING the sign, and a learner applying that rule to any similar two-arrow sign would invert it.\n\nCitation upgraded from a bare Schedule 1 reference to SARTSM Vol 1 Ch 2 §2.2.8, which also carries the conditionality the item had flattened: the duty bites where oncoming traffic is so close that you could not pass without causing danger or forcing them to stop. Artwork independently verified against the chart in the same pass.\n\nSurfaced 2026-08-03 when John supplied a photograph of a real R6 plate, which prompted a re-check of a question that had already been flagged UNSUPPORTED by the Grok reviewer for lack of an R6 extract — the flag was right for the wrong reason."
+  }
+ ]
+}
