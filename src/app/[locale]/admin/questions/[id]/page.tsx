@@ -35,6 +35,10 @@ export default async function AdminQuestionEditPage({
         answer={q.answer}
         explanation={q.explanation}
         signCode={row.sign_code}
+        objectiveCode={row.objective_code}
+        sourceCitation={row.source_citation}
+        approvedBy={row.approved_by}
+        verifiedAt={row.verified_at}
         inReadiness={row.in_readiness}
         reviewStatus={row.review_status as "draft" | "approved"}
         inExam={row.in_exam}

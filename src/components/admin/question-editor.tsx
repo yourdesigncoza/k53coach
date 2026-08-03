@@ -31,8 +31,12 @@ export type QuestionEditorProps = {
   answer: number;
   explanation: string;
   signCode: string | null;
+  objectiveCode: string | null;
+  sourceCitation: string | null;
   inReadiness: boolean;
   reviewStatus: "draft" | "approved";
+  approvedBy: string | null;
+  verifiedAt: string | null;
   inExam: boolean;
   examLikelihood: ExamLikelihood;
   vehicleCodes: VehicleCode[];
@@ -48,6 +52,10 @@ export function QuestionEditor(initial: QuestionEditorProps) {
   const [answer, setAnswer] = useState(initial.answer);
   const [explanation, setExplanation] = useState(initial.explanation);
   const [signCode, setSignCode] = useState(initial.signCode ?? "");
+  const [objectiveCode, setObjectiveCode] = useState(initial.objectiveCode ?? "");
+  const [sourceCitation, setSourceCitation] = useState(
+    initial.sourceCitation ?? "",
+  );
   const [inReadiness, setInReadiness] = useState(initial.inReadiness);
   const [reviewStatus, setReviewStatus] = useState(initial.reviewStatus);
   const [inExam, setInExam] = useState(initial.inExam);
@@ -87,6 +95,8 @@ export function QuestionEditor(initial: QuestionEditorProps) {
       answer,
       explanation,
       signCode: signCode.trim() || null,
+      objectiveCode: objectiveCode.trim() || null,
+      sourceCitation: sourceCitation.trim() || null,
       inReadiness,
       reviewStatus,
       inExam,
@@ -189,9 +199,54 @@ export function QuestionEditor(initial: QuestionEditorProps) {
             <span className="mb-1 block text-xs font-medium">Review status</span>
             <select className={field} value={reviewStatus} onChange={(e) => setReviewStatus(e.target.value as "draft" | "approved")}>
               <option value="draft">draft</option>
-              <option value="approved">approved</option>
+              <option value="approved" disabled={!sourceCitation.trim()}>
+                approved{sourceCitation.trim() ? "" : " — needs a citation"}
+              </option>
             </select>
           </label>
+        </CardContent>
+      </Card>
+
+      {/* Evidence. A citation is required to approve — the server enforces it too
+          (question-actions.ts validate()); this only makes the reason visible
+          before the save fails. */}
+      <Card>
+        <CardContent className="grid gap-3 py-4 sm:grid-cols-2">
+          <label className="block sm:col-span-2">
+            <span className="mb-1 block text-xs font-medium">
+              Source citation — required to approve. Name the provision the answer
+              rests on, and quote enough of it to check
+            </span>
+            <textarea
+              className={cn(field, "min-h-14 resize-y")}
+              value={sourceCitation}
+              onChange={(e) => setSourceCitation(e.target.value)}
+              placeholder="e.g. NRTR 2000 Sch 1 — W306 pedestrian crossing sign; reg 315(2)"
+            />
+            {!sourceCitation.trim() && (
+              <span className="mt-1 block text-xs text-muted-foreground">
+                Without this the item cannot be approved.
+              </span>
+            )}
+          </label>
+          <label className="block sm:col-span-2">
+            <span className="mb-1 block text-xs font-medium">
+              Objective code (optional) — the lesson this question teaches. Not the
+              same as Sign code above
+            </span>
+            <input
+              className={field}
+              value={objectiveCode}
+              onChange={(e) => setObjectiveCode(e.target.value)}
+              placeholder="e.g. R1 · RR7 · VC3 · W306 · RM1"
+            />
+          </label>
+          {initial.verifiedAt && (
+            <p className="text-xs text-muted-foreground sm:col-span-2">
+              Last approved {new Date(initial.verifiedAt).toLocaleString("en-ZA")}
+              {initial.approvedBy ? "" : " (no approver recorded)"}
+            </p>
+          )}
         </CardContent>
       </Card>
 
@@ -322,7 +377,8 @@ export function QuestionEditor(initial: QuestionEditorProps) {
         <CardContent className="grid gap-3 py-4 sm:grid-cols-[1fr_auto]">
           <label className="block">
             <span className="mb-1 block text-xs font-medium">
-              Sign code (optional) — must be an approved, SA-relevant sign
+              Sign code (optional) — the artwork shown to the learner. Must be an
+              approved, SA-relevant sign
             </span>
             <input
               className={field}

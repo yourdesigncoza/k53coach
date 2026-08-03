@@ -21,7 +21,14 @@ export type SaveQuestionInput = {
   options: string[];
   answer: number;
   explanation: string;
+  /** Artwork pointer — picks the SVG the quiz renders from /signs/<code>.svg.
+   *  NOT the same thing as objectiveCode; keep the two straight. */
   signCode: string | null;
+  /** Learning objective this item teaches: R1 / RR7 / VC3 / W306 / RM1. */
+  objectiveCode: string | null;
+  /** The specific regulation, Act section or chart entry the answer rests on.
+   *  Required to approve — see validate(). */
+  sourceCitation: string | null;
   inReadiness: boolean;
   reviewStatus: "draft" | "approved";
   // Exam curation
@@ -59,6 +66,11 @@ function validate(input: SaveQuestionInput): string | null {
       return "An explanation is required to approve";
     if (input.options.some((o) => !o.trim()))
       return "Every option must be filled in to approve";
+    // The accuracy gate (CLAUDE.md constraint 9). Approval without a citation is
+    // what produced 227 approved items resting on nothing checkable — the bar is
+    // a provision someone actually read, not a tick. Hard block: John, 2026-08-03.
+    if (!input.sourceCitation?.trim())
+      return "A source citation is required to approve — name the regulation, Act section or chart entry the answer rests on";
   }
   return null;
 }
@@ -109,6 +121,18 @@ export async function saveQuestion(input: SaveQuestionInput) {
   }
 
   const { data: auth } = await supabase.auth.getUser();
+
+  // Approval provenance. Until now `review_status` could not tell a human click
+  // apart from a script write, which is why 227 rows read "approved" with nobody
+  // recorded. Stamped on every save-as-approved — saving it approved IS the act of
+  // vouching for it, so a later edit legitimately refreshes the date — and CLEARED
+  // on the way out, so a reopened item cannot keep a signature that no longer
+  // refers to its content.
+  const approved = input.reviewStatus === "approved";
+  const provenance = approved
+    ? { approved_by: auth.user?.id ?? null, verified_at: new Date().toISOString() }
+    : { approved_by: null, verified_at: null };
+
   const { error } = await supabase
     .from("questions")
     .update({
@@ -119,6 +143,9 @@ export async function saveQuestion(input: SaveQuestionInput) {
       answer: input.answer,
       explanation: input.explanation,
       sign_code: input.signCode,
+      objective_code: input.objectiveCode,
+      source_citation: input.sourceCitation,
+      ...provenance,
       in_readiness: input.inReadiness,
       review_status: input.reviewStatus,
       in_exam: input.inExam,
