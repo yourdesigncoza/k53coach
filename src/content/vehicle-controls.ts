@@ -30,6 +30,27 @@ export const CONTROL_CATEGORY_META: Record<
 };
 
 export const VEHICLE_CONTROLS: VehicleControl[] = [
+  // ── VC1-VC17: Code B (car) ──────────────────────────────────────────────
+  // Grounded 2026-08-03 against resources/legislation/ (NRTR consolidated to
+  // GNR.209 of 2012) and re-checked against the 2014 amendment (GNR.846, in force
+  // 31 Oct 2014), which SUBSTITUTES reg 149 and amends regs 159, 169, 201, 213 and
+  // 215 — every regulation cited below. Each was read in the amended text; the
+  // operative words relied on here are unchanged. Do not re-cite the 2000 original.
+  //
+  // Where a lesson teaches operating technique, there is NO regulation behind it and
+  // the citation says so. "no legal claim" is a verified finding, not a gap — writing
+  // a plausible-looking reg number against a technique claim is the failure this pass
+  // exists to prevent. Naming/scope facts come from the DoT learner-driver manual
+  // (resources/manuals/, June 2012), which examines 11 numbered car controls and
+  // carries no explanatory prose — see COCKPIT_CALLOUTS at the foot of this file.
+  //
+  // reviewStatus "reviewed" = grounded and currency-checked, NOT human-approved.
+  // Only a named human may set "approved" (CLAUDE.md constraint 9).
+
+  // Source: technique — no legal claim. No regulation prescribes a hand position or
+  //   steering method. Adjacent vehicle-condition duty: reg 200(1)(a) — all parts of
+  //   the steering gear "maintained in a condition which enables the vehicle to be
+  //   steered safely and efficiently"; reg 200(1)(b) caps free play at 45 degrees.
   {
     code: "VC1",
     name: "Steering wheel",
@@ -44,8 +65,10 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "Examiners watch for smooth, controlled steering and both hands on the wheel.",
     relatedControls: ["VC2", "VC3"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
+
+  // Source: technique — no legal claim. No regulation governs accelerator use.
   {
     code: "VC2",
     name: "Accelerator",
@@ -60,8 +83,15 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "Smooth acceleration shows control; over-revving counts against you.",
     relatedControls: ["VC3", "VC4"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
+
+  // Source: NRTR reg 149 — a motor vehicle must be equipped with "a service brake, a
+  //   parking brake and an emergency brake" (substituted by GNR.846 of 2014; the
+  //   substituted text is materially identical for a motor car). reg 156(1)(a) — a
+  //   required brake shall "be in good working order and condition whenever the vehicle
+  //   to which it is fitted is operated on a public road". Pedal technique is not
+  //   regulated; only the presence and condition of the brake are.
   {
     code: "VC3",
     name: "Footbrake",
@@ -76,8 +106,12 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "Late or harsh braking is a fault — plan your stops ahead.",
     relatedControls: ["VC2", "VC6"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
+
+  // Source: technique — no legal claim. Scope note: the DoT manual's car control list
+  //   records that "Automatic vehicles do not have a clutch control" (§2.5, item 8),
+  //   which is why the clutch is examined as control 8 on manual cars only.
   {
     code: "VC4",
     name: "Clutch",
@@ -92,8 +126,10 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "Stalling or riding the clutch both lose marks — practise the biting point.",
     relatedControls: ["VC5", "VC2"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
+
+  // Source: technique — no legal claim. No regulation governs gear selection.
   {
     code: "VC5",
     name: "Gear lever",
@@ -108,8 +144,14 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "Change gear by feel; glancing down repeatedly is unsafe and noticed.",
     relatedControls: ["VC4"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
+
+  // Source: NRTR reg 1 definition — "parking brake" means "a brake, normally a hand
+  //   brake, used in the ordinary course of events to keep a vehicle stationary".
+  //   reg 149 requires a parking brake and allows the emergency and parking brake to
+  //   "be one and the same brake"; reg 156(1)(a) requires good working order.
+  //   The hill-start technique carries no legal claim.
   {
     code: "VC6",
     name: "Handbrake",
@@ -124,8 +166,15 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "Rolling back on a hill start is a serious fault — use the handbrake.",
     relatedControls: ["VC3", "VC4"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
+
+  // Source: NRTR reg 193(1) — a motor vehicle must be equipped "on both sides" with
+  //   flasher-type or illuminated-window-type direction indicators. reg 198(4) — the
+  //   indicators on one side must be operable separately from the other. reg 198(8) —
+  //   "Direction indicators shall be maintained in good working order." reg 199 — a
+  //   driver "shall not make use of any direction indicator not complying with" the
+  //   regulations. Signal TIMING ("in good time") is technique, not a regulated interval.
   {
     code: "VC7",
     name: "Indicators",
@@ -140,8 +189,20 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "No signal, or a late one, before a turn or lane change costs marks.",
     relatedControls: ["VC9", "VC8"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
+
+  // Source: NRTR reg 157(1)(b) — head lamps, rear lamps and number plate lamps must be
+  //   "kept lighted during the period between sunset and sunrise and at any other time
+  //   when, due to insufficient light or unfavourable weather conditions, persons and
+  //   vehicles upon the public road are not clearly discernible at a distance of 150
+  //   metres". reg 157(3) — a driver "shall extinguish the main-beam ... if such
+  //   main-beam could cause a dangerous glare to oncoming traffic" (this is the legal
+  //   basis for dipping, and it is a duty, not courtesy). reg 160(b) — the main-beam
+  //   must be extinguishable by a device that simultaneously brings up the dipped-beam.
+  //   reg 159 was amended by GNR.846 of 2014 (addition only); reg 157 and 160 untouched.
+  //   NOTE reg 157(2): a motor cycle's headlamp must be lighted AT ALL TIMES — that is
+  //   the Code A rule behind K53-41 and does not apply to a car.
   {
     code: "VC8",
     name: "Headlights & brights",
@@ -156,8 +217,18 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "Knowing when to dip your lights shows good road awareness.",
     relatedControls: ["VC7", "VC10"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
+
+  // Source: NRTR reg 201(1)(a) — a self-propelled motor vehicle must be equipped with
+  //   "an efficient warning device which is in good working order and, when used,
+  //   capable of emitting a sound which, under normal conditions, is clearly audible by
+  //   a person of normal hearing from a distance of at least 90 metres". reg 310A (Use
+  //   of hooter) — "No person shall on a public road use the sounding device or hooter
+  //   of a vehicle except when such use is necessary in order to comply with the
+  //   provisions of these regulations or on the grounds of safety." That makes
+  //   "alert, not vent" a legal duty, not etiquette. reg 201 was amended by GNR.846 of
+  //   2014, but only the proviso after (1)(d) (sirens/emergency vehicles) — (1)(a) stands.
   {
     code: "VC9",
     name: "Hooter",
@@ -172,8 +243,18 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "Unnecessary or aggressive use reflects poor attitude in the test.",
     relatedControls: ["VC7"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
+
+  // Source: technique/vehicle operation — no legal claim. NO regulation prescribes
+  //   dashboard tell-tale colours or what a red vs amber light means; that convention
+  //   is ECE/manufacturer practice, not SA law, so the lesson must not present it as a
+  //   legal rule. The only regulated in-cab warning devices are reg 156(2) (visible or
+  //   audible warning of incorrect air/vacuum pressure on air-braked vehicles — not a
+  //   car) and reg 215(1) (a speedometer "in a good working order" on any vehicle
+  //   capable of 60 km/h or more; amended by GNR.846 of 2014 s.53, in force 6 months
+  //   after publication). ⚠ testHint claims learners "may be asked what a warning light
+  //   means" — unverified against the exam format; see the worklist note.
   {
     code: "VC10",
     name: "Warning lights",
@@ -188,8 +269,18 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "You may be asked what a warning light means — know red vs amber.",
     relatedControls: ["VC11"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
+
+  // Source: NRTR reg 213(4) — "No adult shall occupy a seat in a motor vehicle operated
+  //   on a public road which is fitted with a seatbelt unless such person wears such
+  //   seatbelt: Provided that the provisions of this regulation do not apply while
+  //   reversing or moving in or out of a parking bay or area." reg 213(3)(c) — seatbelts
+  //   fitted to the vehicle must be "in good working order". reg 204(1)(a) — the vehicle
+  //   must afford the driver "a full and clear view of the roadway ahead and to his or
+  //   her right and left". reg 213 was amended by GNR.846 of 2014 s.52, which added the
+  //   infant definition (1)(c) and the child-restraint duty (6A); (4) is unchanged.
+  //   Seat position and mirror-setting order are technique, with no legal claim.
   {
     code: "VC11",
     name: "Cockpit setup",
@@ -204,15 +295,23 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "The examiner expects the full pre-drive check at the start.",
     relatedControls: ["VC1", "VC10"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
 
   // ── VC12+ ───────────────────────────────────────────────────────────────
   // Legal duties are grounded in the National Road Traffic Regulations, 2000;
   // operating technique carries no legal claim. VC18-VC22 are the Code A
   // motorcycle set, without which Code A papers (K53-7) cannot be built.
+  //
+  // The reg numbers below were pre-existing. All six on VC12-VC17 were CHECKED
+  // 2026-08-03 against the consolidated text and the 2014 amendment: all six are
+  // correct and none was disturbed by GNR.846. Verbatim wording added inline.
 
-  // Source: NRTR 2000 — reg 203 (windscreen wiper); reg 204(1)(a) (full and clear view)
+  // Source: NRTR reg 203 — no motor vehicle with a windscreen may be operated unless
+  //   fitted with at least one wiper "capable of operation by other than manual means"
+  //   which "shall, when in operation, wipe the outside of the windscreen directly in
+  //   front of the driver, continuously, evenly and adequately". reg 204(1)(a) (full and
+  //   clear view). CONFIRMED verbatim 2026-08-03; reg 203 untouched by GNR.846 of 2014.
   {
     code: "VC12",
     name: "Windscreen wipers and washers",
@@ -227,10 +326,14 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "The law says a vehicle with a windscreen must have a wiper that works on its own and wipes evenly in front of the driver — so keep the washer bottle topped up and check the blades before you drive.",
     relatedControls: ["VC8", "VC13"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
 
-  // Source: NRTR 2000 — reg 204(1)(a) (driving view to be unobstructed)
+  // Source: NRTR reg 204(1)(a) — a vehicle must be "so constructed and maintained as to
+  //   afford the driver thereof a full and clear view of the roadway ahead and to his or
+  //   her right and left when the vehicle is in use". A misted or frosted screen defeats
+  //   that duty, which is the grounding for clearing it. No regulation prescribes a
+  //   demister as equipment. CONFIRMED verbatim 2026-08-03; untouched by GNR.846 of 2014.
   {
     code: "VC13",
     name: "Demister and defroster",
@@ -245,10 +348,16 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "The law requires a vehicle to give the driver a full and clear view of the road ahead and to both sides — clear the glass before you move off, never while you are driving.",
     relatedControls: ["VC12", "VC16"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
 
-  // Source: NRTR 2000 — reg 198(5)-(6) (switch operating all indicators simultaneously)
+  // Source: NRTR reg 198(5)(a) — a motor vehicle must be "fitted with a separate switch
+  //   to operate all the direction indicators simultaneously". reg 198(6)(a) — the driver
+  //   SHALL operate them all when the vehicle is "(i) stationary in a hazardous position;
+  //   or (ii) in motion in an emergency situation", and reg 198(6)(b) — shall NOT operate
+  //   them "in a circumstance other than those referred to in paragraph (a)". Both the
+  //   duty and the prohibition are testable. CONFIRMED verbatim 2026-08-03; untouched by
+  //   GNR.846 of 2014. Exempt vehicles under (5)(b) include motor cycles.
   {
     code: "VC14",
     name: "Hazard warning lights",
@@ -263,10 +372,15 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "The rule is narrow: you must use them when stationary in a hazardous position or in motion in an emergency, and you may not use them in any other situation.",
     relatedControls: ["VC7", "VC15"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
 
-  // Source: NRTR 2000 — reg 169 (stop lamps), esp. reg 169(1)(e) and (f)
+  // Source: NRTR reg 169(1)(e) — a stop lamp shall "be so connected that, if the motor
+  //   vehicle is in motion, such lamp shall come into operation as soon as the operating
+  //   device of the service brake ... is activated"; reg 169(1)(f) — "be maintained in a
+  //   clean condition and in good working order". CHECKED 2026-08-03: GNR.846 of 2014 s.47
+  //   amended reg 169 by ADDING subreg (4) (optional emergency-braking flashing stop lamps,
+  //   SANS 20013/20048). Subregs (1)(e) and (f) are unchanged, so this citation stands.
   {
     code: "VC15",
     name: "Brake lights",
@@ -281,10 +395,17 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "Stop lamps must be kept clean and in good working order. Check yours by reversing close to a wall or shop window at night, or ask someone to watch while you press the pedal.",
     relatedControls: ["VC3", "VC10"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
 
-  // Source: NRTR 2000 — reg 204(1)(b) (rearview mirror or mirrors)
+  // Source: NRTR reg 204(1)(b) — a vehicle must be "fitted with a rearview mirror or
+  //   mirrors enabling the driver ... when he or she is in the driving position, to see in
+  //   clear weather a clear reflection of traffic to the rear". For a Code B car the
+  //   specific duty is reg 204(1)(c): a motor car not exceeding 3 500 kg first registered
+  //   on or after 1 Jan 1987 must have "an exterior rearview mirror on the driving side and
+  //   an interior rearview mirror" — and where the interior mirror does not give a clear
+  //   rear view, an additional exterior mirror on the opposite side instead. CONFIRMED
+  //   verbatim 2026-08-03; untouched by GNR.846 of 2014.
   {
     code: "VC16",
     name: "Mirrors",
@@ -299,10 +420,12 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "The law requires mirrors that show you a clear reflection of the traffic behind. Examiners watch your eyes, so make your mirror checks early and obvious — a look after you have already moved earns nothing.",
     relatedControls: ["VC11", "VC7"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
 
-  // Source: vehicle operation — no legal claim (no regulation prescribes ABS or its use)
+  // Source: vehicle operation — no legal claim. VERIFIED 2026-08-03: no regulation in the
+  //   consolidated NRTR prescribes ABS, its fitment or its use, and GNR.846 of 2014 did not
+  //   introduce one (s.42 added UN ECE R116 for anti-theft devices only, not braking aids).
   {
     code: "VC17",
     name: "ABS (anti-lock brakes)",
@@ -317,7 +440,7 @@ export const VEHICLE_CONTROLS: VehicleControl[] = [
     testHint:
       "Know what ABS does and does not do: it lets you steer while braking hard, but it does not shorten your stopping distance on every surface and it is no excuse for driving faster in the rain.",
     relatedControls: ["VC3", "VC1", "VC10"],
-    reviewStatus: "draft",
+    reviewStatus: "reviewed",
   },
 
   // Source: vehicle operation — no legal claim
@@ -428,6 +551,17 @@ export function getControl(code: string): VehicleControl | undefined {
  * This is the asset behind the `control-number` question archetype
  * (docs/exam-format-analysis/question-patterns.md P7) — one diagram supporting
  * number->name, function->number and function->number-pair questions.
+ *
+ * CORROBORATED 2026-08-03 against the official DoT learner-driver manual
+ * (resources/manuals/natis-vehicle-controls-manual-v100-2012-06.pdf §2.2/§2.5), whose
+ * numbered car control list matches this map 11/11 — including callout 7 as the
+ * handbrake, the one an earlier pass got wrong. The manual's own wording:
+ *   1 Centre rear view mirror · 2 Window wiper · 3 Left and right rear view mirrors ·
+ *   4 Steering wheel · 5 Indicator light switch · 6 Gear lever · 7 Hand brake ·
+ *   8 Clutch · 9 Brake · 10 Accelerator · 11 Horn
+ * So the numbering is now backed by the official source, not by the artwork alone.
+ * The manual notes two variants worth knowing: some vehicles have a foot-operated
+ * parking brake (it names Mercedes-Benz), and an automatic has no control 8.
  */
 export const COCKPIT_CALLOUTS: {
   n: number;

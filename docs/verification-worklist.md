@@ -24,7 +24,7 @@ Flagged *by the drafting pass itself*. These are the most likely to be wrong.
 | Object | Issue |
 |---|---|
 | `RR22` | No national provision found barring a learner-licence holder from a freeway — reg 323(1) bans vehicle **types**, not licence classes. Contradicts common belief, so the object deliberately teaches it **neither way**. Resolve before any exam question is written on it. |
-| `RR12` | Infant restraint rule (reg 213(6A)) confirmed only from two secondary sources quoting GN R846, GG 38142 — it is not in the consolidated regulations text. Check the gazette. |
+| ~~`RR12`~~ | **RESOLVED 2026-08-03.** The infant restraint rule was read in the primary gazette: `resources/legislation/nrtr-amendment-2014-gg38142-gnr846.pdf` s.52 amends reg 213 by adding (1)(c) *"an infant is a person below the age of three years"* and inserting *"(6A) The driver of a motor vehicle operated on a public road shall ensure that an infant traveling in such a motor vehicle is seated on an appropriate child restraint: Provided that this provision shall not apply in a case of a minibus, midibus or bus operating for reward."* In force 31 Oct 2014 (date of publication). It is absent from the consolidated copy only because that consolidation stops at GNR.209 of 2012. No secondary source needed. |
 | `VC20` | Reg 309 (rider's feet on the foot-rests) confirmed from two consistent secondary SA sources, not the primary gazette text. |
 
 ## Road rules (`RR11`–`RR26`)
@@ -48,16 +48,42 @@ Flagged *by the drafting pass itself*. These are the most likely to be wrong.
 | ☐ | `RR25` | After an accident: your duties | NRTA 93 of 1996 — s 61(1)(a)-(g) (duties after an accident), s 61(2) (moving vehicles) | Stop, help, hand over your details, and report it to the police within 24 hours.<br>If you did not give those details to a traffic officer at the scene, report the accident at a police station as soon as you reasonably can and within 24 hours, with your driving licence and ID number. |
 | ☐ | `RR26` | Turning at intersections | NRTR 2000 — reg 302(1)-(2) (turning procedure), reg 300 (signal duration) | *prose only — read for sense* |
 
-## Vehicle controls (`VC12`–`VC22`)
+## Vehicle controls (`VC1`–`VC22`)
+
+**`VC1`–`VC17` (Code B / car) were grounded 2026-08-03** against the consolidated NRTR
+*and* re-checked against the 2014 amendment (GNR.846, in force 31 Oct 2014), which
+substitutes reg 149 and amends regs 159, 169, 201, 213 and 215. Every citation below was
+read in the amended text and the wording relied on is quoted in
+`src/content/vehicle-controls.ts`. All 17 moved `draft` → **`reviewed`**.
+
+⚠️ **`reviewed` is not `approved`.** It means grounded and currency-checked by machine.
+Constraint 9 needs a *named human* to sign off — that is what the ☐ boxes below are for.
+Nobody may set `approved` on the strength of this pass. `VC18`–`VC22` stay `draft`:
+motorcycle set, parked by John 2026-08-03 while Code B is completed.
+
+**Read the "no legal claim" rows as findings, not gaps.** Most of these lessons teach
+operating technique, and no regulation governs technique. The check for those rows is
+whether the prose is *true and useful*, not whether it matches a reg.
 
 | ✓ | Code | Object | Cites | Check |
 |---|---|---|---|---|
-| ☐ | `VC12` | Windscreen wipers and washers | NRTR 2000 — reg 203 (windscreen wiper); reg 204(1)(a) (full and clear view) | *prose only — read for sense* |
-| ☐ | `VC13` | Demister and defroster | NRTR 2000 — reg 204(1)(a) (driving view to be unobstructed) | *prose only — read for sense* |
-| ☐ | `VC14` | Hazard warning lights | NRTR 2000 — reg 198(5)-(6) (switch operating all indicators simultaneously) | *prose only — read for sense* |
-| ☐ | `VC15` | Brake lights | NRTR 2000 — reg 169 (stop lamps), esp. reg 169(1)(e) and (f) | *prose only — read for sense* |
-| ☐ | `VC16` | Mirrors | NRTR 2000 — reg 204(1)(b) (rearview mirror or mirrors) | *prose only — read for sense* |
-| ☐ | `VC17` | ABS (anti-lock brakes) | vehicle operation — no legal claim (no regulation prescribes ABS or its use) | *prose only — read for sense* |
+| ☐ | `VC1` | Steering wheel | *technique — no legal claim.* Adjacent: reg 200(1)(a)-(b) (steering gear condition; 45° free-play cap) | No regulation prescribes a hand position. Confirm "quarter to three" is taught as good practice, **not** as law. |
+| ☐ | `VC2` | Accelerator | *technique — no legal claim* | *prose only — read for sense* |
+| ☐ | `VC3` | Footbrake | NRTR reg 149 (service + parking + emergency brake required; substituted by GNR.846 of 2014); reg 156(1)(a) (good working order) | The law requires the brake's presence and condition, not a pedal technique. |
+| ☐ | `VC4` | Clutch | *technique — no legal claim.* Scope: DoT manual §2.5 item 8 | Manual confirms an automatic has no clutch control — so control 8 is examined on manual cars only. |
+| ☐ | `VC5` | Gear lever | *technique — no legal claim* | *prose only — read for sense* |
+| ☐ | `VC6` | Handbrake | NRTR reg 1 definition of "parking brake"; reg 149 (emergency and parking brake may be one and the same); reg 156(1)(a) | Definition reads *"a brake, normally a hand brake, used in the ordinary course of events to keep a vehicle stationary"* — note **normally**, so a foot-operated parking brake is still a parking brake (the manual names Mercedes-Benz). |
+| ☐ | `VC7` | Indicators | NRTR reg 193(1) (both sides); reg 198(4) (sides operable separately); reg 198(8) (good working order); reg 199 | Signal **timing** ("in good time") is technique — no regulated interval. Don't let a question imply one. |
+| ☐ | `VC8` | Headlights & brights | NRTR reg 157(1)(b) (sunset–sunrise + 150 m rule); reg 157(3) (extinguish main-beam causing dangerous glare); reg 160(b) (dip device) | Dipping is a **legal duty**, not courtesy. Note reg 157(2): a motor cycle's headlamp must be lit **at all times** — Code A only, and the basis for K53-41. |
+| ☐ | `VC9` | Hooter | NRTR reg 201(1)(a) (audible at 90 m); reg 310A (use of hooter) | reg 310A makes "alert, not vent" a legal duty: use only when *necessary to comply with the regulations or on the grounds of safety*. The 90 m figure is testable. |
+| ☐ | `VC10` | Warning lights | *no legal claim* — see check | **Highest-risk row.** No regulation prescribes tell-tale colours; red-vs-amber is manufacturer/ECE convention, **not SA law**. The `testHint` also claims learners "may be asked what a warning light means" — unverified against the exam format. Decide whether to keep, reword or cut. |
+| ☐ | `VC11` | Cockpit setup | NRTR reg 213(4) (adults must wear a fitted seatbelt); reg 213(3)(c) (belts in good working order); reg 204(1)(a) | reg 213(4)'s proviso is testable: the wearing duty does **not** apply *"while reversing or moving in or out of a parking bay or area"*. Seat/mirror order is technique. |
+| ☐ | `VC12` | Windscreen wipers and washers | NRTR reg 203; reg 204(1)(a) | ✅ Citation confirmed verbatim; reg 203 untouched by GNR.846. Wiper must work "by other than manual means" and wipe "continuously, evenly and adequately". |
+| ☐ | `VC13` | Demister and defroster | NRTR reg 204(1)(a) | ✅ Confirmed. No reg prescribes a demister as equipment — the duty is the clear view it protects. |
+| ☐ | `VC14` | Hazard warning lights | NRTR reg 198(5)(a), (6)(a)-(b) | ✅ Confirmed, and stronger than recorded: (6)(a) **requires** them when stationary in a hazardous position or in motion in an emergency; (6)(b) **forbids** them otherwise. Both halves are testable. |
+| ☐ | `VC15` | Brake lights | NRTR reg 169(1)(e),(f) | ✅ Confirmed. GNR.846 s.47 only **added** subreg (4) (optional emergency-braking flashing lamps); (1)(e)-(f) unchanged. |
+| ☐ | `VC16` | Mirrors | NRTR reg 204(1)(b); **and (1)(c) for a car** | ✅ Confirmed, and sharpened: for a motor car ≤3 500 kg first registered on/after 1 Jan 1987 the duty is an exterior mirror on the driving side **plus** an interior mirror. |
+| ☐ | `VC17` | ABS (anti-lock brakes) | *no legal claim* | ✅ Verified: no reg prescribes ABS; GNR.846 s.42 added UN ECE R116 for **anti-theft** devices only, not braking aids. |
 | ☐ | `VC18` | Motorcycle: throttle | vehicle operation — no legal claim | *prose only — read for sense* |
 | ☐ | `VC19` | Motorcycle: front brake | vehicle operation — no legal claim | As you slow, weight shifts forward onto the front tyre, so it does most of the stopping — rider training puts it at roughly 70%. |
 | ☐ | `VC20` ⚠️ | Motorcycle: rear brake | NRTR 2000 — reg 309 (rider's feet on the foot-rests) | *prose only — read for sense* |
