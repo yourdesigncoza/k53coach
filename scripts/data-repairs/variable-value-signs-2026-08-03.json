@@ -1,0 +1,481 @@
+{
+ "description": "Phase C source-material sweep, 2026-08-03. Two classes of defect across APPROVED, LIVE sign records.\n\n(1) formalMeaning was left stale on the five signs corrected earlier the same day, leaving each record self-contradictory. R2.2 was the serious one: its formalMeaning still carried the UK 'already in the circle' roundabout rule that the plainEnglish fix had removed. My error, caught by the Grok sweep.\n\n(2) Twelve VARIABLE-VALUE signs were presented as fixed-value. The chart names them generically ('Height limit', 'Width limit', 'Mass limit', 'over indicated GVM') because the number is painted on the sign face and varies by site; our records hardcoded one example as though it were THE value. Same class as R123's invented 3500 kg. R239, R314, R314-P, W320 and W321 were found by the sweep; the rest I had already confirmed.\n\nNOT ACTED ON: the sweep also called R206's 100 m, R5's 15 km/h and R207's 500 m fabricated. They are not — all three are quoted verbatim from SARTSM Vol 1 Ch 2 (§2.4.6, §2.2.7, §2.4.7) and were verified by reading the manual. The phase C packet contained only the chart NAME listing, so the reviewer had no way to see them; 'unsupported by the packet' was reported as 'fabricated'. R245, R532 and R569 are flagged but unresolved — they do not appear in the chart listing, so guessing either way would repeat the original error.",
+ "ops": [
+  {
+   "table": "road_signs",
+   "match": "code=eq.R5",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "The first question is not who yields — it is whether you may be there. Delivery, maintenance or emergency only, then 15 km/h and pedestrians first."
+     },
+     "behaviour": {
+      "en": "If you are not delivering, doing maintenance or driving an emergency vehicle, do not enter. If you are permitted in, give way to every pedestrian in your path or about to cross it, and keep to 15 km/h unless a sign shows otherwise."
+     },
+     "plainEnglish": {
+      "en": "This marks a pedestrian precinct. Only three kinds of vehicle may go in at all: one delivering or loading goods, one there for maintenance, or an emergency vehicle."
+     },
+     "commonMistake": {
+      "en": "Reading it as an ordinary 'give way to pedestrians' sign and driving through, when most vehicles are not allowed in the precinct at all."
+     },
+     "formalMeaning": {
+      "en": "Regulatory sign marking a pedestrian precinct: only a vehicle delivering or loading goods, a vehicle used in connection with maintenance, or an emergency vehicle is permitted; such vehicles shall yield right-of-way to all pedestrians in or about to cross their path and observe a maximum speed of 15 km/h unless otherwise indicated."
+     }
+    }
+   },
+   "why": "formalMeaning was left untouched when the other fields of R5 were corrected earlier on 2026-08-03, leaving the record internally inconsistent — worst on R2.2, whose formalMeaning still said 'yield to vehicles already [in the circle]', the exact UK roundabout convention the plainEnglish fix had just removed. Caught by the Grok source sweep. Now aligned to the same provision the other fields cite."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R2.2",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "It is the yield line that decides, not whether a vehicle is already circulating. Clockwise, and stay off the circle."
+     },
+     "behaviour": {
+      "en": "Slow down on approach and be ready to stop. Yield to any vehicle reaching the yield line ahead of you whose path will cross yours — not only to vehicles already going round. Move clockwise, and try not to drive over the circle itself."
+     },
+     "plainEnglish": {
+      "en": "You are approaching a mini-circle. Give way to any vehicle that will cross the yield line before you and will cross your path."
+     },
+     "commonMistake": {
+      "en": "Applying the overseas roundabout habit of 'give way to whoever is already in the circle'. The South African rule turns on who reaches the yield line first and whether their path crosses yours."
+     },
+     "formalMeaning": {
+      "en": "Mandatory requirement that a driver approaching a mini circle shall yield right of way to any vehicle which will cross the RTM2 yield line before them and which will, in the normal course of events, cross that driver's path; the driver shall move clockwise and attempt not to encroach on the mini circle."
+     }
+    }
+   },
+   "why": "formalMeaning was left untouched when the other fields of R2.2 were corrected earlier on 2026-08-03, leaving the record internally inconsistent — worst on R2.2, whose formalMeaning still said 'yield to vehicles already [in the circle]', the exact UK roundabout convention the plainEnglish fix had just removed. Caught by the Grok source sweep. Now aligned to the same provision the other fields cite."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R206",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "The distance is the testable part: 100 m of silence after the sign, not an open-ended ban."
+     },
+     "behaviour": {
+      "en": "Keep the hooter silent for the next 100 m. The sign also bars driving beyond it in a vehicle emitting noise above the prescribed levels."
+     },
+     "plainEnglish": {
+      "en": "Do not sound your hooter for 100 m after passing this sign, and do not drive past it in a vehicle making more noise than the law allows."
+     },
+     "commonMistake": {
+      "en": "Thinking it bans all noise or applies to engines; it specifically prohibits use of the hooter."
+     },
+     "formalMeaning": {
+      "en": "Mandatory requirement that a driver shall not sound the vehicle's sounding device or hooter for 100 m after passing the sign, and shall not drive beyond the sign a vehicle emitting noise in excess of prescribed levels."
+     }
+    }
+   },
+   "why": "formalMeaning was left untouched when the other fields of R206 were corrected earlier on 2026-08-03, leaving the record internally inconsistent — worst on R2.2, whose formalMeaning still said 'yield to vehicles already [in the circle]', the exact UK roundabout convention the plainEnglish fix had just removed. Caught by the Grok source sweep. Now aligned to the same provision the other fields cite."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R207",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "It cuts both ways — pedestrian and driver — and runs for 500 m past the sign."
+     },
+     "behaviour": {
+      "en": "Do not pick up passengers for the next 500 m. The same sign binds people on foot, who may not try to secure a lift along that stretch."
+     },
+     "plainEnglish": {
+      "en": "For 500 m beyond this sign nobody may thumb for a lift, and no driver may pick up passengers."
+     },
+     "commonMistake": {
+      "en": "Treating it as the hitch-hiker's problem only. It binds the driver as well."
+     },
+     "formalMeaning": {
+      "en": "Prohibition binding both parties for 500 m beyond the sign: a pedestrian shall not attempt to secure a lift from a passing vehicle, and a driver shall not pick up passengers."
+     }
+    }
+   },
+   "why": "formalMeaning was left untouched when the other fields of R207 were corrected earlier on 2026-08-03, leaving the record internally inconsistent — worst on R2.2, whose formalMeaning still said 'yield to vehicles already [in the circle]', the exact UK roundabout convention the plainEnglish fix had just removed. Caught by the Grok source sweep. Now aligned to the same provision the other fields cite."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R202",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "The number on the sign is a mass in tonnes, and for a combination it is the whole combination's mass, not just the towing vehicle's."
+     },
+     "behaviour": {
+      "en": "Check the figure on the sign against your vehicle's GVM — or the GCM of the whole combination if you are pulling a trailer. Over it, take another route."
+     },
+     "plainEnglish": {
+      "en": "Vehicles heavier than the figure shown, in tonnes, may not go past this sign. The figure is the gross vehicle mass, or the gross combination mass if you are towing."
+     },
+     "commonMistake": {
+      "en": "Reading the number as a speed limit. The 't' means tonnes of mass, not a speed in km/h."
+     },
+     "formalMeaning": {
+      "en": "Prohibition on a vehicle whose gross vehicle mass, or gross combination mass where applicable, exceeds the value indicated on the sign."
+     }
+    }
+   },
+   "why": "formalMeaning was left untouched when the other fields of R202 were corrected earlier on 2026-08-03, leaving the record internally inconsistent — worst on R2.2, whose formalMeaning still said 'yield to vehicles already [in the circle]', the exact UK roundabout convention the plainEnglish fix had just removed. Caught by the Grok source sweep. Now aligned to the same provision the other fields cite."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R101",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "Blue circle = you must. The number is the floor, not the ceiling — a red-bordered circle would set the maximum."
+     },
+     "behaviour": {
+      "en": "Keep your speed at no less than the figure shown while it remains safe to do so; do not crawl along holding up traffic."
+     },
+     "plainEnglish": {
+      "en": "You may not drive slower than the speed shown on this sign."
+     },
+     "commonMistake": {
+      "en": "Reading it as a maximum speed limit; a maximum limit is shown on a white sign with a red ring, not a blue disc."
+     },
+     "formalMeaning": {
+      "en": "Command sign imposing a minimum speed equal to the figure displayed."
+     }
+    },
+    "name": "Minimum speed"
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Minimum speed sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R102",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "Blue circle = a positive command. Read the figure off the sign; it is a floor, not a limit."
+     },
+     "behaviour": {
+      "en": "If your vehicle's GVM is over 10 tonnes you may use this road or lane; lighter vehicles must use another route or lane."
+     },
+     "plainEnglish": {
+      "en": "This road or lane is reserved for vehicles heavier than the mass shown on the sign."
+     },
+     "commonMistake": {
+      "en": "Reading it as a maximum mass limit; a mass limit prohibition is shown on a white sign with a red ring, not a blue disc."
+     },
+     "formalMeaning": {
+      "en": "Command sign reserving the roadway for vehicles whose gross vehicle mass exceeds the value indicated."
+     }
+    },
+    "name": "Vehicles exceeding mass only"
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Vehicles exceeding mass only sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R124",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "Blue circle = command. The figure on the face is the GVM a goods vehicle must exceed to qualify."
+     },
+     "behaviour": {
+      "en": "Proceed only if you drive a goods vehicle heavier than the GVM shown; lighter vehicles must keep out of this reserved lane."
+     },
+     "plainEnglish": {
+      "en": "Only goods vehicles heavier than the mass shown on the sign may use this road or lane."
+     },
+     "commonMistake": {
+      "en": "Treating the weight figure as a maximum limit. On this blue command sign the number is the minimum GVM that is required, not a ban above it."
+     },
+     "formalMeaning": {
+      "en": "Command sign reserving the roadway for goods vehicles whose gross vehicle mass exceeds the value indicated."
+     }
+    }
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Goods vehicles over indicated GVM only sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R202",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "The number on the sign is a mass in tonnes, and for a combination it is the whole combination's mass, not just the towing vehicle's."
+     },
+     "behaviour": {
+      "en": "Check the figure on the sign against your vehicle's GVM — or the GCM of the whole combination if you are pulling a trailer. Over it, take another route."
+     },
+     "plainEnglish": {
+      "en": "Vehicles heavier than the figure shown, in tonnes, may not go past this sign. The figure is the gross vehicle mass, or the gross combination mass if you are towing."
+     },
+     "commonMistake": {
+      "en": "Reading the number as a speed limit. The 't' means tonnes of mass, not a speed in km/h."
+     },
+     "formalMeaning": {
+      "en": "Prohibition on vehicles whose gross vehicle mass exceeds the value indicated (12 t)."
+     }
+    },
+    "name": "Mass limit"
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Mass limit sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R203",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "The limit is on one axle's load, not the whole vehicle. Read the figure off the sign."
+     },
+     "behaviour": {
+      "en": "If any single axle of your vehicle carries more than 2 tonnes, do not proceed; this protects a weight-sensitive road or bridge."
+     },
+     "plainEnglish": {
+      "en": "Vehicles putting more than the mass shown onto a single axle may not pass."
+     },
+     "commonMistake": {
+      "en": "Confusing it with the total vehicle mass limit (R202). This limit is per axle, shown by the arrow pressing down on one axle."
+     },
+     "formalMeaning": {
+      "en": "Prohibition on a vehicle whose massload on a single axle exceeds the value indicated."
+     }
+    },
+    "name": "Axle massload limit"
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Axle massload limit sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R204",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A vertical limit in metres. The figure varies by structure — read it, do not assume."
+     },
+     "behaviour": {
+      "en": "If your vehicle (including any load) is higher than 4,42 m, do not continue; take a route that clears the obstruction."
+     },
+     "plainEnglish": {
+      "en": "Vehicles taller than the height shown on the sign may not pass this point."
+     },
+     "commonMistake": {
+      "en": "Ignoring the load on top of the vehicle; the limit is the total height including whatever you are carrying."
+     },
+     "formalMeaning": {
+      "en": "Prohibition on a vehicle whose overall height exceeds the value indicated."
+     }
+    },
+    "name": "Height limit"
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Height limit sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R205",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A horizontal limit in metres, and for a combination it is the whole rig you measure."
+     },
+     "behaviour": {
+      "en": "If your vehicle and trailer/load together are longer than 15 m, do not continue; the road ahead cannot safely take that length."
+     },
+     "plainEnglish": {
+      "en": "Vehicles longer than the length shown on the sign may not pass this point."
+     },
+     "commonMistake": {
+      "en": "Measuring only the truck and forgetting the trailer or overhanging load; the limit is the total length."
+     },
+     "formalMeaning": {
+      "en": "Prohibition on a vehicle whose overall length exceeds the value indicated."
+     }
+    },
+    "name": "Length limit"
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Length limit sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R230",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "Read the figure off the sign face — it changes from road to road."
+     },
+     "behaviour": {
+      "en": "If your goods vehicle's GVM is over 10 tonnes, do not pass this sign; use a permitted route. Lighter vehicles may proceed."
+     },
+     "plainEnglish": {
+      "en": "Goods vehicles heavier than the mass shown on the sign may not go past."
+     },
+     "commonMistake": {
+      "en": "Thinking it bans all trucks. Only goods vehicles above the 10-tonne mass shown are prohibited; lighter goods vehicles are not."
+     },
+     "formalMeaning": {
+      "en": "Prohibition on a goods vehicle whose gross vehicle mass exceeds the value indicated."
+     }
+    },
+    "name": "Goods vehicle over indicated GVM prohibited"
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Goods vehicle over indicated GVM prohibited sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R239",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "Width includes the load, not just the bodywork. The figure is on the sign."
+     },
+     "behaviour": {
+      "en": "If your vehicle (including its load) is wider than 2,1 metres, do not proceed; find an alternative route."
+     },
+     "plainEnglish": {
+      "en": "Vehicles wider than the width shown on the sign may not pass this point."
+     },
+     "commonMistake": {
+      "en": "Reading it as a height or length limit. The inward arrows on each side indicate width."
+     },
+     "formalMeaning": {
+      "en": "Prohibition on a vehicle whose overall width, including its load, exceeds the value indicated."
+     }
+    },
+    "name": "Width limit"
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Width limit sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R314",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A reservation, not a prohibition: it says who the lane is FOR. Read the figure off the sign."
+     },
+     "behaviour": {
+      "en": "Only goods vehicles exceeding the indicated GVM may use the reserved area; other drivers must keep clear."
+     },
+     "plainEnglish": {
+      "en": "This lane or area is reserved for goods vehicles heavier than the mass shown on the sign."
+     },
+     "commonMistake": {
+      "en": "Reading the mass figure as a weight limit/prohibition instead of the threshold that defines which goods vehicles may use the reserved space."
+     },
+     "formalMeaning": {
+      "en": "Reservation sign restricting use to goods vehicles whose gross vehicle mass exceeds the value indicated."
+     }
+    },
+    "name": "Goods vehicle over indicated GVM reservation"
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Goods vehicle over indicated GVM reservation sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.W320",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A warning triangle means it is ahead, not here. The figure varies — read it."
+     },
+     "behaviour": {
+      "en": "If your vehicle plus its load is taller than the height shown, do not proceed; find an alternative route. If unsure of your vehicle's height, do not risk it."
+     },
+     "plainEnglish": {
+      "en": "Warns that a height limit is coming up, at the height shown on the sign."
+     },
+     "commonMistake": {
+      "en": "Ignoring the sign because a car easily fits. The restriction matters for trucks, buses and loaded vehicles, and the height includes any load."
+     },
+     "formalMeaning": {
+      "en": "Warning of a height restriction ahead at the value indicated."
+     }
+    },
+    "name": "Height restriction"
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Height restriction sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.W321",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A warning triangle means it is ahead, not here. The figure varies — read it."
+     },
+     "behaviour": {
+      "en": "If your vehicle and any trailer are longer than the length shown, do not proceed; choose an alternative route suitable for long vehicles."
+     },
+     "plainEnglish": {
+      "en": "Warns that a length restriction is coming up, at the length shown on the sign."
+     },
+     "commonMistake": {
+      "en": "Thinking the measurement is about width. The inward arrows on either side of the number indicate maximum vehicle length, not width."
+     },
+     "formalMeaning": {
+      "en": "Warning of a length restriction ahead at the value indicated."
+     }
+    },
+    "name": "Length restricted"
+   },
+   "why": "Variable-value sign presented as fixed-value. The official DoT chart names it generically ('Length restricted sign') because the figure is painted on the sign face and changes from site to site; our record hardcoded one example as though it were the value. Same defect class as R123, which invented a 3500 kg threshold. Confirmed against the chart listing; surfaced by the 2026-08-03 source sweep."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R215",
+   "set": {
+    "name": "Overtaking by goods vehicle prohibited"
+   },
+   "why": "Name read 'Overtaking prohibited for heavy vehicles'. The official DoT chart says 'R215 Overtaking by goods vehicle prohibited sign'. 'Heavy vehicle' is not the legal category — 'goods vehicle' is, and it is defined by what the vehicle is built to carry rather than its size, which is exactly the catch a question on this sign should test. Flagged by the Codex reviewer during the question review and missed in that fix pass."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R202",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "The number on the sign is a mass in tonnes, and for a combination it is the whole combination's mass, not just the towing vehicle's."
+     },
+     "behaviour": {
+      "en": "Check the figure on the sign against your vehicle's GVM — or the GCM of the whole combination if you are pulling a trailer. Over it, take another route."
+     },
+     "plainEnglish": {
+      "en": "Vehicles heavier than the figure shown, in tonnes, may not go past this sign. The figure is the gross vehicle mass, or the gross combination mass if you are towing."
+     },
+     "commonMistake": {
+      "en": "Reading the number as a speed limit. The 't' means tonnes of mass, not a speed in km/h."
+     },
+     "formalMeaning": {
+      "en": "Prohibition on a vehicle whose gross vehicle mass, or gross combination mass where applicable, exceeds the value indicated on the sign."
+     }
+    }
+   },
+   "why": "Follow-up within the same pass. R202 was touched by two ops in this file — the formalMeaning repair and the variable-value repair — and the second was built from the pre-fix snapshot of the row, so it silently reverted formalMeaning to 'exceeds the value indicated (12 t)'. The hardcoded 12 t is exactly the defect this file exists to remove. Applied last so it wins. Lesson for future repair files: never write two ops against the same row from one snapshot."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R314-P",
+   "set": {
+    "name": "Goods vehicle over indicated GVM parking reservation",
+    "content": {
+     "testHint": {
+      "en": "The 'P' says it is about parking and the figure on the sign says who qualifies — read it off the sign, it varies."
+     },
+     "behaviour": {
+      "en": "Only park here if your vehicle is goods vehicles exceeding 10 tonnes GVM. If it is not, park elsewhere."
+     },
+     "plainEnglish": {
+      "en": "This parking area is reserved for goods vehicles heavier than the mass shown on the sign. Anything lighter, or not a goods vehicle, may not park here."
+     },
+     "commonMistake": {
+      "en": "Parking here when your vehicle does not qualify as goods vehicles exceeding 10 tonnes GVM."
+     },
+     "formalMeaning": {
+      "en": "Parking reservation sign restricting the parking to goods vehicles whose gross vehicle mass exceeds the value indicated."
+     }
+    }
+   },
+   "why": "Same variable-as-fixed defect as its parent R314, and flagged by BOTH reviewers, but omitted from the first pass of this file by my own oversight — the code was in the fetch list and missing from the fix map. The official DoT chart says 'R314-P Goods vehicle over indicated GVM parking reservation sign'; the record hardcoded 10 tonnes across name, plainEnglish, formalMeaning and testHint. Approved and live at the time of the fix."
+  }
+ ]
+}
