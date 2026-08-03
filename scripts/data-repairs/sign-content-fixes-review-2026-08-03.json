@@ -1,0 +1,125 @@
+{
+ "description": "Five road_signs content defects confirmed by the 2026-08-03 adversarial review (Grok + Codex via OpenRouter) and adjudicated against SARTSM Vol 1 Ch 2 by reading the manual directly. All five were APPROVED and LIVE to learners. Two are the project's recurring failure mode — a foreign convention (R2.2 taught the UK roundabout rule) and a simplified duty that omits the real one (R5 is an access restriction, not a give-way sign). The other three dropped a bound that is itself the testable fact: R206's 100 m, R207's 500 m, R202's gross COMBINATION mass. Each op quotes the provision it rests on.",
+ "ops": [
+  {
+   "table": "road_signs",
+   "match": "code=eq.R5",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "The first question is not who yields — it is whether you may be there. Delivery, maintenance or emergency only, then 15 km/h and pedestrians first."
+     },
+     "behaviour": {
+      "en": "If you are not delivering, doing maintenance or driving an emergency vehicle, do not enter. If you are permitted in, give way to every pedestrian in your path or about to cross it, and keep to 15 km/h unless a sign shows otherwise."
+     },
+     "plainEnglish": {
+      "en": "This marks a pedestrian precinct. Only three kinds of vehicle may go in at all: one delivering or loading goods, one there for maintenance, or an emergency vehicle."
+     },
+     "commonMistake": {
+      "en": "Reading it as an ordinary 'give way to pedestrians' sign and driving through, when most vehicles are not allowed in the precinct at all."
+     },
+     "formalMeaning": {
+      "en": "A control sign indicating that pedestrians have right of way and that drivers must yield to them at this point."
+     }
+    }
+   },
+   "why": "Content said 'Pedestrians have priority here - you must give way to people on foot', which states the lesser duty and omits the main one. SARTSM Vol 1 Ch 2 §2.2.7: 'The PEDESTRIAN PRIORITY sign R5 is to indicate to drivers of vehicles that only: (a) a vehicle for the purpose of delivering or loading goods; (b) a vehicle used in connection with maintenance; or (c) an emergency vehicle, shall be permitted in an area set aside as a pedestrian precinct marked by such signs', and those vehicles shall '(i) yield right-of-way to all pedestrians who are in, or who are crossing or about to cross their path; (ii) observe a maximum speed of 15 km/h unless another speed limit is indicated'. R5 is an ACCESS restriction first. Flagged independently by both adversarial reviewers 2026-08-03 and confirmed against the manual."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R2.2",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "It is the yield line that decides, not whether a vehicle is already circulating. Clockwise, and stay off the circle."
+     },
+     "behaviour": {
+      "en": "Slow down on approach and be ready to stop. Yield to any vehicle reaching the yield line ahead of you whose path will cross yours — not only to vehicles already going round. Move clockwise, and try not to drive over the circle itself."
+     },
+     "plainEnglish": {
+      "en": "You are approaching a mini-circle. Give way to any vehicle that will cross the yield line before you and will cross your path."
+     },
+     "commonMistake": {
+      "en": "Applying the overseas roundabout habit of 'give way to whoever is already in the circle'. The South African rule turns on who reaches the yield line first and whether their path crosses yours."
+     },
+     "formalMeaning": {
+      "en": "A yield (give-way) regulation applied specifically at a mini-circle: the driver must yield to vehicles already circulating."
+     }
+    }
+   },
+   "why": "Content taught 'give way to traffic already in the circle', which is the UK/EU roundabout convention and is the failure mode this project keeps hitting. SARTSM Vol 1 Ch 2 §2.2.4: the R2.2 sign 'imposes a mandatory requirement that drivers of vehicles approaching a mini circle shall yield right of way to any vehicle which will cross any YIELD LINE marking RTM2 at such junction before them, and which, in the normal course of events, will cross the path of such drivers' vehicles, and that the driver shall move in a clockwise direction in such junction and attempt not to encroach on the mini circle.' A vehicle not yet in the circle can therefore still have priority. Flagged by the Codex reviewer 2026-08-03 and confirmed against the manual."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R206",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "The distance is the testable part: 100 m of silence after the sign, not an open-ended ban."
+     },
+     "behaviour": {
+      "en": "Keep the hooter silent for the next 100 m. The sign also bars driving beyond it in a vehicle emitting noise above the prescribed levels."
+     },
+     "plainEnglish": {
+      "en": "Do not sound your hooter for 100 m after passing this sign, and do not drive past it in a vehicle making more noise than the law allows."
+     },
+     "commonMistake": {
+      "en": "Thinking it bans all noise or applies to engines; it specifically prohibits use of the hooter."
+     },
+     "formalMeaning": {
+      "en": "Prohibition on the use of an audible warning device (hooter) in this zone, usually near hospitals or quiet areas."
+     }
+    }
+   },
+   "why": "Content read 'Do not sound your hooter past this sign', implying an indefinite prohibition. SARTSM Vol 1 Ch 2 §2.4.6: the sign 'imposes a mandatory requirement that drivers shall NOT sound their vehicle sounding device or hooter for 100m after passing sign, AND sign R206 imposes a mandatory requirement that drivers shall not drive a vehicle beyond such sign, if such vehicle is emitting noise in excess of noise levels prescribed.' Two limbs, one of them bounded at 100 m; we carried neither accurately. Flagged by the Codex reviewer 2026-08-03."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R207",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "It cuts both ways — pedestrian and driver — and runs for 500 m past the sign."
+     },
+     "behaviour": {
+      "en": "Do not pick up passengers for the next 500 m. The same sign binds people on foot, who may not try to secure a lift along that stretch."
+     },
+     "plainEnglish": {
+      "en": "For 500 m beyond this sign nobody may thumb for a lift, and no driver may pick up passengers."
+     },
+     "commonMistake": {
+      "en": "Treating it as the hitch-hiker's problem only. It binds the driver as well."
+     },
+     "formalMeaning": {
+      "en": "Prohibition on soliciting or accepting lifts (hitch-hiking) in the zone covered by the sign."
+     }
+    }
+   },
+   "why": "Content covered only the pedestrian side and carried no distance. SARTSM Vol 1 Ch 2 §2.4.7 imposes the duty on both sides — pedestrians shall not attempt to secure a lift from a passing vehicle AND drivers of vehicles shall not pick-up passengers — effective for 500 m beyond the sign. Surfaced by the prohibition drafting agent and confirmed 2026-08-03."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R202",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "The number on the sign is a mass in tonnes, and for a combination it is the whole combination's mass, not just the towing vehicle's."
+     },
+     "behaviour": {
+      "en": "Check the figure on the sign against your vehicle's GVM — or the GCM of the whole combination if you are pulling a trailer. Over it, take another route."
+     },
+     "plainEnglish": {
+      "en": "Vehicles heavier than the figure shown, in tonnes, may not go past this sign. The figure is the gross vehicle mass, or the gross combination mass if you are towing."
+     },
+     "commonMistake": {
+      "en": "Reading the number as a speed limit. The 't' means tonnes of mass, not a speed in km/h."
+     },
+     "formalMeaning": {
+      "en": "Prohibition on vehicles whose gross vehicle mass exceeds the value indicated (12 t)."
+     }
+    }
+   },
+   "why": "Content described the limit as the vehicle's mass alone and hardcoded '12 tonnes' as though it were fixed. SARTSM Vol 1 Ch 2 §2.4.2 records that the value indicated in tonnes is the gross vehicle mass OR gross combination mass — the combination case was missing, which misleads exactly the learner towing a trailer. The number is also shown on the sign face and varies. Flagged by the Codex reviewer 2026-08-03."
+  }
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "description": "Corrects 9 of the 41 sign questions loaded earlier on 2026-08-03, following the adversarial review (Grok + Codex) and my own adjudication against SARTSM Vol 1 Ch 2. Both reviewers returned DO-NOT-SHIP and both were right. Three defects were inherited from road_signs content that was itself wrong (R5, R2.2, R206 — fixed in sign-content-fixes-review-2026-08-03.json); the rest are drafting defects: a citation pointing at the wrong sign's provision (R218), an over-generalised exemption (R1.2), and two questions asserting a right-of-way tie-break that no source we hold supports (R1.3/R1.4). All remain review_status=draft. The batch JSON is updated in step so the file stays the record of what is in the DB.",
+ "ops": [
+  {
+   "table": "questions",
+   "match": "id=eq.RS-084",
+   "set": {
+    "prompt": "A red diamond-shaped sign shows a walking person, marking a pedestrian precinct. Which vehicles may go in?",
+    "options": [
+     "Any vehicle, as long as it gives way to people on foot",
+     "Only vehicles delivering or loading goods, doing maintenance, or emergency vehicles",
+     "No vehicle at all, under any circumstances"
+    ],
+    "answer": 1,
+    "explanation": "Most drivers may not enter at all — the precinct is open only to deliveries, maintenance and emergency vehicles. If you are one of those, you give way to every pedestrian in or about to cross your path, and keep to 15 km/h.",
+    "source_citation": "SARTSM Vol 1 Ch 2 §2.2.7 (R5 pedestrian priority — permitted vehicle classes, yield duty, 15 km/h)"
+   },
+   "why": "Keyed answer was 'You must give way to people on foot here', which teaches the lesser duty and omits the main one. Both reviewers flagged it independently; SARTSM §2.2.7 makes R5 an ACCESS restriction — only delivery/loading, maintenance or emergency vehicles are permitted — with the yield duty and a 15 km/h cap applying to those. Rewritten around access; the old key survives as distractor 0, which is now the exact misconception."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-081",
+   "set": {
+    "prompt": "You approach a mini circle with a yield triangle showing a circle of arrows. Which vehicle must you give way to?",
+    "options": [
+     "Only vehicles already driving round the circle",
+     "Only vehicles approaching from your right",
+     "Any vehicle that will reach the yield line before you and cross your path"
+    ],
+    "answer": 2,
+    "explanation": "It is the yield line that settles it, not whether a car is already going round. If another vehicle gets there first and its path crosses yours, it goes first. Move clockwise and try not to drive over the circle itself.",
+    "source_citation": "SARTSM Vol 1 Ch 2 §2.2.4 (R2.2 yield at mini circle — yield to any vehicle crossing the RTM2 yield line first whose path will cross yours; clockwise; do not encroach)"
+   },
+   "why": "Keyed answer was 'traffic already going round the circle' — the UK/EU roundabout convention, and the exact foreign-convention failure mode this project keeps hitting. SARTSM §2.2.4 requires yielding to 'any vehicle which will cross any YIELD LINE marking RTM2 at such junction before them, and which, in the normal course of events, will cross the path of such drivers' vehicles'. A vehicle not yet circulating can still have priority. Flagged by Codex; confirmed against the manual."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-102",
+   "set": {
+    "prompt": "Just before a hospital you pass a white circle with a red ring showing a hooter with a line through it. How far does the silence apply?",
+    "options": [
+     "For 100 m after the sign",
+     "Until the next intersection",
+     "For the whole length of the road ahead"
+    ],
+    "answer": 0,
+    "explanation": "The ban runs for 100 metres past the sign, not indefinitely — that distance is the part worth remembering. The same sign also stops you driving past it in a vehicle making more noise than the law allows.",
+    "source_citation": "SARTSM Vol 1 Ch 2 §2.4.6 (R206 no excessive noise — no hooter for 100 m after passing the sign; and no driving beyond it emitting noise above prescribed levels)"
+   },
+   "why": "Keyed answer read 'Do not sound your hooter on the road beyond the sign', implying an open-ended prohibition, while the item's OWN citation already said 100 m — the citation contradicted the key it was attached to. SARTSM §2.4.6 bounds it at 100 m. Reframed so the distance is what the question tests."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-104",
+   "set": {
+    "explanation": "The number is a mass in tonnes. If you are towing, it is the mass of the whole combination that counts, not just the vehicle pulling — so a lighter bakkie with a loaded trailer can still be over the limit.",
+    "source_citation": "SARTSM Vol 1 Ch 2 §2.4.2 (R202 — the value indicated in tonnes is the gross vehicle mass or gross combination mass)"
+   },
+   "why": "Explanation described the limit as 'the vehicle plus its load', omitting gross COMBINATION mass. SARTSM §2.4.2 gives GVM or GCM, and the combination case is precisely the learner who tows. Flagged by Codex."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-106",
+   "set": {
+    "explanation": "It binds you as well as the hitch-hiker: for 500 m past the sign no driver may pick up passengers and nobody on foot may thumb for a lift. It does not stop you halting for any other reason.",
+    "source_citation": "SARTSM Vol 1 Ch 2 §2.4.7 (R207 — pedestrians shall not attempt to secure a lift and drivers shall not pick up passengers, for 500 m beyond the sign)"
+   },
+   "why": "Explanation said 'may not stop to pick anyone up', which reads as a ban on stopping at all, and carried no distance. SARTSM §2.4.7 bounds it at 500 m and phrases the driver's duty as not picking up passengers. Flagged by Codex."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-101",
+   "set": {
+    "source_citation": "SARTSM Vol 1 Ch 2 (R218 pedestrians prohibited); official DoT chart — 'R218 Pedestrian prohibited sign'",
+    "explanation": "The red ring is a prohibition and the figure says who it is aimed at: people on foot may not go beyond it. It says nothing about how drivers must behave, so it is not a warning that pedestrians are about."
+   },
+   "why": "Citation quoted the SARTSM passage that opens 'The PEDESTRIANS ONLY regulatory sign R110…' — i.e. it cited R110's provision to support an R218 claim. Caught by Codex. Citation narrowed to what we can actually evidence, and the unsourced 'such as a freeway' claim dropped from the explanation."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-077",
+   "set": {
+    "explanation": "The arrow panel carves out one movement only: drivers turning left give way instead of stopping. Everyone going straight or turning right still comes to a complete standstill at the line."
+   },
+   "why": "Explanation generalised the exemption to 'any other turn'. The provision covers straight-on and right-turning traffic explicitly; nothing supports extending it further. Flagged by Codex."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-078",
+   "set": {
+    "prompt": "A stop sign carries a panel reading '4'. What is it telling you about the intersection?",
+    "options": [
+     "Every one of the four approaches has a stop sign",
+     "You are the fourth vehicle in the queue",
+     "Four vehicles may cross at a time"
+    ],
+    "answer": 0,
+    "explanation": "The number counts the approaches that are stop-controlled, not vehicles. At a four-way stop every driver must come to a complete standstill — nobody has an automatic right to go first because their road looks bigger.",
+    "source_citation": "SARTSM Vol 1 Ch 2 §2.2.1 (R1.4 4-way stop — all-way stop control at a four-leg junction; same stopping duty as R1)"
+   },
+   "why": "Keyed answer was 'The vehicle on your right goes first', a tie-break neither reviewer could source and which I could not source either. Reg 301 ('Right of way at certain road junctions') applies where traffic 'is required to move around a traffic island' — traffic circles, not 4-way stops. Teaching an unsourced priority rule is exactly what constraint 9 forbids, so the question was re-keyed onto what the sign itself establishes. If the tie-break is real it needs its own provision before it is taught."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-079",
+   "set": {
+    "explanation": "The number counts how many approaches are stop-controlled — here, three. Every one of them must stop, so arriving on what looks like the main road gives you nothing."
+   },
+   "why": "Explanation asserted vehicles 'then go in the order they stopped', which is not in the provision. Removed; the item now tests only what the sign establishes. Same reasoning as RS-078."
+  }
+ ]
+}
