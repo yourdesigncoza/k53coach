@@ -14,7 +14,8 @@
     "test": "node --experimental-strip-types --test \"src/**/*.test.ts\"",
     "signs:ingest-legacy": "node scripts/signs/ingest.mjs",
     "signs:seed": "node scripts/signs/seed-db.mjs",
-    "exam:build-migration": "node scripts/exam/build-questions-migration.mjs"
+    "exam:build-migration": "node scripts/exam/build-questions-migration.mjs",
+    "e2e": "node scripts/e2e/flow.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
