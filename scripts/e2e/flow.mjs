@@ -176,8 +176,12 @@ async function signedInContext(browser) {
   };
   const raw = "base64-" + Buffer.from(JSON.stringify(session)).toString("base64url");
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  // Cookie domain has to track --base, or a run against the deployed site silently
+  // sends no session and every authed flow reports "needs_auth".
+  const host = new URL(BASE).hostname;
+  const secure = BASE.startsWith("https");
   await ctx.addCookies([
-    { name: `sb-${ref}-auth-token`, value: raw, domain: "localhost", path: "/", sameSite: "Lax" },
+    { name: `sb-${ref}-auth-token`, value: raw, domain: host, path: "/", sameSite: "Lax", secure },
   ]);
   ctx._userId = tok.user.id;
   return ctx;
