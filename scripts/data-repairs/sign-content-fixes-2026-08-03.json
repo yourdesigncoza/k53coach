@@ -1,0 +1,54 @@
+{
+ "description": "Two road_signs content defects surfaced while drafting sign questions on 2026-08-03. Both were found because writing a question forces you to state exactly what a sign means — the drafting pass is itself a verification pass. R1.1 described a sign that does not exist; R215 overstated the scope of the prohibition. Both corrected against primary sources (the DoT chart and SARTSM Vol 1 Ch 2) and quoted in each op's why.",
+ "ops": [
+  {
+   "table": "road_signs",
+   "match": "code=eq.R1.1",
+   "set": {
+    "name": "Stop sign",
+    "content": {
+     "testHint": {
+      "en": "An eight-sided red sign is always STOP — a complete standstill, not a slow roll."
+     },
+     "behaviour": {
+      "en": "Treat it exactly like a normal stop: come to a full standstill at the line, yield to all traffic and pedestrians, and proceed only when safe."
+     },
+     "plainEnglish": {
+      "en": "This is the stop sign. You must bring the vehicle to a complete standstill at the stop line, every time, and only move off when the way is clear."
+     },
+     "commonMistake": {
+      "en": "Rolling slowly through instead of stopping completely, or stopping past the line."
+     },
+     "formalMeaning": {
+      "en": "Vehicles must stop completely at the stop line before proceeding."
+     }
+    }
+   },
+   "why": "Row was named 'Stop. Two stop' with content describing 'a smaller repeated stop sign' on the same sign. No such sign exists. The official DoT chart (resources/charts/RTSigns_charts.pdf) lists the R1.x family plainly: 'R1.1 Stop sign', 'R1.2 Stop/Yield', 'R1.3 3-Way stop sign', 'R1.4 4-Way stop sign', 'R1.5 Stop/Go sign'. R1.1 is the ordinary stop sign; the doubled-octagon description was invented. Surfaced 2026-08-03 when a drafting agent wrote a question asking what the 'second, smaller stop octagon' changes — the question was dropped and the sign corrected."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R215",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "It restricts one goods vehicle overtaking another — not every overtake, and not other vehicle types."
+     },
+     "behaviour": {
+      "en": "Drivers of goods vehicles must stay behind the vehicle ahead until the prohibition ends; do not pass."
+     },
+     "plainEnglish": {
+      "en": "If you are driving a goods vehicle, you may not overtake another goods vehicle on this stretch of road."
+     },
+     "commonMistake": {
+      "en": "Light-vehicle drivers thinking it applies to them - this sign restricts goods/heavy vehicles, not ordinary cars."
+     },
+     "formalMeaning": {
+      "en": "Regulatory prohibition sign: drivers of goods vehicles shall not overtake another goods vehicle beyond the sign."
+     }
+    }
+   },
+   "why": "Stored content read 'you may not overtake other vehicles here', which is broader than the sign. SARTSM Vol 1 Ch 2 (resources/sartsm/V1C2.pdf) titles R215 'NO OVERTAKING OF GOODS VEHICLES BY GOODS VEHICLES' and states 'drivers of goods vehicles shall NOT overtake another goods vehicle', adding that 'Sign R215 may be displayed to indicate a prohibition on goods vehicles overtaking goods vehicles'. The restriction is goods-vehicle-on-goods-vehicle, not goods-vehicle-on-anything. Flagged by the prohibition drafting agent 2026-08-03 and confirmed against the primary text."
+  }
+ ]
+}

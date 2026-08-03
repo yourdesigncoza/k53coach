@@ -1,0 +1,173 @@
+{
+ "description": "Corrects a systematic error across all 7 approved '-600' de-restriction signs. Every one carried the same boilerplate testHint claiming a DIAGONAL STRIPE ends a restriction. SARTSM Vol 1 Ch 2 §2.9 is explicit that de-restriction is a RED CROSS superimposed on the original sign, and that the diagonal slash is the prohibition marker. All 7 were live to learners. Surfaced 2026-08-03 by a question-drafting agent that rejected R202-600 as a candidate because its stored hint contradicted the manual — writing questions forces you to state precisely what a sign means, which is why the drafting pass keeps finding content defects.\n\nOPEN, NOT FIXED HERE: whether our -600 ARTWORK shows a cross or a slash was not resolved. The SVGs carry red elements but the markup alone does not settle it, and guessing is how the original error got in. Needs a visual check against the chart — see docs/verification-worklist.md.",
+ "ops": [
+  {
+   "table": "road_signs",
+   "match": "code=eq.R132-600",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A red CROSS over a regulatory sign is what ends the rule it shows. A red diagonal slash is the opposite — it means prohibited. Do not read one for the other."
+     },
+     "behaviour": {
+      "en": "No toll-route requirement applies beyond this point."
+     },
+     "plainEnglish": {
+      "en": "This sign marks the END of the toll route. From here, you are leaving the toll-road section."
+     },
+     "commonMistake": {
+      "en": "Thinking the toll route still applies past this sign — it does not; the rule has ended here."
+     },
+     "formalMeaning": {
+      "en": "Regulatory sign R132-600: it cancels the toll route that applied on the road behind you."
+     }
+    }
+   },
+   "why": "testHint read 'A regulatory sign with a diagonal stripe through it means the rule it shows has ENDED.' That inverts the marker. SARTSM Vol 1 Ch 2 §2.9 (resources/sartsm/V1C2.pdf): 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign', and it adds that 'the use of the (R)600 element with PROHIBITION signs using a diagonal slash, is not recommended' — i.e. the diagonal slash is the PROHIBITION marker, not the end-of-restriction marker. Teaching a learner to read a prohibition slash as 'no longer applies' is a safety-relevant inversion. Identical boilerplate hint was present on all 7 of the -600 signs and all 7 were approved and live; corrected together."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R101-600",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A red CROSS over a regulatory sign is what ends the rule it shows. A red diagonal slash is the opposite — it means prohibited. Do not read one for the other."
+     },
+     "behaviour": {
+      "en": "You may now travel slower than the previous minimum if needed, while still obeying any maximum speed limit and driving safely with the traffic flow."
+     },
+     "plainEnglish": {
+      "en": "This sign marks the END of the minimum speed limit. From here, there is no longer a minimum speed you must keep."
+     },
+     "commonMistake": {
+      "en": "Thinking the minimum speed limit still applies past this sign — it does not; the rule has ended here."
+     },
+     "formalMeaning": {
+      "en": "Regulatory sign R101-600: it cancels the minimum speed limit that applied on the road behind you."
+     }
+    }
+   },
+   "why": "testHint read 'A regulatory sign with a diagonal stripe through it means the rule it shows has ENDED.' That inverts the marker. SARTSM Vol 1 Ch 2 §2.9 (resources/sartsm/V1C2.pdf): 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign', and it adds that 'the use of the (R)600 element with PROHIBITION signs using a diagonal slash, is not recommended' — i.e. the diagonal slash is the PROHIBITION marker, not the end-of-restriction marker. Teaching a learner to read a prohibition slash as 'no longer applies' is a safety-relevant inversion. Identical boilerplate hint was present on all 7 of the -600 signs and all 7 were approved and live; corrected together."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R401-600",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A red CROSS over a regulatory sign is what ends the rule it shows. A red diagonal slash is the opposite — it means prohibited. Do not read one for the other."
+     },
+     "behaviour": {
+      "en": "Freeway rules (no pedestrians, no stopping, the freeway minimum speed) end here; normal road rules resume."
+     },
+     "plainEnglish": {
+      "en": "This sign marks the END of the dual-carriageway freeway. From here, freeway conditions no longer apply."
+     },
+     "commonMistake": {
+      "en": "Thinking the dual-carriageway freeway still applies past this sign — it does not; the rule has ended here."
+     },
+     "formalMeaning": {
+      "en": "Regulatory sign R401-600: it cancels the dual-carriageway freeway that applied on the road behind you."
+     }
+    }
+   },
+   "why": "testHint read 'A regulatory sign with a diagonal stripe through it means the rule it shows has ENDED.' That inverts the marker. SARTSM Vol 1 Ch 2 §2.9 (resources/sartsm/V1C2.pdf): 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign', and it adds that 'the use of the (R)600 element with PROHIBITION signs using a diagonal slash, is not recommended' — i.e. the diagonal slash is the PROHIBITION marker, not the end-of-restriction marker. Teaching a learner to read a prohibition slash as 'no longer applies' is a safety-relevant inversion. Identical boilerplate hint was present on all 7 of the -600 signs and all 7 were approved and live; corrected together."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R402-600",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A red CROSS over a regulatory sign is what ends the rule it shows. A red diagonal slash is the opposite — it means prohibited. Do not read one for the other."
+     },
+     "behaviour": {
+      "en": "Freeway rules end here; normal road rules resume."
+     },
+     "plainEnglish": {
+      "en": "This sign marks the END of the single-carriageway freeway. From here, freeway conditions no longer apply."
+     },
+     "commonMistake": {
+      "en": "Thinking the single-carriageway freeway still applies past this sign — it does not; the rule has ended here."
+     },
+     "formalMeaning": {
+      "en": "Regulatory sign R402-600: it cancels the single-carriageway freeway that applied on the road behind you."
+     }
+    }
+   },
+   "why": "testHint read 'A regulatory sign with a diagonal stripe through it means the rule it shows has ENDED.' That inverts the marker. SARTSM Vol 1 Ch 2 §2.9 (resources/sartsm/V1C2.pdf): 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign', and it adds that 'the use of the (R)600 element with PROHIBITION signs using a diagonal slash, is not recommended' — i.e. the diagonal slash is the PROHIBITION marker, not the end-of-restriction marker. Teaching a learner to read a prohibition slash as 'no longer applies' is a safety-relevant inversion. Identical boilerplate hint was present on all 7 of the -600 signs and all 7 were approved and live; corrected together."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R403-600",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A red CROSS over a regulatory sign is what ends the rule it shows. A red diagonal slash is the opposite — it means prohibited. Do not read one for the other."
+     },
+     "behaviour": {
+      "en": "The special pedestrian-priority and walking-pace rules of a living street end here; normal road rules resume."
+     },
+     "plainEnglish": {
+      "en": "This sign marks the END of the living street (woonerf). From here, living-street rules no longer apply."
+     },
+     "commonMistake": {
+      "en": "Thinking the living street (woonerf) still applies past this sign — it does not; the rule has ended here."
+     },
+     "formalMeaning": {
+      "en": "Regulatory sign R403-600: it cancels the living street (woonerf) that applied on the road behind you."
+     }
+    }
+   },
+   "why": "testHint read 'A regulatory sign with a diagonal stripe through it means the rule it shows has ENDED.' That inverts the marker. SARTSM Vol 1 Ch 2 §2.9 (resources/sartsm/V1C2.pdf): 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign', and it adds that 'the use of the (R)600 element with PROHIBITION signs using a diagonal slash, is not recommended' — i.e. the diagonal slash is the PROHIBITION marker, not the end-of-restriction marker. Teaching a learner to read a prohibition slash as 'no longer applies' is a safety-relevant inversion. Identical boilerplate hint was present on all 7 of the -600 signs and all 7 were approved and live; corrected together."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R202-600",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A red CROSS over a regulatory sign is what ends the rule it shows. A red diagonal slash is the opposite — it means prohibited. Do not read one for the other."
+     },
+     "behaviour": {
+      "en": "Vehicles that were excluded by the weight limit may proceed beyond this point."
+     },
+     "plainEnglish": {
+      "en": "This sign marks the END of the vehicle mass (weight) limit. From here, the weight limit no longer applies."
+     },
+     "commonMistake": {
+      "en": "Thinking the vehicle mass (weight) limit still applies past this sign — it does not; the rule has ended here."
+     },
+     "formalMeaning": {
+      "en": "Regulatory sign R202-600: it cancels the vehicle mass (weight) limit that applied on the road behind you."
+     }
+    }
+   },
+   "why": "testHint read 'A regulatory sign with a diagonal stripe through it means the rule it shows has ENDED.' That inverts the marker. SARTSM Vol 1 Ch 2 §2.9 (resources/sartsm/V1C2.pdf): 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign', and it adds that 'the use of the (R)600 element with PROHIBITION signs using a diagonal slash, is not recommended' — i.e. the diagonal slash is the PROHIBITION marker, not the end-of-restriction marker. Teaching a learner to read a prohibition slash as 'no longer applies' is a safety-relevant inversion. Identical boilerplate hint was present on all 7 of the -600 signs and all 7 were approved and live; corrected together."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R133-600",
+   "set": {
+    "content": {
+     "testHint": {
+      "en": "A red CROSS over a regulatory sign is what ends the rule it shows. A red diagonal slash is the opposite — it means prohibited. Do not read one for the other."
+     },
+     "behaviour": {
+      "en": "You may switch your headlamps off — unless conditions such as dusk, rain, fog or a tunnel still require them by law."
+     },
+     "plainEnglish": {
+      "en": "This sign marks the END of the requirement to drive with headlamps on. From here, you no longer have to keep your headlamps switched on for this section."
+     },
+     "commonMistake": {
+      "en": "Thinking the requirement to drive with headlamps on still applies past this sign — it does not; the rule has ended here."
+     },
+     "formalMeaning": {
+      "en": "Regulatory sign R133-600: it cancels the requirement to drive with headlamps on that applied on the road behind you."
+     }
+    }
+   },
+   "why": "testHint read 'A regulatory sign with a diagonal stripe through it means the rule it shows has ENDED.' That inverts the marker. SARTSM Vol 1 Ch 2 §2.9 (resources/sartsm/V1C2.pdf): 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign', and it adds that 'the use of the (R)600 element with PROHIBITION signs using a diagonal slash, is not recommended' — i.e. the diagonal slash is the PROHIBITION marker, not the end-of-restriction marker. Teaching a learner to read a prohibition slash as 'no longer applies' is a safety-relevant inversion. Identical boilerplate hint was present on all 7 of the -600 signs and all 7 were approved and live; corrected together."
+  }
+ ]
+}

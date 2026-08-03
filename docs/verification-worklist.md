@@ -17,6 +17,26 @@
 **35 number-bearing claims across 43 objects.** Prose without figures still needs a read for sense,
 but the figures are the priority.
 
+## 🔴 Open — needs eyes on the artwork (2026-08-03)
+
+**The seven `-600` de-restriction signs: does our artwork show a red CROSS or a diagonal
+slash?** `R101-600`, `R132-600`, `R133-600`, `R202-600`, `R401-600`, `R402-600`,
+`R403-600` — all approved and live.
+
+All seven carried the same boilerplate hint claiming *"a diagonal stripe through it means
+the rule it shows has ENDED"*. SARTSM Vol 1 Ch 2 §2.9 says the opposite: *"DE-RESTRICTION
+is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the
+face of the sign"*, and that using the (R)600 element *"with PROHIBITION signs using a
+diagonal slash, is not recommended"* — the slash is the **prohibition** marker. The text
+is fixed (`scripts/data-repairs/derestriction-hint-fix-2026-08-03.json`).
+
+**What is NOT settled:** whether the SVGs in `public/signs/` draw a cross or a slash. The
+markup carries red elements but does not decide it, and guessing is how the wrong hint got
+in. If the artwork draws a slash, the sign rows are wrong, not just the words.
+
+Until this is resolved, **no question may be written against a `-600` sign.** One was
+drafted (`R101-600`) and dropped for exactly this reason.
+
 ## ⚠️ Start here — three items short of a primary source
 
 Flagged *by the drafting pass itself*. These are the most likely to be wrong.

@@ -1,0 +1,69 @@
+{
+ "description": "Corrects command-sign NAMES against the official DoT chart. Three are substantive: R105/R106 were carrying the R108/R109 names ('Turn Left'/'Turn Right') when the chart calls them 'Proceed left only'/'Proceed right only' — a different instruction; and R123 carried a fabricated '3500 kg' threshold when the chart says simply 'Goods vehicles only' (the GVM figure belongs to R124). Two are wording alignment (R111 'Pedal cycles only', R116 'Motor cycles only'). Stored MEANINGS were checked and are correct in each case — this is a naming defect, not a content one, but names travel into source_citation.",
+ "ops": [
+  {
+   "table": "road_signs",
+   "match": "code=eq.R105",
+   "set": {
+    "name": "Proceed left only"
+   },
+   "why": "Stored name 'Turn Left' does not match the official DoT chart, which lists 'R105 Proceed left only sign' in the Command signs block (resources/charts/RTSigns_charts.pdf). Names matter beyond display: they are pasted into questions' source_citation, so a wrong name propagates into the evidence trail. Found 2026-08-03 while drafting command-sign questions."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R106",
+   "set": {
+    "name": "Proceed right only"
+   },
+   "why": "Stored name 'Turn Right' does not match the official DoT chart, which lists 'R106 Proceed right only sign' in the Command signs block (resources/charts/RTSigns_charts.pdf). Names matter beyond display: they are pasted into questions' source_citation, so a wrong name propagates into the evidence trail. Found 2026-08-03 while drafting command-sign questions."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R123",
+   "set": {
+    "name": "Goods vehicles only"
+   },
+   "why": "Stored name 'Goods vehicles exceeding 3500 kg only' does not match the official DoT chart, which lists 'R123 Goods vehicles only sign' in the Command signs block (resources/charts/RTSigns_charts.pdf). Names matter beyond display: they are pasted into questions' source_citation, so a wrong name propagates into the evidence trail. Found 2026-08-03 while drafting command-sign questions."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R111",
+   "set": {
+    "name": "Pedal cycles only"
+   },
+   "why": "Stored name 'Cyclists only' does not match the official DoT chart, which lists 'R111 Pedal cycles only sign' in the Command signs block (resources/charts/RTSigns_charts.pdf). Names matter beyond display: they are pasted into questions' source_citation, so a wrong name propagates into the evidence trail. Found 2026-08-03 while drafting command-sign questions."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R116",
+   "set": {
+    "name": "Motor cycles only"
+   },
+   "why": "Stored name 'Motorcycles only' does not match the official DoT chart, which lists 'R116 Motor cycles only sign' in the Command signs block (resources/charts/RTSigns_charts.pdf). Names matter beyond display: they are pasted into questions' source_citation, so a wrong name propagates into the evidence trail. Found 2026-08-03 while drafting command-sign questions."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R108",
+   "set": {
+    "name": "Turn left"
+   },
+   "why": "Stored name 'Turn left ahead' does not match the official DoT chart, which lists 'R108 Turn left sign' in the Command signs block (resources/charts/RTSigns_charts.pdf). Names matter beyond display: they are pasted into questions' source_citation, so a wrong name propagates into the evidence trail. Found 2026-08-03 while drafting command-sign questions."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R109",
+   "set": {
+    "name": "Turn right"
+   },
+   "why": "Stored name 'Turn right ahead' does not match the official DoT chart, which lists 'R109 Turn right sign' in the Command signs block (resources/charts/RTSigns_charts.pdf). Names matter beyond display: they are pasted into questions' source_citation, so a wrong name propagates into the evidence trail. Found 2026-08-03 while drafting command-sign questions."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R124",
+   "set": {
+    "name": "Goods vehicles over indicated GVM only"
+   },
+   "why": "Stored name 'Goods vehicles exceeding 10 tonnes GVM only' does not match the official DoT chart, which lists 'R124 Goods vehicles over indicated GVM only sign' in the Command signs block (resources/charts/RTSigns_charts.pdf). Names matter beyond display: they are pasted into questions' source_citation, so a wrong name propagates into the evidence trail. Found 2026-08-03 while drafting command-sign questions."
+  }
+ ]
+}
