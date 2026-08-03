@@ -1,0 +1,118 @@
+{
+ "description": "Withdraws 13 signs whose artwork renders with NO legend. Found by the chart-verification pass on the 93 Brave-sourced signs: every served plate was rendered and compared against its own artwork on the official DoT chart. Most of the 93 came through clean — the parking-reservation family (R301-P..R333-P) and the vehicle sub-plates (R560..R583) match the chart faithfully. The failures cluster entirely in the SELECTIVE RESTRICTION plates (R5xx) plus R4.3, and they fail in the same way: the border is drawn and the legend is missing, so the sign is served as an empty box.\n\nThis is a different defect class from the -600 signs, which drew the WRONG marker. These draw NOTHING. A selective-restriction plate carries its entire meaning in the legend, so a blank one is not an approximation — it is the sign minus its content.\n\nMethod worth reusing: rendered colour depth separates them cleanly (blank ~250-410 unique colours, real 1300+), and every candidate was then confirmed by eye against the chart. The heuristic alone would have produced false positives — W405/W406 chevrons, W401/W402 hazard plates and IN7 are legitimately simple and DO match the chart.\n\nAlso flagged but NOT withdrawn: IN11.4 renders the placeholder '( TEXT )' where the chart shows a real message plate. It is a generic text-plate sign so a placeholder is arguably honest, but it should not ship reading '( TEXT )'.",
+ "ops": [
+  {
+   "table": "road_signs",
+   "match": "code=eq.R4.3",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows a red rectangle carrying a white arrow; our SVG renders as a thin red sliver with no arrow at all. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R502",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows the time bands '07:00-09:00 / 16:00-18:00'; ours is an empty red-bordered rectangle. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R503",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows 'WEEK 08:00-16:00 / SAT 08:00-13:00'; ours is empty. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R504",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows 'WEEK 07:00-08:30 16:30-18:00 / SAT 11:30-13:00'; ours is empty. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R505",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows a blue plate reading '30 min WEEK 09:00-16:00 SAT 08:00-13:00'; ours is a solid blue panel. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R506",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows a blue plate reading '60 min 09:00-16:00'; ours is a solid blue panel. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R511",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows a sun symbol (day-time hours); ours is empty. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R512",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows stars and a moon (night-time hours); ours is a solid black panel. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R520",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows a black arrow pointing left; ours is empty. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R521",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows a black arrow pointing right; ours is empty. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R522",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows a black double-headed arrow (left and right); ours is empty. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R523",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows the pay-and-display symbol; ours is a solid blue panel. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R540",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK HAS NO LEGEND. Rendered our SVG beside the sign's own plate on the official DoT chart: chart shows a blue plate reading '15 MAX'; ours is a solid blue panel. A selective-restriction sub-plate carries its whole meaning in the legend — the time band, the arrow, the symbol — so a blank plate is not a rough likeness, it is the sign with its content removed. A learner studying it learns nothing and would not recognise the real sign. Detected by measuring rendered colour depth across all 365 served plates (blank plates resolve to ~250-410 unique colours against 1300+ for a real one) and then confirmed by eye against the chart. asset_status returned to needs_review, which drops it from the served set without deleting the record."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-083",
+   "set": {
+    "in_exam": false,
+    "explanation": "WITHDRAWN 2026-08-03 — this question describes a white arrow on a red rectangle, but our R4.3 artwork renders blank, so the learner would be asked about a sign they cannot see. Restore once the artwork is redrawn and chart-verified. See scripts/data-repairs/withdraw-blank-plates-2026-08-03.json."
+   },
+   "why": "RS-083 asks the learner to read 'a red rectangle and a white arrow pointing straight ahead'. Our R4.3 SVG has no arrow — it renders as a thin red sliver. The question is sound; the picture it depends on is not. Pulled from the exam pool with a withdrawal notice rather than deleted, so it can be restored with the artwork. It was drafted today and has been draft throughout, so no learner saw it."
+  }
+ ]
+}

@@ -1,0 +1,491 @@
+{
+ "description": "Records the result of the chart-verification pass over the Brave-sourced signs: 54 whose artwork was compared against the official DoT chart and MATCHES. Until now every one of these carried alignment='not_in_chart' and in_official_chart=false, which was not a finding but an artefact — the ingest that approved them used a Brave web search and never opened the chart, so the fields recorded the absence of a check rather than the absence of the sign. The 13 that failed the same comparison are withdrawn in withdraw-blank-plates-2026-08-03.json; three that do not exist at all were withdrawn earlier the same day.",
+ "ops": [
+  {
+   "table": "road_signs",
+   "match": "code=eq.R301-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R304-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R305-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R306-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R307-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R308-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R309-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R310-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R311-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R312-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R313-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R314-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R315-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R316-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R317-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R318-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R319-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R320-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R321-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R322-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R323-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R324-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R327-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R330-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R333-P",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R501",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R532",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R533",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R534",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R535",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R560",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R561",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R562",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R563",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R564",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R565",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R566",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R567",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R568",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R569",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R570",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R571",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R572",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R573",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R574",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R575",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R576",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R577",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R578",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R579",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R580",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R581",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R582",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R583",
+   "set": {
+    "in_official_chart": true,
+    "alignment": "aligned"
+   },
+   "why": "Chart-verified 2026-08-03. The sign's own plate was located on the official DoT chart by its caption's bounding box, cropped, and rendered side by side with public/signs/<code>.svg for visual comparison. Artwork matches. Previously the row read alignment='not_in_chart' and in_official_chart=false even though the code IS on the chart — those fields were written by the Brave-search ingest, which never actually opened the chart, so they recorded 'I did not look' as 'it is not there'."
+  }
+ ]
+}
