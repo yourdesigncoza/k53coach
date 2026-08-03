@@ -1,0 +1,23 @@
+{
+ "description": "Withdraws the last two unverifiable signs found by the 2026-08-03 artwork and provenance audit. Method: every served sign's code was checked against the official chart AND all 24 SARTSM volumes, in both the plain (R245) and parenthesised ((R)522) notations, and 25 chart-listed signs had their artwork rendered and compared side by side with ours.\n\nThe audit's headline is reassuring: of 368 served signs, the 25 whose artwork was compared all MATCH the chart, and 41 R5xx sub-plates initially flagged as absent turned out to be present under the (R)nnn notation — my own matcher had missed them, which is the trap recorded in withdraw-foreign-signs-2026-07-31.json. Only THREE signs survived every check as genuinely unverifiable: IN20 (withdrawn separately, and demonstrably a European sign), R245 and W365.\n\nAll three share one provenance: sourced from Wikimedia via a Brave search and approved by 'ai:claude-code+brave'. That cohort is 93 of the 368 served signs and is where every artwork defect found today originated.",
+ "ops": [
+  {
+   "table": "road_signs",
+   "match": "code=eq.R245",
+   "set": {
+    "review_status": "draft",
+    "asset_status": "needs_review"
+   },
+   "why": "R245 'Vehicles exceeding 12 tonnes on a tandem axle / bogie axle prohibited' cannot be verified against any source we hold. The code is absent from the official DoT chart in both the plain and the (R)nnn notation, and absent from all 24 SARTSM volumes. The words 'tandem' and 'bogie' appear NOWHERE in the chart or in any volume. SA's axle-mass sign is R203, which the chart names generically as 'Axle massload limit sign' — the figure is carried on the sign face, so a separate hardcoded 12-tonne tandem-axle variant looks invented rather than merely undocumented. Sourced from commons.wikimedia.org/wiki/File:SADC_road_sign_R245.svg and approved by 'ai:claude-code+brave'. Withdrawn pending a citation; restore only with the instrument that introduces it."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.W365",
+   "set": {
+    "review_status": "draft",
+    "asset_status": "needs_review"
+   },
+   "why": "W365 'Moveable bridge ahead' does not exist in the sources we hold. The W36x warning series runs W360, W361, W362, W363 in BOTH the official DoT chart and the SARTSM volumes — consistently, in both — and stops there. W365 appears in neither. Sourced from commons.wikimedia.org/wiki/File:SADC_road_sign_W365.svg and approved by 'ai:claude-code+brave'. Same provenance and same failure as IN20 and the -600 de-restriction set. Withdrawn pending a citation."
+  }
+ ]
+}

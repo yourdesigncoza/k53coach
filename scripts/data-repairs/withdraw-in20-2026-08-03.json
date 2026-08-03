@@ -1,0 +1,24 @@
+{
+ "description": "Withdraws IN20 and the one question drafted against it. Found during the artwork audit on 2026-08-03 by checking every served sign's code against the chart AND the 24 SARTSM volumes, rather than trusting the row's own verification fields. IN20 is a European (Vienna Convention) sign — 'priority over oncoming vehicles' — with no SA equivalent; SA has only R6, YIELD to oncoming traffic, which is the opposite duty. The question was mine, written earlier the same day from a record that looked verified but was approved by 'ai:claude-code+brave' at 0.96 confidence off a Wikimedia search whose cited provenance (V1C4) does not mention the sign at all.",
+ "ops": [
+  {
+   "table": "road_signs",
+   "match": "code=eq.IN20",
+   "set": {
+    "review_status": "draft",
+    "asset_status": "needs_review"
+   },
+   "why": "IN20 'Right-of-way over oncoming vehicles' DOES NOT EXIST as a South African sign. It is absent from the official DoT chart and from all 24 SARTSM volumes. The SADC information-signs chapter (Vol 1 Ch 5) documents IN1-IN7, IN9-IN12, IN14-IN19 and IN24-IN27 — there is no IN20. Its own verification record cites https://www.transport.gov.za/.../V1C4.pdf as provenance; V1C4 contains zero references to IN20. It was sourced from commons.wikimedia.org/wiki/File:SADC_road_sign_IN20.svg via a Brave search and approved by 'ai:claude-code+brave' at confidence 0.96 — a confident machine approval resting on a web search rather than on either primary source.\n\nThe MEANING is the giveaway. 'Priority over oncoming vehicles' is the Vienna Convention sign used across Europe. South Africa has only the converse, R6 YIELD TO ONCOMING TRAFFIC (SARTSM Vol 1 Ch 2 §2.2.8, and 'R6 Yield to oncoming traffic sign' on the chart) — a duty to give way, not a grant of priority. Teaching a learner that they have priority at a narrow section, when the only SA sign in that situation tells them to yield, inverts the rule in the most dangerous possible direction.\n\nSame failure as the withdrawn R360 Vienna pedestrian-crossing sign and the -600 de-restriction slashes: European artwork and meaning imported into an SA library. Withdrawn from the served set rather than deleted so the record of why survives. Restore only if a post-2000 SA instrument introduces it, cited."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.RS-076",
+   "set": {
+    "review_status": "draft",
+    "in_exam": false,
+    "explanation": "WITHDRAWN 2026-08-03 — this question was drafted against sign IN20, which does not exist in South Africa. See scripts/data-repairs/withdraw-in20-2026-08-03.json. Do not restore. South Africa's sign for a narrow section is R6, YIELD TO ONCOMING TRAFFIC, which imposes the opposite duty."
+   },
+   "why": "Question RS-076 asked what a sign showing 'a large arrow pointing in your direction with a small arrow pointing against it' means, and keyed 'You have right of way through the narrow section'. It was drafted by me today from the IN20 record, in good faith, because the record looked verified. IN20 is not a South African sign and the meaning is the inverse of R6, the only SA sign for that situation. Pulled from the exam pool and its explanation replaced with a withdrawal notice so the row cannot be silently approved later. It never reached a learner — it has been draft since it was written."
+  }
+ ]
+}
