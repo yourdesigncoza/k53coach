@@ -1,0 +1,41 @@
+{
+ "description": "Rewrites the four free-readiness explanations that quoted regulations at the learner. Found by the e2e flow runner, which now checks learner-facing prose for regulation-speak, and these were the FIRST content any visitor meets — the free test is the top of the funnel. In every case the substance was correct and sometimes unusually careful (q-rules-1 correctly scopes reg 301 to traffic islands rather than four-way stops); only the register was wrong. Each provision moves into source_citation, quoted, so nothing is lost for a reviewer. CLAUDE.md constraint 10.",
+ "ops": [
+  {
+   "table": "questions",
+   "match": "id=eq.q-signs-5",
+   "set": {
+    "explanation": "Both are red-ringed circles with a single diagonal, so the ring will not tell them apart — the letter will. P is no parking; S is no stopping. No stopping is the stricter of the two: you may not even pause to drop someone off.",
+    "source_citation": "NRTR 2000 Sch 1 — R216 (parking prohibited) and R217 (stopping prohibited): both specified as border and diagonal, distinguished by the letter"
+   },
+   "why": "Explanation quoted Schedule 1 by name and its 'Border and diagonal' wording at the learner. The discriminator is the letter, so that is what the prose now teaches; the schedule reference moves to source_citation. CLAUDE.md constraint 10."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.q-rules-1",
+   "set": {
+    "explanation": "First to stop is first to go. Being on the right gives you nothing here — that yield-to-the-right habit belongs at a traffic circle, not at a four-way stop. Wait your turn in the order everyone arrived.",
+    "source_citation": "NRTR 2000 Sch 1 — R1.4 (4-way stop); reg 301 (right of way at certain road junctions) applies where traffic is required to move around a traffic island, i.e. circles, NOT four-way stops"
+   },
+   "why": "Explanation named 'regulation 301' at the learner. The substance was right and unusually careful — reg 301 really is scoped to traffic islands rather than four-way stops — so the point survives in plain words and the scoping note moves into the citation where a reviewer can check it. CLAUDE.md constraint 10."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.q-rules-2",
+   "set": {
+    "explanation": "Pick a fixed point and count: you should reach it at least two seconds after the vehicle ahead, and leave more in the rain. No exact distance is written into the law — it asks you not to follow more closely than is reasonable, and two seconds is the standard that meets it.",
+    "source_citation": "NRTR 2000 reg 308(1)(b) — a driver shall not follow another vehicle 'more closely than is reasonable and prudent'; no numeric following distance is prescribed. Two seconds is the K53 teaching standard."
+   },
+   "why": "Explanation cited 'regulation 308(1)(b)' and quoted it at the learner. The important idea — that the law sets no number, so the two-second rule is a teaching standard rather than a statutory distance — is kept in plain words. CLAUDE.md constraint 10."
+  },
+  {
+   "table": "questions",
+   "match": "id=eq.q-rules-4",
+   "set": {
+    "explanation": "Someone already on the crossing has the right of way, so stop and let them finish. Hooting at them or steering around them is both unlawful and dangerous.",
+    "source_citation": "NRTR 2000 reg 315(2) — the driver shall yield the right of way, slowing down or stopping if need be, to a pedestrian crossing the roadway within a pedestrian crossing"
+   },
+   "why": "Explanation opened with 'Regulation 315(2) requires a driver to...' — the citation read as the lesson. Rewritten to what the driver does; the provision now sits in source_citation, quoted. CLAUDE.md constraint 10."
+  }
+ ]
+}

@@ -6,11 +6,17 @@ import { SiteFooter } from "@/components/site-footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { QuizRunner } from "@/components/quiz/quiz-runner";
 import { getReadinessQuestions } from "@/lib/questions";
+import { sampleReadinessQuestions } from "@/lib/readiness-sample";
 
 export const metadata = { title: "Free readiness test" };
 
+// Rotates per request: the free test is a short sample of the curated pool, so a
+// retake is a different paper. Rendering must not be cached or every visitor would
+// get the same "random" five.
+export const dynamic = "force-dynamic";
+
 export default async function ReadinessPage() {
-  const questions = await getReadinessQuestions();
+  const questions = sampleReadinessQuestions(await getReadinessQuestions());
   const t = await getTranslations("readiness");
 
   const benefits = [

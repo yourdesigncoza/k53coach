@@ -138,7 +138,7 @@
   "readiness": {
     "title": "Your free K53 readiness check",
     "intro": "A quick {count}-question test across road signs, rules of the road, and vehicle controls. You'll get a clear readiness score you can show a parent.",
-    "benefitTime": "Takes about 5 minutes",
+    "benefitTime": "Takes about a minute",
     "benefitAnon": "Anonymous — nothing is saved or shared",
     "benefitTopics": "See exactly which topics need work",
     "start": "Start the test",
