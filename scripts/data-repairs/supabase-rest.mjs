@@ -41,6 +41,15 @@ export async function patch(path, body) {
   if (!res.ok) throw new Error(`${path} -> ${res.status} ${await res.text()}`);
 }
 
+export async function insert(table, body) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+    method: "POST",
+    headers: { ...headers, Prefer: "return=minimal" },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) throw new Error(`${table} -> ${res.status} ${await res.text()}`);
+}
+
 export async function select(path) {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, { headers });
   if (!res.ok) throw new Error(`${path} -> ${res.status} ${await res.text()}`);

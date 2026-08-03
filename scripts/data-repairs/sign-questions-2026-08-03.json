@@ -1,0 +1,699 @@
+[
+ {
+  "sign_code": "IN4",
+  "objective_code": "IN4",
+  "prompt": "You are approaching a T-junction. A green sign shows the road layout with the whole bar across the top of the 'T' coloured red. What is it telling you?",
+  "options": [
+   "Only the right-hand arm of the crossing road is a dead end.",
+   "The road crossing your path is a dead end - there is no way through in either direction.",
+   "The crossing road is one-way and you may not turn into it."
+  ],
+  "answer": 1,
+  "explanation": "The red bar sits on the road that crosses your path, so neither way along it goes through. If your destination is not on that short street, don't turn in - you will have to turn around and come back out.",
+  "source_citation": "NRTR 2000 Sch 1 - IN4 Dead end",
+  "difficulty": 2,
+  "exam_likelihood": "high",
+  "topic_tag": "Guidance signs",
+  "id": "RS-067"
+ },
+ {
+  "sign_code": "IN5",
+  "objective_code": "IN5",
+  "prompt": "The road ahead branches. A green dead-end sign shows the branch layout with the right-hand arm coloured red. What does the red arm tell you?",
+  "options": [
+   "The right-hand branch is a no-through road; the other branch carries on.",
+   "The left-hand branch is the no-through road.",
+   "You are not allowed to turn right here."
+  ],
+  "answer": 0,
+  "explanation": "The red arm is the one that is closed. Here it is the right-hand branch, so turning right ends in a cul-de-sac. Keep to the through route unless the address you want is actually on that branch.",
+  "source_citation": "NRTR 2000 Sch 1 - IN5 Dead end",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Guidance signs",
+  "id": "RS-068"
+ },
+ {
+  "sign_code": "IN6",
+  "objective_code": "IN6",
+  "prompt": "You are looking for a friend's street, which is the left-hand one where the road ahead splits. The green dead-end sign shows the left arm in red. What should you expect if you take it?",
+  "options": [
+   "The right-hand branch is the dead end, so the left one carries on through.",
+   "The left-hand branch is closed to traffic and you may not enter it.",
+   "The left-hand branch has no exit at the far end - you would have to come back out the same way."
+  ],
+  "answer": 2,
+  "explanation": "The red arm shows which branch is closed, and on this sign it is the left one. It is not a banned turn: you may drive in, but there is no way out at the far end, so you return the way you came.",
+  "source_citation": "NRTR 2000 Sch 1 - IN6 Dead end",
+  "difficulty": 3,
+  "exam_likelihood": "medium",
+  "topic_tag": "Guidance signs",
+  "id": "RS-069"
+ },
+ {
+  "sign_code": "IN7",
+  "objective_code": "IN7",
+  "prompt": "A yellow diamond priority-road sign tells you that you are on a priority road. What does that actually give you?",
+  "options": [
+   "Traffic entering from the side roads you pass must give way to you.",
+   "Right of way over everything ahead, including at traffic signals.",
+   "You must give way to traffic coming out of the side roads."
+  ],
+  "answer": 0,
+  "explanation": "The priority-road sign settles one thing only: who gives way at the side roads you pass. They yield to you. It changes nothing at traffic signals, stop signs or pedestrian crossings, so keep watching.",
+  "source_citation": "NRTR 2000 Sch 1 - IN7 Priority road ahead",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Guidance signs",
+  "id": "RS-070"
+ },
+ {
+  "sign_code": "IN12",
+  "objective_code": "IN12",
+  "prompt": "A green information sign carries a single white letter 'i'. What is ahead?",
+  "options": [
+   "A police station.",
+   "A hospital or first-aid post.",
+   "A travel information centre."
+  ],
+  "answer": 2,
+  "explanation": "The white 'i' is the information symbol - maps, directions and local advice. A hospital is shown by an 'H'. Nothing is required of you here; stop only if you actually want travel information.",
+  "source_citation": "NRTR 2000 Sch 1 - IN12 Information centre",
+  "difficulty": 1,
+  "exam_likelihood": "medium",
+  "topic_tag": "Guidance signs",
+  "id": "RS-071"
+ },
+ {
+  "sign_code": "IN14",
+  "objective_code": "IN14",
+  "prompt": "A green sign shows a traffic-light symbol next to the number 60. What does the 60 mean?",
+  "options": [
+   "The speed limit drops to 60 until the last set of lights.",
+   "The lights ahead are timed so that holding about 60 keeps you moving through on green.",
+   "You may not drive slower than 60 until the last set of lights."
+  ],
+  "answer": 1,
+  "explanation": "The number is the speed the lights are timed for - not a limit and not a minimum. Hold a steady speed near it, within the legal limit, and you should ride the greens. You still stop for any red.",
+  "source_citation": "NRTR 2000 Sch 1 - IN14 Co-ordinated traffic signals at indicated speed",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Guidance signs",
+  "id": "RS-072"
+ },
+ {
+  "sign_code": "IN15",
+  "objective_code": "IN15",
+  "prompt": "You are approaching a traffic light and a green sign next to it reads '3 PHASE'. What should you expect?",
+  "options": [
+   "Three separate sets of traffic lights follow one after the other.",
+   "The signal runs in three separate stages, so your green may only come later in the cycle.",
+   "All directions share the same green, so you may move as soon as any light turns green."
+  ],
+  "answer": 1,
+  "explanation": "Multi-phase means the cycle is split into stages, each releasing different movements. A green somewhere in the intersection is not your green - wait for the signal facing your lane and be patient.",
+  "source_citation": "NRTR 2000 Sch 1 - IN15 Multi-phase traffic signals",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Guidance signs",
+  "id": "RS-073"
+ },
+ {
+  "sign_code": "IN16",
+  "objective_code": "IN16",
+  "prompt": "An information sign showing a bus symbol appears at the side of the road. What is it telling you?",
+  "options": [
+   "There is a bus stop ahead - expect buses stopping and passengers near the road.",
+   "The lane ahead is reserved for buses and you may not drive in it.",
+   "You must give way to every bus from this point onwards."
+  ],
+  "answer": 0,
+  "explanation": "The bus symbol here is information, not a command: it marks a stop ahead. Expect a bus to pull in or pull away, and passengers stepping out near the road, so leave room and cover the brake.",
+  "source_citation": "NRTR 2000 Sch 1 - IN16 Bus stop ahead",
+  "difficulty": 1,
+  "exam_likelihood": "medium",
+  "topic_tag": "Guidance signs",
+  "id": "RS-074"
+ },
+ {
+  "sign_code": "IN17",
+  "objective_code": "IN17",
+  "prompt": "An information sign indicates a modal transfer point ahead. What is there?",
+  "options": [
+   "A weighbridge where heavy vehicles are weighed.",
+   "A place where travellers change between transport modes, such as bus, taxi and train.",
+   "The point where the freeway ends and an ordinary road begins."
+  ],
+  "answer": 1,
+  "explanation": "A modal transfer point is where people swap between bus, taxi and train. The hazard is people: passengers crossing to reach it and vehicles stopping to drop them off, so ease off and look early.",
+  "source_citation": "NRTR 2000 Sch 1 - IN17 Modal transfer point",
+  "difficulty": 2,
+  "exam_likelihood": "low",
+  "topic_tag": "Guidance signs",
+  "id": "RS-075"
+ },
+ {
+  "sign_code": "IN20",
+  "objective_code": "IN20",
+  "prompt": "The road narrows ahead and a sign shows a large arrow pointing in your direction of travel with a small arrow pointing against it. What does it mean?",
+  "options": [
+   "Oncoming traffic has right of way - wait until the narrow section is clear.",
+   "You have right of way through the narrow section, but check that oncoming traffic has yielded.",
+   "The road ahead becomes one-way in your direction."
+  ],
+  "answer": 1,
+  "explanation": "The big arrow is your direction and the small one is theirs, so you go first through the narrow bit. Priority is not protection: make sure the oncoming driver has actually stopped before you commit.",
+  "source_citation": "NRTR 2000 Sch 1 - IN20 Right-of-way over oncoming vehicles",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Guidance signs",
+  "id": "RS-076"
+ },
+ {
+  "sign_code": "R1.2",
+  "objective_code": "R1.2",
+  "prompt": "A stop sign has a panel below it showing an arrow curving left. Who has to come to a complete standstill?",
+  "options": [
+   "Nobody — the arrow downgrades the whole sign to a give-way",
+   "Everyone except drivers turning left, who only have to give way",
+   "Only drivers turning left; everyone else may carry on if the way is clear"
+  ],
+  "answer": 1,
+  "explanation": "The arrow panel carves out one movement only: drivers turning left give way instead of stopping. Everyone going straight or turning right still comes to a complete standstill at the line.",
+  "source_citation": "NRTR 2000 Sch 1 — R1.2 Stop, except vehicles turning in the direction of the arrow (yield)",
+  "difficulty": 3,
+  "exam_likelihood": "medium",
+  "topic_tag": "Control signs",
+  "id": "RS-077"
+ },
+ {
+  "sign_code": "R1.4",
+  "objective_code": "R1.4",
+  "prompt": "A stop sign carries a panel reading '4'. What is it telling you about the intersection?",
+  "options": [
+   "Every one of the four approaches has a stop sign",
+   "You are the fourth vehicle in the queue",
+   "Four vehicles may cross at a time"
+  ],
+  "answer": 0,
+  "explanation": "The number counts the approaches that are stop-controlled, not vehicles. At a four-way stop every driver must come to a complete standstill — nobody has an automatic right to go first because their road looks bigger.",
+  "source_citation": "SARTSM Vol 1 Ch 2 §2.2.1 (R1.4 4-way stop — all-way stop control at a four-leg junction; same stopping duty as R1)",
+  "difficulty": 2,
+  "exam_likelihood": "high",
+  "topic_tag": "Control signs",
+  "id": "RS-078"
+ },
+ {
+  "sign_code": "R1.3",
+  "objective_code": "R1.3",
+  "prompt": "A stop sign has the number 3 on a small panel with it. What does the number tell you?",
+  "options": [
+   "You must stand still for three seconds before pulling off",
+   "Three approaches to this intersection each have a stop sign",
+   "Three roads join ahead, but only your road has to stop"
+  ],
+  "answer": 1,
+  "explanation": "The number counts how many approaches are stop-controlled — here, three. Every one of them must stop, so arriving on what looks like the main road gives you nothing.",
+  "source_citation": "NRTR 2000 Sch 1 — R1.3 Stop (3-way)",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Control signs",
+  "id": "RS-079"
+ },
+ {
+  "sign_code": "R2.1",
+  "objective_code": "R2.1",
+  "prompt": "A downward-pointing yield triangle has a panel showing a walking person. What must you do?",
+  "options": [
+   "Give way to crossing vehicles; people on foot wait for you",
+   "Nothing yet — it warns that pedestrians may be about further on",
+   "Give way to people on foot, stopping if you need to before you go on"
+  ],
+  "answer": 2,
+  "explanation": "The walking-person panel changes who you are yielding to. This is not a warning that people might be about — it is an instruction to let them go first, stopping if you must before you move off.",
+  "source_citation": "NRTR 2000 Sch 1 — R2.1 Yield to pedestrians",
+  "difficulty": 2,
+  "exam_likelihood": "high",
+  "topic_tag": "Control signs",
+  "id": "RS-080"
+ },
+ {
+  "sign_code": "R2.2",
+  "objective_code": "R2.2",
+  "prompt": "You approach a mini circle with a yield triangle showing a circle of arrows. Which vehicle must you give way to?",
+  "options": [
+   "Only vehicles already driving round the circle",
+   "Only vehicles approaching from your right",
+   "Any vehicle that will reach the yield line before you and cross your path"
+  ],
+  "answer": 2,
+  "explanation": "It is the yield line that settles it, not whether a car is already going round. If another vehicle gets there first and its path crosses yours, it goes first. Move clockwise and try not to drive over the circle itself.",
+  "source_citation": "SARTSM Vol 1 Ch 2 §2.2.4 (R2.2 yield at mini circle — yield to any vehicle crossing the RTM2 yield line first whose path will cross yours; clockwise; do not encroach)",
+  "difficulty": 2,
+  "exam_likelihood": "high",
+  "topic_tag": "Control signs",
+  "id": "RS-081"
+ },
+ {
+  "sign_code": "R4.2",
+  "objective_code": "R4.2",
+  "prompt": "A red rectangular sign shows a white arrow pointing to the right. Does it order you to turn right?",
+  "options": [
+   "Yes — you must turn right here",
+   "No — it warns that the road bends sharply right ahead",
+   "No — it tells you the roadway runs one way, to the right"
+  ],
+  "answer": 2,
+  "explanation": "A red one-way sign describes the road, it does not order a turn. The arrow shows the direction traffic on that roadway runs — you may travel that way, and you may never drive against it.",
+  "source_citation": "NRTR 2000 Sch 1 — R4.2 One-way roadway",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Control signs",
+  "id": "RS-082"
+ },
+ {
+  "sign_code": "R4.3",
+  "objective_code": "R4.3",
+  "prompt": "A road is signed with a red rectangle and a white arrow pointing straight ahead, but your route needs you to travel the other way down it. What may you do?",
+  "options": [
+   "Enter against the arrow if you keep well to the left and nothing is coming",
+   "Not enter against the arrow at all — find another way round",
+   "Enter against the arrow for a short distance only, to reach a property"
+  ],
+  "answer": 1,
+  "explanation": "One way means one way for the whole roadway — no exception for going slowly, keeping left, or only travelling a short stretch. If your route needs the other direction, approach it from the other end.",
+  "source_citation": "NRTR 2000 Sch 1 — R4.3 One-way roadway",
+  "difficulty": 1,
+  "exam_likelihood": "medium",
+  "topic_tag": "Control signs",
+  "id": "RS-083"
+ },
+ {
+  "sign_code": "R5",
+  "objective_code": "R5",
+  "prompt": "A red diamond-shaped sign shows a walking person, marking a pedestrian precinct. Which vehicles may go in?",
+  "options": [
+   "Any vehicle, as long as it gives way to people on foot",
+   "Only vehicles delivering or loading goods, doing maintenance, or emergency vehicles",
+   "No vehicle at all, under any circumstances"
+  ],
+  "answer": 1,
+  "explanation": "Most drivers may not enter at all — the precinct is open only to deliveries, maintenance and emergency vehicles. If you are one of those, you give way to every pedestrian in or about to cross your path, and keep to 15 km/h.",
+  "source_citation": "SARTSM Vol 1 Ch 2 §2.2.7 (R5 pedestrian priority — permitted vehicle classes, yield duty, 15 km/h)",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Control signs",
+  "id": "RS-084"
+ },
+ {
+  "sign_code": "R6",
+  "objective_code": "R6",
+  "prompt": "A sign in a red ring shows two arrows: a red one pointing up and a black one pointing down towards you. Who goes first through the narrow section?",
+  "options": [
+   "You do — oncoming traffic must wait for you",
+   "Neither — both directions share the space and squeeze past",
+   "Oncoming traffic does — you wait for it to come through"
+  ],
+  "answer": 2,
+  "explanation": "Two arrows, two roles: the red arrow is the traffic coming at you and it goes first; the black one is you, and you wait. Slow down and stop if you must. This is the opposite of a priority sign.",
+  "source_citation": "NRTR 2000 Sch 1 — R6 Yield to oncoming traffic",
+  "difficulty": 3,
+  "exam_likelihood": "medium",
+  "topic_tag": "Control signs",
+  "id": "RS-085"
+ },
+ {
+  "sign_code": "R106",
+  "objective_code": "R106",
+  "prompt": "You reach a junction where a blue circle shows a straight white arrow pointing right. May you carry straight on?",
+  "options": [
+   "Yes — the arrow only suggests the easiest route through the junction.",
+   "No — right is the only direction you may take here.",
+   "Yes, as long as you first give way to traffic coming from the right."
+  ],
+  "answer": 1,
+  "explanation": "Blue circle means you must. A straight arrow pointing right makes right the only way you may go — no straight on, no left, no U-turn. It is an instruction, not a suggestion.",
+  "source_citation": "NRTR 2000 Sch 1 — R106 Proceed right only",
+  "difficulty": 2,
+  "exam_likelihood": "high",
+  "topic_tag": "Command signs",
+  "id": "RS-086"
+ },
+ {
+  "sign_code": "R107",
+  "objective_code": "R107",
+  "prompt": "A blue circle with a white arrow pointing straight up stands at a junction that has an open side road on your left. What may you do?",
+  "options": [
+   "Go straight ahead only — you may not turn into the side road.",
+   "Go straight ahead, or turn left into the side road if it is safe.",
+   "Go straight ahead, but only after stopping at the junction first."
+  ],
+  "answer": 0,
+  "explanation": "The blue circle commands the one movement it shows. It does not merely allow you to go straight — it forbids turning, so the side road is out even when it is clear and looks inviting.",
+  "source_citation": "NRTR 2000 Sch 1 — R107 Proceed Straight",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Command signs",
+  "id": "RS-087"
+ },
+ {
+  "sign_code": "R110",
+  "objective_code": "R110",
+  "prompt": "A blue circle showing a walking person marks the way ahead. What must a driver do?",
+  "options": [
+   "Drive on with care — people on foot are kept out of that area.",
+   "Drive on, but expect a pedestrian crossing a little further ahead.",
+   "Not drive in at all — the way ahead is set aside for people on foot."
+  ],
+  "answer": 2,
+  "explanation": "A blue circle reserves the space for whoever is pictured, so this route belongs to people on foot and vehicles stay out. The same figure inside a red ring would mean the opposite: no pedestrians.",
+  "source_citation": "NRTR 2000 Sch 1 — R110 Pedestrians only",
+  "difficulty": 1,
+  "exam_likelihood": "medium",
+  "topic_tag": "Command signs",
+  "id": "RS-088"
+ },
+ {
+  "sign_code": "R111",
+  "objective_code": "R111",
+  "prompt": "The lane beside you is marked with a blue circle containing a bicycle. What does that mean for you as a driver?",
+  "options": [
+   "The lane is shared, so you may use it as long as you watch for cyclists.",
+   "The lane is reserved for pedal cyclists, so keep your vehicle out of it.",
+   "Cyclists are kept out of that lane, so you may use it freely."
+  ],
+  "answer": 1,
+  "explanation": "A bicycle on blue reserves the lane for pedal cycles, so motor vehicles stay out even when it looks empty. It is not an invitation to share, and it is not the sign that keeps bicycles away.",
+  "source_citation": "NRTR 2000 Sch 1 — R111 Pedal cycles only",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Command signs",
+  "id": "RS-089"
+ },
+ {
+  "sign_code": "R113",
+  "objective_code": "R113",
+  "prompt": "A path is marked with a blue circle showing a bicycle and a walking person with a line down the middle between them. What does that line tell you?",
+  "options": [
+   "Only the half nearest the road is open; the other half is closed.",
+   "Cyclists and pedestrians may mix freely anywhere along the path.",
+   "Cyclists and pedestrians each keep to their own side of the path."
+  ],
+  "answer": 2,
+  "explanation": "Without a divider the two share the whole width and must look out for each other. The line splits the path instead: bicycles stay on the bicycle side, people on foot on the walker side.",
+  "source_citation": "NRTR 2000 Sch 1 — R113 Cyclists and pedestrians only",
+  "difficulty": 2,
+  "exam_likelihood": "low",
+  "topic_tag": "Command signs",
+  "id": "RS-090"
+ },
+ {
+  "sign_code": "R116",
+  "objective_code": "R116",
+  "prompt": "You are driving a car and the road ahead is marked with a blue circle showing a motorcycle. What must you do?",
+  "options": [
+   "Take another route — that road is set aside for motorcycles.",
+   "Carry on, but give way to any motorcycle that comes past you.",
+   "Carry on — the sign is there to warn you that motorcycles use the road."
+  ],
+  "answer": 0,
+  "explanation": "The blue circle names who the road is for, and here that is motorcycles alone. Cars, bakkies and trucks must keep out. It is not a warning that motorbikes may be about.",
+  "source_citation": "NRTR 2000 Sch 1 — R116 Motor cycles only",
+  "difficulty": 2,
+  "exam_likelihood": "low",
+  "topic_tag": "Command signs",
+  "id": "RS-091"
+ },
+ {
+  "sign_code": "R118",
+  "objective_code": "R118",
+  "prompt": "A blue circle shows a car with a sign on its roof. Which vehicles may use that lane?",
+  "options": [
+   "Any motor car.",
+   "Any vehicle that is carrying passengers.",
+   "Taxis only."
+  ],
+  "answer": 2,
+  "explanation": "The roof sign is the detail that decides it. A plain car on blue would reserve the lane for motor cars in general; the car with a roof sign narrows it to taxis, so ordinary cars stay out.",
+  "source_citation": "NRTR 2000 Sch 1 — R118 Taxis only",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Command signs",
+  "id": "RS-092"
+ },
+ {
+  "sign_code": "R119",
+  "objective_code": "R119",
+  "prompt": "The lane ahead is marked with a blue circle showing a minibus. How binding is that sign on other drivers?",
+  "options": [
+   "It is only advice — you may use the lane if you are not delaying anyone.",
+   "It is compulsory — only minibuses may use that lane.",
+   "It is compulsory during peak hours and advice at other times."
+  ],
+  "answer": 1,
+  "explanation": "Blue circles are commands and bind you just as tightly as a red prohibition does. A minibus on blue keeps the lane for minibuses, so driving a car in it is an offence at any hour.",
+  "source_citation": "NRTR 2000 Sch 1 — R119 Mini-buses only",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Command signs",
+  "id": "RS-093"
+ },
+ {
+  "sign_code": "R121",
+  "objective_code": "R121",
+  "prompt": "A lane is reserved by a blue circle showing a full-size bus. You are driving a minibus. May you use that lane?",
+  "options": [
+   "Yes — a minibus counts as a bus for this sign.",
+   "Yes, provided you are carrying passengers at the time.",
+   "No — that lane is for full-size buses, and minibuses have their own sign."
+  ],
+  "answer": 2,
+  "explanation": "The picture sets the exact class allowed. A full-size bus means buses; minibuses and midibuses each have a sign of their own, so a minibus belongs in the general traffic lanes.",
+  "source_citation": "NRTR 2000 Sch 1 — R121 Buses only",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Command signs",
+  "id": "RS-094"
+ },
+ {
+  "sign_code": "R124",
+  "objective_code": "R124",
+  "prompt": "A blue circle shows a goods vehicle with the figure '10 t' on it. What does that weight mean?",
+  "options": [
+   "Goods vehicles heavier than 10 t are kept out of this lane.",
+   "Only goods vehicles heavier than 10 t may use this lane.",
+   "Any vehicle may use the lane as long as it stays under 10 t."
+  ],
+  "answer": 1,
+  "explanation": "On a blue command circle the figure is the weight a goods vehicle must be over before it may use the lane, not a limit it has to stay under. A weight ban comes on a white sign with a red ring.",
+  "source_citation": "NRTR 2000 Sch 1 — R124 Goods vehicles over indicated GVM only",
+  "difficulty": 3,
+  "exam_likelihood": "medium",
+  "topic_tag": "Command signs",
+  "id": "RS-095"
+ },
+ {
+  "sign_code": "R126",
+  "objective_code": "R126",
+  "prompt": "A blue circle carries the orange diamond used to mark dangerous goods. What is it telling you?",
+  "options": [
+   "Vehicles carrying dangerous goods are kept off this route.",
+   "There is a depot storing dangerous goods further ahead.",
+   "The route is set aside for vehicles carrying dangerous goods."
+  ],
+  "answer": 2,
+  "explanation": "The orange diamond identifies dangerous goods and the blue circle reserves the road for them. This is the route those loads must take, not one they are being kept away from.",
+  "source_citation": "NRTR 2000 Sch 1 — R126 Vehicles transporting dangerous substances only",
+  "difficulty": 3,
+  "exam_likelihood": "low",
+  "topic_tag": "Command signs",
+  "id": "RS-096"
+ },
+ {
+  "sign_code": "R130",
+  "objective_code": "R130",
+  "prompt": "You see a tractor inside a blue circle at the entrance to a side road. What does it mean?",
+  "options": [
+   "Slow farm vehicles may be using the road ahead of you.",
+   "The road is reserved for farm vehicles, so other traffic keeps out.",
+   "Tractors are not allowed to turn into that road."
+  ],
+  "answer": 1,
+  "explanation": "The shape tells you the job of the sign. A warning about tractors would arrive as a red-bordered triangle; a tractor on a blue circle instead sets that road aside for agricultural vehicles.",
+  "source_citation": "NRTR 2000 Sch 1 — R130 Agricultural vehicles only",
+  "difficulty": 2,
+  "exam_likelihood": "low",
+  "topic_tag": "Command signs",
+  "id": "RS-097"
+ },
+ {
+  "sign_code": "R132",
+  "objective_code": "R132",
+  "prompt": "A blue circle showing the letter 'T' stands beside the road. What must the driver do?",
+  "options": [
+   "Give way at the T-junction coming up.",
+   "Follow the tourist route that starts here.",
+   "Pay the toll ahead."
+  ],
+  "answer": 2,
+  "explanation": "Here the T stands for toll, and a blue circle is an instruction you must obey: carry on to the plaza, stop if required and pay before going further. It has nothing to do with a T-junction.",
+  "source_citation": "NRTR 2000 Sch 1 — R132 Pay toll",
+  "difficulty": 1,
+  "exam_likelihood": "medium",
+  "topic_tag": "Command signs",
+  "id": "RS-098"
+ },
+ {
+  "sign_code": "R133",
+  "objective_code": "R133",
+  "prompt": "A blue circle showing a lamp shining a beam appears just before a tunnel. What must you switch on?",
+  "options": [
+   "Your hazard lights.",
+   "Your headlamps.",
+   "Your parking lights."
+  ],
+  "answer": 1,
+  "explanation": "Parking lights and daytime running lights are not enough — the sign calls for full headlamps, and they stay on for the whole stretch it covers, usually a tunnel or a section with poor visibility.",
+  "source_citation": "NRTR 2000 Sch 1 — R133 Switch head lamps on",
+  "difficulty": 1,
+  "exam_likelihood": "high",
+  "topic_tag": "Command signs",
+  "id": "RS-099"
+ },
+ {
+  "sign_code": "R215",
+  "objective_code": "R215",
+  "prompt": "You are driving a bakkie loaded with building sand and you come up behind a slow truck. A red-ringed sign shows two trucks side by side. May you overtake the truck?",
+  "options": [
+   "Yes — the sign is for big rigs, and a bakkie is a light vehicle",
+   "No — a bakkie is built to carry goods, so the sign covers you too",
+   "Yes, as long as you can pass without crossing a barrier line"
+  ],
+  "answer": 1,
+  "explanation": "\"Goods vehicle\" is about what the vehicle is built to carry, not how big it is — so a bakkie counts. This sign stops goods vehicles passing goods vehicles. Stay behind the truck.",
+  "source_citation": "NRTR 2000 Sch 1 — R215 Overtaking prohibited for heavy vehicles; NRTR 2000 reg 1 definition of \"goods vehicle\" (a motor vehicle, other than a motor cycle, motor tricycle, motor quadrucycle, motor car, minibus or bus, designed or adapted for the conveyance of goods on a public road); SARTSM Vol 1 Ch 2 §2.4.12 (R215 — drivers of goods vehicles shall not overtake another goods vehicle)",
+  "difficulty": 3,
+  "exam_likelihood": "medium",
+  "topic_tag": "Prohibition signs",
+  "id": "RS-100"
+ },
+ {
+  "sign_code": "R218",
+  "objective_code": "R218",
+  "prompt": "A round white sign with a red ring shows a person walking. What is it telling you?",
+  "options": [
+   "Watch out for people crossing the road ahead",
+   "People on foot may not go beyond this sign",
+   "There is a pedestrian crossing ahead where you must give way"
+  ],
+  "answer": 1,
+  "explanation": "The red ring is a prohibition and the figure says who it is aimed at: people on foot may not go beyond it. It says nothing about how drivers must behave, so it is not a warning that pedestrians are about.",
+  "source_citation": "SARTSM Vol 1 Ch 2 (R218 pedestrians prohibited); official DoT chart — 'R218 Pedestrian prohibited sign'",
+  "difficulty": 2,
+  "exam_likelihood": "high",
+  "topic_tag": "Prohibition signs",
+  "id": "RS-101"
+ },
+ {
+  "sign_code": "R206",
+  "objective_code": "R206",
+  "prompt": "Just before a hospital you pass a white circle with a red ring showing a hooter with a line through it. How far does the silence apply?",
+  "options": [
+   "For 100 m after the sign",
+   "Until the next intersection",
+   "For the whole length of the road ahead"
+  ],
+  "answer": 0,
+  "explanation": "The ban runs for 100 metres past the sign, not indefinitely — that distance is the part worth remembering. The same sign also stops you driving past it in a vehicle making more noise than the law allows.",
+  "source_citation": "SARTSM Vol 1 Ch 2 §2.4.6 (R206 no excessive noise — no hooter for 100 m after passing the sign; and no driving beyond it emitting noise above prescribed levels)",
+  "difficulty": 1,
+  "exam_likelihood": "medium",
+  "topic_tag": "Prohibition signs",
+  "id": "RS-102"
+ },
+ {
+  "sign_code": "R210",
+  "objective_code": "R210",
+  "prompt": "You are a short way back from a crossroads when you pass a red-ringed sign showing a right arrow that bends, with a line through it. Where does the ban apply?",
+  "options": [
+   "At the crossroads ahead — you may not turn right there",
+   "Right at the sign — you may not turn right into anything you are passing",
+   "On the whole road — you may not turn right anywhere along it"
+  ],
+  "answer": 0,
+  "explanation": "The bend in the arrow puts the ban at the junction ahead, not where you are standing. A straight arrow in the red ring means no right turn right here. Check which arrow it is before you choose your lane.",
+  "source_citation": "NRTR 2000 Sch 1 — R210 Right turn prohibited ahead; SARTSM Vol 1 Ch 2 §2.4.9 (drivers shall not turn right at the junction or entrance ahead)",
+  "difficulty": 3,
+  "exam_likelihood": "medium",
+  "topic_tag": "Prohibition signs",
+  "id": "RS-103"
+ },
+ {
+  "sign_code": "R202",
+  "objective_code": "R202",
+  "prompt": "A round white sign with a red ring shows \"12 t\". What is it limiting?",
+  "options": [
+   "Speed — nothing may travel faster than 12 km/h past this point",
+   "Mass — a vehicle heavier than 12 tonnes may not go past",
+   "Length — a vehicle longer than 12 metres may not go past"
+  ],
+  "answer": 1,
+  "explanation": "The number is a mass in tonnes. If you are towing, it is the mass of the whole combination that counts, not just the vehicle pulling — so a lighter bakkie with a loaded trailer can still be over the limit.",
+  "source_citation": "SARTSM Vol 1 Ch 2 §2.4.2 (R202 — the value indicated in tonnes is the gross vehicle mass or gross combination mass)",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Prohibition signs",
+  "id": "RS-104"
+ },
+ {
+  "sign_code": "R240",
+  "objective_code": "R240",
+  "prompt": "You are towing a caravan on holiday and you come to a red-ringed sign showing a trailer. Does it apply to you?",
+  "options": [
+   "No — it stops trucks pulling heavy goods trailers",
+   "Yes — any vehicle that is towing another must not go past",
+   "No — it applies only to a vehicle being towed away after a breakdown"
+  ],
+  "answer": 1,
+  "explanation": "The picture is a trailer, but the ban is on towing. A car with a caravan, a bakkie with a light trailer, a tow truck with a broken-down car — all of them have to find another route here.",
+  "source_citation": "NRTR 2000 Sch 1 — R240 Towed vehicles prohibited; SARTSM Vol 1 Ch 2 (R240 — drivers of any vehicle towing another vehicle, including a light trailer, caravan, heavy goods trailer or broken-down vehicle, shall not proceed beyond the sign)",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Prohibition signs",
+  "id": "RS-105"
+ },
+ {
+  "sign_code": "R207",
+  "objective_code": "R207",
+  "prompt": "You pass a red-ringed sign showing a crossed-out thumbs-up just as someone at the roadside signals for a lift. What does that sign require of you, the driver?",
+  "options": [
+   "Nothing — it is aimed at the hitch-hiker, not at the driver",
+   "You may not stop to pick the person up",
+   "You may pick them up if you stop well clear of the roadway"
+  ],
+  "answer": 1,
+  "explanation": "It binds you as well as the hitch-hiker: for 500 m past the sign no driver may pick up passengers and nobody on foot may thumb for a lift. It does not stop you halting for any other reason.",
+  "source_citation": "SARTSM Vol 1 Ch 2 §2.4.7 (R207 — pedestrians shall not attempt to secure a lift and drivers shall not pick up passengers, for 500 m beyond the sign)",
+  "difficulty": 2,
+  "exam_likelihood": "medium",
+  "topic_tag": "Prohibition signs",
+  "id": "RS-106"
+ },
+ {
+  "sign_code": "R104",
+  "objective_code": "R104",
+  "prompt": "An island separates a bus lane on the left from the rest of the road. The blue circle facing you on that island carries an arrow angling downwards to the right. What must you do?",
+  "options": [
+   "Stop and give way to any bus using the lane on the left.",
+   "Pass the island on its right-hand side and stay out of the bus lane.",
+   "Turn right at the next junction — no other direction is allowed."
+  ],
+  "answer": 1,
+  "explanation": "The arrow points down at about 45 degrees towards the side you must pass on, so keep right of the island and leave the left lane to the buses. A straight horizontal arrow would be a different order: right only.",
+  "source_citation": "NRTR 2000 Sch 1 — R104 Keep right; SARTSM Vol 1 Ch 2 §2.3.3 (driver shall pass only to the side the arrow indicates)",
+  "difficulty": 2,
+  "exam_likelihood": "high",
+  "topic_tag": "Command signs",
+  "id": "RS-107"
+ }
+]
