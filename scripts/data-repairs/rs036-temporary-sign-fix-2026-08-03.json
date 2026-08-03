@@ -1,0 +1,21 @@
+{
+ "description": "Repairs RS-036, an approved and live question whose prompt described a 'yellow diamond-shaped sign' as a temporary sign. No such temporary sign exists — the only yellow diamond in the library is IN7 Priority road ahead. Found while closing the temporary-signs gap on 2026-08-03 and confirmed by both adversarial reviewers. The underlying rule it taught (temporary overrides permanent) is correct and is retained with a proper citation.",
+ "ops": [
+  {
+   "table": "questions",
+   "match": "id=eq.RS-036",
+   "set": {
+    "prompt": "At roadworks you pass a sign carrying the usual warning symbol, but on a yellow background inside a red triangle. What is the yellow telling you?",
+    "options": [
+     "The sign is temporary, and it overrides a permanent sign that says otherwise",
+     "The sign is only advisory, so the permanent signs still decide",
+     "The sign applies to heavy vehicles only"
+    ],
+    "answer": 0,
+    "explanation": "Yellow marks the sign as temporary, and a temporary sign wins where it conflicts with a permanent one — the bolted-down sign does not outrank it. Temporary signs are not only for roadworks: accident scenes and signals out of order use them too.",
+    "source_citation": "NRTR 2000 reg 287(5)(a) (a temporary road traffic sign shall take precedence over any other road traffic sign); SARTSM Vol 1 Ch 3 (temporary advance warning signs — black symbol on a yellow background with a red triangular border); SARTSM Vol 2 Ch 3 §3.5.1 (temporary signing is not roadworks-only)"
+   },
+   "why": "APPROVED and LIVE question resting on a sign shape that does not exist. The prompt described 'a yellow diamond-shaped sign at roadworks'. SARTSM Vol 1 Ch 3: 'All TEMPORARY advance warning signs shall consist of a black symbol on a yellow background with a RED TRIANGULAR border'. A sweep of the whole sign library found the only yellow diamond is IN7, the PRIORITY ROAD sign — so the question was describing a different sign entirely, and one whose meaning is unrelated. The explanation also glossed temporary as '(roadworks)', which SARTSM Vol 2 Ch 3 §3.5.1 explicitly calls a misperception: 'TEMPORARY regulatory and warning signs are commonly perceived to be applicable to roadworks sites only. This perception is not correct.' Both reviewers flagged it. The keyed RULE was right — reg 287(5)(a) does give a temporary sign precedence — so the fix keeps the rule and repairs the premise and the framing."
+  }
+ ]
+}
