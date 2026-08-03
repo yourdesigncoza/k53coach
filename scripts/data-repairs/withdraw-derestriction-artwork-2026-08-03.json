@@ -1,0 +1,61 @@
+{
+ "description": "Withdraws all 7 de-restriction '-600' signs from the served set because their ARTWORK is the European form. This closes the question left open earlier on 2026-08-03, when the wording was corrected but the artwork could not be settled from the SVG markup alone. It was settled by rendering both our SVGs and the chart's own artwork and looking at them: the chart's 'De-Restriction signs' block draws a red CROSS, ours draw a red diagonal slash. The wording fix (derestriction-hint-fix-2026-08-03.json) was necessary but not sufficient — the picture was wrong too, and the picture is what a learner actually studies.\n\nThis also lifts the standing ban on writing questions against a -600 sign, in the sense that the reason for the ban is now understood: no question may reference this artwork until it is redrawn, because the image contradicts the rule.",
+ "ops": [
+  {
+   "table": "road_signs",
+   "match": "code=eq.R101-600",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK IS THE EUROPEAN FORM. Rendered public/signs/R101-600.svg and compared it against the official DoT chart, sheet 1, the block labelled 'De-Restriction signs'. The chart draws (R)600 as a red CROSS (X) superimposed on the original sign face, matching SARTSM Vol 1 Ch 2 §2.9: 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign.' Our SVG draws a single red DIAGONAL SLASH. In SA a diagonal slash is the PROHIBITION marker — the manual even warns against combining (R)600 with prohibition signs that already carry one — while in the European system a slash is how an end-of-restriction is shown. So this is foreign artwork in an SA library, the same defect class as the withdrawn R360 Vienna pedestrian-crossing sign. asset_status set back to 'needs_review' (the allowed pre-approval value; the column permits only needs_review / audited / approved), which drops it from the served set without deleting the record or the evidence. Restore only when the artwork is redrawn or re-sourced with a red cross and re-verified against the chart."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R132-600",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK IS THE EUROPEAN FORM. Rendered public/signs/R132-600.svg and compared it against the official DoT chart, sheet 1, the block labelled 'De-Restriction signs'. The chart draws (R)600 as a red CROSS (X) superimposed on the original sign face, matching SARTSM Vol 1 Ch 2 §2.9: 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign.' Our SVG draws a single red DIAGONAL SLASH. In SA a diagonal slash is the PROHIBITION marker — the manual even warns against combining (R)600 with prohibition signs that already carry one — while in the European system a slash is how an end-of-restriction is shown. So this is foreign artwork in an SA library, the same defect class as the withdrawn R360 Vienna pedestrian-crossing sign. asset_status set back to 'needs_review' (the allowed pre-approval value; the column permits only needs_review / audited / approved), which drops it from the served set without deleting the record or the evidence. Restore only when the artwork is redrawn or re-sourced with a red cross and re-verified against the chart."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R133-600",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK IS THE EUROPEAN FORM. Rendered public/signs/R133-600.svg and compared it against the official DoT chart, sheet 1, the block labelled 'De-Restriction signs'. The chart draws (R)600 as a red CROSS (X) superimposed on the original sign face, matching SARTSM Vol 1 Ch 2 §2.9: 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign.' Our SVG draws a single red DIAGONAL SLASH. In SA a diagonal slash is the PROHIBITION marker — the manual even warns against combining (R)600 with prohibition signs that already carry one — while in the European system a slash is how an end-of-restriction is shown. So this is foreign artwork in an SA library, the same defect class as the withdrawn R360 Vienna pedestrian-crossing sign. asset_status set back to 'needs_review' (the allowed pre-approval value; the column permits only needs_review / audited / approved), which drops it from the served set without deleting the record or the evidence. Restore only when the artwork is redrawn or re-sourced with a red cross and re-verified against the chart."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R202-600",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK IS THE EUROPEAN FORM. Rendered public/signs/R202-600.svg and compared it against the official DoT chart, sheet 1, the block labelled 'De-Restriction signs'. The chart draws (R)600 as a red CROSS (X) superimposed on the original sign face, matching SARTSM Vol 1 Ch 2 §2.9: 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign.' Our SVG draws a single red DIAGONAL SLASH. In SA a diagonal slash is the PROHIBITION marker — the manual even warns against combining (R)600 with prohibition signs that already carry one — while in the European system a slash is how an end-of-restriction is shown. So this is foreign artwork in an SA library, the same defect class as the withdrawn R360 Vienna pedestrian-crossing sign. asset_status set back to 'needs_review' (the allowed pre-approval value; the column permits only needs_review / audited / approved), which drops it from the served set without deleting the record or the evidence. Restore only when the artwork is redrawn or re-sourced with a red cross and re-verified against the chart."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R401-600",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK IS THE EUROPEAN FORM. Rendered public/signs/R401-600.svg and compared it against the official DoT chart, sheet 1, the block labelled 'De-Restriction signs'. The chart draws (R)600 as a red CROSS (X) superimposed on the original sign face, matching SARTSM Vol 1 Ch 2 §2.9: 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign.' Our SVG draws a single red DIAGONAL SLASH. In SA a diagonal slash is the PROHIBITION marker — the manual even warns against combining (R)600 with prohibition signs that already carry one — while in the European system a slash is how an end-of-restriction is shown. So this is foreign artwork in an SA library, the same defect class as the withdrawn R360 Vienna pedestrian-crossing sign. asset_status set back to 'needs_review' (the allowed pre-approval value; the column permits only needs_review / audited / approved), which drops it from the served set without deleting the record or the evidence. Restore only when the artwork is redrawn or re-sourced with a red cross and re-verified against the chart."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R402-600",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK IS THE EUROPEAN FORM. Rendered public/signs/R402-600.svg and compared it against the official DoT chart, sheet 1, the block labelled 'De-Restriction signs'. The chart draws (R)600 as a red CROSS (X) superimposed on the original sign face, matching SARTSM Vol 1 Ch 2 §2.9: 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign.' Our SVG draws a single red DIAGONAL SLASH. In SA a diagonal slash is the PROHIBITION marker — the manual even warns against combining (R)600 with prohibition signs that already carry one — while in the European system a slash is how an end-of-restriction is shown. So this is foreign artwork in an SA library, the same defect class as the withdrawn R360 Vienna pedestrian-crossing sign. asset_status set back to 'needs_review' (the allowed pre-approval value; the column permits only needs_review / audited / approved), which drops it from the served set without deleting the record or the evidence. Restore only when the artwork is redrawn or re-sourced with a red cross and re-verified against the chart."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R403-600",
+   "set": {
+    "asset_status": "needs_review"
+   },
+   "why": "ARTWORK IS THE EUROPEAN FORM. Rendered public/signs/R403-600.svg and compared it against the official DoT chart, sheet 1, the block labelled 'De-Restriction signs'. The chart draws (R)600 as a red CROSS (X) superimposed on the original sign face, matching SARTSM Vol 1 Ch 2 §2.9: 'DE-RESTRICTION is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the face of the sign.' Our SVG draws a single red DIAGONAL SLASH. In SA a diagonal slash is the PROHIBITION marker — the manual even warns against combining (R)600 with prohibition signs that already carry one — while in the European system a slash is how an end-of-restriction is shown. So this is foreign artwork in an SA library, the same defect class as the withdrawn R360 Vienna pedestrian-crossing sign. asset_status set back to 'needs_review' (the allowed pre-approval value; the column permits only needs_review / audited / approved), which drops it from the served set without deleting the record or the evidence. Restore only when the artwork is redrawn or re-sourced with a red cross and re-verified against the chart."
+  }
+ ]
+}

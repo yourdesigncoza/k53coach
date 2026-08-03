@@ -17,25 +17,36 @@
 **35 number-bearing claims across 43 objects.** Prose without figures still needs a read for sense,
 but the figures are the priority.
 
-## 🔴 Open — needs eyes on the artwork (2026-08-03)
+## ✅ RESOLVED — the `-600` artwork was the European form (2026-08-03)
 
-**The seven `-600` de-restriction signs: does our artwork show a red CROSS or a diagonal
-slash?** `R101-600`, `R132-600`, `R133-600`, `R202-600`, `R401-600`, `R402-600`,
-`R403-600` — all approved and live.
+Closed by looking at it. Both our SVGs and the chart's own artwork were rendered to
+images and compared:
 
-All seven carried the same boilerplate hint claiming *"a diagonal stripe through it means
-the rule it shows has ENDED"*. SARTSM Vol 1 Ch 2 §2.9 says the opposite: *"DE-RESTRICTION
-is achieved by displaying the original sign with a RED CROSS (R)600 superimposed on the
-face of the sign"*, and that using the (R)600 element *"with PROHIBITION signs using a
-diagonal slash, is not recommended"* — the slash is the **prohibition** marker. The text
-is fixed (`scripts/data-repairs/derestriction-hint-fix-2026-08-03.json`).
+| | marker |
+|---|---|
+| Official DoT chart, sheet 1, block labelled **"De-Restriction signs"** | a red **CROSS** over the original sign |
+| `public/signs/R*-600.svg` (ours) | a single red **diagonal slash** |
 
-**What is NOT settled:** whether the SVGs in `public/signs/` draw a cross or a slash. The
-markup carries red elements but does not decide it, and guessing is how the wrong hint got
-in. If the artwork draws a slash, the sign rows are wrong, not just the words.
+SARTSM Vol 1 Ch 2 §2.9 agrees with the chart: *"DE-RESTRICTION is achieved by
+displaying the original sign with a RED CROSS (R)600 superimposed on the face of the
+sign."* In South Africa a diagonal slash means **prohibited**; in the European system a
+slash is how an end-of-restriction is drawn. So this was foreign artwork in an SA
+library — the same defect as the withdrawn R360 Vienna pedestrian-crossing sign.
 
-Until this is resolved, **no question may be written against a `-600` sign.** One was
-drafted (`R101-600`) and dropped for exactly this reason.
+All seven (`R101-600`, `R132-600`, `R133-600`, `R202-600`, `R401-600`, `R402-600`,
+`R403-600`) had `asset_status` returned to `needs_review`, dropping them from the served
+set (375 → 368) without deleting the record. Each row's own provenance told the same
+story: `in_official_chart: false`, `alignment: not_in_chart`, sourced from Wikimedia and
+approved by `ai:claude-code+brave` — never chart-verified by anyone.
+
+**Restore only when the artwork is redrawn or re-sourced with a red cross and verified
+against the chart.** No question references a `-600` sign; the one that was drafted was
+dropped before load, so nothing is orphaned.
+
+**The lesson worth keeping:** the wording fix earlier the same day was necessary and not
+sufficient. The text said "red cross" while the picture said "slash", and the picture is
+what a learner studies. Correcting content without looking at the artwork it describes
+leaves the defect in place.
 
 ## ⚠️ Start here — three items short of a primary source
 
