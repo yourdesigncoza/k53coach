@@ -1,0 +1,22 @@
+{
+  "description": "Reframes RS-041 from the Vienna-Convention blue crossing panel onto W306, the real SA sign. RS-041 was WITHDRAWN on 2026-07-30 (data-repairs-2026-07-30.json) for describing a blue rectangular sign with a pedestrian on zebra stripes as South African — that sign is European; SA has no blue panel marking a crossing. It has sat at review_status='draft' ever since, which is how a withdrawal is recorded here. The sign it described was withdrawn a day later (withdraw-foreign-signs-2026-07-31.json, R360 / R360-LES). This op does NOT restore the old claim: the prompt, answer and explanation are rewritten onto W306, whose meaning is read verbatim from Schedule 1. The three distractors were already good — two of them describe real SA signs — so they survive with the answer moved. Decision: John, 2026-08-03, after the sign hunt in K53-39/K53-40 established there is no blue SA crossing sign. Stays 'draft' deliberately: the content is now correct, but constraint 9 needs a named human to approve, and the admin editor still cannot record one.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.RS-041",
+      "set": {
+        "prompt": "A triangular sign with a red border, showing a pedestrian on zebra stripes, means:",
+        "options": [
+          "Pedestrians are prohibited on this stretch of road",
+          "You are at the crossing now — give way to anyone already on it",
+          "A marked pedestrian crossing is ahead"
+        ],
+        "answer": 2,
+        "explanation": "A red triangle always warns of something ahead. Schedule 1 gives W306's meaning as 'warns a road user of a marked pedestrian crossing ahead' — so the crossing is still in front of you, marked by the painted lines on the road, not by a sign panel. When you reach it you must yield to a pedestrian already on your half of the roadway.",
+        "objective_code": "W306",
+        "source_citation": "NRTR 2000 Sch 1 — W306 pedestrian crossing sign; reg 315(2) (pedestrian's right of way in a pedestrian crossing)"
+      },
+      "why": "Old prompt: 'A blue rectangular sign showing a pedestrian on zebra stripes means:' with the answer 'This is a pedestrian crossing — give way to pedestrians on it' and an explanation calling it 'the blue command sign'. Every part of that is the Vienna Convention sign used in Europe. Schedule 1 to the National Road Traffic Regulations describes W306 — Triangle: red retro-reflective, Symbol: black semi-matt, Background: white retro-reflective — as 'Warns a road user of a marked pedestrian crossing ahead'. Note 'marked': the crossing itself is the RTM3/RTM4 road markings, which is why no panel marks it. objective_code moves R5 -> W306; R5 was wrong twice over, being the red-diamond 'Pedestrian priority sign' rather than anything blue or rectangular. The yielding duty in the explanation is reg 315(2): the driver 'shall yield the right of way, slowing down or stopping if need be' to a pedestrian within the crossing who is on the driver's half of the roadway, or approaching so closely from the opposite half as to be in danger. Distractor 1 now describes R218 (pedestrian prohibited) and distractor 2 the mistake the sign is most often confused with, so both stay honest wrong answers."
+    }
+  ]
+}
