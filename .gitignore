@@ -58,6 +58,11 @@ resources/legislation/
 resources/sartsm/
 resources/assets/
 
+# The three official DoT learner-driver manuals. Public documents, but each carries
+# "may not be copied and distributed for any financial gain" — so we read them, we
+# don't redistribute them. Re-fetch notes are in resources/README.md.
+resources/manuals/
+
 # Circulated "memo" scans of live licence-test terminals. Not a permitted content
 # source and must never reach the remote — see resources/restricted/README.md.
 # Only the derived format/coverage metadata in docs/exam-format-analysis/ is tracked.

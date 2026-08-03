@@ -11,9 +11,10 @@ Product specs are **not** here — they live in `docs/product/`.
 ## What is tracked and what is not
 
 Only `charts/`, `reference/` and the READMEs are in git. The bulk PDFs are ~550 MB and
-stay local-only, which is why `.gitignore` excludes `legislation/`, `sartsm/`, `assets/`
-and the contents of `restricted/`. **That is deliberate — don't relax it.** Every ignored
-document below carries a re-fetch note so a fresh clone can rebuild the library.
+stay local-only, which is why `.gitignore` excludes `legislation/`, `sartsm/`, `assets/`,
+`manuals/` and the contents of `restricted/`. **That is deliberate — don't relax it.**
+Every ignored document below carries a re-fetch note so a fresh clone can rebuild the
+library.
 
 ## The library
 
@@ -62,6 +63,36 @@ browsers at `public/RTSigns_charts.pdf` — the admin sign-review page links it.
 > Sheet 2's marking labels are **vector, not text**, so `pdftotext` does not expose them.
 > Absence of extracted text is not absence from the chart.
 
+### `manuals/` — the official DoT learner-driver manuals (local-only)
+
+The three-section **South African Learner Driver Manual**, compiled by the National
+Department of Transport. This is the *syllabus* — the document that tells a learner what
+the test expects of them — sitting between the law (`legislation/`) and the sign chart.
+Supplied by Louwrens on 2026-07-31 (K53-40); sections 1 and 2 fetched from NaTIS.
+
+| File | What it is | Pages |
+|---|---|---|
+| `natis-rules-of-the-road-manual-v100-2012-06.pdf` | Section 1 — Rules of the Road | 42 |
+| `natis-road-traffic-signs-manual-v100-2012-06.pdf` | Section 2 — Manual on Road Traffic Signs | 58 |
+| `natis-vehicle-controls-manual-v100-2012-06.pdf` | Section 3 — Vehicle Components and Controls | 15 |
+
+All three are **v1.00, June 2012**. Re-fetch from
+`natis.gov.za/images/learners/<n>_<name>_v100_Jun_2012.pdf`, linked off
+`natis.gov.za/index.php/downloads/learner-driver-manual/{rules-of-the-road,road-traffic-signs,vehicle-controls}`.
+
+> ⚠️ **These are 2012 documents — treat every fact in them as needing a currency check.**
+> They predate the 2014 NRTR amendments in `legislation/` and the May 2025 computerised
+> test. Where a manual and a later regulation disagree, **the regulation wins** and the
+> manual is evidence of syllabus scope, not of law in force. Never cite a manual alone for
+> a legal claim; pair it with the Act or the regulation it rests on. NaTIS has published no
+> newer version as of 2026-08-03 — re-check before a content pass.
+
+> Permitted use: public DoT documents, but each carries *"This manual is the property of
+> the Department of Transport and may not be copied and distributed for any financial
+> gain."* So they are a **source we read and cite**, never content we reproduce. Facts and
+> syllabus scope are free to use; the prose and diagrams are not. Same discipline as
+> constraint 7 — drafting must go through the Act, the regulations and the chart.
+
 ### `restricted/` — NOT a permitted content source (local-only)
 
 Circulated "memo" scans of live licence-test terminals. See `restricted/README.md` before
@@ -84,7 +115,8 @@ cockpit diagram; the served copy is `public/img/cockpit-controls.jpg`.
 
 1. **Quote, don't paraphrase from memory.** A citation must name the file, the section or
    regulation number, and carry the words that were actually read.
-2. **Check whether the text is still in force** before quoting `legislation/`.
+2. **Check whether the text is still in force** before quoting `legislation/` or
+   `manuals/`. The manuals are 2012; a later regulation always overrides them.
 3. **Never pass a document from `restricted/` to `llmChat` or any drafting prompt.**
 4. **AI drafts; it never self-certifies.** A verification pass by the same model against the
    same prompt is circular. See `CLAUDE.md` constraint 9.
