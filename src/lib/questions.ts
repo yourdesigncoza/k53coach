@@ -65,11 +65,14 @@ export async function getReadinessQuestions(): Promise<Question[]> {
  * ORDER stays `sort_order` — practice is a walk through a topic, not a random draw,
  * so the sequence is meant to be stable.
  *
- * This is deliberately in the getter rather than the three practice pages, which are
- * otherwise identical and would each need the same line. The getter has exactly those
- * three callers; anything needing raw stored order (admin, export) must not use it.
+ * The shuffle lives here rather than in the three practice pages, which are otherwise
+ * identical and would each need the same line. The NAME carries the contract: this
+ * returns presentation-transformed data, not canonical stored order. Do not wrap it in
+ * `React.cache()` (freezes the order within a request) or `use cache` / `unstable_cache`
+ * (freezes it across requests, which is the whole defect this fixes). Anything needing
+ * stored order — admin, export, analytics — must query directly rather than call this.
  */
-export async function getPracticeQuestions(topic: Topic): Promise<Question[]> {
+export async function getShuffledPracticeQuestions(topic: Topic): Promise<Question[]> {
   const supabase = await createClient();
   if (!supabase) return [];
   const { data } = await supabase
