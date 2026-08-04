@@ -1,0 +1,228 @@
+{
+  "superseded_in_part_by": "question-citations-followup-2026-08-04.json — DO NOT REPLAY THIS FILE ALONE. Four of its citations (VC-001, VC-025, RR-051, and the reg-149 quote) were corrected by the follow-up after an adversarial review found that regs 149 and 213 were amended by GNR.846 of 31 Oct 2014, later than the consolidated copy this pass read. Replaying this file on its own reverts them to the superseded wording. Apply the follow-up immediately after, or apply neither.",
+  "description": "Backfills source_citation on 35 of the 42 approved questions that carried none, so they become reviewable. Constraint 9 requires a citation to the specific provision a question rests on; without one there is nothing for a human verifier to check the item AGAINST, which is why these 42 were the blocking subset of the outstanding sign-off worklist rather than merely an untidy column. Every citation here was read out of resources/ and the governing sentence quoted in the `why` field — none is from recall or from an earlier summary. This sets source_citation ONLY: review_status, approved_by and verified_at are untouched, because supplying the evidence is not the same act as a human reading the item against it. Seven questions are deliberately left uncited and are listed under `uncitable` below — our source library covers law, signs and syllabus, and simply does not reach vehicle safety technology. Sources: DoT SA Learner Driver Manual Section 1 (Rules of the Road) and Section 3 (Vehicle Components and Controls), both v1.00 June 2012; NRTR 2000 as consolidated to GNR.209 of 9 Mar 2012; DoT road traffic signs chart.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.VC-019",
+      "set": { "source_citation": "SA Learner Driver Manual §3 (Vehicle Components and Controls, DoT v1.00 Jun 2012) §2.2 item 4; §2.6 sample questions" },
+      "why": "§2.2 lists control 4 as 'Steering wheel'. §2.6 asks 'Which control is used to change the direction of the vehicle?' — answer 4, and 'The control used to steer the vehicle to the left or right is?' — answer 4."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-003",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.2 item 10; §2.6 sample questions" },
+      "why": "§2.2 lists control 10 as 'Accelerator'. §2.6: 'The following control is used to accelerate your vehicle… 10' and 'The speed of the vehicle can be increased by control? 10'. The motorcycle equivalent is §1.3: 'To regulate the fuel supply to the engine you will make use of the — 5' (throttle)."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-1",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.2 item 9; §2.6 sample questions" },
+      "why": "§2.2 lists control 9 as 'Brake'. §2.6: 'Which control is used to decrease speed or stop? 9' and 'To stop your vehicle you must use number … 9'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-001",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.6 sample questions; NRTR 2000 reg 149 (consolidated)" },
+      "why": "§2.6: 'Which control(s) is used to stop the vehicle in an emergency? 9' — control 9 is the (foot) brake. Reg 149 supplies the distractor's limit: a vehicle must have 'a service brake, a parking brake and an emergency brake: Provided that— (a) the emergency brake and parking brake may be one and the same brake', which is why the handbrake is a fallback and not the answer."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-017",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.6 sample questions; §1.3 sample questions" },
+      "why": "§1.3: 'Which control is used to disengage the engine from the gearbox? — 2' (the motorcycle clutch). §2.6: 'The control that assists the driver when engaging or disengaging a gear is? 8' — control 8 is 'Clutch' per §2.2."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-2",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.2 item 8; §2.6 sample questions" },
+      "why": "§2.2 lists control 8 as 'Clutch'. §2.6: 'Which control(s) is/are used when changing from one gear to another? 8 and 6' and 'The control that assists the driver when engaging or disengaging a gear is? 8'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-022",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.6 sample questions" },
+      "why": "§2.6 asks it almost verbatim: 'Which control is used to avoid the vehicle stalling just before coming to a complete standstill? 8' — control 8 is the clutch."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-004",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.5 item 8; §2.6 sample questions" },
+      "why": "§2.5 states it as a bare fact: '8 Automatic vehicles do not have a clutch control.' §2.6 tests it: 'Which control is not found in an automatic vehicle? 8'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-005",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.2 items 6 and 8; §2.6 sample questions" },
+      "why": "§2.6: 'In order to change a gear, you must use control/s … 6 and 8.' §2.2 gives 6 as the gear lever and 8 as the clutch."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-032",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.5 items 6 and 8" },
+      "why": "§2.5 carries both halves: '6 Gear lever– Note: The gear lever for an automatic vehicle operates differently from a manual gear box system' and '8 Automatic vehicles do not have a clutch control.'"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-023",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.11 sample questions; NRTR 2000 reg 1 definition of 'parking brake'" },
+      "why": "§2.11: 'When you stop on a steep incline and want to prevent the vehicle from rolling backwards, you use control(s) no. ________ 7' — control 7 is the hand/parking brake. Reg 1 defines 'parking brake' as 'a brake, normally a hand brake, used in the ordinary course of events to keep a vehicle stationary'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-025",
+      "set": { "source_citation": "NRTR 2000 reg 213(4) and reg 213(11) (consolidated to GNR.209 of 9 Mar 2012)" },
+      "why": "Reg 213(4): 'No adult shall occupy a seat in a motor vehicle operated on a public road which is fitted with a seatbelt unless such person wears such seatbelt: Provided that the provisions of this regulation do not apply while reversing or moving in or out of a parking bay or area.' Reg 213(11), added by r. 48 GNR.1341 w.e.f. 25 Sep 2003, extends it to passengers: 'The driver of a motor vehicle shall ensure that all persons travelling in such motor vehicle shall wear a seat belt as contemplated in this regulation.'"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-006",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.5 item 1 (note); §2.6 sample questions" },
+      "why": "§2.5 states the standing rule: 'Note: The driver must always first check the mirrors to be aware of the traffic situation behind him or her.' §2.6 applies it to each case: 'Which control is used before applying the brake in order to slow down or stop. 1' and 'Which control is used before changing the speed of the vehicle? 1' — control 1 is the centre rear-view mirror."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-018",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.2 items 1 and 3; §2.6 sample questions" },
+      "why": "§2.6: 'Which control(s) is/are used to see what is to the rear and sides of the vehicle? 1 and 3' — control 1 is the centre rear-view mirror, control 3 the left and right rear-view mirrors."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-028",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §1.2 item 5; §1.3 sample questions" },
+      "why": "§1.2 lists motorcycle control 5 as 'Throttle'. §1.3: 'The twist grip that controls the engine speed, is ... 5' and 'To ride faster, you must use control… 5'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-027",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §1.2 items 4 and 7; §1.3 sample questions" },
+      "why": "§1.3: 'In the case of a motorcycle the lever that applies the front brake and activates the stop lamp is … 4' — a lever, so hand-operated. The contrast is §1.2 item 7, 'Rear brake (operated by foot)'. The labelled photographs on pp. 4–5 place the front-brake lever on the right handlebar."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-029",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §1.2 items 1 and 2; labelled photographs pp. 4–5; §1.3 sample questions" },
+      "why": "§1.2 lists control 1 as 'Gear lever' and control 2 as 'Clutch'; §1.3 confirms they pair: 'The following controls are used to change gears... 1 and 2'. The labelled photographs on pp. 4–5 show the clutch lever on the left handlebar and the gear lever at the left foot, with the throttle grip and front brake on the right."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-028",
+      "set": { "source_citation": "SA Learner Driver Manual §3 §2.6 sample questions (braking distance)" },
+      "why": "§2.6 states all three factors as one item: 'When braking the distance it takes the driver of a motor vehicle to stop is … (i) longer on a wet road than on a dry road. (ii) longer if the vehicle is travelling at a higher speed. (iii) longer if the vehicle is loaded. — All of the options are correct.' §2.11 repeats it for heavy vehicles and §1.3 for motorcycles."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-038",
+      "set": { "source_citation": "SA Learner Driver Manual §1 (Rules of the Road, DoT v1.00 Jun 2012) §6.49; NRTR 2000 reg 308(1)(b)" },
+      "why": "§6.49 sets the figure: 'Maintain a minimum 2-second following distance for light motor vehicles and motorcycles.' Reg 308(1)(b) is the statutory duty behind it — no driver shall 'follow another vehicle more closely than is reasonable and prudent having regard to the speed of such other vehicle and the traffic on' the road."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-054",
+      "set": { "source_citation": "SA Learner Driver Manual §1 §6.49; NRTR 2000 reg 308(1)(b)" },
+      "why": "§6.49: 'Under adverse conditions such as rain, slippery surface, poor visibility or when being followed too closely, the following distance shall be increased.' NOTE FOR THE HUMAN VERIFIER: the source requires the gap to be increased but does NOT state a figure, so it does not by itself establish the keyed answer of 'four seconds or more'. The two distractors are both refuted by it. Flagged in docs/verification-worklist.md."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-055",
+      "set": { "source_citation": "SA Learner Driver Manual §1 §6.49" },
+      "why": "§6.49 covers the following-distance half directly: adverse conditions include 'poor visibility', under which 'the following distance shall be increased'. NOTE FOR THE HUMAN VERIFIER: the headlights half of the keyed answer is not established by this provision; §6.1–§6.3 specify headlamp performance, not when to switch them on in fog. Flagged in docs/verification-worklist.md."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-057",
+      "set": { "source_citation": "SA Learner Driver Manual §1 §6.49; §3 §2.6 sample questions (braking distance)" },
+      "why": "The causal chain the question asks for is split across the two manuals. §3 §2.6 gives the mechanism — stopping distance is 'longer on a wet road than on a dry road'. §1 §6.49 gives the consequence — under 'rain, slippery surface' the following distance 'shall be increased'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-056",
+      "set": { "source_citation": "SA Learner Driver Manual §1 §6.27 and §6.49; NRTR 2000 reg 292" },
+      "why": "Reg 292 and §6.27 both frame the number as a ceiling that applies 'unless otherwise indicated by a road traffic sign' — a general speed LIMIT, not a target. §6.49 supplies the conditions duty: under 'rain, slippery surface, poor visibility' the driver must adjust. Together they refute the keyed distractor that a sign 'sets the speed you are expected to drive'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-039",
+      "set": { "source_citation": "NRTR 2000 reg 315(4); SA Learner Driver Manual §1 §6.53" },
+      "why": "Reg 315(4) is exactly the rule: 'Whenever any vehicle is stopped at a pedestrian crossing to permit pedestrians to cross the roadway, the driver of any other vehicle approaching from the rear shall not pass such stopped vehicle.' §6.53 restates it: 'Whenever any vehicle has stopped at a pedestrian crossing, the driver/rider of any other vehicle may not pass the stopped vehicle.'"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-043",
+      "set": { "source_citation": "SA Learner Driver Manual §1 §6.40; §6.41" },
+      "why": "§6.40 places the duty on the driver making the move, not on others: the driver 'shall not turn from one lane into another unless he or she can do so without obstructing or endangering other traffic.' §6.41 makes the signal an announcement only — a driver intending to turn 'shall in good time, give a conspicuous signal of his or her intention'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-040",
+      "set": { "source_citation": "SA Learner Driver Manual §1 §6.40 and §6.41; §3 §2.5 item 1 (note)" },
+      "why": "§3 §2.5 establishes mirrors first: 'The driver must always first check the mirrors.' §6.41 requires the signal 'in good time'. §6.40 requires the move itself to be made only when it can be done 'without obstructing or endangering other traffic'. NOTE FOR THE HUMAN VERIFIER: these fix mirrors-before-signal-before-move, but no source in resources/ states the full five-step ordering as keyed. Flagged in docs/verification-worklist.md."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-041",
+      "set": { "source_citation": "SA Learner Driver Manual §1 §6.40" },
+      "why": "§6.40 places an unqualified duty on the driver: no turn from one lane into another 'unless he or she can do so without obstructing or endangering other traffic' — a duty mirrors alone cannot discharge. NOTE FOR THE HUMAN VERIFIER: the term 'blind spot' appears nowhere in either the Rules or Vehicle Controls manual, so the specific mechanism in the keyed answer is not named by any source in resources/. Flagged in docs/verification-worklist.md."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-042",
+      "set": { "source_citation": "SA Learner Driver Manual §1 §6.41" },
+      "why": "§6.41 ties the signal to the intention and bounds its length: the signal must be 'of a duration sufficient to warn any such person of his or her intention'. NOTE FOR THE HUMAN VERIFIER: this bounds the signal below, not above — no source in resources/ states that an indicator must be cancelled once the move is complete. This is the weakest citation in this batch. Flagged in docs/verification-worklist.md."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-047",
+      "set": { "source_citation": "SA Learner Driver Manual §1 §6.42; §6.46" },
+      "why": "§6.42 is unconditional: 'Each time when turning left or to the right and when changing lanes on a public road, it is compulsory to make use of direction indicators.' Leaving a circle at an exit is such a turn, which refutes the keyed distractor that indicators are not used inside a circle. §6.46 governs the rest of circle behaviour — yield to traffic approaching from the right within the junction."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-048",
+      "set": { "source_citation": "SA Learner Driver Manual §2 (Road Traffic Signs, DoT v1.00 Jun 2012) — Traffic lights, Action" },
+      "why": "The manual's traffic-light entry states the meaning in four words: 'Green - Go if it is safe.' The conditional is the whole point of the item and refutes the keyed distractor that green 'guarantees you the right of way'."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-052",
+      "set": { "source_citation": "SA Learner Driver Manual §2 — Traffic lights, Action" },
+      "why": "'Amber - Stop, except where it cannot be done safely.' The default is to stop; carrying on is the exception and has to be justified by safety, not by comfort or convenience."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-051",
+      "set": { "source_citation": "SA Learner Driver Manual §2 — Traffic lights, Action; §7.1 Stop line (RTM1); §3.1 Stop sign action" },
+      "why": "'Red - Stop.' RTM1's purpose is 'To indicate where you must bring your vehicle to a standstill', and the §3.1 control-sign action states the position: 'Bring your vehicle to a stop behind the stop line. • If there is no stop line, the front of the vehicle must come to a stand still in line with the stop sign.'"
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-050",
+      "set": { "source_citation": "SA Learner Driver Manual §2 — Traffic lights, Action; §1 §6.48" },
+      "why": "'Green - Go if it is safe' makes the green conditional rather than permissive, refuting the keyed distractor that green 'gives you the right to be in it'. §6.48 forbids stopping 'in any other place where the stopping of a vehicle would constitute a danger or an obstruction to other traffic', which is what a vehicle stranded across an intersection is. NOTE FOR THE HUMAN VERIFIER: no source in resources/ states a distinct 'do not enter an intersection you cannot clear' rule. Flagged in docs/verification-worklist.md."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-053",
+      "set": { "source_citation": "SA Learner Driver Manual §1 §6.48; NRTR 2000 reg 304" },
+      "why": "§6.48 lists the prohibitions that eliminate both distractors: no stopping 'within 9 metres of his or her approaching side of a demarcated pedestrian crossing', 'in contravention of any road traffic sign', or 'in any other place where the stopping of a vehicle would constitute a danger or an obstruction to other traffic'. Reg 304 is the regulation it summarises."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-019",
+      "set": { "source_citation": "DoT road traffic signs chart (RTSigns_charts.pdf) — information (IN) sign panel" },
+      "why": "The chart is the declared ground truth for sign code, name, category and artwork, and renders the whole IN series as rectangular plates. NOTE FOR THE HUMAN VERIFIER: the obvious place to check this is the SA Learner Driver Manual §2 classification table, and it is NOT there — the table gives 'ORDINARY SHAPE' as Round for regulatory and Triangular for warning and Rectangular for guidance, then leaves the cell BLANK for information signs. That blank is in the document itself, not an extraction artefact; it was confirmed by re-extracting page 3 on its own. Do not record the manual as the source for this fact. Flagged in docs/verification-worklist.md."
+    }
+  ],
+  "uncitable": {
+    "note": "These 7 approved questions have NO source in resources/ and are deliberately left with source_citation null rather than given an invented or stretched one. The library covers the Act, the regulations, the SARTSM volumes, the DoT chart and the three NaTIS syllabus manuals — between them they do not address vehicle safety technology or rider technique. Every one of these was checked against the Vehicle Controls manual's control lists (§1.2, §2.2, §2.5, §2.8), its three sample-question banks, and the consolidated NRTR. The content is not believed to be wrong; it is unevidenced, which under constraint 9 is a different problem with a different fix — either a source is added to resources/ or the questions are withdrawn. That is a decision for John, not a backfill.",
+    "questions": [
+      { "id": "q-controls-5", "objective": "VC10", "topic": "dashboard warning lights", "searched": "no mention of warning lights, tell-tales or instrument-cluster indicators in the Vehicle Controls manual or the NRTR" },
+      { "id": "VC-012", "objective": "VC11", "topic": "head restraint positioning", "searched": "'head restraint' appears nowhere; the single 'headrest' hit in the consolidated NRTR is reg 250-series minibus backrest tapering dimensions, which is unrelated" },
+      { "id": "VC-026", "objective": "VC11", "topic": "head restraint purpose (whiplash)", "searched": "as above; no whiplash or rear-end-collision protection provision in any source" },
+      { "id": "VC-024", "objective": "VC13", "topic": "demister", "searched": "'demist' and 'defrost' return nothing in the consolidated NRTR; the Vehicle Controls manual's numbered control lists (1–11) contain no demister" },
+      { "id": "VC-030", "objective": "VC17", "topic": "what ABS preserves", "searched": "no anti-lock braking provision in the NRTR; the manuals predate its being standard and do not mention it" },
+      { "id": "VC-011", "objective": "VC17", "topic": "ABS braking technique", "searched": "as above" },
+      { "id": "VC-016", "objective": "VC22", "topic": "completing motorcycle braking before a turn", "searched": "§1.3 lists the controls used to negotiate a sharp turn but says nothing about when braking must be finished; no cornering technique in the NRTR" }
+    ]
+  }
+}

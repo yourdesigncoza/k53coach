@@ -169,6 +169,92 @@ AI one, and constraint 9 is not satisfied until a human reads each against the p
 > `-f`/`-l` before quoting a colour. The naive extraction says countdown signs are green; they are
 > not.
 
+## Question citations backfilled 2026-08-04 — 7 flagged items need a decision, not a review
+
+`scripts/data-repairs/question-citations-2026-08-04.json` took the approved bank from **232 of
+274** carrying a `source_citation` to **267 of 274**. Every citation was read out of `resources/`
+and the governing sentence quoted in the repair file's `why` field.
+
+That closes the blocking half of the problem: a question with no citation cannot be verified at
+all, because there is nothing to check it *against*. These 35 are now reviewable. They are **not**
+verified — `verified_at` and `approved_by` were deliberately left alone.
+
+### ⚠️ Seven questions have no source in `resources/` at all
+
+| Q | Objective | Topic |
+|---|---|---|
+| `q-controls-5` | `VC10` | Dashboard warning lights |
+| `VC-012`, `VC-026` | `VC11` | Head restraint position and purpose |
+| `VC-024` | `VC13` | Demister |
+| `VC-030`, `VC-011` | `VC17` | ABS — what it preserves, how to brake with it |
+| `VC-016` | `VC22` | Completing motorcycle braking before a turn |
+
+Our library is law, signs and syllabus. **It does not reach vehicle safety technology.** Checked
+against the Vehicle Controls manual's numbered control lists (§1.2, §2.2, §2.5, §2.8), all three of
+its sample-question banks, and the consolidated NRTR. The content is not thought to be *wrong* — it
+is unevidenced, which under constraint 9 is a different problem needing a different fix: add a
+source to `resources/`, or withdraw the questions. **That is John's call, not a backfill.**
+
+### ⚠️ Thirteen citations are partial — the source supports the item but not the keyed answer
+
+Each carries a `NOTE FOR THE HUMAN VERIFIER` in its repair-file `why`. **Read these first — they
+are where a wrong answer is most likely to be hiding.** The first six came from the original pass;
+the last seven were added after a three-model adversarial review whose strongest finding was that
+composite keyed answers had been backfilled with a citation instead of flagged.
+
+| Q | What the source establishes | What it does **not** |
+|---|---|---|
+| `RR-054` | The gap "shall be increased" in rain | Any figure — "four seconds" is not in the source |
+| `RR-055` | Increase the gap in poor visibility | When to switch headlights on in fog |
+| `RR-040` | Mirrors → signal → move | The full five-step order as keyed |
+| `RR-041` | You must not change lane unless it is safe | The term "blind spot" appears in **neither manual** |
+| `RR-042` | A signal must last long enough to warn | That it must be cancelled afterwards |
+| `RR-050` | Green means "go if it is safe" | A distinct "do not enter an intersection you cannot clear" rule |
+| `RR-038` | Reg 308(1)(b)'s qualitative duty | The **two-second** figure — that is manual-only, same split as `RR-054` |
+| `RR-056` | Reg 292's speed limits | That they are ceilings for good conditions, or any weather-reduction duty |
+| `RR-057` | Wet ⇒ longer braking; therefore bigger gap | That tyres have **less grip** — the mechanism the question turns on |
+| `RR-047` | Indicators compulsory when turning | That leaving a mini-circle exit counts as such a turn |
+| `RR-052` | Amber ⇒ stop unless unsafe | *How* to brake — "firmly but under control" is unsourced |
+| `VC-018` | The mirrors show rear and sides | "a direct look over your shoulder" — same gap as `RR-041` |
+| `VC-025` | Belt duty while "operated on a public road" | The keyed timing "before the vehicle moves off" |
+| `VC-032` | An automatic has no clutch | That it "selects gears itself" |
+| `q-controls-2` | Clutch + gear lever change gear | "disconnecting the engine from the **wheels**" (source says gearbox) |
+| `VC-001` | Parking brake may double as emergency brake | That the service brake is *the* emergency-stop control, or the "if it fails" fallback prose |
+
+### ⚠️ Currency — regs 149 and 213 were amended AFTER our consolidated copy
+
+The consolidated NRTR in `resources/legislation/` runs to **GNR.209 of 9 Mar 2012**. Two cited
+regulations were amended by **GNR.846, GG 38142, 31 Oct 2014**, which is a *later* consolidation
+than that file:
+
+- **Reg 149 was substituted in full** (r. 41). The proviso we rely on survives verbatim, but the
+  excluded-vehicle list changed — "motor quadrucycle" was dropped and (b)(iii) became "a tractor or
+  haulage tractor". **The first pass quoted the superseded wording.** Corrected.
+- **Reg 213 was amended** (r. 52) to add the infant definition (1)(c) and the infant-restraint duty
+  (6A). Subregs **(4) and (11), which we cite, are untouched.**
+
+This is the trap in `resources/README.md` — *"the 2000 original is not the law in force"* — reaching
+one consolidation further forward than expected. **Before citing any regulation, check
+`nrtr-amendment-2014-gg38142-gnr846.pdf` as well as the consolidated copy.** Regs 292, 304, 308 and
+315 are not mentioned in either 2014 instrument.
+
+> **A verification tool produced a confident, wrong citation — recorded because it is the exact
+> failure constraint 9 exists to prevent.** In the adversarial review, one model raised its only
+> HIGH claiming reg 304 governs leaving a vehicle unattended and that the stopping prohibitions are
+> in reg 305. The consolidated text refutes it outright: **reg 304 *is* "Stopping of vehicles"**, and
+> **304(h)** is verbatim the cited rule — no stopping "within nine metres of his or her approaching
+> side of a pedestrian crossing demarcated by appropriate road traffic signs". Reg 305 is "Parking
+> of vehicles". It cited from recall and inverted the two. Never take a model's regulation number
+> without opening the text.
+
+> **Extraction trap, recorded so it is not repeated.** `RS-019` asks the shape of an information
+> sign. The obvious place to check is the SA Learner Driver Manual §2 classification table — and
+> the answer is **not there**. The table gives Round / Triangular / Rectangular for regulatory,
+> warning and guidance signs, then leaves the ORDINARY SHAPE cell **blank** for information signs,
+> road markings and traffic signals. That blank is in the document, not in the extraction; it was
+> confirmed by re-extracting page 3 alone. The citation is the DoT chart instead. Do not record the
+> manual as the source for this fact.
+
 ## Already machine-checked — do not repeat
 
 - **All 43 objects carry a source citation.** None asserts a rule without naming the provision.
