@@ -34,7 +34,7 @@ page**, because a parent reads it with a card in hand.
 
 | Key | Was | Reality |
 |---|---|---|
-| `paywall.incl1` | "Full **750-question** bank + mock exams" | **274 approved questions.** Off by 476 on the screen where money changes hands |
+| `paywall.incl1` | "Full **750-question** bank + mock exams" | **274 approved questions.** Off by 476 on the screen where money changes hands. **Restored 2026-08-04 at John's request as a forward-looking claim** — "from a bank growing to 750+" — see below |
 | `paywall.incl3` | "**AI explanations** for every wrong answer" | Explanations are pre-written verified content. There is **no runtime AI in the learner flow** — that is a deliberate architecture decision (`CLAUDE.md`), not a gap |
 | `paywall.incl2` | "**Complete** road-sign, rules & controls library" | Rules are 29 lessons of a syllabus still being written (K53-31); "complete" is not available to claim |
 | `paywall.incl4` | "**Adaptive** weak-area study plan" | `weak-area-cards.ts` surfaces weak topics. Nothing adapts |
@@ -80,6 +80,20 @@ required production document** — that list is honest precisely because it desc
 - `planF3`/`planF4`, `freeF1`/`freeF3`, FAQ 4's device claim — verified.
 
 ---
+
+## 750 is back, as a target rather than a count
+
+John asked for the number restored on 2026-08-04: *"we will reach this and more."* It now reads
+**"from a bank growing to 750+"** rather than the original **"Full 750-question bank"**.
+
+The distinction is the whole audit in one line. *"Full 750-question bank"* is a present-tense
+statement of what the buyer receives, and it is false by 476 on the screen where they enter card
+details — the kind of misrepresentation the Consumer Protection Act exists for. *"Growing to 750+"*
+is a statement of intent, it is true, and it is backed: 750 is the DB4 target in `docs/product/PRD.md`
+and Stage 2 of `docs/build-plan-2026-07.md`.
+
+**If the number changes, this string is wrong the same day** — it is the second of two hard numbers
+in the copy, alongside `landing.cred2Title`.
 
 ## The price is interpolated, not written into the copy
 

@@ -45,7 +45,7 @@ sign-off as the only one outstanding:**
 | **Every claim true** | ✅ `docs/claims-audit-2026-08-04.md` — 32 strings corrected across both locales |
 
 ⚠️ **The claims audit found the paywall was the worst offender, not the landing page** — it
-advertised a "Full 750-question bank" against 274 real ones, and the privacy page promised
+advertised a "Full 750-question bank" against 274 real ones (restored 2026-08-04 at John's request as **"growing to 750+"** — a target, not a count; a present-tense 750 on the payment screen is false by 476), and the privacy page promised
 parent/guardian consent for minors that **is not implemented** (`profiles.parent_consent`
 exists as a column; nothing in `src/` ever reads or writes it). Both are fixed in copy. Two
 things the audit could *not* fix in copy are recorded at the end of that doc: six served signs
