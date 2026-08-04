@@ -1,0 +1,48 @@
+{
+  "superseded_by": "restore-uncitable-controls-2026-08-04.json — REVERSED THE SAME DAY. John reviewed all seven and ruled the content fine and reasonable; nothing in resources/ covers these topics and losing correct teaching over an absent citation was judged the worse trade. DO NOT REPLAY THIS FILE — it would re-withdraw all seven. It is kept because the reasoning is the useful part: it records exactly what was searched and why the citation does not exist, which is what makes the restored questions a *recorded exception* rather than an unexplained gap. The restore file carries the current state.",
+  "description": "Withdraws the 7 approved questions that carry no source_citation and cannot be given one from resources/. John's decision, 2026-08-04, after being shown all seven. These are the residue of question-citations-2026-08-04.json: the citation pass covered 35 of the 42 uncited questions and established that these 7 have no provision to point at. Our source library is the Act, the regulations, the SARTSM volumes, the DoT chart and the three NaTIS syllabus manuals — between them they cover law, signs and syllabus, and do NOT reach vehicle safety technology or rider technique. Searched: the Vehicle Controls manual's numbered control lists (§1.2, §2.2, §2.5, §2.8) and all three of its sample-question banks, plus the consolidated NRTR. An independent three-model adversarial review agreed unanimously that none of the seven is citable from those documents. Note what this is NOT: none of the seven is believed to state anything FALSE. They are unevidenced, and under constraint 9 an unevidenced question cannot be approved — 'AI drafts; it never self-certifies', and a question with no citation cannot be verified at all because there is nothing to check it against. Withdrawal is reversible: if a source is ever added to resources/ that covers dashboard warning lights, head restraints, demisters, ABS or motorcycle cornering, these can be cited and restored. in_exam and in_readiness are deliberately left set so a restored question returns to where it was being used.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-5",
+      "set": { "review_status": "withdrawn" },
+      "why": "VC10, dashboard warning lights. No mention of warning lights, tell-tales or instrument-cluster indicators anywhere in the Vehicle Controls manual or the NRTR. Carries a SECOND, independent reason to pull it: a reviewer flagged the keyed answer as potentially unsafe as written — a red oil-pressure or brake warning may require stopping immediately rather than 'check before driving', so the safest action is understated. If this one is ever rewritten, fix that before restoring it. It was also the only withdrawn question sitting in the free readiness pool (in_readiness), which drops 15 -> 14 and controls 5 -> 4; the sampler apportions 5 questions as 2 rules / 2 signs / 1 control, so 4 remains ample."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-012",
+      "set": { "review_status": "withdrawn" },
+      "why": "VC11, head restraint positioning. 'Head restraint' appears nowhere in either manual; the single 'headrest' hit in the consolidated NRTR is reg 250-series minibus backrest tapering dimensions, which is about seat geometry for passenger vehicles and has nothing to do with driver head-restraint adjustment. Was labelled source_basis 'official_manual' — that provenance claim is disproved by this search."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-026",
+      "set": { "review_status": "withdrawn" },
+      "why": "VC11, head restraint purpose. As VC-012: no head-restraint provision in any source, and no whiplash or rear-end-collision protection material anywhere in resources/. Also labelled 'official_manual' in error."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-024",
+      "set": { "review_status": "withdrawn" },
+      "why": "VC13, demister. 'Demist' and 'defrost' return nothing in the consolidated NRTR, and the Vehicle Controls manual's numbered control lists run 1-11 without a demister — the manual's only weather-control item is the window wiper (control 2, '(w)hen driving in the rain the following control is used… 2'). Also labelled 'official_manual' in error."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-030",
+      "set": { "review_status": "withdrawn" },
+      "why": "VC17, what ABS preserves. No anti-lock braking provision in the NRTR, and the 2012 manuals predate ABS being standard and never mention it. Withdrawing this and VC-011 leaves lesson VC17 with no questions at all — recorded in docs/verification-worklist.md as a content gap, not a gate failure. Also labelled 'official_manual' in error."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-011",
+      "set": { "review_status": "withdrawn" },
+      "why": "VC17, ABS braking technique. As VC-030. Note the content is standard and almost certainly correct — firm continuous pressure, do not pump — which is precisely why it is worth restoring later against a real source rather than deleting. Also labelled 'official_manual' in error."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-016",
+      "set": { "review_status": "withdrawn" },
+      "why": "VC22, completing motorcycle braking before a turn. §1.3 lists the controls used to negotiate a sharp turn but says nothing about when braking must be finished, and the NRTR contains no cornering technique. This is the one of the seven whose source_basis was honest — 'generated_from_syllabus' — so it was never claiming manual backing."
+    }
+  ]
+}

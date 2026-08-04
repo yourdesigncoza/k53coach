@@ -1,0 +1,20 @@
+{
+  "description": "Rewrites q-controls-5 (objective VC10, dashboard warning lights). John's wording, 2026-08-04. The old item was not WRONG against its own options — the distractors were 'the vehicle is working perfectly' and 'you must drive faster to clear it', so the keyed answer won by default. The defect was that it taught the wrong severity: it keyed 'check before driving' for a RED light, when the convention every vehicle uses is red = stop, amber = check. A learner who absorbed it and later saw a red oil-pressure or brake lamp could keep driving — oil pressure gone seizes an engine in minutes, and a red brake lamp can mean hydraulic failure. Raised by an independent reviewer during the 2026-08-04 adversarial review of the citation batch, and left open when the question was restored. The rewrite keeps the item but moves the teaching point to red-vs-amber and replaces the giveaway distractors with plausible ones ('have it checked when convenient' is exactly the mistake being corrected). source_basis stays 'uncited_general_knowledge' and source_citation stays NULL — rewriting it does not make it citable, nothing in resources/ covers warning lights. verified_at and approved_by are untouched: this is still an unverified item and belongs in the human worklist.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-5",
+      "set": {
+        "prompt": "A red warning light stays on after you start the engine. What should you do?",
+        "options": [
+          "Treat it as serious — do not drive until you know what it is",
+          "Carry on and have it checked when convenient",
+          "Ignore it if the car seems to drive normally"
+        ],
+        "answer": 0,
+        "explanation": "Red means stop, amber means check. A red light — oil pressure, brakes, charging — can mean damage within minutes, so don't drive on it. The exception is the parking-brake light: that just means the handbrake is still on."
+      },
+      "why": "Old prompt: 'What does it usually mean if a red warning light stays on after starting?' keyed to 'Something needs attention — check before driving'. New prompt asks what to DO rather than what it means, which is the constraint-10 form — the reader is someone about to drive, not someone learning a definition. The explanation now leads with the rule a learner can carry ('Red means stop, amber means check') instead of restating the answer, and keeps the parking-brake exception because a lit handbrake light is the one case where the advice would otherwise be alarming. Length 219 chars, inside the 397 house ceiling. NOTE: the correct answer sits at index 0 as specified. The mock exam shuffles option order per sitting (shuffleOptions in assemblePaper), but the FREE READINESS TEST DOES NOT — readiness-sample.ts shuffles which questions are drawn and their order, never the options within a question — and this item is in_readiness. See docs/verification-worklist.md; that is a bank-wide issue, not specific to this question."
+    }
+  ]
+}

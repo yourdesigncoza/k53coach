@@ -1,0 +1,47 @@
+{
+  "description": "Restores the 7 questions withdrawn earlier the same day by withdraw-uncitable-controls-2026-08-04.json. John reviewed all seven and ruled the content fine and reasonable (2026-08-04). That was never in dispute — the withdrawal rested on constraint 9's evidence rule, not on accuracy, and the repair file that pulled them said in terms that none was believed to state anything false. The ruling is that for plainly standard vehicle knowledge (what a demister does, that ABS lets you steer, how high a head restraint sits) an absent citation is not worth losing correct teaching over. Two things this file does so the exception stays VISIBLE rather than silent: (1) every one of the seven gets source_basis 'uncited_general_knowledge', replacing the six false 'official_manual' claims that the citation pass disproved and VC-016's 'generated_from_syllabus', which the same search also disproved — one honest label for one exception class, greppable as a set; (2) source_citation stays NULL. Do not backfill it with prose. A null citation is the true statement, and it keeps `source_citation is null` working as the query that returns exactly this exception set. Note that 'all approved questions carry a citation' is therefore FALSE again — 267 of 274 — and CLAUDE.md says so.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-5",
+      "set": { "review_status": "approved", "source_basis": "uncited_general_knowledge" },
+      "why": "VC10, dashboard warning lights. Restored per John's ruling. ⚠️ CARRIES AN UNRESOLVED CONTENT DEFECT, separate from the citation question and not fixed here: the keyed answer 'Something needs attention — check before driving' understates a red oil-pressure or brake lamp, which means stop and do not drive. Flagged by an independent reviewer. Rewrite the answer before this is ever human-signed-off. Was source_basis null."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-012",
+      "set": { "review_status": "approved", "source_basis": "uncited_general_knowledge" },
+      "why": "VC11, head restraint positioning. Restored. Relabelled from 'official_manual' — 'head restraint' appears nowhere in the DoT manuals, and the only NRTR 'headrest' hit is reg 250-series minibus backrest tapering, which is unrelated."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-026",
+      "set": { "review_status": "approved", "source_basis": "uncited_general_knowledge" },
+      "why": "VC11, head restraint purpose (whiplash). Restored. Relabelled from 'official_manual' for the same reason as VC-012."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-024",
+      "set": { "review_status": "approved", "source_basis": "uncited_general_knowledge" },
+      "why": "VC13, demister. Restored. Relabelled from 'official_manual' — the Vehicle Controls manual's numbered control lists run 1–11 with no demister, and 'demist'/'defrost' return nothing in the consolidated NRTR."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-030",
+      "set": { "review_status": "approved", "source_basis": "uncited_general_knowledge" },
+      "why": "VC17, what ABS preserves. Restored. Relabelled from 'official_manual' — the 2012 manuals predate ABS being standard and never mention it, and the NRTR has no anti-lock provision."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-011",
+      "set": { "review_status": "approved", "source_basis": "uncited_general_knowledge" },
+      "why": "VC17, ABS braking technique. Restored. Relabelled from 'official_manual' as VC-030."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-016",
+      "set": { "review_status": "approved", "source_basis": "uncited_general_knowledge" },
+      "why": "VC22, completing braking before a turn. ⚠️ MOTORCYCLE-SPECIFIC — flagged by John on restore. Correctly tagged vehicle_codes ['A'] (Code A), so it is NOT in the Code B mock pool and no car learner can be served it. Since only Code B papers are built (Code A/C are deferred — K53-7), this question is currently approved but UNREACHABLE by any live paper; it will begin serving the day a Code A paper ships. Four other approved controls questions are in the same position — VC-010, VC-027, VC-028, VC-029 — all correctly Code A. Relabelled from 'generated_from_syllabus': the citation pass established that §1.3 lists the controls used to negotiate a sharp turn but says nothing about when braking must be finished, so the syllabus claim does not hold either."
+    }
+  ]
+}

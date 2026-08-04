@@ -179,7 +179,11 @@ That closes the blocking half of the problem: a question with no citation cannot
 all, because there is nothing to check it *against*. These 35 are now reviewable. They are **not**
 verified — `verified_at` and `approved_by` were deliberately left alone.
 
-### ⚠️ Seven questions have no source in `resources/` at all
+### ✅ RESOLVED — the seven uncitable questions stay, as a recorded exception (John, 2026-08-04)
+
+Withdrawn and **restored the same day**. Both steps are kept as a pair —
+`withdraw-uncitable-controls-2026-08-04.json`, then
+`restore-uncitable-controls-2026-08-04.json` — because the reasoning is the useful part.
 
 | Q | Objective | Topic |
 |---|---|---|
@@ -187,14 +191,73 @@ verified — `verified_at` and `approved_by` were deliberately left alone.
 | `VC-012`, `VC-026` | `VC11` | Head restraint position and purpose |
 | `VC-024` | `VC13` | Demister |
 | `VC-030`, `VC-011` | `VC17` | ABS — what it preserves, how to brake with it |
-| `VC-016` | `VC22` | Completing motorcycle braking before a turn |
+| `VC-016` | `VC22` | Completing motorcycle braking before a turn — **Code A only** |
 
-Our library is law, signs and syllabus. **It does not reach vehicle safety technology.** Checked
-against the Vehicle Controls manual's numbered control lists (§1.2, §2.2, §2.5, §2.8), all three of
-its sample-question banks, and the consolidated NRTR. The content is not thought to be *wrong* — it
-is unevidenced, which under constraint 9 is a different problem needing a different fix: add a
-source to `resources/`, or withdraw the questions. **That is John's call, not a backfill.**
+**Nothing in `resources/` covers any of it.** Checked against the Vehicle Controls manual's
+numbered control lists (§1.2, §2.2, §2.5, §2.8), all three of its sample-question banks, and the
+consolidated NRTR; an independent three-model review agreed unanimously that none is citable.
 
+**The ruling: the content is fine and reasonable, and losing correct teaching over an absent
+citation is the worse trade.** That was always the narrow question — the withdrawal file itself said
+none of the seven was believed to state anything false. Constraint 9 is about provenance, and where
+the material is plainly standard vehicle knowledge (what a demister does, that ABS lets you steer)
+the rule was judged to be costing more than it protected.
+
+Three things keep the exception **visible instead of silent**:
+
+1. **`source_basis = 'uncited_general_knowledge'`** on all seven — one honest label for one
+   exception class, greppable as a set. It replaces **six false `official_manual` claims** the
+   citation pass disproved, and `VC-016`'s `generated_from_syllabus`, disproved by the same search.
+   Treat `source_basis` generally as a claim to check, not a provenance record: it was self-assigned
+   at drafting time.
+2. **`source_citation` stays NULL.** Do not backfill it with prose. Null is the true statement, and
+   `source_citation is null` is the query that returns exactly these seven.
+3. **The bank is 267/274 cited, not 274/274.** Anyone quoting full citation coverage is wrong.
+
+#### Two live caveats on the restored set
+
+⚠️ **`q-controls-5` has an unresolved content defect**, independent of the citation question. Its
+keyed answer — "Something needs attention — check before driving" — **understates a red
+oil-pressure or brake lamp, which means stop and do not drive.** Flagged by an independent
+reviewer. Rewrite the answer before this question is ever human-signed-off.
+
+⚠️ **`VC-016` is motorcycle-specific** and correctly tagged `vehicle_codes: ['A']`, so it is **not in
+the Code B mock pool** and no car learner can be served it. Since only Code B papers are built
+(Code A/C deferred — K53-7), it is approved but **unreachable by any live paper**; it begins serving
+the day a Code A paper ships. Five other approved questions are in the same position — `VC-010`,
+`VC-027`, `VC-028`, `VC-029` and `RR-062`. Worth re-reading as a group before Code A launches, since
+none of them has ever been served to a learner.
+
+#### ✅ `q-controls-5` rewritten (John's wording, 2026-08-04)
+
+`scripts/data-repairs/fix-q-controls-5-2026-08-04.json`. The defect was severity, not correctness —
+it keyed *"check before driving"* for a **red** light, when the convention is **red = stop, amber =
+check**. It now asks what to *do* and teaches that rule, with plausible distractors replacing
+"you must drive faster to clear it". Still `uncited_general_knowledge`, still `verified_at` null —
+rewriting it did not make it citable.
+
+### ⚠️ Bank-wide, found while fixing it: the free readiness test never shuffles options
+
+`assemblePaper` shuffles option order per sitting (`shuffleOptions`), so the **mock exam is fine**.
+Nothing else does. `readiness-sample.ts` shuffles *which questions are drawn and their order* and
+never touches `options`; no quiz component shuffles either. So on the free readiness test and in
+practice mode, **every learner sees the same option in the same position, every time.**
+
+Two consequences:
+
+- A learner who retakes the free test gets identical option order, so re-answering can be recall of
+  position rather than of the rule.
+- Answer-index distribution across the 274 approved three-option questions is **101 / 96 / 77** —
+  index 2 is meaningfully underweighted. On an unshuffled surface that is a guessable bias, and
+  guessing the first option beats chance.
+
+Neither is a content error, so it is not on this worklist's critical path — but it undercuts the
+readiness score's meaning, which is the number parents are shown. Fixing it is small: apply the
+existing `shuffleOptions` in the readiness/practice path as the exam already does.
+
+⚠️ **`VC20` is a control lesson with no question at all.** Pre-existing, unrelated to this episode.
+It is the reverse of the orphan the Stage 1 gate measures (questions with no lesson, which is clean
+at 274/274), so it is a content gap rather than a gate failure.
 ### ⚠️ Thirteen citations are partial — the source supports the item but not the keyed answer
 
 Each carries a `NOTE FOR THE HUMAN VERIFIER` in its repair-file `why`. **Read these first — they
