@@ -105,7 +105,7 @@ export default function PaywallPage() {
         <section className="flex-1">
         <Badge variant="secondary">{t("badge")}</Badge>
         <h1 className="mt-3 text-2xl font-bold tracking-tight">{t("title")}</h1>
-        <p className="mt-2 text-muted-foreground">{t("subtitle")}</p>
+        <p className="mt-2 text-muted-foreground">{t("subtitle", { price: ENTITLEMENT_PRICE_LABEL })}</p>
 
         <Card className="mt-6 ring-2 ring-foreground">
           <CardContent className="py-6">

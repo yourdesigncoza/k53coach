@@ -8,6 +8,7 @@ import { Link } from "@/i18n/navigation";
 import { Share2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { SiteHeader } from "@/components/site-header";
+import { ENTITLEMENT_PRICE_LABEL } from "@/lib/pricing";
 import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -169,7 +170,7 @@ export default function ResultPage() {
         <Card className="ring-2 ring-foreground">
           <CardContent className="py-5 text-center">
             <p className="font-semibold">{t("ctaTitle")}</p>
-            <p className="mt-1 text-sm text-muted-foreground">{t("ctaBody")}</p>
+            <p className="mt-1 text-sm text-muted-foreground">{t("ctaBody", { price: ENTITLEMENT_PRICE_LABEL })}</p>
             <Button
               className="mt-4 h-12 w-full rounded-xl text-base"
               render={

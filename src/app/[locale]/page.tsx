@@ -375,7 +375,7 @@ export default function LandingPage() {
                         <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </summary>
-                    <p className="pr-8 pb-4 text-sm leading-relaxed text-mist">{t(`faqA${n}`)}</p>
+                    <p className="pr-8 pb-4 text-sm leading-relaxed text-mist">{t(`faqA${n}`, { price: ENTITLEMENT_PRICE_LABEL })}</p>
                   </details>
                 ))}
               </div>
