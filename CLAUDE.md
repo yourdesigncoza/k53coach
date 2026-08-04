@@ -19,7 +19,7 @@ moved by 47 in three days:
 
 | | |
 |---|---|
-| `road_signs` | **352 served** (both gates approved + `sa_relevant`), down from 375 — the 2026-08-03 artwork audit withdrew 13 blank plates, 3 non-SA signs and corrected 7 de-restriction signs |
+| `road_signs` | **356 served** (both gates approved + `sa_relevant`). The 2026-08-03 artwork audit took 375 → 352 (13 blank plates, 3 non-SA signs withdrawn, 7 de-restriction signs corrected); 2026-08-04 added 4 that had artwork but no approved lesson — **`R1` Stop**, `IN1`/`IN2`/`IN3` Countdown. ⚠️ `R1` is the standard STOP sign and had been missing while `R1.1` (the doubled urban variant) served in its place — if a sign seems absent, check `review_status`, not just `asset_status` |
 | `questions` | 276 rows — **274 approved**, 0 draft, 2 withdrawn. Approved: rules 120 / signs 117 / controls 37. All 274 carry an `objective_code`; 232 carry a `source_citation`; **46 carry a human sign-off** |
 | Rule learning objects | 29 (`RR1`–`RR29`); controls 22 (`VC1`–`VC22`) — all still `reviewStatus: "draft"` |
 | `exam_attempts` | 0 — no learner has sat a mock in production |

@@ -142,6 +142,33 @@ whether the prose is *true and useful*, not whether it matches a reg.
 | ☐ | `RTM3` | Pedestrian crossing lines | SARTSM Vol 1 §7.2.3 (Pedestrian Crossing Lines RTM3); NRTR 2000 reg 315(2), reg 315(4), reg 1 definition | *prose only — read for sense* |
 | ☐ | `RTM4` | Block pedestrian crossing | SARTSM Vol 1 §7.2.4 (Block Pedestrian Crossing Markings RTM4), §2.2.3 (R2.1); NRTR 2000 reg 286(2)(c)(iii), reg 315 | *prose only — read for sense* |
 
+## Road signs approved on an AI pass, 2026-08-04 — serving now, human read still owed
+
+These five are **live to learners** (`review_status: 'approved'`, `approved_by: 'ai:claude-code'`),
+unlike everything above, which is still `draft`. They were approved because the alternative was
+worse: R1 is the standard STOP sign and was invisible in the library while R1.1 — the doubled urban
+variant — served in its place captioned "This is the stop sign", and two approved in-exam questions
+pointed at R1 with no lesson to send a learner to.
+
+Sources were read page-by-page and quoted in
+`scripts/data-repairs/stop-and-countdown-content-2026-08-04.json`. **Two substantive errors were
+found and corrected in that pass, not transcribed** — so this is a real verification, but it is an
+AI one, and constraint 9 is not satisfied until a human reads each against the provision.
+
+| ✓ | Code | Object | Cites | Check |
+|---|---|---|---|---|
+| ☐ | `R1` | Stop | SADC RTSM Vol 1 §2.2.1 ¶1 (`resources/sartsm/V1C2.pdf`) | Behind the stop line if there is one; **front end in line with the sign** if there is not — the previous text said "before the intersection", which appears in no source.<br>A stop line marked but not visible is treated as no stop line. |
+| ☐ | `R1.1` | Stop (additional low-mounted sign) | SADC RTSM Vol 1 §2.2.1 ¶2(a) | Urban use where a narrow footpath, other signs or vegetation restrict visibility of the standard sign; an extra STOP sign on the same support; **same mandatory requirements as R1**. Renamed — the chart prints both R1 and R1.1 as "Stop sign", unusable as a learner label. |
+| ☐ | `IN1` | Countdown marker (100 m) | SADC RTSM Vol 1 §5.2.1 ¶1–3 (`V1C5.pdf`); Vol 4 §9.2.1 colour plate (`V4C9.pdf`) | 100 m from a high-speed exit; one bar; set of three with IN3 furthest out; bars **slope down to the right**; background **blue, green or brown** — the previous text taught "blue" as definitional. |
+| ☐ | `IN2` | Countdown marker (200 m) | as IN1 | 200 m; two bars. |
+| ☐ | `IN3` | Countdown marker (300 m) | as IN1 | 300 m; three bars; **furthest from the exit** — the counter-intuitive fact the set turns on. |
+
+> **Extraction trap, recorded so it is not repeated.** `pdftotext -layout` on `V4C9.pdf` prints the
+> CUL-DE-SAC colour block (green background, red and white symbol) directly under the COUNTDOWN
+> heading, because the two-column landscape pages interleave. Read these volumes page-by-page with
+> `-f`/`-l` before quoting a colour. The naive extraction says countdown signs are green; they are
+> not.
+
 ## Already machine-checked — do not repeat
 
 - **All 43 objects carry a source citation.** None asserts a rule without naming the provision.

@@ -1,0 +1,155 @@
+{
+  "description": "Writes and approves the content gate on the four signs that had approved artwork but no approved lesson — R1 (Stop) and IN1/IN2/IN3 (Countdown) — and corrects R1.1, which was serving in R1's place. Found while checking Stage 1 for orphaned objectives: two approved, in-exam questions (q-signs-1, RS-001) carry objective_code R1, which resolved to no served lesson. Sources read for this pass, quoted in each `why`: SADC RTSM Vol 1 Ch 2 §2.2.1 (resources/sartsm/V1C2.pdf), Vol 1 Ch 5 §5.2.1 (V1C5.pdf), Vol 4 Ch 9 §9.1.2 and the COUNTDOWN SIGNS colour plate at §9.2.1 (V4C9.pdf), the DoT sign chart index (resources/charts/RTSigns_charts.pdf) and the SA Learner Driver Manual §3.1 (resources/manuals/natis-road-traffic-signs-manual-v100-2012-06.pdf). Two substantive content errors were found and corrected, not just transcribed: R1's stopping position when there is no stop line, and the claim that a countdown sign is blue. This is an AI pass against the primary sources — it is NOT the human sign-off constraint 9 requires, and `verification.content.humanSignOff` records that explicitly.",
+  "ops": [
+    {
+      "table": "road_signs",
+      "match": "code=eq.R1",
+      "set": {
+        "content": {
+          "plainEnglish": {
+            "en": "The one sign that means stop every single time — a complete standstill, wheels not turning, even when you can see the road is empty.",
+            "af": "Die een teken wat elke keer stop beteken — heeltemal tot stilstand, wiele wat nie draai nie, selfs wanneer jy kan sien die pad is leeg."
+          },
+          "formalMeaning": {
+            "en": "Stop behind the stop line if there is one. If there is no line, stop with the front of your vehicle level with the sign. Move off only when it is safe.",
+            "af": "Stop agter die stoplyn as daar een is. As daar geen lyn is nie, stop met die voorkant van jou voertuig in lyn met die teken. Trek eers weg wanneer dit veilig is."
+          },
+          "behaviour": {
+            "en": "Stop dead, then look right, left and right again before pulling away. Give way to anything already in the intersection. If the stop line is worn away or hidden, treat it as if there is no line.",
+            "af": "Hou heeltemal stil, kyk dan regs, links en weer regs voordat jy wegtrek. Gee voorrang aan enigiets wat reeds in die kruising is. As die stoplyn weggesleet of bedek is, hanteer dit asof daar geen lyn is nie."
+          },
+          "commonMistake": {
+            "en": "Rolling through at walking pace instead of stopping dead, or creeping over the line to see better. Where you stop is the part people get wrong, not whether they stopped.",
+            "af": "Om teen stapspoed deur te rol in plaas van heeltemal stil te hou, of om oor die lyn te kruip om beter te sien. Wáár jy stop is wat mense verkeerd kry, nie of hulle gestop het nie."
+          },
+          "testHint": {
+            "en": "The only eight-sided sign on the road. Learn the two stopping positions: behind the line if there is one, level with the sign if there is not.",
+            "af": "Die enigste agthoekige teken op die pad. Leer die twee stopposisies: agter die lyn as daar een is, in lyn met die teken as daar nie een is nie."
+          }
+        },
+        "review_status": "approved",
+        "approved_by": "ai:claude-code",
+        "verified_at": "2026-08-04T09:40:38Z"
+      },
+      "why": "R1 IS the standard STOP sign and it was not being served. SADC RTSM Vol 1 Ch 2 §2.2.1 ¶1: 'The STOP regulatory sign R1 imposes a mandatory requirement that the driver of a vehicle shall stop such vehicle with its front end in line with such sign, or, if STOP LINE marking RTM1 is used in conjunction with such sign in the prescribed manner, immediately behind such stop line, and that such driver shall not proceed until it is safe to do so.' ¶2 then lists R1.1-R1.5 as 'derivatives of STOP sign R1'. The chart index carries R1 'Stop sign' as its own entry, and public/signs/R1.svg is the plain red octagon.\n\nTHE CONTENT ERROR CORRECTED: the previous formalMeaning read 'stop completely at the stop line (or before the intersection/crossing)'. 'Before the intersection' is not the rule. Where there is no stop line the requirement is the vehicle's FRONT END IN LINE WITH THE SIGN — a specific position a learner can be examined on, and one that a driver stopping vaguely 'before the intersection' would miss. The stop line and the sign are two different reference points and the old text collapsed them into a third that appears in neither source.\n\nAdded from the same paragraph: 'If a stop line has been marked but for whatever reason is, for the time being, not visible, then the driver shall act as if there is no stop line' — rendered as the worn/hidden-line case in `behaviour`, because a faded stop line is a situation a learner actually meets.\n\nProse follows constraint 10: no regulation or section number reaches the learner, the citation lives here. Field lengths sit inside the house band (max 205 characters against a 397 ceiling)."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.R1.1",
+      "set": {
+        "name": "Stop (additional low-mounted sign)",
+        "content": {
+          "plainEnglish": {
+            "en": "Two stop signs on one pole — a second, smaller one mounted low down. It is still one stop instruction, not two."
+          },
+          "formalMeaning": {
+            "en": "A variation of the stop sign carrying an extra stop sign lower on the same support. It places exactly the same duty on you as an ordinary stop sign."
+          },
+          "behaviour": {
+            "en": "Treat it exactly as an ordinary stop sign: stop behind the line, or level with the sign if there is no line, and move off only when it is safe."
+          },
+          "commonMistake": {
+            "en": "Reading the second sign as meaning something extra — a longer stop, or two separate stops. It is there to be seen, not to add a rule."
+          },
+          "testHint": {
+            "en": "Used in towns where a narrow pavement, other signs or overgrown plants hide the normal stop sign. Same duty, mounted twice so you cannot miss it."
+          }
+        },
+        "review_status": "approved",
+        "approved_by": "ai:claude-code",
+        "verified_at": "2026-08-04T09:40:38Z"
+      },
+      "why": "R1.1 was serving as the library's 'Stop sign' while R1 sat unapproved, so a learner browsing road signs met a DOUBLED stop sign captioned 'This is the stop sign.' The artwork (public/signs/R1.1.svg) is two octagons on one support and is correct; the name and the content were describing R1.\n\nSADC RTSM Vol 1 Ch 2 §2.2.1 ¶2(a): 'Sign R1.1 may be specified in urban areas where the footpath is narrow and visibility of the standard stop sign is restricted by other signs or by vegetation. The variation consists of an additional STOP sign R1, 450 mm wide, displayed on the same support as the main stop sign at a minimum height to the lower edge of 750 mm above the roadway. STOP sign R1.1 shall have the same mandatory requirements of a driver as sign R1.'\n\nRenamed so the two are distinguishable in a list — the chart index prints both as 'Stop sign', which is unusable as a learner-facing label. The mm dimensions and mounting height are deliberately left out of the prose: they specify manufacture, not driving, and teach a learner nothing (constraint 10). Content is now about the only thing that matters to the driver — it changes nothing about what you must do.\n\nThis edits an already-approved row. That is deliberate: it was approved describing a different sign, so leaving it alone would keep a wrong caption in front of learners."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.IN1",
+      "set": {
+        "content": {
+          "plainEnglish": {
+            "en": "A marker with one diagonal bar, standing 100 m before a freeway exit — the last one you pass before the turn-off."
+          },
+          "formalMeaning": {
+            "en": "A countdown sign giving the distance to a high-speed exit. They are used in sets of three — three bars at 300 m, two at 200 m, one at 100 m — so one bar means 100 m to go."
+          },
+          "behaviour": {
+            "en": "Use them to get into the left lane early. They are put up precisely where a curve or a rise hides the exit, so the road ahead can look clear when the turn-off is already on you."
+          },
+          "commonMistake": {
+            "en": "Reading the count the wrong way round. One bar is not the first warning — it means the exit is 100 m away and you should already be in position."
+          },
+          "memoryTrick": {
+            "en": "Bars count down, not up: three, two, one, off."
+          },
+          "testHint": {
+            "en": "Count the bars and multiply by 100 to get the metres left. The bars always slope down to the right, and the background is not always blue — it can be blue, green or brown."
+          }
+        },
+        "review_status": "approved",
+        "approved_by": "ai:claude-code",
+        "verified_at": "2026-08-04T09:40:38Z"
+      },
+      "why": "SADC RTSM Vol 1 §5.2.1 ¶1: 'COUNTDOWN signs IN1, IN2 and IN3 may be used to inform drivers that a high speed exit is approximately 100m, 200m and 300m ahead respectively. The signs shall normally be used in sets of three with IN3 furthest from the exit point... The \"bar\" symbols shall always slope down to the right.' ¶2: located on the left side of the roadway. ¶3: 'should be reserved for the approaches to high speed exit roadways... when the actual point of exit is concealed or when sight distance is limited', listing a left-hand curve or a crest curve on the approach. The DoT chart index carries 'IN1, IN2 & IN3 — Countdown sign'.\n\nTHE CONTENT ERROR CORRECTED: the previous plainEnglish opened 'A blue marker with 1 white diagonal bar'. SADC RTSM Vol 4 §9.2.1, the COUNTDOWN SIGNS plate, specifies Background: 'Blue, green or brown retroreflective' (and yellow for the temporary version). Our artwork is the blue instance, which is how the error survived — the colour was read off the SVG rather than off the spec. Teaching 'blue' as definitional would leave a learner unable to name a green or brown one. Colour moved into testHint as the variable it actually is.\n\nA near-miss worth recording: `pdftotext -layout` on V4C9 places the CUL-DE-SAC colour block (green background, red and white symbol) directly beneath the COUNTDOWN heading, because the two-column landscape layout interleaves pages. Read page-by-page with -f/-l before quoting a colour from these volumes; the naive extraction says countdown signs are green.\n\nAlso replaced: the old behaviour line 'Slow down on the off-ramp, not on the freeway itself' — sound advice but resting on nothing in the sources. The grounded teaching point is ¶3's reason the signs exist at all, that the exit is concealed. And the old commonMistake ('reading the bars as a lane count, or as a stepped speed limit') was a misconception with no evidence behind it; per constraint 10 a confusion we invent is one we plant. Replaced with the direction error, which is what the sign genuinely turns on."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.IN2",
+      "set": {
+        "content": {
+          "plainEnglish": {
+            "en": "A marker with two diagonal bars, standing 200 m before a freeway exit — the middle sign of the set of three."
+          },
+          "formalMeaning": {
+            "en": "A countdown sign giving the distance to a high-speed exit. They are used in sets of three — three bars at 300 m, two at 200 m, one at 100 m — so two bars means 200 m to go."
+          },
+          "behaviour": {
+            "en": "Use them to get into the left lane early. They are put up precisely where a curve or a rise hides the exit, so the road ahead can look clear when the turn-off is already on you."
+          },
+          "commonMistake": {
+            "en": "Reading the count the wrong way round. Two bars is not 'nearly there' in the sense of the next corner — it is 200 m, which at freeway speed is a few seconds."
+          },
+          "memoryTrick": {
+            "en": "Bars count down, not up: three, two, one, off."
+          },
+          "testHint": {
+            "en": "Count the bars and multiply by 100 to get the metres left. The bars always slope down to the right, and the background is not always blue — it can be blue, green or brown."
+          }
+        },
+        "review_status": "approved",
+        "approved_by": "ai:claude-code",
+        "verified_at": "2026-08-04T09:40:38Z"
+      },
+      "why": "Same sources and the same colour correction as IN1 — SADC RTSM Vol 1 §5.2.1 ¶1 fixes IN2 at approximately 200 m from the exit, Vol 4 §9.2.1 gives the background as blue, green or brown. Only the bar count and the position in the set differ between the three rows; the shared fields are deliberately identical so the set reads as one idea across three cards."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.IN3",
+      "set": {
+        "content": {
+          "plainEnglish": {
+            "en": "A marker with three diagonal bars, standing 300 m before a freeway exit — the first of the set you meet."
+          },
+          "formalMeaning": {
+            "en": "A countdown sign giving the distance to a high-speed exit. They are used in sets of three — three bars at 300 m, two at 200 m, one at 100 m — so three bars means 300 m to go."
+          },
+          "behaviour": {
+            "en": "Use them to get into the left lane early. They are put up precisely where a curve or a rise hides the exit, so the road ahead can look clear when the turn-off is already on you."
+          },
+          "commonMistake": {
+            "en": "Reading the count the wrong way round. Three bars is the most bars and the greatest distance — it means the exit is still 300 m off, not that you are on top of it."
+          },
+          "memoryTrick": {
+            "en": "Bars count down, not up: three, two, one, off."
+          },
+          "testHint": {
+            "en": "Count the bars and multiply by 100 to get the metres left. The bars always slope down to the right, and the background is not always blue — it can be blue, green or brown."
+          }
+        },
+        "review_status": "approved",
+        "approved_by": "ai:claude-code",
+        "verified_at": "2026-08-04T09:40:38Z"
+      },
+      "why": "Same sources and the same colour correction as IN1. SADC RTSM Vol 1 §5.2.1 ¶1 is explicit that IN3 stands furthest from the exit — 'The signs shall normally be used in sets of three with IN3 furthest from the exit point' — which is the counter-intuitive fact the whole set turns on and is why the most bars means the greatest distance."
+    }
+  ]
+}
