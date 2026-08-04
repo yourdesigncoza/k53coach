@@ -261,9 +261,11 @@ it, including that `answer` still points at the correct option *text* after the 
 way this breaks silently. Verified in a browser: the same question rendered in different option
 orders across repeated loads.
 
-⚠️ **Practice mode is still unshuffled.** `getPracticeQuestions` feeds `practice-runner.tsx`
-directly with stored option order, so the same positional bias remains there. Not in scope for the
-readiness fix; the change is now one `.map(shuffleOptions)` away.
+✅ **Practice mode now shuffles too** (2026-08-04, same day). Applied in `getPracticeQuestions`
+rather than the three practice pages, which are otherwise identical and would each have needed the
+same line. Question ORDER stays `sort_order` — practice is a walk through a topic, not a random
+draw. All three practice routes build as `ƒ` (server-rendered per request), so the shuffle is fresh
+per visit rather than baked in at build time; verified in a browser across repeated loads.
 
 ⚠️ **`VC20` is a control lesson with no question at all.** Pre-existing, unrelated to this episode.
 It is the reverse of the orphan the Stage 1 gate measures (questions with no lesson, which is clean

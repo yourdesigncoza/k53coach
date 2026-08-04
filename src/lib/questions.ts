@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Tables } from "@/lib/database.types";
 import type { Question, Topic } from "@/lib/types";
+import { shuffleOptions } from "@/lib/shuffle";
 
 /**
  * DB4 question bank access. The `questions` table is the source of truth (DB-only);
@@ -55,7 +56,19 @@ export async function getReadinessQuestions(): Promise<Question[]> {
   return (data ?? []).map(toQuestion);
 }
 
-/** All approved questions for one topic — the practice bank. */
+/**
+ * All approved questions for one topic — the practice bank.
+ *
+ * Option order is shuffled per request. Stored order is fixed, and practice is the
+ * surface a learner repeats most, so without this the correct answer sits in the
+ * same slot every run and gets memorised by position rather than by rule. Question
+ * ORDER stays `sort_order` — practice is a walk through a topic, not a random draw,
+ * so the sequence is meant to be stable.
+ *
+ * This is deliberately in the getter rather than the three practice pages, which are
+ * otherwise identical and would each need the same line. The getter has exactly those
+ * three callers; anything needing raw stored order (admin, export) must not use it.
+ */
 export async function getPracticeQuestions(topic: Topic): Promise<Question[]> {
   const supabase = await createClient();
   if (!supabase) return [];
@@ -65,7 +78,7 @@ export async function getPracticeQuestions(topic: Topic): Promise<Question[]> {
     .eq("review_status", "approved")
     .eq("topic", topic)
     .order("sort_order", { ascending: true });
-  return (data ?? []).map(toQuestion);
+  return (data ?? []).map(toQuestion).map((q) => shuffleOptions(q));
 }
 
 /** Admin: every question, any status (RLS admits all rows for admins). */
