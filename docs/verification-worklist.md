@@ -236,24 +236,34 @@ check**. It now asks what to *do* and teaches that rule, with plausible distract
 "you must drive faster to clear it". Still `uncited_general_knowledge`, still `verified_at` null —
 rewriting it did not make it citable.
 
-### ⚠️ Bank-wide, found while fixing it: the free readiness test never shuffles options
+### ✅ FIXED — the free readiness test now shuffles options (2026-08-04)
 
-`assemblePaper` shuffles option order per sitting (`shuffleOptions`), so the **mock exam is fine**.
-Nothing else does. `readiness-sample.ts` shuffles *which questions are drawn and their order* and
-never touches `options`; no quiz component shuffles either. So on the free readiness test and in
-practice mode, **every learner sees the same option in the same position, every time.**
+Found while fixing `q-controls-5`. `assemblePaper` had always shuffled option order per sitting,
+so the **mock exam was never affected**. Nothing else did: `readiness-sample.ts` shuffled *which*
+questions were drawn and their order but never touched `options`, so on the free test **every
+learner saw every option in the same position, every time.**
 
-Two consequences:
+Two things that cost:
 
-- A learner who retakes the free test gets identical option order, so re-answering can be recall of
-  position rather than of the rule.
-- Answer-index distribution across the 274 approved three-option questions is **101 / 96 / 77** —
-  index 2 is meaningfully underweighted. On an unshuffled surface that is a guessable bias, and
-  guessing the first option beats chance.
+- The rotation only ever changed *which* questions appeared. A retake met the same answer in the
+  same slot, so re-answering could be recall of position rather than of the rule — defeating half
+  the reason the slice rotates at all.
+- Answer-index distribution across the 274 approved three-option questions is **101 / 96 / 77**.
+  On an unshuffled surface that bias is directly guessable, and "always pick the first" beat chance.
 
-Neither is a content error, so it is not on this worklist's critical path — but it undercuts the
-readiness score's meaning, which is the number parents are shown. Fixing it is small: apply the
-existing `shuffleOptions` in the readiness/practice path as the exam already does.
+Both undercut the readiness score, which is the number shown to parents and the product's stated
+differentiator.
+
+**Fix:** `shuffle` and `shuffleOptions` moved to `src/lib/shuffle.ts` — `exam.ts` and
+`readiness-sample.ts` had each grown their own identical Fisher–Yates — and
+`sampleReadinessQuestions` now maps `shuffleOptions` over both its return paths. Four tests cover
+it, including that `answer` still points at the correct option *text* after the remap, which is the
+way this breaks silently. Verified in a browser: the same question rendered in different option
+orders across repeated loads.
+
+⚠️ **Practice mode is still unshuffled.** `getPracticeQuestions` feeds `practice-runner.tsx`
+directly with stored option order, so the same positional bias remains there. Not in scope for the
+readiness fix; the change is now one `.map(shuffleOptions)` away.
 
 ⚠️ **`VC20` is a control lesson with no question at all.** Pre-existing, unrelated to this episode.
 It is the reverse of the orphan the Stage 1 gate measures (questions with no lesson, which is clean

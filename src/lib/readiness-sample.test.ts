@@ -87,3 +87,114 @@ test("fills the shortfall when one topic is thin", () => {
   assert.equal(got.length, 5);
   assert.ok(!got.some((x) => x.topic === "controls"));
 });
+
+// ── Option shuffling ─────────────────────────────────────────────────────────
+// Added 2026-08-04. The free test rotated WHICH questions it drew but never their
+// option order, so a retake met the same answer in the same slot. The fixture
+// above uses identical options on every question, which cannot see that — these
+// use distinguishable ones.
+
+/** A question whose correct option text is identifiable after any reordering. */
+function qq(id: string, topic: Topic, answer: number): Question {
+  const opts = ["x", "y", "z"].map((s) => `${id}-${s}`);
+  opts[answer] = `${id}-CORRECT`;
+  return {
+    id,
+    topic,
+    difficulty: 1,
+    prompt: id,
+    options: opts,
+    answer,
+    explanation: "",
+  } as Question;
+}
+
+/** Correct answer parked at a different index per topic, so a bug can't hide. */
+const richPool: Question[] = [
+  ...Array.from({ length: 5 }, (_, i) => qq(`r${i}`, "rules", 0)),
+  ...Array.from({ length: 5 }, (_, i) => qq(`s${i}`, "signs", 1)),
+  ...Array.from({ length: 5 }, (_, i) => qq(`c${i}`, "controls", 2)),
+];
+
+test("answer still points at the correct option TEXT after shuffling", () => {
+  const byId = new Map(richPool.map((x) => [x.id, x]));
+  // Both branches must be observed to reorder something, or this test passes
+  // vacuously when the fix is reverted — the fixture's correct text already sits
+  // at the stored index, so `options[answer] === CORRECT` holds without any remap.
+  const reordered = [false, false];
+
+  for (const seed of [1, 2, 3, 7, 42, 99, 12345]) {
+    const branches = [
+      sampleReadinessQuestions(richPool, 5, seeded(seed)),
+      // the pool.length <= size branch shuffles options too
+      sampleReadinessQuestions(richPool.slice(0, 3), 5, seeded(seed)),
+    ];
+    branches.forEach((got, branch) => {
+      for (const item of got) {
+        assert.equal(
+          item.options[item.answer],
+          `${item.id}-CORRECT`,
+          `seed ${seed}: ${item.id} answer index ${item.answer} points at the wrong option`,
+        );
+        const original = byId.get(item.id)!;
+        if (item.options.join("\u0000") !== original.options.join("\u0000")) {
+          reordered[branch] = true;
+        }
+      }
+    });
+  }
+
+  assert.ok(reordered[0], "the main sampling path never reordered any options");
+  assert.ok(reordered[1], "the small-pool path never reordered any options");
+});
+
+test("shuffling preserves the option set exactly — none lost or duplicated", () => {
+  const byId = new Map(richPool.map((x) => [x.id, x]));
+  let anyReordered = false;
+  for (const seed of [4, 8, 15, 16, 23]) {
+    for (const item of sampleReadinessQuestions(richPool, 5, seeded(seed))) {
+      const original = byId.get(item.id)!;
+      assert.equal(item.options.length, original.options.length);
+      assert.deepEqual(
+        [...item.options].sort(),
+        [...original.options].sort(),
+        `seed ${seed}: ${item.id} option set changed`,
+      );
+      if (item.options.join("\u0000") !== original.options.join("\u0000")) {
+        anyReordered = true;
+      }
+    }
+  }
+  // Without this the set-equality check holds trivially on unshuffled options.
+  assert.ok(anyReordered, "no option list was reordered across any seed");
+});
+
+test("option order actually varies — the correct answer is not pinned to one slot", () => {
+  // Draw the same single-question pool many times; the answer index must move.
+  const one = [qq("only", "rules", 0)];
+  const seen = new Set<number>();
+  for (let seed = 1; seed <= 40; seed++) {
+    seen.add(sampleReadinessQuestions(one, 1, seeded(seed))[0].answer);
+  }
+  assert.ok(
+    seen.size > 1,
+    `correct answer never moved off index ${[...seen]} across 40 seeds — options are not being shuffled`,
+  );
+});
+
+test("the drawn questions are copies — the caller's pool is not mutated", () => {
+  const before = richPool.map((x) => ({ ...x, options: [...x.options] }));
+  sampleReadinessQuestions(richPool, 5, seeded(5));
+  assert.deepEqual(richPool, before, "sampling mutated the pool it was given");
+});
+
+test("a corrupt answer index is rejected loudly, not served as unanswerable", () => {
+  // Data-repair files patch rows straight through PostgREST and bypass
+  // saveQuestion's range check, so this invariant is not guaranteed on write.
+  const corrupt = [{ ...qq("bad", "rules", 0), answer: 5 } as Question];
+  assert.throws(
+    () => sampleReadinessQuestions(corrupt, 1, seeded(1)),
+    /RangeError|answer index 5/,
+    "an out-of-range answer index should throw, not silently become -1",
+  );
+});

@@ -2,6 +2,7 @@
 // which does not resolve the "@/" alias for VALUE imports (type-only imports are erased,
 // which is why other tested modules get away with "@/lib/types").
 import { EXAM_FORMAT_B } from "./exam.ts";
+import { shuffle, shuffleOptions, type Rng } from "./shuffle.ts";
 import type { Question, Topic } from "@/lib/types";
 
 /**
@@ -19,8 +20,9 @@ import type { Question, Topic } from "@/lib/types";
  */
 export const READINESS_QUESTION_COUNT = 5;
 
-/** Seam for tests; production passes nothing and gets Math.random. */
-export type Rng = () => number;
+/** Seam for tests; production passes nothing and gets Math.random. Re-exported
+ *  from ./shuffle so existing importers of `Rng` from here keep working. */
+export type { Rng };
 
 /**
  * Per-topic quota for a sample of `size`, apportioned by the real exam's section
@@ -69,16 +71,6 @@ export function readinessQuota(
   return quota;
 }
 
-/** Fisher-Yates on a copy. */
-function shuffle<T>(items: T[], rng: Rng): T[] {
-  const a = [...items];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
 /**
  * Draw a rotating readiness slice from the curated pool.
  *
@@ -86,13 +78,21 @@ function shuffle<T>(items: T[], rng: Rng): T[] {
  * from whatever else is left, so a thin pool yields a smaller-but-valid test
  * rather than an empty one. Order is shuffled so the topics do not always arrive
  * in the same run.
+ *
+ * **Option order is shuffled too**, per question, via `shuffleOptions`. Stored
+ * option order is fixed, so without it the rotation only ever changed WHICH
+ * questions appeared — a learner who retook the test met the same answer in the
+ * same slot, which is recall of position rather than of the rule, and undercuts
+ * the readiness score this test exists to produce. The mock exam has always done
+ * this in `assemblePaper`; the free test did not until 2026-08-04.
  */
 export function sampleReadinessQuestions(
   pool: Question[],
   size: number = READINESS_QUESTION_COUNT,
   rng: Rng = Math.random,
 ): Question[] {
-  if (pool.length <= size) return shuffle(pool, rng);
+  if (pool.length <= size)
+    return shuffle(pool, rng).map((q) => shuffleOptions(q, rng));
 
   const quota = readinessQuota(size);
   const picked: Question[] = [];
@@ -111,5 +111,5 @@ export function sampleReadinessQuestions(
   const short = size - picked.length;
   if (short > 0) picked.push(...shuffle(leftovers, rng).slice(0, short));
 
-  return shuffle(picked.slice(0, size), rng);
+  return shuffle(picked.slice(0, size), rng).map((q) => shuffleOptions(q, rng));
 }
