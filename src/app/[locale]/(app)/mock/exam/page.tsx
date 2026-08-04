@@ -1,5 +1,6 @@
 import { requireEntitledUser } from "@/lib/exam-guard";
 import { getExamPool } from "@/lib/questions";
+import { getRecentlySeenQuestionIds } from "@/lib/supabase/queries";
 import { assemblePaper, EXAM_FORMAT_B } from "@/lib/exam";
 import { ExamRunner } from "@/components/exam/exam-runner";
 
@@ -17,11 +18,16 @@ export default async function MockExamPage({
   searchParams: Promise<{ timer?: string }>;
 }) {
   const { locale } = await params;
-  await requireEntitledUser(locale);
+  const { user } = await requireEntitledUser(locale);
   const sp = await searchParams;
 
-  const pool = await getExamPool(EXAM_FORMAT_B.vehicleCode);
-  const paper = assemblePaper(pool, EXAM_FORMAT_B);
+  // Repeat suppression: the learner's last completed papers are passed in so
+  // this one draws from what they haven't just answered (K53-32, Stage 1 gate).
+  const [pool, recentlySeen] = await Promise.all([
+    getExamPool(EXAM_FORMAT_B.vehicleCode),
+    getRecentlySeenQuestionIds(user.id),
+  ]);
+  const paper = assemblePaper(pool, EXAM_FORMAT_B, Math.random, recentlySeen);
 
   return (
     <main className="mx-auto w-full max-w-2xl px-4 py-6 md:px-8 md:py-8">

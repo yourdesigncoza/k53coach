@@ -34,9 +34,12 @@ const TOPIC_LABEL: Record<Topic, string> = {
  * of silently shrinking.
  *
  * Topic cards come last and only exist where the coverage rule fired: the
- * learner is weak in a topic whose questions we mostly can't map to a lesson
- * yet (22 of 47 signs questions, pending road markings — K53-30). Saying "road
- * signs need work" is honest; naming one objective would be a confident guess.
+ * learner is weak in a topic whose questions we can't map to a lesson. As of
+ * 2026-08-04 that shortfall is closed — all 274 approved questions resolve to a
+ * written lesson (markings included, so the K53-30 caveat that used to sit here
+ * is gone). The fallback stays because resolution is per-request: a sign can be
+ * withdrawn after a learner answered a question about it, and then "road signs
+ * need work" is honest where naming one objective would be a confident guess.
  */
 export async function resolveWeakAreaCards(
   weak: WeakAreas,

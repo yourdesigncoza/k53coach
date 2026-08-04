@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { Topic } from "@/lib/types";
 import type { SignRow } from "@/lib/signs";
 import { rankWeakAreas, type WeakAreas } from "@/lib/weak-areas";
+import { RECENT_ATTEMPTS_SUPPRESSED } from "@/lib/exam";
 
 /** Current signed-in user, or null (also null when Supabase isn't configured). */
 export async function getUser() {
@@ -145,6 +146,45 @@ export async function getExamHistory(userId: string, limit = 10) {
     .order("started_at", { ascending: false })
     .limit(limit);
   return data ?? [];
+}
+
+/**
+ * Question ids from a user's most recent mock papers, most-recent-first, for
+ * repeat suppression in `assemblePaper`.
+ *
+ * Reads `answers` rather than a dedicated column: the paper is not persisted
+ * anywhere else, and the attempt row records every question it contained in
+ * paper order. That means only *completed* papers suppress — an abandoned
+ * sitting was never written, so its questions stay eligible. That is the right
+ * behaviour; a paper the learner walked away from is not one they have seen.
+ *
+ * Ordering across attempts is what matters (attempt N-1's questions must all
+ * outrank attempt N-2's), so the ids are flattened in `started_at desc` order
+ * and de-duplicated by the caller.
+ */
+export async function getRecentlySeenQuestionIds(
+  userId: string,
+  attempts: number = RECENT_ATTEMPTS_SUPPRESSED,
+): Promise<string[]> {
+  const supabase = await createClient();
+  if (!supabase) return [];
+  const { data } = await supabase
+    .from("exam_attempts")
+    .select("answers")
+    .eq("user_id", userId)
+    .not("finished_at", "is", null)
+    .order("started_at", { ascending: false })
+    .limit(attempts);
+
+  return (data ?? []).flatMap((row) =>
+    Array.isArray(row.answers)
+      ? row.answers
+          .map((a) =>
+            a && typeof a === "object" && "id" in a ? String(a.id) : "",
+          )
+          .filter(Boolean)
+      : [],
+  );
 }
 
 /** Distinct days a user practised/tested in the last `sinceDays` (consistency signal). */

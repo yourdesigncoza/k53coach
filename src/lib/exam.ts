@@ -55,8 +55,9 @@ export interface ExamFormat {
  *  signs + markings measured ~26 of 64 against the 28 the terminal reports for
  *  signs. So markings questions carry topic "signs" (matching road_signs, which
  *  already holds the 16 marking rows) and there is deliberately no fourth Topic.
- *  Note the pool has ZERO markings items today; a paper cannot yet contain the
- *  ~6 it should, and assemblePaper has no sub-quota to force them once it can.
+ *  The pool now carries 26 approved markings items (measured 2026-08-04), so a
+ *  paper CAN contain the ~6 it should — but only by chance: assemblePaper draws
+ *  the signs section as one pool and has no sub-quota forcing markings in.
  *
  *  DERIVED. The 30/28/6 split: 64 total, with 28 reported for signs, leaves 36
  *  for rules + controls; the observed mix (rules 47%, controls 11%) puts that at
@@ -128,6 +129,58 @@ function weightedSample(
     .map((x) => x.q);
 }
 
+/**
+ * How many of the learner's most recent papers feed repeat suppression.
+ *
+ * Two, not "everything ever seen". Suppressing the full history sounds stricter
+ * but is worse: once the history covers the pool every question is suppressed,
+ * the tiers collapse, and paper N+1 becomes the same deterministic
+ * least-recently-seen list every time. A two-paper window keeps a real unseen
+ * tier at the current pool sizes — rules draws 30 from 120, so two papers mark
+ * at most 60 and leave 60 genuinely unseen — and it matches the metric the
+ * build plan actually sets a target for: paper-over-paper overlap.
+ */
+export const RECENT_ATTEMPTS_SUPPRESSED = 2;
+
+/**
+ * Weighted sample of `k`, preferring questions the learner has not just seen.
+ *
+ * Two tiers. Draw from the unseen items first, with the normal likelihood
+ * weighting, so variety costs nothing while the pool can afford it. Only if
+ * that runs short do we top up from the seen items, and that top-up is taken in
+ * strict least-recently-seen order rather than at random.
+ *
+ * Deterministic top-up is deliberate. By the time we are topping up, every
+ * remaining candidate is a repeat, so there is no variety left to protect — the
+ * only question is *which* repeat, and the one the learner saw longest ago is
+ * strictly the best answer. Randomising there would sometimes re-serve last
+ * paper's question while a staler one sat unused.
+ *
+ * `seenRank` maps question id → position in the recent history, 0 being the
+ * most recent. Ids absent from the map are unseen.
+ */
+function sampleAvoidingRepeats(
+  pool: PoolQuestion[],
+  k: number,
+  seenRank: ReadonlyMap<string, number>,
+  rand: () => number = Math.random,
+): PoolQuestion[] {
+  if (pool.length <= k) return shuffle(pool, rand);
+  if (seenRank.size === 0) return weightedSample(pool, k, rand);
+
+  const unseen = pool.filter((q) => !seenRank.has(q.id));
+  const picked = weightedSample(unseen, Math.min(k, unseen.length), rand);
+  if (picked.length === k) return picked;
+
+  const topUp = pool
+    .filter((q) => seenRank.has(q.id))
+    .sort((a, b) => seenRank.get(b.id)! - seenRank.get(a.id)!)
+    .slice(0, k - picked.length);
+
+  // Shuffle the union so the repeats don't land in a predictable block at the end.
+  return shuffle([...picked, ...topUp], rand);
+}
+
 /** Shuffle a question's options and remap `answer` to the new index. */
 function shuffleOptions(q: Question, rand: () => number = Math.random): Question {
   const order = shuffle(
@@ -151,7 +204,15 @@ export function assemblePaper(
   pool: PoolQuestion[],
   format: ExamFormat = EXAM_FORMAT_B,
   rand: () => number = Math.random,
+  recentlySeen: readonly string[] = [],
 ): ExamPaper {
+  // Most-recent-first, so the first occurrence of an id wins on duplicates —
+  // a question in both of the last two papers ranks by the more recent sitting.
+  const seenRank = new Map<string, number>();
+  recentlySeen.forEach((id, i) => {
+    if (!seenRank.has(id)) seenRank.set(id, i);
+  });
+
   let shortened = false;
   const sections = format.sections.map((sec) => {
     const topicPool = pool.filter((q) => q.topic === sec.topic);
@@ -159,8 +220,8 @@ export function assemblePaper(
     if (count < sec.count) shortened = true;
     const passRequired =
       count < sec.count ? Math.ceil((sec.pass * count) / sec.count) : sec.pass;
-    const picked = weightedSample(topicPool, count, rand).map((q) =>
-      shuffleOptions(q, rand),
+    const picked = sampleAvoidingRepeats(topicPool, count, seenRank, rand).map(
+      (q) => shuffleOptions(q, rand),
     );
     return { topic: sec.topic, passRequired, questions: picked };
   });

@@ -21,7 +21,7 @@ moved by 47 in three days:
 |---|---|
 | `road_signs` | **356 served** (both gates approved + `sa_relevant`). The 2026-08-03 artwork audit took 375 → 352 (13 blank plates, 3 non-SA signs withdrawn, 7 de-restriction signs corrected); 2026-08-04 added 4 that had artwork but no approved lesson — **`R1` Stop**, `IN1`/`IN2`/`IN3` Countdown. ⚠️ `R1` is the standard STOP sign and had been missing while `R1.1` (the doubled urban variant) served in its place — if a sign seems absent, check `review_status`, not just `asset_status` |
 | `questions` | 276 rows — **274 approved**, 0 draft, 2 withdrawn. Approved: rules 120 / signs 117 / controls 37. All 274 carry an `objective_code`; 232 carry a `source_citation`; **46 carry a human sign-off** |
-| Rule learning objects | 29 (`RR1`–`RR29`); controls 22 (`VC1`–`VC22`) — all still `reviewStatus: "draft"` |
+| Rule learning objects | **30** (`RR1`–`RR30`; `RR30` "Temporary road signs" added 2026-08-03); controls 22 (`VC1`–`VC22`) — all still `reviewStatus: "draft"` |
 | `exam_attempts` | 0 — no learner has sat a mock in production |
 | `entitlements` | 4 — 3 by hand via admin, 1 (`ce1b7f96`) granted by a real PayFast ITN |
 
@@ -30,9 +30,28 @@ moved by 47 in three days:
 rules **120/120 ✅**, controls **37/24 ✅**, signs **117/112 ✅** — cleared when Louwrens
 approved 44 sign drafts overnight on 2026-08-03. **This does not by itself open the
 checkout.** The counted bar is *approved*, and only 46 of the 274 carry the human sign-off
-constraint 9 requires; the rest are `approved_by = 'system'` (see below). The remaining
-Stage 1 items — no orphaned topics, road-markings written library, claims audit — are
-unchanged.
+constraint 9 requires; the rest are `approved_by = 'system'` (see below).
+
+**Every other Stage 1 gate row is now closed too, as of 2026-08-04 — leaving human
+sign-off as the only one outstanding:**
+
+| Gate row | State |
+|---|---|
+| Per-section question split | ✅ rules 120/120, signs 117/112, controls 37/24 |
+| **Repeat suppression live** | ✅ `assemblePaper` takes the learner's last **2** completed papers and draws from what they haven't just answered. Measured at live pool sizes: paper-over-paper repeats **24% → 0%** |
+| Payments live, idempotent, sandbox-tested | ✅ verified end to end 2026-08-03 (entitlement `ce1b7f96`) |
+| **No orphaned topics** | ✅ all **274/274** approved questions resolve to a written lesson — verified in both directions (30 `RR*` + 22 `VC*` + the served signs) |
+| Road-markings written library | ✅ 16 marking rows served, **26 approved markings questions** |
+| **Every claim true** | ✅ `docs/claims-audit-2026-08-04.md` — 32 strings corrected across both locales |
+
+⚠️ **The claims audit found the paywall was the worst offender, not the landing page** — it
+advertised a "Full 750-question bank" against 274 real ones, and the privacy page promised
+parent/guardian consent for minors that **is not implemented** (`profiles.parent_consent`
+exists as a column; nothing in `src/` ever reads or writes it). Both are fixed in copy. Two
+things the audit could *not* fix in copy are recorded at the end of that doc: six served signs
+with no recorded verification evidence, and the fact that **only `/mock` is entitlement-gated**
+— practice, explanations and the whole library are already free, so R179 currently buys mock
+exams and the AI assessment. That second one is a product decision, not a wording bug.
 
 **Launch plan: `docs/build-plan-2026-07.md` (v2) — read it before scoping work.** Launch is a **two-stage gate**, not one bar: Stage 1 paid beta at **256 verified questions** at the per-section split 120 rules / 112 signs / 24 controls (a floor derived from the exam format — see the doc; was 300 before the 64-question correction, and **the split is the bar, not the total**) + payments live + no orphaned topics + road-markings written library + a claims audit; Stage 2 full launch at 736. Payments get built early but the **checkout stays closed** until the Stage 1 content floor is real. Tracked as **K53-32**.
 
@@ -130,7 +149,7 @@ supabase gen types typescript --linked > src/lib/database.types.ts
 vercel --prod        # deploy to production (prod env vars already set on Vercel)
 ```
 
-**There IS a test setup** — no third-party framework, just Node's built-in runner over TypeScript via `--experimental-strip-types`, so nothing to install. **41 tests currently pass** across `src/lib/payfast.test.ts` and `src/lib/weak-areas.test.ts`. Coverage is deliberately narrow: the two places where a silent logic error costs money or misleads a learner. Add a `*.test.ts` next to the module and it is picked up — don't add Jest/Vitest for it.
+**There IS a test setup** — no third-party framework, just Node's built-in runner over TypeScript via `--experimental-strip-types`, so nothing to install. **56 tests currently pass** across `payfast.test.ts`, `weak-areas.test.ts`, `readiness-sample.test.ts` and `exam.test.ts`. Coverage is deliberately narrow: the places where a silent logic error costs money or misleads a learner — payment signing, weak-area ranking, the readiness sample, and mock-paper assembly (repeat suppression must never starve a section). Add a `*.test.ts` next to the module and it is picked up — don't add Jest/Vitest for it.
 
 The app runs **without Supabase env vars** ("demo mode" — auth/persistence simulated); real keys live in `.env.local` (gitignored). Network here is IPv4-only, so Supabase DB commands use the pooler (this is why `supabase link` was re-run).
 
