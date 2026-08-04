@@ -14,6 +14,9 @@
  * 64 (K53-34); what is and is not evidenced is spelled out on EXAM_FORMAT_B.
  */
 import type { Question, Topic } from "@/lib/types";
+// Relative + explicit .ts: exam.test.ts runs under --experimental-strip-types,
+// which does not resolve "@/" for VALUE imports.
+import { shuffle, shuffleOptions } from "./shuffle.ts";
 
 export const VEHICLE_CODES = ["A", "B", "C", "EB"] as const;
 export type VehicleCode = (typeof VEHICLE_CODES)[number];
@@ -98,16 +101,6 @@ export interface ExamPaper {
   sections: ExamPaperSection[];
 }
 
-/** Fisher–Yates shuffle (returns a new array; does not mutate input). */
-function shuffle<T>(arr: readonly T[], rand: () => number = Math.random): T[] {
-  const out = arr.slice();
-  for (let i = out.length - 1; i > 0; i--) {
-    const j = Math.floor(rand() * (i + 1));
-    [out[i], out[j]] = [out[j], out[i]];
-  }
-  return out;
-}
-
 /**
  * Weighted sampling without replacement (Efraimidis–Spirakis): each item gets a
  * key `rand^(1/weight)`; the top-k keys are the sample. Higher weight → more
@@ -179,19 +172,6 @@ function sampleAvoidingRepeats(
 
   // Shuffle the union so the repeats don't land in a predictable block at the end.
   return shuffle([...picked, ...topUp], rand);
-}
-
-/** Shuffle a question's options and remap `answer` to the new index. */
-function shuffleOptions(q: Question, rand: () => number = Math.random): Question {
-  const order = shuffle(
-    q.options.map((_, i) => i),
-    rand,
-  );
-  return {
-    ...q,
-    options: order.map((i) => q.options[i]),
-    answer: order.indexOf(q.answer),
-  };
 }
 
 /**
