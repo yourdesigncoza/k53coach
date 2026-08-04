@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { ChevronLeft } from "lucide-react";
 import { QuestionEditor } from "@/components/admin/question-editor";
 import { getQuestionById, toQuestion } from "@/lib/questions";
+import type { QuestionReviewStatus } from "@/lib/types";
 
 export const metadata = { title: "Admin · Edit question" };
 
@@ -40,7 +41,7 @@ export default async function AdminQuestionEditPage({
         approvedBy={row.approved_by}
         verifiedAt={row.verified_at}
         inReadiness={row.in_readiness}
-        reviewStatus={row.review_status as "draft" | "approved"}
+        reviewStatus={row.review_status as QuestionReviewStatus}
         inExam={row.in_exam}
         examLikelihood={(row.exam_likelihood ?? "medium") as "high" | "medium" | "low"}
         vehicleCodes={(row.vehicle_codes ?? ["A", "B", "C", "EB"]) as ("A" | "B" | "C" | "EB")[]}

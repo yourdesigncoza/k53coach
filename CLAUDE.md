@@ -12,23 +12,27 @@ The original specs live in `docs/product/` and still govern product intent — r
 
 Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. The road-sign library (DB1) is fully ingested and **chart-verified in a Claude Code session** — see `docs/sign-accuracy-pipeline.md`. **Mock exam (Code B) shipped:** entitlement-gated `/mock` → timed **64**-question paper (rules 30 / signs 28 / controls 6, scored independently — corrected from 68 on 2026-07-31, K53-34; see the evidence note on `EXAM_FORMAT_B`) → per-section summary → grounded AI assessment → DB9 readiness blend on the dashboard/progress. Engine in `src/lib/exam.ts`, UI in `src/components/exam/*`, gate in `src/lib/exam-guard.ts`.
 
-**Live data measured 2026-08-01** against the prototype project (`lxefjksaxmiawrnnewmj`).
+**Live data measured 2026-08-04** against the prototype project (`lxefjksaxmiawrnnewmj`).
 **Measure it yourself before quoting — these drift fast.** The 2026-07-30 figures that stood
-here were wrong within two days on every row that matters:
+here were wrong within two days on every row that matters, and the 2026-08-01 signs count
+moved by 47 in three days:
 
 | | |
 |---|---|
-| `road_signs` | 381 rows — **375 served** (both gates approved + `sa_relevant`). 234 regulatory / 102 warning / 29 guidance / **16 markings**. The markings are now approved on **both** gates and **are served** — their content was rewritten 2026-07-31 against the manual + NRTR + NRTA (`scripts/data-repairs/markings-content-2026-07-31.json`) |
-| `questions` | 228 rows — **227 approved**, 1 draft. Approved: rules 120 / signs 70 / controls 37. All 227 carry an `objective_code`; 185 carry a `source_citation` |
+| `road_signs` | **352 served** (both gates approved + `sa_relevant`), down from 375 — the 2026-08-03 artwork audit withdrew 13 blank plates, 3 non-SA signs and corrected 7 de-restriction signs |
+| `questions` | 276 rows — **274 approved**, 0 draft, 2 withdrawn. Approved: rules 120 / signs 117 / controls 37. All 274 carry an `objective_code`; 232 carry a `source_citation`; **46 carry a human sign-off** |
 | Rule learning objects | 29 (`RR1`–`RR29`); controls 22 (`VC1`–`VC22`) — all still `reviewStatus: "draft"` |
 | `exam_attempts` | 0 — no learner has sat a mock in production |
-| `entitlements` | 3, all granted by hand via admin |
+| `entitlements` | 4 — 3 by hand via admin, 1 (`ce1b7f96`) granted by a real PayFast ITN |
 
-**Stage 1 content gate — two of three sections are already there.** The bar is the
+**Stage 1 content gate — all three sections are met, as of 2026-08-03.** The bar is the
 *per-section split* 120 rules / 112 signs / 24 controls (not the 256 total). Measured above:
-rules **120/120 ✅**, controls **37/24 ✅**, signs **70/112 — short 42**. Signs is the only
-section still blocking the Stage 1 gate. Note the counted bar is *approved*, and approval
-here is not yet the human sign-off constraint 9 requires (see below).
+rules **120/120 ✅**, controls **37/24 ✅**, signs **117/112 ✅** — cleared when Louwrens
+approved 44 sign drafts overnight on 2026-08-03. **This does not by itself open the
+checkout.** The counted bar is *approved*, and only 46 of the 274 carry the human sign-off
+constraint 9 requires; the rest are `approved_by = 'system'` (see below). The remaining
+Stage 1 items — no orphaned topics, road-markings written library, claims audit — are
+unchanged.
 
 **Launch plan: `docs/build-plan-2026-07.md` (v2) — read it before scoping work.** Launch is a **two-stage gate**, not one bar: Stage 1 paid beta at **256 verified questions** at the per-section split 120 rules / 112 signs / 24 controls (a floor derived from the exam format — see the doc; was 300 before the 64-question correction, and **the split is the bar, not the total**) + payments live + no orphaned topics + road-markings written library + a claims audit; Stage 2 full launch at 736. Payments get built early but the **checkout stays closed** until the Stage 1 content floor is real. Tracked as **K53-32**.
 
@@ -213,10 +217,21 @@ Implemented Postgres tables (RLS, own-row policies): `profiles` (auto-created on
 - `questions` audit trail — added by `supabase/migrations/20260724090000_question_provenance.sql` (`approved_by`, `verified_at`, `generated_by`, `source_citation`, `objective_code`).
 - `entitlements` idempotency — the partial unique index `entitlements_payment_reference_key` on `(source, reference)` landed in `supabase/migrations/20260727120000_payfast_itn_idempotency.sql`.
 
-⚠️ **But the audit columns are only half-populated, and that is now the real accuracy risk.** Measured 2026-08-01 across the 227 approved questions: `objective_code` **227/227**, `source_citation` **185/227**, `approved_by` and `verified_at` **0/227**. Every approved item therefore claims an approval that **no human is recorded as having given** — the same "decorative accuracy gate" the migration was written to prevent, now failing one step later. Two consequences to honour:
+⚠️ **The audit columns are still only half-populated, and that is the real accuracy risk.** Measured 2026-08-04 across the 274 approved questions: `objective_code` **274/274**, `source_citation` **232/274**, `verified_at` **46/274**.
 
-- Treat `review_status = 'approved'` as *AI-swept*, not *human-verified*. It does not satisfy constraint 9 on its own, and the Stage 1 count rests on it.
-- The 42 approved questions with no `source_citation` are uncitable as they stand. Before quoting bank size as evidence of readiness, check what share carries evidence.
+**Read `approved_by` before you read `review_status`** — since `20260804090000_question_approver_system.sql` it is `text`, not a uuid, and it names which kind of approval happened:
+
+| `approved_by` | `verified_at` | Means | Count |
+|---|---|---|---|
+| a user id | set | a person read it against its citation | **46** (all Louwrens, 2026-08-03, all signs) |
+| `'system'` | null | AI sweep set the flag; nobody read it | **228** |
+
+Those 46 are the first genuine human sign-offs in the table. Two consequences to honour:
+
+- Treat `approved_by = 'system'` as *AI-swept*, not *human-verified*. It does not satisfy constraint 9 on its own, and most of the Stage 1 count rests on it. `verified_at is null` is the outstanding worklist — do **not** backfill it to tidy the column, or the distinction is gone.
+- The 42 approved questions with no `source_citation` are uncitable as they stand (24 controls, 17 rules, 1 sign). Before quoting bank size as evidence of readiness, check what share carries evidence.
+
+`review_status` has a third value, **`withdrawn`** (`20260804100000`) — deliberately pulled, awaiting nobody, reason recorded in `scripts/data-repairs/`. It is not a `draft`: leaving pulled items in the draft queue sent a reviewer chasing two questions we had already decided against. The admin list hides withdrawn by default; learner getters and RLS already filter on `= 'approved'`, so serving is unaffected.
 
 `docs/verification-worklist.md` tracks the outstanding human pass; the sweep that produced the current state is written up in `docs/question-verify/`.
 

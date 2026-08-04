@@ -8,9 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SignImage } from "@/components/sign-image";
+import { QuestionStatusBadge } from "@/components/admin/question-status-badge";
 import { cn } from "@/lib/utils";
 import { saveQuestion, deleteQuestion } from "@/lib/question-actions";
-import type { Topic } from "@/lib/types";
+import type { QuestionReviewStatus, Topic } from "@/lib/types";
 import {
   VEHICLE_CODES,
   EXAM_LIKELIHOODS,
@@ -34,7 +35,7 @@ export type QuestionEditorProps = {
   objectiveCode: string | null;
   sourceCitation: string | null;
   inReadiness: boolean;
-  reviewStatus: "draft" | "approved";
+  reviewStatus: QuestionReviewStatus;
   approvedBy: string | null;
   verifiedAt: string | null;
   inExam: boolean;
@@ -159,16 +160,7 @@ export function QuestionEditor(initial: QuestionEditorProps) {
     <div className="mt-5 flex flex-col gap-4">
       <div className="flex flex-wrap items-center gap-2">
         <Badge variant="outline" className="font-mono">{initial.id}</Badge>
-        <Badge
-          variant="outline"
-          className={
-            reviewStatus === "approved"
-              ? "text-emerald-700 dark:text-emerald-300"
-              : "text-amber-700 dark:text-amber-300"
-          }
-        >
-          {reviewStatus}
-        </Badge>
+        <QuestionStatusBadge status={reviewStatus} />
         <Button
           variant="outline"
           size="sm"
@@ -197,11 +189,18 @@ export function QuestionEditor(initial: QuestionEditorProps) {
           </label>
           <label className="block">
             <span className="mb-1 block text-xs font-medium">Review status</span>
-            <select className={field} value={reviewStatus} onChange={(e) => setReviewStatus(e.target.value as "draft" | "approved")}>
-              <option value="draft">draft</option>
+            <select
+              className={field}
+              value={reviewStatus}
+              onChange={(e) =>
+                setReviewStatus(e.target.value as QuestionReviewStatus)
+              }
+            >
+              <option value="draft">draft — awaiting review</option>
               <option value="approved" disabled={!sourceCitation.trim()}>
                 approved{sourceCitation.trim() ? "" : " — needs a citation"}
               </option>
+              <option value="withdrawn">withdrawn — pulled, not in the queue</option>
             </select>
           </label>
         </CardContent>
@@ -241,12 +240,19 @@ export function QuestionEditor(initial: QuestionEditorProps) {
               placeholder="e.g. R1 · RR7 · VC3 · W306 · RM1"
             />
           </label>
-          {initial.verifiedAt && (
+          {initial.approvedBy === "system" ? (
+            // Approved by the bulk AI sweep, not by a person. Say so plainly —
+            // this is the row a human still has to read against its citation.
+            <p className="text-xs text-amber-700 sm:col-span-2">
+              Approved by System (automated sweep) — no human has verified this
+              against its source yet.
+            </p>
+          ) : initial.verifiedAt ? (
             <p className="text-xs text-muted-foreground sm:col-span-2">
               Last approved {new Date(initial.verifiedAt).toLocaleString("en-ZA")}
               {initial.approvedBy ? "" : " (no approver recorded)"}
             </p>
-          )}
+          ) : null}
         </CardContent>
       </Card>
 

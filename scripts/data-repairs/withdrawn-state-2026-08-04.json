@@ -1,0 +1,29 @@
+{
+  "description": "Two corrections following Louwrens's 2026-08-03 approval pass, in which he cleared 44 of the 46 sign drafts and then reported 'two questions that do not want to approve'. Both were ours and both were blocked correctly by the sign-code guard in saveQuestion — their signs are out of the served set — but nothing in the admin UI said so, so they read as unfinished work waiting on him. (1) Moves both to the new 'withdrawn' state (migration 20260804100000) so they stop appearing in the draft queue. (2) Clears sa_relevant on IN20, which withdraw-in20-2026-08-03.json missed: it set review_status and asset_status but left the sign flagged as South African, which is the exact claim that withdrawal disproved.",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.RS-076",
+      "set": {
+        "review_status": "withdrawn"
+      },
+      "why": "Drafted against sign IN20, which does not exist in South Africa — a Vienna Convention 'priority over oncoming vehicles' sign whose SA counterpart R6 imposes the opposite duty (full reasoning in withdraw-in20-2026-08-03.json). It is not restorable: there is no SA sign for it to be about. Left as 'draft' it sat in the review queue advertising work that must never be done, and the approve action refused it — correctly, since IN20 is no longer an approved SA-relevant sign — with an error that gave the reviewer no way to know the refusal was intended."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-083",
+      "set": {
+        "review_status": "withdrawn"
+      },
+      "why": "Asks the learner to read a white arrow on a red rectangle (R4.3, One-way roadway), but our R4.3 artwork renders as a blank plate — it was pulled in the 2026-08-03 blank-plate batch (withdraw-blank-plates-2026-08-03.json), so the learner would be asked about a sign they cannot see. Unlike RS-076 this one IS restorable: the sign is genuinely South African and the question is sound. It is blocked on artwork, not on content, so it belongs with the artwork work (K53-37) rather than in a reviewer's queue. Restore to draft when R4.3 renders."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.IN20",
+      "set": {
+        "sa_relevant": false
+      },
+      "why": "Completes the 2026-08-03 withdrawal. That repair set review_status='draft' and asset_status='needs_review' but left sa_relevant=true, so the row still asserted the one thing the withdrawal established was false — IN20 is absent from the DoT chart and from all 24 SARTSM volumes. Because sa_relevant is one of the three gates on the served set the sign was already out of learner view, so this changes no output; it makes the row's own fields agree with the finding instead of contradicting it. That matters here specifically: IN20 was withdrawn only because a human checked the chart rather than trusting the row, which had been machine-approved at 0.96 confidence off a Wikimedia search."
+    }
+  ]
+}

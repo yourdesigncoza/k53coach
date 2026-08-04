@@ -122,6 +122,21 @@ export interface VehicleControl {
 
 export type Topic = "signs" | "rules" | "controls";
 
+/**
+ * Lifecycle of a DB4 question-bank row (`questions.review_status`).
+ *
+ * `withdrawn` is not a flavour of `draft`: a draft is unfinished work still owed
+ * to the review queue, a withdrawn item is a decision already taken and is owed
+ * to nobody. Collapsing the two costs reviewer time — see the migration
+ * 20260804100000 header for how that played out.
+ */
+export const QUESTION_REVIEW_STATUSES = [
+  "draft",
+  "approved",
+  "withdrawn",
+] as const;
+export type QuestionReviewStatus = (typeof QUESTION_REVIEW_STATUSES)[number];
+
 /** DB4 — a question with options + the AI-coaching fields (DB5). */
 export interface Question {
   id: string;

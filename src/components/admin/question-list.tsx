@@ -11,8 +11,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { createQuestion } from "@/lib/question-actions";
 import { EXAM_FORMAT_B } from "@/lib/exam";
+import { QuestionStatusBadge } from "@/components/admin/question-status-badge";
 import type { QuestionRow } from "@/lib/questions";
-import type { Topic } from "@/lib/types";
+import type { QuestionReviewStatus, Topic } from "@/lib/types";
 
 const TOPICS: Topic[] = ["signs", "rules", "controls"];
 const TOPIC_LABEL: Record<Topic, string> = {
@@ -39,16 +40,31 @@ export function QuestionList({ rows }: { rows: QuestionRow[] }) {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [topic, setTopic] = useState<Topic | "all">("all");
-  const [status, setStatus] = useState<"all" | "draft" | "approved">("all");
+  // Withdrawn rows are hidden unless asked for. They are settled decisions, not
+  // work — leaving them in the default view is what sent a reviewer chasing two
+  // questions we had already pulled.
+  const [status, setStatus] = useState<QuestionReviewStatus | "all">("all");
   const [pool, setPool] = useState<"all" | "exam" | "not-exam">("all");
   const [creating, setCreating] = useState(false);
+
+  /** Rows the current status filter admits — the set the section tabs count, so a
+   *  tab's number always matches what clicking it shows. */
+  const inStatus = useMemo(
+    () =>
+      rows.filter((r) =>
+        status === "all"
+          ? r.review_status !== "withdrawn"
+          : r.review_status === status,
+      ),
+    [rows, status],
+  );
 
   const perTopic = useMemo(
     () =>
       Object.fromEntries(
-        TOPICS.map((tp) => [tp, rows.filter((r) => r.topic === tp).length]),
+        TOPICS.map((tp) => [tp, inStatus.filter((r) => r.topic === tp).length]),
       ) as Record<Topic, number>,
-    [rows],
+    [inStatus],
   );
 
   const health = useMemo(
@@ -63,26 +79,26 @@ export function QuestionList({ rows }: { rows: QuestionRow[] }) {
 
   const counts = useMemo(
     () => ({
-      total: rows.length,
+      total: inStatus.length,
       approved: rows.filter((r) => r.review_status === "approved").length,
       draft: rows.filter((r) => r.review_status === "draft").length,
+      withdrawn: rows.filter((r) => r.review_status === "withdrawn").length,
     }),
-    [rows],
+    [rows, inStatus],
   );
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
-    return rows.filter(
+    return inStatus.filter(
       (r) =>
         (topic === "all" || r.topic === topic) &&
-        (status === "all" || r.review_status === status) &&
         (pool === "all" ||
           (pool === "exam" ? r.in_exam : !r.in_exam)) &&
         (!q ||
           r.prompt.toLowerCase().includes(q) ||
           r.id.toLowerCase().includes(q)),
     );
-  }, [rows, search, topic, status, pool]);
+  }, [inStatus, search, topic, pool]);
 
   async function add() {
     setCreating(true);
@@ -162,12 +178,13 @@ export function QuestionList({ rows }: { rows: QuestionRow[] }) {
             className={field}
             value={status}
             onChange={(e) =>
-              setStatus(e.target.value as "all" | "draft" | "approved")
+              setStatus(e.target.value as QuestionReviewStatus | "all")
             }
           >
-            <option value="all">All status</option>
+            <option value="all">All live status</option>
             <option value="approved">approved ({counts.approved})</option>
             <option value="draft">draft ({counts.draft})</option>
+            <option value="withdrawn">withdrawn ({counts.withdrawn})</option>
           </select>
           <select
             className={field}
@@ -214,16 +231,9 @@ export function QuestionList({ rows }: { rows: QuestionRow[] }) {
                   </span>
                   <span className="flex flex-wrap items-center gap-1.5">
                     <Badge variant="secondary">{r.topic}</Badge>
-                    <Badge
-                      variant="outline"
-                      className={cn(
-                        r.review_status === "approved"
-                          ? "text-emerald-700 dark:text-emerald-300"
-                          : "text-amber-700 dark:text-amber-300",
-                      )}
-                    >
-                      {r.review_status}
-                    </Badge>
+                    <QuestionStatusBadge
+                      status={r.review_status as QuestionReviewStatus}
+                    />
                     {r.in_exam && (
                       <Badge variant="outline">
                         exam · {r.exam_likelihood ?? "medium"}

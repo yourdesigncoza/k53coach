@@ -3,7 +3,11 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { isAdmin, getApprovedSignByCode } from "@/lib/supabase/queries";
-import type { Topic } from "@/lib/types";
+import {
+  QUESTION_REVIEW_STATUSES,
+  type QuestionReviewStatus,
+  type Topic,
+} from "@/lib/types";
 import {
   VEHICLE_CODES,
   EXAM_LIKELIHOODS,
@@ -30,7 +34,7 @@ export type SaveQuestionInput = {
    *  Required to approve — see validate(). */
   sourceCitation: string | null;
   inReadiness: boolean;
-  reviewStatus: "draft" | "approved";
+  reviewStatus: QuestionReviewStatus;
   // Exam curation
   inExam: boolean;
   examLikelihood: ExamLikelihood;
@@ -42,6 +46,8 @@ export type SaveQuestionInput = {
  *  friendly errors and enforces the approved-completeness contract. */
 function validate(input: SaveQuestionInput): string | null {
   if (!TOPICS.includes(input.topic)) return "Invalid topic";
+  if (!QUESTION_REVIEW_STATUSES.includes(input.reviewStatus))
+    return "Invalid review status";
   if (![1, 2, 3].includes(input.difficulty)) return "Difficulty must be 1–3";
   if (!Array.isArray(input.options) || input.options.length < 2)
     return "At least 2 options are required";
@@ -111,12 +117,19 @@ export async function saveQuestion(input: SaveQuestionInput) {
 
   // A sign_code must resolve to an approved, SA-relevant sign — the quiz renders
   // /signs/<code>.svg, so a bad code would show a broken image.
-  if (input.signCode) {
+  //
+  // Scoped to approval on purpose. Unscoped, this guard also blocked *editing* a
+  // question whose sign was withdrawn after the fact, which is exactly the row
+  // that most needs editing — RS-076 and RS-083 could not even be marked
+  // withdrawn without first clearing the sign code that explains why they were.
+  // Nothing unapproved is rendered to a learner, so there is no broken image to
+  // prevent until approval.
+  if (input.signCode && input.reviewStatus === "approved") {
     const sign = await getApprovedSignByCode(input.signCode);
     if (!sign)
       return {
         ok: false as const,
-        error: `Sign code "${input.signCode}" is not an approved, SA-relevant sign`,
+        error: `Cannot approve: sign "${input.signCode}" is not an approved, SA-relevant sign. If the sign was withdrawn, set this question to withdrawn rather than leaving it in the draft queue.`,
       };
   }
 
