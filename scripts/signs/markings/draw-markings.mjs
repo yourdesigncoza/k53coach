@@ -290,5 +290,45 @@ for (const m of MARKINGS) {
     `</svg>\n`;
   writeFileSync(join(OUT, `${m.code}.svg`), svg);
 }
-console.log(`wrote ${MARKINGS.length} markings to ${OUT}`);
+// The review page is emitted from the same list, so it can never fall out of
+// step with the artwork — and cannot be lost by regenerating the folder.
+const cards = MARKINGS.map(
+  (m) => `<div class="card"><div class="pair">
+<figure><img src="/markings/${m.code}.svg" alt=""><figcaption>shipped</figcaption></figure>
+<figure><img src="/markings-v2/${m.code}.svg" alt=""><figcaption>redraw</figcaption></figure></div>
+<div class="name"><span class="code">${esc(m.code)}</span> · ${esc(m.name)}</div>
+<div class="cite">${esc(m.cite)}</div><div class="check">${esc(m.check)}</div></div>`,
+).join("\n");
+
+writeFileSync(
+  join(OUT, "index.html"),
+  `<!doctype html>
+<meta charset="utf-8">
+<title>Road markings — redraw for review (K53-37)</title>
+<style>
+  body{font:15px/1.5 system-ui,sans-serif;background:#faf7f2;color:#221813;margin:0;padding:28px}
+  h1{font-size:20px;margin:0 0 4px} p.sub{margin:0 0 24px;color:#6b5c52}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
+  .card{background:#fff;border:1px solid #e7ded2;border-radius:12px;padding:14px}
+  .pair{display:flex;gap:12px} .pair figure{margin:0;text-align:center;flex:1}
+  .pair img{width:100%;max-width:140px;aspect-ratio:1;object-fit:contain;background:#f2efe9;border-radius:6px}
+  .pair figcaption{font-size:11px;color:#8a7a6d;margin-top:4px}
+  .code{font-family:ui-monospace,monospace;font-weight:700}
+  .name{font-size:13px;margin:10px 0 2px} .cite{font-size:11px;color:#8a7a6d}
+  .check{font-size:12px;color:#4a3b32;margin-top:6px;border-top:1px solid #f0e8dc;padding-top:6px}
+  .thumbs{margin-top:26px;padding:14px;background:#fff;border:1px solid #e7ded2;border-radius:12px}
+  .thumbs img{width:48px;height:48px;object-fit:contain;margin-right:6px}
+</style>
+<h1>Road markings — redraw for review</h1>
+<p class="sub">Left = shipped (chart vignette). Right = redraw, drawn to the SARTSM specification. Nothing is wired up — see README.md. K53-37 · 2026-08-04</p>
+<div class="grid">
+${cards}
+</div>
+<div class="thumbs"><strong style="font-size:13px">At library thumbnail size (48&nbsp;px)</strong><br><div style="margin-top:8px">
+${MARKINGS.map((m) => `<img src="/markings-v2/${m.code}.svg" title="${esc(m.code)}">`).join("")}
+</div></div>
+`,
+);
+
+console.log(`wrote ${MARKINGS.length} markings + index.html to ${OUT}`);
 export { MARKINGS, S };
