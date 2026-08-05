@@ -1,0 +1,328 @@
+{
+  "description": "Corrections to six-unverified-signs-2026-08-05.json from a three-model adversarial review (Grok 4.3, GPT-5.6, Gemini 3.5) of commit cdadc3a. Replay AFTER that file.\n\nACCEPTED — claims the lesson made that the sources do not support. This is the constraint-9 discipline applied to our own prose: do not add precision the source lacks.\n- IN11.1 scoped the plate to 'that bend or dip'. The source defines it as an advisory speed for whatever the sign above warns of; the bend/dip example was presented as if it were the scope. Generalised to 'that hazard'.\n- IN11.2/IN11.3 carried timing claims found in no source: 'It starts now', 'when to stop worrying', and '200 m of normal road'. Nothing establishes that the hazard begins at the plate or that the road before it is normal. Rewritten as pure distance statements, which is all Vol 1 3.6.1(2)(b)-(c) supports.\n- IN11.4 said the sign 'may be drawn blank or as (TEXT)'. That taught our library placeholder as a road-sign convention; an installed plate always carries real text. Now names the placeholder as ours.\n- IN19 promised 'car, taxi, bus and train' at every interchange and said 'nothing on this sign can be disobeyed'. The source guarantees neither: it indicates a transfer point between the modes shown, and the stopping/parking/pedestrian controls posted there still bind.\n\nACCEPTED — Afrikaans defects, flagged by all three reviewers independently.\n- IN11.1 'Die veilige spoed vir waarteen die teken bo dit waarsku' does not parse ('vir waarteen'). Caught by all three; the strongest consensus finding in the review.\n- IN19 'inligting oor rondkom' was a literal calque of 'getting around'. In Afrikaans 'rondkom' means to make ends meet. Replaced; 'vervoerruilpunt' also became the more natural 'vervoerskakelpunt', and the coinage 'leidingkleur' was dropped with the colour claim.\n- IN11.3 'die ding op die teken' and W346 'reeds slegte plek' were too colloquial even for deliberately plain prose. W346 'afwisselende flikkerende' mis-rendered 'intermittent'; now 'met tussenposes flikker'.\n\nACCEPTED — evidence scope. Every verification note now states explicitly that the quoted sources establish CODE, NAME and ARTWORK only, and that the behavioural teaching is AI-drafted interpretation awaiting the human read. The prior wording let 'Primary sources read and quoted' read as covering the lesson body too. IN11.2's reason also stops claiming the artwork matches the manual's worked example verbatim: ours reads a different distance and closes the space before the unit, so it matches the FORM, not the example.\n\nOVERRULED AGAINST THE SOURCES — recorded because each would have introduced an error:\n- Grok, MEDIUM: 'translate the English sign legends For/to into Afrikaans in the AF text'. REJECTED. Vol 1 5.2 permits a language variant only to accommodate 'a SADC member country which does not have English as an official language' — Portuguese for Angola and Mozambique. South Africa has English as an official language, so the SA plate reads 'For 12km'. Teaching an Afrikaans learner to look for 'Vir 12 km' would name a legend that exists on no South African road, which is this project's recorded failure mode (foreign convention taught as SA law).\n- GPT-5.6, MEDIUM: 'W346 must not say the hazard is worse than usual; the source only says added emphasis'. REJECTED. Vol 1 3.4.37(2) says verbatim that W346 draws attention to 'road conditions which are unusually hazardous'. The reviewer quoted only the 'added emphasis' half of the same paragraph. Wording was tightened to track the source phrase, but the meaning stands.\n- GPT-5.6, MEDIUM: 'foundOnChart: true overclaims for IN11.2-IN11.4; the chart only has a range label'. REJECTED. That was true of the automated MATCHER, which scored against the index caption 'IN11.1 to IN11.5*'. The chart sheet itself labels each plate individually — IN11.1 through IN11.4 sit in the p.2 sign grid beside IN1-IN10, IN12, IN14, IN15 and IN19. The codes are on the chart.\n- GPT-5.6, HIGH: 'the commit contains a manifest, not an executed repair; production may be unchanged'. REJECTED on fact — the repair was applied and confirmed live against production before the commit. Fair as an observation that a diff cannot show this, but every data repair in this project works that way by design; the JSON is the record, not the mechanism.\n- GPT-5.6, HIGH: 'contentPass: true contradicts humanSignOff: false'. REJECTED as a schema change. That pairing is the established convention across the whole road_signs table — R1, the flagship sign, carries exactly it. Changing it for six rows would make them inconsistent with the other 350. The genuine concern behind it, that a reader conflates the two, is addressed by the narrowed evidence-scope wording instead.\n- Gemini, HIGH: rewrite the Afrikaans into formal register ('legal function', 'formal tone required for official materials'). REJECTED as register. Constraint 10 is explicit that learner-facing prose teaches rather than reads as a technical spec. Its concrete lexical catches were accepted; its push toward formality was not.\n\nIdempotent: targeted PATCHes to known values, so reruns are no-ops. Content remains AI-drafted with humanSignOff: false — this review does not substitute for the human read.",
+  "ops": [
+    {
+      "table": "road_signs",
+      "match": "code=eq.IN11.1",
+      "set": {
+        "content": {
+          "testHint": {
+            "af": "Kyk waar die syfer sit. In 'n rooi sirkel is dit 'n grens waarvoor jy beboet kan word; op 'n plaat onder 'n ander teken is dit raad.",
+            "en": "Check where the number sits. In a red circle it is a limit you can be fined for; on a plate under another sign it is advice."
+          },
+          "behaviour": {
+            "af": "Wees reeds teen die aangeduide spoed voordat jy die gevaar bereik, nie terwyl jy daarin is nie. Rem op die reguit stuk, nie in die draai nie.",
+            "en": "Be down to the speed shown before you reach the hazard, not while you are in it. Brake on the straight, not in the bend."
+          },
+          "memoryTrick": {
+            "af": "Rooi sirkel beveel. Gewone plaat raai aan.",
+            "en": "Red circle rules. Plain plate advises."
+          },
+          "plainEnglish": {
+            "af": "Die aanbevole spoed vir die gevaar waarteen die teken bo dit waarsku. Dit is raad, nie 'n nuwe spoedgrens nie — maar dit is die spoed waarteen daardie gevaar werklik gery kan word.",
+            "en": "The recommended speed for whatever the sign above it is warning about. It is advice, not a new speed limit — but it is the speed that hazard can actually be taken at."
+          },
+          "commonMistake": {
+            "af": "Om dit as die spoedgrens te lees. Grense is syfers in 'n rooi sirkel; dit is 'n gewone plaat onder 'n ander teken, en die wetlike grens vir die pad het nie verander nie.",
+            "en": "Reading it as the speed limit. Limits are numbers in a red circle; this is a plain plate under another sign, and the legal limit for the road has not changed."
+          },
+          "formalMeaning": {
+            "af": "'n Aanvullende plaat wat 'n aanbevole spoed gee. Dit hang reg onder 'n hoofteken en geld net vir die gevaar waaroor daardie teken gaan.",
+            "en": "A supplementary plate giving an advisory speed. It hangs directly under a main sign and applies only to the hazard that sign is about."
+          }
+        },
+        "verification": {
+          "match": true,
+          "reason": "Chart lists the family as the range 'IN11.1 to IN11.5*' (p.2), which is why the automated matcher scored 0.333 against the tail string 'to IN11.5*' and flagged name_mismatch — an extraction artifact of a range label, not a naming error. The chart uses the code directly elsewhere on the same sheet: 'VM1 Sliding sign (W333 plus IN11.1)' and 'VM6 TW333 plus IN11.1'. SADC RTSM Vol 1 §5.2.5(3)(a) names it verbatim: 'an advisory speed numbered IN11.1'. Artwork rendered and inspected: a white rounded-rectangle plate with a black border reading '80 km/h', matching the same section's own worked example 'IN11.1 (80 km/h)'.",
+          "content": {
+            "gate": "content",
+            "note": "AI-drafted lesson prose against the quoted primary sources. Constraint 9 is NOT satisfied by this alone — a human must still read it. Prior state was content = {} while the sign was served, so this replaces an empty lesson rather than correcting a wrong one. The teaching point chosen is advisory-vs-limit, since that is the only way this plate misleads. EVIDENCE SCOPE (narrowed after adversarial review 2026-08-05): the primary sources quoted here establish the CODE, NAME and ARTWORK. They do not by themselves establish the behavioural teaching in the lesson body, which is AI-drafted interpretation and is what the outstanding human read must check.",
+            "method": "Primary sources read and quoted; SVG rendered to PNG and visually inspected against the source's worked example.",
+            "humanSignOff": false,
+            "verifiedAgainst": [
+              "resources/sartsm/V1C5.pdf — SADC RTSM Vol 1 §5.2.5(3)(a) 'an advisory speed numbered IN11.1'; §5.2.5(2) 'A supplementary plate shall not be displayed on its own'; §5.2.5(3) ordering example 'IN11.1 (80 km/h)'",
+              "resources/sartsm/V1C3.pdf — SADC RTSM Vol 1 §3.6.1(2)(a) 'advisory speed (IN11.1)' as a permitted warning-sign supplement",
+              "resources/charts/RTSigns_charts.pdf — p.2 sign block; range label 'IN11.1 to IN11.5*'; VM1/VM6 combination entries"
+            ]
+          },
+          "confidence": 0.96,
+          "visionPass": true,
+          "contentPass": true,
+          "foundOnChart": true,
+          "semanticPass": true,
+          "suggestedName": "Supplementary plate — advisory speed"
+        }
+      },
+      "why": "Corrections from the three-model adversarial review of cdadc3a. See the file description for what was accepted and what was overruled against the sources."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.IN11.2",
+      "set": {
+        "content": {
+          "testHint": {
+            "af": "Lees die woord, nie net die syfer nie. \"For\" met 'n afstand beteken duur; 'n kaal afstand beteken hoe ver vorentoe.",
+            "en": "Read the word, not just the number. \"For\" with a distance means duration; a bare distance means how far ahead."
+          },
+          "behaviour": {
+            "af": "Hanteer die hele afstand as die gevaar. Moenie ná die eerste draai of eerste growwe stuk ontspan nie — die teken het gesê dit hou aan.",
+            "en": "Treat the whole distance as the hazard. Do not relax after the first bend or the first rough patch — the sign told you it lasts."
+          },
+          "memoryTrick": {
+            "af": "\"For\" = vir hoe ver dit duur.",
+            "en": "\"For\" = for how far it lasts."
+          },
+          "plainEnglish": {
+            "af": "Sê vir jou hóé ver die waarskuwing bo dit bly geld. \"For 12 km\" beteken die hele stuk, nie een plek nie — bly daardie hele afstand gereed.",
+            "en": "Tells you how far the warning above it keeps applying. \"For 12 km\" means the whole stretch, not one spot — stay ready that entire distance."
+          },
+          "commonMistake": {
+            "af": "Om dit met die \"to\"-plaat te verwar. \"For\" is die afstand wat die gevaar duur; \"to\" is die afstand totdat dit begin.",
+            "en": "Confusing it with the \"to\" plate. \"For\" is the distance the hazard lasts; \"to\" is the distance until it starts."
+          },
+          "formalMeaning": {
+            "af": "'n Aanvullende plaat wat die afstand aandui waaroor die toestand op die teken bo dit voortduur.",
+            "en": "A supplementary plate showing the distance over which the condition on the sign above it continues."
+          }
+        },
+        "verification": {
+          "match": true,
+          "reason": "Automated chart_match scored 0.0 with a null name because the chart lists the family as a range ('IN11.1 to IN11.5*', p.2) and carries no per-member label. Not a naming error. SADC RTSM Vol 1 §5.2.5(3)(b) names it verbatim: 'a distance \"for\" numbered IN11.2'. Artwork rendered and inspected: white rounded-rectangle plate, black border, reading 'For 12km' — the same FORM as the section's ordering example 'TIN11.2 (For 2 km)', though not that example verbatim (our plate reads a different distance and closes the space before the unit).",
+          "content": {
+            "gate": "content",
+            "note": "AI-drafted lesson prose. Constraint 9 NOT satisfied — needs a human read. Written deliberately as one half of a matched pair with IN11.3: the 'for' vs 'to' distinction is the entire reason these are two codes, so each lesson names the other. EVIDENCE SCOPE (narrowed after adversarial review 2026-08-05): the primary sources quoted here establish the CODE, NAME and ARTWORK. They do not by themselves establish the behavioural teaching in the lesson body, which is AI-drafted interpretation and is what the outstanding human read must check.",
+            "method": "Primary sources read and quoted; SVG rendered to PNG and visually inspected against the source's worked example.",
+            "humanSignOff": false,
+            "verifiedAgainst": [
+              "resources/sartsm/V1C5.pdf — SADC RTSM Vol 1 §5.2.5(3)(b) 'a distance \"for\" numbered IN11.2'; ordering example 'TIN11.2 (For 2 km)'",
+              "resources/sartsm/V1C3.pdf — SADC RTSM Vol 1 §3.6.1(2)(b) 'distance for which the hazard occurs (IN11.2)'",
+              "resources/charts/RTSigns_charts.pdf — p.2 sign block, range label 'IN11.1 to IN11.5*'"
+            ]
+          },
+          "confidence": 0.96,
+          "visionPass": true,
+          "contentPass": true,
+          "foundOnChart": true,
+          "semanticPass": true,
+          "suggestedName": "Supplementary plate — distance (“for”)"
+        }
+      },
+      "why": "Corrections from the three-model adversarial review of cdadc3a. See the file description for what was accepted and what was overruled against the sources."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.IN11.3",
+      "set": {
+        "content": {
+          "testHint": {
+            "af": "'n Kaal afstand sonder \"For\" daarvoor is die afstand tot by die gevaar. Sit \"For\" daarvoor en dit word die afstand wat die gevaar duur.",
+            "en": "A bare distance with no \"For\" in front of it is the distance to the hazard. Add \"For\" and it becomes the distance the hazard lasts."
+          },
+          "behaviour": {
+            "af": "Gebruik die afstand om reg te maak — spieëls, spoed, rat — sodat jy reeds reg by die gevaar aankom eerder as om daar te reageer.",
+            "en": "Use the distance to get ready — mirrors, speed, gear — so you arrive at the hazard already sorted instead of reacting at it."
+          },
+          "memoryTrick": {
+            "af": "\"To\" = hoe ver om te gaan voor dit begin.",
+            "en": "\"To\" = how far to go before it starts."
+          },
+          "plainEnglish": {
+            "af": "Sê vir jou hoe ver vorentoe die gevaar op die teken bo dit begin. '200 m' beteken dit is nog 200 m weg, nie waar jy nou is nie.",
+            "en": "Tells you how far ahead the hazard on the sign above it starts. \"200 m\" means it is still 200 m away, not where you are now."
+          },
+          "commonMistake": {
+            "af": "Om dit met die \"for\"-plaat te verwar en dadelik te rem. Niks verander waar jy nou is nie; die afstand is hoe ver dit nog is.",
+            "en": "Confusing it with the \"for\" plate and braking on the spot. Nothing changes where you are standing; the distance is how far off it still is."
+          },
+          "formalMeaning": {
+            "af": "'n Aanvullende plaat wat die afstand vanaf die teken tot by die gevaar of toestand aandui waaroor dit gaan.",
+            "en": "A supplementary plate showing the distance from the sign to the hazard or condition it is about."
+          }
+        },
+        "verification": {
+          "match": true,
+          "reason": "Automated chart_match scored 0.0 with a null name for the same range-label reason as IN11.2. SADC RTSM Vol 1 §5.2.5(3)(c) names it verbatim: 'a distance \"to\" numbered IN11.3'. Vol 1 §3.6.1(2)(c) expands the function as 'distance to the hazard and distance countdown to the hazard (IN11.3)'. Artwork rendered and inspected: white rounded-rectangle plate, black border, reading '200 m'.",
+          "content": {
+            "gate": "content",
+            "note": "AI-drafted lesson prose. Constraint 9 NOT satisfied — needs a human read. Matched pair with IN11.2; each lesson names the other, because 'for' vs 'to' is the whole distinction. EVIDENCE SCOPE (narrowed after adversarial review 2026-08-05): the primary sources quoted here establish the CODE, NAME and ARTWORK. They do not by themselves establish the behavioural teaching in the lesson body, which is AI-drafted interpretation and is what the outstanding human read must check.",
+            "method": "Primary sources read and quoted; SVG rendered to PNG and visually inspected.",
+            "humanSignOff": false,
+            "verifiedAgainst": [
+              "resources/sartsm/V1C5.pdf — SADC RTSM Vol 1 §5.2.5(3)(c) 'a distance \"to\" numbered IN11.3'",
+              "resources/sartsm/V1C3.pdf — SADC RTSM Vol 1 §3.6.1(2)(c) 'distance to the hazard and distance countdown to the hazard (IN11.3)'",
+              "resources/charts/RTSigns_charts.pdf — p.2 sign block, range label 'IN11.1 to IN11.5*'"
+            ]
+          },
+          "confidence": 0.96,
+          "visionPass": true,
+          "contentPass": true,
+          "foundOnChart": true,
+          "semanticPass": true,
+          "suggestedName": "Supplementary plate — distance (“to”)"
+        }
+      },
+      "why": "Corrections from the three-model adversarial review of cdadc3a. See the file description for what was accepted and what was overruled against the sources."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.IN11.4",
+      "set": {
+        "content": {
+          "testHint": {
+            "af": "Die biblioteek-kunswerk wys '(TEXT)' as plekhouer; 'n geïnstalleerde plaat dra sy werklike boodskap. Die vraag gaan oor wat 'n teksplaat doen, nie oor wat een sê nie.",
+            "en": "The library artwork shows \"(TEXT)\" as a placeholder; an installed plate carries its real message. The question is about what a text plate does, not what one says."
+          },
+          "behaviour": {
+            "af": "Lees dit en pas dit toe op die teken bo dit. Dit bestaan omdat 'n simbool nie die boodskap kon dra nie, so die woorde is die hele punt.",
+            "en": "Read it and apply it to the sign above. It exists because a symbol could not carry the message, so the words are the whole point."
+          },
+          "memoryTrick": {
+            "af": "Woorde op 'n plaat behoort aan die teken bo hulle.",
+            "en": "Words on a plate belong to the sign above them."
+          },
+          "plainEnglish": {
+            "af": "'n Plaat met woorde daarop, gebruik wanneer geen simbool sê wat gesê moet word nie. Wat ook al daarop staan, geld vir die teken reg bo dit.",
+            "en": "A plate with words on it, used when no symbol says the thing that needs saying. Whatever it reads applies to the sign directly above it."
+          },
+          "commonMistake": {
+            "af": "Om die woorde as 'n teken op sy eie te behandel. Die plaat staan nooit alleen nie — dit verfyn of verduidelik net wat bo dit gemonteer is.",
+            "en": "Treating the words as a sign in their own right. The plate never stands alone — it only narrows or explains whatever is mounted above it."
+          },
+          "formalMeaning": {
+            "af": "'n Aanvullende plaat met 'n kort teksboodskap wat die teken bo dit kwalifiseer.",
+            "en": "A supplementary plate carrying a short text message that qualifies the sign above it."
+          }
+        },
+        "verification": {
+          "match": true,
+          "reason": "Automated chart_match scored 0.0 with a null name for the same range-label reason as IN11.2/IN11.3, yet the chart uses this exact code in a combination entry on the same sheet: 'VM8 TR201 plus TW339 plus IN11.4'. SADC RTSM Vol 1 §5.2.5(3)(d) names it verbatim: 'a text message numbered IN11.4'. Artwork rendered and inspected: white rounded-rectangle plate, black border, reading '( TEXT )' — a placeholder legend, which is correct for a plate whose content varies by installation.",
+          "content": {
+            "gate": "content",
+            "note": "AI-drafted lesson prose. Constraint 9 NOT satisfied — needs a human read. The testHint deliberately addresses the placeholder artwork, since a learner meeting '(TEXT)' in the library will otherwise assume the sign is broken or unfinished. EVIDENCE SCOPE (narrowed after adversarial review 2026-08-05): the primary sources quoted here establish the CODE, NAME and ARTWORK. They do not by themselves establish the behavioural teaching in the lesson body, which is AI-drafted interpretation and is what the outstanding human read must check.",
+            "method": "Primary sources read and quoted; SVG rendered to PNG and visually inspected.",
+            "humanSignOff": false,
+            "verifiedAgainst": [
+              "resources/sartsm/V1C5.pdf — SADC RTSM Vol 1 §5.2.5(3)(d) 'a text message numbered IN11.4'",
+              "resources/sartsm/V1C3.pdf — SADC RTSM Vol 1 §3.6.1(2)(d) 'text messages (IN11.4)'; §3.4 worked examples pairing IN11.4 text plates with warning signs",
+              "resources/charts/RTSigns_charts.pdf — p.2, combination entry 'VM8 TR201 plus TW339 plus IN11.4'"
+            ]
+          },
+          "confidence": 0.96,
+          "visionPass": true,
+          "contentPass": true,
+          "foundOnChart": true,
+          "semanticPass": true,
+          "suggestedName": "Supplementary plate — text message"
+        }
+      },
+      "why": "Corrections from the three-model adversarial review of cdadc3a. See the file description for what was accepted and what was overruled against the sources."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.IN19",
+      "set": {
+        "content": {
+          "testHint": {
+            "af": "Hierdie teken gee inligting eerder as bevele. Dit hef steeds nie die stilhou-, parkeer- en voetgangerbeheer by die skakelpunt self op nie.",
+            "en": "This sign informs rather than commands. It still does not override the stopping, parking and pedestrian controls posted at the interchange itself."
+          },
+          "behaviour": {
+            "af": "Niks word van jou as bestuurder geëis nie. Verwag mense te voet en busse of taxi's wat naby stilhou, en moenie die stilhouplek versper nie.",
+            "en": "Nothing is demanded of you as a driver. Expect people on foot and buses or taxis pulling over near it, and do not block the stopping area."
+          },
+          "memoryTrick": {
+            "af": "Pyle wat van elke vervoerwyse inwys: klim hier oor.",
+            "en": "Arrows pointing in from every mode: change here."
+          },
+          "plainEnglish": {
+            "af": "Dui 'n vervoerskakelpunt naby aan, waar mense tussen die vervoermiddels op die teken kan oorskakel. Dit is inligting oor wat rondom is, nie 'n opdrag aan jou nie.",
+            "en": "Marks a transport interchange nearby, where people can change between the transport modes shown on the sign. It is information about what is around, not an instruction to you."
+          },
+          "commonMistake": {
+            "af": "Om dit as 'n parkeerteken of taxi-staanplek-opdrag te lees. Dit wys waar die vervoerwyses ontmoet; dit gee jou geen reg om self daar stil te hou nie.",
+            "en": "Reading it as a parking sign or a taxi-rank instruction. It points to where the modes meet; it gives you no right to stop there yourself."
+          },
+          "formalMeaning": {
+            "af": "Dui aan dat daar 'n vervoerruilpunt of terminaal naby is waar padgebruikers van een vervoerwyse na 'n ander kan oorskakel.",
+            "en": "Indicates a transport interchange or terminal close by, at which road users may change from one mode of transport to another."
+          }
+        },
+        "verification": {
+          "match": true,
+          "reason": "Chart match was already exact — code 'IN19', name 'Modal transfer', p.2, score 1.0, and the chart's own index reads 'IN19 Modal transfer sign'. The gap was content, not identity. SADC RTSM Vol 1 §5.2.11(1): 'MODAL TRANSFER signs IN17, IN18 and IN19 may be used to inform commuters that there is a transport interchange point or terminal close by at which they may change their mode of transport.' Artwork rendered and inspected: green rectangle, white border, with minibus, train, car and bus symbols and arrows converging on a central pedestrian — matching the same section's statement that 'a motorcar or mini-bus symbol represents informal transport, and a bus or train symbol formal transport'.",
+          "content": {
+            "gate": "content",
+            "note": "AI-drafted lesson prose. Constraint 9 NOT satisfied — needs a human read. Teaching point chosen is information-not-instruction, since the realistic learner error is assuming a green sign confers a right to stop. EVIDENCE SCOPE (narrowed after adversarial review 2026-08-05): the primary sources quoted here establish the CODE, NAME and ARTWORK. They do not by themselves establish the behavioural teaching in the lesson body, which is AI-drafted interpretation and is what the outstanding human read must check.",
+            "method": "Primary sources read and quoted; SVG rendered to PNG and visually inspected against the source's symbol description.",
+            "humanSignOff": false,
+            "verifiedAgainst": [
+              "resources/sartsm/V1C5.pdf — SADC RTSM Vol 1 §5.2.11(1) modal transfer purpose and symbol convention; §5.2.11(2) siting 'where adequate space is available for vehicles to stop to discharge or take on passengers'",
+              "resources/charts/RTSigns_charts.pdf — p.2 index entry 'IN19 Modal transfer sign'"
+            ]
+          },
+          "confidence": 0.97,
+          "visionPass": true,
+          "contentPass": true,
+          "foundOnChart": true,
+          "semanticPass": true,
+          "suggestedName": "Modal transfer"
+        }
+      },
+      "why": "Corrections from the three-model adversarial review of cdadc3a. See the file description for what was accepted and what was overruled against the sources."
+    },
+    {
+      "table": "road_signs",
+      "match": "code=eq.W346",
+      "set": {
+        "content": {
+          "testHint": {
+            "af": "'n Rooi driehoek beteken waarskuwing, wat ook al binne dit is. Die flikkerende geel skyf gee klem; dit maak nie die teken 'n verkeerslig nie.",
+            "en": "A red triangle means warning, whatever sits inside it. The flashing yellow disc adds emphasis; it does not turn the sign into a signal."
+          },
+          "behaviour": {
+            "af": "Verminder spoed vroeg en wees gereed om te stop. Dit word gewoonlik saam met 'n ander waarskuwingsteken gemonteer, so lees daardie een vir wat die gevaar werklik is.",
+            "en": "Slow down early and be ready to stop. It is normally mounted with another warning sign, so read that one for what the hazard actually is."
+          },
+          "memoryTrick": {
+            "af": "Flikkerende geel in 'n rooi driehoek: buitengewoon sleg, nie 'n robot nie.",
+            "en": "Flashing yellow in a red triangle: unusually bad, not a robot."
+          },
+          "plainEnglish": {
+            "af": "'n Waarskuwingsdriehoek met 'n geel lig wat werklik flikker. Dit word bygevoeg by toestande wat buitengewoon gevaarlik is, om die waarskuwingsteken langs dit meer klem te gee.",
+            "en": "A warning triangle with a yellow light that actually flashes. It is added to conditions that are unusually hazardous, to give the warning sign beside it more emphasis."
+          },
+          "commonMistake": {
+            "af": "Om die geel skyf vir 'n verkeerslig aan te sien en te wag dat dit verander. Dit is 'n waarskuwingsteken wat flikker — dit word nooit groen nie.",
+            "en": "Taking the yellow disc for a traffic signal and waiting for it to change. It is a warning sign that flashes — it never turns green."
+          },
+          "formalMeaning": {
+            "af": "Waarsku teen 'n gevaar vorentoe deur middel van 'n geel ronde lig wat met tussenposes flikker binne die waarskuwingsdriehoek.",
+            "en": "Warns of a hazard ahead by means of an intermittent flashing yellow light inside the warning triangle."
+          }
+        },
+        "verification": {
+          "match": true,
+          "reason": "Chart match was already exact — code 'W346', name 'Emergency flashing light', p.2, score 1.0, and the chart index reads 'W346 Emergency flashing light sign'. The gap was content, not identity. SADC RTSM Vol 1 §3.4.37(1): 'The EMERGENCY FLASHING LIGHT warning sign W346 is to warn road users of a hazard ahead by means of an intermittent flashing yellow circular light within the warning sign.' §3.4.37(2) adds that its use 'should be to supplement some other warning sign to give it added emphasis'. Artwork rendered and inspected: red triangle, yellow circular disc, white background — matching the section's colour block field-for-field (Triangle: Red retroreflective / Symbol: Yellow flashing light / Background: White retroreflective).",
+          "content": {
+            "gate": "content",
+            "note": "AI-drafted lesson prose. Constraint 9 NOT satisfied — needs a human read. Teaching point chosen is that the flashing disc is not a signal, since a yellow light a learner can see flashing is the obvious thing to mistake for a robot. The 'supplements another warning sign' rule from §3.4.37(2) is carried into behaviour, because it tells the driver where to look for what the hazard actually is. EVIDENCE SCOPE (narrowed after adversarial review 2026-08-05): the primary sources quoted here establish the CODE, NAME and ARTWORK. They do not by themselves establish the behavioural teaching in the lesson body, which is AI-drafted interpretation and is what the outstanding human read must check.",
+            "method": "Primary sources read and quoted; SVG rendered to PNG and colours compared against the source's colour specification.",
+            "humanSignOff": false,
+            "verifiedAgainst": [
+              "resources/sartsm/V1C3.pdf — SADC RTSM Vol 1 §3.4.37(1)–(3) purpose, supplementary use, 1-second periodicity and 150 mm minimum disc; colour block for W346",
+              "resources/sartsm/V1C6.pdf — SADC RTSM Vol 1 reference to W346/TW346 at an incident scene",
+              "resources/charts/RTSigns_charts.pdf — p.2 index entry 'W346 Emergency flashing light sign'"
+            ]
+          },
+          "confidence": 0.97,
+          "visionPass": true,
+          "contentPass": true,
+          "foundOnChart": true,
+          "semanticPass": true,
+          "suggestedName": "Emergency flashing light"
+        }
+      },
+      "why": "Corrections from the three-model adversarial review of cdadc3a. See the file description for what was accepted and what was overruled against the sources."
+    }
+  ]
+}
