@@ -1,8 +1,31 @@
 # Verification worklist — 43 draft learning objects
 
-**Status:** awaiting **human** verification · **Created:** 2026-07-24 · **Gate:** Stage 1 launch
+**Status:** ✅ **CLOSED 2026-08-05** · **Created:** 2026-07-24 · **Gate:** Stage 1 launch — met
 
-> **Nothing here has been verified.** Every object is `reviewStatus: "draft"` (rules, controls) or
+> ## ✅ The question pass is done
+>
+> John exported the question bank to CSV and sent it to Louwrens, who read it and approved. The
+> result is recorded on all 228 remaining rows by
+> `scripts/data-repairs/louwrens-csv-signoff-2026-08-05.json`, so **`approved_by = 'system'` no
+> longer exists in `questions`** and all **274/274** approved questions carry `verified_at`.
+> That closes the last open Stage 1 gate row (K53-32).
+>
+> **Read the rest of this file as the record of what was flagged going in, not as open work.**
+> Two things it says are now historical: the per-item tick-box instructions below, and the framing
+> that nothing has been verified. What still matters is the **⚠️ partial-citation table** further
+> down — those 16 are where the source supports the item but not the keyed answer, they were
+> inside the CSV, and they remain the first place to look if a learner ever reports a wrong answer.
+>
+> Note the granularity: this batch shares **one** `verified_at` instant because it was signed off
+> as a CSV, unlike the 46 signs ticked individually in the admin UI on 2026-08-03. Both are
+> Louwrens; only the resolution differs.
+>
+> ⚠️ **This closes the QUESTIONS, not the lesson prose this file is titled after.** The 30 rule
+> objects (`RR1`–`RR30`) and 22 control objects (`VC1`–`VC22`) in `src/content/*.ts` are still
+> `reviewStatus: "draft"` — the CSV was the question bank. Stage 1 gates on questions, so the
+> launch bar is met either way, but don't read "closed" as covering the lesson bodies.
+
+> **Original framing (2026-07-24), superseded above.** Every object is `reviewStatus: "draft"` (rules, controls) or
 > `review_status: 'draft'` (markings). Per the accuracy gate (`CLAUDE.md` constraint 9) **AI drafts but
 > never self-certifies** — a second pass by the same model against the same sources is circular and
 > proves nothing. This is the *worklist*, not a result.

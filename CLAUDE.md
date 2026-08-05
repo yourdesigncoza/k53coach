@@ -20,7 +20,7 @@ moved by 47 in three days:
 | | |
 |---|---|
 | `road_signs` | **356 served** (both gates approved + `sa_relevant`). The 2026-08-03 artwork audit took 375 → 352 (13 blank plates, 3 non-SA signs withdrawn, 7 de-restriction signs corrected); 2026-08-04 added 4 that had artwork but no approved lesson — **`R1` Stop**, `IN1`/`IN2`/`IN3` Countdown. ⚠️ `R1` is the standard STOP sign and had been missing while `R1.1` (the doubled urban variant) served in its place — if a sign seems absent, check `review_status`, not just `asset_status` |
-| `questions` | 276 rows — **274 approved**, 0 draft, 2 withdrawn. Approved: rules 120 / signs 117 / controls 37. All 274 carry an `objective_code`; **267 carry a `source_citation`** (the 7 without are a recorded exception — see below); **46 carry a human sign-off** |
+| `questions` | 276 rows — **274 approved**, 0 draft, 2 withdrawn. Approved: rules 120 / signs 117 / controls 37. All 274 carry an `objective_code`; **267 carry a `source_citation`** (the 7 without are a recorded exception — see below); **274 carry a human sign-off** (2026-08-05) |
 | Rule learning objects | **30** (`RR1`–`RR30`; `RR30` "Temporary road signs" added 2026-08-03); controls 22 (`VC1`–`VC22`) — all still `reviewStatus: "draft"` |
 | `exam_attempts` | 0 — no learner has sat a mock in production |
 | `entitlements` | 4 — 3 by hand via admin, 1 (`ce1b7f96`) granted by a real PayFast ITN |
@@ -28,12 +28,13 @@ moved by 47 in three days:
 **Stage 1 content gate — all three sections are met, as of 2026-08-03.** The bar is the
 *per-section split* 120 rules / 112 signs / 24 controls (not the 256 total). Measured above:
 rules **120/120 ✅**, controls **37/24 ✅**, signs **117/112 ✅** — cleared when Louwrens
-approved 44 sign drafts overnight on 2026-08-03. **This does not by itself open the
-checkout.** The counted bar is *approved*, and only 46 of the 274 carry the human sign-off
-constraint 9 requires; the rest are `approved_by = 'system'` (see below).
+approved 44 sign drafts overnight on 2026-08-03.
 
-**Every other Stage 1 gate row is now closed too, as of 2026-08-04 — leaving human
-sign-off as the only one outstanding:**
+**Every Stage 1 gate row is now closed, as of 2026-08-05.** Human sign-off — the last one
+outstanding — was closed when John exported the bank to CSV, Louwrens read it and approved,
+and the result was recorded across all 228 remaining rows
+(`scripts/data-repairs/louwrens-csv-signoff-2026-08-05.json`). **`approved_by = 'system'` no
+longer exists in the table**; all **274/274** approved questions carry a human sign-off:
 
 | Gate row | State |
 |---|---|
@@ -43,6 +44,7 @@ sign-off as the only one outstanding:**
 | **No orphaned topics** | ✅ all **274/274** approved questions resolve to a written lesson. The reverse direction is not clean — `VC20` is a lesson with no question — but that is a content gap, not this gate |
 | Road-markings written library | ✅ 16 marking rows served, **26 approved markings questions** |
 | **Every claim true** | ✅ `docs/claims-audit-2026-08-04.md` — 32 strings corrected across both locales |
+| **Human sign-off** | ✅ **274/274** as of 2026-08-05 — 46 in-app (2026-08-03), 228 by CSV batch (see below) |
 
 ⚠️ **The claims audit found the paywall was the worst offender, not the landing page** — it
 advertised a "Full 750-question bank" against 274 real ones (restored 2026-08-04 at John's request as **"growing to 750+"** — a target, not a count; a present-tense 750 on the payment screen is false by 476), and the privacy page promised
@@ -237,7 +239,7 @@ Implemented Postgres tables (RLS, own-row policies): `profiles` (auto-created on
 - `questions` audit trail — added by `supabase/migrations/20260724090000_question_provenance.sql` (`approved_by`, `verified_at`, `generated_by`, `source_citation`, `objective_code`).
 - `entitlements` idempotency — the partial unique index `entitlements_payment_reference_key` on `(source, reference)` landed in `supabase/migrations/20260727120000_payfast_itn_idempotency.sql`.
 
-⚠️ **The audit columns are still only half-populated, and that is the real accuracy risk.** Measured 2026-08-04 across the 274 approved questions: `objective_code` **274/274**, `source_citation` **267/274**, `verified_at` **46/274**.
+**The audit columns are now populated.** Measured 2026-08-05 across the 274 approved questions: `objective_code` **274/274**, `source_citation` **267/274** (the 7 are the recorded exception below), `verified_at` **274/274**.
 
 The citation column was backfilled on 2026-08-04 (`scripts/data-repairs/question-citations-2026-08-04.json`, 232 → 267), which unblocks the human pass — an uncited question cannot be verified at all, because there is nothing to check it against. **The 7 still uncited are uncitable, not overlooked**: dashboard warning lights, head restraints ×2, demister, ABS ×2, motorcycle braking-before-the-turn. `resources/` covers law, signs and syllabus and **does not reach vehicle safety technology**. They are a recorded exception, kept deliberately — see the next paragraph. Don't "fix" them with an invented citation. **Sixteen more carry a `NOTE FOR THE HUMAN VERIFIER`** because the source supports the item but not the keyed answer — read those first, they are where a wrong answer is most likely hiding. Both lists are in `docs/verification-worklist.md`.
 
@@ -249,16 +251,22 @@ The citation column was backfilled on 2026-08-04 (`scripts/data-repairs/question
 
 | `approved_by` | `verified_at` | Means | Count |
 |---|---|---|---|
-| a user id | set | a person read it against its citation | **46** (all Louwrens, 2026-08-03, all signs) |
-| `'system'` | null | AI sweep set the flag; nobody read it | **228** |
+| a user id | seconds apart | approved one at a time in the admin UI | **46** (Louwrens, 2026-08-03, all signs) |
+| a user id | one shared instant | approved as a **CSV batch** | **228** (Louwrens, 2026-08-05) |
+| `'system'` | null | AI sweep set the flag; nobody read it | **0** — no longer exists |
 
-Those 46 are the first genuine human sign-offs in the table. Two consequences to honour:
+**The granularity is the whole distinction now that the column is full, and the timestamp is
+how you read it.** The 46 were ticked individually, so their `verified_at` values are seconds
+apart. The 228 share one identical instant because they were signed off as a single CSV export
+rather than item by item — same approver, same authority, coarser granularity.
+`verified_at = '2026-08-05T09:02:42.538Z'` recovers exactly that batch. Don't flatten the two
+into "274 verified" without knowing which question you're asking about.
 
-- Treat `approved_by = 'system'` as *AI-swept*, not *human-verified*. It does not satisfy constraint 9 on its own, and most of the Stage 1 count rests on it. `verified_at is null` is the outstanding worklist — do **not** backfill it to tidy the column, or the distinction is gone.
-- The 42 approved questions with no `source_citation` are uncitable as they stand (24 controls, 17 rules, 1 sign). Before quoting bank size as evidence of readiness, check what share carries evidence.
+- **Two subsets inside the CSV batch are where a wrong answer is most likely to have survived**, and both are named in their per-op `why` in the repair file: the **16 partial citations** (source supports the item but not the keyed answer — `RR-054` keys "four seconds or more" in heavy rain and no source states any figure) and the **7 deliberately uncited** questions. If a learner-reported error ever lands, start there.
+- The 7 approved questions with no `source_citation` are uncitable as they stand. Before quoting bank size as evidence of readiness, check what share carries evidence.
 
 `review_status` has a third value, **`withdrawn`** (`20260804100000`) — deliberately pulled, awaiting nobody, reason recorded in `scripts/data-repairs/`. It is not a `draft`: leaving pulled items in the draft queue sent a reviewer chasing two questions we had already decided against. The admin list hides withdrawn by default; learner getters and RLS already filter on `= 'approved'`, so serving is unaffected.
 
-`docs/verification-worklist.md` tracks the outstanding human pass; the sweep that produced the current state is written up in `docs/question-verify/`.
+`docs/verification-worklist.md` was the human-pass worklist — **closed 2026-08-05** by the CSV batch; it survives as the record of what was flagged going in. The sweep that produced the state Louwrens reviewed is written up in `docs/question-verify/`.
 
 **Learning-objective codes** tie questions to lessons via `questions.objective_code`: signs → `road_signs.code` (e.g. `R1`), rules → `RR1`–`RR29` (`src/content/road-rules.ts`), controls → `VC1`–`VC22` (`src/content/vehicle-controls.ts`). All three series exist. **Codes are shared by design** — several questions per objective is what an objective is for (11 of the `VC*` codes carry more than one), so a repeated code is not a mis-mapping. **Coverage is now complete: 227/227 approved questions carry a code** (the 2026-07-24 backfill left 12 orphans; they were closed by `scripts/data-repairs/orphan-objectives-2026-07-31.json`). What remains is the reverse direction — objectives with no lesson written, tracked in `docs/rules-coverage-checklist.md` and `docs/question-verify/approved-bank-findings.md` §7.

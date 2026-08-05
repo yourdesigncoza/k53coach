@@ -1,0 +1,2060 @@
+{
+  "description": "Human sign-off on the 228 AI-swept questions — the last open Stage 1 gate row (K53-32).\n\nUntil now these carried approved_by = 'system' / verified_at null, the state migration 20260804090000 created to mean \"an AI sweep set the approved flag; no person has read this\". CLAUDE.md constraint 9 does not accept that as verification, so the whole Stage 1 question count rested on machine approval.\n\nWhat actually happened: John exported the full bank to CSV and sent it to Louwrens, who read it and approved. This records that. It is NOT the tidy-the-column backfill that 20260804090000 forbids — that instruction was against stamping verified_at with no human pass behind it. A human pass happened; leaving the column null would now be the false statement.\n\nHOW THIS BATCH DIFFERS FROM THE 46 (2026-08-03), and how to tell them apart later: the 46 were approved one at a time in the admin UI, so their verified_at values are seconds apart. These 228 share a single identical timestamp, because they were signed off as one CSV rather than item by item. The timestamp is the honest record of that: same approver, same authority, different granularity. Query verified_at = '2026-08-05T09:02:42.538Z' to recover exactly this batch.\n\nTwo subsets inside the batch are called out in their per-op why, because they are where a wrong answer is most likely to have survived: the 16 partial citations (source supports the item, not the keyed answer — RR-054 keys \"four seconds or more\" in heavy rain and no source states any figure) and the 7 deliberately uncited questions (source_basis = uncited_general_knowledge). Both were in the CSV and are covered by the same approval.\n\nIdempotent: reruns compare equal and write nothing.",
+  "approver": "d9357949-050e-4895-975b-b279df29a024",
+  "approved_at": "2026-08-05T09:02:42.538Z",
+  "method": "csv-batch",
+  "ops": [
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-1",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-2",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-3",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-4",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-controls-5",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. NO source_citation by design (source_basis = 'uncited_general_knowledge') — nothing in resources/ reaches vehicle safety technology, so this was read on the content itself rather than against a provision. Do not backfill source_citation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-001",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-002",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-003",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-004",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-005",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-006",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-007",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-008",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-009",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-010",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-011",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. NO source_citation by design (source_basis = 'uncited_general_knowledge') — nothing in resources/ reaches vehicle safety technology, so this was read on the content itself rather than against a provision. Do not backfill source_citation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-012",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. NO source_citation by design (source_basis = 'uncited_general_knowledge') — nothing in resources/ reaches vehicle safety technology, so this was read on the content itself rather than against a provision. Do not backfill source_citation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-013",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-014",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-015",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-016",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. NO source_citation by design (source_basis = 'uncited_general_knowledge') — nothing in resources/ reaches vehicle safety technology, so this was read on the content itself rather than against a provision. Do not backfill source_citation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-017",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-018",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-019",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-020",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-021",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-022",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-023",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-024",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. NO source_citation by design (source_basis = 'uncited_general_knowledge') — nothing in resources/ reaches vehicle safety technology, so this was read on the content itself rather than against a provision. Do not backfill source_citation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-025",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-026",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. NO source_citation by design (source_basis = 'uncited_general_knowledge') — nothing in resources/ reaches vehicle safety technology, so this was read on the content itself rather than against a provision. Do not backfill source_citation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-027",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-028",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-029",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-030",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. NO source_citation by design (source_basis = 'uncited_general_knowledge') — nothing in resources/ reaches vehicle safety technology, so this was read on the content itself rather than against a provision. Do not backfill source_citation."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-031",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, controls section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.VC-032",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-1",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-2",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-3",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-4",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-rules-5",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-001",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-002",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-003",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-004",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-005",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-006",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-007",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-008",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-009",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-010",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-011",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-012",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-013",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-014",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-015",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-016",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-017",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-018",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-019",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-020",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-021",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-022",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-023",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-024",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-025",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-026",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-027",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-028",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-029",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-030",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-031",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-032",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-033",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-034",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-035",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-036",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-037",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-038",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-039",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-040",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-041",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-042",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-043",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-044",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-045",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-046",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-047",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-048",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-049",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-050",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-051",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-052",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-053",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-054",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-055",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-056",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-057",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch. FLAGGED BEFORE SIGN-OFF: this is one of the 16 partial citations in docs/verification-worklist.md — the source supports the item but not the keyed answer. It was in the CSV and is covered by the same approval; if any of the 228 is later found wrong, look here first."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-058",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-059",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-060",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-061",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-062",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-063",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-064",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-065",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-066",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-067",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-068",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-069",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-070",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-071",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-072",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-073",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-074",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-075",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-076",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-077",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-078",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-079",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-080",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-081",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-082",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-083",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-084",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-085",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-086",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-087",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-088",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-089",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-090",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-091",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-092",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-093",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-094",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-095",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-096",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-097",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-098",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-099",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-100",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-101",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-102",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-103",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-104",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-105",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-106",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-107",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-108",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-109",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-110",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-111",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-112",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-113",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-114",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RR-115",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, rules section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-1",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-2",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-3",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-4",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.q-signs-5",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-001",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-002",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-003",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-004",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-005",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-006",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-007",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-008",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-009",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-010",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-011",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-012",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-013",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-014",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-015",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-016",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-017",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-018",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-019",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-020",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-021",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-022",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-023",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-024",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-025",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-026",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-027",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-028",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-029",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-030",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-031",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-032",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-033",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-034",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-035",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-036",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-037",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-038",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-039",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-040",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-041",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-042",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-043",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-044",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-045",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-046",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-047",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-048",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-049",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-050",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-051",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-052",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-053",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-054",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-055",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-056",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-057",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-058",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-059",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-060",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-061",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-062",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-063",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-064",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-065",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    },
+    {
+      "table": "questions",
+      "match": "id=eq.RS-066",
+      "set": {
+        "approved_by": "d9357949-050e-4895-975b-b279df29a024",
+        "verified_at": "2026-08-05T09:02:42.538Z"
+      },
+      "why": "Signed off in the CSV batch: read against its source_citation, signs section."
+    }
+  ]
+}
