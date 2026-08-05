@@ -50,10 +50,24 @@ longer exists in the table**; all **274/274** approved questions carry a human s
 advertised a "Full 750-question bank" against 274 real ones (restored 2026-08-04 at John's request as **"growing to 750+"** — a target, not a count; a present-tense 750 on the payment screen is false by 476), and the privacy page promised
 parent/guardian consent for minors that **is not implemented** (`profiles.parent_consent`
 exists as a column; nothing in `src/` ever reads or writes it). Both are fixed in copy. Two
-things the audit could *not* fix in copy are recorded at the end of that doc: six served signs
-with no recorded verification evidence, and the fact that **only `/mock` is entitlement-gated**
-— practice, explanations and the whole library are already free, so R179 currently buys mock
-exams and the AI assessment. That second one is a product decision, not a wording bug.
+things the audit could *not* fix in copy are recorded at the end of that doc. The first —
+six served signs with no recorded verification evidence — is **closed as of 2026-08-05**
+(`scripts/data-repairs/six-unverified-signs-2026-08-05.json`); **every served sign now carries a
+verification record**, and `verification is null` over the served set returns 0. The second
+stands: **only `/mock` is entitlement-gated** — practice, explanations and the whole library are
+already free, so R179 currently buys mock exams and the AI assessment. That one is a product
+decision, not a wording bug.
+
+⚠️ **That sign gap was bigger than "missing evidence" — `content` was `{}` on all six.**
+`IN11.1`–`IN11.4`, `IN19` and `W346` were `approved` on both gates and served to learners with
+**no lesson text in either locale**. The empty `verification` was the symptom; the empty lesson
+was the defect, and only opening one of them in the admin editor showed it. **When a sign looks
+thin, check `content`, not just the gates** — nothing in the served-set query
+(`asset_status` + `review_status` + `sa_relevant`) can see an empty lesson. The `IN11.x`
+`name_mismatch` flags were an extraction artifact: the chart lists the family as the *range*
+`IN11.1 to IN11.5*`, so the matcher scored the tail of a range label. The names were right all
+along — SADC RTSM Vol 1 §5.2.5(3) enumerates all four verbatim. **The new prose is AI-drafted
+with `humanSignOff: false`** and belongs in the next human batch.
 
 **Launch plan: `docs/build-plan-2026-07.md` (v2) — read it before scoping work.** Launch is a **two-stage gate**, not one bar: Stage 1 paid beta at **256 verified questions** at the per-section split 120 rules / 112 signs / 24 controls (a floor derived from the exam format — see the doc; was 300 before the 64-question correction, and **the split is the bar, not the total**) + payments live + no orphaned topics + road-markings written library + a claims audit; Stage 2 full launch at 736. Payments get built early but the **checkout stays closed** until the Stage 1 content floor is real. Tracked as **K53-32**.
 
