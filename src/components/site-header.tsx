@@ -14,11 +14,12 @@ import { HeaderAuthActions } from "@/components/header-auth-actions";
  */
 export function SiteHeader() {
   const t = useTranslations("landing");
+  const tc = useTranslations("common");
 
   return (
     <header className="theme-dark pt-safe sticky top-0 z-30 border-b border-white/5 bg-ink-900/70 text-foreground backdrop-blur-md">
       <div className="mx-auto flex w-[min(1180px,92vw)] items-center gap-6 py-3.5">
-        <Link href="/" aria-label="Home">
+        <Link href="/" aria-label={tc("home")}>
           <Logo />
         </Link>
         <nav className="ml-auto hidden items-center gap-6 text-sm font-medium text-mist md:flex">

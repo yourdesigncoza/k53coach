@@ -94,6 +94,7 @@ const CONFIDENCE: { icon: Parameters<typeof Icon>[0]["name"]; label: string }[] 
 
 export function LandingQuizDemo() {
   const t = useTranslations("practice");
+  const tl = useTranslations("landing");
   const [idx, setIdx] = useState(0);
   const [chosen, setChosen] = useState<number | null>(null);
   const [correct, setCorrect] = useState(0);
@@ -158,9 +159,14 @@ export function LandingQuizDemo() {
           style={{ background: "linear-gradient(160deg, rgba(255,178,77,.14), rgba(255,196,107,.06))" }}
         >
           <div className="flex items-center gap-1.5 text-sm font-semibold text-gold-300">
-            <Icon name="i-lock" size="sm" /> Unlock full access
+            <Icon name="i-lock" size="sm" /> {tl("planCta")}
           </div>
-          <div className="mt-0.5 text-xs text-mist">{ENTITLEMENT_PRICE_LABEL} / {ENTITLEMENT_DAYS} days · unlimited practice</div>
+          <div className="mt-0.5 text-xs text-mist">
+            {tl("demoUnlockNote", {
+              price: ENTITLEMENT_PRICE_LABEL,
+              days: ENTITLEMENT_DAYS,
+            })}
+          </div>
         </div>
       </aside>
 
@@ -200,7 +206,7 @@ export function LandingQuizDemo() {
               style={{ borderColor: "var(--surface-border)" }}
             >
               <h4 className="mb-2.5 text-xs" style={{ color: "var(--surface-ink-2)" }}>
-                Question progress
+                {t("progressAria")}
               </h4>
               <div className="flex gap-1.5">
                 {Array.from({ length: QUESTIONS.length }).map((_, i) => {
@@ -228,9 +234,9 @@ export function LandingQuizDemo() {
               style={{ borderColor: "var(--surface-border)" }}
             >
               <h4 className="mb-2.5 text-xs" style={{ color: "var(--surface-ink-2)" }}>
-                Confidence — feeling good?
+                {t("confidence")}
               </h4>
-              <div className="flex gap-2" role="group" aria-label="How confident do you feel?">
+              <div className="flex gap-2" role="group" aria-label={t("confidenceAria")}>
                 {CONFIDENCE.map((c, i) => (
                   <button
                     key={c.label}

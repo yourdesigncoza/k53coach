@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ArrowLeft, Lightbulb } from "lucide-react";
 import { Icon } from "@/components/icon";
@@ -13,8 +14,15 @@ import { cn } from "@/lib/utils";
  * pattern as the assessment demo — fixed --surface-* tokens inside the panel).
  *
  * Content is grounded in the K53 wiki (SARTSM colour code + regulatory signs +
- * Stop/Yield), hardcoded English (learner content isn't translated yet). Signs
- * are the real PD SADC artwork the app serves.
+ * Stop/Yield). Signs are the real PD SADC artwork the app serves.
+ *
+ * TRANSLATION LINE — the page chrome and framing are translated (`lessonDemo`);
+ * what a sign MEANS is not. The SHAPES/COLOURS `means` fields, the Stop-vs-Yield
+ * card bodies and the exam-phrasing examples stay English, because the library
+ * this page is previewing is still English (the bilingual content pass is
+ * deferred — see CLAUDE.md). Translating them would advertise an Afrikaans
+ * product that does not exist yet. An Afrikaans reader gets Afrikaans headings
+ * over English sign definitions, which is exactly what they get after paying.
  */
 
 const INK = "text-[var(--surface-ink)]";
@@ -114,33 +122,31 @@ function SignBox({ code, name }: { code: string; name: string }) {
 }
 
 export function LessonDemo() {
+  const t = useTranslations("lessonDemo");
   return (
     <div className="theme-dark min-h-dvh bg-background text-foreground">
       <main className="mx-auto w-full max-w-2xl px-4 pb-16 pt-14 md:pt-20">
         {/* ---- Hero ---- */}
         <div className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-ink-700 px-3 py-1.5 text-xs font-medium tracking-[0.08em] text-gold-300">
-            <Icon name="i-spark" size="sm" /> Sample lesson
+            <Icon name="i-spark" size="sm" /> {t("eyebrow")}
           </span>
           <h1 className="mx-auto mt-5 max-w-xl font-display text-[clamp(1.9rem,1.4rem+2vw,2.6rem)] font-bold leading-[1.12] tracking-tight">
-            Road Signs: <span className="text-gold-400">Shapes &amp; Colours</span>
+            {t("title1")} <span className="text-gold-400">{t("title2")}</span>
           </h1>
           <p className="mx-auto mt-3 max-w-md text-[0.95rem] leading-relaxed text-mist">
-            Before you memorise individual signs, learn what the shape and colour
-            already tell you. Get this and half the sign questions answer
-            themselves.
+            {t("intro")}
           </p>
-          <p className="mx-auto mt-3 text-xs text-muted-dk">≈ 12 min read</p>
+          <p className="mx-auto mt-3 text-xs text-muted-dk">{t("readTime")}</p>
         </div>
 
         {/* ---- White app-preview panel ---- */}
         <div className="mt-7 flex flex-col gap-8 rounded-[24px] border border-ink-700 bg-surface p-4 shadow-[0_24px_60px_rgba(0,0,0,.45)] md:p-6">
           {/* 1 · Read the shape */}
           <section>
-            <PanelHead n={1} title="Read the shape first" />
+            <PanelHead n={1} title={t("s1")} />
             <p className={cn("mt-2 text-sm", INK2)}>
-              The outline of a sign narrows down its meaning before you read a
-              single word.
+              {t("s1body")}
             </p>
             <ul className="mt-4 flex flex-col">
               {SHAPES.map((s) => (
@@ -163,10 +169,9 @@ export function LessonDemo() {
 
           {/* 2 · Read the colour */}
           <section>
-            <PanelHead n={2} title="Then read the colour" />
+            <PanelHead n={2} title={t("s2")} />
             <p className={cn("mt-2 text-sm", INK2)}>
-              Colour is a code. Learn it once and it works on signs you&apos;ve
-              never seen.
+              {t("s2body")}
             </p>
             <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
               {COLOURS.map((c) => (
@@ -189,20 +194,17 @@ export function LessonDemo() {
             <div className="mt-3 flex items-start gap-2.5 rounded-[12px] border-l-4 border-gold-400 bg-gold-400/[0.07] py-3 pl-3 pr-4">
               <Lightbulb className="mt-0.5 size-4 shrink-0 text-copper-500" />
               <p className={cn("text-sm", INK2)}>
-                <span className={cn("font-semibold", INK)}>Common trap: </span>
-                rural direction signs are <b>green</b>, not blue. Blue is reserved
-                for the highest-class A1 freeways — and a yellow background always
-                means temporary roadworks.
+                <span className={cn("font-semibold", INK)}>{t("trapLabel")}</span>
+                {t("trapBody")}
               </p>
             </div>
           </section>
 
           {/* 3 · The two everyone confuses */}
           <section>
-            <PanelHead n={3} title="The two everyone confuses" />
+            <PanelHead n={3} title={t("s3")} />
             <p className={cn("mt-2 text-sm", INK2)}>
-              Stop vs Yield is the single most-tested confusion in the
-              learner&apos;s test.
+              {t("s3body")}
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <div className={cn(CARD, "flex flex-col items-center text-center")}>
@@ -226,7 +228,7 @@ export function LessonDemo() {
 
           {/* 4 · You'll be asked */}
           <section>
-            <PanelHead n={4} title="How the test asks it" />
+            <PanelHead n={4} title={t("s4")} />
             <ul className={cn("mt-3 flex flex-col gap-2 text-sm", INK2)}>
               {[
                 "“What does this sign mean?” — recognise the meaning from shape + colour.",
@@ -245,9 +247,9 @@ export function LessonDemo() {
         {/* ---- CTA band ---- */}
         <CtaBand
           className="mt-8"
-          title="That's one lesson. There are dozens more."
-          subtitle="Every sign, rule and control — explained like this, then practised until it sticks."
-          action={{ label: "Unlock My Study Plan", href: "/paywall" }}
+          title={t("ctaTitle")}
+          subtitle={t("ctaSub")}
+          action={{ label: t("ctaBtn"), href: "/paywall" }}
         />
 
         {/* ---- Back to sample report ---- */}
@@ -256,7 +258,7 @@ export function LessonDemo() {
             href="/readiness/assessment-demo"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-mist hover:text-ivory"
           >
-            <ArrowLeft className="size-4" /> Back to the sample report
+            <ArrowLeft className="size-4" /> {t("back")}
           </Link>
         </div>
       </main>

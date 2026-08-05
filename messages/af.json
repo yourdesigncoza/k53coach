@@ -4,7 +4,10 @@
     "appName": "K53 Coach",
     "demo": "Demo",
     "login": "Meld aan",
-    "logout": "Teken uit"
+    "logout": "Teken uit",
+    "home": "Tuis",
+    "language": "Taal",
+    "close": "Maak toe"
   },
   "language": {
     "label": "Taal",
@@ -134,7 +137,22 @@
     "ctaBandTitle": "5 vrae. 30 sekondes. Weet waar jy staan.",
     "ctaBandSub": "Geen aflaai, geen registrasie. Sien jou gereedheidstelling dadelik.",
     "ctaBandBtn": "Begin die gratis toets",
-    "goToApp": "Gaan na app"
+    "goToApp": "Gaan na app",
+    "coachEyebrow": "Die K53 Coach-verskil",
+    "coachTitle1": "Elke app gee jou ’n telling.",
+    "coachTitle2": "Joune kom met ’n plan.",
+    "coachBody": "Ná die gratis toets lees jou KI-afrigter die uitslag soos ’n tutor sou: dit wys watter tekens jy verwar het, verduidelik hoekom, gee jou gereedheid ’n telling, en oorhandig die presiese volgende les. Ouers kry ’n telling wat hulle werklik kan lees.",
+    "coachBullet1": "Sien hóékom jy dit verkeerd gehad het — nie net dát jy het nie",
+    "coachBullet2": "’n Gereedheidstelling wat ouers kan verstaan",
+    "coachBullet3": "Die presiese volgende les, nie “leer alles” nie",
+    "coachCtaReport": "Sien ’n voorbeeldverslag →",
+    "coachCtaLesson": "Loer na ’n les →",
+    "coachTeaserAria": "Sien ’n voorbeeld van ’n KI-afrigterverslag",
+    "coachTeaserHeadline": "Een onderwerp hou jou terug.",
+    "coachTeaserSub": "Stel dit reg en jy is oor die streep.",
+    "coachTeaserSnippet": "Jy het ’n Toegee-teken as ’n Stop gelees. Toegee beteken stadiger ry en voorrang gee; Stop beteken elke keer heeltemal stilhou.",
+    "coachTeaserMore": "Sien die volle verslag →",
+    "demoUnlockNote": "{price} / {days} dae · onbeperkte oefening"
   },
   "readiness": {
     "title": "Jou gratis K53-gereedheidstoets",
@@ -274,7 +292,10 @@
     "again": "Oefen weer",
     "back": "Terug na leer",
     "coach": "Coach sê",
-    "title": "Oefenvasvra"
+    "title": "Oefenvasvra",
+    "progressAria": "Vraagvordering",
+    "confidence": "Vertroue — voel jy goed?",
+    "confidenceAria": "Hoe seker voel jy?"
   },
   "comingSoon": {
     "back": "Terug na leer"
@@ -331,7 +352,8 @@
     "submitting": "Besig om in te dien…",
     "submitError": "Kon nie jou eksamen stoor nie. Probeer asseblief weer.",
     "shortened": "Hierdie vraestel is korter as n volledige eksamen omdat die vraagbank nog groei.",
-    "timeUp": "Tyd is op — jou eksamen word ingedien."
+    "timeUp": "Tyd is op — jou eksamen word ingedien.",
+    "timeRemainingAria": "Tyd oor"
   },
   "examResult": {
     "title": "Eksamenuitslag",
@@ -371,5 +393,45 @@
     "body": "Daardie bladsy bestaan nie of het dalk geskuif. Kom ons kry jou terug op die pad.",
     "home": "Terug na tuis",
     "dashboard": "Gaan na paneelbord"
+  },
+  "lessonDemo": {
+    "eyebrow": "Voorbeeldles",
+    "title1": "Padtekens:",
+    "title2": "Vorms en Kleure",
+    "intro": "Voordat jy individuele tekens memoriseer, leer wat die vorm en kleur jou reeds vertel. Kry dit reg en die helfte van die tekenvrae beantwoord hulself.",
+    "readTime": "≈ 12 min leestyd",
+    "s1": "Lees eers die vorm",
+    "s1body": "Die buitelyn van ’n teken vernou sy betekenis voordat jy ’n enkele woord lees.",
+    "s2": "Lees dan die kleur",
+    "s2body": "Kleur is ’n kode. Leer dit een keer en dit werk op tekens wat jy nog nooit gesien het nie.",
+    "trapLabel": "Algemene lokval: ",
+    "s3": "Die twee wat almal verwar",
+    "s3body": "Stop teenoor Toegee is die enkele mees getoetste verwarring in die leerlingtoets.",
+    "s4": "Hoe die toets dit vra",
+    "ctaTitle": "Dis een les. Daar is dosyne meer.",
+    "ctaSub": "Elke teken, reël en kontrole — so verduidelik, dan geoefen totdat dit vassteek.",
+    "back": "Terug na die voorbeeldverslag",
+    "trapBody": "landelike rigtingtekens is groen, nie blou nie. Blou is gereserveer vir die hoogste-klas A1-snelweë — en 'n geel agtergrond beteken altyd tydelike padwerke.",
+    "ctaBtn": "Sluit My Studieplan Oop"
+  },
+  "assessmentDemo": {
+    "eyebrow": "Voorbeeld · lewendige demo",
+    "titleLead": "Wat jou",
+    "titleAccent": "KI-afrigter",
+    "strengths": "Wat jy reeds het",
+    "losing": "Waar jy punte verloor",
+    "doNow": "Doen dit nou:",
+    "goal": "Doel:",
+    "path": "Jou pad na toetsgereed",
+    "expected": "Verwagte volgende telling",
+    "whyTest": "Hoekom ons eers toets.",
+    "sampleAria": "Voorbeelduitslag",
+    "realPlanNote": "Jou werklike plan word uit jou eie antwoorde gebou.",
+    "titleSuffix": "jou vertel",
+    "heroBody": "Ná die toets verander dit jou telling in ’n plan waarop jy kan optree — nie net ’n syfer nie. Hier is dieselfde afrigter wat drie verskillende uitslae lees.",
+    "why": "Hoekom: ",
+    "whyTestBody": "Die meeste leerlinge leer alles en stap steeds onseker in. Hierdie verslag wys presies waar om jou tyd te bestee — sodat jy nie ’n besprekingsfooi betaal om uit te vind nie.",
+    "ctaSub": "Elke les, oefentoets en KI-nota totdat jy toetsgereed is.",
+    "ctaBtn": "Sluit My Studieplan Oop"
   }
 }

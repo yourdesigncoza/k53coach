@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import {
   ArrowRight,
@@ -286,9 +287,14 @@ function SignPair({ correct, picked }: NonNullable<Focus["signs"]>) {
 }
 
 export function AssessmentDemo() {
+  const t = useTranslations("assessmentDemo");
   const [active, setActive] = useState(0);
   const s = SCENARIOS[active];
-  const weakest = s.byTopic.reduce((m, t) => (t.percent < m.percent ? t : m));
+  // `topic`, not `t` — `t` is the translator above and shadowing it here reads
+  // as a translation call to anyone skimming the reduce.
+  const weakest = s.byTopic.reduce((m, topic) =>
+    topic.percent < m.percent ? topic : m,
+  );
 
   return (
     <div className="theme-dark min-h-dvh bg-background text-foreground">
@@ -296,22 +302,20 @@ export function AssessmentDemo() {
         {/* ---- Hero intro — landing-style dark header ---- */}
         <div className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-ink-700 px-3 py-1.5 text-xs font-medium tracking-[0.08em] text-gold-300">
-            <Icon name="i-spark" size="sm" /> Sample · live demo
+            <Icon name="i-spark" size="sm" /> {t("eyebrow")}
           </span>
           <h1 className="mx-auto mt-5 max-w-xl font-display text-[clamp(1.9rem,1.4rem+2vw,2.6rem)] font-bold leading-[1.12] tracking-tight">
-            What your <span className="text-gold-400">AI Coach</span> tells you
+            {t("titleLead")} <span className="text-gold-400">{t("titleAccent")}</span> {t("titleSuffix")}
           </h1>
           <p className="mx-auto mt-3 max-w-md text-[0.95rem] leading-relaxed text-mist">
-            After the test, it turns your score into a plan you can act on — not
-            just a number. Here&apos;s the same coach reading three different
-            results.
+            {t("heroBody")}
           </p>
         </div>
 
         {/* ---- Scenario switcher (dark pills) ---- */}
         <div
           role="tablist"
-          aria-label="Sample result"
+          aria-label={t("sampleAria")}
           className="mx-auto mt-7 flex w-full max-w-md gap-2"
         >
           {SCENARIOS.map((sc, i) => (
@@ -407,7 +411,7 @@ export function AssessmentDemo() {
               <Chip tone="success">
                 <CheckCircle2 className="size-4" />
               </Chip>
-              What you&apos;ve already got
+              {t("strengths")}
             </p>
             <p className={cn("mt-2 text-sm", INK2)}>{s.strengths}</p>
           </div>
@@ -418,7 +422,7 @@ export function AssessmentDemo() {
               <Chip tone="destructive">
                 <TriangleAlert className="size-4" />
               </Chip>
-              Where you&apos;re losing marks
+              {t("losing")}
             </p>
             <ul className="mt-4 flex flex-col">
               {s.focus.map((f) => (
@@ -458,15 +462,15 @@ export function AssessmentDemo() {
             </p>
             <dl className="mt-3 flex flex-col gap-2 text-sm">
               <div>
-                <dt className={cn("inline font-semibold", INK)}>Do this now: </dt>
+                <dt className={cn("inline font-semibold", INK)}>{t("doNow")} </dt>
                 <span className={INK2}>{s.next.action}</span>
               </div>
               <div>
-                <dt className={cn("inline font-semibold", INK)}>Why: </dt>
+                <dt className={cn("inline font-semibold", INK)}>{t("why")}</dt>
                 <span className={INK2}>{s.next.why}</span>
               </div>
               <div>
-                <dt className={cn("inline font-semibold", INK)}>Goal: </dt>
+                <dt className={cn("inline font-semibold", INK)}>{t("goal")} </dt>
                 <span className={INK2}>{s.next.goal}</span>
               </div>
             </dl>
@@ -486,7 +490,7 @@ export function AssessmentDemo() {
               <Chip tone="gold">
                 <TrendingUp className="size-4" />
               </Chip>
-              Your path to test-ready
+              {t("path")}
             </p>
             <ol className="mt-3 flex flex-col gap-2.5">
               {s.path.steps.map((step, i) => (
@@ -499,7 +503,7 @@ export function AssessmentDemo() {
               ))}
             </ol>
             <div className="mt-3 flex items-center justify-between rounded-lg bg-surface-3 px-3 py-2.5 text-sm">
-              <span className={INK2}>Expected next score</span>
+              <span className={INK2}>{t("expected")}</span>
               <span className={cn("font-display font-bold tabular-nums", INK)}>
                 {s.path.expected}
               </span>
@@ -511,19 +515,17 @@ export function AssessmentDemo() {
         <div className="mt-6 flex items-start gap-2.5 rounded-[18px] border border-ink-700 bg-ink-800 p-4">
           <Compass className="mt-0.5 size-4 shrink-0 text-gold-400" />
           <p className="text-sm text-mist">
-            <span className="font-medium text-ivory">Why we test first.</span>{" "}
-            Most learners study everything and still walk in unsure. This report
-            shows exactly where to spend your time — so you don&apos;t pay a
-            booking fee to find out.
+            <span className="font-medium text-ivory">{t("whyTest")}</span>{" "}
+            {t("whyTestBody")}
           </p>
         </div>
 
         {/* ---- Final CTA band ---- */}
         <CtaBand
           className="mt-8"
-          title="Your real plan is built from your own answers."
-          subtitle="Every lesson, practice test and AI note until you're test-ready."
-          action={{ label: "Unlock My Study Plan", href: "/paywall" }}
+          title={t("realPlanNote")}
+          subtitle={t("ctaSub")}
+          action={{ label: t("ctaBtn"), href: "/paywall" }}
         />
       </main>
     </div>

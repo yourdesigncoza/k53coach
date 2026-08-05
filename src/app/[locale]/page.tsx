@@ -44,6 +44,11 @@ function Gauge({ value }: { value: number }) {
 
 export default function LandingPage() {
   const t = useTranslations("landing");
+  // The coach teaser reuses two strings that already exist as keys elsewhere —
+  // the readiness band label and the coach-card heading. Re-typing them here is
+  // how the same sentence ends up translated in one place and English in another.
+  const tBands = useTranslations("bands");
+  const tQuiz = useTranslations("quiz");
 
   const features: { icon: IconName; title: string; body: string }[] = [
     { icon: "i-explain", title: t("feat1Title"), body: t("feat1Body") },
@@ -134,23 +139,20 @@ export default function LandingPage() {
             {/* Copy + CTAs */}
             <div className="max-w-xl">
               <p className="text-xs font-semibold uppercase tracking-[0.08em] text-copper-500">
-                The K53 Coach difference
+                {t("coachEyebrow")}
               </p>
               <h2 className="mt-2 font-display text-[1.75rem] font-semibold leading-tight tracking-tight text-[var(--surface-ink)]">
-                Every app gives you a score.{" "}
-                <span className="text-copper-500">Yours comes with a plan.</span>
+                {t("coachTitle1")}{" "}
+                <span className="text-copper-500">{t("coachTitle2")}</span>
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-[var(--surface-ink-2)]">
-                After the free test, your AI Coach reads the result like a tutor
-                would: it shows which signs you confused, explains why, scores
-                your readiness, and hands you the exact next lesson. Parents get a
-                score they can actually read.
+                {t("coachBody")}
               </p>
               <ul className="mt-5 grid gap-2.5 text-sm text-[var(--surface-ink-2)]">
                 {[
-                  "Sees why you got it wrong — not just that you did",
-                  "A parent-readable readiness score",
-                  "The exact next lesson, not “study everything”",
+                  t("coachBullet1"),
+                  t("coachBullet2"),
+                  t("coachBullet3"),
                 ].map((li) => (
                   <li key={li} className="flex gap-2">
                     <span className="font-bold text-copper-500">✓</span> {li}
@@ -162,7 +164,7 @@ export default function LandingPage() {
                   className="h-12 rounded-[14px] px-5 text-base font-display font-semibold"
                   render={
                     <Link href="/readiness/assessment-demo">
-                      See a sample coach report →
+                      {t("coachCtaReport")}
                     </Link>
                   }
                 />
@@ -170,7 +172,7 @@ export default function LandingPage() {
                   variant="outline"
                   className="h-12 rounded-[14px] border-[var(--surface-border-2)] bg-transparent px-5 text-base font-display font-semibold text-[var(--surface-ink)] hover:border-gold-400"
                   render={
-                    <Link href="/readiness/lesson-demo">Preview a lesson →</Link>
+                    <Link href="/readiness/lesson-demo">{t("coachCtaLesson")}</Link>
                   }
                 />
               </div>
@@ -179,7 +181,7 @@ export default function LandingPage() {
             {/* Clickable white app-preview teaser → the full sample report */}
             <Link
               href="/readiness/assessment-demo"
-              aria-label="See a sample AI Coach report"
+              aria-label={t("coachTeaserAria")}
               className="group block rounded-[24px] border border-[var(--surface-border)] bg-surface p-5 shadow-[0_20px_50px_rgba(120,90,40,.15)] transition-transform hover:-translate-y-0.5"
             >
               <div className="flex items-center gap-4">
@@ -197,13 +199,13 @@ export default function LandingPage() {
                       BAND_BADGE_CLASS["almost-ready"],
                     )}
                   >
-                    Almost ready
+                    {tBands("almost-ready")}
                   </span>
                   <p className="mt-2 text-sm font-semibold text-[var(--surface-ink)]">
-                    One topic is holding you back.
+                    {t("coachTeaserHeadline")}
                   </p>
                   <p className="mt-0.5 text-xs text-[var(--surface-ink-2)]">
-                    Fix it and you&apos;re over the line.
+                    {t("coachTeaserSub")}
                   </p>
                 </div>
               </div>
@@ -211,11 +213,10 @@ export default function LandingPage() {
               {/* Coach snippet */}
               <div className="mt-4 rounded-[14px] border border-[var(--surface-border)] bg-surface-2 p-3">
                 <p className="flex items-center gap-1.5 font-display text-xs font-semibold text-copper-500">
-                  <Icon name="i-spark" size="sm" /> Coach Says
+                  <Icon name="i-spark" size="sm" /> {tQuiz("coach")}
                 </p>
                 <p className="mt-1 text-xs leading-relaxed text-[var(--surface-ink-2)]">
-                  You read a Yield as a Stop. Yield means slow down and give way;
-                  Stop means a complete halt, every time.
+                  {t("coachTeaserSnippet")}
                 </p>
               </div>
 
@@ -229,7 +230,7 @@ export default function LandingPage() {
                   <SignImage svgFile="signs/R2.svg" name="Yield" className="size-full" />
                 </div>
                 <span className="ml-auto text-xs font-semibold text-copper-500 group-hover:underline">
-                  See the full report →
+                  {t("coachTeaserMore")}
                 </span>
               </div>
             </Link>

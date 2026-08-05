@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 /**
@@ -36,6 +37,7 @@ export function ExamTimer({
     return () => clearInterval(id);
   }, [deadline, onExpire]);
 
+  const t = useTranslations("exam");
   const totalSeconds = Math.ceil(remaining / 1000);
   const mm = Math.floor(totalSeconds / 60);
   const ss = totalSeconds % 60;
@@ -47,7 +49,7 @@ export function ExamTimer({
         "font-mono font-semibold tabular-nums",
         low ? "text-destructive" : "text-[var(--surface-ink-2)]",
       )}
-      aria-label="Time remaining"
+      aria-label={t("timeRemainingAria")}
     >
       {mm}:{String(ss).padStart(2, "0")}
     </span>

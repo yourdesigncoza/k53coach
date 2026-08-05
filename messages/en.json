@@ -3,7 +3,10 @@
     "appName": "K53 Coach",
     "demo": "Demo",
     "login": "Log in",
-    "logout": "Logout"
+    "logout": "Logout",
+    "home": "Home",
+    "language": "Language",
+    "close": "Close"
   },
   "language": {
     "label": "Language",
@@ -133,7 +136,22 @@
     "ctaBandTitle": "5 questions. 30 seconds. Know where you stand.",
     "ctaBandSub": "No download, no sign-up. See your readiness score instantly.",
     "ctaBandBtn": "Start the free test",
-    "goToApp": "Go to app"
+    "goToApp": "Go to app",
+    "coachEyebrow": "The K53 Coach difference",
+    "coachTitle1": "Every app gives you a score.",
+    "coachTitle2": "Yours comes with a plan.",
+    "coachBody": "After the free test, your AI Coach reads the result like a tutor would: it shows which signs you confused, explains why, scores your readiness, and hands you the exact next lesson. Parents get a score they can actually read.",
+    "coachBullet1": "Sees why you got it wrong — not just that you did",
+    "coachBullet2": "A parent-readable readiness score",
+    "coachBullet3": "The exact next lesson, not “study everything”",
+    "coachCtaReport": "See a sample coach report →",
+    "coachCtaLesson": "Preview a lesson →",
+    "coachTeaserAria": "See a sample AI Coach report",
+    "coachTeaserHeadline": "One topic is holding you back.",
+    "coachTeaserSub": "Fix it and you’re over the line.",
+    "coachTeaserSnippet": "You read a Yield as a Stop. Yield means slow down and give way; Stop means a complete halt, every time.",
+    "coachTeaserMore": "See the full report →",
+    "demoUnlockNote": "{price} / {days} days · unlimited practice"
   },
   "readiness": {
     "title": "Your free K53 readiness check",
@@ -273,7 +291,10 @@
     "again": "Practice again",
     "back": "Back to learning",
     "coach": "Coach Says",
-    "title": "Practice Quiz"
+    "title": "Practice Quiz",
+    "progressAria": "Question progress",
+    "confidence": "Confidence — feeling good?",
+    "confidenceAria": "How confident do you feel?"
   },
   "comingSoon": {
     "back": "Back to learning"
@@ -330,7 +351,8 @@
     "submitting": "Submitting…",
     "submitError": "Could not save your exam. Please try again.",
     "shortened": "This paper is shorter than a full exam because the question bank is still growing.",
-    "timeUp": "Time is up — submitting your exam."
+    "timeUp": "Time is up — submitting your exam.",
+    "timeRemainingAria": "Time remaining"
   },
   "examResult": {
     "title": "Exam result",
@@ -370,5 +392,45 @@
     "body": "That page does not exist or may have moved. Let us get you back on the road.",
     "home": "Back to home",
     "dashboard": "Go to dashboard"
+  },
+  "lessonDemo": {
+    "eyebrow": "Sample lesson",
+    "title1": "Road Signs:",
+    "title2": "Shapes & Colours",
+    "intro": "Before you memorise individual signs, learn what the shape and colour already tell you. Get this and half the sign questions answer themselves.",
+    "readTime": "≈ 12 min read",
+    "s1": "Read the shape first",
+    "s1body": "The outline of a sign narrows down its meaning before you read a single word.",
+    "s2": "Then read the colour",
+    "s2body": "Colour is a code. Learn it once and it works on signs you’ve never seen.",
+    "trapLabel": "Common trap: ",
+    "s3": "The two everyone confuses",
+    "s3body": "Stop vs Yield is the single most-tested confusion in the learner’s test.",
+    "s4": "How the test asks it",
+    "ctaTitle": "That’s one lesson. There are dozens more.",
+    "ctaSub": "Every sign, rule and control — explained like this, then practised until it sticks.",
+    "back": "Back to the sample report",
+    "trapBody": "rural direction signs are green, not blue. Blue is reserved for the highest-class A1 freeways — and a yellow background always means temporary roadworks.",
+    "ctaBtn": "Unlock My Study Plan"
+  },
+  "assessmentDemo": {
+    "eyebrow": "Sample · live demo",
+    "titleLead": "What your",
+    "titleAccent": "AI Coach",
+    "strengths": "What you’ve already got",
+    "losing": "Where you’re losing marks",
+    "doNow": "Do this now:",
+    "goal": "Goal:",
+    "path": "Your path to test-ready",
+    "expected": "Expected next score",
+    "whyTest": "Why we test first.",
+    "sampleAria": "Sample result",
+    "realPlanNote": "Your real plan is built from your own answers.",
+    "titleSuffix": "tells you",
+    "heroBody": "After the test, it turns your score into a plan you can act on — not just a number. Here’s the same coach reading three different results.",
+    "why": "Why: ",
+    "whyTestBody": "Most learners study everything and still walk in unsure. This report shows exactly where to spend your time — so you don’t pay a booking fee to find out.",
+    "ctaSub": "Every lesson, practice test and AI note until you’re test-ready.",
+    "ctaBtn": "Unlock My Study Plan"
   }
 }
