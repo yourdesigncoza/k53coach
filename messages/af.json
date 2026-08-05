@@ -433,5 +433,23 @@
     "whyTestBody": "Die meeste leerlinge leer alles en stap steeds onseker in. Hierdie verslag wys presies waar om jou tyd te bestee — sodat jy nie ’n besprekingsfooi betaal om uit te vind nie.",
     "ctaSub": "Elke les, oefentoets en KI-nota totdat jy toetsgereed is.",
     "ctaBtn": "Sluit My Studieplan Oop"
+  },
+  "meta": {
+    "dashboard": "Tuis",
+    "learn": "Leer",
+    "signs": "Padtekens",
+    "rules": "Reëls van die Pad",
+    "controls": "Voertuigbeheer",
+    "practiceSigns": "Oefen padtekens",
+    "practiceRules": "Oefen reëls van die pad",
+    "practiceControls": "Oefen voertuigbeheer",
+    "mock": "Proefeksamen",
+    "mockExam": "Proefeksamen · aan die gang",
+    "examResult": "Eksamenuitslag",
+    "progress": "Vordering",
+    "readiness": "Gratis gereedheidstoets",
+    "lessonDemo": "Voorbeeldles — Padtekens: Vorms en Kleure",
+    "assessmentDemo": "KI-assessering — voorbeeld",
+    "privacy": "Privaatheid & POPIA"
   }
 }

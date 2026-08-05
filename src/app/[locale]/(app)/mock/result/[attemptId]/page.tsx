@@ -16,7 +16,17 @@ import type { ExamSectionResult, StoredExamAnswer } from "@/lib/exam";
 
 const SECTION_ORDER: Topic[] = ["rules", "signs", "controls"];
 
-export const metadata = { title: "Exam result" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const t = await getTranslations({
+    locale: (await params).locale,
+    namespace: "meta",
+  });
+  return { title: t("examResult") };
+}
 
 export default async function MockResultPage({
   params,

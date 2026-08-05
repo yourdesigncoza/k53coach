@@ -1,8 +1,19 @@
+import { getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
-export const metadata = { title: "Privacy & POPIA" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const t = await getTranslations({
+    locale: (await params).locale,
+    namespace: "meta",
+  });
+  return { title: t("privacy") };
+}
 
 export default function PrivacyPage() {
   const t = useTranslations("legal");

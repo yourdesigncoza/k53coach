@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -12,7 +13,17 @@ import {
 } from "@/content/vehicle-controls";
 import type { ControlCategory } from "@/lib/types";
 
-export const metadata = { title: "Vehicle Controls" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const t = await getTranslations({
+    locale: (await params).locale,
+    namespace: "meta",
+  });
+  return { title: t("controls") };
+}
 
 const ORDER = Object.keys(CONTROL_CATEGORY_META) as ControlCategory[];
 

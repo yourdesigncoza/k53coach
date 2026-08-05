@@ -432,5 +432,23 @@
     "whyTestBody": "Most learners study everything and still walk in unsure. This report shows exactly where to spend your time — so you don’t pay a booking fee to find out.",
     "ctaSub": "Every lesson, practice test and AI note until you’re test-ready.",
     "ctaBtn": "Unlock My Study Plan"
+  },
+  "meta": {
+    "dashboard": "Home",
+    "learn": "Learn",
+    "signs": "Road Signs",
+    "rules": "Rules of the Road",
+    "controls": "Vehicle Controls",
+    "practiceSigns": "Practice road signs",
+    "practiceRules": "Practice rules of the road",
+    "practiceControls": "Practice vehicle controls",
+    "mock": "Mock exam",
+    "mockExam": "Mock exam · in progress",
+    "examResult": "Exam result",
+    "progress": "Progress",
+    "readiness": "Free readiness test",
+    "lessonDemo": "Sample lesson — Road Signs: Shapes & Colours",
+    "assessmentDemo": "AI Assessment — sample",
+    "privacy": "Privacy & POPIA"
   }
 }

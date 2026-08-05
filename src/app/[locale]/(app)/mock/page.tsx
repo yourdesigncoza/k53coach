@@ -1,9 +1,20 @@
+import { getTranslations } from "next-intl/server";
 import { requireEntitledUser } from "@/lib/exam-guard";
 import { getExamHistory } from "@/lib/supabase/queries";
 import { EXAM_FORMAT_B } from "@/lib/exam";
 import { MockStart, type MockHistoryRow } from "@/components/exam/mock-start";
 
-export const metadata = { title: "Mock exam" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const t = await getTranslations({
+    locale: (await params).locale,
+    namespace: "meta",
+  });
+  return { title: t("mock") };
+}
 
 export default async function MockPage({
   params,

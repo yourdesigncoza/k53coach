@@ -1,10 +1,21 @@
+import { getTranslations } from "next-intl/server";
 import { requireEntitledUser } from "@/lib/exam-guard";
 import { getExamPool } from "@/lib/questions";
 import { getRecentlySeenQuestionIds } from "@/lib/supabase/queries";
 import { assemblePaper, EXAM_FORMAT_B } from "@/lib/exam";
 import { ExamRunner } from "@/components/exam/exam-runner";
 
-export const metadata = { title: "Mock exam · in progress" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const t = await getTranslations({
+    locale: (await params).locale,
+    namespace: "meta",
+  });
+  return { title: t("mockExam") };
+}
 
 // The paper is assembled fresh per request; the client resumes an in-progress
 // draft from localStorage instead when one exists (so a refresh keeps the paper).

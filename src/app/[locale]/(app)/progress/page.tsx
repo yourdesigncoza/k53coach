@@ -14,7 +14,17 @@ import {
 } from "@/lib/supabase/queries";
 import type { Topic } from "@/lib/types";
 
-export const metadata = { title: "Progress" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const t = await getTranslations({
+    locale: (await params).locale,
+    namespace: "meta",
+  });
+  return { title: t("progress") };
+}
 
 const TOPICS: Topic[] = ["signs", "rules", "controls"];
 

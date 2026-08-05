@@ -8,7 +8,17 @@ import { QuizRunner } from "@/components/quiz/quiz-runner";
 import { getReadinessQuestions } from "@/lib/questions";
 import { sampleReadinessQuestions } from "@/lib/readiness-sample";
 
-export const metadata = { title: "Free readiness test" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const t = await getTranslations({
+    locale: (await params).locale,
+    namespace: "meta",
+  });
+  return { title: t("readiness") };
+}
 
 // Rotates per request: the free test is a short sample of the curated pool, so a
 // retake is a different paper. Rendering must not be cached or every visitor would

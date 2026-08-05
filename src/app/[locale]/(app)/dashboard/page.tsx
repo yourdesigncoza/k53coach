@@ -15,7 +15,17 @@ import {
 } from "@/lib/supabase/queries";
 import { resolveWeakAreaCards } from "@/lib/weak-area-cards";
 
-export const metadata = { title: "Home" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const t = await getTranslations({
+    locale: (await params).locale,
+    namespace: "meta",
+  });
+  return { title: t("dashboard") };
+}
 
 /**
  * Learner home. Shows the DB9 readiness blend once the learner has mock history

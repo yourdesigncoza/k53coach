@@ -7,7 +7,17 @@ import { SignImage } from "@/components/sign-image";
 import { getApprovedSigns } from "@/lib/supabase/queries";
 import { SIGN_CATEGORY_LABEL, SIGN_CATEGORY_ORDER } from "@/lib/signs";
 
-export const metadata = { title: "Road Signs" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const t = await getTranslations({
+    locale: (await params).locale,
+    namespace: "meta",
+  });
+  return { title: t("signs") };
+}
 
 export default async function RoadSignsPage() {
   const t = await getTranslations("module");

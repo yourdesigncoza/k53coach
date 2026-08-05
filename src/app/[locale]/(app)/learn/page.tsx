@@ -7,7 +7,17 @@ import { ROAD_RULES } from "@/content/road-rules";
 import { VEHICLE_CONTROLS } from "@/content/vehicle-controls";
 import { getApprovedSignsCount } from "@/lib/supabase/queries";
 
-export const metadata = { title: "Learn" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const t = await getTranslations({
+    locale: (await params).locale,
+    namespace: "meta",
+  });
+  return { title: t("learn") };
+}
 
 export default async function LearnPage() {
   const t = await getTranslations("learn");

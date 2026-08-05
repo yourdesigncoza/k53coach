@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight, Sparkles } from "lucide-react";
@@ -7,7 +8,17 @@ import { Badge } from "@/components/ui/badge";
 import { ROAD_RULES, RULE_CATEGORY_META } from "@/content/road-rules";
 import type { RuleCategory } from "@/lib/types";
 
-export const metadata = { title: "Rules of the Road" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const t = await getTranslations({
+    locale: (await params).locale,
+    namespace: "meta",
+  });
+  return { title: t("rules") };
+}
 
 const ORDER = Object.keys(RULE_CATEGORY_META) as RuleCategory[];
 
