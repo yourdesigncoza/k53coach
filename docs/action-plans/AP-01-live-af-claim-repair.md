@@ -42,6 +42,33 @@ here and hid this bug for several rounds):
 rtk proxy node scripts/data-repairs/audit-ui-overrides.mjs   # to be written by this AP
 ```
 
+## ⚠️ Who wrote these rows changes the default
+
+**All 49 rows were written by Louwrens** (`louwrens@willsdatabase.com`,
+`updated_by` is identical on every row), 2026-07-17/19. That is not vandalism — it
+is **the native Afrikaans speaker correcting our first-pass machine draft**, which
+is exactly what the translation manager exists for.
+
+So the fault is entirely ours, in two parts:
+
+1. We later edited `messages/af.json` (`848b58e`, `3bdbd9a`, `e05dd48`) **without
+   knowing his edits existed**, and nothing in the tooling says they shadow ours.
+2. The **false claims originate in our own July English** — "works offline",
+   "takes about 5 minutes". He translated the English of the day faithfully. The
+   2026-08-04 claims audit then corrected the English **and left his translations
+   untouched**, so `/af` is frozen at July, retracted claims included.
+
+**Therefore the default inverts: his wording wins unless it states something
+untrue.** An earlier draft of this plan classed ~29 rows as "terminology — reset so
+JSON wins", which would have **reverted a native speaker's Afrikaans in favour of our
+machine draft**. Do not do that. `Voertuigkontroles` vs our `Voertuigbeheer`,
+`Teken in` vs our `Meld aan` — he is right by default; we are the ones guessing.
+
+The genuinely open question is narrow: where a later commit standardised terminology
+deliberately (`e05dd48` "use one Afrikaans word for the mock exam" replaced his
+`Oefen toets` with `Proefeksamen`), which term wins is **his call**, and the answer
+belongs in `messages/af.json` either way.
+
 ## Approach
 
 ### 1. Inventory first, decide second
@@ -59,8 +86,11 @@ Class each of the 49 rows into exactly one bucket:
   DB text asserts something untrue. Known members: `readiness.benefitTime`,
   `landing.feat4Body`, `landing.planF4`, `landing.faqA5`, `landing.faqA2`,
   `legal.p3`, `legal.p1`, `landing.feat1Body`, `landing.feat2Body`.
-- **(b) Terminology the i18n commits deliberately standardised → reset so JSON
-  wins.** Known members: `topics.controls`, `module.controlsTitle`,
+- **(b) Terminology where a later commit disagreed with him → his call, then the
+  answer goes into `messages/af.json` and the row is deleted.** Default to **his**
+  wording; only our standardisation reasoning (one term per concept) argues the
+  other way, and that is a preference, not a correctness matter. Members:
+  `topics.controls`, `module.controlsTitle`,
   `module.controlsSubtitle`, `module.backControls`, `module.relatedControls`,
   `nav.mock`, `nav.home`, `landing.login`, `common.login`, `paywall.testNeedsAuth`,
   `auth.title`, `mock.timerLabel`, `mock.viewResult`, `notFound.home`,
@@ -107,9 +137,10 @@ an admin save on any one string) and then verify against the live HTML.
 
 ## Risks
 
-- **Deleting a row Louwrens wanted.** Mitigated by class (c) going to him first and
-  by the two backups. Class (a) does not wait for him — a false claim is not a
-  wording preference.
+- **Reverting a native speaker's Afrikaans.** The real risk, and the one an earlier
+  draft of this plan walked into. Every row is Louwrens's; the burden of proof is on
+  *us* to justify replacing his wording, not on him to defend it. Only class (a)
+  proceeds without him — a false claim is not a wording preference.
 - **Stale CDN/tag cache** making the repair look ineffective (or effective when it
   isn't). Always verify against the live HTML, not the database.
 - **Recurrence** — guaranteed without AP-02. Do not close AP-01 alone.
