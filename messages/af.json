@@ -17,7 +17,7 @@
   "nav": {
     "home": "Tuis",
     "learn": "Leer",
-    "mock": "Toetseksamen",
+    "mock": "Proefeksamen",
     "progress": "Vordering",
     "admin": "Admin",
     "appHome": "App-tuiste"
@@ -231,7 +231,7 @@
     "continueLearning": "Gaan voort met leer",
     "roadSignsTitle": "Padtekens",
     "roadSignsSub": "Oefen die tekens waaroor jy getoets word",
-    "mockTitle": "Doen 'n toetseksamen",
+    "mockTitle": "Doen 'n proefeksamen",
     "mockSub": "Boots die regte toets na",
     "allModulesTitle": "Alle modules",
     "allModulesSub": "Tekens, reëls & voertuigbeheer"
@@ -247,7 +247,7 @@
   "progressPage": {
     "title": "Jou vordering",
     "byTopic": "Per onderwerp",
-    "note": "Gereedheid kombineer toetseksamen-gemiddeld, onderwerp-akkuraatheid, swak-area-verbetering en konsekwentheid (DB9). Hier met voorbeelddata getoon.",
+    "note": "Gereedheid kombineer proefeksamen-gemiddeld, onderwerp-akkuraatheid, swak-area-verbetering en konsekwentheid (DB9). Hier met voorbeelddata getoon.",
     "mockHeading": "Proefeksamens",
     "noMocks": "Nog geen proefeksamens nie.",
     "blendNote": "Gemeng uit jou proefeksamens en oefening.",
