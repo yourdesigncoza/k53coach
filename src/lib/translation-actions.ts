@@ -91,7 +91,7 @@ export async function aiDraftAfrikaans(input: { en: string }) {
     return {
       ok: false as const,
       needsKey: true as const,
-      error: "No OPENAI_API_KEY set.",
+      error: "No OPENROUTER_API_KEY set.",
     };
   try {
     const draft = await llmChat({

@@ -146,7 +146,7 @@ export function QuestionEditor(initial: QuestionEditorProps) {
       }
       toast[data.needsKey ? "info" : "success"](
         data.needsKey
-          ? "No OPENAI_API_KEY set — fill the fields in manually."
+          ? "No OPENROUTER_API_KEY set — fill the fields in manually."
           : "AI draft inserted. Review, then Save.",
       );
     } catch (e) {

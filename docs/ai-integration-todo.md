@@ -22,8 +22,10 @@ was removed once already.
 
 ## Where the AI actually is
 
-One entry point — `src/lib/llm.ts` (`llmChat` + `hasLlmKey`, OpenAI
-`gpt-5.4-mini-2026-03-17`, direct fetch, throws with no key so callers degrade).
+One entry point — `src/lib/llm.ts` (`llmChat` + `hasLlmKey`, **OpenRouter**
+`openai/gpt-5.4-mini`, direct fetch, throws with no key so callers degrade).
+Provider switched 2026-08-06; the model is the same one, reached through
+OpenRouter's OpenAI-compatible endpoint, but the dated snapshot pin is gone.
 Five call sites:
 
 | Call site | Audience | Runtime? |

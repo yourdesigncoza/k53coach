@@ -9,7 +9,7 @@ import { llmChat, hasLlmKey } from "@/lib/llm";
  * the admin edits and approves before it ships (review_status gate). Grounded in
  * the sign's known identity; the prompt forbids inventing legal/penalty specifics.
  *
- * Set OPENAI_API_KEY to enable; without it, returns an empty scaffold so the
+ * Set OPENROUTER_API_KEY to enable; without it, returns an empty scaffold so the
  * admin flow still works.
  */
 export async function POST(req: Request) {

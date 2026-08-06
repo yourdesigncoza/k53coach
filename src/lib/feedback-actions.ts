@@ -281,7 +281,7 @@ export async function setReportStatus(
  */
 export async function draftReportTitle(id: string): Promise<AdminResult> {
   if (!(await isAdmin())) return { ok: false, error: "Not authorised" };
-  if (!hasLlmKey()) return { ok: false, error: "No OPENAI_API_KEY" };
+  if (!hasLlmKey()) return { ok: false, error: "No OPENROUTER_API_KEY" };
 
   const supabase = await createClient();
   if (!supabase) return { ok: false, error: "Supabase not configured" };

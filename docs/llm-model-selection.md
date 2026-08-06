@@ -4,6 +4,30 @@
 Pinned to the dated snapshot for reproducibility. All app AI runs through a single
 entry point so this is a one-line change: `LLM_MODEL` in `src/lib/llm.ts`.
 
+> ### ⚠ Superseded in part (2026-08-06): same model, different provider
+>
+> The app now reaches the same model **through OpenRouter** —
+> `LLM_MODEL = "openai/gpt-5.4-mini"`, `OPENROUTER_API_KEY`, endpoint
+> `openrouter.ai/api/v1/chat/completions`. **The model comparison below still
+> stands**; only the route to it changed. Verified live on the day: text
+> completion, `json` mode and the `usage` counts `onUsage` depends on all come
+> back in the same shape, because OpenRouter serves the OpenAI wire format.
+>
+> **What the switch cost us: the dated pin.** OpenRouter publishes
+> `openai/gpt-5.4-mini` as a floating alias with no `-2026-03-17` equivalent, so
+> the reproducibility this doc's first line was written to buy is no longer
+> enforced by the code. If output drifts with no prompt change, suspect that
+> before suspecting the prompt.
+>
+> **What it did not cost us: money.** OpenRouter lists the same $0.75/M in,
+> $4.50/M out, so the readiness-assessment daily cap in AP-09 is unchanged.
+>
+> Two request-shape details worth not rediscovering: send **`max_tokens`**, not
+> `max_completion_tokens` (OpenRouter normalises the former into whatever the
+> upstream model needs and does not normalise the latter), and the
+> `HTTP-Referer` / `X-Title` headers are what make the spend legible per-app on
+> the OpenRouter dashboard.
+
 This doc records *why*, and the evidence behind it, so the next person doesn't
 re-run the experiment from scratch.
 

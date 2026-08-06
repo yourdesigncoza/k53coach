@@ -1,16 +1,35 @@
 /**
  * The app's single LLM entry point. ALL AI calls go through here so the model
- * and provider are configured in one place. Provider: OpenAI, model in
- * `LLM_MODEL` below. Set OPENAI_API_KEY to enable; callers check `hasLlmKey()`
- * for graceful degradation when it is absent (no SDK dependency — direct fetch).
+ * and provider are configured in one place. Provider: **OpenRouter**, model in
+ * `LLM_MODEL` below. Set OPENROUTER_API_KEY to enable; callers check
+ * `hasLlmKey()` for graceful degradation when it is absent (no SDK dependency —
+ * direct fetch; OpenRouter speaks the OpenAI chat-completions wire format, so
+ * the request and response shapes below are unchanged from the direct-OpenAI
+ * version).
+ *
+ * ⚠ **The dated snapshot pin is gone, and that is a real loss.** We ran
+ * `gpt-5.4-mini-2026-03-17` precisely so a re-run was reproducible
+ * (`docs/llm-model-selection.md`). OpenRouter publishes the floating alias
+ * `openai/gpt-5.4-mini` only, so the model underneath can move without a commit
+ * here. If an assessment's wording changes for no reason we can see, suspect
+ * this before suspecting the prompt.
  */
-export const LLM_MODEL = "gpt-5.4-mini-2026-03-17";
+export const LLM_MODEL = "openai/gpt-5.4-mini";
 
-const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
+const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
 
-/** Whether an OpenAI key is configured (so callers can degrade gracefully). */
+/**
+ * Attribution headers. Optional to OpenRouter, but they are what make the spend
+ * legible per-app on the dashboard — and the free readiness assessment is meant
+ * to carry a rand-denominated daily budget, which needs the spend attributable
+ * to something narrower than "the account".
+ */
+const SITE_URL = "https://k53coach.co.za";
+const SITE_NAME = "K53 AI Coach";
+
+/** Whether an OpenRouter key is configured (so callers can degrade gracefully). */
 export function hasLlmKey() {
-  return Boolean(process.env.OPENAI_API_KEY);
+  return Boolean(process.env.OPENROUTER_API_KEY);
 }
 
 type ChatOpts = {
@@ -37,9 +56,9 @@ export interface LlmUsage {
 }
 
 /**
- * Single chat call to OpenAI (`LLM_MODEL`). Returns the assistant message text.
- * Throws on a missing key or a non-2xx response — callers that want graceful
- * fallback should guard with `hasLlmKey()` and/or try/catch.
+ * Single chat call to OpenRouter (`LLM_MODEL`). Returns the assistant message
+ * text. Throws on a missing key or a non-2xx response — callers that want
+ * graceful fallback should guard with `hasLlmKey()` and/or try/catch.
  */
 export async function llmChat({
   system,
@@ -49,20 +68,25 @@ export async function llmChat({
   temperature = 0.3,
   onUsage,
 }: ChatOpts): Promise<string> {
-  const key = process.env.OPENAI_API_KEY;
-  if (!key) throw new Error("OPENAI_API_KEY not set");
+  const key = process.env.OPENROUTER_API_KEY;
+  if (!key) throw new Error("OPENROUTER_API_KEY not set");
 
-  const res = await fetch(OPENAI_URL, {
+  const res = await fetch(OPENROUTER_URL, {
     method: "POST",
     headers: {
       authorization: `Bearer ${key}`,
       "content-type": "application/json",
+      "HTTP-Referer": SITE_URL,
+      "X-Title": SITE_NAME,
     },
     body: JSON.stringify({
       model: LLM_MODEL,
-      // GPT-5-era models require max_completion_tokens (and count reasoning
-      // tokens against it); gpt-4o-mini accepts it too.
-      max_completion_tokens: maxTokens,
+      // `max_tokens` is OpenRouter's normalised field — it translates to
+      // OpenAI's `max_completion_tokens` for the GPT-5-era models that require
+      // it. Sending `max_completion_tokens` here instead is the mistake to
+      // avoid: OpenRouter does not normalise it, so it reaches the provider
+      // unvalidated on some routes and is ignored on others.
+      max_tokens: maxTokens,
       temperature,
       ...(json ? { response_format: { type: "json_object" } } : {}),
       messages: [
@@ -73,7 +97,12 @@ export async function llmChat({
   });
 
   if (!res.ok) {
-    throw new Error(`OpenAI API ${res.status}`);
+    // Carry a slice of the body: OpenRouter answers "no credits", "model not
+    // found" and "upstream provider is down" all as a status code, and the
+    // three want different fixes. Truncated because a provider error body can
+    // echo the whole request back.
+    const detail = (await res.text().catch(() => "")).slice(0, 300);
+    throw new Error(`OpenRouter API ${res.status}${detail ? ` — ${detail}` : ""}`);
   }
   const data = await res.json();
   if (onUsage && data?.usage) {

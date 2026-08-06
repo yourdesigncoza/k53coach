@@ -184,7 +184,7 @@ function TranslationRow({ row, hidden }: { row: CatalogRow; hidden: boolean }) {
       setVals((v) => ({ ...v, af: res.draft }));
       toast.success("AI draft inserted — review, then Save.");
     } else if ("needsKey" in res && res.needsKey) {
-      toast.info("No OPENAI_API_KEY set — type the translation manually.");
+      toast.info("No OPENROUTER_API_KEY set — type the translation manually.");
     } else {
       toast.error(res.error ?? "Draft failed");
     }
