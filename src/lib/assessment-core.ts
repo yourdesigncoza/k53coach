@@ -165,6 +165,19 @@ function isPoint(x: unknown): x is AssessmentPoint {
   );
 }
 
+/**
+ * Translation seam for the deterministic fallbacks.
+ *
+ * Both fallbacks are built server-side from section scores, so they cannot use
+ * `useTranslations`; the route passes `next-intl`'s `getTranslations` through
+ * here instead. Tests pass a stub that echoes the key, which is also how a test
+ * asserts WHICH branch was taken without pinning the copy.
+ */
+export interface FallbackStrings {
+  t: (key: string, values?: Record<string, string | number>) => string;
+  topicLabel: (topic: Topic) => string;
+}
+
 /** Per-format caps. Over-long lists are TRUNCATED, never rejected. */
 export interface AssessmentLimits {
   maxStrengths: number;

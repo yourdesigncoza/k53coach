@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { AssessmentPanel } from "@/components/assessment/assessment-panel";
-import type { Assessment } from "@/lib/assessment-core";
+import { readCachedAssessment } from "@/lib/exam-assessment";
 
 /**
  * The paid post-mock assessment. Cards, loading state and error handling are the
@@ -17,23 +17,18 @@ export function ExamAssessment({
   initial: Record<string, unknown> | null;
 }) {
   const locale = useLocale();
-  const stored = (initial as Assessment | null) ?? null;
 
-  // A stored assessment written in another language is not this learner's
-  // assessment. Show the generate button instead of Afrikaans prose under
-  // English headings (or the reverse) — the route regenerates for this locale.
-  // Same for a stored fallback: it is a template from an outage, not the thing
-  // they paid for.
-  const usable =
-    stored && !stored.fallback && (stored.locale ?? "en") === locale
-      ? stored
-      : null;
+  // Read the stored column through the same envelope logic the route uses, so
+  // the server-rendered view and the API can never disagree about whether this
+  // learner already has an assessment in this language.
+  const usable = readCachedAssessment(initial, locale);
 
   return (
     <AssessmentPanel
       initial={usable}
       endpoint="/api/exam/assess"
       body={() => ({ attemptId, locale })}
+      retryOnFallback
     />
   );
 }

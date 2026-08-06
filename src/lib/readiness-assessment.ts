@@ -8,6 +8,7 @@ import {
   buildAssessmentSystem,
   type Assessment,
   type AssessmentLimits,
+  type FallbackStrings,
   type AssessmentPlanStep,
   type AssessmentPoint,
 } from "./assessment-core.ts";
@@ -166,15 +167,11 @@ export function readinessUserPayload(payload: ReadinessPayload): string {
 // ── Deterministic fallback ────────────────────────────────────────────────────
 
 /**
- * Translation seam for the fallback. The free path serves the template whenever
- * the key is absent OR the daily cap is spent — that second one is a normal
- * operating state, not an outage, so unlike the paid fallback this one cannot be
- * English-only on /af.
+ * The free path serves the template whenever the key is absent OR the daily cap
+ * is spent — that second one is a normal operating state, not an outage, so this
+ * fallback could never have been English-only on /af.
  */
-export interface FallbackStrings {
-  t: (key: string, values?: Record<string, string | number>) => string;
-  topicLabel: (topic: Topic) => string;
-}
+export type { FallbackStrings } from "./assessment-core.ts";
 
 /**
  * A useful assessment built purely from the section scores — no model, no

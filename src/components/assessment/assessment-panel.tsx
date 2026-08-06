@@ -7,6 +7,7 @@ import {
   CheckCircle2,
   TriangleAlert,
   Compass,
+  RotateCcw,
   ArrowRight,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -31,6 +32,7 @@ export function AssessmentPanel({
   endpoint,
   body,
   onGenerated,
+  retryOnFallback = false,
 }: {
   initial: Assessment | null;
   /** API route to POST to. */
@@ -39,11 +41,24 @@ export function AssessmentPanel({
   body: () => Record<string, unknown> | null;
   /** Called with a freshly generated assessment (e.g. to cache it locally). */
   onGenerated?: (assessment: Assessment) => void;
+  /**
+   * Offer "Try again" when the rendered assessment is a fallback.
+   *
+   * Only on surfaces where retrying can actually help. The paid path qualifies:
+   * a fallback there means a provider blip, nothing is cached, and the next tap
+   * may well succeed. The free readiness path does not — its paper token is
+   * single-use, and its fallback usually means the daily budget is spent, so a
+   * retry button would promise something it cannot deliver.
+   */
+  retryOnFallback?: boolean;
 }) {
   const t = useTranslations("assessment");
   const tt = useTranslations("topics");
   const [assessment, setAssessment] = useState<Assessment | null>(initial);
   const [loading, setLoading] = useState(false);
+  // The server's word on whether another attempt could differ. Absent (an older
+  // response, or the free path) means "assume it could".
+  const [retryable, setRetryable] = useState(true);
 
   async function generate() {
     const payload = body();
@@ -62,6 +77,7 @@ export function AssessmentPanel({
       if (!res.ok) throw new Error(data.error || "failed");
       const next = data.assessment as Assessment;
       setAssessment(next);
+      setRetryable(data.retryable !== false);
       onGenerated?.(next);
     } catch {
       toast.error(t("error"));
@@ -165,9 +181,29 @@ export function AssessmentPanel({
       />
 
       {assessment.fallback && (
-        <p className="text-center text-xs text-muted-foreground">
-          {t("fallbackNote")}
-        </p>
+        <div className="flex flex-col items-center gap-2">
+          <p className="text-center text-xs text-muted-foreground">
+            {t("fallbackNote")}
+          </p>
+          {retryOnFallback && retryable && (
+            <Button
+              variant="outline"
+              onClick={generate}
+              disabled={loading}
+              className="rounded-xl"
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="size-4 animate-spin" /> {t("generating")}
+                </>
+              ) : (
+                <>
+                  <RotateCcw className="size-4" /> {t("retry")}
+                </>
+              )}
+            </Button>
+          )}
+        </div>
       )}
     </div>
   );

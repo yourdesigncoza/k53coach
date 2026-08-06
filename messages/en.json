@@ -412,7 +412,8 @@
     "planHeading": "Your plan",
     "oneThingHeading": "The one thing",
     "practiceCta": "Practice {topic}",
-    "fallbackNote": "Based on your section scores."
+    "fallbackNote": "Based on your section scores.",
+    "retry": "Try again"
   },
   "assessmentFallback": {
     "verdictClean": "All {count} right — a clean sweep. That is a short sample though, not a verdict, so keep practising to see whether it holds.",
@@ -423,7 +424,20 @@
     "planPractice": "Practice → {topic}",
     "planLearnOther": "Learn → {topic}",
     "oneThingClean": "Do not stop here — a handful of questions cannot show what a full paper will.",
-    "oneThingWeak": "Start with {topic}. It is the fastest way to move your score."
+    "oneThingWeak": "Start with {topic}. It is the fastest way to move your score.",
+    "examVerdictPassed": "You passed — every section is over the line. Tidy up the last few marks and put more papers behind you before the real test.",
+    "examVerdictWeak": "You are not there yet, but now you know exactly where. {count, plural, =1 {One section is holding you back.} other {# sections need work.}}",
+    "examStrengthNote": "You cleared {topic} ({correct}/{total}). Keep it sharp.",
+    "examFocusNote": "You got {correct}/{total} — you need {required} to pass this section. Work through the module, then practise.",
+    "examFocusPassingTitle": "Keep your consistency",
+    "examFocusPassingNote": "You are passing — keep practising so it holds on the day.",
+    "examPlanLearn": "Learn → {topic}",
+    "examPlanPractice": "Practice → {topic} until you are consistently over the pass line",
+    "examPlanLightPractice": "A light Practice → {topic} round",
+    "examPlanRetake": "Retake the mock exam",
+    "examPlanRetakeSharp": "Retake the mock exam the day before to stay sharp",
+    "examOneThingPassed": "Do not over-study — a light review beats cramming.",
+    "examOneThingWeak": "Start with {topic}. It is the fastest way to move your score."
   },
   "notFound": {
     "title": "Page not found",

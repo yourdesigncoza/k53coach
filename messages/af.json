@@ -413,7 +413,8 @@
     "planHeading": "Jou plan",
     "oneThingHeading": "Die een ding",
     "practiceCta": "Oefen {topic}",
-    "fallbackNote": "Gebaseer op jou afdelingtellings."
+    "fallbackNote": "Gebaseer op jou afdelingtellings.",
+    "retry": "Probeer weer"
   },
   "assessmentFallback": {
     "verdictClean": "Al {count} reg — 'n skoon veld. Dis egter 'n kort steekproef, nie 'n uitspraak nie, so oefen verder om te sien of dit hou.",
@@ -424,7 +425,20 @@
     "planPractice": "Oefen → {topic}",
     "planLearnOther": "Leer → {topic}",
     "oneThingClean": "Moenie hier stop nie — 'n handvol vrae kan nie wys wat 'n volle vraestel sal nie.",
-    "oneThingWeak": "Begin met {topic}. Dit is die vinnigste manier om jou telling te verskuif."
+    "oneThingWeak": "Begin met {topic}. Dit is die vinnigste manier om jou telling te verskuif.",
+    "examVerdictPassed": "Jy het geslaag — elke afdeling is oor die streep. Werk die laaste paar punte reg en doen nog vraestelle voor die regte toets.",
+    "examVerdictWeak": "Jy is nog nie daar nie, maar nou weet jy presies waar. {count, plural, =1 {Een afdeling hou jou terug.} other {# afdelings kort werk.}}",
+    "examStrengthNote": "Jy het {topic} geslaag ({correct}/{total}). Hou dit skerp.",
+    "examFocusNote": "Jy het {correct}/{total} gekry — jy het {required} nodig om hierdie afdeling te slaag. Werk deur die module en oefen dan.",
+    "examFocusPassingTitle": "Hou jou konsekwentheid",
+    "examFocusPassingNote": "Jy slaag — hou aan oefen sodat dit op die dag hou.",
+    "examPlanLearn": "Leer → {topic}",
+    "examPlanPractice": "Oefen → {topic} totdat jy konsekwent oor die slaagstreep is",
+    "examPlanLightPractice": "'n Ligte Oefen → {topic} rondte",
+    "examPlanRetake": "Doen die proefeksamen weer",
+    "examPlanRetakeSharp": "Doen die proefeksamen die dag voor die tyd weer om skerp te bly",
+    "examOneThingPassed": "Moenie oorstudeer nie — 'n ligte hersiening klop propvol leer.",
+    "examOneThingWeak": "Begin met {topic}. Dit is die vinnigste manier om jou telling te verskuif."
   },
   "notFound": {
     "title": "Bladsy nie gevind nie",
@@ -477,7 +491,7 @@
     "learn": "Leer",
     "signs": "Padtekens",
     "rules": "Reëls van die Pad",
-    "controls": "Voertuigbeheer",
+    "controls": "Voertuigkontroles",
     "practiceSigns": "Oefen padtekens",
     "practiceRules": "Oefen reëls van die pad",
     "practiceControls": "Oefen voertuigbeheer",

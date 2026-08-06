@@ -178,11 +178,22 @@ async function generateAssessment(page, tag) {
     }
   });
 
-  await page.waitForTimeout(600);
   // Match on the shared stem so one regex covers en ("View AI Assessment") and
   // af ("Bekyk KI-assessering") without depending on the AI/KI abbreviation.
+  //
+  // WAIT for it rather than sleeping and counting: the panel is a client
+  // component that only decides whether to show the button after hydration, so
+  // a fixed delay reports "already cached" on a slow render and then hangs for
+  // 90 seconds waiting for a plan nobody asked it to generate.
   const cta = page.locator("button").filter({ hasText: /assessment|assessering/i });
-  if (await cta.count()) {
+  await cta
+    .first()
+    .waitFor({ state: "visible", timeout: 20_000 })
+    .catch(() => {});
+  // isVisible, not count: count() matches hidden nodes too, so a button that is
+  // in the DOM but not rendered would turn a slow hydration into a click failure
+  // rather than the "already cached" path.
+  if (await cta.first().isVisible().catch(() => false)) {
     log(`clicking the AI assessment CTA: "${(await cta.first().innerText()).trim()}"`);
     await cta.first().click();
   } else {

@@ -313,6 +313,11 @@ published `gpt-5.4-mini` rates ($0.75/M in, $4.50/M out) that is **$0.0024 ≈ R
 per assessment at a pessimistic R20/USD, so R20/day = **400**. That is the default in
 `readiness-grants.ts`, overridable with `READINESS_ASSESSMENT_DAILY_CAP`.
 
+**The 2026-08-06 move to OpenRouter does not move this number.** OpenRouter lists
+`openai/gpt-5.4-mini` at the same $0.75/M in, $4.50/M out (checked against
+`/api/v1/models` on the day), so the cap stays 400. Re-check it there rather than
+here if it ever looks wrong — the rate is now a routed price, not a first-party one.
+
 ### What the live runs caught that no unit test could
 
 **One English sentence leaked into an Afrikaans assessment** — *"Voertuigbeheer: 0
