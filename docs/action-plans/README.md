@@ -12,12 +12,13 @@ executed one at a time. Update the Status column as they land.
 |---|---|---|---|---|
 | [AP-01](AP-01-live-af-claim-repair.md) | Repair the live `/af` false claims in `ui_translations` | **P0** | **False claims cleared live (2026-08-06)** — 8 rows deleted, cache busted, verified. 41 wording rows remain | Louwrens on the remaining 41 |
 | [AP-02](AP-02-stale-override-guard.md) | Make stale overrides non-effective, not just visible | **P0** | Not started | — |
-| [AP-03](AP-03-bilingual-assessment.md) | Localise the AI assessment (prompt locale + versioned cache) | **P1** | Not started | — |
-| [AP-04](AP-04-fallback-caching.md) | Never persist a fallback assessment; add regenerate | **P1** | Not started | — |
+| [AP-03](AP-03-bilingual-assessment.md) | Localise the AI assessment (prompt locale + versioned cache) | **P1** | **Prompt half done** (2026-08-06, in AP-09's shared core). Cache envelope outstanding | — |
+| [AP-04](AP-04-fallback-caching.md) | Never persist a fallback assessment; add regenerate | **P1** | **Partly done** — a stored fallback is now a cache miss, so it self-heals. Still written, and no regenerate control | — |
 | [AP-05](AP-05-prompt-hardening.md) | Prompt hardening + validator enforcement | **P2** | Not started | AP-03 (shares `prompt_version`) |
 | [AP-06](AP-06-prose-citation-sweep.md) | Sweep learner prose for citations (constraint 10) | **P2** | Not started | Louwrens re-sign |
 | [AP-07](AP-07-harness-adoption.md) | Adopt the e2e assessment driver + rtk note | **P3** | Not started | — |
-| [AP-08](AP-08-end-user-improvements.md) | End-user improvements shortlist | **P3** | Needs John's call | — |
+| [AP-08](AP-08-end-user-improvements.md) | End-user improvements shortlist | **P3** | (ii) picked 2026-08-06 → AP-09 | — |
+| [AP-09](AP-09-free-readiness-assessment.md) | AI assessment on the free readiness test | **P1** | **Built + verified 2026-08-06** — migration applied, both paths green on `/en` + `/af`, cap derived at 400/day. Not yet deployed | Louwrens to read one `/af` assessment |
 
 ## Why P0 is P0
 
@@ -43,7 +44,10 @@ claims audit nor `docs/claims-audit-2026-08-04.md` looked at the override table.
 
 AP-01 and AP-02 are a pair — repairing the rows without the guard means the next
 i18n commit re-opens the same hole. AP-03/04/05 are the paid AI feature and share
-`prompt_version`, so AP-03 lands first. AP-06 through AP-08 are independent.
+`prompt_version`, so AP-03 lands first. AP-06 through AP-08 are independent. AP-09
+is the item John picked off AP-08's shortlist; it needs AP-03's prompt-locale change
+but none of its cache work, since the free assessment persists nothing server-side.
+Wider AI context and the ranked TODO: `docs/ai-integration-todo.md`.
 
 ## Conventions used here
 

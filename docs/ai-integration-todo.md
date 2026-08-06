@@ -1,0 +1,113 @@
+# AI integration — where it stands and what to do about it
+
+**Written 2026-08-06.** A read of every AI call site in the repo against the product
+goal, plus a ranked TODO. Measured, not assumed — every claim below has a file and
+line behind it.
+
+Findings from the five live test runs are `docs/ai-assessment-test-run-2026-08-05.md`;
+the scoped plans they produced are `docs/action-plans/`. This file is the layer above
+those: what the AI *is*, and which improvements are worth the money.
+
+## The goal every one of these has to serve
+
+Get a South African learner through the K53 learner's licence test. The stated
+differentiator is **an AI tutor over verified content** that explains *why* an answer
+is wrong, tracks weak areas and produces a parent-readable readiness score —
+explicitly not "another quiz app" (`CLAUDE.md`, `docs/product/`).
+
+The hard limit on all of it: **AI never invents a legal or safety claim.** The
+recurring failure mode in this project is UK/US/EU convention taught as SA law
+(memory: foreign-signage-failure-mode), and it is the reason per-question runtime AI
+was removed once already.
+
+## Where the AI actually is
+
+One entry point — `src/lib/llm.ts` (`llmChat` + `hasLlmKey`, OpenAI
+`gpt-5.4-mini-2026-03-17`, direct fetch, throws with no key so callers degrade).
+Five call sites:
+
+| Call site | Audience | Runtime? |
+|---|---|---|
+| `POST /api/exam/assess` → post-mock coaching report | **paying learners** | ✅ the only one |
+| `POST /api/admin/draft-sign` | admin | offline drafting |
+| `POST /api/admin/draft-question` | admin | offline drafting |
+| `src/lib/translation-actions.ts` — Afrikaans AI draft | admin | offline |
+| `src/lib/feedback-actions.ts` — triage summary for Linear | admin | offline |
+
+**Everything a learner might read as AI coaching is not AI.** Practice-mode
+"Coach Says" is `question.explanation`, hard-coded verified content
+(`src/components/quiz/question-card.tsx`). Dashboard weak areas and next-lesson cards
+are deterministic (`src/lib/weak-area-cards.ts`). The free readiness result has no AI
+at all, and `/readiness/assessment-demo` — linked from the landing page twice and from
+the result page — is a **static mockup with zero fetch calls**.
+
+Consequences worth stating plainly:
+
+1. **The differentiator is invisible until after someone pays R179.** `/mock` is the
+   only entitlement-gated surface, so R179 buys mock papers plus this one report.
+2. **No real learner has ever triggered it.** `exam_attempts` is 5 rows, all the e2e
+   buyer's fixtures.
+3. The gap between "AI tutor layer" and "one report after a paid mock" is partly
+   deliberate — `/api/ai/explain` was removed because per-question runtime AI risked
+   inventing law. Any new AI surface has to solve grounding the way
+   `exam-assessment.ts` does, or it will confidently teach the wrong country's rules.
+
+## What the live runs proved about the one runtime surface
+
+Holding up: grounding held in every run (nothing invented, no foreign-signage error),
+section logic correct on the hard case (70% overall with one section failed), plan
+hrefs stayed inside the allow-list, 6–7s fresh / instant cached, and the no-key
+fallback degrades to something honest rather than a broken screen.
+
+Not holding up, in learner-impact order:
+
+1. The paid AI is **English-only on `/af`** — the prompt hardcodes English and
+   `exam_attempts.assessment` is one column, so it cannot cache per locale.
+2. A **fallback is cached permanently** — a transient blip costs a paying learner the
+   feature forever, with no regenerate path.
+3. Prose **leaks its own machinery** ("the exceptions mentioned in the explanation") —
+   breaks constraint 10.
+4. Plan steps target sections that already passed, and duplicate each other at 94%.
+5. "Your best section" flatters 12/30.
+
+## TODO — ranked
+
+Cost/risk are mine; the ordering assumes John's call on scope. `[ ]` items are not
+started.
+
+- [x] **1. Free-readiness AI assessment** — **built and verified 2026-08-06, not yet
+      deployed.** The differentiator now reaches every visitor rather than only buyers.
+      Spend control is a signed single-use paper token plus a derived 400/day cap
+      (R20/day at measured token counts); over the cap it degrades to a localised
+      template rather than an error. **[AP-09](action-plans/AP-09-free-readiness-assessment.md)**.
+- [~] **2. Fix the paid feature for Afrikaans buyers** — **mostly done as a side effect
+      of AP-09.** Both assessments share one locale-aware prompt now, and a stored
+      fallback is treated as a cache miss so it self-heals. What remains:
+      [AP-03](action-plans/AP-03-bilingual-assessment.md)'s per-locale cache envelope
+      (today one column holds one language, so switching locales re-spends) and
+      [AP-04](action-plans/AP-04-fallback-caching.md)'s "never write a fallback" plus a
+      regenerate control. *Hours · low risk.*
+- [~] **3. Prompt hardening** — three of [AP-05](action-plans/AP-05-prompt-hardening.md)'s
+      items landed in the shared preamble: no meta-references to "the explanation", every
+      strength must name a topic and a score, no "best section" below half. The rest of
+      AP-05 is untouched. *Hours · low risk.*
+- [ ] **4. Per-section retry instead of "retake the mock"** — after ~45 min of study,
+      burning a full 64-question sitting to re-check one section is the wrong next
+      action. Touches `assemblePaper` repeat suppression, so it needs thought about the
+      pool. *Days · medium risk.*
+- [ ] **5. Afrikaans content pass** — questions, options and explanations are English
+      throughout `/af`. Not "if" but "when", and its answer decides what `/af` may claim
+      at Stage 1 (constraint 8). Size it even if it isn't built yet.
+      *Weeks · needs Louwrens for all of it.*
+
+### Not doing, and why
+
+- **A chat interface.** It is what the original plan described and it is the hardest
+  thing on this list to keep grounded. If it is wanted it needs its own plan with an
+  explicit refusal-and-grounding strategy, not a slot on a shortlist.
+- **Per-question AI rephrasing.** Reverted once already, deliberately.
+
+### Housekeeping
+
+- [ ] `src/lib/llm.ts:3` — the doc comment still says "model gpt-4o-mini" while
+      `LLM_MODEL` is `gpt-5.4-mini-2026-03-17`. One line; fix when next in the file.

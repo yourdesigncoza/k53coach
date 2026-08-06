@@ -179,6 +179,8 @@ npm run exam:build-migration   # regenerate the questions migration from the wik
 node scripts/e2e/flow.mjs            # landing → readiness → paywall → mock → checkout
 node scripts/e2e/assessment.mjs      # post-exam AI assessment (sits a full 64-q paper)
 node scripts/e2e/feedback.mjs        # in-app reporting: flag → row → context (24 assertions)
+node scripts/e2e/readiness-assessment.mjs   # free AI assessment, anonymous, 4 score profiles
+                                     # --profile 0of5|1of5|3of5|5of5 --locale af --expect model
 node scripts/e2e/regression.mjs --headed   # 2026-08-06 changes (62 assertions), sections:
                                      # readiness | mock | feedback | admin | af
 
