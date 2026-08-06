@@ -224,7 +224,6 @@
     "welcome": "Welcome back 👋",
     "welcomeSub": "Keep going — small daily sessions beat cramming.",
     "readinessTitle": "Your readiness",
-    "readinessBody": "You're almost ready. Your weakest topic is Rules.",
     "seeBreakdown": "See breakdown",
     "recommendedNext": "Recommended next",
     "continueLearning": "Continue learning",
@@ -233,7 +232,9 @@
     "mockTitle": "Take a mock exam",
     "mockSub": "Simulate the real test",
     "allModulesTitle": "All modules",
-    "allModulesSub": "Signs, rules & vehicle controls"
+    "allModulesSub": "Signs, rules & vehicle controls",
+    "readinessEmpty": "No score yet — take the free readiness test to get one.",
+    "readinessEmptyCta": "Take the readiness test"
   },
   "learn": {
     "title": "Learn",
@@ -246,13 +247,14 @@
   "progressPage": {
     "title": "Your progress",
     "byTopic": "By topic",
-    "note": "Readiness blends mock average, topic accuracy, weak-area improvement and consistency (DB9). Shown here with sample data.",
+    "note": "Your score blends your mock exams, how accurate you are per topic, and how consistently you practise.",
     "mockHeading": "Mock exams",
     "noMocks": "No mock exams yet.",
     "blendNote": "Blended from your mock exams and practice.",
     "reset": "Reset progress",
     "resetConfirm": "Reset all your progress? This permanently deletes your practice attempts, readiness scores and mock exam history. This cannot be undone.",
-    "resetDone": "Your progress has been reset."
+    "resetDone": "Your progress has been reset.",
+    "noProgressYet": "No progress yet. Answer some practice questions and your score appears here."
   },
   "module": {
     "signsTitle": "Road Signs",

@@ -30,8 +30,16 @@ export async function generateMetadata({
 
 const TOPICS: Topic[] = ["signs", "rules", "controls"];
 
-/** Sample data for the anonymous preview; real data comes from attempts (DB7). */
-const SAMPLE: Record<Topic, number> = { signs: 78, rules: 48, controls: 60 };
+/*
+ * There is deliberately NO sample dataset here any more.
+ *
+ * It used to be { signs: 78, rules: 48, controls: 60 }, shown whenever
+ * getTopicAccuracy returned null — which is the case for a signed-in learner
+ * with zero attempts, not just an anonymous visitor. So real users saw invented
+ * per-topic bars, and their average (62) was the same number the dashboard
+ * hardcoded. Fabricated progress is worse than no progress: it is the metric a
+ * parent is asked to trust.
+ */
 
 export default async function ProgressPage() {
   const t = await getTranslations("progressPage");
@@ -46,13 +54,14 @@ export default async function ProgressPage() {
   const attemptDays = user ? await getAttemptDays(user.id) : [];
   const passedMocks = user ? await getPassedMockCount(user.id) : 0;
 
+  // percent is null where the learner has answered nothing in that topic —
+  // rendered as "—", never as a number.
   const rows = TOPICS.map((topic) => ({
     topic,
-    percent: acc
-      ? acc[topic].total
+    percent:
+      acc && acc[topic].total
         ? Math.round((acc[topic].correct / acc[topic].total) * 100)
-        : 0
-      : SAMPLE[topic],
+        : null,
   }));
 
   // DB9 blend when the learner has mock history; else the topic-accuracy average.
@@ -65,9 +74,13 @@ export default async function ProgressPage() {
           consistency: consistencyFromDays(attemptDays),
         })
       : null;
+  // Only average what was actually answered; null when nothing was.
+  const answered = rows.filter((r) => r.percent !== null);
   const overall =
     blend?.overall ??
-    Math.round(rows.reduce((s, r) => s + r.percent, 0) / rows.length);
+    (answered.length
+      ? Math.round(answered.reduce((s, r) => s + (r.percent ?? 0), 0) / answered.length)
+      : null);
 
   return (
     <main className="mx-auto w-full max-w-5xl px-5 py-6 md:px-8 md:py-8">
@@ -75,11 +88,15 @@ export default async function ProgressPage() {
 
       <div className="mt-5 grid gap-6 md:grid-cols-3 md:gap-10">
         <div className="flex flex-col items-center md:col-span-1 md:items-start">
-          <ReadinessRing
-            percent={overall}
-            label={tb(bandFor(overall))}
-            sublabel={tr("overall")}
-          />
+          {overall === null ? (
+            <p className="text-sm text-muted-foreground">{t("noProgressYet")}</p>
+          ) : (
+            <ReadinessRing
+              percent={overall}
+              label={tb(bandFor(overall))}
+              sublabel={tr("overall")}
+            />
+          )}
           {blend && (
             <p className="mt-3 text-center text-xs text-muted-foreground md:text-left">
               {t("blendNote")}
@@ -102,10 +119,10 @@ export default async function ProgressPage() {
                   <div className="mb-2 flex items-center justify-between text-sm">
                     <span className="font-medium">{tt(item.topic)}</span>
                     <span className="tabular-nums text-muted-foreground">
-                      {item.percent}%
+                      {item.percent === null ? "—" : `${item.percent}%`}
                     </span>
                   </div>
-                  <Progress value={item.percent} className="h-2.5" />
+                  <Progress value={item.percent ?? 0} className="h-2.5" />
                 </CardContent>
               </Card>
             ))}

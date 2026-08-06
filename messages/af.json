@@ -225,7 +225,6 @@
     "welcome": "Welkom terug 👋",
     "welcomeSub": "Hou aan — klein daaglikse sessies klop blokleer.",
     "readinessTitle": "Jou gereedheid",
-    "readinessBody": "Jy's amper gereed. Jou swakste onderwerp is Reëls.",
     "seeBreakdown": "Sien uiteensetting",
     "recommendedNext": "Aanbevole lesse",
     "continueLearning": "Gaan voort met leer",
@@ -234,7 +233,9 @@
     "mockTitle": "Doen 'n proefeksamen",
     "mockSub": "Boots die regte toets na",
     "allModulesTitle": "Alle modules",
-    "allModulesSub": "Tekens, reëls & voertuigbeheer"
+    "allModulesSub": "Tekens, reëls & voertuigbeheer",
+    "readinessEmpty": "Nog geen telling nie — doen die gratis gereedheidstoets om een te kry.",
+    "readinessEmptyCta": "Doen die gereedheidstoets"
   },
   "learn": {
     "title": "Leer",
@@ -247,13 +248,14 @@
   "progressPage": {
     "title": "Jou vordering",
     "byTopic": "Per onderwerp",
-    "note": "Gereedheid kombineer proefeksamen-gemiddeld, onderwerp-akkuraatheid, swak-area-verbetering en konsekwentheid (DB9). Hier met voorbeelddata getoon.",
+    "note": "Jou telling kombineer jou proefeksamens, hoe akkuraat jy per onderwerp is, en hoe gereeld jy oefen.",
     "mockHeading": "Proefeksamens",
     "noMocks": "Nog geen proefeksamens nie.",
     "blendNote": "Gemeng uit jou proefeksamens en oefening.",
     "reset": "Herstel vordering",
     "resetConfirm": "Herstel al jou vordering? Dit verwyder jou oefenpogings, gereedheidstellings en proefeksamengeskiedenis permanent. Dit kan nie ongedaan gemaak word nie.",
-    "resetDone": "Jou vordering is herstel."
+    "resetDone": "Jou vordering is herstel.",
+    "noProgressYet": "Nog geen vordering nie. Beantwoord 'n paar oefenvrae en jou telling verskyn hier."
   },
   "module": {
     "signsTitle": "Padtekens",

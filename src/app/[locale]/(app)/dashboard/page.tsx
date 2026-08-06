@@ -4,7 +4,7 @@ import { BookOpen, ClipboardCheck, Signpost, ArrowRight, Target } from "lucide-r
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReadinessRing } from "@/components/readiness-ring";
-import { scoreReadinessBlend, consistencyFromDays } from "@/lib/readiness";
+import { scoreReadinessBlend, consistencyFromDays, bandFor } from "@/lib/readiness";
 import {
   getUser,
   getLatestReadiness,
@@ -51,7 +51,13 @@ export default async function DashboardPage() {
           consistency: consistencyFromDays(await getAttemptDays(user.id)),
         })
       : null;
-  const overall = blend?.overall ?? readiness?.overall ?? 62;
+  // null when the learner has no mock history and no readiness snapshot. It used
+  // to fall back to a hardcoded 62 — the average of the progress page's sample
+  // data — so a signed-in learner with nothing recorded was shown an invented
+  // score in the ring, presented exactly like a real one. The static
+  // `readinessBody` copy compounded it by naming a weakest topic (Rules, the
+  // lowest of the same fake numbers) for someone with zero attempts.
+  const overall = blend?.overall ?? readiness?.overall ?? null;
   const passedMocks = user ? await getPassedMockCount(user.id) : 0;
 
   // "The exact next lesson, not study everything" — the landing page's promise.
@@ -89,23 +95,50 @@ export default async function DashboardPage() {
 
       <Card className="mt-5 py-0 md:max-w-2xl">
         <CardContent className="flex items-center gap-4 py-3.5 md:py-5">
-          <ReadinessRing percent={overall} size={120} stroke={12} />
-          <div className="flex-1">
-            <p className="text-sm font-medium">{t("readinessTitle")}</p>
-            <p className="text-sm text-muted-foreground">
-              {readiness ? tb(readiness.band) : t("readinessBody")}
-            </p>
-            <Button
-              size="sm"
-              variant="ghost"
-              className="mt-1 -ml-2 rounded-lg"
-              render={
-                <Link href="/progress">
-                  {t("seeBreakdown")} <ArrowRight className="size-3.5" />
-                </Link>
-              }
-            />
-          </div>
+          {overall === null ? (
+            /* No ring at all until there is something real to put in it. A
+               greyed or zeroed gauge still reads as a score, and 0% reads as
+               "failed" rather than "not measured". */
+            <div className="flex-1">
+              <p className="text-sm font-medium">{t("readinessTitle")}</p>
+              <p className="text-sm text-muted-foreground">
+                {t("readinessEmpty")}
+              </p>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="mt-1 -ml-2 rounded-lg"
+                render={
+                  <Link href="/readiness">
+                    {t("readinessEmptyCta")} <ArrowRight className="size-3.5" />
+                  </Link>
+                }
+              />
+            </div>
+          ) : (
+            <>
+              <ReadinessRing percent={overall} size={120} stroke={12} />
+              <div className="flex-1">
+                <p className="text-sm font-medium">{t("readinessTitle")}</p>
+                {/* Band derived from the score actually shown. The old fallback
+                    was a static string asserting a weakest topic, which was a
+                    fabricated diagnosis whenever it rendered. */}
+                <p className="text-sm text-muted-foreground">
+                  {tb(readiness?.band ?? bandFor(overall))}
+                </p>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="mt-1 -ml-2 rounded-lg"
+                  render={
+                    <Link href="/progress">
+                      {t("seeBreakdown")} <ArrowRight className="size-3.5" />
+                    </Link>
+                  }
+                />
+              </div>
+            </>
+          )}
         </CardContent>
       </Card>
 
