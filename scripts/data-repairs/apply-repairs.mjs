@@ -29,6 +29,19 @@ if (!arg) {
   process.exit(1);
 }
 
+/** Recursively sort object keys so two encodings of the same value compare equal. */
+function sortKeys(value) {
+  if (Array.isArray(value)) return value.map(sortKeys);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.keys(value)
+        .sort()
+        .map((k) => [k, sortKeys(value[k])]),
+    );
+  }
+  return value;
+}
+
 const file = isAbsolute(arg) ? arg : join(HERE, arg);
 const { description, ops } = JSON.parse(readFileSync(file, "utf8"));
 
@@ -47,9 +60,15 @@ for (const op of ops) {
     continue;
   }
 
-  // Compare as JSON so array columns (vehicle_codes) compare by value.
+  // Compare as JSON so array columns (vehicle_codes) compare by value, with
+  // object keys sorted first: Postgres reorders jsonb keys on write (by key
+  // length, then alphabetically), so a jsonb column read back never matches the
+  // key order we sent. Comparing raw would report every jsonb op as changed and
+  // rewrite rows that already hold the exact value — which would quietly break
+  // the "reruns are no-ops" contract this file's header states. Arrays keep
+  // their order, since for `vehicle_codes` and friends order is data.
   const diffs = cols.filter(
-    (c) => JSON.stringify(before[c]) !== JSON.stringify(op.set[c]),
+    (c) => JSON.stringify(sortKeys(before[c])) !== JSON.stringify(sortKeys(op.set[c])),
   );
   if (!diffs.length) {
     already++;

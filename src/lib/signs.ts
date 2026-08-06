@@ -7,6 +7,32 @@ export type SignUpdate = TablesUpdate<"road_signs">;
 /** Bilingual content field stored in road_signs.content (jsonb). */
 export type LocalizedField = { en?: string; af?: string };
 
+/**
+ * Who signed off the AFRIKAANS half of a sign's content, and when.
+ *
+ * Constraint 9 is that the accuracy gate is *recorded evidence, not intent* — so
+ * AI-drafted Afrikaans that nobody has read must say so somewhere a query can
+ * find it, or it is indistinguishable from reviewed content the moment anyone
+ * acts on it.
+ *
+ * Deliberately separate from the row's `approved_by` / `verified_at`, which
+ * record approval of the ENGLISH content against the official chart. Overwriting
+ * those to express "the Afrikaans is unreviewed" would destroy the English
+ * sign-off to record the absence of a different one.
+ *
+ * Find everything still unreviewed with:
+ *   content->afReview->>humanSignOff = 'false'
+ */
+export type AfReview = {
+  humanSignOff: boolean;
+  /** How the Afrikaans got here — `ai` until a person has been through it. */
+  draftedBy: "ai" | "human";
+  /** ISO date the draft was written. */
+  draftedAt: string;
+  reviewedBy?: string;
+  reviewedAt?: string;
+};
+
 /** Shape of road_signs.content. All fields optional / filled via admin review. */
 export type SignContent = {
   /**
@@ -20,6 +46,8 @@ export type SignContent = {
    * write a shadow English name that nothing reads.
    */
   name?: LocalizedField;
+  /** Sign-off state of the Afrikaans content. See `AfReview`. */
+  afReview?: AfReview;
   plainEnglish?: LocalizedField;
   formalMeaning?: LocalizedField;
   behaviour?: LocalizedField;
