@@ -8,10 +8,10 @@ K53 AI Coach: a Progressive Web App helping South African learner drivers pass t
 
 The original specs live in `docs/product/` and still govern product intent — read them before product/scope decisions (`PRD.md`, then `PRD-additions.md` which **overrides** it, plus the two executive overviews). The official source documents they rest on — the Act, the regulations and their amendments, the 24 SARTSM manual volumes, the DoT sign chart — live in `resources/`, indexed with their authority and permitted use in `resources/README.md`. `docs/backlog.md` tracks deferred work.
 
-## Response Style
+<!--## Response Style
 - Respond in ultra-dense, technical shorthand.
 - Omit explanations for self-evident code modifications.
-- Output raw terminal commands and code blocks without conversational wrapper text.
+- Output raw terminal commands and code blocks without conversational wrapper text.-->
 
 
 ## Project status
