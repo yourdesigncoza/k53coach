@@ -256,6 +256,70 @@ export function clamp(text: string, max: number): string {
 }
 
 /**
+ * Utility classes shared by so many elements that they identify nothing.
+ *
+ * The first real report exposed why this matters: every `Button` in the app
+ * serialised to `button[button].group/button.inline-flex`, because cva emits its
+ * shared base first and the old code took the first two classes. Two different
+ * buttons produced byte-identical selectors, so a trail could not answer the one
+ * question it exists for — WHICH control did they press.
+ */
+const UBIQUITOUS_CLASS =
+  /^(group|inline-flex|flex|grid|block|inline|shrink|grow|items-|justify-|gap-|w-full|min-w|max-w|whitespace|transition|outline|select-|relative|absolute|overflow|cursor|pointer-events|field-sizing)/;
+
+/** Minimal shape of a DOM element, so this stays testable without a DOM. */
+export type DescribableElement = {
+  tagName: string;
+  getAttribute(name: string): string | null;
+};
+
+/**
+ * Structural fingerprint of a click target.
+ *
+ * Text content is deliberately excluded — on this app the clickable text is
+ * often the learner's answer choice or a question prompt, and `aria-label` is
+ * excluded for the same reason (`SignImage` sets it to the sign's name). Only
+ * machine identifiers and distinguishing classes go in.
+ *
+ * Classes are taken from the TAIL, not the head: `cn(base, variants, className)`
+ * puts the shared base first and the caller's overrides last, so the end of the
+ * list is where the difference between two buttons actually lives.
+ */
+export function describeElement(el: DescribableElement | null): string {
+  if (!el) return "unknown";
+  const tag = el.tagName.toLowerCase();
+  const parts: string[] = [tag];
+
+  const attr = (n: string) => el.getAttribute(n) || "";
+
+  const id = attr("id");
+  if (id) parts.push(`#${id}`);
+
+  // data-slot is the shadcn primitive marker; it is frequently just the tag
+  // name ("button" on a <button>), which adds no information at all.
+  const testId = attr("data-testid");
+  const slot = attr("data-slot");
+  if (testId) parts.push(`[${testId}]`);
+  else if (slot && slot !== tag) parts.push(`[${slot}]`);
+
+  const type = attr("type");
+  if (type) parts.push(`[type=${type}]`);
+  const name = attr("name");
+  if (name) parts.push(`[name=${name}]`);
+  const href = attr("href");
+  if (href) parts.push(`[href=${redactUrl(href)}]`);
+
+  const classes = attr("class")
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((c) => !UBIQUITOUS_CLASS.test(c));
+  const distinguishing = classes.slice(-3);
+  if (distinguishing.length) parts.push("." + distinguishing.join("."));
+
+  return clamp(parts.join(""), 120);
+}
+
+/**
  * Strip a click target down to its structure. Text content is deliberately
  * excluded: on this app the clickable text is often the learner's own answer
  * choice or a question prompt, and neither belongs in a bug report.

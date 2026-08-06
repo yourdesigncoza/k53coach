@@ -9,6 +9,7 @@ import {
   redactUrl,
   routePattern,
   clamp,
+  describeElement,
   redactClicks,
   redactErrors,
   redactFetchFailures,
@@ -76,6 +77,86 @@ test("redactUrl survives unparseable input", () => {
   assert.equal(redactUrl("https://exa mple.com"), "[unparseable]");
   assert.equal(redactUrl("::::"), "/::::");
   assert.equal(redactUrl(""), "");
+});
+
+// ── describeElement ─────────────────────────────────────────────────────────
+// The first real bug report (2026-08-06) exposed that EVERY Button serialised
+// to the same string, because cva emits its shared base first and the old code
+// took the first two classes. These tests pin the property that was missing:
+// two different controls must not be indistinguishable.
+
+/** Minimal stand-in for a DOM element — no jsdom needed. */
+function el(tagName: string, attrs: Record<string, string> = {}) {
+  return {
+    tagName,
+    getAttribute: (n: string) => attrs[n] ?? null,
+  };
+}
+
+/** The real cva base every Button in the app carries, verbatim. */
+const BTN_BASE =
+  "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none";
+
+test("describeElement distinguishes two buttons that share the cva base", () => {
+  const primary = el("BUTTON", {
+    "data-slot": "button",
+    class: `${BTN_BASE} bg-primary text-primary-foreground h-8 gap-1.5 px-2.5`,
+  });
+  const outline = el("BUTTON", {
+    "data-slot": "button",
+    class: `${BTN_BASE} border-border bg-background hover:bg-muted h-7 px-2.5`,
+  });
+
+  const a = describeElement(primary);
+  const b = describeElement(outline);
+  assert.notEqual(a, b, `both serialised to ${a}`);
+  // And neither is the old useless form.
+  assert.doesNotMatch(a, /group\/button/);
+  assert.doesNotMatch(a, /inline-flex/);
+});
+
+test("describeElement drops data-slot when it merely repeats the tag", () => {
+  // `data-slot="button"` on a <button> was pure noise in the first real report.
+  const out = describeElement(el("BUTTON", { "data-slot": "button", class: BTN_BASE }));
+  assert.equal(out.includes("[button]"), false, out);
+});
+
+test("describeElement prefers stable identifiers over classes", () => {
+  const withId = el("BUTTON", { id: "submit-report", class: BTN_BASE });
+  assert.match(describeElement(withId), /#submit-report/);
+
+  const withTestId = el("BUTTON", { "data-testid": "push-linear", class: BTN_BASE });
+  assert.match(describeElement(withTestId), /\[push-linear\]/);
+
+  const input = el("INPUT", { type: "email", name: "learner_email" });
+  const out = describeElement(input);
+  assert.match(out, /\[type=email\]/);
+  assert.match(out, /\[name=learner_email\]/);
+});
+
+test("describeElement never captures element text or aria-label", () => {
+  // SignImage sets aria-label to the sign's name, and answer options render the
+  // learner's choices as text. Neither may reach a report.
+  const option = el("BUTTON", {
+    "aria-label": "Come to a complete stop",
+    class: `${BTN_BASE} bg-secondary`,
+  });
+  const out = describeElement(option);
+  assert.doesNotMatch(out, /complete stop/i);
+  assert.doesNotMatch(out, /aria-label/);
+});
+
+test("describeElement redacts a sensitive href", () => {
+  const link = el("A", { href: "/en/auth?token_hash=leak&next=/dashboard" });
+  const out = describeElement(link);
+  assert.doesNotMatch(out, /leak/);
+  assert.match(out, /href=/);
+});
+
+test("describeElement is bounded and handles a null target", () => {
+  assert.equal(describeElement(null), "unknown");
+  const noisy = el("DIV", { class: Array.from({ length: 200 }, (_, i) => `c${i}`).join(" ") });
+  assert.ok(describeElement(noisy).length <= 121);
 });
 
 test("redactClicks keeps structure and drops text", () => {
