@@ -23,8 +23,9 @@ and a button labelled "See a sample AI assessment" pointing at
 
 So the one thing that makes this not-another-quiz-app is *described* to every visitor
 and *delivered* to none of them. It is delivered only at `/mock/result/[attemptId]`,
-behind the R179 entitlement, where **no real learner has ever triggered it** (5
-`exam_attempts` rows, all e2e fixtures).
+behind the R179 entitlement, where **no paying learner has ever triggered it** (6
+`exam_attempts` rows: 5 e2e fixtures and one real sitting by Louwrens — corrected
+2026-08-06, the original "all fixtures" reading was a day stale when written).
 
 Replacing the mockup with a real, shorter, grounded assessment demonstrates the
 product instead of promising it — and does it at the exact moment the paywall is

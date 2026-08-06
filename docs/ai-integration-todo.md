@@ -47,8 +47,10 @@ Consequences worth stating plainly:
 
 1. **The differentiator is invisible until after someone pays R179.** `/mock` is the
    only entitlement-gated surface, so R179 buys mock papers plus this one report.
-2. **No real learner has ever triggered it.** `exam_attempts` is 5 rows, all the e2e
-   buyer's fixtures.
+2. **Almost nobody has ever triggered it.** `exam_attempts` is 6 rows: 5 e2e fixtures
+   and one real sitting by Louwrens (89%, 2026-08-05). No paying learner from the
+   market has run it. Corrected 2026-08-06 — the "all fixtures" reading was already
+   a day out of date when it was written.
 3. The gap between "AI tutor layer" and "one report after a paid mock" is partly
    deliberate — `/api/ai/explain` was removed because per-question runtime AI risked
    inventing law. Any new AI surface has to solve grounding the way

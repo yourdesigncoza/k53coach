@@ -18,7 +18,8 @@ Measured this session, not assumed:
 - **The only AI is behind the paywall**, and `/mock` is the only entitlement-gated
   surface. Practice, explanations and the whole library are free — so R179 currently
   buys mock exams plus this one assessment.
-- **`exam_attempts` = 5 rows, all the e2e test buyer's.** No real learner has ever
+- **`exam_attempts` = 6 rows** — 5 the e2e test buyer's, 1 a real sitting by Louwrens
+  (89%, 2026-08-05; corrected 2026-08-06). No paying learner has ever
   triggered the feature.
 
 The original intent was a chat/suggestion layer guiding study. What shipped is a
