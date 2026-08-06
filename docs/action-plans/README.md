@@ -10,7 +10,7 @@ executed one at a time. Update the Status column as they land.
 
 | # | Item | Pri | Status | Blocked by |
 |---|---|---|---|---|
-| [AP-01](AP-01-live-af-claim-repair.md) | Repair the live `/af` false claims in `ui_translations` | **P0** | Not started | Louwrens on class (c) |
+| [AP-01](AP-01-live-af-claim-repair.md) | Repair the live `/af` false claims in `ui_translations` | **P0** | **False claims cleared live (2026-08-06)** — 8 rows deleted, cache busted, verified. 41 wording rows remain | Louwrens on the remaining 41 |
 | [AP-02](AP-02-stale-override-guard.md) | Make stale overrides non-effective, not just visible | **P0** | Not started | — |
 | [AP-03](AP-03-bilingual-assessment.md) | Localise the AI assessment (prompt locale + versioned cache) | **P1** | Not started | — |
 | [AP-04](AP-04-fallback-caching.md) | Never persist a fallback assessment; add regenerate | **P1** | Not started | — |
@@ -31,6 +31,7 @@ audit. Verified live on `k53coach.co.za/af` on 2026-08-05:
 |---|---|
 | "Neem ongeveer **5 minute**" | the free test takes ~1 min (JSON already fixed) |
 | "werk **aflyn**" ×2, "installeer as 'n app" | next-pwa service worker is **deferred** — there is no offline mode |
+| "kernfunksionaliteit werk **vanlyn**" (`landing.faqA4`) | same false claim in the *other* Afrikaans word for offline — **3 live hits**, and AP-01's original grep list checked only `aflyn`, so it would have passed |
 | **R179** hardcoded (`landing.faqA2`) | bypasses `src/lib/pricing.ts`; the JSON uses `{price}` |
 | "**VVir** leerders onder 18 moet 'n ouer of voog toestemming gee" (`legal.p3`) | typo, plus the parent-consent claim the audit **removed** (`profiles.parent_consent` is never read or written in `src/`) |
 

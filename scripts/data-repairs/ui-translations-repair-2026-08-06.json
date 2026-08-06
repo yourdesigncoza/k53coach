@@ -1,0 +1,89 @@
+{
+  "date": "2026-08-06",
+  "plan": "docs/action-plans/AP-01-live-af-claim-repair.md",
+  "table": "ui_translations",
+  "operation": "delete",
+  "rollback": "scripts/data-repairs/ui-translations-backup-2026-08-06.json",
+  "decided_by": "John, 2026-08-06 (option (a): delete only the genuinely false rows)",
+  "summary": "Deletes the 8 /af override rows whose text asserts something untrue. A deleted row means the shipped messages/af.json default renders again — that is the documented reset mechanism (a row exists only where an admin edited away from the default). Every row here was written by Louwrens in good faith: he faithfully translated OUR July English, and the 2026-08-04 claims audit then corrected the English and left his Afrikaans frozen at July. The fault is ours; removing a false claim is not a wording judgement and does not wait for him. The remaining 41 rows are untouched — his Afrikaans wins by default.",
+  "not_included": [
+    {
+      "key": "af legal.p1",
+      "why": "AP-01 listed this as a false claim. It is not — 'geen rekening word benodig nie' vs 'geen rekening nodig nie' is a grammar preference with no claim content. His call."
+    },
+    {
+      "key": "af landing.faqA5",
+      "why": "His text is accurate. Ours only ADDS the disclosure that questions/lessons are still English-only (constraint 8). Deleting is probably right but it is a missing disclosure, not a falsehood — goes in the batch Louwrens sees."
+    },
+    {
+      "key": "af landing.feat1Body",
+      "why": "Deleting this would make the site claim MORE, not less: ours adds 'getoets teen die amptelike reels' where his says only 'clear reasons in plain language'. A claims repair must not be the vehicle for shipping a new unreviewed claim."
+    }
+  ],
+  "ops": [
+    {
+      "locale": "af",
+      "namespace": "readiness",
+      "key": "benefitTime",
+      "old": "Neem ongeveer 5 minute",
+      "restores_default_to": "Neem ongeveer ’n minuut",
+      "why": "Overstates the free readiness test by 5x. The test is ~1 minute. Exact class the 2026-08-04 claims audit corrected in English."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "ctaNote",
+      "old": "Geen aflaai nodig nie. Geen registrasie nodig om dit te probeer nie. Dit neem ongeveer 5 minute.",
+      "restores_default_to": "Geen aflaai nie. Geen registrasie nodig om te probeer nie. Neem omtrent 'n minuut.",
+      "why": "Same 5x overstatement as readiness.benefitTime. AP-01 had this in the wait-for-Louwrens bucket; the audit run moved it."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "feat4Body",
+      "old": "Enige toestel, installeer as 'n app, werk aflyn.",
+      "restores_default_to": "Enige toestel, reguit uit die webblaaier — niks om af te laai nie.",
+      "why": "Claims offline operation. The next-pwa service worker is deferred (docs/backlog.md) — there is no offline mode to speak of."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "planF4",
+      "old": "Werk op enige toestel, aflyn",
+      "restores_default_to": "Werk op enige toestel",
+      "why": "Same false offline claim, on the pricing plan feature list."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "faqA4",
+      "old": "Ja. Dit werk in enige webblaaier en kan as 'n toepassing op jou foon geïnstalleer word, en die kernfunksionaliteit werk vanlyn – geen aflaai vanaf 'n toepassingswinkel is nodig nie.",
+      "restores_default_to": "Ja. Dit werk in enige webblaaier op jou foon, tablet of rekenaar — daar is niks om uit 'n app-winkel af te laai nie.",
+      "why": "The third and worst offline claim — 'die kernfunksionaliteit werk vanlyn'. AP-01 keyed this text to faqA5 and left faqA4 unclassified, so the plan as written would have deleted an innocent row and left this one live. Note 'vanlyn', not 'aflyn': the plan's verification grep checked only the other spelling and would have reported success."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "faqA2",
+      "old": "Ja. 'n Eenmalige betaling van R179 ontsluit alles vir 90 dae. Daarna is dit opsioneel: behou slegs die KI-afrigter vir R20 per maand as jy wil, of kanselleer wanneer jy ook al wil. Die R20 dek slegs die KI-koste — daar is geen volle intekening wat outomaties hernu word nie.\n",
+      "restores_default_to": "Ja. {price} eenmalig ontsluit alles vir 90 dae. Niks hernu outomaties nie, ons stoor geen kaart nie, en daar is geen maandelikse plan om te kanselleer nie — wanneer die 90 dae verstryk, hou toegang eenvoudig op.",
+      "why": "Two defects. (1) Hardcodes R179, bypassing src/lib/pricing.ts — the single source of truth — so it goes false the day the price moves; the default interpolates {price}. (2) Describes an R20/month AI-coach continuation as a live option. It is a PRD pricing intention (PRD-additions section 6), not a built feature — nothing in src/ sells or bills it."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "feat2Body",
+      "old": "Egte K53-vrae wat ooreenstem met die nuutste handleiding.",
+      "restores_default_to": "Vrae geskryf uit die Nasionale Padverkeerswet, die regulasies daarby en die amptelike tekenkaart.",
+      "why": "'Real K53 questions matching the latest manual' is unverifiable and implies a source we deliberately do not use — constraint 7 forbids commercial study guides as a source. The default states what is actually true and provable: the questions are written from the Act, the regulations and the official chart."
+    },
+    {
+      "locale": "af",
+      "namespace": "legal",
+      "key": "p3",
+      "old": "VVir leerders onder 18 moet 'n ouer of voog toestemming gee voordat ons persoonlike vordering stoor.",
+      "restores_default_to": "Jou gratis gereedheidsuitslag bly op jou eie toestel totdat jy kies om 'n rekening te skep.",
+      "why": "Promises parent/guardian consent for under-18s on the privacy page. It is not implemented: profiles.parent_consent exists as a column and nothing in src/ ever reads or writes it. The 2026-08-04 claims audit removed this in English; the override kept it live in Afrikaans. Also carries a visible 'VVir' typo."
+    }
+  ]
+}

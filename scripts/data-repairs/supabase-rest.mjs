@@ -50,6 +50,21 @@ export async function insert(table, body) {
   if (!res.ok) throw new Error(`${table} -> ${res.status} ${await res.text()}`);
 }
 
+/**
+ * Conditional DELETE. The caller is expected to include the *audited* value in
+ * the filter (`&value=eq.<old>`) so a row edited between audit and repair matches
+ * nothing and aborts, rather than being silently clobbered. Returns the deleted
+ * rows so the caller can assert on the count instead of trusting a 2xx.
+ */
+export async function remove(path) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    method: "DELETE",
+    headers: { ...headers, Prefer: "return=representation" },
+  });
+  if (!res.ok) throw new Error(`${path} -> ${res.status} ${await res.text()}`);
+  return res.json();
+}
+
 export async function select(path) {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, { headers });
   if (!res.ok) throw new Error(`${path} -> ${res.status} ${await res.text()}`);

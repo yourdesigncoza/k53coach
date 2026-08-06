@@ -30,7 +30,9 @@ Verified live on `https://k53coach.co.za/af` and `/af/legal/privacy`, 2026-08-05
 | `readiness.benefitTime` | "Neem ongeveer **5 minute**" | "Neem ongeveer ’n minuut" | overstates the free test 5× — the exact class the claims audit fixed |
 | `landing.feat4Body` | "Enige toestel, installeer as 'n app, **werk aflyn**." | "Enige toestel, reguit uit die webblaaier — niks om af te laai…" | **offline does not exist** — next-pwa service worker is deferred (`docs/backlog.md`) |
 | `landing.planF4` | "Werk op enige toestel, **aflyn**" | "Werk op enige toestel" | same false offline claim |
-| `landing.faqA5` | "Ja. Dit werk in enige webblaaier en kan as 'n…" | "Ja. Dit werk in enige webblaaier op jou foon…" | install/offline framing |
+| `landing.faqA4` | "…kan as 'n toepassing op jou foon **geïnstalleer** word, en die kernfunksionaliteit werk **vanlyn**" | "Ja. Dit werk in enige webblaaier op jou foon…" | install/offline framing. ⚠ **This table first keyed the text to `faqA5`** — see the correction note below |
+| `landing.faqA5` | "…koppelvlak is tweetalig – jy kan te eniger tyd… wissel." | same, **plus** "Die vrae en lesse self is voorlopig in Engels" | not false, but drops the English-only disclosure the audit added (constraint 8) |
+| `landing.ctaNote` | "Dit neem ongeveer **5 minute**." | "Neem omtrent 'n minuut." | the same 5× overstatement as `readiness.benefitTime`; this table first classed it (b) |
 | `landing.faqA2` | "'n Eenmalige betaling van **R179**…" | "{price} eenmalig…" | hardcodes the price, bypassing `src/lib/pricing.ts` — the single source of truth |
 | `legal.p3` | "**VVir** leerders onder 18 moet 'n ouer of voog toestemming gee…" | (JSON now carries the device-local result text) | visible typo **and** the parent/guardian-consent promise the audit removed — `profiles.parent_consent` is never read or written anywhere in `src/` |
 | `legal.p1`, `landing.feat1Body`, `landing.feat2Body` | pre-audit wording | post-audit wording | `feat2Body` claims "Egte K53-vrae wat ooreenstem met die nuutste…" — an unverifiable claim; JSON grounds it in the Act instead |
@@ -39,8 +41,48 @@ Reproduce the full picture (note `rtk proxy` — a plain `grep` gave the wrong a
 here and hid this bug for several rounds):
 
 ```bash
-rtk proxy node scripts/data-repairs/audit-ui-overrides.mjs   # to be written by this AP
+rtk proxy node scripts/data-repairs/audit-ui-overrides.mjs           # table
+rtk proxy node scripts/data-repairs/audit-ui-overrides.mjs --write   # + rollback JSON
 ```
+
+## ⚠️ Three corrections the first audit run made to this plan (2026-08-06)
+
+The inventory step exists precisely so the plan gets checked against the database
+before anything is deleted. It found three errors in the lists below, all of which
+would have survived execution:
+
+1. **The offline claim is in `landing.faqA4`, not `faqA5`.** This plan quoted
+   faqA4's text under faqA5's key, classed faqA5 as (a), and left faqA4
+   **unclassified and therefore untouched**. Executing as written would have
+   deleted a row that isn't false and left *"die kernfunksionaliteit werk
+   vanlyn"* — a claim for a feature that does not exist — live on the landing
+   page. faqA5 stays in (a) on different grounds: its DB text is accurate but
+   predates the audit's English-only disclosure.
+2. **`landing.ctaNote` is class (a), not (b).** It reads *"Dit neem ongeveer
+   **5 minute**"* — the identical overstatement this plan correctly flags in
+   `readiness.benefitTime`. It sat in the bucket that waits for Louwrens.
+3. **The two class lists covered 38 of 49 rows.** Eleven were enumerated
+   nowhere: `auth.demoSkip`, `auth.learnMore`, `dashboard.mockSub`,
+   `dashboard.welcomeSub`, `exam.sectionBrief`, `examResult.failedBlurb`,
+   `examResult.passedBlurb`, `examResult.retake`, `examResult.showAll`,
+   `legal.p2`, and `landing.faqA4`. The first ten are wording preference → (b);
+   the eleventh is the one above.
+
+**Corrected split: (a) 11, (b) 38, unclassified 0.** The script's `CLASSES`
+constant is now the machine-checkable copy of this — it buckets nothing by
+inference, so a row nobody has classified reports as `unclassified` rather than
+being swept into a bucket that authorises deleting it.
+
+### ⚠️ And a fourth: the verification greps could not have caught it
+
+`vanlyn` and `aflyn` are both "offline" — Louwrens used one, our JSON draft used
+the other. The grep list at the bottom of this plan checked only `aflyn`, so it
+would have returned **0 for every string and reported success** while `vanlyn`
+was served **3 times** on `k53coach.co.za/af` (measured 2026-08-06). This is the
+same failure shape as the `grep -c` trap recorded in the test-run doc: a search
+that cannot find the thing is indistinguishable from the thing being absent.
+Both spellings, plus `geïnstalleer`, are now in the script's marker list and in
+the verification block.
 
 ## ⚠️ Who wrote these rows changes the default
 
@@ -122,9 +164,26 @@ and "Reset" deletes it, so absence means the JSON default renders.
 
 `getOverrides` is `cache: "force-cache"` tagged `ui-translations`, busted by
 `updateTag` in `src/lib/translation-actions.ts` on save. A repair done via
-PostgREST **bypasses that action and will not bust the tag**. Either route the
-repair through the admin save/reset path, or trigger a revalidation (redeploy, or
-an admin save on any one string) and then verify against the live HTML.
+PostgREST **bypasses that action and will not bust the tag**. The fix:
+
+```bash
+vercel cache invalidate --tag ui-translations --yes
+```
+
+⚠️ **A redeploy does NOT clear it.** This plan originally said it did. Vercel's
+Data Cache **persists across deployments** by design, so on 2026-08-06 a full
+production redeploy built, aliased to `k53coach.co.za`, and still served every one
+of the eight deleted strings. `x-vercel-cache: MISS` and `age: 0` on the document
+made it look like nothing was cached at all — the document wasn't; the *fetch* was.
+Only the tag invalidation cleared it, and it worked instantly. The other valid
+route is one admin save in the translation manager, which calls `updateTag`.
+
+⚠️ **Check the response size before believing a grep.** Verifying against the
+deployment URL rather than the alias returned 0 for every false-claim string —
+because Vercel SSO redirected it and the body was **15 bytes of "Redirecting…"**.
+An empty response scores 0 on every check and reads exactly like a clean page.
+`stat -c%s` the file, and grep for a string that *should* be present, before
+trusting a row of zeros.
 
 ## Files
 
@@ -150,8 +209,10 @@ an admin save on any one string) and then verify against the live HTML.
 All greps via `rtk proxy`, counting occurrences, status-checked first:
 
 ```bash
+# Both spellings of "offline" — see the fourth correction above. Checking only
+# `aflyn` returns 0 while `vanlyn` is live.
 rtk proxy sh -c 'curl --fail --show-error -s https://k53coach.co.za/af > /tmp/af.html || echo FETCH-FAILED
-for s in "aflyn" "5 minute" "R179" "AI-assessering"; do
+for s in "aflyn" "vanlyn" "geïnstalleer" "5 minute" "R179" "AI-assessering"; do
   printf "%-16s %s\n" "$s" "$(grep -o "$s" /tmp/af.html | wc -l)"; done'
 rtk proxy sh -c 'curl --fail -s https://k53coach.co.za/af/legal/privacy | grep -o "VVir" | wc -l'
 ```
@@ -162,9 +223,46 @@ class (c) values present in `messages/af.json`. Check `/en` too (one `en` row ex
 
 ## Done when
 
-- [ ] All 49 rows inventoried with per-row live evidence and a class
-- [ ] Backup + repair record committed to `scripts/data-repairs/`
-- [ ] Class (a) and (b) rows deleted, conditional on audited value
-- [ ] Class (c) reviewed by Louwrens, promoted into `messages/af.json`, rows deleted
-- [ ] Cache busted and the live `/af` HTML shows 0 for all five strings
+- [x] All 49 rows inventoried with per-row live evidence and a class — 2026-08-06,
+      `scripts/data-repairs/audit-ui-overrides.mjs`. Final split **(a) 8 /
+      (b) 38 / deferred 3**, not the 11/29 this plan first stated (see the
+      corrections above, and the fifth one below)
+- [x] Rollback copy exported — `ui-translations-backup-2026-08-06.json` (49 rows,
+      all `updated_by` = `d9357949…`, i.e. Louwrens, as this plan assumed)
+- [x] **Class (a) deleted — 8 rows, 2026-08-06**, conditional on the audited value,
+      recorded in `ui-translations-repair-2026-08-06.json`. Re-audit: 41 rows,
+      **0 false-claim markers**. Decided by John (option (a)).
+- [x] **Cache tag busted and live `/af` verified — 2026-08-06.** `vercel cache
+      invalidate --tag ui-translations`. Measured on `k53coach.co.za` after:
+      `vanlyn` 0, `aflyn` 0, `5 minute` 0, `geïnstalleer` 0, `nuutste handleiding` 0,
+      `R20 per maand` 0, and on `/af/legal/privacy` `VVir` 0, `voog toestemming` 0.
+      Corrected text present: `ongeveer ’n minuut` 2, `reguit uit die webblaaier` 4,
+      `Niks hernu outomaties nie` 3. Page is real (130 KB, `gereedheidstoets` ×17).
+      `R179` still appears 5× — correct, that is `{price}` interpolated from
+      `src/lib/pricing.ts`, which is the point of the fix. `/en` unaffected.
+- [x] **Review pack built for Louwrens — 2026-08-06.** All 41 remaining rows
+      (38 class (b) + the 3 deferred), A/B/C per row, defaulting to his wording.
+      `docs/louwrens-af-wording-review-2026-08-06.{csv,md}` +
+      `.README.md` cover note, generated by
+      `scripts/data-repairs/build-louwrens-af-review.mjs`. CSV because that is the
+      channel that worked for the question-bank sign-off on 2026-08-05.
+- [ ] Sent to Louwrens and returned
 - [ ] `CLAUDE.md` claims-audit note updated to say the gate now covers both locales
+
+### ⚠️ A fifth correction: only 8 of the 11 were actually false
+
+Reading the DB text of each class-(a) row rather than trusting the list, three do
+not assert anything untrue and were **not** deleted:
+
+| Row | Why it stayed |
+|---|---|
+| `legal.p1` | Pure grammar — *"geen rekening word benodig nie"* vs *"geen rekening nodig nie"*. No claim content whatsoever. |
+| `landing.faqA5` | His text is accurate. Ours only **adds** the English-only-questions disclosure (constraint 8). A missing disclosure, not a falsehood. |
+| `landing.feat1Body` | **Deleting it would make the site claim *more*.** His: *"Clear reasons in plain language."* Ours: *"…**getoets teen die amptelike reëls**."* A claims repair must not be the vehicle for shipping a new, unreviewed claim. |
+
+The lesson generalises: "the JSON is post-audit" does not imply "the JSON is the
+weaker claim". Three of eleven rows ran the other way. Check the direction of each
+change, not just its date.
+- [ ] Class (b) reviewed by Louwrens; whatever he keeps is promoted into
+      `messages/af.json` and the row deleted, so the file becomes the truth
+      (required before AP-02, whose NULL-as-stale drop takes out all 41 at once)
