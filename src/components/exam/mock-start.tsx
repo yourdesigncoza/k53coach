@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Clock, CheckCircle2, XCircle } from "lucide-react";
+import { Clock, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
 import { useRouter, Link } from "@/i18n/navigation";
 import { QuizPanel } from "@/components/quiz/quiz-panel";
 import { QuizButton } from "@/components/quiz/quiz-chrome";
@@ -53,8 +53,18 @@ export function MockStart({
           <li>• {t("rule1", { count: totalQuestions })}</li>
           <li>• {t("rule2")}</li>
           <li>• {t("rule3")}</li>
-          <li>• {t("rule4")}</li>
         </ul>
+
+        {/*
+          The no-return rule is a callout, not a fourth bullet: the paper is
+          deliberately forward-only to match the DLTC terminal (K53-45), so a
+          mis-tap on Next costs the learner a question. It has to be read
+          before they start, not discovered mid-paper.
+        */}
+        <p className="mt-3 flex items-start gap-2 rounded-[14px] border border-[var(--surface-border)] bg-surface-2 p-3 text-sm text-[var(--surface-ink-2)]">
+          <AlertTriangle className="size-4 shrink-0 text-amber-500" />
+          {t("rule4")}
+        </p>
 
         <h2 className="mt-5 text-sm font-semibold text-[var(--surface-ink)]">
           {t("sectionsHeading")}
