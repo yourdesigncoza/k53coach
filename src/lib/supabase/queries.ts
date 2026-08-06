@@ -308,3 +308,23 @@ export async function getTopicAccuracy(
   }
   return acc;
 }
+
+/**
+ * How many learner reports nobody has looked at yet.
+ *
+ * Drives the badge in the admin header. A triage queue with no visible count is
+ * a queue that quietly stops being drained — the whole reason reports get filed
+ * is that somebody reads them.
+ *
+ * Admin-only in practice: RLS scopes non-admins to their own rows, so a
+ * non-admin would just count their own. The admin layout gates the page anyway.
+ */
+export async function getUntriagedReportCount(): Promise<number> {
+  const supabase = await createClient();
+  if (!supabase) return 0;
+  const { count } = await supabase
+    .from("feedback_reports")
+    .select("id", { count: "exact", head: true })
+    .eq("status", "new");
+  return count ?? 0;
+}

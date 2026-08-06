@@ -6,7 +6,7 @@ import {
   FileQuestion,
   KeyRound,
   BookOpen,
-  MessageSquareWarning,
+  Bug,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -91,11 +91,9 @@ export default async function AdminSignsPage() {
               href="/admin/feedback"
               className="flex items-center gap-3 py-3.5"
             >
-              <MessageSquareWarning className="size-5 shrink-0 text-muted-foreground" />
+              <Bug className="size-5 shrink-0 text-muted-foreground" />
               <span className="flex-1">
-                <span className="block text-sm font-medium">
-                  Learner reports
-                </span>
+                <span className="block text-sm font-medium">Bug Reports</span>
                 <span className="block text-xs text-muted-foreground">
                   Bugs and content flags filed from inside the app. Content flags
                   arrive anchored to the question or sign, with its provenance

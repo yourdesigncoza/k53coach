@@ -4,7 +4,7 @@ import { isAdmin } from "@/lib/supabase/queries";
 import { FeedbackList, type FeedbackRow } from "@/components/admin/feedback-list";
 import { markStale } from "@/lib/feedback";
 
-export const metadata = { title: "Admin · Reports" };
+export const metadata = { title: "Admin · Bug Reports" };
 
 /**
  * Triage queue for learner-filed reports.
@@ -57,7 +57,7 @@ export default async function AdminFeedbackPage({
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-6 md:px-8 md:py-8">
-      <h1 className="text-xl font-semibold md:text-2xl">Learner reports</h1>
+      <h1 className="text-xl font-semibold md:text-2xl">Bug Reports</h1>
       <p className="text-sm text-muted-foreground">
         {counts.total} shown · {counts.content} content flags ·{" "}
         {counts.untriaged} untriaged
