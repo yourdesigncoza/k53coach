@@ -44,7 +44,7 @@ export function ReadinessRing({
   stroke = 14,
   label,
   sublabel,
-  valueLabel,
+  fullTrack = false,
   className,
 }: {
   percent: number;
@@ -55,17 +55,19 @@ export function ReadinessRing({
   label?: string;
   sublabel?: string;
   /**
-   * Overrides the centre text. Use "—" with `percent={0}` for the not-yet-
-   * measured state: the empty track keeps the layout balanced without the gauge
-   * claiming a score of zero, which reads as "failed" rather than "untested".
+   * Draws the ring as a COMPLETE coloured circle regardless of `percent`.
+   *
+   * For the not-yet-measured state (John, 2026-08-06): a bare grey track reads
+   * as broken or unstyled, while a finished circle reads as deliberate. The
+   * centre still shows the real `percent`, so pass 0 and the gauge says 0%.
    */
-  valueLabel?: string;
+  fullTrack?: boolean;
   className?: string;
 }) {
   const clamped = Math.max(0, Math.min(100, percent));
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
-  const offset = c - (clamped / 100) * c;
+  const offset = fullTrack ? 0 : c - (clamped / 100) * c;
   const [gradFrom, gradTo] = RING_GRADIENT[band ?? "almost-ready"];
   const gradId = `readinessGrad-${band ?? "default"}`;
 
@@ -105,7 +107,7 @@ export function ReadinessRing({
       <div className="absolute inset-0 grid place-items-center text-center">
         <div>
           <div className="text-4xl font-semibold tabular-nums tracking-tight text-[var(--surface-ink)]">
-            {valueLabel ?? `${clamped}%`}
+            {clamped}%
           </div>
           {label && (
             <div className="mt-1 text-sm font-medium text-[var(--surface-ink)]">

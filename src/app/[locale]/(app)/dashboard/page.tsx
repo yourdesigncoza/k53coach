@@ -96,11 +96,11 @@ export default async function DashboardPage() {
       <Card className="mt-5 py-0 md:max-w-2xl">
         <CardContent className="flex items-center gap-4 py-3.5 md:py-5">
           {overall === null ? (
-            /* Empty track, dash instead of a number. Keeps the card balanced
-               (John, 2026-08-06) without the gauge asserting a score: "0%"
-               reads as failed, "—" reads as not yet measured. */
+            /* Complete coloured circle reading 0%, with the copy beside it
+               carrying the meaning ("No score yet — take the free readiness
+               test"). John's call, 2026-08-06. */
             <>
-              <ReadinessRing percent={0} valueLabel="—" size={120} stroke={12} />
+              <ReadinessRing percent={0} fullTrack size={120} stroke={12} />
               <div className="flex-1">
                 <p className="text-sm font-medium">{t("readinessTitle")}</p>
                 <p className="text-sm text-muted-foreground">
