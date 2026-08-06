@@ -81,7 +81,9 @@ export function SignEditor({
   const [busy, setBusy] = useState(false);
   const [drafting, setDrafting] = useState(false);
 
-  function setField(f: SignContentField, locale: string, value: string) {
+  // `keyof SignContent`, not `SignContentField`: the name lives in the content
+  // object but deliberately outside the SIGN_CONTENT_FIELDS grid.
+  function setField(f: keyof SignContent, locale: string, value: string) {
     setContent((c) => ({ ...c, [f]: { ...(c[f] ?? {}), [locale]: value } }));
   }
 
@@ -232,6 +234,37 @@ export function SignEditor({
             </CardContent>
           </Card>
         )}
+        {/*
+          Sign name — Afrikaans only. The English name is the `road_signs.name`
+          column and is not editable here, so there is no second English name to
+          drift; the box below it is read-only and shown purely as the reference
+          being translated.
+        */}
+        <Card>
+          <CardContent className="py-4">
+            <p className="mb-2 text-sm font-medium">Sign name</p>
+            <div className="grid gap-2 sm:grid-cols-2">
+              <label className="block">
+                <span className="mb-1 block text-xs uppercase text-muted-foreground">
+                  en (from the name column, read-only)
+                </span>
+                <input className={cn(field, "bg-muted")} value={name} readOnly />
+              </label>
+              <label className="block">
+                <span className="mb-1 block text-xs uppercase text-muted-foreground">
+                  af
+                </span>
+                <input
+                  className={field}
+                  value={content.name?.af ?? ""}
+                  onChange={(e) => setField("name", "af", e.target.value)}
+                  placeholder="Afrikaanse naam"
+                />
+              </label>
+            </div>
+          </CardContent>
+        </Card>
+
         {SIGN_CONTENT_FIELDS.map((f) => (
           <Card key={f}>
             <CardContent className="py-4">

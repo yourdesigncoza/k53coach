@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SignImage } from "@/components/sign-image";
 import { getApprovedSigns } from "@/lib/supabase/queries";
-import { SIGN_CATEGORY_LABEL, SIGN_CATEGORY_ORDER } from "@/lib/signs";
+import { SIGN_CATEGORY_LABEL, SIGN_CATEGORY_ORDER, signName } from "@/lib/signs";
 
 export async function generateMetadata({
   params,
@@ -19,7 +19,12 @@ export async function generateMetadata({
   return { title: t("signs") };
 }
 
-export default async function RoadSignsPage() {
+export default async function RoadSignsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   const t = await getTranslations("module");
   const signs = await getApprovedSigns();
 
@@ -63,11 +68,13 @@ export default async function RoadSignsPage() {
                   >
                     <SignImage
                       svgFile={s.svg_file}
-                      name={s.name}
+                      name={signName(s, locale)}
                       className="size-12 shrink-0"
                     />
                     <span className="flex-1">
-                      <span className="block font-medium">{s.name}</span>
+                      <span className="block font-medium">
+                        {signName(s, locale)}
+                      </span>
                       <span className="block text-xs text-muted-foreground">
                         {s.code}
                         {s.subcategory ? ` · ${s.subcategory}` : ""}

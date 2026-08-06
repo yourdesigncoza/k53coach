@@ -7,17 +7,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SignImage } from "@/components/sign-image";
 import { getApprovedSignByCode } from "@/lib/supabase/queries";
-import { SIGN_CATEGORY_LABEL, signContent, localize } from "@/lib/signs";
+import { SIGN_CATEGORY_LABEL, signContent, localize, signName } from "@/lib/signs";
 import { ReportQuestionButton } from "@/components/feedback/report-question-button";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ code: string }>;
+  params: Promise<{ locale: string; code: string }>;
 }) {
-  const { code } = await params;
+  const { locale, code } = await params;
   const sign = await getApprovedSignByCode(decodeURIComponent(code));
-  return { title: sign ? sign.name : "Road sign" };
+  return { title: sign ? signName(sign, locale) : "Road sign" };
 }
 
 const FIELDS = [
@@ -37,6 +37,7 @@ export default async function SignDetailPage({
 
   const t = await getTranslations("module");
   const content = signContent(sign);
+  const name = signName(sign, locale);
   const plain = localize(content.plainEnglish, locale);
   const formal = localize(content.formalMeaning, locale);
   const fields = FIELDS.map((f) => ({
@@ -64,10 +65,10 @@ export default async function SignDetailPage({
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
             <SignImage
               svgFile={sign.svg_file}
-              name={sign.name}
+              name={name}
               className="size-32 md:size-44"
             />
-            <h1 className="mt-3 text-2xl font-bold md:text-3xl">{sign.name}</h1>
+            <h1 className="mt-3 text-2xl font-bold md:text-3xl">{name}</h1>
             <div className="mt-2 flex flex-wrap items-center gap-2">
               <Badge variant="secondary">
                 {SIGN_CATEGORY_LABEL[sign.category]}
@@ -140,7 +141,7 @@ export default async function SignDetailPage({
             <ReportQuestionButton
               signCode={sign.code}
               objectiveCode={sign.code}
-              contextLabel={`${sign.code} — ${sign.name}`}
+              contextLabel={`${sign.code} — ${name}`}
             />
           </div>
         </div>

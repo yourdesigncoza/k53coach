@@ -9,6 +9,17 @@ export type LocalizedField = { en?: string; af?: string };
 
 /** Shape of road_signs.content. All fields optional / filled via admin review. */
 export type SignContent = {
+  /**
+   * Afrikaans sign name. The ENGLISH name lives in the `road_signs.name`
+   * column and stays the single source of truth — only `af` is stored here, so
+   * there is no second copy of the English to drift out of step. Read it with
+   * `signName()`, never directly.
+   *
+   * Deliberately NOT in `SIGN_CONTENT_FIELDS`: that array drives the admin
+   * content grid, which renders an EN box per field, and an EN box here would
+   * write a shadow English name that nothing reads.
+   */
+  name?: LocalizedField;
   plainEnglish?: LocalizedField;
   formalMeaning?: LocalizedField;
   behaviour?: LocalizedField;
@@ -37,6 +48,21 @@ export function signContent(row: Pick<SignRow, "content">): SignContent {
 export function localize(field: LocalizedField | undefined, locale: string) {
   if (!field) return "";
   return field[locale as keyof LocalizedField] || field.en || "";
+}
+
+/**
+ * The sign's name in the requested locale, falling back to English.
+ *
+ * Every learner-facing surface must go through this rather than reading
+ * `row.name`, or /af shows an English name above Afrikaans lesson prose. Admin
+ * screens deliberately keep `row.name`: the admin UI is English-only, and a
+ * reviewer needs the canonical name to match against the official chart.
+ */
+export function signName(
+  row: Pick<SignRow, "name" | "content">,
+  locale: string,
+): string {
+  return localize({ ...signContent(row).name, en: row.name }, locale);
 }
 
 export const SIGN_CATEGORY_LABEL: Record<string, string> = {
