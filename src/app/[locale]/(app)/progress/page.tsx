@@ -89,7 +89,14 @@ export default async function ProgressPage() {
       <div className="mt-5 grid gap-6 md:grid-cols-3 md:gap-10">
         <div className="flex flex-col items-center md:col-span-1 md:items-start">
           {overall === null ? (
-            <p className="text-sm text-muted-foreground">{t("noProgressYet")}</p>
+            /* Empty track + dash, matching the dashboard's not-yet-measured
+               state — same component, so the two cannot drift apart. */
+            <>
+              <ReadinessRing percent={0} valueLabel="—" sublabel={tr("overall")} />
+              <p className="mt-3 text-center text-sm text-muted-foreground md:text-left">
+                {t("noProgressYet")}
+              </p>
+            </>
           ) : (
             <ReadinessRing
               percent={overall}

@@ -44,6 +44,7 @@ export function ReadinessRing({
   stroke = 14,
   label,
   sublabel,
+  valueLabel,
   className,
 }: {
   percent: number;
@@ -53,6 +54,12 @@ export function ReadinessRing({
   stroke?: number;
   label?: string;
   sublabel?: string;
+  /**
+   * Overrides the centre text. Use "—" with `percent={0}` for the not-yet-
+   * measured state: the empty track keeps the layout balanced without the gauge
+   * claiming a score of zero, which reads as "failed" rather than "untested".
+   */
+  valueLabel?: string;
   className?: string;
 }) {
   const clamped = Math.max(0, Math.min(100, percent));
@@ -98,7 +105,7 @@ export function ReadinessRing({
       <div className="absolute inset-0 grid place-items-center text-center">
         <div>
           <div className="text-4xl font-semibold tabular-nums tracking-tight text-[var(--surface-ink)]">
-            {clamped}%
+            {valueLabel ?? `${clamped}%`}
           </div>
           {label && (
             <div className="mt-1 text-sm font-medium text-[var(--surface-ink)]">

@@ -96,25 +96,28 @@ export default async function DashboardPage() {
       <Card className="mt-5 py-0 md:max-w-2xl">
         <CardContent className="flex items-center gap-4 py-3.5 md:py-5">
           {overall === null ? (
-            /* No ring at all until there is something real to put in it. A
-               greyed or zeroed gauge still reads as a score, and 0% reads as
-               "failed" rather than "not measured". */
-            <div className="flex-1">
-              <p className="text-sm font-medium">{t("readinessTitle")}</p>
-              <p className="text-sm text-muted-foreground">
-                {t("readinessEmpty")}
-              </p>
-              <Button
-                size="sm"
-                variant="ghost"
-                className="mt-1 -ml-2 rounded-lg"
-                render={
-                  <Link href="/readiness">
-                    {t("readinessEmptyCta")} <ArrowRight className="size-3.5" />
-                  </Link>
-                }
-              />
-            </div>
+            /* Empty track, dash instead of a number. Keeps the card balanced
+               (John, 2026-08-06) without the gauge asserting a score: "0%"
+               reads as failed, "—" reads as not yet measured. */
+            <>
+              <ReadinessRing percent={0} valueLabel="—" size={120} stroke={12} />
+              <div className="flex-1">
+                <p className="text-sm font-medium">{t("readinessTitle")}</p>
+                <p className="text-sm text-muted-foreground">
+                  {t("readinessEmpty")}
+                </p>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="mt-1 -ml-2 rounded-lg"
+                  render={
+                    <Link href="/readiness">
+                      {t("readinessEmptyCta")} <ArrowRight className="size-3.5" />
+                    </Link>
+                  }
+                />
+              </div>
+            </>
           ) : (
             <>
               <ReadinessRing percent={overall} size={120} stroke={12} />
