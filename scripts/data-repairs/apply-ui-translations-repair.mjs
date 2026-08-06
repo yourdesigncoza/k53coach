@@ -11,6 +11,12 @@
  *
  *   node scripts/data-repairs/apply-ui-translations-repair.mjs            # dry run
  *   node scripts/data-repairs/apply-ui-translations-repair.mjs --apply
+ *   node …/apply-ui-translations-repair.mjs --file scripts/data-repairs/<other>.json
+ *
+ * `--file` exists because the repair landed in two passes against the same table:
+ * the false claims first (no wording judgement, did not wait for anyone), then the
+ * 41 wording rows once Louwrens had ruled on each. Same delete semantics, same
+ * safety, different op list — so it takes a file rather than growing a second copy.
  */
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -18,7 +24,11 @@ import { fileURLToPath } from "node:url";
 import { remove, select } from "./supabase-rest.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const REPAIR = "scripts/data-repairs/ui-translations-repair-2026-08-06.json";
+const fileArg = process.argv.indexOf("--file");
+const REPAIR =
+  fileArg !== -1
+    ? process.argv[fileArg + 1]
+    : "scripts/data-repairs/ui-translations-repair-2026-08-06.json";
 const repair = JSON.parse(readFileSync(join(ROOT, REPAIR), "utf8"));
 
 /**

@@ -1,0 +1,381 @@
+{
+  "date": "2026-08-06",
+  "plan": "docs/action-plans/AP-01-live-af-claim-repair.md",
+  "table": "ui_translations",
+  "operation": "delete",
+  "rollback": "scripts/data-repairs/ui-translations-backup-2026-08-06.json",
+  "decided_by": "Louwrens, 2026-08-06 — K53-48, \"Die 41 keuses AFR.docx\" (his choice marked by yellow highlight; his own comment: \"Yellow is the correct translation\")",
+  "summary": "Deletes the remaining 41 ui_translations override rows after Louwrens ruled on every one of them. His answers were applied to messages/{af,en}.json FIRST (28 strings changed), so each delete restores a default that is now identical to, or explicitly chosen over, the row it removes. Split: 27 A (keep his wording), 13 B (our alternative), 1 C (new wording he wrote for exam.sectionBrief). After this the ui_translations table is empty and messages/*.json is once again the only source of truth for UI copy — which is the whole point of AP-01. AP-02 remains outstanding: nothing yet prevents a future admin edit from silently shadowing a later code change.",
+  "order_of_operations": "messages/*.json committed and DEPLOYED before these deletes run. Deleting first would serve the pre-review machine draft on /af for the 28 changed strings until the deploy landed.",
+  "ops": [
+    {
+      "locale": "af",
+      "namespace": "assessment",
+      "key": "cta",
+      "old": "Bekyk AI-assessering",
+      "restores_default_to": "Bekyk KI-assessering",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "auth",
+      "key": "demoSkip",
+      "old": "Demomodus — Supabase is nie gekonfigureer nie. Gaan voort na die app.",
+      "restores_default_to": "Demo-modus — Supabase nie opgestel nie. Spring na die app.",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "auth",
+      "key": "learnMore",
+      "old": "Kom meer te wete",
+      "restores_default_to": "Meer inligting",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "auth",
+      "key": "title",
+      "old": "Teken in of registreer",
+      "restores_default_to": "Teken in of registreer",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "common",
+      "key": "login",
+      "old": "Teken in",
+      "restores_default_to": "Teken in",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "dashboard",
+      "key": "mockSub",
+      "old": "Simuleer die werklike toets",
+      "restores_default_to": "Boots die regte toets na",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "dashboard",
+      "key": "welcomeSub",
+      "old": "Hou aan – kort daaglikse sessies is beter as om alles op die laaste nippertjie in te prop.",
+      "restores_default_to": "Hou aan – kort daaglikse sessies is beter as om alles op die laaste nippertjie in te prop.",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "exam",
+      "key": "sectionBrief",
+      "old": "{count} vrae · slaag {pass} om hierdie gedeelte skoon te maak",
+      "restores_default_to": "{count} vrae · slaag {pass} om hierdie afdeling te voltooi",
+      "choice": "C",
+      "why": "Louwrens wrote new wording (C). It is now the shipped default in messages/af.json."
+    },
+    {
+      "locale": "af",
+      "namespace": "examResult",
+      "key": "failedBlurb",
+      "old": "Jy moet al drie afdelings slaag. Hier is waarop jy moet fokus.",
+      "restores_default_to": "Jy moet al drie afdelings slaag. Hier is waarop jy moet fokus.",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "examResult",
+      "key": "passedBlurb",
+      "old": "Jy het elke afdeling suksesvol voltooi – hierdie is 'n geslaagde vraestel.",
+      "restores_default_to": "Jy het elke afdeling suksesvol voltooi – hierdie is 'n geslaagde vraestel.",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "examResult",
+      "key": "retake",
+      "old": "Hertoets eksamen",
+      "restores_default_to": "Hertoets eksamen",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "examResult",
+      "key": "showAll",
+      "old": "Wys alles",
+      "restores_default_to": "Wys alles",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "examResult",
+      "key": "viewAssessment",
+      "old": "Bekyk AI-assessering",
+      "restores_default_to": "Bekyk KI-assessering",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "demoKicker",
+      "old": "Regstreekse demonstrasie · probeer dit",
+      "restores_default_to": "Regstreekse demo · probeer dit",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "faqA5",
+      "old": "Ja. Die toepassing se koppelvlak is tweetalig – jy kan te eniger tyd vanaf die boonste balk tussen Engels en Afrikaans wissel.",
+      "restores_default_to": "Die app se koppelvlak is tweetalig — wissel enige tyd bo-aan tussen Engels en Afrikaans. Die vrae en lesse self is voorlopig in Engels; die Afrikaanse inhoud word tans geskryf.",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "feat1Body",
+      "old": "Duidelike redes in eenvoudige taal — nie net \"verkeerd\" nie.",
+      "restores_default_to": "Verduidelikings in gewone taal, getoets teen die amptelike reëls — nie net “verkeerd” nie.",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "feat2Title",
+      "old": "Eksamenstyl oefeninge ",
+      "restores_default_to": "Eksamenstyl oefeninge",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "feat3Body",
+      "old": "Sien jou swakpunte en gereedheidstelling oor tyd.",
+      "restores_default_to": "Sien jou swakpunte en gereedheidstelling oor tyd.",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "login",
+      "old": "Teken in",
+      "restores_default_to": "Teken in",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "planCta",
+      "old": "Ontsluit volle toegang",
+      "restores_default_to": "Ontsluit volle toegang",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "landing",
+      "key": "subtitle",
+      "old": "Neem die gratis gereedheidstoets, sien presies waar jy staan, en laat jou AI-afrigter elke fout verduidelik totdat jy gereed is vir die toets.",
+      "restores_default_to": "Doen die gratis gereedheidstoets, sien presies waar jy staan, en kry 'n duidelike verduideliking van elke fout totdat jy toetsgereed is.",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "learn",
+      "key": "subtitle",
+      "old": "Die K53-leerlingtoets bestaan ​​uit drie onderwerpe.",
+      "restores_default_to": "Die K53-leerlingtoets bestaan uit drie onderwerpe.",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "legal",
+      "key": "p1",
+      "old": "Die gratis gereedheidstoets is anoniem — geen rekening word benodig nie.",
+      "restores_default_to": "Die gratis gereedheidstoets is anoniem — geen rekening word benodig nie.",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "legal",
+      "key": "p2",
+      "old": "Ons versamel of stoor nooit biometriese data nie. Sleutelkode-aanmelding word deur jou eie toestel gehanteer.",
+      "restores_default_to": "Ons versamel of stoor nooit biometriese data nie. Sleutelkode-aanmelding word deur jou eie toestel hanteer.",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "mock",
+      "key": "rule1",
+      "old": "{count} vrae oor drie afdelings: Reëls van die Pad, Padtekens, en Voertuigkontroles.",
+      "restores_default_to": "{count} vrae oor drie afdelings: Reëls van die Pad, Padtekens, en Voertuigkontroles.",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "mock",
+      "key": "rule2",
+      "old": "Elke afdeling word afsonderlik gegradeer. As jy in een afdeling druip, druip jy die hele eksamen.",
+      "restores_default_to": "Elke afdeling word afsonderlik gegradeer. As jy in een afdeling druip, druip jy die hele eksamen.",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "mock",
+      "key": "subtitle",
+      "old": "'n Volledige vraestel volgens die K53-formaat. Dit bestaan ​​uit drie afdelings wat elk afsonderlik gemerk word – jy moet in al drie slaag",
+      "restores_default_to": "'n Volledige vraestel volgens die K53-formaat. Dit bestaan uit drie afdelings wat elk afsonderlik gemerk word – jy moet in al drie slaag",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "mock",
+      "key": "timerLabel",
+      "old": "Tyd (60 minute)",
+      "restores_default_to": "Tyd (60 minute)",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "mock",
+      "key": "viewResult",
+      "old": "Besigtig uitslag",
+      "restores_default_to": "Besigtig uitslag",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "module",
+      "key": "backControls",
+      "old": "Voertuigkontroles",
+      "restores_default_to": "Voertuigkontroles",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "module",
+      "key": "controlsSubtitle",
+      "old": "Wat elke voertuigkontroles doen, hoe om dit te gebruik, en die algemene fout.",
+      "restores_default_to": "Wat elke voertuigkontroles doen, hoe om dit te gebruik, en die algemene fout.",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "module",
+      "key": "controlsTitle",
+      "old": "Voertuigkontroles",
+      "restores_default_to": "Voertuigkontroles",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "module",
+      "key": "relatedControls",
+      "old": "Verwante kontroles",
+      "restores_default_to": "Verwante kontroles",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "nav",
+      "key": "home",
+      "old": "Tuisblad",
+      "restores_default_to": "Tuisblad",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "nav",
+      "key": "mock",
+      "old": "Oefen toets",
+      "restores_default_to": "Proefeksamen",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "notFound",
+      "key": "home",
+      "old": "Terug na tuisblad",
+      "restores_default_to": "Terug na tuisblad",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "paywall",
+      "key": "testNeedsAuth",
+      "old": "Teken eers in, ontsluit dan toegang.",
+      "restores_default_to": "Teken eers in, ontsluit dan toegang.",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "progressPage",
+      "key": "blendNote",
+      "old": "Saamgestel uit jou proefeksamens en oefenwerk.",
+      "restores_default_to": "Saamgestel uit jou proefeksamens en oefenwerk.",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "af",
+      "namespace": "result",
+      "key": "seeAssessment",
+      "old": "Sien 'n voorbeeld AI-assessering",
+      "restores_default_to": "Sien 'n voorbeeld KI-assessering",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    },
+    {
+      "locale": "af",
+      "namespace": "topics",
+      "key": "controls",
+      "old": "Voertuigkontroles",
+      "restores_default_to": "Voertuigkontroles",
+      "choice": "A",
+      "why": "Louwrens kept his own wording (A). It is now the shipped default in messages/af.json, so the override row is redundant."
+    },
+    {
+      "locale": "en",
+      "namespace": "nav",
+      "key": "admin",
+      "old": "Admin ",
+      "restores_default_to": "Admin",
+      "choice": "B",
+      "why": "Louwrens chose our alternative (B), which is already the shipped default. Deleting the row lets it render."
+    }
+  ]
+}

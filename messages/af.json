@@ -3,9 +3,9 @@
   "common": {
     "appName": "K53 Coach",
     "demo": "Demo",
-    "login": "Meld aan",
+    "login": "Teken in",
     "logout": "Teken uit",
-    "home": "Tuis",
+    "home": "Tuisblad",
     "language": "Taal",
     "close": "Maak toe"
   },
@@ -15,7 +15,7 @@
     "af": "Afrikaans"
   },
   "nav": {
-    "home": "Tuis",
+    "home": "Tuisblad",
     "learn": "Leer",
     "mock": "Proefeksamen",
     "progress": "Vordering",
@@ -30,7 +30,7 @@
   "topics": {
     "signs": "Padtekens",
     "rules": "Reëls van die Pad",
-    "controls": "Voertuigbeheer"
+    "controls": "Voertuigkontroles"
   },
   "landing": {
     "badge": "AI-afgerig, nie net vasvrae nie",
@@ -63,7 +63,7 @@
     "navTopics": "Onderwerpe",
     "navPricing": "Pryse",
     "navParents": "Vir Ouers",
-    "login": "Meld aan",
+    "login": "Teken in",
     "startFree": "Begin gratis",
     "titleMid": "toets",
     "trust1": "Geen aflaai",
@@ -77,10 +77,10 @@
     "whyTitleEmph": "hoekom.",
     "feat1Title": "Elke fout verduidelik",
     "feat1Body": "Verduidelikings in gewone taal, getoets teen die amptelike reëls — nie net “verkeerd” nie.",
-    "feat2Title": "Toets-styl oefening",
+    "feat2Title": "Eksamenstyl oefeninge",
     "feat2Body": "Vrae geskryf uit die Nasionale Padverkeerswet, die regulasies daarby en die amptelike tekenkaart.",
     "feat3Title": "Volg jou vordering",
-    "feat3Body": "Sien jou swak plekke en gereedheidstelling oor tyd.",
+    "feat3Body": "Sien jou swakpunte en gereedheidstelling oor tyd.",
     "feat4Title": "Leer enige plek",
     "feat4Body": "Enige toestel, reguit uit die webblaaier — niks om af te laai nie.",
     "pricingKicker": "Pryse",
@@ -99,7 +99,7 @@
     "planF2": "'n KI-assessering ná elke proefeksamen",
     "planF3": "Alle onderwerpe & vorderingnasporing",
     "planF4": "Werk op enige toestel",
-    "planCta": "Sluit volle toegang oop",
+    "planCta": "Ontsluit volle toegang",
     "pricingNoteLead": "Wanneer die 90 dae verstryk,",
     "pricingNoteBold": "hou toegang eenvoudig op",
     "pricingNoteRest": "— niks hernu nie, en ons stoor geen kaart nie.",
@@ -188,7 +188,7 @@
     "seeAssessment": "Sien 'n voorbeeld KI-assessering"
   },
   "auth": {
-    "title": "Meld aan of registreer",
+    "title": "Teken in of registreer",
     "subtitle": "Een rekening per leerder. Ouers betaal; leerders oefen.",
     "passkey": "Gaan voort met 'n sleutelkode",
     "passkeyToast": "Sleutelkode-aanmelding kom met Supabase WebAuthn. Jou toestel hanteer Face ID / vingerafdruk — ons stoor nooit biometrie nie.",
@@ -217,13 +217,13 @@
     "stub": "{gateway} is nog nie beskikbaar nie — gebruik asseblief PayFast.",
     "testNote": "Toetsmodus — dit ontsluit volle toegang sonder n werklike betaling.",
     "testUnlocked": "Toegang ontsluit — geniet die volledige app.",
-    "testNeedsAuth": "Meld eers aan, ontsluit dan toegang.",
+    "testNeedsAuth": "Teken eers in, ontsluit dan toegang.",
     "alreadyActive": "Jy het reeds volle toegang — jy hoef nie weer te betaal nie.",
     "checkoutFailed": "Ons kon nie die betaling begin nie. Probeer asseblief weer."
   },
   "dashboard": {
     "welcome": "Welkom terug 👋",
-    "welcomeSub": "Hou aan — klein daaglikse sessies klop blokleer.",
+    "welcomeSub": "Hou aan – kort daaglikse sessies is beter as om alles op die laaste nippertjie in te prop.",
     "readinessTitle": "Jou gereedheid",
     "seeBreakdown": "Sien uiteensetting",
     "recommendedNext": "Aanbevole lesse",
@@ -239,7 +239,7 @@
   },
   "learn": {
     "title": "Leer",
-    "subtitle": "Drie onderwerpe maak die K53-leerlingtoets uit.",
+    "subtitle": "Die K53-leerlingtoets bestaan uit drie onderwerpe.",
     "signsSub": "{count} tekens beskikbaar",
     "rulesSub": "{count} reëls beskikbaar",
     "controlsSub": "{count} beheerelemente beskikbaar",
@@ -251,7 +251,7 @@
     "note": "Jou telling kombineer jou proefeksamens, hoe akkuraat jy per onderwerp is, en hoe gereeld jy oefen.",
     "mockHeading": "Proefeksamens",
     "noMocks": "Nog geen proefeksamens nie.",
-    "blendNote": "Gemeng uit jou proefeksamens en oefening.",
+    "blendNote": "Saamgestel uit jou proefeksamens en oefenwerk.",
     "reset": "Herstel vordering",
     "resetConfirm": "Herstel al jou vordering? Dit verwyder jou oefenpogings, gereedheidstellings en proefeksamengeskiedenis permanent. Dit kan nie ongedaan gemaak word nie.",
     "resetDone": "Jou vordering is herstel.",
@@ -262,13 +262,13 @@
     "signsSubtitle": "Tik 'n teken om te leer wat dit beteken, wat om te doen, en die algemene fout.",
     "rulesTitle": "Reëls van die Pad",
     "rulesSubtitle": "Die reëls wat eksaminatore die meeste toets — wat om te doen, en die algemene fout.",
-    "controlsTitle": "Voertuigbeheer",
-    "controlsSubtitle": "Wat elke beheer doen, hoe om dit te gebruik, en die algemene fout.",
+    "controlsTitle": "Voertuigkontroles",
+    "controlsSubtitle": "Wat elke voertuigkontroles doen, hoe om dit te gebruik, en die algemene fout.",
     "practice": "Oefen hierdie onderwerp",
     "draft": "konsep",
     "backSigns": "Padtekens",
     "backRules": "Reëls van die Pad",
-    "backControls": "Voertuigbeheer",
+    "backControls": "Voertuigkontroles",
     "inPlainEnglish": "In eenvoudige taal",
     "formalMeaning": "Formele betekenis:",
     "inShort": "Kortliks",
@@ -280,7 +280,7 @@
     "testHint": "Toetswenk",
     "dontConfuse": "Moenie verwar met nie",
     "relatedRules": "Verwante reëls",
-    "relatedControls": "Verwante beheerelemente",
+    "relatedControls": "Verwante kontroles",
     "artwork": "Tekenkuns: {source} · {licence}",
     "contentSoon": "Leerderinhoud vir hierdie teken word voorberei."
   },
@@ -326,7 +326,7 @@
     "title": "Privaatheid & POPIA",
     "intro": "Plekhouer-kennisgewing vir die MVP-raamwerk. Die produksiebeleid word met regsoorsig opgestel voor bekendstelling (DB12).",
     "principlesTitle": "Ons privaatheidsbeginsels",
-    "p1": "Die gratis gereedheidstoets is anoniem — geen rekening nodig nie.",
+    "p1": "Die gratis gereedheidstoets is anoniem — geen rekening word benodig nie.",
     "p2": "Ons versamel of stoor nooit biometriese data nie. Sleutelkode-aanmelding word deur jou eie toestel hanteer.",
     "p3": "Jou gratis gereedheidsuitslag bly op jou eie toestel totdat jy kies om 'n rekening te skep.",
     "p4": "Ons versamel die minimum persoonlike inligting wat nodig is.",
@@ -340,13 +340,13 @@
   },
   "mock": {
     "title": "Proefeksamen",
-    "subtitle": "n Volledige K53-styl vraestel. Drie afdelings, elk afsonderlik gepunt — jy moet al drie slaag.",
+    "subtitle": "'n Volledige vraestel volgens die K53-formaat. Dit bestaan uit drie afdelings wat elk afsonderlik gemerk word – jy moet in al drie slaag",
     "rulesTitle": "Hoe die eksamen werk",
-    "rule1": "{count} vrae oor drie afdelings: Reëls van die Pad, Padtekens, en Voertuigbeheer.",
-    "rule2": "Elke afdeling word afsonderlik gepunt. As jy een afdeling druip, druip jy die hele eksamen.",
+    "rule1": "{count} vrae oor drie afdelings: Reëls van die Pad, Padtekens, en Voertuigkontroles.",
+    "rule2": "Elke afdeling word afsonderlik gegradeer. As jy in een afdeling druip, druip jy die hele eksamen.",
     "rule3": "Geen terugvoer tydens die eksamen nie — jy sien aan die einde hoe jy gevaar het.",
     "rule4": "Vrae kom in ’n vaste volgorde, een op ’n slag. Jy kan jou antwoord verander totdat jy op Volgende druk — daarna kan jy nie daarheen teruggaan nie, en jy kan nie vooruit spring nie. Die regte toets werk net so.",
-    "timerLabel": "Getyd (60 minute)",
+    "timerLabel": "Tyd (60 minute)",
     "timerHint": "Aanbeveel vir n realistiese lopie. Die eksamen word outomaties ingedien wanneer die tyd verstryk.",
     "start": "Begin eksamen",
     "sectionsHeading": "Afdelings",
@@ -355,7 +355,7 @@
     "noHistory": "Nog geen eksamens nie — neem jou eerste een hierbo.",
     "passed": "Geslaag",
     "failed": "Gedruip",
-    "viewResult": "Bekyk uitslag"
+    "viewResult": "Besigtig uitslag"
   },
   "mockAdvice": {
     "heading": "Voordat jy die regte toets bespreek",
@@ -365,7 +365,7 @@
   "exam": {
     "sectionOf": "Afdeling {current} van {total}",
     "sectionName": "{name}",
-    "sectionBrief": "{count} vrae · slaag {pass} om hierdie afdeling te klaar",
+    "sectionBrief": "{count} vrae · slaag {pass} om hierdie afdeling te voltooi",
     "beginSection": "Begin afdeling",
     "questionCounter": "{current} van {total}",
     "next": "Volgende",
@@ -386,8 +386,8 @@
     "title": "Eksamenuitslag",
     "passed": "Jy het geslaag",
     "failed": "Nie geslaag nie",
-    "passedBlurb": "Jy het elke afdeling geklaar — dit is n slaagvraestel.",
-    "failedBlurb": "Jy moet al drie afdelings slaag. Hier is waarop om te fokus.",
+    "passedBlurb": "Jy het elke afdeling suksesvol voltooi – hierdie is 'n geslaagde vraestel.",
+    "failedBlurb": "Jy moet al drie afdelings slaag. Hier is waarop jy moet fokus.",
     "autoSubmitted": "Outomaties ingedien toe die tyd verstryk het.",
     "durationLabel": "Tyd geneem: {minutes} min",
     "sectionsHeading": "Per afdeling",
@@ -396,10 +396,10 @@
     "sectionTarget": "Benodig {passRequired}/{total} · {gap} meer",
     "viewAssessment": "Bekyk KI-assessering",
     "reviewAnswers": "Hersien my antwoorde",
-    "retake": "Herneem eksamen",
+    "retake": "Hertoets eksamen",
     "backDashboard": "Terug na paneelbord",
     "reviewTitle": "Antwoordhersiening",
-    "showAll": "Wys almal",
+    "showAll": "Wys alles",
     "wrongOnly": "Slegs verkeerde antwoorde",
     "notFound": "Daardie eksamen kon nie gevind word nie.",
     "unanswered": "Nie beantwoord nie"
@@ -429,7 +429,7 @@
   "notFound": {
     "title": "Bladsy nie gevind nie",
     "body": "Daardie bladsy bestaan nie of het dalk geskuif. Kom ons kry jou terug op die pad.",
-    "home": "Terug na tuis",
+    "home": "Terug na tuisblad",
     "dashboard": "Gaan na paneelbord"
   },
   "lessonDemo": {
@@ -473,7 +473,7 @@
     "ctaBtn": "Sluit My Studieplan Oop"
   },
   "meta": {
-    "dashboard": "Tuis",
+    "dashboard": "Tuisblad",
     "learn": "Leer",
     "signs": "Padtekens",
     "rules": "Reëls van die Pad",
