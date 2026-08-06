@@ -298,6 +298,8 @@
     "confidenceAria": "Hoe seker voel jy?"
   },
   "feedback": {
+    "fabLabel": "Meld 'n fout",
+    "fabProblemHint": "Iets het verkeerd geloop — tik om ons te laat weet",
     "bugTitle": "Rapporteer 'n probleem",
     "bugIntro": "Sê vir ons wat verkeerd geloop het, dan kyk ons daarna.",
     "bugPlaceholder": "Wat het jy gedoen, en wat het in plaas daarvan gebeur?",
@@ -341,7 +343,7 @@
     "rule1": "{count} vrae oor drie afdelings: Reëls van die Pad, Padtekens, en Voertuigbeheer.",
     "rule2": "Elke afdeling word afsonderlik gepunt. As jy een afdeling druip, druip jy die hele eksamen.",
     "rule3": "Geen terugvoer tydens die eksamen nie — jy sien aan die einde hoe jy gevaar het.",
-    "rule4": "Jy kan n antwoord verander totdat jy na die volgende vraag gaan.",
+    "rule4": "Vrae kom in ’n vaste volgorde, een op ’n slag. Jy kan jou antwoord verander totdat jy op Volgende druk — daarna kan jy nie daarheen teruggaan nie, en jy kan nie vooruit spring nie. Die regte toets werk net so.",
     "timerLabel": "Getyd (60 minute)",
     "timerHint": "Aanbeveel vir n realistiese lopie. Die eksamen word outomaties ingedien wanneer die tyd verstryk.",
     "start": "Begin eksamen",

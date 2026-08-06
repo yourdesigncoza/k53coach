@@ -297,6 +297,8 @@
     "confidenceAria": "How confident do you feel?"
   },
   "feedback": {
+    "fabLabel": "Report a bug",
+    "fabProblemHint": "Something went wrong — tap to tell us",
     "bugTitle": "Report a problem",
     "bugIntro": "Tell us what went wrong and we'll look into it.",
     "bugPlaceholder": "What were you doing, and what happened instead?",
@@ -340,7 +342,7 @@
     "rule1": "{count} questions across three sections: Rules of the Road, Road Signs, and Vehicle Controls.",
     "rule2": "Each section is scored separately. Failing one section fails the whole exam.",
     "rule3": "No feedback during the exam — you find out how you did at the end.",
-    "rule4": "You can change an answer until you move to the next question.",
+    "rule4": "Questions come in a fixed order, one at a time. You can change your answer until you tap Next — after that you cannot return to it, and you cannot skip ahead. The real test works the same way.",
     "timerLabel": "Timed (60 minutes)",
     "timerHint": "Recommended for a realistic run. The exam submits automatically when time runs out.",
     "start": "Start exam",
