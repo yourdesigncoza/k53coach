@@ -143,6 +143,27 @@ Two valid resolutions, and they point opposite ways:
 why it was safe to ship ahead of the decision — but if the answer is "gating is wrong", the pricing
 card should be revisited at the same time.
 
+✅ **Settled 2026-08-06: leave it open. Do not gate practice, and do not raise this
+proactively — surface it only if Louwrens asks.** So the first resolution stands: the
+free tier really is that generous, and the paid tier is sold on mock exams plus the AI
+assessment. Two consequences worth knowing rather than rediscovering:
+
+- **The whole bank is anonymously scrapable.** One unauthenticated request to
+  `/en/learn/rules/practice` returns all 120 approved rules questions **with their
+  verified explanations** in the page payload; signs and controls the same. That is the
+  moat (constraint 4) served to a `curl`. Accepted, not overlooked.
+- **The paid tier got thinner the same day**, when AP-09 put the AI assessment on the
+  free readiness test. R179 previously bought mock exams + the AI assessment; it now
+  buys mock exams and a longer version of something available free. That was the
+  intended upside — the differentiator reaches every visitor instead of only buyers —
+  but it moved the free/paid line, so read the pricing card against it before Stage 1
+  marketing goes out.
+
+The options weighed and declined were: sign-in-but-still-free for practice (captures the
+account, stops bulk scraping, but pulls minors into account creation and the
+parent-consent question), and a free-sample/paid-depth split (which would need
+`landing.freeF2` corrected back **down**, having just been corrected upward).
+
 ---
 
 ## Re-measuring

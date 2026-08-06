@@ -109,5 +109,6 @@ started.
 
 ### Housekeeping
 
-- [ ] `src/lib/llm.ts:3` — the doc comment still says "model gpt-4o-mini" while
-      `LLM_MODEL` is `gpt-5.4-mini-2026-03-17`. One line; fix when next in the file.
+- [x] `src/lib/llm.ts` — the doc comment claimed "gpt-4o-mini" while `LLM_MODEL` was
+      `gpt-5.4-mini-2026-03-17`. Fixed 2026-08-06 to point at the constant, so it cannot
+      go stale again on the next model change.
