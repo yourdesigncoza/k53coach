@@ -26,151 +26,39 @@
  * It does NOT push to Linear — that is a deliberate admin action and this script
  * should never create issues in a real workspace as a side effect of a test run.
  */
-import { readFileSync, existsSync, readdirSync } from "node:fs";
-import { join } from "node:path";
-import { homedir } from "node:os";
-import { pathToFileURL } from "node:url";
-
-// ESM ignores NODE_PATH, so resolve the out-of-repo install explicitly — same
-// approach as flow.mjs/assessment.mjs, for the same reason (Playwright is not a
-// dependency of this project).
-const pwDir = [
-  process.env.PLAYWRIGHT_DIR,
-  join(homedir(), "tools/playwright-e2e/node_modules/playwright"),
-  join(process.cwd(), "node_modules/playwright"),
-]
-  .filter(Boolean)
-  .find((p) => existsSync(join(p, "package.json")));
-if (!pwDir) {
-  console.error("playwright not found — see scripts/e2e/flow.mjs for install notes");
-  process.exit(2);
-}
-const pw = await import(pathToFileURL(join(pwDir, "index.js")).href);
-const chromium = pw.chromium ?? pw.default?.chromium;
-if (!chromium) {
-  console.error("resolved playwright at " + pwDir + " but it exposes no chromium");
-  process.exit(2);
-}
-
-// Reuse whatever chromium is already in the Playwright cache rather than making
-// every run download a build matched to this exact package version.
-function findChromium() {
-  if (process.env.CHROMIUM_PATH) return process.env.CHROMIUM_PATH;
-  const cache = join(homedir(), ".cache/ms-playwright");
-  if (!existsSync(cache)) return undefined;
-  const builds = readdirSync(cache)
-    .filter((d) => /^chromium-\d+$/.test(d))
-    .sort((a, b) => Number(b.split("-")[1]) - Number(a.split("-")[1]));
-  for (const b of builds) {
-    for (const rel of ["chrome-linux64/chrome", "chrome-linux/chrome"]) {
-      const p = join(cache, b, rel);
-      if (existsSync(p)) return p;
-    }
-  }
-  return undefined;
-}
-
-const argv = process.argv.slice(2);
-const arg = (name, fallback) => {
-  const i = argv.indexOf(`--${name}`);
-  return i >= 0 && argv[i + 1] && !argv[i + 1].startsWith("--") ? argv[i + 1] : fallback;
-};
-const flag = (name) => argv.includes(`--${name}`);
+import { arg, flag, launch, makeChecks, rest, signedInContext as signIn, supabaseKeys } from "./lib.mjs";
 
 const BASE = arg("base", "http://localhost:3000");
 const LOCALE = arg("locale", "en");
 const KEEP = flag("keep");
 const HEADED = flag("headed");
 
-function envLocal() {
-  const text = existsSync(".env.local") ? readFileSync(".env.local", "utf8") : "";
-  return Object.fromEntries(
-    text
-      .split("\n")
-      .filter((l) => /^[A-Z]/.test(l))
-      .map((l) => {
-        const i = l.indexOf("=");
-        return [l.slice(0, i), l.slice(i + 1).trim()];
-      }),
-  );
-}
-
-const env = envLocal();
-const SUPA = env.NEXT_PUBLIC_SUPABASE_URL;
-const ANON = env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const SVC = env.SUPABASE_SERVICE_ROLE_KEY;
-if (!SUPA || !ANON || !SVC) {
+if (!supabaseKeys().service) {
   console.error("Supabase keys missing from .env.local");
   process.exit(2);
 }
 
-const pass = [];
-const fail = [];
-const check = (ok, label, detail = "") => {
-  (ok ? pass : fail).push(label + (detail ? ` — ${detail}` : ""));
-  console.log(`${ok ? "  ✓" : "  ✗"} ${label}${detail ? ` — ${detail}` : ""}`);
-};
+const { check, report } = makeChecks();
 
 async function signedInContext(browser) {
-  const email = process.env.E2E_EMAIL || "e2e-reporter@k53coach.dev";
-  const password = process.env.E2E_PASSWORD || "e2e-Report-Pass-2026!";
-
-  await fetch(`${SUPA}/auth/v1/admin/users`, {
-    method: "POST",
-    headers: { apikey: SVC, Authorization: `Bearer ${SVC}`, "content-type": "application/json" },
-    body: JSON.stringify({ email, password, email_confirm: true }),
-  }).catch(() => {});
-
-  const tok = await fetch(`${SUPA}/auth/v1/token?grant_type=password`, {
-    method: "POST",
-    headers: { apikey: ANON, "content-type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  }).then((r) => r.json());
-  if (!tok.access_token) throw new Error(`no session: ${JSON.stringify(tok).slice(0, 200)}`);
-
-  const ref = new URL(SUPA).hostname.split(".")[0];
-  const session = {
-    access_token: tok.access_token,
-    refresh_token: tok.refresh_token,
-    expires_at: tok.expires_at,
-    expires_in: tok.expires_in,
-    token_type: "bearer",
-    user: tok.user,
-  };
-  const raw = "base64-" + Buffer.from(JSON.stringify(session)).toString("base64url");
-
-  const ctx = await browser.newContext({ viewport: { width: 1180, height: 1000 } });
-  await ctx.addCookies([
-    {
-      name: `sb-${ref}-auth-token`,
-      value: raw,
-      domain: new URL(BASE).hostname,
-      path: "/",
-      sameSite: "Lax",
-      secure: BASE.startsWith("https"),
-    },
-  ]);
-  ctx._userId = tok.user.id;
+  const ctx = await signIn(browser, {
+    base: BASE,
+    email: process.env.E2E_EMAIL || "e2e-reporter@k53coach.dev",
+    password: process.env.E2E_PASSWORD || "e2e-Report-Pass-2026!",
+    viewport: { width: 1180, height: 1000 },
+  });
+  if (!ctx) throw new Error("could not mint a session — check .env.local");
   return ctx;
 }
 
 /** Read rows back with the service role so RLS can't mask a write failure. */
-async function fetchReports(userId) {
-  const res = await fetch(
-    `${SUPA}/rest/v1/feedback_reports?user_id=eq.${userId}&order=created_at.desc&limit=5`,
-    { headers: { apikey: SVC, Authorization: `Bearer ${SVC}` } },
-  );
-  return res.json();
-}
+const fetchReports = (userId) =>
+  rest(`feedback_reports?user_id=eq.${userId}&order=created_at.desc&limit=5`);
 
-async function deleteReports(userId) {
-  await fetch(`${SUPA}/rest/v1/feedback_reports?user_id=eq.${userId}`, {
-    method: "DELETE",
-    headers: { apikey: SVC, Authorization: `Bearer ${SVC}` },
-  });
-}
+const deleteReports = (userId) =>
+  rest(`feedback_reports?user_id=eq.${userId}`, { method: "DELETE" }).catch(() => {});
 
-const browser = await chromium.launch({ headless: !HEADED, executablePath: findChromium() });
+const browser = await launch({ headed: HEADED });
 const ctx = await signedInContext(browser);
 const page = await ctx.newPage();
 const userId = ctx._userId;
@@ -298,8 +186,4 @@ try {
   await browser.close();
 }
 
-console.log(`\n${fail.length === 0 ? "PASS" : "FAIL"} — ${pass.length} passed, ${fail.length} failed`);
-if (fail.length) {
-  for (const f of fail) console.log(`  ✗ ${f}`);
-  process.exit(1);
-}
+process.exit(report());

@@ -16,35 +16,7 @@
  * hide the next five. Console errors, failed requests and broken images are
  * collected globally and reported per flow.
  */
-import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { homedir } from "node:os";
-import { join } from "node:path";
-import { pathToFileURL } from "node:url";
-
-// ESM ignores NODE_PATH, so resolve the out-of-repo install explicitly.
-// PLAYWRIGHT_DIR overrides; otherwise try the conventional tools location and
-// finally a normal bare import in case someone did add it to the repo.
-const candidates = [
-  process.env.PLAYWRIGHT_DIR,
-  join(homedir(), "tools/playwright-e2e/node_modules/playwright"),
-  join(process.cwd(), "node_modules/playwright"),
-].filter(Boolean);
-const hit = candidates.find((p) => existsSync(join(p, "package.json")));
-if (!hit) {
-  console.error(
-    "playwright not found. Install it out of tree:\n" +
-      "  mkdir -p ~/tools/playwright-e2e && cd ~/tools/playwright-e2e && npm init -y && npm i playwright\n" +
-      "or point PLAYWRIGHT_DIR at an existing install.",
-  );
-  process.exit(2);
-}
-// playwright ships CJS, so an ESM import lands the whole module under `default`.
-const pw = await import(pathToFileURL(join(hit, "index.js")).href);
-const chromium = pw.chromium ?? pw.default?.chromium;
-if (!chromium) {
-  console.error("resolved playwright at " + hit + " but it exposes no chromium");
-  process.exit(2);
-}
+import { launch, signedInContext as signIn } from "./lib.mjs";
 
 const argv = process.argv.slice(2);
 const HEADED = argv.includes("--headed");
@@ -131,60 +103,19 @@ async function advance(page) {
 
 
 /**
- * Sign in as the e2e buyer by minting a Supabase session with the service-role key
- * and injecting the @supabase/ssr cookie. The app's own auth screen is magic-link
- * only, so there is no password form to drive; this is the supported way to get a
- * server-rendered session in a headless run.
+ * Sign in as the e2e buyer. The mechanics (create-on-demand, password grant,
+ * @supabase/ssr cookie shaped to `--base`) live in ./lib.mjs so all four drivers
+ * share one implementation; this only supplies the account.
  *
- * Reads .env.local itself so the runner needs no shell preamble. Returns null when
- * the keys are absent, and the flows that need auth then skip rather than fail.
+ * Returns null when the Supabase keys are absent, and the flows that need auth
+ * then run unauthenticated rather than failing.
  */
 async function signedInContext(browser) {
-  const envText = existsSync(".env.local") ? readFileSync(".env.local", "utf8") : "";
-  const env = Object.fromEntries(
-    envText.split("\n").filter((l) => /^[A-Z]/.test(l)).map((l) => {
-      const i = l.indexOf("=");
-      return [l.slice(0, i), l.slice(i + 1).trim()];
-    }),
-  );
-  const url = env.NEXT_PUBLIC_SUPABASE_URL;
-  const anon = env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  const svc = env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !anon || !svc) return null;
-
-  const email = process.env.E2E_EMAIL || "e2e-buyer@k53coach.dev";
-  const password = process.env.E2E_PASSWORD || "e2e-Sandbox-Pass-2026!";
-  const j = (r) => r.json();
-  // Create on demand; an existing user just 422s and we sign in below.
-  await fetch(`${url}/auth/v1/admin/users`, {
-    method: "POST",
-    headers: { apikey: svc, Authorization: `Bearer ${svc}`, "content-type": "application/json" },
-    body: JSON.stringify({ email, password, email_confirm: true }),
-  }).catch(() => {});
-  const tok = await fetch(`${url}/auth/v1/token?grant_type=password`, {
-    method: "POST",
-    headers: { apikey: anon, "content-type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  }).then(j);
-  if (!tok.access_token) return null;
-
-  const ref = new URL(url).hostname.split(".")[0];
-  const session = {
-    access_token: tok.access_token, refresh_token: tok.refresh_token,
-    expires_at: tok.expires_at, expires_in: tok.expires_in,
-    token_type: "bearer", user: tok.user,
-  };
-  const raw = "base64-" + Buffer.from(JSON.stringify(session)).toString("base64url");
-  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  // Cookie domain has to track --base, or a run against the deployed site silently
-  // sends no session and every authed flow reports "needs_auth".
-  const host = new URL(BASE).hostname;
-  const secure = BASE.startsWith("https");
-  await ctx.addCookies([
-    { name: `sb-${ref}-auth-token`, value: raw, domain: host, path: "/", sameSite: "Lax", secure },
-  ]);
-  ctx._userId = tok.user.id;
-  return ctx;
+  return signIn(browser, {
+    base: BASE,
+    email: process.env.E2E_EMAIL || "e2e-buyer@k53coach.dev",
+    password: process.env.E2E_PASSWORD || "e2e-Sandbox-Pass-2026!",
+  });
 }
 
 const flows = {};
@@ -380,27 +311,7 @@ flows.af = async (page) => {
 const ORDER = ["landing", "readiness", "paywall", "learn", "mock", "checkout", "entitled", "af"];
 const run = wanted.length ? wanted : ORDER;
 
-// Reuse whatever chromium is already in the Playwright cache rather than making
-// every run download a build matched to this exact package version.
-// CHROMIUM_PATH overrides.
-function findChromium() {
-  if (process.env.CHROMIUM_PATH) return process.env.CHROMIUM_PATH;
-  const cache = join(homedir(), ".cache/ms-playwright");
-  if (!existsSync(cache)) return undefined;
-  const builds = readdirSync(cache)
-    .filter((d) => /^chromium-\d+$/.test(d))
-    .sort((a, b) => Number(b.split("-")[1]) - Number(a.split("-")[1]));
-  for (const b of builds) {
-    for (const rel of ["chrome-linux64/chrome", "chrome-linux/chrome"]) {
-      const p = join(cache, b, rel);
-      if (existsSync(p)) return p;
-    }
-  }
-  return undefined;
-}
-
-const executablePath = findChromium();
-const browser = await chromium.launch({ headless: !HEADED, executablePath });
+const browser = await launch({ headed: HEADED });
 for (const name of run) {
   if (!flows[name]) {
     note(name, "fail", "unknown flow");

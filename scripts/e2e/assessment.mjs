@@ -23,31 +23,9 @@
  * Option order is already shuffled at assembly, so the draft's index matches the
  * on-screen A/B/C order.
  */
-import { readFileSync, existsSync, mkdirSync, writeFileSync, readdirSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { homedir } from "node:os";
-import { pathToFileURL } from "node:url";
-
-// ESM ignores NODE_PATH, so resolve the out-of-repo install explicitly — same
-// approach as flow.mjs, for the same reason (Playwright is not a dependency).
-const pwDir = [
-  process.env.PLAYWRIGHT_DIR,
-  join(homedir(), "tools/playwright-e2e/node_modules/playwright"),
-  join(process.cwd(), "node_modules/playwright"),
-].filter(Boolean).find((p) => existsSync(join(p, "package.json")));
-if (!pwDir) {
-  console.error("playwright not found — see scripts/e2e/flow.mjs for install notes");
-  process.exit(2);
-}
-const pw = await import(pathToFileURL(join(pwDir, "index.js")).href);
-const chromium = pw.chromium ?? pw.default?.chromium;
-
-const argv = process.argv.slice(2);
-const arg = (name, fallback) => {
-  const i = argv.indexOf(`--${name}`);
-  return i >= 0 && argv[i + 1] && !argv[i + 1].startsWith("--") ? argv[i + 1] : fallback;
-};
-const flag = (name) => argv.includes(`--${name}`);
+import { arg, flag, launch, signedInContext as signIn } from "./lib.mjs";
 
 const BASE = arg("base", "http://localhost:3000");
 const PROFILE = arg("profile", "weak");
@@ -71,56 +49,19 @@ const PROFILES = {
 
 // ── auth ──────────────────────────────────────────────────────────────────────
 
-function envLocal() {
-  const text = existsSync(".env.local") ? readFileSync(".env.local", "utf8") : "";
-  return Object.fromEntries(
-    text.split("\n").filter((l) => /^[A-Z]/.test(l)).map((l) => {
-      const i = l.indexOf("=");
-      return [l.slice(0, i), l.slice(i + 1).trim()];
-    }),
-  );
-}
-
 /**
- * Mint a Supabase session for the e2e buyer (who holds the live PayFast
- * entitlement from the 2026-08-03 ITN run) and inject the @supabase/ssr cookie.
- * The app's auth screen is magic-link only, so there is no password form.
+ * Sign in as the e2e buyer (who holds the live PayFast entitlement from the
+ * 2026-08-03 ITN run). The session mechanics live in ./lib.mjs — the app's auth
+ * screen is magic-link only, so there is no password form to drive.
  */
 async function signedInContext(browser) {
-  const env = envLocal();
-  const url = env.NEXT_PUBLIC_SUPABASE_URL;
-  const anon = env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  const svc = env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !anon || !svc) throw new Error("Supabase keys missing from .env.local");
-
-  const email = process.env.E2E_EMAIL || "e2e-buyer@k53coach.dev";
-  const password = process.env.E2E_PASSWORD || "e2e-Sandbox-Pass-2026!";
-  await fetch(`${url}/auth/v1/admin/users`, {
-    method: "POST",
-    headers: { apikey: svc, Authorization: `Bearer ${svc}`, "content-type": "application/json" },
-    body: JSON.stringify({ email, password, email_confirm: true }),
-  }).catch(() => {});
-  const tok = await fetch(`${url}/auth/v1/token?grant_type=password`, {
-    method: "POST",
-    headers: { apikey: anon, "content-type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  }).then((r) => r.json());
-  if (!tok.access_token) throw new Error(`no session: ${JSON.stringify(tok).slice(0, 200)}`);
-
-  const ref = new URL(url).hostname.split(".")[0];
-  const session = {
-    access_token: tok.access_token, refresh_token: tok.refresh_token,
-    expires_at: tok.expires_at, expires_in: tok.expires_in,
-    token_type: "bearer", user: tok.user,
-  };
-  const raw = "base64-" + Buffer.from(JSON.stringify(session)).toString("base64url");
-  const ctx = await browser.newContext({ viewport: { width: 1180, height: 1000 } });
-  await ctx.addCookies([{
-    name: `sb-${ref}-auth-token`, value: raw,
-    domain: new URL(BASE).hostname, path: "/", sameSite: "Lax",
-    secure: BASE.startsWith("https"),
-  }]);
-  ctx._userId = tok.user.id;
+  const ctx = await signIn(browser, {
+    base: BASE,
+    email: process.env.E2E_EMAIL || "e2e-buyer@k53coach.dev",
+    password: process.env.E2E_PASSWORD || "e2e-Sandbox-Pass-2026!",
+    viewport: { width: 1180, height: 1000 },
+  });
+  if (!ctx) throw new Error("could not mint a session — check .env.local");
   return ctx;
 }
 
@@ -275,30 +216,11 @@ async function generateAssessment(page, tag) {
   return { apiPayload, apiStatus, text, shot };
 }
 
-// ── chromium discovery (reuse the cached build; no per-version download) ──────
-
-function findChromium() {
-  if (process.env.CHROMIUM_PATH) return process.env.CHROMIUM_PATH;
-  const cache = join(homedir(), ".cache/ms-playwright");
-  if (!existsSync(cache)) return undefined;
-  const builds = readdirSync(cache)
-    .filter((d) => /^chromium-\d+$/.test(d))
-    .sort((a, b) => Number(b.split("-")[1]) - Number(a.split("-")[1]));
-  for (const b of builds) {
-    for (const rel of ["chrome-linux64/chrome", "chrome-linux/chrome"]) {
-      const p = join(cache, b, rel);
-      if (existsSync(p)) return p;
-    }
-  }
-  return undefined;
-}
-
 // ── main ──────────────────────────────────────────────────────────────────────
 
-const browser = await chromium.launch({
-  headless: false,
+const browser = await launch({
+  headed: true, // this driver exists to be watched
   slowMo: 40,
-  executablePath: findChromium(),
   args: ["--window-size=1200,1020"],
 });
 const ctx = await signedInContext(browser);
