@@ -57,6 +57,7 @@ export function ExamReview({ answers }: { answers: StoredExamAnswer[] }) {
                 chosen={a.chosen}
                 onChoose={() => {}}
                 mode="feedback"
+                reportable
               />
             </div>
           );

@@ -1,6 +1,8 @@
 import { AppHeader } from "@/components/app-header";
 import { BottomNav } from "@/components/bottom-nav";
 import { SideNav } from "@/components/side-nav";
+import { FeedbackTelemetry } from "@/components/feedback/feedback-telemetry";
+import { ReportFab } from "@/components/feedback/report-fab";
 
 export default function AppLayout({
   children,
@@ -21,6 +23,12 @@ export default function AppLayout({
 
       {/* Mobile: fixed bottom tab bar. Desktop: hidden. */}
       <BottomNav />
+
+      {/* Buffers errors/failed requests/clicks in memory so a report filed after
+          the fact still carries what actually broke. Nothing leaves the browser
+          unless the learner files a report. */}
+      <FeedbackTelemetry />
+      <ReportFab />
     </div>
   );
 }

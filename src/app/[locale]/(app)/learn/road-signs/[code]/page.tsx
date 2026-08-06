@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { SignImage } from "@/components/sign-image";
 import { getApprovedSignByCode } from "@/lib/supabase/queries";
 import { SIGN_CATEGORY_LABEL, signContent, localize } from "@/lib/signs";
+import { ReportQuestionButton } from "@/components/feedback/report-question-button";
 
 export async function generateMetadata({
   params,
@@ -134,6 +135,14 @@ export default async function SignDetailPage({
               licence: sign.licence ?? "Public domain",
             })}
           </p>
+
+          <div className="mt-2 flex justify-start">
+            <ReportQuestionButton
+              signCode={sign.code}
+              objectiveCode={sign.code}
+              contextLabel={`${sign.code} — ${sign.name}`}
+            />
+          </div>
         </div>
       </div>
     </main>

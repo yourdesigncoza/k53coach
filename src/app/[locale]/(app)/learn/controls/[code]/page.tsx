@@ -16,6 +16,7 @@ import {
   CONTROL_CATEGORY_META,
   getControl,
 } from "@/content/vehicle-controls";
+import { ReportQuestionButton } from "@/components/feedback/report-question-button";
 
 export function generateStaticParams() {
   return VEHICLE_CONTROLS.map((c) => ({ code: c.code }));
@@ -78,6 +79,11 @@ export default async function ControlDetailPage({
             <Badge variant="secondary" className="mt-2">
               {label}
             </Badge>
+            <ReportQuestionButton
+              objectiveCode={control.code}
+              contextLabel={`${control.code} — ${control.name}`}
+              className="mt-1 text-muted-foreground hover:text-foreground"
+            />
           </div>
 
           <Card className="mt-5 py-0">

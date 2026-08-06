@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ROAD_RULES, RULE_CATEGORY_META, getRule } from "@/content/road-rules";
+import { ReportQuestionButton } from "@/components/feedback/report-question-button";
 
 export function generateStaticParams() {
   return ROAD_RULES.map((r) => ({ code: r.code }));
@@ -72,6 +73,11 @@ export default async function RuleDetailPage({
             <Badge variant="secondary" className="mt-2">
               {label}
             </Badge>
+            <ReportQuestionButton
+              objectiveCode={rule.code}
+              contextLabel={`${rule.code} — ${rule.title}`}
+              className="mt-1 text-muted-foreground hover:text-foreground"
+            />
           </div>
 
           <Card className="mt-5 py-0">

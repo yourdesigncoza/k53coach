@@ -129,7 +129,7 @@ export function PracticeRunner({ questions }: { questions: Question[] }) {
         />
         <QuizProgress value={progress} />
 
-        <QuestionCard question={q} chosen={chosen} onChoose={choose} />
+        <QuestionCard question={q} chosen={chosen} onChoose={choose} reportable />
 
         <div className="mt-5 flex">
           <QuizButton onClick={next} disabled={!answered} className="flex-1">

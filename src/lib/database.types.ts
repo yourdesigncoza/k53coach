@@ -156,6 +156,81 @@ export type Database = {
         }
         Relationships: []
       }
+      feedback_reports: {
+        Row: {
+          admin_note: string | null
+          ai_priority: string | null
+          ai_title: string | null
+          body: string
+          chosen_index: number | null
+          context: Json
+          created_at: string
+          id: string
+          keyed_index: number | null
+          kind: string
+          linear_identifier: string | null
+          linear_issue_id: string | null
+          linear_issue_url: string | null
+          objective_code: string | null
+          question_id: string | null
+          resolved_at: string | null
+          resolved_by: string | null
+          sign_code: string | null
+          status: string
+          updated_at: string
+          user_email: string
+          user_id: string
+        }
+        Insert: {
+          admin_note?: string | null
+          ai_priority?: string | null
+          ai_title?: string | null
+          body: string
+          chosen_index?: number | null
+          context?: Json
+          created_at?: string
+          id?: string
+          keyed_index?: number | null
+          kind: string
+          linear_identifier?: string | null
+          linear_issue_id?: string | null
+          linear_issue_url?: string | null
+          objective_code?: string | null
+          question_id?: string | null
+          resolved_at?: string | null
+          resolved_by?: string | null
+          sign_code?: string | null
+          status?: string
+          updated_at?: string
+          user_email: string
+          user_id: string
+        }
+        Update: {
+          admin_note?: string | null
+          ai_priority?: string | null
+          ai_title?: string | null
+          body?: string
+          chosen_index?: number | null
+          context?: Json
+          created_at?: string
+          id?: string
+          keyed_index?: number | null
+          kind?: string
+          linear_identifier?: string | null
+          linear_issue_id?: string | null
+          linear_issue_url?: string | null
+          objective_code?: string | null
+          question_id?: string | null
+          resolved_at?: string | null
+          resolved_by?: string | null
+          sign_code?: string | null
+          status?: string
+          updated_at?: string
+          user_email?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string

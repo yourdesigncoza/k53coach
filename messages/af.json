@@ -297,6 +297,24 @@
     "confidence": "Vertroue — voel jy goed?",
     "confidenceAria": "Hoe seker voel jy?"
   },
+  "feedback": {
+    "bugTitle": "Rapporteer 'n probleem",
+    "bugIntro": "Sê vir ons wat verkeerd geloop het, dan kyk ons daarna.",
+    "bugPlaceholder": "Wat het jy gedoen, en wat het in plaas daarvan gebeur?",
+    "contentTitle": "Dit lyk verkeerd",
+    "contentIntro": "Sê vir ons wat jy dink verkeerd is. Ons kontroleer elke verslag teen die amptelike bronne.",
+    "contentPlaceholder": "Wat behoort die antwoord te wees, en hoekom?",
+    "flagAction": "Dit lyk verkeerd",
+    "wordCount": "{count} van {min} woorde",
+    "send": "Stuur verslag",
+    "sending": "Stuur tans…",
+    "cancel": "Kanselleer",
+    "thanks": "Dankie — ons kyk daarna.",
+    "errorTooShort": "Skryf asseblief ten minste {count} woorde sodat ons daarop kan reageer.",
+    "errorRateLimit": "Jy het pas 'n paar verslae gestuur. Probeer weer oor 'n rukkie.",
+    "errorAuth": "Meld asseblief aan om 'n verslag te stuur.",
+    "errorGeneric": "Kon dit nie stuur nie. Probeer asseblief weer."
+  },
   "comingSoon": {
     "back": "Terug na leer"
   },

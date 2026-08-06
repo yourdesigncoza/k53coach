@@ -5,6 +5,7 @@ import {
   examOptionState,
 } from "@/components/quiz/answer-option";
 import { CoachCard } from "@/components/quiz/quiz-chrome";
+import { ReportQuestionButton } from "@/components/feedback/report-question-button";
 import type { Question } from "@/lib/types";
 
 /**
@@ -24,18 +25,27 @@ import type { Question } from "@/lib/types";
  *    option is highlighted.
  * The explanation is hard-coded verified content (`question.explanation`) — there
  * is NO runtime AI here, which is why the label is "Coach Says", not "AI Coach".
+ *
+ * `reportable` adds the inline "this looks wrong" flag under the explanation.
+ * It lives HERE rather than in each surface because every learner-facing quiz
+ * renders through this component — putting it in practice-runner and exam-review
+ * separately is exactly the duplication that makes the two drift. Off by default
+ * so the landing demo (anonymous, marketing) doesn't offer a signed-in action.
  */
 export function QuestionCard({
   question,
   chosen,
   onChoose,
   mode = "feedback",
+  reportable = false,
 }: {
   question: Question;
   /** Chosen option index, or null while unanswered. */
   chosen: number | null;
   onChoose: (optionIndex: number) => void;
   mode?: "feedback" | "exam";
+  /** Show the inline content-report flag once the learner has answered. */
+  reportable?: boolean;
 }) {
   const isExam = mode === "exam";
   // In feedback mode the row locks once chosen; in exam mode it stays editable.
@@ -79,6 +89,19 @@ export function QuestionCard({
       </div>
 
       {!isExam && answered && <CoachCard>{question.explanation}</CoachCard>}
+
+      {/* Only after answering: before that the learner has no grounds to
+          disagree, and an always-visible flag invites noise. */}
+      {reportable && answered && (
+        <div className="mt-2 flex justify-end">
+          <ReportQuestionButton
+            questionId={question.id}
+            signCode={question.signCode ?? null}
+            chosenIndex={chosen}
+            contextLabel={question.prompt}
+          />
+        </div>
+      )}
     </>
   );
 }

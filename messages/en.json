@@ -296,6 +296,24 @@
     "confidence": "Confidence — feeling good?",
     "confidenceAria": "How confident do you feel?"
   },
+  "feedback": {
+    "bugTitle": "Report a problem",
+    "bugIntro": "Tell us what went wrong and we'll look into it.",
+    "bugPlaceholder": "What were you doing, and what happened instead?",
+    "contentTitle": "This looks wrong",
+    "contentIntro": "Tell us what you think is wrong. We check every report against the official sources.",
+    "contentPlaceholder": "What should the answer be, and why?",
+    "flagAction": "This looks wrong",
+    "wordCount": "{count} of {min} words",
+    "send": "Send report",
+    "sending": "Sending…",
+    "cancel": "Cancel",
+    "thanks": "Thanks — we'll look into it.",
+    "errorTooShort": "Please write at least {count} words so we can act on it.",
+    "errorRateLimit": "You've sent a few reports just now. Try again in a bit.",
+    "errorAuth": "Please sign in to send a report.",
+    "errorGeneric": "Couldn't send that. Please try again."
+  },
   "comingSoon": {
     "back": "Back to learning"
   },
