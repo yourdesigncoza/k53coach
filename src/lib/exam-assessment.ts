@@ -1,6 +1,10 @@
 /**
- * Post-exam AI coaching assessment — payload building, output validation, and a
- * deterministic fallback. Design + tone rules: docs/ai-assessment.md.
+ * Post-exam AI coaching assessment — the 64-question paid path. Payload building,
+ * the format's prompt tail, and its deterministic fallback.
+ *
+ * The output shape, the validator, the destination allow-list and every shared
+ * grounding rule live in `assessment-core.ts` and are re-exported here so existing
+ * importers keep working. Design + tone rules: docs/ai-assessment.md.
  *
  * Hard rules carried here:
  *  - grounded ONLY in the verified explanations of the questions the learner
@@ -12,53 +16,36 @@
  */
 import type { Topic } from "@/lib/types";
 import type { ExamSectionResult, StoredExamAnswer } from "@/lib/exam";
+import {
+  TOPIC_LABEL_EN,
+  TOPIC_SLUG,
+  allowedHrefs,
+  buildAssessmentSystem,
+  type Assessment,
+  type AssessmentLimits,
+  type AssessmentPlanStep,
+  type AssessmentPoint,
+} from "./assessment-core.ts";
 
-/** topic → the learner module slug used in /learn and /learn/.../practice URLs. */
-export const TOPIC_SLUG: Record<Topic, string> = {
-  signs: "road-signs",
-  rules: "rules",
-  controls: "controls",
+export {
+  TOPIC_SLUG,
+  TOPIC_LABEL_EN,
+  allowedHrefs,
+  parseAssessment,
+  PROMPT_VERSION,
+} from "./assessment-core.ts";
+export type {
+  Assessment,
+  AssessmentPlanStep,
+  AssessmentPoint,
+} from "./assessment-core.ts";
+
+/** A 64-question paper carries enough misses to support four of each. */
+export const EXAM_LIMITS: AssessmentLimits = {
+  maxStrengths: 4,
+  maxFocus: 4,
+  maxPlan: 4,
 };
-
-export const TOPIC_LABEL_EN: Record<Topic, string> = {
-  signs: "Road Signs",
-  rules: "Rules of the Road",
-  controls: "Vehicle Controls",
-};
-
-/** Allowed plan destinations (the model must pick from these). */
-export function allowedHrefs(): string[] {
-  const hrefs: string[] = ["/mock"];
-  for (const topic of Object.keys(TOPIC_SLUG) as Topic[]) {
-    hrefs.push(`/learn/${TOPIC_SLUG[topic]}`);
-    hrefs.push(`/learn/${TOPIC_SLUG[topic]}/practice`);
-  }
-  return hrefs;
-}
-
-export interface AssessmentPlanStep {
-  step: string;
-  minutes?: number;
-  href: string;
-}
-
-export interface AssessmentPoint {
-  title: string;
-  note: string;
-  topic: Topic;
-}
-
-export interface Assessment {
-  verdict: string;
-  strengths: AssessmentPoint[];
-  focus: AssessmentPoint[];
-  plan: AssessmentPlanStep[];
-  oneThing: string;
-  ctaTopic: Topic;
-  fallback?: boolean;
-  model?: string;
-  generatedAt?: string;
-}
 
 // ── Input payload (grounded, no PII) ──────────────────────────────────────────
 
@@ -141,79 +128,24 @@ export function buildAssessmentPayload(
 
 // ── Prompt ────────────────────────────────────────────────────────────────────
 
-export const ASSESSMENT_SYSTEM = `You are a warm, encouraging K53 driving-test coach for South African learners. You are given a learner's mock-exam result and the verified explanations of the questions they got wrong.
+const EXAM_FORMAT_RULES = `- Keep strengths to the passed/strong sections and focus to the weak ones. Up to 4 items each, plan 2-4 steps.
+- Do not spend a plan step on a section that already passed unless nothing else needs the time, and never write two steps that are the same task. A shorter, honest plan reads as more credible than a padded one.`;
 
-Write a short, personal coaching read. Rules you MUST follow:
-- Second person, warm, plain English at about a Grade 8 reading level. Encouraging even when the score is low — a low score means they found the gap early, never shame them.
-- GROUNDING (critical): only restate rules that appear in the supplied explanations. NEVER invent or state any traffic law, penalty, distance, speed or safety rule that is not in the supplied text. If a gap has no supplied explanation, say "review the {section} module" instead of inventing the rule.
-- Do not mention the learner's name, age, or any personal detail (you are given none).
-- NEVER tell the learner they are ready for the real test, and never tell them to book it, sit it, or that they will pass — however high the score. A passed mock is one good paper, not a verdict on the official test. Where you would say "you're ready", say that more mock papers are the next step instead. Praise the result, never certify it.
-- Return ONLY a JSON object with exactly these keys:
-  {
-    "verdict": string,                        // one warm, band-aware sentence
-    "strengths": [{"title": string, "note": string, "topic": "signs"|"rules"|"controls"}],
-    "focus":     [{"title": string, "note": string, "topic": "signs"|"rules"|"controls"}],
-    "plan":      [{"step": string, "minutes": number, "href": string}],  // href MUST be one of the allowed hrefs
-    "oneThing":  string,                       // the single highest-leverage focus
-    "ctaTopic":  "signs"|"rules"|"controls"    // the weakest section to practise first
-  }
-- Every plan href MUST be chosen from the allowedHrefs list in the payload. Keep strengths to the passed/strong sections and focus to the weak ones. 2-4 items each, plan 2-4 steps.`;
+/**
+ * The exam system prompt for one locale. The locale must already be validated by
+ * the caller against `routing.locales` — an arbitrary string here is an unbounded
+ * cache key, and an unbounded cache key is unbounded model spend.
+ */
+export function examAssessmentSystem(locale: string): string {
+  return buildAssessmentSystem({
+    locale,
+    sittingLabel: "mock-exam",
+    formatRules: EXAM_FORMAT_RULES,
+  });
+}
 
 export function assessmentUserPayload(payload: AssessmentPayload): string {
   return JSON.stringify(payload);
-}
-
-// ── Validation ────────────────────────────────────────────────────────────────
-
-const TOPICS: Topic[] = ["signs", "rules", "controls"];
-
-function isPoint(x: unknown): x is AssessmentPoint {
-  const p = x as AssessmentPoint;
-  return (
-    !!p &&
-    typeof p.title === "string" &&
-    typeof p.note === "string" &&
-    TOPICS.includes(p.topic)
-  );
-}
-
-/** Validate raw model JSON against the scaffold; return null if it doesn't fit. */
-export function parseAssessment(raw: string, allowed: string[]): Assessment | null {
-  let obj: unknown;
-  try {
-    obj = JSON.parse(raw);
-  } catch {
-    return null;
-  }
-  const a = obj as Assessment;
-  if (!a || typeof a.verdict !== "string" || !a.verdict.trim()) return null;
-  if (!Array.isArray(a.strengths) || !a.strengths.every(isPoint)) return null;
-  if (!Array.isArray(a.focus) || !a.focus.every(isPoint)) return null;
-  if (
-    !Array.isArray(a.plan) ||
-    !a.plan.every(
-      (s) =>
-        s &&
-        typeof s.step === "string" &&
-        typeof s.href === "string" &&
-        allowed.includes(s.href),
-    )
-  )
-    return null;
-  if (typeof a.oneThing !== "string" || !a.oneThing.trim()) return null;
-  if (!TOPICS.includes(a.ctaTopic)) return null;
-  return {
-    verdict: a.verdict,
-    strengths: a.strengths,
-    focus: a.focus,
-    plan: a.plan.map((s) => ({
-      step: s.step,
-      href: s.href,
-      ...(typeof s.minutes === "number" ? { minutes: s.minutes } : {}),
-    })),
-    oneThing: a.oneThing,
-    ctaTopic: a.ctaTopic,
-  };
 }
 
 // ── Deterministic fallback ────────────────────────────────────────────────────
@@ -278,15 +210,11 @@ export function buildFallbackAssessment(payload: AssessmentPayload): Assessment 
 
   return {
     verdict,
-    strengths: strengths.length
-      ? strengths
-      : [
-          {
-            title: "You showed up",
-            note: "Taking a full mock is the single best way to find your gaps early.",
-            topic: ctaTopic,
-          },
-        ],
+    // A strength names a topic and a score or it is not a strength. With no
+    // section over the line there is nothing specific to praise, so the list is
+    // empty — that is more honest than the mood filler ("You showed up") this
+    // used to emit, and the renderer already hides an empty list.
+    strengths,
     focus: focus.length
       ? focus
       : [
