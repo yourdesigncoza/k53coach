@@ -197,7 +197,7 @@ const SCENARIOS: Scenario[] = [
       { topic: "controls", correct: 3, total: 4, percent: 75 },
     ],
     verdict:
-      "You're test-ready, so book it. 87% is a comfortable pass, and Road Signs, the part that trips most people, came back perfect. One small Vehicle Controls gap is all that's left, and it won't stop you passing.",
+      "87% is a comfortable pass, and Road Signs, the part that trips most people, came back perfect. One small Vehicle Controls gap is all that's left. Put a few more mock papers behind you at this level before you book the real test.",
     strengths:
       "Road Signs 100%, Rules 80%. That's the hard part of the learner's test, already behind you.",
     focus: [

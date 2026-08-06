@@ -8,8 +8,9 @@ import { ReadinessRing } from "@/components/readiness-ring";
 import { SectionResultCard } from "@/components/exam/section-result-card";
 import { ExamReview } from "@/components/exam/exam-review";
 import { ExamAssessment } from "@/components/exam/exam-assessment";
+import { MockAdviceNote } from "@/components/exam/mock-advice-note";
 import { requireEntitledUser } from "@/lib/exam-guard";
-import { getExamAttempt } from "@/lib/supabase/queries";
+import { getExamAttempt, getPassedMockCount } from "@/lib/supabase/queries";
 import { bandFor } from "@/lib/readiness";
 import type { Topic, ReadinessBand } from "@/lib/types";
 import type { ExamSectionResult, StoredExamAnswer } from "@/lib/exam";
@@ -34,10 +35,12 @@ export default async function MockResultPage({
   params: Promise<{ locale: string; attemptId: string }>;
 }) {
   const { locale, attemptId } = await params;
-  await requireEntitledUser(locale);
+  const { user } = await requireEntitledUser(locale);
 
   const attempt = await getExamAttempt(attemptId);
   if (!attempt) notFound();
+
+  const passedMocks = await getPassedMockCount(user.id);
 
   const t = await getTranslations("examResult");
   const tt = await getTranslations("topics");
@@ -47,7 +50,10 @@ export default async function MockResultPage({
   const answers = (attempt.answers ?? []) as unknown as StoredExamAnswer[];
   const passed = !!attempt.passed;
   const overall = attempt.overall ?? 0;
-  const band: ReadinessBand = passed ? "test-ready" : bandFor(overall);
+  // The band tracks the score, not the pass/fail flag. Forcing the top band on
+  // a single pass told the learner one paper meant they were ready for the
+  // real test — the exact claim the app must never make (K53-45).
+  const band: ReadinessBand = bandFor(overall);
   const minutes = attempt.duration_seconds
     ? Math.max(1, Math.round(attempt.duration_seconds / 60))
     : null;
@@ -81,6 +87,13 @@ export default async function MockResultPage({
           </p>
         )}
       </section>
+
+      {/*
+        Directly under the score, before the section breakdown: a learner who
+        has just passed is exactly the person about to go and book, and this is
+        the moment they must read that we suggest more papers first.
+      */}
+      <MockAdviceNote passes={passedMocks} className="mt-6" />
 
       <section className="mt-8">
         <h2 className="text-sm font-medium text-muted-foreground">

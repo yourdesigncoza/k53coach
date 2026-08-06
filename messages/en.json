@@ -24,7 +24,7 @@
   "bands": {
     "not-ready": "Not ready yet",
     "almost-ready": "Almost ready",
-    "test-ready": "Test ready"
+    "test-ready": "On track"
   },
   "topics": {
     "signs": "Road Signs",
@@ -173,7 +173,7 @@
     "byTopic": "By topic",
     "weakest": "Your weakest area — start here.",
     "msgNotReady": "There's work to do — but now you know exactly where. Start with your weakest topic.",
-    "msgAlmostReady": "You're close! A focused push on your weak areas should get you test-ready.",
+    "msgAlmostReady": "You're close! A focused push on your weak areas should lift your score.",
     "msgTestReady": "Great work — you're tracking well. Keep practising to lock it in.",
     "ctaTitle": "Ready to close the gaps?",
     "ctaBody": "Unlock 90 days of mock exams and AI assessments for {price}.",
@@ -353,6 +353,11 @@
     "passed": "Passed",
     "failed": "Failed",
     "viewResult": "View result"
+  },
+  "mockAdvice": {
+    "heading": "Before you book the real test",
+    "under": "You've passed {passes} of the {target} mock exams we suggest — {remaining} to go. One good paper can be a good day; we want you passing consistently before you book.",
+    "met": "You've passed {passes}. That's the minimum we suggest — and the more papers you sit before the real test, the better prepared you'll be. Keep taking them right up to the day."
   },
   "exam": {
     "sectionOf": "Section {current} of {total}",

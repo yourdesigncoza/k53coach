@@ -149,6 +149,25 @@ export async function getExamHistory(userId: string, limit = 10) {
 }
 
 /**
+ * How many mock papers a user has passed, all-time.
+ *
+ * Counted rather than derived from `getExamHistory`, which is capped at the
+ * last 5 attempts — a learner on their eighth paper would otherwise appear to
+ * have passed fewer than they have, and the whole point of the number is that
+ * it only ever goes up. Head-only: no rows cross the wire.
+ */
+export async function getPassedMockCount(userId: string): Promise<number> {
+  const supabase = await createClient();
+  if (!supabase) return 0;
+  const { count } = await supabase
+    .from("exam_attempts")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", userId)
+    .eq("passed", true);
+  return count ?? 0;
+}
+
+/**
  * Question ids from a user's most recent mock papers, most-recent-first, for
  * repeat suppression in `assemblePaper`.
  *

@@ -12,7 +12,9 @@ import {
   getExamHistory,
   getAttemptDays,
   getWeakAreas,
+  getPassedMockCount,
 } from "@/lib/supabase/queries";
+import { MockAdviceNote } from "@/components/exam/mock-advice-note";
 import { resolveWeakAreaCards } from "@/lib/weak-area-cards";
 
 export async function generateMetadata({
@@ -50,6 +52,7 @@ export default async function DashboardPage() {
         })
       : null;
   const overall = blend?.overall ?? readiness?.overall ?? 62;
+  const passedMocks = user ? await getPassedMockCount(user.id) : 0;
 
   // "The exact next lesson, not study everything" — the landing page's promise.
   // Empty for anonymous/demo learners and for anyone with no wrong answers yet,
@@ -105,6 +108,11 @@ export default async function DashboardPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Signed-in learners only — an anonymous preview has no count to show. */}
+      {user && (
+        <MockAdviceNote passes={passedMocks} className="mt-3 md:max-w-2xl" />
+      )}
 
       {weakCards.length > 0 && (
         <>

@@ -147,6 +147,7 @@ Write a short, personal coaching read. Rules you MUST follow:
 - Second person, warm, plain English at about a Grade 8 reading level. Encouraging even when the score is low — a low score means they found the gap early, never shame them.
 - GROUNDING (critical): only restate rules that appear in the supplied explanations. NEVER invent or state any traffic law, penalty, distance, speed or safety rule that is not in the supplied text. If a gap has no supplied explanation, say "review the {section} module" instead of inventing the rule.
 - Do not mention the learner's name, age, or any personal detail (you are given none).
+- NEVER tell the learner they are ready for the real test, and never tell them to book it, sit it, or that they will pass — however high the score. A passed mock is one good paper, not a verdict on the official test. Where you would say "you're ready", say that more mock papers are the next step instead. Praise the result, never certify it.
 - Return ONLY a JSON object with exactly these keys:
   {
     "verdict": string,                        // one warm, band-aware sentence
@@ -229,7 +230,7 @@ export function buildFallbackAssessment(payload: AssessmentPayload): Assessment 
   const ctaTopic = weakest?.topic ?? "signs";
 
   const verdict = payload.passed
-    ? "You passed — every section is over the line. Tidy up the last few marks and you're ready to book."
+    ? "You passed — every section is over the line. Tidy up the last few marks and put more papers behind you before the real test."
     : `You're not there yet, but now you know exactly where. ${
         weak.length === 1
           ? "One section is holding you back."

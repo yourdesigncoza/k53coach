@@ -11,7 +11,9 @@ import {
   getTopicAccuracy,
   getExamHistory,
   getAttemptDays,
+  getPassedMockCount,
 } from "@/lib/supabase/queries";
+import { MockAdviceNote } from "@/components/exam/mock-advice-note";
 import type { Topic } from "@/lib/types";
 
 export async function generateMetadata({
@@ -42,6 +44,7 @@ export default async function ProgressPage() {
   const acc = user ? await getTopicAccuracy(user.id) : null;
   const examHistory = user ? await getExamHistory(user.id, 5) : [];
   const attemptDays = user ? await getAttemptDays(user.id) : [];
+  const passedMocks = user ? await getPassedMockCount(user.id) : 0;
 
   const rows = TOPICS.map((topic) => ({
     topic,
@@ -81,6 +84,9 @@ export default async function ProgressPage() {
             <p className="mt-3 text-center text-xs text-muted-foreground md:text-left">
               {t("blendNote")}
             </p>
+          )}
+          {user && (
+            <MockAdviceNote passes={passedMocks} className="mt-4 w-full" />
           )}
         </div>
 

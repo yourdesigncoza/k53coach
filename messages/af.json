@@ -25,7 +25,7 @@
   "bands": {
     "not-ready": "Nog nie gereed nie",
     "almost-ready": "Amper gereed",
-    "test-ready": "Toetsgereed"
+    "test-ready": "Op koers"
   },
   "topics": {
     "signs": "Padtekens",
@@ -174,7 +174,7 @@
     "byTopic": "Per onderwerp",
     "weakest": "Jou swakste area — begin hier.",
     "msgNotReady": "Daar is werk om te doen — maar nou weet jy presies waar. Begin by jou swakste onderwerp.",
-    "msgAlmostReady": "Jy's amper daar! 'n Gefokusde poging op jou swak areas behoort jou toetsgereed te kry.",
+    "msgAlmostReady": "Jy's amper daar! 'n Gefokusde poging op jou swak areas behoort jou telling te lig.",
     "msgTestReady": "Mooi werk — jy's op koers. Hou aan oefen om dit vas te lê.",
     "ctaTitle": "Gereed om die gapings toe te maak?",
     "ctaBody": "Ontsluit 90 dae se proefeksamens en KI-assesserings vir {price}.",
@@ -354,6 +354,11 @@
     "passed": "Geslaag",
     "failed": "Gedruip",
     "viewResult": "Bekyk uitslag"
+  },
+  "mockAdvice": {
+    "heading": "Voordat jy die regte toets bespreek",
+    "under": "Jy het {passes} van die {target} proefeksamens geslaag wat ons voorstel — nog {remaining} om te gaan. Een goeie vraestel kan net ’n goeie dag wees; ons wil hê jy moet gereeld slaag voordat jy bespreek.",
+    "met": "Jy het {passes} geslaag. Dit is die minimum wat ons voorstel — en hoe meer vraestelle jy voor die regte toets doen, hoe beter voorbereid sal jy wees. Hou aan tot op die dag."
   },
   "exam": {
     "sectionOf": "Afdeling {current} van {total}",
