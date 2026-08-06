@@ -94,7 +94,13 @@ async function runProfile(browser, name, correctTarget, key) {
     await buttons.nth(index).click();
     if (wantCorrect) correctSoFar += 1;
 
-    await buttons.last().click(); // Next question / Finish
+    // Re-query rather than reusing `buttons`: choosing an answer re-renders the
+    // card, so the handle captured a moment ago is detached — which a local run
+    // is fast enough to hide and a deployed one is not.
+    await page
+      .locator("main button")
+      .last()
+      .click({ timeout: 20_000 }); // Next question / Finish
     await page.waitForTimeout(300);
     if (page.url().includes("/readiness/result")) break;
   }
@@ -121,8 +127,12 @@ async function runProfile(browser, name, correctTarget, key) {
     JSON.stringify(stored?.answers?.[0] ?? null).slice(0, 80),
   );
 
-  // Generate.
+  // Generate. The panel only appears once the client has hydrated and read the
+  // sitting out of localStorage, so this MUST wait rather than count: against a
+  // deployed site the check otherwise races hydration, and a miss cascades into
+  // every downstream assertion measuring an empty page and passing anyway.
   const cta = page.getByRole("button").filter({ hasText: /assess|assesser/i }).first();
+  await cta.waitFor({ state: "visible", timeout: 20_000 }).catch(() => {});
   check(await cta.count(), `${name}: assessment CTA present`);
   if (!(await cta.count())) {
     await ctx.close();
@@ -130,11 +140,15 @@ async function runProfile(browser, name, correctTarget, key) {
   }
   const started = Date.now();
   await cta.click();
+  // Wait for the response, not for an `ol li` — the page has other ordered
+  // lists, so waiting on one can "succeed" against markup that was already
+  // there and report a generation time of a few milliseconds.
   await page
-    .locator("ol li")
-    .first()
-    .waitFor({ timeout: 45_000 })
+    .waitForResponse((r) => r.url().includes("/api/readiness/assess"), {
+      timeout: 60_000,
+    })
     .catch(() => {});
+  await page.locator("ol li").first().waitFor({ timeout: 15_000 }).catch(() => {});
   const ms = Date.now() - started;
 
   const body = (await page.locator("main").textContent()) ?? "";
