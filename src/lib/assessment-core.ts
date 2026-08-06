@@ -25,7 +25,7 @@ import type { Topic } from "@/lib/types";
  * learner who already generated one. The readiness path caches nothing
  * server-side and ignores this.
  */
-export const PROMPT_VERSION = 2;
+export const PROMPT_VERSION = 3;
 
 /** topic → the learner module slug used in /learn and /learn/.../practice URLs. */
 export const TOPIC_SLUG: Record<Topic, string> = {
@@ -82,6 +82,27 @@ export interface Assessment {
   locale?: string;
   /** `PROMPT_VERSION` at generation time. */
   promptVersion?: number;
+}
+
+/**
+ * The heading to render for one assessment point.
+ *
+ * Section labels reach the model in English as keys (`TOPIC_LABEL_EN`), so a
+ * model-written `title` on /af is the model's own Afrikaans for a string the app
+ * already translates — it returned "Voertuigbeheer" against the `topics` label
+ * "Voertuigkontroles", putting two words for one section on the same page. Take
+ * our label, keyed off `point.topic`, which the model does return reliably.
+ *
+ * Fallback points are exempt and must stay that way: their titles are built from
+ * `topics` already, and `examFocusPassingTitle` ("Keep your consistency") is not
+ * a section name at all — substituting a topic there would delete it.
+ */
+export function pointTitle(
+  point: AssessmentPoint,
+  assessment: Pick<Assessment, "fallback">,
+  topicLabel: (topic: Topic) => string,
+): string {
+  return assessment.fallback ? point.title : topicLabel(point.topic);
 }
 
 // ── Prompt ────────────────────────────────────────────────────────────────────
@@ -183,22 +204,78 @@ export interface AssessmentLimits {
   maxStrengths: number;
   maxFocus: number;
   maxPlan: number;
+  /** Below this many plan steps the output is not a plan. */
+  minPlan?: number;
+}
+
+/**
+ * What the learner's result says, so the validator can check the output against
+ * it rather than only against itself. Optional — omit and those checks are
+ * skipped rather than guessed.
+ */
+export interface AssessmentContext {
+  /** Sections below their pass mark. Empty means everything passed. */
+  failedTopics?: Topic[];
+}
+
+/**
+ * Phrases that mean the model narrated its own input.
+ *
+ * The learner saw questions; they never saw "the explanation" or "the supplied
+ * text". Naming our machinery at them breaks constraint 10 and reads as though
+ * the coach is talking to a reviewer. Observed twice in run 2 and again in run 4,
+ * which is why this is enforced rather than merely asked for.
+ *
+ * Kept short and specific on purpose: a broad list would false-positive on
+ * legitimate coaching wording, and a validator that rejects good output downgrades
+ * the learner to a template — a worse product than the defect it was policing.
+ */
+const META_REFERENCES = [
+  "the explanation",
+  "the explanations",
+  "the supplied",
+  "the source text",
+  "the module text",
+  "the payload",
+  "the question bank",
+];
+
+/** Generous ceilings — the aim is catching runaway output, not policing style. */
+const MAX_LENGTH = { verdict: 400, oneThing: 300, title: 80, note: 400, step: 300 };
+
+function hasMetaReference(text: string): boolean {
+  const lower = text.toLowerCase();
+  return META_REFERENCES.some((phrase) => lower.includes(phrase));
+}
+
+/** Loose equality for plan steps: same destination, or the same sentence. */
+function normaliseStep(step: string): string {
+  return step.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
 
 /**
  * Validate raw model JSON against the scaffold; return null if it doesn't fit,
  * which sends the caller to its deterministic fallback.
  *
- * Structure is rejected, length is trimmed. A model that returns four good focus
- * items where we wanted two has not produced anything unsafe — dropping the
- * learner to a template over that would trade real grounded coaching for a
- * formatting preference. A bad href or an unknown topic is different: that is
- * output we cannot render or cannot stand behind.
+ * **Repair first, reject last.** Every rule the prompt states is a request the
+ * model may quietly ignore, and the result is cached and shown to someone who
+ * paid — so the rules have to be enforced here or they are not rules. But the
+ * fallback is a worse product than a slightly untidy real assessment, so a
+ * validator that rejects freely is itself a regression. The split:
+ *
+ *  - **Repaired** (the output stays, the defect goes): over-long lists are
+ *    truncated, duplicate plan steps dropped, and focus items aimed at a section
+ *    that passed removed when some other section actually failed.
+ *  - **Rejected** (nothing salvageable): malformed shape, an href outside the
+ *    allow-list, an unknown topic, prose that narrates our own machinery at the
+ *    learner, runaway field lengths, or a plan that repair left too short to be
+ *    a plan.
  */
 export function parseAssessment(
   raw: string,
   allowed: string[],
   limits?: AssessmentLimits,
+  context?: AssessmentContext,
 ): Assessment | null {
   let obj: unknown;
   try {
@@ -227,11 +304,63 @@ export function parseAssessment(
   const cap = <T>(list: T[], max?: number) =>
     typeof max === "number" ? list.slice(0, max) : list;
 
+  // ── repair ──
+  const strengths = cap(a.strengths, limits?.maxStrengths);
+
+  // Drop focus items pointed at a section that passed — but only when some
+  // section actually failed, or a clean paper would lose every focus item and
+  // arrive empty.
+  const failed = context?.failedTopics;
+  const focus = cap(
+    failed && failed.length
+      ? a.focus.filter((f) => failed.includes(f.topic))
+      : a.focus,
+    limits?.maxFocus,
+  );
+
+  // Two steps that say the same thing read as padding, and padding is what a
+  // model does when it has run out of real advice (run 2: steps 3 and 4 were the
+  // same task). Same destination or the same sentence counts as the same step.
+  const seenHref = new Set<string>();
+  const seenStep = new Set<string>();
+  const plan = cap(
+    a.plan.filter((s) => {
+      const step = normaliseStep(s.step);
+      if (seenHref.has(s.href) || seenStep.has(step)) return false;
+      seenHref.add(s.href);
+      seenStep.add(step);
+      return true;
+    }),
+    limits?.maxPlan,
+  );
+
+  // ── reject ──
+  if (plan.length < (limits?.minPlan ?? 1)) return null;
+
+  const prose = [
+    a.verdict,
+    a.oneThing,
+    ...strengths.flatMap((p) => [p.title, p.note]),
+    ...focus.flatMap((p) => [p.title, p.note]),
+    ...plan.map((s) => s.step),
+  ];
+  if (prose.some(hasMetaReference)) return null;
+
+  if (
+    a.verdict.length > MAX_LENGTH.verdict ||
+    a.oneThing.length > MAX_LENGTH.oneThing ||
+    [...strengths, ...focus].some(
+      (p) => p.title.length > MAX_LENGTH.title || p.note.length > MAX_LENGTH.note,
+    ) ||
+    plan.some((s) => s.step.length > MAX_LENGTH.step)
+  )
+    return null;
+
   return {
     verdict: a.verdict,
-    strengths: cap(a.strengths, limits?.maxStrengths),
-    focus: cap(a.focus, limits?.maxFocus),
-    plan: cap(a.plan, limits?.maxPlan).map((s) => ({
+    strengths,
+    focus,
+    plan: plan.map((s) => ({
       step: s.step,
       href: s.href,
       ...(typeof s.minutes === "number" ? { minutes: s.minutes } : {}),

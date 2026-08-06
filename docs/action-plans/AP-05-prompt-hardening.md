@@ -1,7 +1,16 @@
 # AP-05 — Prompt hardening + validator enforcement
 
-**Priority P2.** Six output-quality defects observed across four real generations.
-Blocked on [AP-03](AP-03-bilingual-assessment.md) — both change `PROMPT_VERSION`.
+**Priority P2. ✅ Done 2026-08-06.** Six output-quality defects observed across four
+real generations; all six now absent, and the rules are enforced rather than merely
+asked for.
+
+**Result, measured on 8 real generations** (4 readiness profiles + 4 exam papers,
+both locales): **0 rejections** — the fallback rate did not move, which was the
+stated risk. On the 94% paper the three near-identical strengths became two that say
+different things; on the 36% paper the filler strength became an empty list, and
+there is no "best section" flattery or meta-reference anywhere.
+
+`PROMPT_VERSION` is 3, so anything cached against the older prompt regenerates.
 
 ## Problem
 
@@ -112,8 +121,21 @@ strength; strengths varied at 94%. And confirm the fallback rate did not rise.
 
 ## Done when
 
-- [ ] All six defects absent across the five profiles
-- [ ] Validator rejects each defect in unit tests
-- [ ] Fallback rate unchanged (no silent downgrade)
-- [ ] `PROMPT_VERSION` bumped so existing cached assessments regenerate
-- [ ] Tone rules recorded in `docs/ai-assessment.md`
+- [x] All six defects absent across the profiles
+- [x] Validator rejects/repairs each defect in unit tests (22 in `exam-assessment.test.ts`)
+- [x] Fallback rate unchanged — 0 rejections in 8 real generations
+- [x] `PROMPT_VERSION` bumped to 3 so existing cached assessments regenerate
+- [x] Tone rules recorded in `docs/ai-assessment.md` §6a
+
+## What changed from the plan
+
+**Repair beat reject.** The plan said every check should reject to the fallback.
+Building it that way would have downgraded a learner to a template over a duplicate
+plan step — trading real grounded coaching for a formatting preference. So the
+validator repairs what is safely repairable (truncate lists, drop duplicate steps,
+drop focus aimed at a passed section) and rejects only what cannot be salvaged
+(meta-references, runaway lengths, a plan too short after repair, bad hrefs).
+
+**"strengths/focus each 1-4 items" was dropped.** A minimum of one contradicts the
+later, better rule that an empty strengths list is more honest than filler — which
+is exactly what the 36% paper now produces. Maximum only.

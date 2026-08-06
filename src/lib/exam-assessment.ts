@@ -48,6 +48,7 @@ export const EXAM_LIMITS: AssessmentLimits = {
   maxStrengths: 4,
   maxFocus: 4,
   maxPlan: 4,
+  minPlan: 2,
 };
 
 /**
@@ -255,7 +256,8 @@ export function buildAssessmentPayload(
 // ── Prompt ────────────────────────────────────────────────────────────────────
 
 const EXAM_FORMAT_RULES = `- Keep strengths to the passed/strong sections and focus to the weak ones. Up to 4 items each, plan 2-4 steps.
-- Do not spend a plan step on a section that already passed unless nothing else needs the time, and never write two steps that are the same task. A shorter, honest plan reads as more credible than a padded one.`;
+- Do not spend a plan step on a section that already passed unless nothing else needs the time, and never write two steps that are the same task. A shorter, honest plan reads as more credible than a padded one.
+- When every section passed, do NOT emit one near-identical strength per section ("solid" / "mostly secure" / "strong" plus a score). Merge them into one or two lines that say something different about each, or return fewer.`;
 
 /**
  * The exam system prompt for one locale. The locale must already be validated by

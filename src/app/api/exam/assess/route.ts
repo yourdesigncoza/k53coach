@@ -102,7 +102,11 @@ export async function POST(req: Request) {
         json: true,
         maxTokens: 1500,
       });
-      assessment = parseAssessment(raw, payload.allowedHrefs, EXAM_LIMITS);
+      assessment = parseAssessment(raw, payload.allowedHrefs, EXAM_LIMITS, {
+        // Lets the validator drop a focus item aimed at a section that passed —
+        // run 3 sent a learner to the rules module at 83%.
+        failedTopics: payload.sections.filter((s) => !s.passed).map((s) => s.topic),
+      });
     } catch {
       assessment = null;
     }

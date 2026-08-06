@@ -159,7 +159,11 @@ export async function POST(req: Request) {
           ...usage,
         }),
     });
-    assessment = parseAssessment(raw, payload.allowedHrefs, READINESS_LIMITS);
+    assessment = parseAssessment(raw, payload.allowedHrefs, READINESS_LIMITS, {
+      // "Failed" on a 1-2 question sample means "got one wrong" — the useful
+      // signal is which topics they actually missed something in.
+      failedTopics: payload.sections.filter((s) => s.percent < 100).map((s) => s.topic),
+    });
   } catch {
     assessment = null;
   }

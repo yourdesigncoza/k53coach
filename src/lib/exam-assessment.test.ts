@@ -2,7 +2,10 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import type { Topic } from "@/lib/types";
 import {
+  allowedHrefs,
+  parseAssessment,
   EXAM_GENERATION_LIMIT,
+  EXAM_LIMITS,
   PROMPT_VERSION,
   buildAssessmentPayload,
   buildFallbackAssessment,
@@ -129,6 +132,149 @@ test("the generation limit is reachable by counting real generations", () => {
     stored = writeCachedAssessment(stored, i % 2 ? "af" : "en", assessment("en"));
   }
   assert.equal(generationCount(stored), EXAM_GENERATION_LIMIT);
+});
+
+// ── validator enforcement (AP-05) ─────────────────────────────────────────────
+
+/** A well-formed model response; tests override one field at a time. */
+function raw(over: Record<string, unknown> = {}) {
+  return JSON.stringify({
+    verdict: "You are close.",
+    strengths: [{ title: "Rules", note: "25/30 here.", topic: "rules" }],
+    focus: [{ title: "Signs", note: "9/28 here.", topic: "signs" }],
+    plan: [
+      { step: "Learn road signs", minutes: 15, href: "/learn/road-signs" },
+      { step: "Practise road signs", minutes: 15, href: "/learn/road-signs/practice" },
+    ],
+    oneThing: "Start with signs.",
+    ctaTopic: "signs",
+    ...over,
+  });
+}
+
+const HREFS = allowedHrefs();
+const FAILED = { failedTopics: ["signs", "controls"] as Topic[] };
+
+test("a well-formed response passes", () => {
+  assert.ok(parseAssessment(raw(), HREFS, EXAM_LIMITS, FAILED));
+});
+
+test("prose that narrates our own machinery is rejected", () => {
+  // Run 2 shipped this twice: "the exceptions mentioned in the explanation".
+  // The learner saw questions, not our sources (constraint 10).
+  for (const field of ["verdict", "oneThing"]) {
+    const bad = parseAssessment(
+      raw({ [field]: "Review the exceptions in the explanation." }),
+      HREFS,
+      EXAM_LIMITS,
+      FAILED,
+    );
+    assert.equal(bad, null, field);
+  }
+  assert.equal(
+    parseAssessment(
+      raw({
+        plan: [
+          { step: "Re-read the explanations", href: "/learn/road-signs" },
+          { step: "Practise", href: "/learn/road-signs/practice" },
+        ],
+      }),
+      HREFS,
+      EXAM_LIMITS,
+      FAILED,
+    ),
+    null,
+  );
+});
+
+test("duplicate plan steps are dropped, not shipped", () => {
+  // Run 2's steps 3 and 4 were the same task.
+  const out = parseAssessment(
+    raw({
+      plan: [
+        { step: "Learn road signs", href: "/learn/road-signs" },
+        { step: "Learn  ROAD   signs!", href: "/learn/rules" },
+        { step: "Practise road signs", href: "/learn/road-signs/practice" },
+      ],
+    }),
+    HREFS,
+    EXAM_LIMITS,
+    FAILED,
+  );
+  assert.equal(out?.plan.length, 2);
+});
+
+test("a plan repaired below the minimum is rejected", () => {
+  // Two steps that are really one is not a plan; the template is more honest.
+  assert.equal(
+    parseAssessment(
+      raw({
+        plan: [
+          { step: "Practise signs", href: "/learn/road-signs/practice" },
+          { step: "Practise signs", href: "/learn/road-signs/practice" },
+        ],
+      }),
+      HREFS,
+      EXAM_LIMITS,
+      FAILED,
+    ),
+    null,
+  );
+});
+
+test("focus on a section that passed is dropped when others failed", () => {
+  // Run 3 sent the learner to the rules module at 83%.
+  const out = parseAssessment(
+    raw({
+      focus: [
+        { title: "Rules", note: "mirror checks", topic: "rules" },
+        { title: "Signs", note: "9/28", topic: "signs" },
+      ],
+    }),
+    HREFS,
+    EXAM_LIMITS,
+    FAILED,
+  );
+  assert.deepEqual(out?.focus.map((f) => f.topic), ["signs"]);
+});
+
+test("with nothing failed, focus is left alone", () => {
+  // Filtering on an empty failed-set would empty every clean paper's focus.
+  const out = parseAssessment(raw(), HREFS, EXAM_LIMITS, { failedTopics: [] });
+  assert.equal(out?.focus.length, 1);
+});
+
+test("runaway field lengths are rejected", () => {
+  assert.equal(
+    parseAssessment(raw({ verdict: "x".repeat(500) }), HREFS, EXAM_LIMITS, FAILED),
+    null,
+  );
+  assert.equal(
+    parseAssessment(
+      raw({ focus: [{ title: "Signs", note: "y".repeat(500), topic: "signs" }] }),
+      HREFS,
+      EXAM_LIMITS,
+      FAILED,
+    ),
+    null,
+  );
+});
+
+test("an href outside the allow-list is still rejected", () => {
+  assert.equal(
+    parseAssessment(
+      raw({
+        plan: [
+          { step: "Go here", href: "/admin" },
+          { step: "Practise", href: "/learn/road-signs/practice" },
+        ],
+      }),
+      HREFS,
+      EXAM_LIMITS,
+      FAILED,
+    ),
+    null,
+  );
 });
 
 // ── localised fallback ────────────────────────────────────────────────────────

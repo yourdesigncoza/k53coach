@@ -35,6 +35,7 @@ export const READINESS_LIMITS: AssessmentLimits = {
   maxStrengths: 1,
   maxFocus: 2,
   maxPlan: 2,
+  minPlan: 1,
 };
 
 /**

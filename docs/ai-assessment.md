@@ -193,6 +193,33 @@ Missed: **handbrake use on a hill start**.
 
 ---
 
+## 6a. Tone rules — asked for AND enforced (AP-05, 2026-08-06)
+
+Recorded here so they are not re-litigated. Each came from a defect in a real
+generation, and each is now **both** a prompt rule and a validator check —
+because a rule that lives only in the prompt is a request the model may quietly
+ignore, and the result is cached and shown to someone who paid.
+
+| Rule | Enforcement |
+|---|---|
+| Never name our own machinery — "the explanation", "the supplied text", the question bank. The learner saw questions (constraint 10) | **Reject.** Substring check over every rendered field |
+| Plan steps address sections below the pass mark, weakest first | **Repair.** Focus items on a passed section are dropped when some other section failed |
+| No two plan steps that are the same action | **Repair.** Same href or same normalised sentence is dropped |
+| 2–4 steps, and fewer is better | **Reject** below the format's minimum after repair; truncate above the maximum |
+| Never call a section below its pass mark "your best" | Prompt only — a substring ban would false-positive on legitimate praise |
+| Every strength names a topic and a score; no mood filler | Prompt, plus an empty list is explicitly allowed and preferred over filler |
+| When all sections pass, vary the strengths rather than one identical line each | Prompt only |
+| Runaway field lengths | **Reject** past generous ceilings (verdict 400, note 400, step 300, title 80) |
+
+**Repair before reject, always.** The fallback is a worse product than a slightly
+untidy real assessment, so the validator only rejects what cannot be salvaged.
+Measured on 8 real generations across both formats and both locales when this
+landed: **0 rejections** — the enforcement cost nothing in fallback rate.
+
+Deliberately not enforced: output language. Detecting Afrikaans reliably is out
+of scope; the e2e drivers check it by inspection instead, including an
+English-leak check that already caught one.
+
 ## 7. Guardrails
 
 - **No invented law/safety claims** — grounded to verified explanations only. This is the moat and the liability line.

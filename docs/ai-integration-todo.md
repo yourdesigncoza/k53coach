@@ -84,17 +84,20 @@ started.
       Spend control is a signed single-use paper token plus a derived 400/day cap
       (R20/day at measured token counts); over the cap it degrades to a localised
       template rather than an error. **[AP-09](action-plans/AP-09-free-readiness-assessment.md)**.
-- [~] **2. Fix the paid feature for Afrikaans buyers** — **mostly done as a side effect
-      of AP-09.** Both assessments share one locale-aware prompt now, and a stored
-      fallback is treated as a cache miss so it self-heals. What remains:
-      [AP-03](action-plans/AP-03-bilingual-assessment.md)'s per-locale cache envelope
-      (today one column holds one language, so switching locales re-spends) and
-      [AP-04](action-plans/AP-04-fallback-caching.md)'s "never write a fallback" plus a
-      regenerate control. *Hours · low risk.*
-- [~] **3. Prompt hardening** — three of [AP-05](action-plans/AP-05-prompt-hardening.md)'s
-      items landed in the shared preamble: no meta-references to "the explanation", every
-      strength must name a topic and a score, no "best section" below half. The rest of
-      AP-05 is untouched. *Hours · low risk.*
+- [x] **2. Fix the paid feature for Afrikaans buyers** — **done 2026-08-06.** Both
+      assessments share one locale-aware prompt; the column now holds a per-locale
+      envelope so an `/af` view no longer evicts the `/en` one
+      ([AP-03](action-plans/AP-03-bilingual-assessment.md)); the deterministic fallback
+      is translated; and a fallback is never written or counted, with "Try again" shown
+      only when a retry could help ([AP-04](action-plans/AP-04-fallback-caching.md)).
+      Verified on live data: a fallback frozen in production since 2026-08-05
+      regenerated, and both locales now coexist on the same attempt.
+- [x] **3. Prompt hardening** — **done 2026-08-06.** All six
+      [AP-05](action-plans/AP-05-prompt-hardening.md) defects are gone, and the rules are
+      now *enforced* in `parseAssessment` rather than only asked for in the prompt —
+      which was the half that mattered, since a prompt rule the model ignores still ends
+      up cached and shown to someone who paid. Repair before reject: 0 rejections across
+      8 real generations, so the fallback rate did not move.
 - [ ] **4. Per-section retry instead of "retake the mock"** — after ~45 min of study,
       burning a full 64-question sitting to re-check one section is the wrong next
       action. Touches `assemblePaper` repeat suppression, so it needs thought about the

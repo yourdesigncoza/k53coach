@@ -14,7 +14,7 @@ executed one at a time. Update the Status column as they land.
 | [AP-02](AP-02-stale-override-guard.md) | Make stale overrides non-effective, not just visible | **P0** | Not started | — |
 | [AP-03](AP-03-bilingual-assessment.md) | Localise the AI assessment (prompt locale + versioned cache) | **P1** | **Prompt half done** (2026-08-06, in AP-09's shared core). Cache envelope outstanding | — |
 | [AP-04](AP-04-fallback-caching.md) | Never persist a fallback assessment; add regenerate | **P1** | **Partly done** — a stored fallback is now a cache miss, so it self-heals. Still written, and no regenerate control | — |
-| [AP-05](AP-05-prompt-hardening.md) | Prompt hardening + validator enforcement | **P2** | Not started | AP-03 (shares `prompt_version`) |
+| [AP-05](AP-05-prompt-hardening.md) | Prompt hardening + validator enforcement | **P2** | **✅ Done 2026-08-06** — all six defects gone, enforced in `parseAssessment`, 0 rejections in 8 real generations | — |
 | [AP-06](AP-06-prose-citation-sweep.md) | Sweep learner prose for citations (constraint 10) | **P2** | Not started | Louwrens re-sign |
 | [AP-07](AP-07-harness-adoption.md) | Adopt the e2e assessment driver + rtk note | **P3** | Not started | — |
 | [AP-08](AP-08-end-user-improvements.md) | End-user improvements shortlist | **P3** | (ii) picked 2026-08-06 → AP-09 | — |

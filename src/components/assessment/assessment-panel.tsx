@@ -15,7 +15,7 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/icon";
 import { CoachCard } from "@/components/quiz/quiz-chrome";
-import { TOPIC_SLUG } from "@/lib/assessment-core";
+import { TOPIC_SLUG, pointTitle } from "@/lib/assessment-core";
 import type { Assessment } from "@/lib/assessment-core";
 
 /**
@@ -118,7 +118,7 @@ export function AssessmentPanel({
           <ul className="mt-2 flex flex-col gap-2">
             {assessment.strengths.map((s, i) => (
               <li key={i} className="text-sm">
-                <span className="font-medium">{s.title}</span>
+                <span className="font-medium">{pointTitle(s, assessment, tt)}</span>
                 <span className="text-muted-foreground"> — {s.note}</span>
               </li>
             ))}
@@ -134,7 +134,7 @@ export function AssessmentPanel({
           <ul className="mt-2 flex flex-col gap-2">
             {assessment.focus.map((f, i) => (
               <li key={i} className="text-sm">
-                <span className="font-medium">{f.title}</span>
+                <span className="font-medium">{pointTitle(f, assessment, tt)}</span>
                 <span className="text-muted-foreground"> — {f.note}</span>
               </li>
             ))}
