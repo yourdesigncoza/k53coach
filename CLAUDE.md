@@ -8,11 +8,17 @@ K53 AI Coach: a Progressive Web App helping South African learner drivers pass t
 
 The original specs live in `docs/product/` and still govern product intent — read them before product/scope decisions (`PRD.md`, then `PRD-additions.md` which **overrides** it, plus the two executive overviews). The official source documents they rest on — the Act, the regulations and their amendments, the 24 SARTSM manual volumes, the DoT sign chart — live in `resources/`, indexed with their authority and permitted use in `resources/README.md`. `docs/backlog.md` tracks deferred work.
 
+## Response Style
+- Respond in ultra-dense, technical shorthand.
+- Omit explanations for self-evident code modifications.
+- Output raw terminal commands and code blocks without conversational wrapper text.
+
+
 ## Project status
 
-Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. The road-sign library (DB1) is fully ingested and **chart-verified in a Claude Code session** — see `docs/sign-accuracy-pipeline.md`. **Mock exam (Code B) shipped:** entitlement-gated `/mock` → timed **64**-question paper (rules 30 / signs 28 / controls 6, scored independently — corrected from 68 on 2026-07-31, K53-34; see the evidence note on `EXAM_FORMAT_B`) → per-section summary → grounded AI assessment → DB9 readiness blend on the dashboard/progress. Engine in `src/lib/exam.ts`, UI in `src/components/exam/*`, gate in `src/lib/exam-guard.ts`.
+Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. The road-sign library (DB1) is fully ingested and **chart-verified in a Claude Code session** — see `docs/sign-accuracy-pipeline.md`. **Mock exam (Code B) shipped:** entitlement-gated `/mock` → timed **64**-question paper (rules 30 / signs 28 / controls 6, scored independently — corrected from 68 on 2026-07-31, K53-34; see the evidence note on `EXAM_FORMAT_B`) → per-section summary → grounded AI assessment → DB9 readiness blend on the dashboard/progress. Engine in `src/lib/exam.ts`, UI in `src/components/exam/*`, gate in `src/lib/exam-guard.ts`. **In-app reporting shipped 2026-08-06:** signed-in learners file bugs (FAB in the app shell) and content flags ("this looks wrong" on questions, signs, rules, controls) → `feedback_reports` → admin triage at `/admin/feedback` → manual push to Linear.
 
-**Live data measured 2026-08-04** against the prototype project (`lxefjksaxmiawrnnewmj`).
+**Live data measured 2026-08-04** against the one and only project (`lxefjksaxmiawrnnewmj` — production; see the deployment note below).
 **Measure it yourself before quoting — these drift fast.** The 2026-07-30 figures that stood
 here were wrong within two days on every row that matters, and the 2026-08-01 signs count
 moved by 47 in three days:
@@ -111,7 +117,15 @@ now holds a live entitlement, so a repeat run stops at 409; clear it first to te
 Deferred (`docs/backlog.md`): Code A/C papers, full pass-prediction, dashboards, practical-driving coach, the Afrikaans content pass, next-pwa service worker.
 
 - **Production:** https://k53coach.co.za (also k53coach.vercel.app; Vercel project `yourdesigncozas-projects/k53coach`; GitHub `yourdesigncoza/k53coach` auto-deploys on push).
-- **Supabase (prototype):** project `k53coach`, ref `lxefjksaxmiawrnnewmj`, eu-west-1.
+- ⚠️ **Supabase — there is exactly ONE database, and it is production.** Project
+  `k53coach`, ref `lxefjksaxmiawrnnewmj`, eu-west-1. No staging, no prototype
+  project, no local stack in use (John, 2026-08-06). Earlier revisions of this
+  file called it "the prototype", which was wrong and licensed careless writes —
+  **`supabase db push` applies to live data, `scripts/data-repairs/*` mutate live
+  rows, and `scripts/e2e/*` create real users and rows.** The e2e drivers are
+  safe by construction (each confines itself to its own `user_id` and cleans up),
+  but nothing else is. Read before you write; there is no environment to get it
+  wrong in first.
 
 ## Project management (Linear)
 
@@ -156,6 +170,13 @@ npm run signs:seed     # push the ingested set into road_signs
 # Question bank (see scripts/exam/README.md)
 npm run exam:build-migration   # regenerate the questions migration from the wiki bank
 
+# End-to-end drivers (Playwright is NOT a dependency — resolved from
+# ~/tools/playwright-e2e/node_modules, or set PLAYWRIGHT_DIR). These hit the
+# LIVE database; each confines itself to its own e2e user and cleans up after.
+node scripts/e2e/flow.mjs            # landing → readiness → paywall → mock → checkout
+node scripts/e2e/assessment.mjs      # post-exam AI assessment (sits a full 64-q paper)
+node scripts/e2e/feedback.mjs        # in-app reporting: flag → row → context (24 assertions)
+
 # Supabase (CLI is split: `supabase` + `supabase-go`, both in ~/.local/bin)
 supabase db push                 # apply migrations in supabase/migrations to remote
 supabase migration new <name>    # new timestamped migration
@@ -165,7 +186,7 @@ supabase gen types typescript --linked > src/lib/database.types.ts
 vercel --prod        # deploy to production (prod env vars already set on Vercel)
 ```
 
-**There IS a test setup** — no third-party framework, just Node's built-in runner over TypeScript via `--experimental-strip-types`, so nothing to install. **56 tests currently pass** across `payfast.test.ts`, `weak-areas.test.ts`, `readiness-sample.test.ts` and `exam.test.ts`. Coverage is deliberately narrow: the places where a silent logic error costs money or misleads a learner — payment signing, weak-area ranking, the readiness sample, and mock-paper assembly (repeat suppression must never starve a section). Add a `*.test.ts` next to the module and it is picked up — don't add Jest/Vitest for it.
+**There IS a test setup** — no third-party framework, just Node's built-in runner over TypeScript via `--experimental-strip-types`, so nothing to install. **92 tests currently pass** across `payfast`, `weak-areas`, `readiness-sample`, `exam`, `shuffle`, `sign-approval` and `feedback` (`*.test.ts` in `src/lib/`). Coverage is deliberately narrow: the places where a silent logic error costs money, misleads a learner, or leaks data — payment signing, weak-area ranking, the readiness sample, mock-paper assembly (repeat suppression must never starve a section), and report redaction (a missed auth token would land in a Linear issue an external collaborator reads). Add a `*.test.ts` next to the module and it is picked up — don't add Jest/Vitest for it.
 
 The app runs **without Supabase env vars** ("demo mode" — auth/persistence simulated); real keys live in `.env.local` (gitignored). Network here is IPv4-only, so Supabase DB commands use the pooler (this is why `supabase link` was re-run).
 
@@ -202,6 +223,31 @@ These are the cross-cutting rules that aren't obvious from a single file:
 - **`src/proxy.ts` is the middleware** (Next 16 renamed `middleware`→`proxy`). It composes the next-intl locale middleware with Supabase session refresh — order matters (intl builds the response, Supabase writes cookies onto it).
 - **All app LLM calls go through `src/lib/llm.ts` (OpenAI `gpt-5.4-mini`, `OPENAI_API_KEY`).** One entry point (`llmChat` + `hasLlmKey`), direct fetch, graceful when the key is absent. Use it for any new AI feature — do not call a provider API directly or hardcode a model. Currently only **offline/admin** drafting uses it (no runtime learner-facing AI — see below).
 - **No runtime AI in the learner flow (deliberate).** Practice/test explanations are **hard-coded verified content** shown directly (`q.explanation`) — there is no per-question LLM call. AI is used only **offline** to draft initial content for human review (`src/app/api/admin/draft-sign/route.ts`, the translation manager's AI-draft) and is reserved for a **future post-test coaching** feature (score-improvement suggestions / recommended learning), not per-question rephrasing. The old `/api/ai/explain` rephrase route was removed. Editable answers/explanations are managed in admin Content Management (DB-backed question bank — see `docs/backlog.md`). When adding AI, it must stay grounded in verified content and never invent legal/safety claims.
+- **In-app reporting is decoupled from the tracker, deliberately.** Learners file
+  bugs and content flags (`feedback_reports`, shipped 2026-08-06). **Submitting
+  never calls an external API** — `submitReport` writes the row and returns; an
+  admin pushes to Linear at triage (`/admin/feedback`). So Linear being down
+  cannot cost a learner a report, and a report costs the learner no latency.
+  Keep it that way. Shape: pure helpers + redaction in `src/lib/feedback.ts`
+  (tested), actions in `feedback-actions.ts`, and the **only** module that knows
+  Linear exists is `src/lib/trackers/linear.ts` — the `Tracker` interface is the
+  seam if a second tracker is ever wanted.
+  - **Server-side enrichment is the point, not the free-text body.** A report
+    carries role, entitlement, last mock attempt, readiness — and for content
+    flags a **snapshot** of the flagged question/sign (options, keyed answer,
+    `source_citation`, `approved_by`, `verified_at`). Snapshotted, not looked up
+    later: if the answer is corrected next week, the report must still show what
+    the learner saw, or it stops being evidence the moment somebody acts on it.
+  - **`keyed_index` is read server-side, never accepted from the client** — it is
+    the column the report exists to dispute.
+  - **Redaction is not optional.** Login is magic-link-only, so an auth callback
+    URL really does carry a usable session token, and issues are read by an
+    external collaborator. `redactUrl` strips sensitive param values and the whole
+    fragment; the click trail records selectors only, never element text (on this
+    app the clickable text is usually an answer option).
+  - The inline flag lives in **`QuestionCard`** (`reportable` prop), not in each
+    surface — every learner quiz renders through it, so putting it in
+    practice-runner and exam-review separately is how the two drift.
 - **Content as structured learning objects.** `src/content/{road-rules,vehicle-controls,readiness-questions}.ts` are typed data (`src/lib/types.ts`). **Road signs are DB-backed, not a TS file** — the `road_signs` table (362 rows) holds artwork + provenance + bilingual `content` + verification evidence; learner pages read it via `getApprovedSigns*` (served set = both gates approved + `sa_relevant`), admin via `getSigns`. Signs render via `SignImage` from the real PD SADC SVG in `public/signs/<code>.svg` (`svg_file`). Verification against the official chart is automated in a Claude Code session — see `docs/sign-accuracy-pipeline.md` + `scripts/signs/`.
 - **Theme is warm brown + gold (the brand palette).** Tokens in `src/app/globals.css`: brown `--ink-*` (`#221813`/`#3b2a22`), `--gold-400` (`#ffc46b`) as `--primary` in every zone, ivory/sand neutrals (`--surface-2` `#faf7f2`), `--gold-ink` for readable gold on white; semantic green/amber/red only as soft readiness-badge tints. The Coach K artwork is built on this same brown/gold scheme. Mobile-first: `[locale]/(app)` uses a bottom tab bar on mobile and a left sidebar on `md+`. Base UI components use a `render` prop for polymorphism (not Radix `asChild`).
 - **Contained-panel rule for test/learning content.** Every test/learning flow (readiness test, practice mode, quiz-style learning) renders its content inside a **single white `bg-card`/`--surface` panel that floats on the ivory canvas** — never flat on the background. This mirrors the client-approved prototype's `.quiz-main`. Use the shared `<QuizPanel>` (`src/components/quiz/quiz-panel.tsx`); don't hand-roll the frame. The dark marketing/landing zone is the separate `.theme-dark` storefront.
@@ -216,7 +262,7 @@ These are the cross-cutting rules that aren't obvious from a single file:
 
 These are easy to miss and have architectural consequences. Honor them in any design or code.
 
-1. **POPIA — settled; do not re-raise as a launch gate.** John closed this concern on **2026-07-24** and canceled K53-17. The original PRD-additions §7 position (Supabase/Vercel prototype-only pending a POPIA review; SA data residency, cross-border transfer, operator agreements, retention) is **superseded** — treat it as historical context, not a live blocker. It reads as outstanding in `docs/product/PRD-additions.md`, which is why reviewers keep flagging it; the settled position is here. The *design* principles still hold and are cheap to honour: collect minimal PII, keep the payment screen parent-facing, and don't invent new personal-data collection without asking.
+1. **POPIA — settled; do not re-raise as a launch gate.** John closed this concern on **2026-07-24** and canceled K53-17. The original PRD-additions §7 position (Supabase/Vercel prototype-only pending a POPIA review; SA data residency, cross-border transfer, operator agreements, retention) is **superseded** — treat it as historical context, not a live blocker. Note the "prototype-only" hedge in that position never described reality anyway: there is one database and it is production (see the deployment note above). It reads as outstanding in `docs/product/PRD-additions.md`, which is why reviewers keep flagging it; the settled position is here. The *design* principles still hold and are cheap to honour: collect minimal PII, keep the payment screen parent-facing, and don't invent new personal-data collection without asking.
 
 2. **No biometric storage, ever (PRD-additions §4, overview §10).** Anti-account-sharing uses device-native passkeys / WebAuthn / Face ID / Touch ID handled *by the device*. The app never collects or stores fingerprints, face scans, or biometric identifiers. Model: one primary device per account, re-auth only on suspicious/new-device usage. Never interrupt a live mock exam with an auth prompt.
 
@@ -247,7 +293,7 @@ These are easy to miss and have architectural consequences. Honor them in any de
 
 User roles: Learner, Parent, School, Admin. The PRD's numbered "Databases" are logical content/engine domains, not literal tables: road signs (DB1), road rules (DB2), vehicle controls (DB3), questions+explanations (DB4, ~750 Q), AI coaching cards (DB5), exam generator (DB6), analytics/prediction (DB7), readiness scoring (DB9 — 40% mock avg / 25% topic accuracy / 20% weak-area improvement / 15% consistency), dashboards (DB10), legal docs (DB12).
 
-Implemented Postgres tables (RLS, own-row policies): `profiles` (auto-created on signup; role/locale/consent flags, minimal PII), `attempts` (per-question, feeds DB7), `readiness_results` (DB9 snapshots), `road_signs` (DB1), `questions` (DB4), `entitlements` + `exam_attempts` (paid access + mock results). The readiness scoring helper is `src/lib/readiness.ts`.
+Implemented Postgres tables (RLS, own-row policies): `profiles` (auto-created on signup; role/locale/consent flags, minimal PII), `attempts` (per-question, feeds DB7), `readiness_results` (DB9 snapshots), `road_signs` (DB1), `questions` (DB4), `entitlements` + `exam_attempts` (paid access + mock results), `feedback_reports` (learner-filed bugs + content flags; insert-own, read own-or-admin, admin-only update/delete — a reporter cannot edit their own report, since a rewritable report is unfalsifiable evidence). The readiness scoring helper is `src/lib/readiness.ts`.
 
 **Both schema gaps that used to be listed here are CLOSED** — don't re-raise them:
 

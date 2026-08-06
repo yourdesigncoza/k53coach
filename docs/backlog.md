@@ -113,3 +113,33 @@ several translatable fields each. This is the natural next step once phase 1 shi
 - **Afrikaans review.** New `mock`/`exam`/`examResult`/`assessment` namespaces in
   `messages/af.json` are first-draft (like the rest); needs native review. The
   AI-generated assessment prose stays English (deferred bilingual content pass).
+
+## In-app reporting — follow-ups (shipped 2026-08-06)
+
+Learner-filed bug + content reports land in `feedback_reports`, triaged at
+`/admin/feedback`, pushed to Linear on an admin's explicit click
+(`src/lib/trackers/linear.ts`). Deferred:
+
+- **Tell the reporter when their report is resolved.** Accepted as wanted, not
+  built: **this project has no mailer at all** — no Resend/nodemailer/Postmark,
+  and Supabase sends auth mail only. Picking a provider is the whole task; the
+  code hook is `setReportStatus(id, 'resolved')` in `src/lib/feedback-actions.ts`.
+  Note the audience before choosing a channel: reporters are signed-in learners,
+  many under 18, so an in-app "your report was actioned" notice may be the better
+  first move than email — it needs no new processor and no new personal data.
+- **Reporter email is currently in the Linear issue body** (John, 2026-08-06).
+  Fine for a small beta; Louwrens is an external collaborator and sees every
+  address. If report volume grows, switch `buildClientBlock` to an internal
+  report id and leave the address in Supabase. One-line change, called out here
+  because nobody will notice the exposure until it matters.
+- **`LINEAR_API_KEY` is not set on Vercel** — it lives only in `.env.local`, so
+  pushes fail in production until it is added. Triage still works; only the push
+  button errors.
+- **No dedupe across reports.** Twenty learners flagging the same question make
+  twenty rows. `feedback_reports_question_idx` exists so grouping is cheap when
+  it is worth doing; a "3 reports on this question" roll-up in the admin list is
+  the obvious first step.
+- **Trello adapter, if ever wanted.** The `Tracker` interface in
+  `src/lib/trackers/linear.ts` is the seam — a second file with `isConfigured` +
+  `createIssue` is the whole job. Not planned: Linear is where the work already
+  lives and Louwrens is already in it.
