@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
-import { getLocale } from "next-intl/server";
-import { Link, redirect } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { ArrowLeft } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -27,8 +26,10 @@ export default async function AdminFeedbackDetailPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const locale = await getLocale();
-  if (!(await isAdmin())) redirect({ href: "/dashboard", locale });
+  // See the note on the list page: the admin layout is NOT sufficient on its
+  // own, because layouts don't re-run on client-side navigation. This page is
+  // the more sensitive of the two — it renders one report's full context.
+  if (!(await isAdmin())) notFound();
 
   const { id } = await params;
   const supabase = await createClient();

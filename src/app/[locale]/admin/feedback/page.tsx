@@ -1,5 +1,4 @@
-import { redirect } from "@/i18n/navigation";
-import { getLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { isAdmin } from "@/lib/supabase/queries";
 import { FeedbackList, type FeedbackRow } from "@/components/admin/feedback-list";
@@ -19,8 +18,12 @@ export default async function AdminFeedbackPage({
 }: {
   searchParams: Promise<{ status?: string; kind?: string }>;
 }) {
-  const locale = await getLocale();
-  if (!(await isAdmin())) redirect({ href: "/dashboard", locale });
+  // Checked HERE, not left to the admin layout. Next's auth guide is explicit:
+  // layouts don't re-render on client-side navigation (Partial Rendering), so a
+  // layout check is not evaluated on every route change — do it close to the
+  // data. RLS (`own-row or is_admin()`) and the per-action `isAdmin()` gates are
+  // the backstops; this is the one that stops the page rendering at all.
+  if (!(await isAdmin())) notFound();
 
   const { status = "open", kind = "all" } = await searchParams;
   const supabase = await createClient();
