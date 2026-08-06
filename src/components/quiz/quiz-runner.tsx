@@ -13,17 +13,26 @@ import {
 } from "@/components/quiz/quiz-chrome";
 import { scoreDiagnostic } from "@/lib/readiness";
 import type { Question } from "@/lib/types";
-import { saveReadinessResult } from "@/lib/storage";
+import { saveReadinessSitting } from "@/lib/storage";
 
 /**
  * Diagnostic quiz engine for the free readiness test.
  *
  * Anonymous by design (POPIA / overview §11): answers and the computed result
- * live only on the device (localStorage, via saveReadinessResult) — nothing is
+ * live only on the device (localStorage, via saveReadinessSitting) — nothing is
  * sent to a server or tied to a person. A signed-in learner's progress is
  * persisted separately, after consent.
  */
-export function QuizRunner({ questions }: { questions: Question[] }) {
+export function QuizRunner({
+  questions,
+  paperToken = null,
+}: {
+  questions: Question[];
+  /** Signed proof of which questions this device was served, for the AI
+   *  assessment on the result page. Null when signing is not configured — the
+   *  test itself works exactly the same without it. */
+  paperToken?: string | null;
+}) {
   const t = useTranslations("readiness");
   const tt = useTranslations("topics");
   const router = useRouter();
@@ -52,7 +61,17 @@ export function QuizRunner({ questions }: { questions: Question[] }) {
     }
     // `answers` already includes the current pick (set on choose).
     const result = scoreDiagnostic(questions, answers, new Date().toISOString());
-    saveReadinessResult(result);
+    // Record the pick as option TEXT, not the index: option order is shuffled
+    // per sitting, so an index is meaningless against the stored question the
+    // assessment route reads back.
+    saveReadinessSitting({
+      result,
+      paperToken,
+      answers: questions.map((qq) => ({
+        id: qq.id,
+        chosen: qq.options[answers[qq.id]] ?? null,
+      })),
+    });
     router.push("/readiness/result");
   }
 

@@ -345,6 +345,21 @@ export type Database = {
         }
         Relationships: []
       }
+      readiness_assessment_grants: {
+        Row: {
+          created_at: string
+          token_hash: string
+        }
+        Insert: {
+          created_at?: string
+          token_hash: string
+        }
+        Update: {
+          created_at?: string
+          token_hash?: string
+        }
+        Relationships: []
+      }
       readiness_results: {
         Row: {
           band: string

@@ -406,7 +406,7 @@
   },
   "assessment": {
     "cta": "Bekyk KI-assessering",
-    "generating": "Besig om jou eksamen te lees…",
+    "generating": "Besig om jou antwoorde te lees…",
     "error": "Kon nie die assessering genereer nie. Probeer asseblief weer.",
     "strengthsHeading": "Wat jy het",
     "focusHeading": "Waar die punte verlore gaan",
@@ -414,6 +414,17 @@
     "oneThingHeading": "Die een ding",
     "practiceCta": "Oefen {topic}",
     "fallbackNote": "Gebaseer op jou afdelingtellings."
+  },
+  "assessmentFallback": {
+    "verdictClean": "Al {count} reg — 'n skoon veld. Dis egter 'n kort steekproef, nie 'n uitspraak nie, so oefen verder om te sien of dit hou.",
+    "verdictWeak": "Dit was 'n steekproef van {count} vrae — kort, maar genoeg om te wys waar om te begin: {topic}.",
+    "strengthNote": "Jy het {correct} uit {total} hier reg gekry.",
+    "focusNote": "Jy het {correct} uit {total} hier gekry. Werk deur die module en oefen dan.",
+    "planLearn": "Leer → {topic}",
+    "planPractice": "Oefen → {topic}",
+    "planLearnOther": "Leer → {topic}",
+    "oneThingClean": "Moenie hier stop nie — 'n handvol vrae kan nie wys wat 'n volle vraestel sal nie.",
+    "oneThingWeak": "Begin met {topic}. Dit is die vinnigste manier om jou telling te verskuif."
   },
   "notFound": {
     "title": "Bladsy nie gevind nie",

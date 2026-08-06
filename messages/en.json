@@ -405,7 +405,7 @@
   },
   "assessment": {
     "cta": "View AI Assessment",
-    "generating": "Reading your exam…",
+    "generating": "Reading your answers…",
     "error": "Could not generate the assessment. Please try again.",
     "strengthsHeading": "What you have got",
     "focusHeading": "Where the marks are going",
@@ -413,6 +413,17 @@
     "oneThingHeading": "The one thing",
     "practiceCta": "Practice {topic}",
     "fallbackNote": "Based on your section scores."
+  },
+  "assessmentFallback": {
+    "verdictClean": "All {count} right — a clean sweep. That is a short sample though, not a verdict, so keep practising to see whether it holds.",
+    "verdictWeak": "That was a {count}-question sample — short, but enough to show where to start: {topic}.",
+    "strengthNote": "You got {correct} out of {total} here.",
+    "focusNote": "You got {correct} out of {total} here. Work through the module, then practise.",
+    "planLearn": "Learn → {topic}",
+    "planPractice": "Practice → {topic}",
+    "planLearnOther": "Learn → {topic}",
+    "oneThingClean": "Do not stop here — a handful of questions cannot show what a full paper will.",
+    "oneThingWeak": "Start with {topic}. It is the fastest way to move your score."
   },
   "notFound": {
     "title": "Page not found",

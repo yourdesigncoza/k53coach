@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { QuizRunner } from "@/components/quiz/quiz-runner";
 import { getReadinessQuestions } from "@/lib/questions";
 import { sampleReadinessQuestions } from "@/lib/readiness-sample";
+import { paperTokenSecret, signPaperToken } from "@/lib/readiness-token";
 
 export async function generateMetadata({
   params,
@@ -28,6 +29,18 @@ export const dynamic = "force-dynamic";
 export default async function ReadinessPage() {
   const questions = sampleReadinessQuestions(await getReadinessQuestions());
   const t = await getTranslations("readiness");
+
+  // Sign which questions this visitor was actually served. The result page hands
+  // it back to /api/readiness/assess, which will only ground an assessment in
+  // these ids — the free assessment is the one LLM call in the app behind an
+  // unauthenticated endpoint, so it has to cost a real page load first.
+  const secret = paperTokenSecret();
+  const paperToken = secret
+    ? signPaperToken(
+        questions.map((q) => q.id),
+        secret,
+      )
+    : null;
 
   const benefits = [
     { icon: Clock, text: t("benefitTime") },
@@ -60,7 +73,7 @@ export default async function ReadinessPage() {
         {questions.length === 0 ? (
           <p className="py-10 text-center text-muted-foreground">{t("empty")}</p>
         ) : (
-          <QuizRunner questions={questions} />
+          <QuizRunner questions={questions} paperToken={paperToken} />
         )}
 
         <p className="text-center text-xs text-muted-foreground">

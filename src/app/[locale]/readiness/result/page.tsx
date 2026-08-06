@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 import type { Json } from "@/lib/database.types";
 import { Link } from "@/i18n/navigation";
@@ -21,7 +21,14 @@ import {
   BAND_FILL,
 } from "@/components/readiness-ring";
 import { cn } from "@/lib/utils";
-import { loadReadinessResult } from "@/lib/storage";
+import { AssessmentPanel } from "@/components/assessment/assessment-panel";
+import {
+  loadReadinessAssessment,
+  loadReadinessSitting,
+  saveReadinessAssessment,
+  type ReadinessSitting,
+} from "@/lib/storage";
+import type { Assessment } from "@/lib/assessment-core";
 import type { ReadinessBand, ReadinessResult } from "@/lib/types";
 
 const BAND_MSG_KEY: Record<ReadinessBand, string> = {
@@ -34,15 +41,24 @@ export default function ResultPage() {
   const t = useTranslations("result");
   const tb = useTranslations("bands");
   const tt = useTranslations("topics");
+  const locale = useLocale();
   const [result, setResult] = useState<ReadinessResult | null>(null);
+  const [sitting, setSitting] = useState<ReadinessSitting | null>(null);
+  const [cachedAssessment, setCachedAssessment] = useState<Assessment | null>(
+    null,
+  );
   const [loaded, setLoaded] = useState(false);
   const persisted = useRef(false);
 
   useEffect(() => {
-    const stored = loadReadinessResult();
-    if (stored) setResult(stored);
+    const stored = loadReadinessSitting();
+    if (stored) {
+      setSitting(stored);
+      setResult(stored.result);
+      setCachedAssessment(loadReadinessAssessment(locale));
+    }
     setLoaded(true);
-  }, []);
+  }, [locale]);
 
   // Persist the snapshot once, only for signed-in learners (RLS scoped).
   useEffect(() => {
@@ -121,15 +137,35 @@ export default function ResultPage() {
         <p className="mt-3 text-sm text-muted-foreground">
           {t(BAND_MSG_KEY[result.band])}
         </p>
-        <Button
-          variant="outline"
-          className="mt-4 rounded-xl"
-          render={
-            <Link href="/readiness/assessment-demo">
-              <Icon name="i-spark" size="sm" /> {t("seeAssessment")}
-            </Link>
-          }
-        />
+        {/* The coach, inline under the score. A learner whose device still holds
+            a pre-assessment sitting has no answers to ground one in, so they get
+            the marketing sample they got before rather than a dead button. */}
+        <div className="mt-5 w-full text-left">
+          {sitting && sitting.answers.length > 0 ? (
+            <AssessmentPanel
+              initial={cachedAssessment}
+              endpoint="/api/readiness/assess"
+              body={() => ({
+                paperToken: sitting.paperToken,
+                answers: sitting.answers,
+                locale,
+              })}
+              onGenerated={(assessment) =>
+                saveReadinessAssessment(locale, assessment)
+              }
+            />
+          ) : (
+            <Button
+              variant="outline"
+              className="mx-auto rounded-xl"
+              render={
+                <Link href="/readiness/assessment-demo">
+                  <Icon name="i-spark" size="sm" /> {t("seeAssessment")}
+                </Link>
+              }
+            />
+          )}
+        </div>
       </section>
 
       <section className="mt-8">
