@@ -57,7 +57,12 @@ export function ReportFab() {
         aria-label={flagged ? `${t("fabLabel")} — ${t("fabProblemHint")}` : t("fabLabel")}
         title={flagged ? t("fabProblemHint") : t("fabLabel")}
         className={cn(
-          "fixed right-4 bottom-24 z-40 inline-flex items-center rounded-full",
+          // Sits 16px above the mobile tab bar. The bar is h-16 PLUS `pb-safe`,
+          // so the offset has to carry the same inset — a flat `bottom-20` looks
+          // right in a desktop viewport and slides the button behind the bar on
+          // any device with a home indicator.
+          "fixed right-4 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-40",
+          "inline-flex items-center rounded-full",
           "border border-[var(--surface-border-2)] bg-[var(--surface)]",
           "shadow-[0_6px_20px_-6px_rgb(34_24_19/0.35)]",
           "transition-all duration-150 outline-none",

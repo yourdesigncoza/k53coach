@@ -27,7 +27,10 @@ export function SideNav() {
       </div>
       <nav className="flex-1 px-3 py-4">
         <ul className="flex flex-col gap-1">
-          {NAV_ITEMS.map(({ href, key, icon: Icon }) => {
+          {NAV_ITEMS.map((item) => {
+            const { href, key, icon: Icon } = item;
+            // The sidebar has room for the fuller label where one exists.
+            const label = "longKey" in item ? item.longKey : key;
             const active =
               pathname === href || pathname.startsWith(`${href}/`);
             return (
@@ -42,7 +45,7 @@ export function SideNav() {
                   )}
                 >
                   <Icon className="size-5" />
-                  {t(key)}
+                  {t(label)}
                 </Link>
               </li>
             );
