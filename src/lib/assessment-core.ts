@@ -18,14 +18,17 @@
  * server file); this module takes a locale string and trusts the caller checked it.
  */
 import type { Topic } from "@/lib/types";
+import { glossaryBlock } from "./assessment-glossary.ts";
 
 /**
  * Bumped whenever any prompt text below changes. The exam path caches its
  * assessment, so without a version bump a prompt improvement never reaches a
  * learner who already generated one. The readiness path caches nothing
  * server-side and ignores this.
+ *
+ * 4 — the non-English terminology block (`assessment-glossary.ts`).
  */
-export const PROMPT_VERSION = 3;
+export const PROMPT_VERSION = 4;
 
 /** topic → the learner module slug used in /learn and /learn/.../practice URLs. */
 export const TOPIC_SLUG: Record<Topic, string> = {
@@ -168,7 +171,7 @@ Write a short, personal coaching read. Rules you MUST follow:
     "oneThing":  string,                       // the single highest-leverage focus
     "ctaTopic":  "signs"|"rules"|"controls"    // the weakest section to practise first
   }
-- Every plan href MUST be chosen from the allowedHrefs list in the payload.
+- Every plan href MUST be chosen from the allowedHrefs list in the payload.${glossaryBlock(locale)}
 ${formatRules}`;
 }
 
