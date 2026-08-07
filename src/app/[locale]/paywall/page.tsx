@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Check, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
@@ -148,6 +148,14 @@ export default function PaywallPage() {
         </Button>
         <p className="text-center text-xs text-muted-foreground">
           {TEST_CHECKOUT ? t("testNote") : t("note")}
+        </p>
+        {/* The Terms promise this guarantee (§8). A payment screen that stays
+            silent about it leaves the buyer unaware of a right they have. */}
+        <p className="text-center text-xs text-muted-foreground">
+          {t("guarantee")}{" "}
+          <Link href="/legal/refund#money-back" className="underline">
+            {t("guaranteeLink")}
+          </Link>
         </p>
       </div>
       </main>

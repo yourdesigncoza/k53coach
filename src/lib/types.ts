@@ -175,3 +175,60 @@ export interface ReadinessResult {
   weakest: Topic | null;
   takenAt: string; // ISO
 }
+
+/* ------------------------------------------------------------------ *
+ * Legal documents (DB12)
+ *
+ * The Terms and the Privacy Policy are supplied by the business and
+ * published verbatim — see docs/legal/README.md. These types are a
+ * faithful *container* for what the source documents contain, nothing
+ * more: the transcription is structural, never editorial.
+ * ------------------------------------------------------------------ */
+
+/**
+ * One run of prose inside a clause. Rendered in field order: sub-heading,
+ * paragraphs, stacked lines, bullets.
+ */
+export interface LegalBlock {
+  /** Printed sub-heading, e.g. "4.1 Account and Contact Information". */
+  subheading?: string;
+  /** Paragraphs, in order. */
+  text?: string[];
+  /**
+   * Tightly stacked lines rather than paragraphs — address and contact blocks,
+   * which the source prints one per line with no spacing between them.
+   */
+  lines?: string[];
+  /** Bulleted list. */
+  bullets?: string[];
+}
+
+/** One numbered clause. */
+export interface LegalSection {
+  /**
+   * Stable anchor, e.g. "money-back". Deep-linked from the paywall and used to
+   * pick the refund subset out of the Terms — so renaming one breaks a link.
+   */
+  id: string;
+  /** Clause number exactly as printed, e.g. "8". */
+  number: string;
+  heading: string;
+  blocks: LegalBlock[];
+}
+
+/** A whole published document. */
+export interface LegalDoc {
+  slug: "terms" | "privacy";
+  title: string;
+  /** As printed on the document, e.g. "August 2026". */
+  effectiveDate: string;
+  /** Everything printed before clause 1 — lead paragraphs and the operator block. */
+  intro: LegalBlock[];
+  sections: LegalSection[];
+  /** The closing summary box ("IMPORTANT REFUND SUMMARY" / "PRIVACY SUMMARY"). */
+  callout?: { title: string; blocks: LegalBlock[] };
+  /** © line as printed. */
+  copyright: string;
+  /** Path under public/ to the original PDF as supplied. */
+  pdf: string;
+}

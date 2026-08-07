@@ -57,8 +57,6 @@
     "trustParentBody": "'n Gereedheidstelling wat ouers werklik verstaan.",
     "trustPrivacyTitle": "Privaatheid eerste",
     "trustPrivacyBody": "Probeer anoniem. Geen biometrie, ooit nie.",
-    "footerRights": "© 2026 K53 Coach",
-    "privacy": "Privaatheid & POPIA",
     "navHow": "Hoe dit werk",
     "navTopics": "Onderwerpe",
     "navPricing": "Pryse",
@@ -199,7 +197,9 @@
     "demoSkip": "Demo-modus — Supabase nie opgestel nie. Spring na die app.",
     "demoNote": "Demo-modus: Supabase is nog nie opgestel nie, so aanmelding word nageboots. Voeg sleutels in .env.local by om regte aanmelding te aktiveer.",
     "minor": "Onder 18? 'n Ouer of voog moet goedkeur dat jou vordering gestoor word.",
-    "learnMore": "Meer inligting"
+    "learnMore": "Meer inligting",
+    "agreeTerms": "Deur 'n rekening te skep stem jy in tot ons",
+    "termsLink": "Bepalings en Voorwaardes"
   },
   "paywall": {
     "badge": "Ouer-ontsluiting",
@@ -214,6 +214,8 @@
     "payfast": "Betaal met PayFast",
     "yoco": "Betaal met Yoco",
     "note": "Veilige Suid-Afrikaanse betaalpoorte. Dit is 'n ouer-gerigte skerm.",
+    "guarantee": "Gedek deur 'n 7-dae geld-terug-waarborg.",
+    "guaranteeLink": "Hoe terugbetalings werk",
     "stub": "{gateway} is nog nie beskikbaar nie — gebruik asseblief PayFast.",
     "testNote": "Toetsmodus — dit ontsluit volle toegang sonder n werklike betaling.",
     "testUnlocked": "Toegang ontsluit — geniet die volledige app.",
@@ -322,16 +324,18 @@
   "comingSoon": {
     "back": "Terug na leer"
   },
+  "footer": {
+    "rights": "© 2026 K53 Coach",
+    "terms": "Bepalings",
+    "privacy": "Privaatheid",
+    "refund": "Terugbetalings"
+  },
   "legal": {
-    "title": "Privaatheid & POPIA",
-    "intro": "Plekhouer-kennisgewing vir die MVP-raamwerk. Die produksiebeleid word met regsoorsig opgestel voor bekendstelling (DB12).",
-    "principlesTitle": "Ons privaatheidsbeginsels",
-    "p1": "Die gratis gereedheidstoets is anoniem — geen rekening word benodig nie.",
-    "p2": "Ons versamel of stoor nooit biometriese data nie. Sleutelkode-aanmelding word deur jou eie toestel hanteer.",
-    "p3": "Jou gratis gereedheidsuitslag bly op jou eie toestel totdat jy kies om 'n rekening te skep.",
-    "p4": "Ons versamel die minimum persoonlike inligting wat nodig is.",
-    "p5": "Ons enkripteer data tydens versending en in berging, en pas duidelike bewaringsreëls toe. Ons databasis word in die EU (Ierland) gehuisves.",
-    "docs": "Vereiste produksiedokumente: Bepalings, Privaatheidsbeleid, POPIA-beleid, Ouertoestemming, Terugbetalingsbeleid, Skoolooreenkoms, Koekiesbeleid, AI-gebruiksvrywaring."
+    "effectiveDate": "Ingangsdatum: {date}",
+    "downloadPdf": "Laai PDF af",
+    "refundTitle": "Kansellasie- en Terugbetalingsbeleid",
+    "refundExtract": "Hierdie klousules vorm deel van die K53 Coach Bepalings en Voorwaardes.",
+    "backToTerms": "Lees die volledige Bepalings"
   },
   "quiz": {
     "coach": "Coach sê",
@@ -502,6 +506,8 @@
     "readiness": "Gratis gereedheidstoets",
     "lessonDemo": "Voorbeeldles — Padtekens: Vorms en Kleure",
     "assessmentDemo": "KI-assessering — voorbeeld",
-    "privacy": "Privaatheid & POPIA"
+    "terms": "Bepalings en Voorwaardes",
+    "privacy": "Privaatheidsbeleid",
+    "refund": "Kansellasie- en Terugbetalingsbeleid"
   }
 }

@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { LegalDocument } from "@/components/legal/legal-document";
-import { PRIVACY } from "@/content/legal/privacy";
+import { TERMS } from "@/content/legal/terms";
 
 export async function generateMetadata({
   params,
@@ -11,9 +11,9 @@ export async function generateMetadata({
     locale: (await params).locale,
     namespace: "meta",
   });
-  return { title: t("privacy") };
+  return { title: t("terms") };
 }
 
-export default function PrivacyPage() {
-  return <LegalDocument doc={PRIVACY} />;
+export default function TermsPage() {
+  return <LegalDocument doc={TERMS} />;
 }

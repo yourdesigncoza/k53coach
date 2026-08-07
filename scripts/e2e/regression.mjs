@@ -599,15 +599,26 @@ try {
     check(!/5 minute/i.test(readiness), "readiness intro drops the 5-minute claim");
     check(/minuut/i.test(readiness), "…and states about a minute");
 
+    // The privacy page is no longer our MVP placeholder — since 2026-08-07 it
+    // serves the business's own Privacy Policy (Linear K53-53), published
+    // verbatim and in English on both locales (docs/legal/README.md). The two
+    // claims this used to assert were placeholder wording that is now gone with
+    // the rest of it: the parent-consent promise (which was the point — it was
+    // never implemented) and the device-local readiness line. What is worth
+    // pinning now is that the real document is what gets served.
     await page.goto(`${BASE}/af/legal/privacy`, { waitUntil: "networkidle" });
     const privacy = await text(page);
     check(
-      !/toestemming gee voordat/i.test(privacy),
-      "the unimplemented parent-consent promise is gone",
+      !/Plekhouer-kennisgewing|regsoorsig opgestel voor bekendstelling/i.test(privacy),
+      "the MVP placeholder policy is gone from /af",
     );
     check(
-      /op jou eie toestel/i.test(privacy),
-      "…replaced by what actually happens (device-local result)",
+      /Luyt Family Holdings/.test(privacy) && /INFORMATION OFFICER/i.test(privacy),
+      "…replaced by the published Privacy Policy, operator and Information Officer named",
+    );
+    check(
+      /Effective Date: August 2026|Ingangsdatum: August 2026/.test(privacy),
+      "…carrying the effective date it was supplied with",
     );
 
     await ctx.close();

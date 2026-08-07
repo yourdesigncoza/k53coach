@@ -87,6 +87,13 @@ export default function AuthPage() {
           {t("learnMore")}
         </Link>
       </p>
+      <p className="mt-2 text-center text-xs text-muted-foreground">
+        {t("agreeTerms")}{" "}
+        <Link href="/legal/terms" className="underline">
+          {t("termsLink")}
+        </Link>
+        .
+      </p>
       </main>
       <SiteFooter />
     </>
