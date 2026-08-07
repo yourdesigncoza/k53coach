@@ -16,7 +16,7 @@ The original specs live in `docs/product/` and still govern product intent — r
 
 ## Project status
 
-Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. The road-sign library (DB1) is fully ingested and **chart-verified in a Claude Code session** — see `docs/sign-accuracy-pipeline.md`. **Mock exam (Code B) shipped:** entitlement-gated `/mock` → timed **64**-question paper (rules 30 / signs 28 / controls 6, scored independently — corrected from 68 on 2026-07-31, K53-34; see the evidence note on `EXAM_FORMAT_B`) → per-section summary → grounded AI assessment → DB9 readiness blend on the dashboard/progress. Engine in `src/lib/exam.ts`, UI in `src/components/exam/*`, gate in `src/lib/exam-guard.ts`. **In-app reporting shipped 2026-08-06:** signed-in learners file bugs (FAB in the app shell) and content flags ("this looks wrong" on questions, signs, rules, controls) → `feedback_reports` → admin triage at `/admin/feedback` → manual push to Linear.
+Live MVP slice, deployed. Built: free anonymous readiness test → parent-shareable score → paywall (PayFast/Yoco stubs) → app shell; three learner modules (Road Signs, Rules, Vehicle Controls) each with list + structured-learning-object detail + an AI "Explain my mistake" practice mode; bilingual EN/AF; Supabase-backed for signed-in learners. The road-sign library (DB1) is fully ingested and **chart-verified in a Claude Code session** — see `docs/sign-accuracy-pipeline.md`. **Mock exam (Code B) shipped:** entitlement-gated `/mock` → timed **64**-question paper (rules 30 / signs 28 / controls 6, scored independently — corrected from 68 on 2026-07-31, K53-34; see the evidence note on `EXAM_FORMAT_B`) → per-section summary → grounded AI assessment → DB9 readiness blend on the dashboard/progress. Engine in `src/lib/exam.ts`, UI in `src/components/exam/*`, gate in `src/lib/exam-guard.ts`. **Ask Coach shipped 2026-08-07:** entitlement-gated `/ask` chat tutor answering only from ~706 verified passages, with the review queue + test console at `/admin/coach` — spec and safety contract in `docs/product/PRD-ask-coach.md`. **In-app reporting shipped 2026-08-06:** signed-in learners file bugs (FAB in the app shell) and content flags ("this looks wrong" on questions, signs, rules, controls) → `feedback_reports` → admin triage at `/admin/feedback` → manual push to Linear.
 
 **Live data measured 2026-08-04** against the one and only project (`lxefjksaxmiawrnnewmj` — production; see the deployment note below).
 **Measure it yourself before quoting — these drift fast.** The 2026-07-30 figures that stood
@@ -60,9 +60,9 @@ things the audit could *not* fix in copy are recorded at the end of that doc. Th
 six served signs with no recorded verification evidence — is **closed as of 2026-08-05**
 (`scripts/data-repairs/six-unverified-signs-2026-08-05.json`); **every served sign now carries a
 verification record**, and `verification is null` over the served set returns 0. The second
-stands: **only `/mock` is entitlement-gated** — practice, explanations and the whole library are
-already free, so R179 currently buys mock exams and the AI assessment. That one is a product
-decision, not a wording bug.
+stands, but has narrowed: **`/mock` and `/ask` are entitlement-gated** — practice, explanations
+and the whole library are still free, so R179 buys mock exams, the AI assessment and **Ask Coach**
+(shipped 2026-08-07). Practice staying free is settled; do not re-propose gating it.
 
 ⚠️ **That sign gap was bigger than "missing evidence" — `content` was `{}` on all six.**
 `IN11.1`–`IN11.4`, `IN19` and `W346` were `approved` on both gates and served to learners with
@@ -170,6 +170,11 @@ npm run signs:seed     # push the ingested set into road_signs
 # Question bank (see scripts/exam/README.md)
 npm run exam:build-migration   # regenerate the questions migration from the wiki bank
 
+# Ask Coach (docs/product/PRD-ask-coach.md)
+node scripts/coach/snapshot-corpus.mjs                 # refresh the test corpus snapshot (needs --env-file=.env.local)
+node --env-file=.env.local --experimental-strip-types \
+  scripts/coach/adversarial-live.mjs                   # hostile prompts vs the LIVE model; costs a few cents
+
 # End-to-end drivers (Playwright is NOT a dependency — resolved from
 # ~/tools/playwright-e2e/node_modules, or set PLAYWRIGHT_DIR). These hit the
 # LIVE database; each confines itself to its own e2e user and cleans up after.
@@ -181,6 +186,7 @@ node scripts/e2e/assessment.mjs      # post-exam AI assessment (sits a full 64-q
 node scripts/e2e/feedback.mjs        # in-app reporting: flag → row → context (24 assertions)
 node scripts/e2e/readiness-assessment.mjs   # free AI assessment, anonymous, 4 score profiles
                                      # --profile 0of5|1of5|3of5|5of5 --locale af --expect model
+node scripts/e2e/ask.mjs             # Ask Coach: gate, RLS, zero-token refusal (24 assertions)
 node scripts/e2e/regression.mjs --headed   # 2026-08-06 changes (62 assertions), sections:
                                      # readiness | mock | feedback | admin | af
 
@@ -229,7 +235,12 @@ These are the cross-cutting rules that aren't obvious from a single file:
 - **Supabase clients degrade gracefully.** `src/lib/supabase/{client,server,middleware}.ts` return `null` when env vars are absent (demo mode). All are typed via `src/lib/database.types.ts` (regenerate after schema changes). Server-side reads live in `src/lib/supabase/queries.ts`. Persistence (attempts, readiness snapshots) happens client-side via the browser client, guarded by an auth check; **RLS** enforces own-row access on every table.
 - **`src/proxy.ts` is the middleware** (Next 16 renamed `middleware`→`proxy`). It composes the next-intl locale middleware with Supabase session refresh — order matters (intl builds the response, Supabase writes cookies onto it).
 - **All app LLM calls go through `src/lib/llm.ts` (OpenRouter, `openai/gpt-5.4-mini`, `OPENROUTER_API_KEY`).** One entry point (`llmChat` + `hasLlmKey`), direct fetch, graceful when the key is absent. **Switched from the OpenAI API to OpenRouter on 2026-08-06** — same model, same OpenAI-compatible wire format, so only the URL, key, auth headers and `max_tokens` field changed. Two consequences: the model is now the **floating** alias, not the `-2026-03-17` snapshot we pinned for reproducibility, and `OPENAI_API_KEY` is dead everywhere including Vercel. Use it for any new AI feature — do not call a provider API directly or hardcode a model. Currently only **offline/admin** drafting uses it (no runtime learner-facing AI — see below).
-- **No runtime AI in the learner flow (deliberate).** Practice/test explanations are **hard-coded verified content** shown directly (`q.explanation`) — there is no per-question LLM call. AI is used only **offline** to draft initial content for human review (`src/app/api/admin/draft-sign/route.ts`, the translation manager's AI-draft) and is reserved for a **future post-test coaching** feature (score-improvement suggestions / recommended learning), not per-question rephrasing. The old `/api/ai/explain` rephrase route was removed. Editable answers/explanations are managed in admin Content Management (DB-backed question bank — see `docs/backlog.md`). When adding AI, it must stay grounded in verified content and never invent legal/safety claims.
+- **Runtime AI exists, and it is grounded — but NOT per-question.** Practice/test explanations are still **hard-coded verified content** shown directly (`q.explanation`); there is no per-question LLM call and the old `/api/ai/explain` rephrase route stays removed, deliberately. What runs at runtime is coaching *about* a result or a question the learner asked: the post-mock assessment, the free readiness read, and **Ask Coach** (`/ask`, shipped 2026-08-07 — `docs/product/PRD-ask-coach.md`). AI also drafts content offline for human review (`admin/draft-sign`, the translation manager). Editable answers/explanations live in admin Content Management. ⚠️ *This bullet used to say "No runtime AI in the learner flow (deliberate)". That was true until Ask Coach shipped and is now the opposite of the code — if you are reading it in an older summary, distrust it.*
+- **Ask Coach: retrieval is a cost filter, the validator is the boundary.** `/ask` is entitlement-gated (`requireEntitledUser`, same gate as `/mock`) and answers only from ~706 verified passages assembled by `coach-corpus.ts` (approved signs + approved questions + `ROAD_RULES` + `VEHICLE_CONTROLS`). **No web search, ever** — an uncovered question is answered honestly and logged to the review queue at `/admin/coach`, which is how it becomes a content gap instead of a wrong answer. Do not "improve" it by adding a search fallback.
+  - `coach-retrieval.ts` (lexical, `MIN_SCORE`/`MAX_OOV` **fitted against `src/lib/__fixtures__/coach-adversarial.json`**) is admitted to be defeatable: append one K53 token to anything and it passes. That is stated, not hidden. Scope and safety are enforced in `coach-reply.ts` — `answered` requires a source, prose must overlap the passages it cites, **every number carrying a unit must appear in a cited passage**, and a forbidden-claim list catches certification and foreign-law markers.
+  - **Change a threshold and the fixture is the gate**, both directions: 121 query cases + 22 validator cases, asserted by `npm test`. Loosening one to rescue a false rejection fails another. A live-model pass (`scripts/coach/adversarial-live.mjs`) covers what unit tests cannot — run it before shipping a prompt change.
+  - Spend is a **reservation, not a count**: `coach_claim()` takes a per-user advisory lock, because count-then-call lets several tabs each read 24 and each proceed. Do not copy the `feedback-actions.ts` count idiom here — its own comment says it is a courtesy guard, not a defence.
+  - **A learner may not author an `assistant` row** (RLS `role = 'user'` + conversation ownership); assistant turns arrive only via `coach_append_assistant()`. Pinned by `scripts/e2e/ask.mjs`, which mints a real learner JWT — an empty bearer returns 401 and looks exactly like a passing test while proving nothing.
 - **In-app reporting is decoupled from the tracker, deliberately.** Learners file
   bugs and content flags (`feedback_reports`, shipped 2026-08-06). **Submitting
   never calls an external API** — `submitReport` writes the row and returns; an

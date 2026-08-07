@@ -56,9 +56,26 @@ export function hasLlmKey() {
   return Boolean(process.env.OPENROUTER_API_KEY);
 }
 
+export interface LlmMessage {
+  role: "user" | "assistant";
+  content: string;
+}
+
 type ChatOpts = {
   system: string;
   user: string;
+  /**
+   * Prior turns, oldest first, replayed between the system prompt and `user`.
+   *
+   * Added for Ask Coach, the first multi-turn surface in the app. Everything else
+   * here is one-shot and stays that way — an assessment that quietly grew a
+   * conversation history would be a different feature.
+   *
+   * ⚠ Assistant turns are MODEL OUTPUT being fed back in. The Ask Coach prompt
+   * marks the transcript as reference material rather than instruction for
+   * exactly that reason; anything else sending history must do the same.
+   */
+  messages?: LlmMessage[];
   /** Max completion tokens — includes any reasoning tokens (default 1500). */
   maxTokens?: number;
   /** Force a JSON-object response (json mode). */
@@ -87,6 +104,7 @@ export interface LlmUsage {
 export async function llmChat({
   system,
   user,
+  messages = [],
   maxTokens = 1500,
   json = false,
   temperature = 0.3,
@@ -115,6 +133,7 @@ export async function llmChat({
       ...(json ? { response_format: { type: "json_object" } } : {}),
       messages: [
         { role: "system", content: system },
+        ...messages,
         { role: "user", content: user },
       ],
     }),

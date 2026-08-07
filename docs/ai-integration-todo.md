@@ -109,9 +109,13 @@ started.
 
 ### Not doing, and why
 
-- **A chat interface.** It is what the original plan described and it is the hardest
-  thing on this list to keep grounded. If it is wanted it needs its own plan with an
-  explicit refusal-and-grounding strategy, not a slot on a shortlist.
+- ~~**A chat interface.**~~ **BUILT — Ask Coach, 2026-08-07.** It did get its own plan
+  with an explicit refusal-and-grounding strategy: `docs/product/PRD-ask-coach.md`.
+  The strategy that survived an adversarial review is *not* the obvious one — lexical
+  retrieval turned out to be a cost filter rather than a scope gate (append one K53
+  token to anything and it passes), so scope is enforced on the OUTPUT: sources
+  required, prose must overlap the passages it cites, and every number carrying a unit
+  must appear in one of them. See §4 of the PRD before changing any of it.
 - **Per-question AI rephrasing.** Reverted once already, deliberately.
 
 ### Housekeeping

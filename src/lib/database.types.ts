@@ -69,6 +69,119 @@ export type Database = {
         }
         Relationships: []
       }
+      coach_conversations: {
+        Row: {
+          created_at: string
+          id: string
+          last_message_at: string | null
+          locale: string
+          message_count: number
+          title: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          last_message_at?: string | null
+          locale?: string
+          message_count?: number
+          title?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          last_message_at?: string | null
+          locale?: string
+          message_count?: number
+          title?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      coach_messages: {
+        Row: {
+          body: string
+          conversation_id: string
+          corpus_revision: string | null
+          created_at: string
+          evidence: Json
+          id: string
+          model: string | null
+          prompt_version: number | null
+          role: string
+          status: string | null
+          tokens_in: number | null
+          tokens_out: number | null
+          user_id: string
+        }
+        Insert: {
+          body: string
+          conversation_id: string
+          corpus_revision?: string | null
+          created_at?: string
+          evidence?: Json
+          id?: string
+          model?: string | null
+          prompt_version?: number | null
+          role: string
+          status?: string | null
+          tokens_in?: number | null
+          tokens_out?: number | null
+          user_id: string
+        }
+        Update: {
+          body?: string
+          conversation_id?: string
+          corpus_revision?: string | null
+          created_at?: string
+          evidence?: Json
+          id?: string
+          model?: string | null
+          prompt_version?: number | null
+          role?: string
+          status?: string | null
+          tokens_in?: number | null
+          tokens_out?: number | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "coach_messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "coach_conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      coach_usage: {
+        Row: {
+          created_at: string
+          day: string
+          entitlement_id: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          day: string
+          entitlement_id: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          day?: string
+          entitlement_id?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       entitlements: {
         Row: {
           expires_at: string
@@ -529,6 +642,36 @@ export type Database = {
       }
     }
     Functions: {
+      coach_append_assistant: {
+        Args: {
+          p_body: string
+          p_conversation_id: string
+          p_corpus_revision: string
+          p_evidence: Json
+          p_model: string
+          p_prompt_version: number
+          p_status: string
+          p_tokens_in: number
+          p_tokens_out: number
+        }
+        Returns: string
+      }
+      coach_claim: {
+        Args: {
+          p_daily_cap: number
+          p_entitlement_id: string
+          p_global_cap: number
+          p_period_cap: number
+        }
+        Returns: {
+          outcome: string
+          reservation_id: string
+          used_period: number
+          used_today: number
+        }[]
+      }
+      coach_purge_expired_bodies: { Args: { p_days?: number }; Returns: number }
+      coach_release: { Args: { p_reservation_id: string }; Returns: undefined }
       is_admin: { Args: never; Returns: boolean }
     }
     Enums: {

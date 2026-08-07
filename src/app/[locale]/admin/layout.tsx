@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { Bug } from "lucide-react";
+import { Bug, MessageCircle } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/brand/logo";
 import { isAdmin, getUntriagedReportCount } from "@/lib/supabase/queries";
@@ -47,6 +47,13 @@ export default async function AdminLayout({
                   {untriaged}
                 </span>
               )}
+            </Link>
+            <Link
+              href="/admin/coach"
+              className="flex items-center gap-1.5 text-sm font-medium hover:text-foreground"
+            >
+              <MessageCircle className="size-4" />
+              Ask Coach
             </Link>
             <Link href="/admin/guide" className="text-sm font-medium hover:text-foreground">
               Guide

@@ -29,8 +29,14 @@
  * learner.
  */
 
-/** Which assessment the prompt is for. Some terms belong to only one. */
-export type Surface = "exam" | "readiness";
+/**
+ * Which surface the prompt is for. Some terms belong to only one.
+ *
+ * "coach" is the Ask Coach chat tutor. It is entitlement-gated like the exam, so
+ * unlike "readiness" it may name the mock exam — a learner who can open the chat
+ * can open `/mock`.
+ */
+export type Surface = "exam" | "readiness" | "coach";
 
 export type GlossaryTerm = {
   /** The English concept, as the model will have it in mind. */
@@ -38,11 +44,11 @@ export type GlossaryTerm = {
   /** The term to use. */
   use: string;
   /**
-   * Limit this term to one surface. Set for anything a learner on the other
-   * surface cannot reach — handing the model a word for a paywalled feature is
-   * how it ends up recommending one.
+   * Limit this term to the named surfaces. Set for anything a learner on the
+   * other surface cannot reach — handing the model a word for a paywalled
+   * feature is how it ends up recommending one.
    */
-  only?: Surface;
+  only?: Surface | Surface[];
   /** Wrong terms seen in real output, or plausible calques, to rule out. */
   avoid?: string[];
   /**
@@ -81,10 +87,19 @@ export const GLOSSARIES: Record<string, GlossaryTerm[]> = {
       // Proefeksamen-styl oefensessie" for a learner who has not paid and
       // cannot open /mock. Dropping the href is not enough if the prose still
       // sells it.
+      // Ask Coach is entitlement-gated on the same access as /mock, so unlike
+      // the free readiness read it may name the mock exam without selling
+      // something the reader cannot open.
       en: "mock exam",
       use: "Proefeksamen",
       source: "nav.mock",
-      only: "exam",
+      only: ["exam", "coach"],
+    },
+    {
+      en: "Ask Coach (the chat tutor)",
+      use: "Vra die Afrigter",
+      only: "coach",
+      pending: true,
     },
     { en: "test hint", use: "Toetswenk", source: "module.testHint" },
     // NOT "practice → Oefen". Listing it produced "Doen nog Oefen vir
@@ -122,7 +137,9 @@ export const GLOSSARIES: Record<string, GlossaryTerm[]> = {
  * or any locale with no glossary). Callers can append unconditionally.
  */
 export function glossaryBlock(locale: string, surface: Surface): string {
-  const terms = GLOSSARIES[locale]?.filter((t) => !t.only || t.only === surface);
+  const terms = GLOSSARIES[locale]?.filter(
+    (t) => !t.only || (Array.isArray(t.only) ? t.only.includes(surface) : t.only === surface),
+  );
   if (!terms?.length) return "";
 
   const lines = terms.map((t) => {

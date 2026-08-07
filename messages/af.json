@@ -20,7 +20,8 @@
     "mock": "Proefeksamen",
     "progress": "Vordering",
     "admin": "Admin",
-    "appHome": "App-tuiste"
+    "appHome": "App-tuiste",
+    "ask": "Vra"
   },
   "bands": {
     "not-ready": "Nog nie gereed nie",
@@ -508,6 +509,22 @@
     "assessmentDemo": "KI-assessering — voorbeeld",
     "terms": "Bepalings en Voorwaardes",
     "privacy": "Privaatheidsbeleid",
-    "refund": "Kansellasie- en Terugbetalingsbeleid"
+    "refund": "Kansellasie- en Terugbetalingsbeleid",
+    "ask": "Vra die Afrigter"
+  },
+  "ask": {
+    "title": "Vra die Afrigter",
+    "subtitle": "Vrae oor tekens, reëls, kontroles en die toets — beantwoord uit die geverifieerde lesse.",
+    "emptyTitle": "Wat wil jy weet?",
+    "emptyBody": "Vra oor 'n padteken, 'n padreël, 'n voertuigkontrole, of wat die leerlingtoets verwag. As die lesse dit nie dek nie, sê ek so eerder as om te raai.",
+    "placeholder": "Vra 'n K53-vraag…",
+    "send": "Vra",
+    "thinking": "Ek lees die lesse…",
+    "sources": "Uit:",
+    "error": "Iets het my kant misgeloop. Probeer weer oor 'n oomblik.",
+    "history": "Geskiedenis",
+    "newChat": "Nuwe vraag",
+    "untitled": "Sonder titel",
+    "delete": "Vee gesprek uit"
   }
 }

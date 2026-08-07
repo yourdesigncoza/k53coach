@@ -19,7 +19,8 @@
     "mock": "Mock Test",
     "progress": "Progress",
     "admin": "Admin",
-    "appHome": "App Home"
+    "appHome": "App Home",
+    "ask": "Ask"
   },
   "bands": {
     "not-ready": "Not ready yet",
@@ -507,6 +508,22 @@
     "assessmentDemo": "AI Assessment — sample",
     "terms": "Terms and Conditions",
     "privacy": "Privacy Policy",
-    "refund": "Cancellation & Refund Policy"
+    "refund": "Cancellation & Refund Policy",
+    "ask": "Ask Coach"
+  },
+  "ask": {
+    "title": "Ask Coach",
+    "subtitle": "Questions about signs, rules, controls and the test — answered from the verified lessons.",
+    "emptyTitle": "What would you like to know?",
+    "emptyBody": "Ask about a road sign, a rule of the road, a vehicle control, or what the learner's test expects. If the lessons don't cover it, I'll say so rather than guess.",
+    "placeholder": "Ask a K53 question…",
+    "send": "Ask",
+    "thinking": "Reading the lessons…",
+    "sources": "From:",
+    "error": "Something went wrong on my side. Try again in a moment.",
+    "history": "History",
+    "newChat": "New question",
+    "untitled": "Untitled",
+    "delete": "Delete conversation"
   }
 }
