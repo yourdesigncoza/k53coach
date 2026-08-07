@@ -15,7 +15,8 @@
     "signs:ingest-legacy": "node scripts/signs/ingest.mjs",
     "signs:seed": "node scripts/signs/seed-db.mjs",
     "exam:build-migration": "node scripts/exam/build-questions-migration.mjs",
-    "e2e": "node scripts/e2e/flow.mjs"
+    "e2e": "node scripts/e2e/flow.mjs",
+    "i18n:check": "node --experimental-strip-types scripts/i18n/check-overrides.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

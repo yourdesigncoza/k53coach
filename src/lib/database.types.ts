@@ -476,6 +476,7 @@ export type Database = {
       }
       ui_translations: {
         Row: {
+          default_hash: string | null
           key: string
           locale: string
           namespace: string
@@ -484,6 +485,7 @@ export type Database = {
           value: string
         }
         Insert: {
+          default_hash?: string | null
           key: string
           locale: string
           namespace: string
@@ -492,6 +494,7 @@ export type Database = {
           value: string
         }
         Update: {
+          default_hash?: string | null
           key?: string
           locale?: string
           namespace?: string

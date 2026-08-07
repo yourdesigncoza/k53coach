@@ -11,7 +11,7 @@ executed one at a time. Update the Status column as they land.
 | # | Item | Pri | Status | Blocked by |
 |---|---|---|---|---|
 | [AP-01](AP-01-live-af-claim-repair.md) | Repair the live `/af` false claims in `ui_translations` | **P0** | **False claims cleared live (2026-08-06)** — 8 rows deleted, cache busted, verified. 41 wording rows remain | Louwrens on the remaining 41 |
-| [AP-02](AP-02-stale-override-guard.md) | Make stale overrides non-effective, not just visible | **P0** | Not started | — |
+| [AP-02](AP-02-stale-override-guard.md) | Make override drift loud (`default_hash` + Stale filter + `i18n:check`) | **P0** | **Built 2026-08-07**, pending the migration push. **Approach reversed**: admin always wins, drift is reported not corrected | — |
 | [AP-03](AP-03-bilingual-assessment.md) | Localise the AI assessment (prompt locale + versioned cache) | **P1** | **Prompt half done** (2026-08-06, in AP-09's shared core). Cache envelope outstanding | — |
 | [AP-04](AP-04-fallback-caching.md) | Never persist a fallback assessment; add regenerate | **P1** | **Partly done** — a stored fallback is now a cache miss, so it self-heals. Still written, and no regenerate control | — |
 | [AP-05](AP-05-prompt-hardening.md) | Prompt hardening + validator enforcement | **P2** | **✅ Done 2026-08-06** — all six defects gone, enforced in `parseAssessment`, 0 rejections in 8 real generations | — |

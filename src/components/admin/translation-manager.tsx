@@ -13,7 +13,7 @@ import {
 } from "@/lib/translation-actions";
 import type { CatalogRow } from "@/lib/translations";
 
-type Filter = "all" | "overridden" | "untranslated";
+type Filter = "all" | "overridden" | "untranslated" | "stale";
 const LOCALES = ["en", "af"] as const;
 type Loc = (typeof LOCALES)[number];
 
@@ -36,6 +36,7 @@ export function TranslationManager({ rows }: { rows: CatalogRow[] }) {
       total: rows.length,
       overridden: rows.filter((r) => r.enOverridden || r.afOverridden).length,
       untranslated: rows.filter((r) => r.untranslated).length,
+      stale: rows.filter((r) => r.enStale || r.afStale).length,
     }),
     [rows],
   );
@@ -49,7 +50,8 @@ export function TranslationManager({ rows }: { rows: CatalogRow[] }) {
       const passFilter =
         filter === "all" ||
         (filter === "overridden" && (r.enOverridden || r.afOverridden)) ||
-        (filter === "untranslated" && r.untranslated);
+        (filter === "untranslated" && r.untranslated) ||
+        (filter === "stale" && (r.enStale || r.afStale));
       const passSearch =
         !q ||
         `${r.namespace}.${r.key}`.toLowerCase().includes(q) ||
@@ -64,6 +66,7 @@ export function TranslationManager({ rows }: { rows: CatalogRow[] }) {
     { id: "all", label: `All (${counts.total})` },
     { id: "overridden", label: `Overridden (${counts.overridden})` },
     { id: "untranslated", label: `Untranslated (${counts.untranslated})` },
+    { id: "stale", label: `Stale (${counts.stale})` },
   ];
 
   return (
@@ -131,6 +134,12 @@ function TranslationRow({ row, hidden }: { row: CatalogRow; hidden: boolean }) {
     en: false,
     af: false,
   });
+  // Stale is server-computed, so it has to be corrected locally after a save
+  // (which stamps the current hash) or a reset (which removes the row entirely).
+  const [stale, setStale] = useState<Record<Loc, boolean>>({
+    en: row.enStale,
+    af: row.afStale,
+  });
   const [drafting, setDrafting] = useState(false);
 
   const defaults: Record<Loc, string> = { en: row.enDefault, af: row.afDefault };
@@ -150,6 +159,7 @@ function TranslationRow({ row, hidden }: { row: CatalogRow; hidden: boolean }) {
     if (res.ok) {
       setBases((b) => ({ ...b, [loc]: vals[loc] }));
       setOverridden((o) => ({ ...o, [loc]: vals[loc] !== defaults[loc] && vals[loc].trim() !== "" }));
+      setStale((s) => ({ ...s, [loc]: false }));
       toast.success(`Saved ${loc.toUpperCase()}`);
     } else if ("stale" in res && res.stale) {
       toast.error("Default changed — reload the page to edit the latest.");
@@ -170,6 +180,7 @@ function TranslationRow({ row, hidden }: { row: CatalogRow; hidden: boolean }) {
       setVals((v) => ({ ...v, [loc]: res.value }));
       setBases((b) => ({ ...b, [loc]: res.value }));
       setOverridden((o) => ({ ...o, [loc]: false }));
+      setStale((s) => ({ ...s, [loc]: false }));
       toast.success(`Reset ${loc.toUpperCase()} to default`);
     } else {
       toast.error(res.error ?? "Reset failed");
@@ -190,7 +201,9 @@ function TranslationRow({ row, hidden }: { row: CatalogRow; hidden: boolean }) {
     }
   }
 
-  const status = overridden.en || overridden.af
+  const status = stale.en || stale.af
+    ? { label: "stale override", cls: "text-red-700 dark:text-red-300" }
+    : overridden.en || overridden.af
     ? { label: "overridden", cls: "text-blue-700 dark:text-blue-300" }
     : vals.af.trim() === "" || vals.af === vals.en
       ? { label: "untranslated", cls: "text-amber-700 dark:text-amber-300" }
@@ -265,6 +278,29 @@ function TranslationRow({ row, hidden }: { row: CatalogRow; hidden: boolean }) {
                 setVals((v) => ({ ...v, [loc]: e.target.value }))
               }
             />
+            {stale[loc] && (
+              <div className="mt-1 rounded-lg border border-red-300/70 bg-red-50 p-2 text-[11px] dark:border-red-900/60 dark:bg-red-950/30">
+                <p className="flex items-center gap-1 font-medium text-red-700 dark:text-red-300">
+                  <AlertTriangle className="size-3" />
+                  Shipped default changed since this was edited
+                </p>
+                <p className="mt-1 text-muted-foreground">
+                  This override is still what learners see. The code now ships:
+                </p>
+                <p className="mt-1 whitespace-pre-wrap text-foreground">
+                  {defaults[loc] || <em>(empty)</em>}
+                </p>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="mt-2 h-7 px-2"
+                  onClick={() => reset(loc)}
+                  disabled={saving[loc]}
+                >
+                  Use the shipped default
+                </Button>
+              </div>
+            )}
             {loc === "af" && tokenMismatch && (
               <p className="mt-1 flex items-center gap-1 text-[11px] text-amber-700 dark:text-amber-300">
                 <AlertTriangle className="size-3" />

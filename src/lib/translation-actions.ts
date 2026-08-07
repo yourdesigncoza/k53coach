@@ -29,7 +29,8 @@ export async function saveTranslation(input: SaveInput) {
   if (!supabase)
     return { ok: false as const, error: "Supabase not configured" };
 
-  if (defaultHash(input.namespace, input.key) !== input.defaultSeen) {
+  const currentHash = defaultHash(input.namespace, input.key);
+  if (currentHash !== input.defaultSeen) {
     return {
       ok: false as const,
       stale: true as const,
@@ -53,6 +54,14 @@ export async function saveTranslation(input: SaveInput) {
     const { error } = await supabase.from("ui_translations").upsert({
       ...match,
       value,
+      // Which shipped default this override was written against. Never read at
+      // request time — the override wins regardless. It exists so the admin
+      // "Stale" filter and `npm run i18n:check` can tell later that the JSON
+      // moved underneath this row. Always the *server's* hash, never the
+      // client's `defaultSeen`: they are equal here only because the guard
+      // above just proved it, and storing the client's value would persist
+      // whatever a stale tab claimed.
+      default_hash: currentHash,
       updated_by: auth.user?.id ?? null,
       updated_at: new Date().toISOString(),
     });
