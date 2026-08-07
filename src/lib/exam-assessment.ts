@@ -267,6 +267,7 @@ const EXAM_FORMAT_RULES = `- Keep strengths to the passed/strong sections and fo
 export function examAssessmentSystem(locale: string): string {
   return buildAssessmentSystem({
     locale,
+    surface: "exam",
     sittingLabel: "mock-exam",
     formatRules: EXAM_FORMAT_RULES,
   });

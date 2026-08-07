@@ -150,12 +150,14 @@ export function buildReadinessPayload(
 const READINESS_FORMAT_RULES = `- This was a SHORT sample of a few questions, not a full paper. Say so plainly in the verdict. Never imply the score predicts the official test, and never present it as a percentage they will get on the day.
 - Be brief: at most 1 strength, at most 2 focus items, exactly 2 plan steps. Fewer is better than padded.
 - Every focus item must come from a question in the "misses" list. If the list is empty, return no focus items at all — do not manufacture a weakness to fill the slot.
-- If they got everything right, say the sample was clean, say a few questions cannot prove they are ready, and point them at more practice.`;
+- If they got everything right, say the sample was clean, say a few questions cannot prove they are ready, and point them at more practice.
+- This learner has NOT paid. Never mention, name, recommend or allude to the mock exam / practice exam in any language — they cannot open it. Send them to the practice pages and lessons instead. Saying "do a mock-exam-style session" is the same mistake as linking to it.`;
 
 /** The readiness system prompt for one caller-validated locale. */
 export function readinessAssessmentSystem(locale: string): string {
   return buildAssessmentSystem({
     locale,
+    surface: "readiness",
     sittingLabel: "quick readiness check",
     formatRules: READINESS_FORMAT_RULES,
   });

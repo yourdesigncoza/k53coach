@@ -33,25 +33,47 @@ test("every sourced term still matches messages/af.json", () => {
   }
 });
 
-test("every unsourced term is marked pending a native review", () => {
-  // A term with no UI string behind it is our guess, not Louwrens's ruling. The
-  // marker is what stops the list quietly accumulating invented Afrikaans.
+test("every term carries a source, a native ruling, or a pending flag", () => {
+  // A term with no UI string and no native ruling is our guess. Forcing the
+  // third label is what stops the list quietly accumulating invented Afrikaans —
+  // which is exactly how "volstruislyn" reached a learner.
   for (const term of GLOSSARIES.af) {
-    if (term.source) continue;
-    assert.equal(term.pending, true, `"${term.en}" has no source and no pending flag`);
+    assert.ok(
+      term.source || term.ruled || term.pending,
+      `"${term.en}" has no source, no ruling and no pending flag`,
+    );
   }
 });
 
+test("the road-marking term rules out both invented compounds", () => {
+  const block = glossaryBlock("af", "readiness");
+  assert.match(block, /soliede lyn wat verbysteek verbied/);
+  assert.match(block, /never "volstruislyn" or "geen-oornamelyn"/);
+});
+
 test("English gets no glossary block", () => {
-  assert.equal(glossaryBlock("en"), "");
-  assert.equal(glossaryBlock("zz"), "");
+  assert.equal(glossaryBlock("en", "exam"), "");
+  assert.equal(glossaryBlock("zz", "readiness"), "");
 });
 
 test("the Afrikaans block names the term and the term to avoid", () => {
-  const block = glossaryBlock("af");
+  const block = glossaryBlock("af", "exam");
   assert.match(block, /TERMINOLOGY/);
   assert.match(block, /Voertuigkontroles/);
   // The two defects this file was written for, both seen in real output.
   assert.match(block, /never "Voertuigbeheer"/);
   assert.match(block, /never "monster"/);
+});
+
+test("the readiness block never hands over a word for the paid mock", () => {
+  // Regression: with "Proefeksamen" in the shared list the model wrote "die
+  // volle Proefeksamen-gereedheid" and planned a "Proefeksamen-styl
+  // oefensessie" for an unpaid learner. readinessAllowedHrefs already drops
+  // /mock; a term the prose can sell defeats that.
+  const readiness = glossaryBlock("af", "readiness");
+  assert.doesNotMatch(readiness, /Proefeksamen/);
+  // …and the paid surface, where the learner just sat one, still gets it.
+  assert.match(glossaryBlock("af", "exam"), /Proefeksamen/);
+  // The shared terms survive the filter on both.
+  assert.match(readiness, /Voertuigkontroles/);
 });

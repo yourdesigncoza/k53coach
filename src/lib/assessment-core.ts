@@ -18,7 +18,7 @@
  * server file); this module takes a locale string and trusts the caller checked it.
  */
 import type { Topic } from "@/lib/types";
-import { glossaryBlock } from "./assessment-glossary.ts";
+import { glossaryBlock, type Surface } from "./assessment-glossary.ts";
 
 /**
  * Bumped whenever any prompt text below changes. The exam path caches its
@@ -27,8 +27,9 @@ import { glossaryBlock } from "./assessment-glossary.ts";
  * server-side and ignores this.
  *
  * 4 — the non-English terminology block (`assessment-glossary.ts`).
+ * 5 — that block made surface-aware, and readiness told not to sell the mock.
  */
-export const PROMPT_VERSION = 4;
+export const PROMPT_VERSION = 5;
 
 /** topic → the learner module slug used in /learn and /learn/.../practice URLs. */
 export const TOPIC_SLUG: Record<Topic, string> = {
@@ -128,6 +129,8 @@ export function languageName(locale: string): string {
 export interface SystemPromptOptions {
   /** A locale the CALLER has already validated against routing.locales. */
   locale: string;
+  /** Which assessment this is — selects the surface-specific glossary terms. */
+  surface: Surface;
   /** What the learner just sat, in learner words ("mock exam" / "quick test"). */
   sittingLabel: string;
   /** Format-specific rules appended after the shared ones. */
@@ -148,6 +151,7 @@ export interface SystemPromptOptions {
  */
 export function buildAssessmentSystem({
   locale,
+  surface,
   sittingLabel,
   formatRules,
 }: SystemPromptOptions): string {
@@ -171,7 +175,7 @@ Write a short, personal coaching read. Rules you MUST follow:
     "oneThing":  string,                       // the single highest-leverage focus
     "ctaTopic":  "signs"|"rules"|"controls"    // the weakest section to practise first
   }
-- Every plan href MUST be chosen from the allowedHrefs list in the payload.${glossaryBlock(locale)}
+- Every plan href MUST be chosen from the allowedHrefs list in the payload.${glossaryBlock(locale, surface)}
 ${formatRules}`;
 }
 
