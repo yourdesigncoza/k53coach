@@ -27,6 +27,30 @@ const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
 const SITE_URL = "https://k53coach.co.za";
 const SITE_NAME = "K53 AI Coach";
 
+/**
+ * Strip a markdown code fence wrapping the whole reply.
+ *
+ * `response_format: {type: "json_object"}` is a hard constraint for OpenAI and a
+ * suggestion for others. Measured 2026-08-07: `anthropic/claude-sonnet-5`
+ * returns ```` ```json\n{…}\n``` ```` through OpenRouter on the app's exact
+ * request, so `JSON.parse` throws and the caller serves its fallback. It parsed
+ * one run in five, which reads as an intermittent model outage rather than a
+ * shape mismatch.
+ *
+ * Only a fence around the ENTIRE reply is removed — a fence inside prose is
+ * content, not packaging, and this must not silently rewrite a learner-facing
+ * string.
+ */
+export function stripCodeFence(text: string): string {
+  const t = text.trim();
+  if (!t.startsWith("```") || !t.endsWith("```")) return text;
+  const nl = t.indexOf("\n");
+  if (nl === -1) return text; // one-line ```…``` — nothing to unwrap safely
+  // The opening line is ``` plus an optional language tag and nothing else.
+  if (!/^```[a-zA-Z0-9_-]*$/.test(t.slice(0, nl).trim())) return text;
+  return t.slice(nl + 1, t.length - 3).trim();
+}
+
 /** Whether an OpenRouter key is configured (so callers can degrade gracefully). */
 export function hasLlmKey() {
   return Boolean(process.env.OPENROUTER_API_KEY);
@@ -112,5 +136,8 @@ export async function llmChat({
       totalTokens: Number(data.usage.total_tokens ?? 0),
     });
   }
-  return (data?.choices?.[0]?.message?.content as string) ?? "";
+  const content = (data?.choices?.[0]?.message?.content as string) ?? "";
+  // Unwrapped here, at the single entry point, so no caller has to know which
+  // provider honours json mode and which merely tries.
+  return stripCodeFence(content);
 }
