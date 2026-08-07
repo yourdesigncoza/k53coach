@@ -587,11 +587,16 @@ try {
     );
     check(
       /Nasionale Padverkeerswet/i.test(landing),
-      "questions are sourced to the Act, not to “the latest manual”",
+      "questions are still sourced to the Act by name (landing.faqA1)",
     );
+    // 2026-08-07 (K53-35): "matched to the latest manual" is back, at the
+    // client's request and with the site in beta — it now rides in
+    // landing.feat2Body and landing.faqA1 ALONGSIDE the Act citation, rather
+    // than instead of it. The assertion above is what keeps that true: the
+    // manual may be named, but never as the sole provenance.
     check(
-      !/nuutste handleiding/i.test(landing),
-      "…and the unverifiable manual claim is gone",
+      /nuutste handleiding/i.test(landing),
+      "…and the manual claim rides alongside it, never alone",
     );
 
     await page.goto(`${BASE}/af/readiness`, { waitUntil: "networkidle" });

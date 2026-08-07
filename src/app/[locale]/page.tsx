@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,11 @@ import { LandingQuizDemo } from "@/components/landing/quiz-demo";
 import { ReadinessRing, BAND_BADGE_CLASS } from "@/components/readiness-ring";
 import { SignImage } from "@/components/sign-image";
 import { cn } from "@/lib/utils";
-import { ENTITLEMENT_PRICE_LABEL } from "@/lib/pricing";
+import {
+  ENTITLEMENT_DAYS,
+  ENTITLEMENT_PRICE_LABEL,
+  SCHOOL_PRICE_LABEL,
+} from "@/lib/pricing";
 
 /* Topic taxonomy is content, not UI chrome — kept in English (see CLAUDE.md). */
 const TOPICS = [
@@ -17,6 +22,23 @@ const TOPICS = [
   { label: "Vehicle Controls", icon: "i-controls", color: "var(--topic-controls)", pct: 58 },
   { label: "Road Safety", icon: "i-safety", color: "var(--topic-safety)", pct: 65 },
 ] as const;
+
+/**
+ * Illustrative readiness examples for the "What Coach K tells you" row.
+ *
+ * The percentages are invented and MUST stay labelled as such by
+ * `landing.exampleDisclaimer` — the progress page deliberately stopped showing
+ * learners numbers they had not earned, and a landing page is not an exemption.
+ * Band labels come from the shared `bands` namespace, never re-typed here.
+ */
+const EXAMPLES = [
+  { band: "not-ready", percent: 38, bodyKey: "example1Body" },
+  { band: "almost-ready", percent: 62, bodyKey: "example2Body" },
+  { band: "test-ready", percent: 84, bodyKey: "example3Body" },
+] as const;
+
+/** FAQ entries are `faqQ{n}`/`faqA{n}`; bump this when copy adds one. */
+const FAQ_COUNT = 5;
 
 /** Semicircular readiness gauge (data-driven, gold gradient). */
 function Gauge({ value }: { value: number }) {
@@ -130,6 +152,42 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* ---- MEET COACH K — the persona introduction ---- */}
+        <section className="border-t border-ink-700 py-14 md:py-16">
+          <div className="mx-auto grid w-[min(1180px,92vw)] items-center gap-8 md:grid-cols-[minmax(0,280px)_1fr] md:gap-12">
+            <div className="mx-auto w-[200px] max-w-full md:mx-0 md:w-full">
+              <Image
+                src="/img/coach-k.png"
+                alt={`${t("coachMeetName")} — ${t("coachMeetRole")}`}
+                width={512}
+                height={512}
+                className="h-auto w-full drop-shadow-[0_18px_46px_rgba(0,0,0,.45)]"
+              />
+            </div>
+            <div className="max-w-xl">
+              <p className="text-xs font-medium uppercase tracking-[0.04em] text-gold-400">
+                {t("coachMeetKicker")}
+              </p>
+              <h2 className="mt-2 text-[1.75rem] font-semibold leading-tight tracking-tight">
+                {t("coachMeetIntro")}
+              </h2>
+              <p className="mt-3 text-base leading-relaxed text-mist">
+                {t("coachMeetBody")}
+              </p>
+              <p className="mt-3 font-display text-base font-semibold text-gold-300">
+                {t("coachMeetClose")}
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <Button
+                  className="h-12 rounded-[14px] px-5 text-base font-display font-semibold"
+                  render={<Link href="/readiness">{t("coachMeetCta")}</Link>}
+                />
+                <span className="text-sm text-mist">{t("coachMeetCtaSub")}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ---- AI COACH SHOWCASE — the differentiator, spotlit on a warm beige band ---- */}
         <section
           id="coach"
@@ -138,6 +196,25 @@ export default function LandingPage() {
           <div className="mx-auto grid w-[min(1180px,92vw)] items-center gap-10 lg:grid-cols-[1.05fr_.95fr]">
             {/* Copy + CTAs */}
             <div className="max-w-xl">
+              {/* Persona row — the artwork carries its own wordmark, so the
+                  avatar crop is used here and the name is set in copy. */}
+              <div className="mb-5 flex items-center gap-3.5">
+                <Image
+                  src="/img/coach-k-avatar.png"
+                  alt=""
+                  width={64}
+                  height={64}
+                  className="size-14 shrink-0 rounded-full ring-2 ring-gold-400/60 md:size-16"
+                />
+                <div>
+                  <p className="font-display text-base font-semibold text-[var(--surface-ink)]">
+                    {t("coachMeetName")}
+                  </p>
+                  <p className="text-xs text-[var(--surface-ink-2)]">
+                    {t("coachMeetRole")}
+                  </p>
+                </div>
+              </div>
               <p className="text-xs font-semibold uppercase tracking-[0.08em] text-copper-500">
                 {t("coachEyebrow")}
               </p>
@@ -237,6 +314,28 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* ---- WHAT COACH K TELLS YOU — three illustrative results ---- */}
+        <section className="py-16">
+          <div className="mx-auto w-[min(1180px,92vw)]">
+            <div className="mb-8 max-w-2xl">
+              <p className="text-xs font-medium uppercase tracking-[0.04em] text-gold-400">{t("exampleKicker")}</p>
+              <h2 className="mt-2 text-[1.75rem] font-semibold tracking-tight">{t("exampleTitle")}</h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {EXAMPLES.map((ex) => (
+                <div key={ex.band} className="flex flex-col items-center gap-3 rounded-[18px] border border-ink-700 bg-card p-6 text-center">
+                  <ReadinessRing percent={ex.percent} band={ex.band} size={112} stroke={10} sublabel="readiness" />
+                  <span className={cn("inline-flex h-6 items-center rounded-full px-2.5 text-xs font-medium", BAND_BADGE_CLASS[ex.band])}>
+                    {tBands(ex.band)}
+                  </span>
+                  <p className="text-sm leading-relaxed text-mist">{t(ex.bodyKey)}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs text-muted-dk">{t("exampleDisclaimer")}</p>
+          </div>
+        </section>
+
         {/* ---- CREDIBILITY STRIP (real facts, no fabricated counts) ---- */}
         <section className="border-y border-ink-700 bg-ink-900/40 py-10">
           <div className="mx-auto grid w-[min(1180px,92vw)] gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -332,7 +431,7 @@ export default function LandingPage() {
                   {ENTITLEMENT_PRICE_LABEL} <span className="text-sm font-medium text-mist">{t("planPer")}</span>
                 </div>
                 <ul className="my-5 grid gap-2.5 text-[0.92rem] text-sand">
-                  {[t("planF1"), t("planF2"), t("planF3"), t("planF4")].map((li) => (
+                  {[t("planF1"), t("planF2"), t("planF3"), t("planF4"), t("planF5"), t("planF6")].map((li) => (
                     <li key={li} className="flex gap-2"><span className="font-bold text-gold-400">✓</span> {li}</li>
                   ))}
                 </ul>
@@ -340,7 +439,7 @@ export default function LandingPage() {
               </div>
             </div>
             <p className="mt-5 max-w-[820px] text-sm text-mist">
-              {t("pricingNoteLead")} <b className="text-ivory">{t("pricingNoteBold")}</b> {t("pricingNoteRest")} &nbsp;·&nbsp; <b className="text-ivory">{t("pricingSchoolsBold")}</b> {t("pricingSchoolsRest")}
+              {t("pricingNoteLead")} <b className="text-ivory">{t("pricingNoteBold")}</b> {t("pricingNoteRest")} &nbsp;·&nbsp; <b className="text-ivory">{t("pricingSchoolsBold")}</b> {t("pricingSchoolsRest", { price: SCHOOL_PRICE_LABEL, days: ENTITLEMENT_DAYS })}
             </p>
           </div>
         </section>
@@ -368,7 +467,7 @@ export default function LandingPage() {
                 <h2 className="mt-2 text-[1.75rem] font-semibold tracking-tight">{t("faqTitle")}</h2>
               </div>
               <div className="flex flex-col gap-3">
-                {[1, 2, 3, 4, 5].map((n) => (
+                {Array.from({ length: FAQ_COUNT }, (_, i) => i + 1).map((n) => (
                   <details key={n} className="group rounded-[14px] border border-ink-700 bg-card px-5 py-1 open:border-ink-600">
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-display text-[0.95rem] font-semibold marker:hidden">
                       {t(`faqQ${n}`)}
