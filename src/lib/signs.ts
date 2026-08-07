@@ -48,6 +48,13 @@ export type SignContent = {
   name?: LocalizedField;
   /** Sign-off state of the Afrikaans content. See `AfReview`. */
   afReview?: AfReview;
+  /**
+   * Sign-off state of the Afrikaans NAME alone, which travels separately from
+   * the lesson text: Louwrens reviewed all 381 names in one sheet (K53-51) while
+   * the 1 914 lesson fields stay unread. One marker for both would have had to
+   * claim either that the names are unreviewed or that the lessons are.
+   */
+  nameReview?: AfReview;
   plainEnglish?: LocalizedField;
   formalMeaning?: LocalizedField;
   behaviour?: LocalizedField;
