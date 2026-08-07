@@ -1,0 +1,231 @@
+{
+ "description": "Afrikaans sign names, K53-51 follow-up. Five rows where Louwrens changed one sign in a family and left its siblings on the old wording; af-sign-names-2026-08-06.json deliberately did not infer them. Answered by John on 2026-08-07. IN1 and W415 extend his own change. R336/R352/R575 REVERSE it: he replaced hoëbesettingsvoertuie with a gloss on three signs, and John's call is that the compound noun is the term, which also matches R320/R320-P/R337 where he left it standing. That reversal is disclosed to Louwrens on the issue rather than applied quietly. content.nameReview is carried through unchanged — it records HIS review, and these five are not his wording.",
+ "decided_by": "John",
+ "decided_at": "2026-08-07",
+ "ops": [
+  {
+   "table": "road_signs",
+   "match": "code=eq.IN1",
+   "set": {
+    "content": {
+     "name": {
+      "af": "Aftelmerker (100 m)"
+     },
+     "afReview": {
+      "draftedAt": "2026-08-06",
+      "draftedBy": "ai",
+      "humanSignOff": false
+     },
+     "testHint": {
+      "af": "Tel die strepe en vermenigvuldig met 100 om die meters te kry wat oor is. Die strepe hel altyd na regs af, en die agtergrond is nie altyd blou nie — dit kan blou, groen of bruin wees.",
+      "en": "Count the bars and multiply by 100 to get the metres left. The bars always slope down to the right, and the background is not always blue — it can be blue, green or brown."
+     },
+     "behaviour": {
+      "af": "Gebruik hulle om vroeg in die linkerbaan te kom. Hulle word juis opgerig waar 'n draai of 'n bult die afrit wegsteek, sodat die pad vorentoe skoon kan lyk terwyl die afdraai reeds op jou is.",
+      "en": "Use them to get into the left lane early. They are put up precisely where a curve or a rise hides the exit, so the road ahead can look clear when the turn-off is already on you."
+     },
+     "nameReview": {
+      "draftedAt": "2026-08-06",
+      "draftedBy": "ai",
+      "reviewedAt": "2026-08-06",
+      "reviewedBy": "Louwrens Luyt",
+      "humanSignOff": true
+     },
+     "memoryTrick": {
+      "af": "Strepe tel af, nie op nie: drie, twee, een, af.",
+      "en": "Bars count down, not up: three, two, one, off."
+     },
+     "plainEnglish": {
+      "af": "'n Baken met een skuins streep wat 100 m voor 'n snelwegafrit staan — die laaste een wat jy verbygaan voor die afdraai.",
+      "en": "A marker with one diagonal bar, standing 100 m before a freeway exit — the last one you pass before the turn-off."
+     },
+     "commonMistake": {
+      "af": "Om die telling verkeerd om te lees. Een streep is nie die eerste waarskuwing nie — dit beteken die afrit is 100 m weg en jy behoort reeds in posisie te wees.",
+      "en": "Reading the count the wrong way round. One bar is not the first warning — it means the exit is 100 m away and you should already be in position."
+     },
+     "formalMeaning": {
+      "af": "'n Aftelteken wat die afstand tot 'n hoëspoed-afrit aandui. Hulle word in stelle van drie gebruik — drie strepe by 300 m, twee by 200 m, een by 100 m — so een streep beteken 100 m oor.",
+      "en": "A countdown sign giving the distance to a high-speed exit. They are used in sets of three — three bars at 300 m, two at 200 m, one at 100 m — so one bar means 100 m to go."
+     }
+    }
+   },
+   "why": "John, K53-51 — Louwrens renamed IN2/IN3 to Aftelmerker and left IN1 behind; propagated so the family matches."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.W415",
+   "set": {
+    "content": {
+     "name": {
+      "af": "Oorhoofse gevaarbord"
+     },
+     "afReview": {
+      "draftedAt": "2026-08-06",
+      "draftedBy": "ai",
+      "humanSignOff": false
+     },
+     "testHint": {
+      "af": "Rooi-en-wit strepe op iets oorhoofs = kyk op en kyk jou hoogte na voordat jy daaronder deurry.",
+      "en": "Red-and-white stripes on something overhead = look up and check your height before you drive under it."
+     },
+     "behaviour": {
+      "af": "Let op die waarskuwing en kyk of jou voertuig (insluitend enige vrag) veilig daaronder kan deurgaan. As die deurgangshoogte twyfelagtig is, ry stadiger en moenie onder die struktuur deurgaan nie.",
+      "en": "Note the warning and check that your vehicle (including any load) can safely pass underneath. If clearance is in doubt, slow down and do not proceed under the structure."
+     },
+     "nameReview": {
+      "draftedAt": "2026-08-06",
+      "draftedBy": "ai",
+      "reviewedAt": "2026-08-06",
+      "reviewedBy": "Louwrens Luyt",
+      "humanSignOff": true
+     },
+     "plainEnglish": {
+      "af": "'n Rooi-en-wit gestreepte plaat wat aan 'n oorhoofse struktuur soos 'n lae brug, portaal of boom vasgemaak is om die hindernis te laat uitstaan en jou van beperkte deurgangshoogte voor te waarsku.",
+      "en": "A red-and-white striped plate fixed to an overhead structure such as a low bridge, gantry or boom to make the obstruction stand out and warn you of limited clearance ahead."
+     },
+     "commonMistake": {
+      "af": "Om te aanvaar die strepe is bloot versiering en die hoogte-/deurgangsrisiko vir 'n hoë voertuig of vrag te ignoreer.",
+      "en": "Assuming the stripes are purely decorative and ignoring the height/clearance risk for a tall vehicle or load."
+     },
+     "formalMeaning": {
+      "af": "'n Oorhoofse gevaarplaat-gevaarbaken wat 'n oorhoofse hindernis of beperkte vertikale deurgangshoogte uitlig.",
+      "en": "An overhead danger plate hazard marker highlighting an overhead obstruction or restricted vertical clearance."
+     }
+    }
+   },
+   "why": "John, K53-51 — Louwrens renamed W401/W402 to Gevaarbord and left W415 behind; propagated so the family matches."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R336",
+   "set": {
+    "content": {
+     "name": {
+      "af": "Gereserveerde baan vir hoëbesettingsvoertuie"
+     },
+     "afReview": {
+      "draftedAt": "2026-08-06",
+      "draftedBy": "ai",
+      "humanSignOff": false
+     },
+     "testHint": {
+      "af": "Ruit = hoëbesettingsbaan. Die gestippelde baanlyn aan die kant sê vir jou dit is 'n gereserveerde BAAN, nie die hele pad nie.",
+      "en": "Diamond = high-occupancy lane. The dashed lane line on the side tells you it is a reserved LANE, not the whole road."
+     },
+     "behaviour": {
+      "af": "Ry net in die gemerkte baan as jou voertuig die vereiste minimum aantal insittendes vervoer; hou andersins by die ander bane.",
+      "en": "Only drive in the marked lane if your vehicle carries the required minimum number of occupants; otherwise keep to the other lanes."
+     },
+     "nameReview": {
+      "draftedAt": "2026-08-06",
+      "draftedBy": "ai",
+      "reviewedAt": "2026-08-06",
+      "reviewedBy": "Louwrens Luyt",
+      "humanSignOff": true
+     },
+     "plainEnglish": {
+      "af": "Hierdie baan is slegs vir hoëbesettingsvoertuie gereserveer — voertuie wat ten minste die aantal mense vervoer wat in die ruit gewys word. Die gestippelde geel lyn merk die gereserveerde baan.",
+      "en": "This lane is reserved for high-occupancy vehicles only — vehicles carrying at least the number of people shown in the diamond. The dashed yellow line marks the reserved lane."
+     },
+     "commonMistake": {
+      "af": "Om te dink die 'R' beteken parkering of rand/betaling. Die 'R' hier beteken 'Gereserveer', en die ruit wys dat dit 'n hoëbesetting- (saamry-) baan is.",
+      "en": "Thinking the 'R' means parking or rand/payment. The 'R' here means 'Reserved', and the diamond shows it is a high-occupancy (carpool) lane."
+     },
+     "formalMeaning": {
+      "af": "Dui aan dat die baan waarop die teken van toepassing is gereserveer is vir hoëbesettingsvoertuie wat die minimum aantal insittendes vervoer wat in die ruitsimbool aangedui word.",
+      "en": "Indicates that the lane to which the sign applies is reserved for high-occupancy vehicles carrying the minimum number of occupants indicated in the diamond symbol."
+     }
+    }
+   },
+   "why": "John, K53-51 — REVERSES Louwrens's edit. He replaced hoëbesettingsvoertuie with 'baie insittendes'; John's call is that the compound noun is the correct term (HOV = vehicles carrying a minimum number of occupants), and R320/R320-P/R337 already use it. Disclosed to Louwrens on the issue."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R352",
+   "set": {
+    "content": {
+     "name": {
+      "af": "Gereserveerde baan vir hoëbesettingsvoertuie"
+     },
+     "afReview": {
+      "draftedAt": "2026-08-06",
+      "draftedBy": "ai",
+      "humanSignOff": false
+     },
+     "testHint": {
+      "af": "'n Ruit beteken 'n Hoëbesettingsvoertuig-baan; die getal is hoeveel mense jy moet vervoer.",
+      "en": "A diamond means a High-Occupancy Vehicle lane; the number is how many people you must be carrying."
+     },
+     "behaviour": {
+      "af": "Gebruik hierdie baan net as jou voertuig ten minste die aantal mense vervoer wat gewys word; bly andersins in die normale bane.",
+      "en": "Only use this lane if your vehicle is carrying at least the number of people shown; otherwise stay in the normal lanes."
+     },
+     "nameReview": {
+      "draftedAt": "2026-08-06",
+      "draftedBy": "ai",
+      "reviewedAt": "2026-08-06",
+      "reviewedBy": "Louwrens Luyt",
+      "humanSignOff": true
+     },
+     "plainEnglish": {
+      "af": "Die gemerkte baan is 'n hoëbesettingsvoertuig-baan, gereserveer vir voertuie wat ten minste die aantal mense vervoer wat gewys word (12).",
+      "en": "The marked lane is a high-occupancy vehicle lane, reserved for vehicles carrying at least the number of people shown (12)."
+     },
+     "commonMistake": {
+      "af": "Om te dink die ruit se '12' is 'n snelheidsbeperking of roetenommer. Dit is die minimum aantal insittendes wat vereis word om die baan te gebruik.",
+      "en": "Thinking the diamond '12' is a speed limit or route number. It is the minimum number of occupants required to use the lane."
+     },
+     "formalMeaning": {
+      "af": "Gereserveerdebaan-teken vir hoëbesettingsvoertuie: die baan is gereserveer vir voertuie wat ten minste die aangeduide aantal insittendes vervoer.",
+      "en": "Reserved-lane sign for high-occupancy vehicles: the lane is reserved for vehicles carrying at least the indicated number of occupants."
+     }
+    }
+   },
+   "why": "John, K53-51 — same reversal as R336; same English name, so the two must not diverge."
+  },
+  {
+   "table": "road_signs",
+   "match": "code=eq.R575",
+   "set": {
+    "content": {
+     "name": {
+      "af": "Van toepassing op hoëbesettingsvoertuie"
+     },
+     "afReview": {
+      "draftedAt": "2026-08-06",
+      "draftedBy": "ai",
+      "humanSignOff": false
+     },
+     "testHint": {
+      "af": "'n Klein bord onder 'n teken wat 'n voertuig noem = die teken daarbo geld slegs vir hoëbesettingsvoertuie.",
+      "en": "A small plate under a sign that names a vehicle = the sign above applies only to high-occupancy vehicles."
+     },
+     "behaviour": {
+      "af": "Lees dit saam met die teken daarbo. Daardie teken se opdrag geld vir hoëbesettingsvoertuie. As jou voertuig nie in daardie klas is nie, geld die teken daarbo nie vir jou nie, tensy 'n ander bord ook geld.",
+      "en": "Read it together with the sign above. That sign's instruction applies to high-occupancy vehicles. If your vehicle is not in that class, the sign above does not apply to you, unless another plate also applies."
+     },
+     "nameReview": {
+      "draftedAt": "2026-08-06",
+      "draftedBy": "ai",
+      "reviewedAt": "2026-08-06",
+      "reviewedBy": "Louwrens Luyt",
+      "humanSignOff": true
+     },
+     "plainEnglish": {
+      "af": "Dit is 'n aanvullende bord wat onder 'n ander padteken aangebring is. Dit beteken die teken daarbo geld slegs vir hoëbesettingsvoertuie.",
+      "en": "This is a supplementary plate fixed under another road sign. It means the sign above it applies only to high-occupancy vehicles."
+     },
+     "commonMistake": {
+      "af": "Om die bord op sy eie te lees — dit verander net vir wie die teken daarbo geld, hier hoëbesettingsvoertuie.",
+      "en": "Reading the plate on its own — it only changes who the sign above applies to, here high-occupancy vehicles."
+     },
+     "formalMeaning": {
+      "af": "Selektiewebeperking-bord R575: dit beperk die teken wat daarbo gemonteer is tot hoëbesettingsvoertuie.",
+      "en": "Selective-restriction plate R575: it limits the sign mounted above it to high-occupancy vehicles."
+     }
+    }
+   },
+   "why": "John, K53-51 — same reversal as R336. Louwrens wrote a third variant here ('voertuie met 'n hoë besettingsgraad'). The 'Van toepassing op' prefix is untouched pending the separate op/vir decision."
+  }
+ ]
+}
