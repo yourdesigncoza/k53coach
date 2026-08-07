@@ -214,6 +214,22 @@ export interface LegalSection {
   number: string;
   heading: string;
   blocks: LegalBlock[];
+  /**
+   * Set ONLY on a clause K53 Coach added after the document was supplied.
+   *
+   * The supplied documents are published verbatim and a test enforces it. That
+   * rule exists to stop text drifting silently, not to stop the product
+   * shipping — so a clause we add is allowed, provided it says who added it,
+   * when, and why. Undeclared additions still fail the guard.
+   */
+  amendment?: {
+    /** ISO date the clause was added. */
+    addedOn: string;
+    /** Who decided to add it. */
+    addedBy: string;
+    /** What changed in the product that made it necessary. */
+    reason: string;
+  };
 }
 
 /** A whole published document. */
@@ -224,7 +240,17 @@ export interface LegalDoc {
   effectiveDate: string;
   /** Everything printed before clause 1 — lead paragraphs and the operator block. */
   intro: LegalBlock[];
+  /** The clauses exactly as supplied. Compared word-for-word against the PDF. */
   sections: LegalSection[];
+  /**
+   * Clauses K53 Coach added after the document was supplied — published, but
+   * NOT part of the verbatim comparison, because they are not in the source PDF.
+   *
+   * Kept as a separate list rather than mixed into `sections` so that what was
+   * supplied and what we wrote never blur together. Every entry must carry
+   * `amendment` provenance; `verbatim.test.ts` enforces that.
+   */
+  amendments?: LegalSection[];
   /** The closing summary box ("IMPORTANT REFUND SUMMARY" / "PRIVACY SUMMARY"). */
   callout?: { title: string; blocks: LegalBlock[] };
   /** © line as printed. */

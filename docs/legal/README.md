@@ -6,16 +6,49 @@ attached to the issue description.
 
 ## The verbatim rule
 
-**These documents are published exactly as supplied. We do not edit them.**
+**The supplied clauses are published exactly as supplied. We do not edit them.**
 
-No rewording, no additions, no clarifying boxes of our own, no quietly dropping a clause that
-describes something the app does not do. When a document says something we would have written
-differently, it still ships as written and the observation goes back to Louwrens — the copy is his
-to change, not ours. He is the Information Officer and the documents carry his company's name.
+No rewording, no condensing, no quietly dropping a clause that describes something the app does not
+do. When a document says something we would have written differently, it still ships as written and
+the observation goes back to Louwrens — the copy is his to change, not ours. He is the Information
+Officer and the documents carry his company's name. `verbatim.test.ts` compares the rendered word
+stream against the extracted PDF text, so drift fails a test rather than reaching production.
 
 The one thing we *do* own is making the app honour what they promise. The 7-day money-back
 guarantee (Terms §8–§9) is the live example: publishing it obliged us to say so on the payment
 screen, which is new app copy, not an edit to his document.
+
+### Amendments — added 2026-08-07 (John)
+
+**The rule was blocking shipping, so it was amended rather than obeyed into a corner.** The site is
+in beta and we build and ship what the client asked for; a feature does not wait for a revised PDF
+to arrive. The original wording ("no additions") would have meant either holding Ask Coach or
+publishing a policy that did not describe it — and of those two, the second is worse than writing a
+clause and labelling it.
+
+So a document may carry an `amendments` list beside `sections`:
+
+- **`sections`** — the clauses as supplied. Fully covered by the verbatim guard. Untouchable.
+- **`amendments`** — clauses **we** wrote, for features that shipped after the document was
+  supplied. Published under their own numbers after the supplied clauses, and excluded from the
+  word-for-word comparison because they are not in the PDF.
+
+Every amendment must declare `addedOn`, `addedBy` and a `reason` saying what changed in the
+product. That is enforced by test, the same discipline `assessment-glossary.ts` uses to stop
+invented Afrikaans accumulating unlabelled. Two more tests close the obvious holes: a supplied
+clause may never be *relabelled* as an amendment (which would exempt it from the guard), and an
+amendment must take the next clause number so nothing renumbers a supplied one.
+
+What has NOT changed: supplied text still cannot be touched, and an undeclared addition still fails.
+The guard's job was always to stop text drifting silently — not to stop the product moving.
+
+**The audit is deferred, not skipped.** When the business asks, we run a pass over every amendment
+against the then-current supplied documents and fold what they accept into a revised PDF. Current
+amendments awaiting that pass:
+
+| Doc | Clause | Added | Why |
+|---|---|---|---|
+| Privacy | 31 — AI Coach and Chat (Ask Coach) | 2026-08-07 | First feature accepting free text from a User and sending it to a third-party AI provider; clauses 4, 12 and 24 did not describe it |
 
 ## What is here
 

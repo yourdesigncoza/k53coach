@@ -114,6 +114,23 @@ export function LegalDocument({
         </section>
       ))}
 
+      {/* Clauses added after the document was supplied. Published under their own
+          numbers after the supplied ones, and left off an extract for the same
+          reason the preamble is. */}
+      {!isExtract &&
+        doc.amendments?.map((section) => (
+          <section
+            key={section.id}
+            id={section.id}
+            className="flex scroll-mt-24 flex-col gap-3"
+          >
+            <h2 className="text-base font-semibold">
+              {section.number}. {section.heading}
+            </h2>
+            <Blocks blocks={section.blocks} />
+          </section>
+        ))}
+
       {doc.callout && (
         <aside className="flex flex-col gap-3 rounded-[14px] border border-[var(--surface-border)] bg-surface-2 p-4 md:p-6">
           <h2 className="text-base font-semibold">{doc.callout.title}</h2>

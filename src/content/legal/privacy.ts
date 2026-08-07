@@ -6,10 +6,19 @@ import { CONTACT_BLOCK, OPERATOR } from "./operator.ts";
  * Privacy Policy — as supplied by the business on Linear K53-53
  * (Louwrens Luyt, 2026-08-07).
  *
- * ⚠️ PUBLISHED VERBATIM. Do not reword, condense, "improve" or drop a clause.
- * The reference text is docs/legal/privacy-2026-08.txt; a change to this file
- * that does not correspond to a change in that file is a defect. Read
- * docs/legal/README.md before editing.
+ * ⚠️ `sections` IS PUBLISHED VERBATIM. Do not reword, condense, "improve" or
+ * drop a supplied clause. The reference text is docs/legal/privacy-2026-08.txt;
+ * a change to `sections` that does not correspond to a change in that file is a
+ * defect.
+ *
+ * `amendments` is different, and was added deliberately (John, 2026-08-07):
+ * while the site is in beta we ship what the product needs and audit the
+ * documents when the business asks for it, rather than holding a feature until
+ * a revised PDF arrives. A clause we write goes there, carries who added it,
+ * when and why, and is published under its own number after the supplied
+ * clauses. The verbatim guard still applies in full to everything supplied — an
+ * undeclared addition anywhere still fails it. Read docs/legal/README.md before
+ * editing either list.
  */
 export const PRIVACY: LegalDoc = {
   slug: "privacy",
@@ -712,6 +721,67 @@ export const PRIVACY: LegalDoc = {
           ],
         },
         CONTACT_BLOCK,
+      ],
+    },
+  ],
+
+  /**
+   * Clauses added after the document was supplied. Not part of the verbatim
+   * comparison — see the note at the top of this file and docs/legal/README.md.
+   */
+  amendments: [
+    {
+      id: "ai-coach-chat",
+      number: "31",
+      heading: "AI COACH AND CHAT (ASK COACH)",
+      amendment: {
+        addedOn: "2026-08-07",
+        addedBy: "John (K53 Coach)",
+        reason:
+          "Ask Coach shipped after this policy was supplied. It is the first feature that accepts free-text from a User and sends it to a third-party AI provider, and clauses 4, 12 and 24 do not describe it. Published now rather than held for the next policy revision; to be reviewed with the business when the beta ends.",
+      },
+      blocks: [
+        {
+          text: [
+            "This clause was added by K53 Coach on 7 August 2026 and describes a feature released after the effective date above. It supplements, and does not replace, the clauses that precede it.",
+          ],
+        },
+        {
+          subheading: "31.1 What Ask Coach is",
+          text: [
+            "Ask Coach is an optional feature available to Users with paid access. It answers questions about road signs, rules of the road, vehicle controls and the learner’s licence test using K53 Coach’s own verified learning content. It is not a general-purpose assistant and does not answer questions outside that subject matter.",
+          ],
+        },
+        {
+          subheading: "31.2 What we collect",
+          text: [
+            "When a User sends a question to Ask Coach, K53 Coach stores the question, the answer given, and which learning content that answer was based on, linked to the User’s account. This forms part of the User’s learning record as described in clause 10 (Learning Progress and Analytics).",
+          ],
+        },
+        {
+          subheading: "31.3 Processing by a third-party AI provider",
+          text: [
+            "To generate an answer, the question and the relevant extracts of K53 Coach’s learning content are sent to a third-party artificial-intelligence service provider, which may process them outside South Africa. This processing is subject to clause 24 (Cross-Border Data Transfers) and clause 25 (Third-Party Services). No account, contact, payment or identity information is sent to that provider.",
+          ],
+        },
+        {
+          subheading: "31.4 Automated removal of identifiers",
+          text: [
+            "Before a question leaves the Platform, K53 Coach automatically detects and removes South African identity numbers, telephone numbers and email addresses from the text. The version stored on the Platform is the version with those identifiers removed. This is an automated safeguard and not a guarantee: Users should not include personal information, their own or anyone else’s, in a question.",
+          ],
+        },
+        {
+          subheading: "31.5 Retention and deletion",
+          text: [
+            "A User may delete any Ask Coach conversation at any time from within the Platform, which deletes the questions and answers it contains. Where Ask Coach was unable to answer a question, K53 Coach keeps a record of that fact in order to identify gaps in its learning content, and automatically clears the text of the question after 30 days. Clause 18 (Data Retention) otherwise applies.",
+          ],
+        },
+        {
+          subheading: "31.6 Limits of the feature",
+          text: [
+            "Ask Coach answers only from K53 Coach’s verified learning content and does not search the internet. It does not provide legal advice, and it does not assess or certify whether a User is ready to sit the official learner’s licence test. Clause 11 (Automated Processing) applies: no decision affecting a User is taken solely by automated means.",
+          ],
+        },
       ],
     },
   ],

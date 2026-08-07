@@ -3,7 +3,8 @@
 **Priority P1 (product). The last unbuilt feature before launch, and the one the product has
 been describing to the market since the first pitch deck.**
 
-Status: specified 2026-08-07, not yet built. Build order in §11.
+Status: **built and shipped 2026-08-07** (`e245ef9`). Privacy clause 31 followed the same day —
+see §7. Build order in §11 is kept as the record of how it was sequenced.
 
 ## Decisions (John, 2026-08-07)
 
@@ -278,18 +279,25 @@ all, it goes to a third-party processor, and under-18 learners are expected (con
   (`coach-privacy.ts`). The body that is stored is the redacted one.
 - ✅ 30-day expiry on `refused` / `not_covered` bodies — the review queue needs the question, not
   a permanent transcript (`coach_purge_expired_bodies`, run from `/admin/coach`).
-- ⚠️ a line in the privacy page — **not done, and not something a commit can do.**
+- ✅ a clause in the privacy page — **Privacy Policy clause 31, published 2026-08-07.**
 
-⚠️ **The privacy-page line needs the business, not code.** `src/content/legal/privacy.ts` is a
-supplied document published verbatim, and `verbatim.test.ts` compares the rendered word stream
-against the source PDF precisely so that nobody can quietly add a clause. Editing it to describe
-chat data would either fail that test or be made to pass by bending the guard — the exact failure
-its own docblock warns about ("never to bend the content module until the test goes quiet"). So
-this needs a revised document from the business.
+**The verbatim rule was amended rather than obeyed into a corner (John, 2026-08-07).**
+`src/content/legal/privacy.ts` is published word-for-word against the supplied PDF, and the first
+reading of that rule said a clause describing Ask Coach had to wait for a revised document from the
+business. That was the wrong trade: the site is in beta, we ship what the client asked for, and of
+the two options — hold the feature, or publish a policy that does not describe it — the second is
+worse than writing a clause and labelling it.
 
-Until then the app collects free-text the policy does not mention. A **small, real gap**, not a
-blocker: the text is redacted before it leaves, it expires after 30 days, and POPIA is settled
-(constraint 1). It should be closed in the next policy revision rather than forgotten.
+So `LegalDoc` now separates `sections` (supplied, fully guarded, untouchable) from `amendments`
+(clauses we wrote, published under their own numbers, excluded from the word-for-word comparison
+because they are not in the PDF). Every amendment declares who added it, when, and what changed in
+the product; tests enforce that, and also that a supplied clause can never be *relabelled* as an
+amendment to escape the guard. Clause 31 covers what Ask Coach is, what is stored, the third-party
+AI processing and its cross-border implications, the automated removal of identifiers, retention
+and deletion, and the limits of the feature — cross-referenced to clauses 10, 11, 18, 24 and 25.
+
+**The audit is deferred, not skipped:** when the business asks, every amendment is reviewed against
+the then-current supplied documents and folded into a revised PDF. Recorded in `docs/legal/README.md`.
 
 ---
 
