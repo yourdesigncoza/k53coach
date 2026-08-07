@@ -1,33 +1,17 @@
 import { createClient } from "@/lib/supabase/server";
-import type { Tables } from "@/lib/database.types";
 import type { Question, Topic } from "@/lib/types";
 import { shuffleOptions } from "@/lib/shuffle";
+import { toQuestion, type QuestionRow } from "@/lib/questions-map";
 
 /**
  * DB4 question bank access. The `questions` table is the source of truth (DB-only);
  * learner getters explicitly filter `review_status='approved'` — never relying on RLS
  * alone, so an admin previewing learner pages still sees only approved content.
  */
-export type QuestionRow = Tables<"questions">;
-
-/** Map a DB row to the app's `Question` type, guarding the jsonb `options` shape. */
-export function toQuestion(row: QuestionRow): Question {
-  const options = Array.isArray(row.options) ? row.options.map(String) : [];
-  return {
-    id: row.id,
-    topic: row.topic as Topic,
-    difficulty: (row.difficulty ?? 1) as 1 | 2 | 3,
-    prompt: row.prompt,
-    options,
-    answer: row.answer,
-    explanation: row.explanation,
-    ...(row.sign_code ? { signCode: row.sign_code } : {}),
-    ...(row.exam_likelihood
-      ? { examLikelihood: row.exam_likelihood as "high" | "medium" | "low" }
-      : {}),
-    ...(row.topic_tag ? { topicTag: row.topic_tag } : {}),
-  };
-}
+// The row -> Question mapping lives in its own module so plain-node scripts can
+// import it without pulling in @/lib/supabase/server (and next/headers). Both
+// names are re-exported here so existing call sites are unchanged.
+export { toQuestion, type QuestionRow };
 
 /** The curated mock-exam pool for a vehicle code: approved + in_exam + applies to
  *  the code. Feeds `assemblePaper` — admin curation is the single source. */
