@@ -324,7 +324,7 @@ export default function LandingPage() {
             <div className="grid gap-4 sm:grid-cols-3">
               {EXAMPLES.map((ex) => (
                 <div key={ex.band} className="flex flex-col items-center gap-3 rounded-[18px] border border-ink-700 bg-card p-6 text-center">
-                  <ReadinessRing percent={ex.percent} band={ex.band} size={112} stroke={10} sublabel="readiness" />
+                  <ReadinessRing percent={ex.percent} band={ex.band} size={112} stroke={10} sublabel="readiness" tone="inverse" />
                   <span className={cn("inline-flex h-6 items-center rounded-full px-2.5 text-xs font-medium", BAND_BADGE_CLASS[ex.band])}>
                     {tBands(ex.band)}
                   </span>

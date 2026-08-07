@@ -45,6 +45,7 @@ export function ReadinessRing({
   label,
   sublabel,
   fullTrack = false,
+  tone = "surface",
   className,
 }: {
   percent: number;
@@ -54,6 +55,16 @@ export function ReadinessRing({
   stroke?: number;
   label?: string;
   sublabel?: string;
+  /**
+   * Centre-text colour.
+   *
+   * `surface` (default) uses the fixed `--surface-*` ink, which is right on the
+   * white app panels the gauge was built for. `inverse` is for the dark
+   * marketing zone, where that ink is all but invisible — the semantic
+   * foreground flips and disappears there, so the landing must ask for white
+   * explicitly rather than inherit.
+   */
+  tone?: "surface" | "inverse";
   /**
    * Draws the ring as a COMPLETE coloured circle regardless of `percent`.
    *
@@ -70,6 +81,11 @@ export function ReadinessRing({
   const offset = fullTrack ? 0 : c - (clamped / 100) * c;
   const [gradFrom, gradTo] = RING_GRADIENT[band ?? "almost-ready"];
   const gradId = `readinessGrad-${band ?? "default"}`;
+  // The percentage used to be a fixed 36px at every diameter, which crowds the
+  // small gauges (112–124px on the landing) while looking right at 150+. Scale
+  // it with the ring, capped so the large gauges render exactly as before.
+  const percentSize = Math.min(36, Math.round(size * 0.24));
+  const inverse = tone === "inverse";
 
   return (
     <div
@@ -106,16 +122,34 @@ export function ReadinessRing({
       </svg>
       <div className="absolute inset-0 grid place-items-center text-center">
         <div>
-          <div className="text-4xl font-semibold tabular-nums tracking-tight text-[var(--surface-ink)]">
+          <div
+            className={cn(
+              "font-semibold tabular-nums leading-none tracking-tight",
+              inverse ? "text-white" : "text-[var(--surface-ink)]",
+            )}
+            style={{ fontSize: percentSize }}
+          >
             {clamped}%
           </div>
           {label && (
-            <div className="mt-1 text-sm font-medium text-[var(--surface-ink)]">
+            <div
+              className={cn(
+                "mt-1 text-sm font-medium",
+                inverse ? "text-white" : "text-[var(--surface-ink)]",
+              )}
+            >
               {label}
             </div>
           )}
           {sublabel && (
-            <div className="text-xs text-[var(--surface-ink-2)]">{sublabel}</div>
+            <div
+              className={cn(
+                "mt-1 text-xs",
+                inverse ? "text-white/75" : "text-[var(--surface-ink-2)]",
+              )}
+            >
+              {sublabel}
+            </div>
           )}
         </div>
       </div>
